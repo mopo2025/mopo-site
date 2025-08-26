@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>注意事項および利用規約｜MOPO Ski School</title>
+<meta name="description" content="MOPO 注意事項および利用規約。安全・予約・キャンセル規定などの詳細をご確認いただけます。">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --faq-bg:#F7F6F3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+
+/* Topbar */
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+
+.topbar.hide {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
+
+/* Menu */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+
+/* ▼ デスクトップ下拉メニュー（ホームと同じ） */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* Lang */
+.lang select{
+  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a
+}
+
+/* Mobile tools */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:400}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+
+/* Page title */
+.section{padding:84px 0}
+.section__head h1{margin:0 0 8px 0; font-size:28px; letter-spacing:.02em; color:#111; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.muted{color:var(--ink-soft); font-size:14px}
+
+/* Lead big title (center, bold, Mincho; not collapsible) */
+.lead-title{
+  max-width:1000px; margin:0 auto 18px auto; text-align:center;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-weight:900; font-size:20px; letter-spacing:.02em; color:#111;
+}
+
+/* FAQ container */
+.faqwrap{background:var(--faq-bg)}
+.faqgrid{max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:14px}
+details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+summary::-webkit-details-marker{display:none}
+.faq-title{margin:0; font-size:18px; font-weight:800}
+.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
+.faq-body p{margin:10px 0 0 0}
+.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
+details[open] .chev{ transform:rotate(225deg) }
+
+/* Footer */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* Back-to-top FAB */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* RWD */
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:64px 0}
+  .section__head h1{font-size:24px}
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    transform-origin: top right;
+  }
+  .mobpanel a,
+  .mobpanel button{
+    white-space: nowrap;
+  }
+}
+
+
+.mob-subtitle {
+  padding: 6px 14px 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  cursor: default;
+}
+</style>
+</head>
+<body>
+
+<!-- Topbar（從主頁複製，未更動其他區塊） -->
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+   <a href="ja_mopoindex.html" class="logo" aria-label="トップへ戻る">MOPO Ski School</a>
+      
+    </div>
+
+    <ul class="menu" role="menubar" aria-label="サイトナビゲーション">
+      <li role="none"><a role="menuitem" href="ja_news.html">最新情報</a></li>
+      <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
+
+      <!-- レッスン：下拉 -->
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="レッスンのサブメニュー">
+          <li role="none"><a role="menuitem" href="#pricing">レッスンプラン</a></li>
+          <li class="group-title">スキー場紹介</li>
+          <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
+          <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+        </ul>
+      </li>
+
+      <!-- 特集記事：下拉 -->
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="特集記事のサブメニュー">
+          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="ja_faq.html">よくあるご質問</a></li>
+      <li role="none"><a role="menuitem" href="/booking">予約</a></li>
+    </ul>
+
+    <div class="lang">
+      <select id="langSelect" aria-label="言語を選択">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja" selected>日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div class="mobtools" aria-label="モバイルツール">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="言語">言語</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="言語メニュー">
+          <a role="menuitem" data-lang="zh-Hant" href="#">繁體中文</a>
+          <a role="menuitem" data-lang="ja" href="#" aria-current="true">日本語</a>
+          <a role="menuitem" data-lang="en" href="#">English</a>
+        </div>
+      </div>
+
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="ナビゲーションを開く" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="モバイルナビ">
+          <a href="ja_news.html" role="menuitem">最新情報</a>
+          <a href="ja_mopo.html" role="menuitem">MOPO について</a>
+
+          <div class="mob-subtitle">レッスン</div>
+          <a href="#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">雪場紹介</div>
+          <a href="ja_teine.html" role="menuitem">札幌手稲</a>
+          <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+
+          <div class="mob-subtitle">特集記事</div>
+          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_trip.html" role="menuitem">観光トピック</a>
+
+          <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
+          <a href="/booking" role="menuitem">予約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Page title -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>注意事項および利用規約</h1>
+        <p class="muted">ご不明点がございましたら、<a href="ja_mopoindex.html#contact" style="text-decoration:underline">お問い合わせ</a>ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section faqwrap">
+    <div class="container">
+
+      <!-- 中央・明朝・太字の固定タイトル（非収合） -->
+      <div class="lead-title">注意事項＆利用規約</div>
+
+      <div class="faqgrid" id="faqGrid">
+
+        <!-- 第1節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">1．雪上スポーツに関するリスク及び健康状態</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	スキーその他の雪上スポーツは高リスク活動に該当し、転倒・衝突・気象条件の変化・雪面状況の変化・装備の不具合その他合理的に予見可能な要因により負傷する可能性があります。当校は合理的な安全措置を講じ、必要な指導を行いますが、かかるリスクを完全に排除することはできません。受講者はこれを十分に理解し、自らの責任において承諾するものとします。</p>
+<p>2.	受講者（児童を含む）及びその保護者・監護者は、上記リスクを理解・承諾し、受講に伴う責任を自ら負担するものとします。受講前にスキー活動を補償対象とする旅行傷害保険・スポーツ傷害保険・海外医療保険等への加入を強く推奨します。</p>
+<p>3.	当校は、受講前・受講中・受講後を問わず、受講者の装備の紛失・損壊・盗難・交換費用等に一切の責任を負いません。受講者は装備を自己の責任で保管し、必要に応じて装備損失を補償する保険に加入してください。</p>
+<p>4.	受講者は、医師から雪上スポーツを禁止されている疾患又は症状（重度の心疾患、コントロールされていない高血圧、骨粗鬆症、直近の大手術、妊娠等）を有しないことを確認する義務を負います。自身の健康状態に懸念がある場合は、事前に当校へ連絡し、必要に応じて医師の許可証明を提出してください。</p>
+<p>5.	受講開始前に発熱・呼吸困難・激しい疼痛等の体調不良が生じた場合は、当日の受講を控えるべきものとします。それにもかかわらず受講を希望する場合は、必ず事前に教練へ健康状態及び医師の指示を告知してください。教練は安全上の理由から授業内容を調整・中断又は中止する権限を有し、その場合の返金は行いません。</p>
+<p>6.	教練及び当校スタッフは、安全上の理由により受講に適さないと判断した受講者の受講を拒否する権限を有します。受講者が健康上の問題を故意に隠蔽し、自身又は他人に損害を与えた場合、当校及び教練は一切の責任を負わず、返金も行いません。</p>
+<p>7.	原則として当校は全ての年齢層の受講者の申込を受け付けます。ただし、65歳以上の受講者については、リスク特性上、初心者向けスキー及びスノーボードレッスンの提供を行いません。上級者向けレッスンを希望する場合は、事前に当校へ連絡し、安全性を評価の上、受講の可否を決定します。</p>
+          </div>
+        </details>
+
+        <!-- 第2節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">2．予約サービス</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	受講料は、受講者が選択したコース時間帯、スキー場の場所、指名インストラクター等の要素に基づき算定され、当校からの確認通知に記載された金額をもって確定するものとします。支払完了後に予約は正式に成立します。</p>
+<p>2.	予約申込送信後、1～3営業日以内に当校事務局がインストラクター及びコース手配を確認し、支払案内を送付します。</p>
+<p>3.	当校における料金表示は日本円（JPY）を基準とし、その他通貨表示は参考に過ぎません。</p>
+<p>4.	支払案内送付後、期限内に支払いが完了しない場合、当該申込は無効とし、受講を希望する場合は再度申込を行っていただきます。</p>
+<p>5.	支払完了前は予約枠の確保を保証しません。支払順に従い定員を確定します。</p>
+<p>6.	第三者プラットフォーム又は旅行会社を通じて予約する場合、当該プラットフォーム（旅行会社）の規約に従うとともに、本規約も補充的に適用されます。</p>
+<p>7.	特殊要望（言語・装備・行程等）がある場合は、支払前に通知し、書面での確認を得る必要があります。当校は可能な限り対応しますが、必ずしも保証するものではありません。</p>
+<p>8.	インストラクター側の不可抗力（負傷、疾病、交通遅延等）により授業が実施できない場合、当校は速やかに通知し、同等資格を有するインストラクターを手配します。この場合、受講料は返金されません。指名料を支払済の場合は以下を選択できます：<br>
+　- 他のインストラクターに変更し、指名料を引き継ぐ（当該インストラクターを新たに指名したものとみなす）、又は<br>
+　- 同等インストラクターによる授業に変更し、指名料を返金する（受講料は返金不可）。<br>
+　不可抗力により当日授業が全く実施できない場合（例：当校がインストラクターを派遣できない、スキー場が終日閉鎖された等）、当校の「キャンセル及び返金ポリシー」に従い、日程変更又は返金を選択できます。</p>
+<p>9.	受講者は申込内容（氏名・日付・スキー場・コース内容等）に誤りがないことを確認する義務を負います。誤記により授業手配が不可能となった場合は、「キャンセル及び返金ポリシー」に従います。</p>
+          </div>
+        </details>
+
+        <!-- 第3節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">3．受講に関する注意事項</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	インストラクターは受講者の技能レベル、当日の天候及び雪面状況に応じ、授業内容及び場所を柔軟に調整します。</p>
+<p>2.	天候、雪況、スキー場の運営状況、その他安全上の要因により、授業内容、集合場所又は時間が変更となる場合があります。当校は速やかに通知し、調整を行います。</p>
+<p>3.	受講者は適格かつ良好な状態のスキー装備（ゴーグル、グローブ、スキーブーツ、スキー板、ポール、スノーボードブーツ、スノーボード板、ヘルメット等）を自ら準備するものとします。<br>
+　インストラクターが装備に破損、不適格、又は安全上の懸念を認めた場合、その理由を説明し、受講者に交換又はレンタルを推奨します。<br>
+　受講者が推奨に従わない場合、安全上の理由から受講を拒否でき、その際の受講料は返金されません。</p>
+<p>4.	授業中に受講者がインストラクターの指示に従わず、又は明らかに危険な行為を行った場合、インストラクターは授業を即時終了する権限を有します。この場合、受講料は返金されず、以降の授業継続の可否は当校が判断します。</p>
+          </div>
+        </details>
+
+        <!-- 第4節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">4．児童コースに関する注意事項</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	年齢及び受講条件<br>
+　児童が受講する場合、スノーボードは7歳以上、スキーは4歳以上とし、トイレを自分で利用でき、かつ装備の着脱を自力で行えることを受講条件とします。当校は安全確保のため、年齢確認書類の提出を求める場合があります。</p>
+<p>2.	一対一授業の原則<br>
+　4歳から7歳までの児童は、原則としてインストラクターによる一対一授業とします。</p>
+<p>3.	保護者の責任<br>
+　インストラクターの職務は指導に限定され、託児サービスを提供するものではありません。保護者はスキー場内において常に連絡可能な状態を保持し、必要に応じて迎え又は緊急対応を行う責任を負います。</p>
+<p>4.	安全及び受講制限<br>
+　児童が受講条件を満たさない場合、装備が不適切な場合、又は授業の安全確保に支障を及ぼす状況がある場合、インストラクターは受講を拒否することができ、その場合の受講料は返金されません。</p>
+<p>5.	緊急連絡及び健康情報<br>
+　保護者は、受講開始前に緊急連絡先及び健康情報（アレルギー、既往症等を含む）を当校に提供する義務を負います。</p>
+<p>6.	リフト券の準備<br>
+　上級児童コースを受講する場合、保護者は有効なリフト券を事前に準備してください。リフト券を所持していないことにより授業を実施できない場合、受講料の返金又は補講は行いません。</p>
+<p>7.	昼食に関する取扱い<br>
+　受講料には昼食費は含まれません。保護者は昼休憩時の集合時間をあらかじめ取り決め、児童に必要な現金を持たせる責任を負います。</p>
+<p>8.	アレルギー及び食事制限への対応<br>
+　児童にアレルギー又は食事制限がある場合、受講開始前に当校へ通知してください。当校は可能な限り対応しますが、スキー場及び飲食施設の環境は当校の管理外であるため、一定のリスクが残存することを保護者は了承するものとします。  </p>
+          </div>
+        </details>
+
+        <!-- 第5節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">5．予約変更</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	コース日程、時間、場所又はインストラクターの変更を希望する場合は、授業開始7日前までに電子メールで申請し、当校からの確認返信をもって有効となります。</p>
+<p>2.	変更はインストラクターのスケジュール、スキー場及び施設状況に依存し、当校は可能な限り調整しますが保証するものではありません。</p>
+<p>3.	変更により料金差額が発生する場合、受講者は不足額を支払う義務を負い、返金が発生する場合は返金ポリシーに従います。</p>
+<p>4.	授業開始7日未満での変更申請については、原則としてキャンセル扱いとなり、当校のキャンセル及び返金ポリシーが適用されます。ただし、インストラクターのスケジュール等により調整が可能な場合には、例外的に変更を受け付けることがあります。</p>
+<p>5.	シーズン区分変更（繁忙期・閑散期）に伴う差額精算の場合、手数料を請求することがあります。</p>
+<p>6.	第三者プラットフォーム又は旅行会社を通じて予約した場合、変更手続及び手数料は当該プラットフォームの規定に従い、併せて本規約も適用されます。不一致の場合はプラットフォーム規定を優先します。</p>
+          </div>
+        </details>
+
+        <!-- 第6節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">6．キャンセル及び返金ポリシー</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>一般規定</p>
+<p>•	授業開始31～49日前（含む）：受講料の90％返金<br>
+•	授業開始15～30日前：受講料の50％返金<br>
+•	授業開始8～14日前：受講料の30％返金<br>
+•	授業開始7日以内（当日含む）：返金不可</p>
+<p>例外規定（証明書類の提出が必要）<br>
+以下の場合は上記一般規定を適用せず、受講料の75％を返金します（事務手数料・クレジットカード手数料を含む）：</p>
+<p>1.	疾病又は負傷（医師診断書を要する場合）</p>
+<p>2.	不可抗力事由（スキー場の全日閉鎖、政府による入国制限等。公式証明を要する）</p>
+<p>3.	航空便のキャンセル（以下条件全てを満たす場合）<br>
+　- 航空会社の運行上の理由（気象・機材故障・管制制限等）による公式な欠航証明があること<br>
+　- 欠航により、受講者が授業当日又は前日に授業地へ到着不可能であること<br>
+　- 欠航発生後24時間以内に当校へ電子メールで通知し、公式証明を添付すること<br>
+　- 個人的な変更、乗継遅延、ビザ又は検疫問題は含まれません</p>
+<p>その他<br>
+•	返金が外国通貨建て決済に関連する場合、為替差額又は海外取引手数料は金融機関により直接請求され、当校は責任を負いません。<br>
+•	上記キャンセルポリシーは、申込時に明示され、受講者が同意した場合に限り適用されます。</p>
+          </div>
+        </details>
+
+        <!-- 第7節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">7．個人情報の取扱い</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	当校は、日本の「個人情報保護法」その他適用される個人情報保護関連法令（受講者の居住地における規定を含む）に基づき、受講者の個人情報を収集、利用及び保存します。</p>
+<p>2.	収集目的は、授業の手配、緊急連絡、支払処理及び受講者の同意を得たマーケティング活動通知に限定されます。</p>
+<p>3.	当校は、法律に基づく場合又は授業運営上必要な範囲で委託先に処理を依頼する場合を除き、個人情報を第三者に販売又は提供しません。委託先には、当校と同等の個人情報保護基準を遵守させます。</p>
+<p>4.	受講者は、自己の個人情報について、閲覧、訂正又は削除を請求することができ、利用同意を撤回することも可能です。但し、法令又は会計記録の保存義務により保管が必要な場合は、法定期間満了後に削除します。</p>
+<p>5.	受講者の個人情報が日本国外に移転される場合、当校は「個人情報保護委員会ガイドライン」に基づき、適切な安全管理措置を講じます。</p>
+          </div>
+        </details>
+
+        <!-- 第8節 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">8．紛争解決</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	本規約は日本法を準拠法とし、同法に基づき解釈されます。</p>
+<p>2.	紛争が生じた場合、双方は誠意をもって協議し、円満な解決を図るものとします。</p>
+<p>3.	協議が不調に終わった場合、第一審の専属的合意管轄裁判所は東京地方裁判所とします。	</p>
+<p>4.	本規約に日文版と他言語版の間に相違がある場合、日文版を優先します。</p>
+          </div>
+        </details>
+
+      </div><!-- /.faqgrid -->
+    </div><!-- /.container -->
+  </section><!-- /.section -->
+</main>
+
+<!-- Footer（從主頁複製，未更動其他區塊） -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="サイトマップ">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>最新情報</h4>
+          <ul>
+            <li><a href="ja_news.html">News</a></li>
+            <li><a href="ja_mopo.html">MOPO について</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>レッスン</h4>
+          <ul>
+            <li><a href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+            <li><a href="ja_teine.html">札幌手稲</a></li>
+            <li><a href="ja_koksai.html">札幌国際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>特集記事</h4>
+          <ul>
+            <li><a href="#pricing">安全知識</a></li>
+            <li><a href="#pricing">観光トピック</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>情報</h4>
+          <ul>
+            <li><a href="ja_legal_tokusho.html">会社情報</a></li>
+            <li><a href="ja_notice.html">申込案内</a></li>
+            <li><a href="ja_faq.html">よくあるご質問</a></li>
+            <li><a href="ja_mopoindex.html#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<!-- Back-to-top FAB -->
+<div class="fab">
+  <button id="backTop" aria-label="トップへ戻る">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+/* 年 */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* Mobile: 言語パネル */
+(function(){
+  const btn=document.getElementById('mobLangBtn'), panel=document.getElementById('mobLangPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+ panel.addEventListener('click', (e)=>{
+  const b = e.target.closest('[data-lang]'); if(!b) return;
+  e.preventDefault();
+  changeLang(b.dataset.lang);
+});
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* Mobile: ナビ（リンククリックで閉じる） */
+(function(){
+  const btn=document.getElementById('mobNavBtn'), panel=document.getElementById('mobNavPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{ const link=e.target.closest('a'); if(link){ panel.classList.remove('show'); }});
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* Desktop: 言語セレクト */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+
+/* 統一言語ルーティング（notice 系） */
+function changeLang(lang){
+  const map = {
+    'zh-Hant': 'notice.html',     // 繁中
+    'ja': 'ja_notice.html',       // 日本語
+    'en': 'en_notice.html'        // 英文
+  };
+  const url = map[lang] || 'ja_notice.html';
+  window.location.href = url;
+}
+
+/* FAQ：同時に一つだけ開く */
+(function singleOpenFAQ(containerSel){
+  const wrap = document.querySelector(containerSel);
+  if(!wrap) return;
+
+  wrap.addEventListener('click', (e)=>{
+    const sum = e.target.closest('summary');
+    if(!sum || !wrap.contains(sum)) return;
+    const cur = sum.parentElement;
+    requestAnimationFrame(()=>{
+      if(cur.open){
+        wrap.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+      }
+    });
+  });
+
+  wrap.addEventListener('toggle', (e)=>{
+    const d = e.target;
+    if(d.tagName.toLowerCase()!=='details' || !d.open) return;
+    wrap.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
+  }, true);
+})('#faqGrid');
+
+/* Back to top */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+// Topbar：往下滑隱藏，往上滑顯示
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide'); // 往下滑：隱藏
+    } else {
+      topbar.classList.remove('hide'); // 往上滑或回頂：顯示
+    }
+
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+</script>
+</body>
+</html>

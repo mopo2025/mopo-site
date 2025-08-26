@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>公司資訊（特定商取引法表示）｜MOPO Ski School</title>
+<meta name="description" content="MOPO 合同会社の特定商取引法に基づく表記。販売業者、運営統括責任者、所在地、連絡先、販売価格、支払方法、役務提供時期、キャンセル・返金、販売数量等。">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg-top:#E7E9EA;--bg-mid:#FFFFFF;--bg-bottom:#9B9793;--midnight:#0D1B2A;--gold:#C8A45D;--gold-2:#E4CFA3;--ink:#0E1A24;--ink-soft:#3E4A57;--shadow:0 18px 50px rgba(13,27,42,.10);--radius:16px;--focus:0 0 0 3px rgba(200,164,93,.22);--faq-bg:#F7F6F3;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--bg-mid)}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 22px}
+.topbar{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.24);backdrop-filter:saturate(1.28) blur(18px);border-bottom:1px solid rgba(200,164,93,.24);transition:all .25s ease}
+.topbar.scrolled{background:rgba(255,255,255,.45)}
+.topbar.hide{transform:translateY(-100%);transition:transform 0.3s ease}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
+.brand{display:flex;align-items:baseline;gap:10px;letter-spacing:.10em;padding-left:8px}
+.brand .logo{font-weight:800;font-size:18px}
+.menu{display:flex;gap:8px;align-items:center;margin:0;padding:0}
+.menu>li{list-style:none;position:relative}
+.menu>li>a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;font-weight:700;color:var(--midnight);position:relative}
+.menu>li>a::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+.has-dropdown{position:relative}
+.has-dropdown > a .caret{font-size:.9em;margin-left:4px}
+.submenu{display:none;position:absolute;top:calc(100% + 2px);left:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:var(--shadow);padding:6px 0;z-index:2100}
+.has-dropdown:hover .submenu,.has-dropdown:focus-within .submenu{display:block}
+.submenu li{list-style:none}
+.submenu a{display:block;padding:10px 14px;font-size:14px;color:#222}
+.submenu a:hover{background:rgba(200,164,93,.1)}
+.group-title{padding:8px 14px 6px;font-weight:700;font-size:12px;color:#999;cursor:default}
+.lang select{appearance:none;padding:9px 12px;border-radius:12px;border:1px solid #e6e6e6;background:#fff;font-size:14px;color:#2b3b4a}
+.mobtools{display:none;align-items:center;gap:10px}
+.iconbtn{width:38px;height:38px;border-radius:12px;border:1px solid #e6e6e6;background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.mobdrop{position:relative}
+.mobpanel{position:absolute;left:0;top:calc(100% + 8px);min-width:280px;background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:var(--shadow);padding:6px 0;opacity:0;transform:scale(.98);transform-origin:top left;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:400}
+.mobpanel.show{opacity:1;transform:scale(1);pointer-events:auto}
+.mobpanel a,.mobpanel button{display:block;width:100%;text-align:left;padding:12px 14px;background:#fff;border:0;cursor:pointer}
+.mobLangBtn{padding:0 10px;height:38px;display:inline-flex;align-items:center;gap:6px;border:1px solid #e6e6e6;background:#fff;border-radius:12px;font-size:12px;font-weight:800;color:#333}
+.section{padding:84px 0}
+.section__head h1{margin:0 0 8px;font-size:28px;color:#111;font-family:"Noto Serif TC",serif}
+.muted{color:var(--ink-soft);font-size:14px}
+.paper{background:var(--faq-bg);padding:28px 0}
+.card{max-width:900px;margin:0 auto;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:var(--shadow)}
+.card__hd{padding:22px 24px;border-bottom:1px dashed #eee}
+.card__hd h2{margin:0;font-size:20px;font-family:"Noto Serif TC",serif}
+.card__bd{padding:10px 16px 22px}
+.list{display:grid;gap:10px}
+.list li{list-style:none;border-bottom:1px dashed #eee;padding:14px 0}
+.term{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.term .no{flex:0 0 auto;width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.term h3{margin:0;font-size:17px;font-weight:800;color:#111}
+.term .body{flex:1 1 100%;padding-left:44px;color:#4b5157;font-size:16px;line-height:1.8}
+.footer{background:var(--bg-bottom);color:#f7f7f7;border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sitemap h4{margin:0 0 8px;color:#fff;font-size:14px;font-family:"Noto Serif TC",serif}
+.sitemap ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
+.sitemap a{color:#ebebeb;font-size:13px}
+.sitemap a:hover{color:#fff}
+.fab{position:fixed;right:16px;bottom:16px;z-index:320}
+.fab button{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.86);border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 20px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand"><a href="index.html" class="logo">MOPO Ski School</a></div>
+    <ul class="menu" role="menubar">
+      <li><a href="news.html">最新消息</a></li>
+      <li><a href="mopo.html">關於 MOPO</a></li>
+      <li class="has-dropdown"><a href="#">滑雪課程 <span class="caret">▾</span></a>
+        <ul class="submenu">
+          <li><a href="index.html#pricing">課程與價格</a></li>
+          <li class="group-title">雪場介紹</li>
+          <li><a href="teine.html">札幌手稻</a></li>
+          <li><a href="kokusai.html">札幌國際</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown"><a href="#">主題文章 <span class="caret">▾</span></a>
+        <ul class="submenu">
+          <li><a href="safe.html">安全知識</a></li>
+          <li><a href="trip.html">觀光主題</a></li>
+        </ul>
+      </li>
+      <li><a href="faq.html">常見問題</a></li>
+      <li><a href="booking.html">預約</a></li>
+    </ul>
+    <div class="lang">
+      <select id="langSelect" aria-label="Language select">
+        <option value="zh-Hant" selected>繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <div class="mobtools">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn">語言</button>
+        <div class="mobpanel" id="mobLangPanel">
+          <button data-lang="zh-Hant">繁體中文</button>
+          <button data-lang="ja">日本語</button>
+          <button data-lang="en">English</button>
+        </div>
+      </div>
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" id="mobNavBtn">☰</button>
+        <div class="mobpanel" id="mobNavPanel">
+          <a href="news.html">最新消息</a>
+          <a href="mopo.html">關於 MOPO</a>
+          <div class="mob-subtitle">滑雪課程</div>
+          <a href="index.html#pricing">課程與價格</a>
+          <a href="teine.html">札幌手稻</a>
+          <a href="kokusai.html">札幌國際</a>
+          <div class="mob-subtitle">主題文章</div>
+          <a href="safe.html">安全知識</a>
+          <a href="trip.html">觀光主題</a>
+          <a href="faq.html">常見問題</a>
+          <a href="booking.html">預約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ===== 內文保持日文 ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>特定商取引法に基づく表記</h1>
+        <p class="muted">詳細は「注意事項および利用規約」または「お問い合わせ」をご覧ください。</p>
+      </div>
+    </div>
+  </section>
+  <section class="paper">
+    <div class="container">
+      <div class="card">
+        <div class="card__hd"><h2>Legal Disclosure</h2></div>
+        <div class="card__bd">
+          <ol class="list">
+            <li><div class="term"><div class="no">1</div><h3>会社名</h3><div class="body"><p>MOPO 合同会社</p></div></div></li>
+            <li><div class="term"><div class="no">2</div><h3>フリガナ</h3><div class="body"><p>モポ ゴウドウガイシャ</p></div></div></li>
+            <li><div class="term"><div class="no">3</div><h3>運営統括責任者</h3><div class="body"><p>代表社員　Kogure Hirokazu</p></div></div></li>
+            <li><div class="term"><div class="no">4</div><h3>本社所在地</h3><div class="body"><p>所在地は請求があった場合に、遅滞なく開示いたします。</p></div></div></li>
+            <li><div class="term"><div class="no">5</div><h3>メールアドレス</h3><div class="body"><p><a href="mailto:info@moposki.com">info@moposki.com</a></p></div></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <section class="sitemap">
+    <div class="container">
+      <div class="cols">
+        <div><h4>最新消息</h4><ul><li><a href="news.html">News</a></li><li><a href="mopo.html">關於 MOPO</a></li></ul></div>
+        <div><h4>滑雪課程</h4><ul><li><a href="index.html#pricing">課程與價格</a></li><li><a href="teine.html">札幌手稻</a></li><li><a href="kokusai.html">札幌國際</a></li></ul></div>
+        <div><h4>主題文章</h4><ul><li><a href="safe.html">安全知識</a></li><li><a href="trip.html">觀光主題</a></li></ul></div>
+        <div><h4>資訊</h4><ul><li><a href="legal_tokusho.html">公司資訊</a></li><li><a href="notice.html">報名須知</a></li><li><a href="faq.html">常見問題</a></li><li><a href="index.html#contact">聯絡我們</a></li></ul></div>
+      </div>
+      <div style="padding-top:12px;border-top:1px solid rgba(255,255,255,.25);margin-top:18px">© <span id="year"></span> MOPO Ski School</div>
+    </div>
+  </section>
+</footer>
+
+<div class="fab"><button id="backTop">↑</button></div>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>

@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAQ｜MOPO スキースクール</title>
+<meta name="description" content="MOPO FAQ よくあるご質問。トップページと同じナビゲーションと言語切替、モバイル最適化、一度に一つだけ開くアコーディオン、サイトマップとクイック予約。">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --faq-bg:#F7F6F3;
+  --line:#cfd6d9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+
+/* ===== Topbar（既存） ===== */
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+
+/* デスクトップメニュー（既存） */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+/* 下拉（既存） */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none;
+  position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px;
+  box-shadow:0 18px 50px rgba(13,27,42,.10);
+  padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* デスクトップ言語切替（既存） */
+.lang select{
+  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a
+}
+
+/* モバイルツール（恢復可展開面板） */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+.mobpanel{
+  position:absolute; top:calc(100% + 8px); right:0; min-width:280px;
+  background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow);
+  padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top right; pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease; z-index:400;
+}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mob-subtitle{padding:8px 14px 6px; font-size:12px; font-weight:800; color:#777; letter-spacing:.02em; cursor:default}
+
+/* ===== ページタイトル ===== */
+.section{padding:72px 0}
+.section__head{display:flex; flex-direction:column; gap:12px}
+.section__head h1{
+  margin:0;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-weight:900;
+  font-size:clamp(22px,2.4vw,30px);
+  letter-spacing:.01em;
+}
+
+/* ===== PCカテゴリ（細線ナビ） ===== */
+@media (min-width:1024px){
+  .catnav-wrap{max-width:1000px; margin-left:calc(280px + 36px);}
+}
+@media (max-width:1023px){
+  .catnav-wrap { max-width:1000px; margin-left:0; }
+  .catnav a .en { display:none; }
+}
+.catnav{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:10px;
+  border-bottom:1px solid var(--line);
+}
+.catnav a{
+  display:inline-flex; flex-direction:column; align-items:center; gap:6px;
+  padding:10px 6px 14px; text-decoration:none; color:#1e2b32; position:relative;
+}
+.catnav a .en{font:800 10px/1 "Montserrat",sans-serif; letter-spacing:.14em; color:#5b8f87; text-transform:uppercase}
+.catnav a .ja{font-weight:700; font-size:14px; letter-spacing:.02em}
+.catnav a::after{
+  content:""; position:absolute; left:18px; right:18px; bottom:-1px; height:2px;
+  background:#b5c6c8; transform:scaleX(0); transform-origin:left; transition:transform .22s ease, background-color .22s ease;
+}
+.catnav a:hover::after, .catnav a.active::after{ transform:scaleX(1); background:linear-gradient(90deg,var(--gold),var(--gold-2)); }
+
+/* ===== FAQ 布局：左黏附標題 + 右內容（PC） ===== */
+.faqwrap{background:var(--faq-bg)}
+.faq-layout{ display:grid; grid-template-columns:280px 1fr; gap:36px; align-items:start; }
+.stickycol{ position:sticky; top:96px; padding:4px 0 24px; }
+.stickycol .label{ margin:0 0 10px; font-weight:800; letter-spacing:.02em; font-size:28px; color:#0b3a32; border-bottom:2px solid rgba(0,0,0,.12); padding-bottom:8px; }
+.stickycol .sub{ margin:0 8px 12px 0; font-size:12px; color:#8a8f95; letter-spacing:.14em; text-transform:uppercase; font-weight:800; }
+.stickycol .progress{ height:2px; background:#e9e9e9; width:100%; position:relative; overflow:hidden; border-radius:2px; }
+.stickycol .progress i{ position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transition:width .18s ease; }
+
+/* 右側內容（原內文） */
+.faqgrid{max-width:1000px; margin:0; display:grid; grid-template-columns:1fr; gap:14px}
+details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+summary::-webkit-details-marker{display:none}
+.faq-title{margin:0; font-size:18px; font-weight:800}
+.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
+.faq-body p{margin:10px 0 0 0}
+.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
+details[open] .chev{ transform:rotate(225deg) }
+
+/* ===== 行動版：每區塊標題（小英文＋日文） ===== */
+.sec-head{display:none; margin:4px 0 12px}
+.sec-head .en{display:block; font:800 11px/1 "Montserrat",sans-serif; color:#8aa7a1; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px}
+.sec-head .ja{font:800 22px/1.2 "Noto Sans JP",sans-serif; border-bottom:2px solid rgba(0,0,0,.12); padding-bottom:8px}
+
+/* 讓切換時能看見下一個標題一點點空間 */
+.section-sentinel{height:96px}
+
+/* Footer（既存） */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* Back-to-top */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* === RWD（只動手機區） === */
+@media (max-width:1023px){
+  .faq-layout{ display:block }
+  .stickycol{ display:none }
+
+  .catnav{ border-bottom:0; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .catnav a{ padding:8px 10px; border-radius:999px; border:1px solid #ececec; background:transparent }
+  .catnav a::after{ display:none }
+  .catnav a.active, .catnav a:focus-visible{ border-color:var(--gold); box-shadow:var(--focus) }
+
+  .sec-head{ display:block; margin:0 0 1em; }
+}
+
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:56px 0}
+  .section__head h1{font-size:22px}
+  .fab{ pointer-events:none; } .fab button{ pointer-events:auto; }
+
+  /* 手機面板尺寸與行為 */
+  .mobpanel{
+    width:min(92vw,320px);
+    max-width:92vw;
+  }
+  .mobpanel a,.mobpanel button{white-space:nowrap}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Topbar（PC下拉 + 手機面板） ===== -->
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="ja_mopoindex.html" class="logo" aria-label="ホームへ戻る">MOPO Ski School</a>
+    </div>
+
+    <!-- デスクトップナビ（不變） -->
+    <ul class="menu" role="menubar" aria-label="サイトナビゲーション">
+      <li role="none"><a role="menuitem" href="ja_news.html">最新情報</a></li>
+      <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="レッスンのサブメニュー">
+          <li role="none"><a role="menuitem" href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+          <li class="group-title">スキー場紹介</li>
+          <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
+          <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="特集記事のサブメニュー">
+          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="ja_faq.html">よくあるご質問</a></li>
+      <li role="none"><a role="menuitem" href="ja_booking.html">予約</a></li>
+    </ul>
+
+    <!-- デスクトップ言語切替（不變） -->
+    <div class="lang">
+      <select id="langSelect" aria-label="Language select">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja" selected>日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <!-- モバイルツール（修復：可展開面板） -->
+    <div class="mobtools">
+      <!-- 語言切換 -->
+      <div class="mobdrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-haspopup="true" aria-expanded="false">言語</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="言語の切替">
+          <button data-lang="zh-Hant" role="menuitem">繁體中文</button>
+          <button data-lang="ja" role="menuitem">日本語</button>
+          <button data-lang="en" role="menuitem">English</button>
+        </div>
+      </div>
+
+      <!-- 側邊選單 -->
+      <div class="mobdrop">
+        <button class="iconbtn" aria-label="メニューを開く" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="モバイルナビ">
+          <a href="ja_news.html" role="menuitem">最新情報</a>
+          <a href="ja_mopo.html" role="menuitem">MOPO について</a>
+          <div class="mob-subtitle">レッスン</div>
+          <a href="ja_mopoindex.html#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">スキー場紹介</div>
+          <a href="ja_teine.html" role="menuitem">札幌手稲</a>
+          <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+          <div class="mob-subtitle">特集記事</div>
+          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_trip.html" role="menuitem">観光トピック</a>
+          <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
+          <a href="ja_booking.html" role="menuitem">予約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 上段：タイトル + PC 細線カテゴリ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>よくあるご質問（FAQ）</h1>
+
+        <div class="catnav-wrap">
+          <nav class="catnav" id="catNav" aria-label="FAQカテゴリ">
+            <a href="#top" class="active"><span class="en">ALL</span><span class="ja">すべて</span></a>
+            <a href="#sec-course"><span class="en">LESSON</span><span class="ja">レッスン関連</span></a>
+            <a href="#sec-gear"><span class="en">GEAR</span><span class="ja">ギア関連</span></a>
+            <a href="#sec-rental"><span class="en">RENTAL</span><span class="ja">レンタル関連</span></a>
+            <a href="#sec-transport"><span class="en">TRANSPORT</span><span class="ja">交通関連</span></a>
+            <a href="#sec-travel"><span class="en">TRAVEL</span><span class="ja">旅行関連</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 本文：左黏附標題 + 右內容（內文與連結不變） -->
+  <section class="section faqwrap" id="top">
+    <div class="container faq-layout">
+      <!-- 左：黏附標題（PC） -->
+      <aside class="stickycol" aria-hidden="true">
+        <p class="sub" id="stickySub">LESSON</p>
+        <h2 class="label" id="stickyLabel">レッスン関連</h2>
+        <div class="progress"><i id="stickyProg"></i></div>
+      </aside>
+
+      <!-- 右：內容 -->
+      <div>
+
+        <!-- レッスン -->
+        <section id="sec-course" class="faq-section" data-sub="LESSON" data-label="レッスン関連" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">LESSON</span><span class="ja">レッスン関連</span></div>
+
+          <div class="faqgrid" id="faqGrid">
+            <!-- 以下內文保持不變 -->
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">半日レッスンはありますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>現在は「1日レッスン」のみのご案内となります。じっくり学んでいただける内容で、安全性や品質も安定しているため、安心してご参加いただけます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">対応可能な言語は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>中国語／広東語／英語／日本語に対応しています。どの言語でも安心してコミュニケーションしていただけます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">スノーボードとスキー、どちらを選ぶべきですか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>お好きな方を自由に選んでみてください！</p>
+                <p><strong>スノーボード</strong><br>サーフィンやスケートボードのように、最初は転ぶことが多いかもしれませんが、コツをつかむと地形やトリックを自由に楽しめます。</p>
+                <p><strong>スキー</strong><br>インラインスケートやアイススケートのように、初めから安定して滑れるため、すぐに滑走の楽しさを味わえます。上達すれば優雅なラインや正確なコントロールも表現できます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">スノーボードとスキーを一緒にレッスンできますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>恐れ入りますが、同じレッスン内でスノーボードとスキーを同時に受講することはできません。姿勢やバランス、動きの仕組みが大きく異なるため、インストラクターは受講者と同じ用具を使って正しくデモンストレーションを行う必要があります。そのため別々に受講いただく形になりますが、基礎を身につけた後にご一緒にゲレンデで練習されると、より効率的で安全に楽しめます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">レッスン料金に含まれるものは？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>料金にはインストラクターによる指導料が含まれています。リフト券、レンタル料、昼食、スキー場までの交通費は含まれておりませんので、別途ご準備をお願いいたします。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">初めてのスキー／スノーボード、何日受講すればいいですか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>目安としては、1日で止まる練習を体験し、2〜3日で安定したターンやスピードコントロールを身につける方が多いです。ご自身の体力やご予定に合わせて無理のないペースでのご受講をおすすめしています。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">インストラクター1人あたりの最大人数は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>最大で5名までご受講いただけます。効果的に学ぶためには、できるだけレベルの近い方同士でのご参加をおすすめしています。</p>
+                <p>全員が初心者の場合は、4名以下ですと待ち時間が少なく、効率よく練習できます。</p>
+                <p>また、7歳未満のお子さまについては、安全と品質を確保するため、必ず一対一での指導となります。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">レッスン時間と集合方法は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>所要時間</strong><br>
+                1日レッスンは<strong>約6時間（昼食休憩1時間を含む）</strong>です。インストラクターが受講者の体調や習熟度に合わせて、無理のないように進行を調整します。お子さまが単独で受講される場合は、昼食の時間や場所について事前にご相談いただけます。</p>
+                <p><strong>集合場所</strong><br>
+                集合は多くの場合、スキー場のロッジや指定の待ち合わせ場所となります。当日の朝、インストラクターからご連絡を差し上げ、服装などの写真を共有しますので安心です。</p>
+                <p><strong>各スキー場のレッスン時間</strong><br>
+                札幌テイネ：09:30〜15:30<br>
+                札幌国際：09:30〜15:30</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">子どもは何歳から参加できますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>当スクールのキッズレッスンは、<strong>4歳から6歳までの未就学児</strong>を対象としています。安全面を第一に考え、必ず一対一での指導となりますので、小さなお子さまでも安心してご参加いただけます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">子どもはスキーとスノーボード、どちらから始めるべきですか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>小さなお子さまには、まずスキーから始めるのがおすすめです。転倒が少なく、達成感や楽しさを感じやすいため、自信につながります。インラインスケートやアイススケートのご経験がある場合も、スキーはスムーズに始めやすい傾向です。</p>
+                <p>一方、スケートボードなど横乗りが好きなお子さまなら、スノーボードも楽しめるかもしれません。ただし<strong>7歳未満</strong>では、まだ筋力やバランスが発展段階にあるため、基本的にはスキーから始めていただくと安心です。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">年齢制限や安全上の注意はありますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>法律での年齢制限はありませんが、安心して楽しく学んでいただくためには、体力・協調性・集中力などが大切になります。</p>
+                <p><strong>推奨開始年齢</strong>：スキーは<strong>4歳以上</strong>、スノーボードは<strong>7歳以上</strong>を目安としています。</p>
+                <p><strong>60〜64歳の初心者の方</strong>：横乗り経験がない場合はスキーでの受講をおすすめしています。安心してご参加いただくために、事前に医師の確認をお願いしています。プライベートレッスンや十分な防具の着用により、安全に学んでいただけます。</p>
+                <p><strong>65歳以上の方</strong>：安全面の理由から、新しく初級レッスンを始めるのは難しい場合がございます。すでに経験のある方については、上級レッスンなどを個別にご相談いただけます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary>
+                <div><span class="faq-title">天候や雪質が悪い場合、料金はどうなりますか？</span></div>
+                <i class="chev" aria-hidden="true"></i>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  スキー場が終日リフト運休を公式に発表した場合など、やむを得ない事情がある場合には、当スクールの
+                  <a href="ja_notice.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">
+                    キャンセル及び返金ポリシー
+                  </a>
+                  に基づいて返金対応をいたします。ご不明な点があれば、どうぞお気軽にお問い合わせください。
+                </p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">リフト券は事前に購入すべきですか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>初めての方は、事前にリフト券をご用意いただかなくても大丈夫です。当日の様子に合わせて、インストラクターが最適な券種をご案内いたしますのでご安心ください。</p>
+                <p>上級者でリフト利用が多い場合は、事前にご購入いただくとスムーズにご参加いただけます。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">グループレッスンはありますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>今シーズンは安全性と学習効果を重視し、プライベートレッスンのみのご提供となっています。将来的にグループレッスンを開設する場合は、公式サイトやSNSでご案内いたします。</p>
+              </div>
+            </details>
+
+
+          </div>
+        </section>
+
+        <!-- ギア -->
+        <section id="sec-gear" class="faq-section" data-sub="GEAR" data-label="ギア関連" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">GEAR</span><span class="ja">ギア関連</span></div>
+          <div class="faqgrid">
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">スキー／スノーボード用具やウェア（上下）はレンタルできますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>スキー場直営のレンタルカウンターや周辺のレンタル店をご紹介しており、サイズ選びの目安もお伝えしています。スキー／スノーボード板・ブーツ・ストックに加え、ジャケットやパンツなどの防寒ウェアもレンタルいただけます。</p>
+                <p>レンタル品はその場で調整や交換が必要になる場合がありますので、<strong>インストラクターの確認が必要なケースでは</strong>スキー場直営カウンターのご利用をおすすめしています。<br>
+                ※ <strong>札幌国際</strong>でのレッスンは、<strong>札幌国際スキー場の直営レンタルカウンター</strong>の利用に限定しています。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">ヒップパッド・各種プロテクター・ゴーグル・グローブはレンタルできますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>プロテクター（ヒップパッド・ニーパッド・リストガードなど）</strong><br>
+                衛生面やフィット感の観点から、基本的には<strong>ご自身専用のものをご用意</strong>いただくことをおすすめしています。特にスノーボード初心者の方は、<strong>フルプロテクション</strong>を揃えていただくと安心です。ウェアを購入・レンタルされる前に、プロテクターを着用した状態でサイズを確認すると、きつすぎる／動きづらいといったミスマッチを防げます。</p>
+                <p><strong>ゴーグル・グローブ</strong><br>
+                一部の店舗ではレンタルや販売を行っていますが、数に限りがあります。できれば事前にご用意いただくか、事前予約をご検討ください。メガネをお使いの方は、<strong>OTG（Over The Glasses）</strong>対応のゴーグルをお選びいただくと快適です。</p>
+              </div>
+            </details>
+
+
+         <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">レンタル時のサイズ選びの目安は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>板：身長やレベルに合わせて。<br>
+                ブーツ：足長にフィットし、痛みが出ない範囲でタイトに。<br>
+                ストック：グリップを持ったとき、肘が約90度になる長さが目安です。<br>
+                迷った場合は、当日インストラクターがアドバイスします。</p>
+              </div>
+            </details>
+
+
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">普通の靴とスキーブーツ（スノーボードブーツ）は何が違いますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>スキーブーツやスノーボードブーツは、それぞれ専用のビンディングに連結して、体をしっかり<strong>支えたり力を伝えたりする</strong>ために作られています。</p>
+                <p><strong>スキーブーツ</strong>：硬いシェル構造で、足首や脛を強くサポートし、ビンディングにしっかり固定されます。<br>
+                <strong>スノーボードブーツ</strong>：柔軟性があり、屈伸や動作コントロールがしやすい作りになっています。</p>
+                <p>一般的な登山靴やスニーカーはビンディングに装着できず、必要なサポートや防護性も不足するため使用できません。安全に滑るためには、必ず専用ブーツをご利用ください。</p>
+              </div>
+            </details>
+
+  
+
+
+          <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">ニット帽だけで、ヘルメットや防具なしでも大丈夫ですか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>ヘルメットの着用は強くおすすめしており、レッスン中は必ずご着用いただいております。転倒や衝突から頭を守るための大切なアイテムです。</p>
+                <p>特にスノーボードでは、プロテクター付きパンツ・リストガード・ニーパッドの使用もおすすめしています。初心者の方は手首や腰、背中を傷めやすいため、防具を着用することでリスクを減らし、安心して学んでいただけます。</p>
+              </div>
+            </details>
+
+
+
+          </div>
+        </section>
+
+        <!-- レンタル -->
+        <section id="sec-rental" class="faq-section" data-sub="RENTAL" data-label="レンタル関連" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">RENTAL</span><span class="ja">レンタル関連</span></div>
+          <div class="faqgrid">
+
+            <details class="faqcard" data-cat="rental">
+              <summary><div><span class="faq-title">レンタルは事前予約が必要ですか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>繁忙期や週末は<strong>事前予約を推奨</strong>しています。平日は現地でレンタルできる場合もありますが、人気サイズのスキー板やブーツは早くに在庫がなくなることがありますので、確実に利用したい場合は事前予約が安心です。</p>
+<p>また、海外からお越しのお客様はレンタル受付時に身分証明書の提示を求められることが多いため、パスポートを携帯することをおすすめします。現地での確認がスムーズになり、手続き時間も短縮できます。</p>
+
+
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="rental">
+              <summary><div><span class="faq-title">レンタルの流れを教えてください。</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>身長・体重・足のサイズを伝える → ブーツ試着 → 板・ストック選定 → 店舗でビンディング調整（角度／DIN） → 装備確認・署名。</p>
+                <p>※ スノーボード初心者は、最初は<strong>ダックスタンス</strong>（左右対称の角度設定）が練習しやすいことが多いです。店舗スタッフにご相談ください。</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 交通 -->
+        <section id="sec-transport" class="faq-section" data-sub="TRANSPORT" data-label="交通関連" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">TRANSPORT</span><span class="ja">交通関連</span></div>
+          <div class="faqgrid">
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">送迎サービスはありますか？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>安全と保険適用の観点から、当スクールでは<strong>直接の送迎提供は行っていません</strong>。一部スクールでは送迎がありますが、<strong>適正な運行形態でない場合は事故時に保険が適用されない</strong>可能性があります。</p>
+                <p>スキー場シャトルバス、路線バス、タクシー等のご利用をおすすめします。ルートや時刻表の確認は当スクールでもお手伝いします。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">札幌市内から札幌テイネスキー場への行き方は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>• <strong>JR</strong>：札幌駅 → 函館本線で手稲駅（約15分）→ バスまたはタクシーでスキー場へ（約16分）。</p>
+                <p>• <strong>バス</strong>：札幌市内の複数ホテルから
+                  <a href="https://bigruns.com/" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">BIGRUNS</a>
+                  の直行シャトルが運行。<strong>要予約</strong>。</p>
+                <p>• <strong>車</strong>：札幌中心部から約40分。駐車場あり（繁忙期は満車の可能性）。冬季は路面凍結に注意し、雪道運転経験のある方のみ推奨。</p>
+              </div>
+            </details>
+
+
+      <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">札幌市内からオンゼスキー場への行き方は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>ノークルーズオンゼは札幌中心部から車で約40分、小樽方面に向かう国道5号線沿いに位置します。 </p>
+               <p>最寄りのICは札樽自動車道「銭函IC」で、降りてすぐアクセス可能。駐車場は無料で利用できます。 </p>
+                <p>公共交通の場合は、JR札幌駅から函館本線で「銭函駅」まで約20分。そこからはタクシーで約10分、またはスキー場が運行する無料シャトルバスでアクセスできます。</p>
+ <p>ゲレンデからは石狩湾を望む雄大な景色が広がり、さらに23時まで楽しめるナイターが大きな魅力です。 </p>
+              </div>
+            </details>
+
+  <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">札幌市内から札幌藻岩山スキー場への行き方は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>札幌藻岩山スキー場は、市中心部から車で約30分とアクセス良好な都市近郊型ゲレンデです。駐車場は無料で利用できます。 </p>
+               <p>公共交通を利用する場合、札幌駅や大通駅から市営地下鉄南北線で「真駒内駅」へ（約20分）。 </p>
+                <p>そこからスキー場直行の路線バス（じょうてつバス）で約20分です。</p>
+ <p>シーズン中は土日祝を中心に札幌市内からの直行シャトルバスも運行されるため、事前に時刻表を確認すると安心です。 </p>
+<p>市街地から近い立地ながら、豊かな自然と多彩なコースを楽しめるのが魅力です。</p>
+
+              </div>
+            </details>
+
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">札幌市内から札幌国際スキー場への行き方は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>• <strong>直行バス</strong>：札幌駅北口または大通公園（大通西1）から
+                  <a href="https://www.jotetsu.co.jp/bus/ski_bus/kokusai_ski.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">札幌国際スキー場線</a>
+                  が運行（約90分／<strong>要予約</strong>）。</p>
+                <p>• <strong>車</strong>：札幌中心部から約2時間15分（天候により変動）。十分な冬季運転経験がある場合のみ推奨。</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">札幌市内からルスツへの行き方は？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>• <strong>バス</strong>：札幌駅・新千歳空港からルスツ行き直行バス（約2.5時間／<strong>要予約</strong>）。例：
+                  <a href="https://bigruns.com/" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">BIGRUNS</a>
+                </p>
+                <p>• <strong>車</strong>：札幌中心部から約2時間15分。天候により路面状況が変化するため、十分な冬季運転経験がある場合のみ推奨。</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 旅行 -->
+        <section id="sec-travel" class="faq-section" data-sub="TRAVEL" data-label="旅行関連" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">TRAVEL</span><span class="ja">旅行関連</span></div>
+          <div class="faqgrid">
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">スキー以外の周辺観光のおすすめは？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>滑走後は周辺の街歩きや絶景スポットもぜひお楽しみください。</p>
+                <p>• <strong>札幌テイネ周辺</strong>：札幌中心部へ戻り、大通公園や美術館、白い恋人パークなど。<strong>2月</strong>は大通公園の<strong>さっぽろ雪まつり</strong>もおすすめです。</p>
+                <p>• <strong>札幌国際周辺</strong>：<strong>小樽運河</strong>の散策や堺町通りでスイーツ＆お土産巡り。夜景は<strong>天狗山展望台</strong>が有名でロマンチック。</p>
+                <p>• <strong>ルスツ周辺</strong>：<strong>洞爺湖温泉</strong>で湖景色を眺めながらの温泉タイムが至福。<strong>昭和新山</strong>や<strong>有珠山ロープウェイ</strong>も晴天時の眺望が抜群です。</p>
+              </div>
+            </details>
+
+
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">スキーシーズンはいつ？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>北海道の一般的なシーズン</strong>は<strong>11月下旬〜翌年4月初旬</strong>です。標高の高いスキー場では<strong>5月</strong>まで滑走可能な場合もあります。</p>
+                <p><strong>11月〜12月初旬</strong>は降雪が不安定で、標高の低いスキー場は営業が断続的になることがあります。安定した受講を希望される場合は<strong>4月初旬まで</strong>の来訪をおすすめします。</p>
+                <p><strong>4月以降</strong>は一部の高標高スキー場のみ営業し、中〜上級の地形が中心になる傾向です。コースによっては短いハイクが必要な場合もあります。</p>
+                <p><strong>春</strong>は雪質が柔らかく速度も出にくいため、ゆったりクルージングに好条件です（転倒時の衝撃も小さめ）。</p>
+                <p>最新の雪況やレッスンのご案内は、公式サイトおよび IG / FB / Threads / X の更新をご確認ください。</p>
+              </div>
+            </details>
+
+
+ <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">札幌近郊温泉紹介その一：定山渓温泉</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>定山渓温泉</strong>は札幌市南区に位置し、支笏洞爺国立公園の雪に覆われた渓谷に抱かれた、冬に最適な癒しの温泉地です。</p>
+                <p>泉質は塩化物泉で、筋肉の疲れをほぐし、手足の冷えを和らげます。冬の露天風呂では、舞い散る雪を眺めながら「雪見風呂」を楽しめます。</p>
+                <p>温泉街には定山源泉公園の足湯や、1866年に美泉定山が開湯した歴史を感じられる名所も点在。さらに車で約20分の札幌国際スキー場では、きめ細かなパウダースノーを満喫できます。</p>
+                <p>朝は札幌国際で滑りを楽しみ、夕方は定山渓に戻って宿泊。雪景色に包まれた露天風呂で心身を癒し、冬ならではの一泊旅を堪能できます。</p>
+              </div>
+            </details>
+
+<details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">札幌近郊温泉紹介その二：手稲温泉</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>手稲温泉</strong>は札幌市西区・手稲山のふもとにある都市近郊型の温泉です。定山渓のように旅館街はなく、主に日帰り入浴施設として地元客やスキー帰りの人々に親しまれています。</p>
+                <p>泉質は肌にやさしい単純温泉で、冷えた体をじんわり温め、滑走後の疲れを和らげます。露天風呂から望む冬の手稲山は、手軽ながらも開放感にあふれています。</p>
+                <p>温泉街には定山源泉公園の足湯や、1866年に美泉定山が開湯した歴史を感じられる名所も点在。さらに車で約20分の札幌国際スキー場では、きめ細かなパウダースノーを満喫できます。</p>
+                <p>公共交通機関よりも利便性が限られるため、車を利用する方に特におすすめ。朝は札幌手稲スキー場で滑りを楽しみ、帰りに温泉で汗を流してから宿泊地へ戻る流れが快適です。</p>
+              </div>
+            </details>
+
+
+ <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">札幌近郊温泉紹介その三：小金湯温泉</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>小金湯温泉</strong>は定山渓から車でわずか10分に位置する小さな温泉地。開湯は明治初期と古く、自然に抱かれた落ち着いた雰囲気が魅力です。定山渓ほど観光化されていないため、静かに湯を楽しみたい人にぴったり。</p>
+                <p>泉質は単純硫黄泉で、肌をすべすべにし、疲労回復やリラックス効果も期待できます。冬は雪に包まれた渓谷を眺めながら、しっとりとした湯浴みを堪能できます。</p>
+                <p>泊施設は数軒と限られていますが、その分アットホームで落ち着いた滞在が可能。札幌からのアクセスも良く、日帰りでも宿泊でも利用できる「静かな隠れ湯」として地元でも人気です。</p>
+               
+              </div>
+            </details>
+
+
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer（不變） -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="サイトマップ">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+        <div>
+          <h4>最新情報</h4>
+          <ul>
+            <li><a href="/news">News</a></li>
+            <li><a href="ja_mopo.html">MOPOについて</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>レッスン</h4>
+          <ul>
+            <li><a href="ja_mopoindex.html#pricing">レッスン料金</a></li>
+            <li><a href="ja_teine.html">札幌手稲</a></li>
+            <li><a href="ja_kokusai.html">札幌国際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>特集記事</h4>
+          <ul>
+            <li><a href="ja_safe.html">スキー安全知識</a></li>
+            <li><a href="ja_trip.html">観光テーマ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>情報</h4>
+          <ul>
+            <li><a href="ja_legal_tokusho.html">会社情報</a></li>
+            <li><a href="ja_notice.html">申込規約</a></li>
+            <li><a href="ja_faq.html">よくあるご質問</a></li>
+            <li><a href="ja_mopoindex.html#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px; flex-wrap:wrap; gap:10px;">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<!-- Back-to-top（不變） -->
+<div class="fab">
+  <button id="backTop" aria-label="トップへ戻る">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+/* 年 */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* モバイル：言語面板（修復） */
+(function(){
+  const btn = document.getElementById('mobLangBtn');
+  const panel = document.getElementById('mobLangPanel');
+  if(!btn || !panel) return;
+
+  function closeAll(){ panel.classList.remove('show'); btn.setAttribute('aria-expanded','false'); }
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const show = !panel.classList.contains('show');
+    document.querySelectorAll('.mobpanel.show').forEach(p=>p.classList.remove('show'));
+    panel.classList.toggle('show', show);
+    btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+  });
+
+  panel.addEventListener('click', (e)=>{
+    const b = e.target.closest('button[data-lang]');
+    if(!b) return;
+    changeLang(b.dataset.lang);
+  });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
+})();
+
+/* モバイル：側邊選單面板（修復） */
+(function(){
+  const btn = document.getElementById('mobNavBtn');
+  const panel = document.getElementById('mobNavPanel');
+  if(!btn || !panel) return;
+
+  function closeAll(){ panel.classList.remove('show'); }
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const show = !panel.classList.contains('show');
+    document.querySelectorAll('.mobpanel.show').forEach(p=>p.classList.remove('show'));
+    panel.classList.toggle('show', show);
+  });
+
+  panel.addEventListener('click', (e)=>{
+    const link = e.target.closest('a');
+    if(link){ panel.classList.remove('show'); }
+  });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
+})();
+
+/* デスクトップ：言語セレクト（既存） */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+function changeLang(lang){
+  const map = {'zh-Hant':'faq.html','ja':'ja_faq.html','en':'en_faq.html'};
+  window.location.href = map[lang] || 'ja_faq.html';
+}
+
+/* 上段カテゴリ：PCのみ active 切替（モバイルは強制的に非表示扱い） */
+(function(){
+  const nav = document.getElementById('catNav');
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  const secs = links.map(a=> document.querySelector(a.getAttribute('href')) ).filter(Boolean);
+
+  // クリックでスムーズスクロール（PC/モバイル共通）
+  links.forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  const isDesktop = window.matchMedia('(min-width:1024px)').matches;
+
+  if(!isDesktop){
+    // モバイル：active を全て外して「不亮（非強調）」にする
+    links.forEach(a=> a.classList.remove('active'));
+    return; // IntersectionObserver は使わない
+  }
+
+  // PC：観察して active を更新
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(ent=>{
+      if(ent.isIntersecting){
+        links.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === `#${ent.target.id}`));
+      }
+    });
+  }, {root:null, threshold:0.5});
+  secs.forEach(s=> io.observe(s));
+})();
+
+/* FAQ：同時に一つだけ開く（原設定維持） */
+(function singleOpenFAQ(){
+  document.addEventListener('click', (e)=>{
+    const sum = e.target.closest('summary'); if(!sum) return;
+    const cur = sum.parentElement;
+    requestAnimationFrame(()=>{
+      if(cur.open){
+        document.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+      }
+    });
+  });
+  document.addEventListener('toggle', (e)=>{
+    const d = e.target;
+    if(d.tagName.toLowerCase()!=='details' || !d.open) return;
+    document.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
+  }, true);
+})();
+
+/* トップへ戻る */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* 左黏附標題切換（PCのみ） */
+(function(){
+  if (window.matchMedia('(max-width:1023px)').matches) return;
+
+  const sections = Array.from(document.querySelectorAll('.faq-section'));
+  const stickyLabel = document.getElementById('stickyLabel');
+  const stickySub   = document.getElementById('stickySub');
+  const stickyProg  = document.getElementById('stickyProg');
+
+  let current = sections[0];
+
+  function pickCurrentSection(){
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const focusY = vh * 0.25;
+    let candidate = sections[0];
+    for(const sec of sections){
+      const r = sec.getBoundingClientRect();
+      if(r.top <= focusY) candidate = sec;
+    }
+    return candidate;
+  }
+
+  function updateLabels(next){
+    if(next === current) return;
+    current = next;
+    stickyLabel.textContent = current.dataset.label || '';
+    stickySub.textContent   = current.dataset.sub   || '';
+  }
+
+  function updateProgress(){
+    const r = current.getBoundingClientRect();
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const focusY = vh * 0.25;
+    const start = Math.min(Math.max(focusY - r.top, 0), Math.max(r.height,1));
+    const ratio = Math.min(Math.max(start / Math.max(r.height,1), 0), 1);
+    stickyProg.style.width = (ratio*100)+'%';
+  }
+
+  function onScroll(){
+    const next = pickCurrentSection();
+    updateLabels(next);
+    updateProgress();
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
+})();
+
+/* Topbar：往下滑隱藏，往上滑顯示（保留） */
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide');
+    } else {
+      topbar.classList.remove('hide');
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

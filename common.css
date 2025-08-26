@@ -1,0 +1,149 @@
+/* ===== 全域樣式 ===== */
+body {
+  font-family:"Noto Sans JP","Montserrat",system-ui,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif;
+  line-height:1.6;
+  color:#0E1A24;
+}
+
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --slide:0; --fade:0; --gray:0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-top)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+html, body { overflow-x: hidden; }
+
+/* ===== Topbar ===== */
+.topbar{
+  position:fixed; left:0; right:0; top:0;
+  z-index:2000;
+  background:rgba(255,255,255,.24);
+  backdrop-filter:saturate(1.28) blur(18px);
+  border-bottom:1px solid rgba(200,164,93,.24);
+  transition:all .25s ease
+}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
+
+/* 桌面選單 */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:600; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+/* ▼ 桌機下拉選單 */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu, .has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* 語言（桌機） */
+.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
+
+/* 手機工具 */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:610}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+
+/* 手機小標 */
+.mob-subtitle{
+  padding:8px 14px 6px;
+  font-size:12px;
+  font-weight:800;
+  color:#777;
+  letter-spacing:.02em;
+  cursor:default;
+}
+
+/* 手機遮罩 */
+#mobOverlay{position:fixed; inset:0; background:rgba(0,0,0,.25); opacity:0; pointer-events:none; visibility:hidden; transition:opacity .18s ease; z-index:590}
+#mobOverlay.show{opacity:1; pointer-events:auto; visibility:visible; backdrop-filter:blur(2px)}
+@supports (-webkit-backdrop-filter: blur(0)){ #mobOverlay.show{ -webkit-backdrop-filter: blur(2px); } }
+#mobOverlay[hidden]{display:none !important; visibility:hidden !important;}
+#mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
+#mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
+
+/* ===== 置中內容區塊 ===== */
+.page-center {
+  min-height: 70vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 84px 0;
+  background: var(--bg-mid);
+}
+.page-center h1{
+  margin: 0 0 12px;
+  font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif;
+  font-size: clamp(28px, 5vw, 40px);
+  color:#111;
+  letter-spacing:.02em;
+}
+.page-center p{
+  margin: 0;
+  font-size: clamp(16px, 2.4vw, 18px);
+  color:#333;
+}
+
+/* Footer */
+.footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* FAB */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* 手機：只顯示語言按鈕 */
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    transform-origin: top right;
+  }
+  .mobpanel a, .mobpanel button{ white-space: nowrap; }
+}

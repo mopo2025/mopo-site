@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Notices and Terms of Use｜MOPO Ski School</title>
+<meta name="description" content="MOPO notices and terms of use. Please review details on safety, bookings, and cancellation policies.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --faq-bg:#F7F6F3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+
+/* Topbar */
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+
+.topbar.hide {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
+
+/* Menu */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+
+/* ▼ Desktop dropdown (same as home) */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* Lang */
+.lang select{
+  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a
+}
+
+/* Mobile tools */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:400}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+
+/* Page title */
+.section{padding:84px 0}
+.section__head h1{margin:0 0 8px 0; font-size:28px; letter-spacing:.02em; color:#111; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.muted{color:var(--ink-soft); font-size:14px}
+
+/* Lead big title (center, bold, Mincho; not collapsible) */
+.lead-title{
+  max-width:1000px; margin:0 auto 18px auto; text-align:center;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-weight:900; font-size:20px; letter-spacing:.02em; color:#111;
+}
+
+/* FAQ container */
+.faqwrap{background:var(--faq-bg)}
+.faqgrid{max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:14px}
+details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+summary::-webkit-details-marker{display:none}
+.faq-title{margin:0; font-size:18px; font-weight:800}
+.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
+.faq-body p{margin:10px 0 0 0}
+.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
+details[open] .chev{ transform:rotate(225deg) }
+
+/* Footer */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* Back-to-top FAB */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* RWD */
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:64px 0}
+  .section__head h1{font-size:24px}
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    transform-origin: top right;
+  }
+  .mobpanel a,
+  .mobpanel button{
+    white-space: nowrap;
+  }
+}
+
+
+.mob-subtitle {
+  padding: 6px 14px 2px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  cursor: default;
+}
+</style>
+</head>
+<body>
+
+<!-- Topbar (copied from home; no other sections changed) -->
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="en_mopoindex.html" class="logo" aria-label="Back to top">MOPO Ski School</a>
+    </div>
+
+    <ul class="menu" role="menubar" aria-label="Site navigation">
+      <li role="none"><a role="menuitem" href="en_news.html">Latest News</a></li>
+      <li role="none"><a role="menuitem" href="en_mopo.html">About MOPO</a></li>
+
+      <!-- Lessons: dropdown -->
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="Lessons submenu">
+          <li role="none"><a role="menuitem" href="#pricing">Lesson Plans</a></li>
+          <li class="group-title">Ski Resorts</li>
+          <li role="none"><a role="menuitem" href="en_teine.html">Sapporo Teine</a></li>
+          <li role="none"><a role="menuitem" href="en_kokusai.html">Sapporo Kokusai</a></li>
+        </ul>
+      </li>
+
+      <!-- Features: dropdown -->
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Features <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="Features submenu">
+          <li role="none"><a role="menuitem" href="en_safe.html">Safety Tips</a></li>
+          <li role="none"><a role="menuitem" href="en_trip.html">Travel Topics</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="en_faq.html">FAQ</a></li>
+      <li role="none"><a role="menuitem" href="/booking">Booking</a></li>
+    </ul>
+
+    <div class="lang">
+      <select id="langSelect" aria-label="Choose language">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="en" selected>English</option>
+      </select>
+    </div>
+
+    <div class="mobtools" aria-label="Mobile tools">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="Language">Language</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="Language menu">
+          <a role="menuitem" data-lang="zh-Hant" href="#">繁體中文</a>
+          <a role="menuitem" data-lang="ja" href="#">日本語</a>
+          <button role="menuitem" disabled style="opacity:.6; font-weight:700;">English (current)</button>
+        </div>
+      </div>
+
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="Open navigation" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="Mobile navigation">
+          <a href="en_news.html" role="menuitem">Latest News</a>
+          <a href="en_mopo.html" role="menuitem">About MOPO</a>
+
+          <div class="mob-subtitle">Lessons</div>
+          <a href="#pricing" role="menuitem">Lesson Plans</a>
+          <div class="mob-subtitle">Ski Resorts</div>
+          <a href="en_teine.html" role="menuitem">Sapporo Teine</a>
+          <a href="en_kokusai.html" role="menuitem">Sapporo Kokusai</a>
+
+          <div class="mob-subtitle">Features</div>
+          <a href="en_safe.html" role="menuitem">Safety Tips</a>
+          <a href="en_trip.html" role="menuitem">Travel Topics</a>
+
+          <a href="en_faq.html" role="menuitem">FAQ</a>
+          <a href="/booking" role="menuitem">Booking</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Page title -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>Notices and Terms of Use</h1>
+        <p class="muted">If you have any questions, please feel free to <a href="en_mopoindex.html#contact" style="text-decoration:underline">contact us</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section faqwrap">
+    <div class="container">
+
+      <!-- Centered Mincho bold fixed title (not collapsible) -->
+      <div class="lead-title">Notices & Terms of Use</div>
+
+      <div class="faqgrid" id="faqGrid">
+
+        <!-- Section 1 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">1. Risks of Snow Sports and Health Conditions</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	Skiing and other snow sports are high‑risk activities. You may be injured due to foreseeable factors such as falls, collisions, changes in weather conditions, changes in snow surface conditions, equipment malfunction, and other reasonably predictable causes. We take reasonable safety measures and provide necessary instruction; however, such risks cannot be completely eliminated. Learners must fully understand this and accept it at their own responsibility.</p>
+<p>2.	Learners (including children) and their parents/guardians understand and accept the above risks and bear responsibility for participation. We strongly recommend enrolling in travel accident insurance, sports accident insurance, or overseas medical insurance that covers skiing activities before the lesson.</p>
+<p>3.	We are not responsible, before, during, or after the lesson, for loss, damage, theft, or replacement costs of the learner’s equipment. Learners are responsible for keeping their equipment secure and should obtain insurance that covers equipment loss if necessary.</p>
+<p>4.	Learners have a duty to confirm that they do not have any medical conditions or symptoms for which a physician has prohibited snow sports (e.g., severe heart disease, uncontrolled hypertension, osteoporosis, recent major surgery, pregnancy). If you have any concerns about your health, contact us in advance and submit a physician’s clearance if required.</p>
+<p>5.	If fever, shortness of breath, severe pain, or other poor health conditions arise before the lesson begins, you should refrain from attending on that day. If you still wish to attend, you must inform the coach in advance of your condition and any medical instructions. For safety reasons, the coach has the authority to adjust, suspend, or terminate the lesson; in such cases, no refund will be provided.</p>
+<p>6.	Coaches and staff have the authority, for safety reasons, to refuse participation by learners deemed unfit to attend. If a learner intentionally conceals a health problem and causes damage to themselves or others, we and the coach bear no responsibility and no refund will be issued.</p>
+<p>7.	In principle, we accept applications from learners of all ages. However, due to risk characteristics, we do not offer beginner ski or snowboard lessons for learners aged 65 or older. If you wish to take advanced lessons, please contact us in advance; after a safety assessment, we will decide whether participation is possible.</p>
+          </div>
+        </details>
+
+        <!-- Section 2 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">2. Booking Services</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	Tuition fees are calculated based on factors such as the course time slot selected by the learner, the ski resort location, and any specified instructor, and are finalized at the amount stated in our confirmation notice. A booking is officially established upon completion of payment.</p>
+<p>2.	Within 1–3 business days after submitting a booking request, our office will check instructor and course arrangements and send payment guidance.</p>
+<p>3.	Our price displays are based on Japanese Yen (JPY). Amounts shown in other currencies are for reference only.</p>
+<p>4.	If payment is not completed within the specified period after payment guidance is sent, the application becomes invalid. If you still wish to take the lesson, please apply again.</p>
+<p>5.	We do not guarantee reservation slots before payment is completed. Capacity is allocated in order of payment.</p>
+<p>6.	If you book through a third‑party platform or travel agency, you must comply with that platform’s (agency’s) terms, and these Terms will also apply supplementally.</p>
+<p>7.	If you have special requests (language, equipment, itinerary, etc.), you must notify us before payment and obtain written confirmation. We will accommodate where possible but cannot guarantee fulfillment.</p>
+<p>8.	If a lesson cannot be held due to instructor force majeure (injury, illness, transport delay, etc.), we will promptly notify you and arrange an instructor with equivalent qualifications. In this case, tuition is not refunded. If you have paid a designation fee, you may choose to:<br>
+　- Switch to another instructor and carry over the designation fee (deemed a new designation of that instructor), or<br>
+　- Switch to a lesson with an equivalent instructor and receive a refund of the designation fee (tuition is non‑refundable).<br>
+　If, due to force majeure, no lesson can be held on the day (e.g., we are unable to dispatch an instructor, or the resort is closed all day), you may choose a reschedule or a refund in accordance with our “Cancellation and Refund Policy.”</p>
+<p>9.	Learners have a duty to confirm that the application details (name, date, resort, course content, etc.) are correct. If a misentry makes lesson arrangements impossible, the “Cancellation and Refund Policy” will apply.</p>
+          </div>
+        </details>
+
+        <!-- Section 3 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">3. Notes on Attending Lessons</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	Instructors will flexibly adjust lesson content and locations according to the learner’s skill level and the day’s weather and snow conditions.</p>
+<p>2.	Due to weather, snow conditions, resort operations, or other safety factors, lesson content, meeting locations, or times may change. We will notify you promptly and make adjustments.</p>
+<p>3.	Learners must prepare appropriate, serviceable ski equipment (goggles, gloves, ski boots, skis, poles, snowboard boots, snowboard, helmet, etc.).<br>
+　If the instructor identifies damage, unfitness, or safety concerns, they will explain the reasons and recommend replacement or rental.<br>
+　If the learner does not follow the recommendation, the instructor may refuse participation for safety reasons; in such cases, tuition will not be refunded.</p>
+<p>4.	If during the lesson a learner fails to follow the instructor’s directions or engages in clearly dangerous behavior, the instructor has the authority to terminate the lesson immediately. In such cases, tuition will not be refunded, and whether subsequent lessons may continue will be determined by us.</p>
+          </div>
+        </details>
+
+        <!-- Section 4 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">4. Notes on Children’s Courses</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	Age and participation conditions<br>
+　For children’s lessons, the minimum age is 7 years for snowboarding and 4 years for skiing. Children must be able to use the restroom independently and put on/take off equipment by themselves. For safety, we may request documents to verify age.</p>
+<p>2.	One‑to‑one lesson principle<br>
+　Children aged 4 to 7 are, in principle, taught one‑to‑one by an instructor.</p>
+<p>3.	Parental responsibility<br>
+　The instructor’s role is limited to instruction and does not constitute childcare. Parents must remain reachable within the resort at all times and be prepared to pick up the child or respond to emergencies when necessary.</p>
+<p>4.	Safety and restrictions on participation<br>
+　If the child does not meet participation conditions, equipment is inappropriate, or circumstances impede ensuring safety during the lesson, the instructor may refuse participation; in such cases, tuition will not be refunded.</p>
+<p>5.	Emergency contacts and health information<br>
+　Before the lesson begins, parents must provide emergency contact details and health information (including allergies and medical history).</p>
+<p>6.	Lift ticket preparation<br>
+　For advanced children’s courses, parents must prepare a valid lift ticket in advance. If the lesson cannot proceed because a lift ticket is not held, no refund or make‑up lesson will be provided.</p>
+<p>7.	Lunch arrangements<br>
+　Lunch costs are not included in tuition. Parents are responsible for agreeing on a meeting time for the lunch break in advance and for providing the child with any necessary cash.</p>
+<p>8.	Response to allergies and dietary restrictions<br>
+　If the child has allergies or dietary restrictions, notify us prior to the lesson. We will accommodate where possible; however, as resort and dining environments are beyond our control, parents acknowledge that certain risks remain.</p>
+          </div>
+        </details>
+
+        <!-- Section 5 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">5. Booking Changes</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	If you wish to change the course date, time, location, or instructor, apply by email no later than 7 days before the lesson start, and the change becomes valid upon our confirmation reply.</p>
+<p>2.	Changes depend on instructor schedules and the conditions of resorts and facilities. We will make best efforts to adjust but cannot guarantee availability.</p>
+<p>3.	If a price difference arises due to the change, the learner must pay any shortfall; if a refund arises, it will follow the refund policy.</p>
+<p>4.	Requests for changes made less than 7 days before the lesson start are, in principle, treated as cancellations and are subject to our Cancellation and Refund Policy. However, if adjustments are possible depending on instructor schedules, we may exceptionally accept changes.</p>
+<p>5.	When settling differences due to season changes (busy/regular periods), a handling fee may be charged.</p>
+<p>6.	If you booked through a third‑party platform or travel agency, the procedures and fees for changes follow that platform’s regulations, and these Terms also apply. In case of inconsistency, the platform’s regulations take precedence.</p>
+          </div>
+        </details>
+
+        <!-- Section 6 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">6. Cancellation and Refund Policy</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>General Rules</p>
+<p>•	31–49 days (inclusive) before the lesson start: 90% of tuition refunded<br>
+•	15–30 days before the lesson start: 50% of tuition refunded<br>
+•	8–14 days before the lesson start: 30% of tuition refunded<br>
+•	Within 7 days (including the day of the lesson): non‑refundable</p>
+<p>Exceptional Rules (supporting documentation required)<br>
+In the following cases, the above general rules do not apply; 75% of tuition will be refunded (including administrative and credit‑card processing fees):</p>
+<p>1.	Illness or injury (a doctor’s certificate may be required)</p>
+<p>2.	Force majeure (e.g., full‑day resort closure, government entry restrictions; official proof required)</p>
+<p>3.	Flight cancellation (when all of the following conditions are met)<br>
+　- There is official proof from the airline that the cancellation is due to operational reasons (weather, equipment failure, ATC restrictions, etc.)<br>
+　- Due to the cancellation, the learner cannot arrive at the lesson location on the lesson day or the previous day<br>
+　- The learner notifies us by email within 24 hours after the cancellation and attaches official proof<br>
+　- Personal changes, missed connections, visa or quarantine issues are excluded</p>
+<p>Other<br>
+•	If a refund relates to a foreign‑currency transaction, exchange rate differences or overseas transaction fees are charged directly by financial institutions; we bear no responsibility.<br>
+•	The above cancellation policy applies only when it is clearly stated at the time of application and the learner has consented.</p>
+          </div>
+        </details>
+
+        <!-- Section 7 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">7. Handling of Personal Information</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	We collect, use, and store learners’ personal information in accordance with Japan’s Act on the Protection of Personal Information and other applicable data‑protection laws (including regulations in the learner’s place of residence).</p>
+<p>2.	Purposes of collection are limited to lesson arrangements, emergency contact, payment processing, and marketing notices to which the learner has consented.</p>
+<p>3.	We do not sell or provide personal information to third parties, except where required by law or where processing is委trusted within the scope necessary for lesson operations. Contractors are required to comply with protection standards equivalent to ours.</p>
+<p>4.	Learners may request to view, correct, or delete their personal information and may withdraw consent for its use. However, where retention is required by law or accounting record obligations, deletion will occur after the statutory period expires.</p>
+<p>5.	If personal information is transferred outside Japan, we will implement appropriate security measures based on the guidelines of the Personal Information Protection Commission.</p>
+          </div>
+        </details>
+
+        <!-- Section 8 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">8. Dispute Resolution</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+<p>1.	These Terms are governed by and construed in accordance with the laws of Japan.</p>
+<p>2.	In the event of a dispute, both parties shall negotiate in good faith to achieve an amicable resolution.</p>
+<p>3.	If negotiations fail, the Tokyo District Court shall have exclusive agreed jurisdiction as the court of first instance.</p>
+<p>4.	If there is any inconsistency between the Japanese version and other language versions of these Terms, the Japanese version shall prevail.</p>
+          </div>
+        </details>
+
+      </div><!-- /.faqgrid -->
+    </div><!-- /.container -->
+  </section><!-- /.section -->
+</main>
+
+<!-- Footer (copied from home; no other sections changed) -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="Sitemap">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>Latest News</h4>
+          <ul>
+            <li><a href="/news">News</a></li>
+            <li><a href="#about-mopo">About MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Lessons</h4>
+          <ul>
+            <li><a href="#pricing">Lesson Plans</a></li>
+            <li><a href="#teine">Sapporo Teine</a></li>
+            <li><a href="#international">Sapporo Kokusai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Features</h4>
+          <ul>
+            <li><a href="#pricing">Safety Tips</a></li>
+            <li><a href="#pricing">Travel Topics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Info</h4>
+          <ul>
+            <li><a href="en_legal_tokusho.html">Company Info</a></li>
+            <li><a href="en_notice.html" aria-current="page">Application Guide</a></li>
+            <li><a href="en_faq.html">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<!-- Back-to-top FAB -->
+<div class="fab">
+  <button id="backTop" aria-label="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+/* Year */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* Mobile: language panel */
+(function(){
+  const btn=document.getElementById('mobLangBtn'), panel=document.getElementById('mobLangPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{
+    const b = e.target.closest('[data-lang]'); if(!b) return;
+    e.preventDefault();
+    changeLang(b.dataset.lang);
+  });
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* Mobile: nav (close on link) */
+(function(){
+  const btn=document.getElementById('mobNavBtn'), panel=document.getElementById('mobNavPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{ const link=e.target.closest('a'); if(link){ panel.classList.remove('show'); }});
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* Desktop: language select */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+
+/* Unified language routing (notice pages) */
+function changeLang(lang){
+  const map = {
+    'zh-Hant': 'notice.html',     // Traditional Chinese
+    'ja': 'ja_notice.html',       // Japanese
+    'en': 'en_notice.html'        // English
+  };
+  const url = map[lang] || 'en_notice.html';
+  window.location.href = url;
+}
+
+/* FAQ: only one open at a time */
+(function singleOpenFAQ(containerSel){
+  const wrap = document.querySelector(containerSel);
+  if(!wrap) return;
+
+  wrap.addEventListener('click', (e)=>{
+    const sum = e.target.closest('summary');
+    if(!sum || !wrap.contains(sum)) return;
+    const cur = sum.parentElement;
+    requestAnimationFrame(()=>{
+      if(cur.open){
+        wrap.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+      }
+    });
+  });
+
+  wrap.addEventListener('toggle', (e)=>{
+    const d = e.target;
+    if(d.tagName.toLowerCase()!=='details' || !d.open) return;
+    wrap.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
+  }, true);
+})('#faqGrid');
+
+/* Back to top */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+// Topbar: hide on scroll down, show on scroll up
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide'); // scrolling down: hide
+    } else {
+      topbar.classList.remove('hide'); // scrolling up or near top: show
+    }
+
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+</script>
+</body>
+</html>

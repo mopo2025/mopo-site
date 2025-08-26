@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>報名須知｜MOPO Ski School</title>
+<meta name="description" content="MOPO 報名須知與條款細則。安全提醒、預訂、取消政策等完整資訊。">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+  --faq-bg:#F7F6F3;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px; background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;}
+.has-dropdown:hover .submenu,.has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:400}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a,.mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+.section{padding:84px 0}
+.section__head h1{margin:0 0 8px 0; font-size:28px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif}
+.muted{color:var(--ink-soft); font-size:14px}
+.lead-title{max-width:1000px; margin:0 auto 18px auto; text-align:center; font-family:"Noto Serif TC","PMingLiU","MingLiU",serif; font-weight:900; font-size:20px; letter-spacing:.02em; color:#111;}
+.faqwrap{background:var(--faq-bg)}
+.faqgrid{max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:14px}
+details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+summary::-webkit-details-marker{display:none}
+.faq-title{margin:0; font-size:18px; font-weight:800}
+.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
+.faq-body p{margin:10px 0 0 0}
+.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
+details[open] .chev{ transform:rotate(225deg) }
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:64px 0}
+  .section__head h1{font-size:24px}
+  .mobdrop{ position: relative; }
+  .mobpanel{left:auto; right:0; width:min(92vw,320px); max-width:92vw; transform-origin:top right;}
+  .mobpanel a,.mobpanel button{ white-space: nowrap; }
+}
+.mob-subtitle{padding:6px 14px 2px; font-size:12px; font-weight:bold; color:#999; cursor:default;}
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="index.html" class="logo" aria-label="回首頁">MOPO Ski School</a>
+    </div>
+    <ul class="menu" role="menubar" aria-label="網站導覽">
+      <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
+      <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="滑雪課程子選單">
+          <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
+          <li class="group-title">雪場介紹</li>
+          <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
+          <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="主題文章子選單">
+          <li role="none"><a role="menuitem" href="safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
+        </ul>
+      </li>
+      <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
+      <li role="none"><a role="menuitem" href="notice.html" aria-current="page">報名須知</a></li>
+      <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+    </ul>
+    <div class="lang">
+      <select id="langSelect" aria-label="選擇語言">
+        <option value="zh-Hant" selected>繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+    <div class="mobtools" aria-label="行動工具">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="語言">語言</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言選單">
+          <a role="menuitem" data-lang="zh-Hant" href="notice.html" aria-current="true">繁體中文</a>
+          <a role="menuitem" data-lang="ja" href="ja_notice.html">日本語</a>
+          <a role="menuitem" data-lang="en" href="en_notice.html">English</a>
+        </div>
+      </div>
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="開啟導覽" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動導覽">
+          <a href="news.html" role="menuitem">最新消息</a>
+          <a href="mopo.html" role="menuitem">關於 MOPO</a>
+          <div class="mob-subtitle">滑雪課程</div>
+          <a href="index.html#pricing" role="menuitem">課程與價格</a>
+          <div class="mob-subtitle">雪場介紹</div>
+          <a href="teine.html" role="menuitem">札幌手稻</a>
+          <a href="kokusai.html" role="menuitem">札幌國際</a>
+          <div class="mob-subtitle">主題文章</div>
+          <a href="safe.html" role="menuitem">安全知識</a>
+          <a href="trip.html" role="menuitem">觀光主題</a>
+          <a href="faq.html" role="menuitem">常見問題</a>
+          <a href="notice.html" role="menuitem" aria-current="page">報名須知</a>
+          <a href="booking.html" role="menuitem">預約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 頁首標題 -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>報名須知</h1>
+        <p class="muted">若有其他問題，請至 <a href="index.html#contact" style="text-decoration:underline">聯絡我們</a>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 內容：帶手風琴（一次只開一個） -->
+  <section class="section faqwrap">
+    <div class="container">
+      <div class="faqgrid" id="faqGrid">
+        <!-- 置中粗體大標題（固定文字塊，不可收合） -->
+        <div class="lead-title">注意事項＆條款及細則</div>
+
+        <!-- 1 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">1．雪上運動相關風險與健康狀況</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 滑雪及其他雪上運動屬高風險活動，可能因跌倒、碰撞、氣象變化、雪況變化或裝備問題等其他可合理預見之因素而導致受傷。雖本校將採取合理之安全措施並提供必要指導，但無法完全排除上述風險，學員應充分了解並自行承擔相關風險。</p>
+            <p>2. 學員（含兒童）及其家長／監護人須了解並接受上述風險，並自行承擔參與課程之相關責任。建議所有學員於參加課程前自行投保涵蓋滑雪運動之旅遊平安險、運動傷害險或海外醫療險。</p>
+            <p>3. 本校對於課程開始前、進行中或結束後，學員個人裝備的遺失、損壞、被竊或更換費用不負責任。建議學員自行妥善保管裝備，並投保涵蓋裝備損失的保險。</p>
+            <p>4. 學員須確認自身無醫師明確禁止從事雪上運動之疾病或症狀（如嚴重心臟病、未受控的高血壓、骨質疏鬆、近期重大外科手術、孕期等）。若對自身狀況有疑慮，應於報名前與本校聯繫，並於必要時提供醫師許可證明。</p>
+            <p>5. 課程開始前若出現任何身體不適（如發燒、呼吸困難、劇烈疼痛等），應避免參與當次活動。若仍選擇參與，務必於課前告知教練相關健康狀況與醫囑，教練可依安全考量調整、暫停或中止課程，並不另行退費。</p>
+            <p>6. 教練及本校工作人員有權基於安全理由，拒絕認定不適合參與課程之學員上課。若學員刻意隱瞞健康問題，導致自身或他人受傷，本校及教練將不承擔任何責任，且無法辦理退款。</p>
+            <p>7. 原則上，本校接受各年齡層學員報名。惟基於滑雪運動風險，若學員年齡超過 65 歲，基於安全考量，不提供初學單板與雙板滑雪課程。若為進階課程，可於報名前聯繫客服，經評估後方可參加。</p>
+          </div>
+        </details>
+
+        <!-- 2 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">2．預訂服務</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 課程總費用依學員選擇之課程時段、雪場地點、指定教練等因素計算，以本校確認通知之金額為準；付款完成後，預訂即正式成立。</p>
+            <p>2. 預約申請送出後，請等待 1～3 個工作日，由客服確認教練與課程安排後，發送付款通知。</p>
+            <p>3. 本校相關費用以日幣（JPY）為計價單位，其他幣別標示僅供參考。</p>
+            <p>4. 付款通知發送後，如未於期限內完成付款，將視為此次申請未成立；若仍希望報名，請重新填寫報名表單並重新安排課程。</p>
+            <p>5. 在付款完成前，名額將不作保留；如期間有其他學員先完成付款，名額將依付款順序分配。</p>
+            <p>6. 透過第三方平台或旅行社預訂者，除遵守該平台（旅行社）條款外，本校條款同時適用，作為補充規範。</p>
+            <p>7. 特殊需求（語言、裝備、行程等）請於付款前告知並經書面確認，我們將盡力協助，但恕無法保證一定能配合。</p>
+            <p>8. 因教練端之不可抗力（如教練受傷、生病、交通延誤等），本校將立即通知並安排同等級教練授課，課程費用不因此退還。若已支付指定教練費，學員可選擇：<br>
+　- 更換其他可授課之教練並保留指定費用（改為指定該教練），或<br>
+　- 改由同等級教練授課且退還指定教練費（課程費用不退還）。<br>
+若因不可抗力導致當日課程全日無法進行（例如學校無法派出任何教練、雪場全日關閉等），將依本校「取消及退款政策」辦理，可選擇改期或退款。</p>
+            <p>9. 學員應確認報名資料（姓名、日期、雪場、課程內容等）正確無誤；如因資料錯誤導致無法安排課程，將依「取消及退款政策」辦理。</p>
+          </div>
+        </details>
+
+        <!-- 3 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">3．課程須知</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 教練將依據學員程度、當日天氣及雪況，靈活調整課程內容與地點，確保學員能在安全、適宜的環境中學習。</p>
+            <p>2. 如遇天候、雪況、滑雪場運營狀況或其他安全因素，教練可能臨時調整課程內容、集合地點或時間，本校將盡快通知並協助安排。</p>
+            <p>3. 學員須自備合格且狀態良好的滑雪裝備（含雪鏡、手套、雪鞋、雪板、頭盔等）。<br>
+　如教練判斷裝備存在損壞、規格不符或其他安全疑慮，將當場說明原因並建議學員更換或自行租借合適裝備。<br>
+　若學員選擇不依建議更換裝備，基於安全考量，教練得拒絕學員參與課程；此情況下，課程費用恕不退還。。</p>
+            <p>4. 為維護學員及他人安全，若學員在課程中未遵守教練指示或有明顯危險行為，教練有權立即終止授課。此情況下，課程費用將不予退還，並視實際情況決定是否可另行安排後續課程。</p>
+          </div>
+        </details>
+
+        <!-- 4 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">4．兒童課程須知</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 年齡及條件<br>
+　兒童參加課程須符合指定年齡：單板滑雪課程為 7 歲以上，雙板滑雪課程為 4 歲以上，並能獨立如廁及自行穿戴裝備。本校可能要求提供年齡證明以確保課程安全。</p>
+            <p>2. 一對一授課安排<br>
+　4 歲至 7 歲的兒童課程原則上採取一對一授課，以保障安全與教學品質。</p>
+            <p>3. 家長或監護人責任<br>
+　教練在課程中以教學為首要任務，並非兒童托育服務。家長或監護人須在雪場可即時聯絡狀態，以便必要時接送或處理緊急狀況。</p>
+            <p>4. 安全及資格限制<br>
+　如兒童未符合課程條件、裝備不合格或有影響課程安全之情況，教練有權拒絕授課且不予退款。</p>
+            <p>5. 緊急聯絡及健康資訊<br>
+　家長或監護人須於課前提供緊急聯絡方式及健康資訊（含過敏、既有病史等），以便在突發狀況時能即時應對。</p>
+            <p>6. 雪票準備<br>
+　進階兒童課程建議家長於課前為兒童準備有效雪票，以免影響課程進行。若因未持有效雪票而無法完成課程，恕不退費或補時。</p>
+            <p>7. 午餐安排<br>
+　課程費用不包含午餐費用。建議中午休息時間與教練約定集合時間，並為兒童準備足夠現金以支付餐飲或其他需要。</p>
+            <p>8. 過敏與飲食限制提醒<br>
+　如兒童有過敏或飲食限制，請於課前告知，我們會盡力協助安排並避免接觸過敏原。但因雪場與餐廳環境非本校可完全掌控，仍可能存在風險，請家長一併留意與準備。</p>
+          </div>
+        </details>
+
+        <!-- 5 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">5．預訂更改</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 課程日期、時間、地點或教練之變更，請於課程開始 7 日前以電子郵件提出申請，並以本校確認回覆為準。</p>
+            <p>2. 課程變更需視教練檔期、雪場及場地狀況而定，本校將盡力協助，但不保證一定可更改。</p>
+            <p>3. 若更改導致價格差異，須補足差額；若產生退款，將依退款政策辦理。</p>
+            <p>4. 課程開始 7日內 的變更申請，原則上視為取消，並依本校的取消與退款政策辦理。但如教練檔期允許且可行，本校得例外接受變更申請。</p>
+            <p>5. 變更申請如涉及淡旺季變動導致需補款或退款，可能酌收手續費，並依最新檔期與條件重新計算費用。</p>
+            <p>6. 透過第三方平台或旅行社預訂之課程，變更流程與手續費將依該平台（旅行社）規定辦理，並須同時符合本校條款，且平台規定與本校條款不一致時，以平台規定為優先。</p>
+          </div>
+        </details>
+
+        <!-- 6 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">6．預訂取消與退款</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>一般取消規定（General Cancellation Policy）</p>
+            <p>• 課程開始前 31〜49日（含）取消：退還 90%<br>
+• 課程開始前 15〜30日 取消：退還 50%<br>
+• 課程開始前 8〜14日 取消：退還 30%<br>
+• 課程開始前 7日內（含當日） 取消：恕不退款</p>
+
+            <p>例外規定（需提交證明文件）<br>
+以下屬不可抗力或非學員可控之情況，將不適用一般取消比例：</p>
+            <p>1. 疾病或受傷（須提供醫師診斷書）取消：</p>
+            <p>2. 不可抗力因素（如雪場全日關閉、政府入境限制等，須附官方證明）</p>
+            <p>3. 航空班機取消（需同時符合以下條件）：<br>
+• 航空公司營運因素（天候、機械故障、航管限制等）正式取消航班，並提供官方證明。<br>
+• 取消必須直接導致學員無法於課程當日或前一日抵達授課地點，且該航班為主要交通方式。<br>
+• 學員須於取消發生後 24 小時內 以電子郵件通知本校，並附上官方取消證明。<br>
+• 不包含個人改票、轉機延誤、簽證或檢疫問題等情況。</p>
+
+            <p>※ 例外規定之上述退款金額退還 75%（含信用卡手續費與事務處理費）。退款金額若涉及不同幣別，因銀行與發卡行規則，可能會有匯率差額或海外跨境交易費用，該部分由銀行直接向學員收取，敬請理解。</p>
+<p>（上述取消政策僅在報名時已明確告知並經學員同意時適用。）<p>
+          </div>
+        </details>
+
+        <!-- 7 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">7．個人資料蒐集聲明</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 本校依據日本《個人情報保護法》及其他適用之個資保護法規（如學員居住地規定）蒐集、使用及保存學員之個人資料。</p>
+            <p>2. 蒐集目的：僅限於課程安排、緊急聯絡、付款處理及經學員同意的行銷活動通知。</p>
+            <p>3. 本校不會將個人資料出售或提供予第三方，除非法律要求或為完成課程運營必要而委託服務供應商處理，並確保其遵守與本校相同之個資保護標準。</p>
+            <p>4. 學員可隨時要求查閱、更正或刪除其個人資料，並可撤回使用同意；惟因法令或會計紀錄保存義務需留存者，將依規定保存至法定期限屆滿後刪除。</p>
+	    <p>5. 如個人資料需移轉至日本以外地區，本校將依《個人情報保護委員會指引》採取適切的安全管理措施。</p>
+          </div>
+        </details>
+
+        <!-- 8 -->
+        <details class="faqcard">
+          <summary><div><span class="faq-title">8．紛爭處理</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>1. 本條款受日本法律管轄並依其解釋。</p>
+            <p>2. 若發生爭議，雙方將以誠意協商為優先，努力尋求解決方案。</p>
+            <p>3. 協商未果時，雙方同意以日本東京地方裁判所作為第一審專屬管轄法院。</p>
+            <p>4. 本條款如有日文與其他語言版本之差異，均以日文版本為準。</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="網站地圖">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>最新消息</h4>
+          <ul>
+            <li><a href="news.html">News</a></li>
+            <li><a href="mopo.html">關於 MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>滑雪課程</h4>
+          <ul>
+            <li><a href="index.html#pricing">課程與價格</a></li>
+            <li><a href="teine.html">札幌手稻</a></li>
+            <li><a href="kokusai.html">札幌國際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>主題文章</h4>
+          <ul>
+            <li><a href="safe.html">安全知識</a></li>
+            <li><a href="trip.html">觀光主題</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>資訊</h4>
+          <ul>
+            <li><a href="legal_tokusho.html">公司資訊</a></li>
+            <li><a href="notice.html">報名須知</a></li>
+            <li><a href="faq.html">常見問題</a></li>
+            <li><a href="index.html#contact">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+
+<!-- Back-to-top FAB -->
+<div class="fab">
+  <button id="backTop" aria-label="回到頂部">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+/* 年份 */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* Mobile: Lang panel */
+(function(){
+  const btn=document.getElementById('mobLangBtn'), panel=document.getElementById('mobLangPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{
+    const b=e.target.closest('button[data-lang]'); if(!b) return;
+    changeLang(b.dataset.lang);
+  });
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* Mobile: Nav panel */
+(function(){
+  const btn=document.getElementById('mobNavBtn'), panel=document.getElementById('mobNavPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{ const link=e.target.closest('a'); if(link){ panel.classList.remove('show'); }});
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* Desktop: Lang select */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+
+/* Language routing (notice系列) */
+function changeLang(lang){
+  const map = {
+    'zh-Hant': 'notice.html',
+    'ja': 'ja_notice.html',
+    'en': 'en_notice.html'
+  };
+  const url = map[lang] || 'notice.html';
+  window.location.href = url;
+}
+
+/* Accordion: 同時只開一個 */
+(function singleOpen(containerSel){
+  const wrap = document.querySelector(containerSel);
+  if(!wrap) return;
+
+  wrap.addEventListener('click', (e)=>{
+    const sum = e.target.closest('summary');
+    if(!sum || !wrap.contains(sum)) return;
+    const cur = sum.parentElement;
+    requestAnimationFrame(()=>{
+      if(cur.open){
+        wrap.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+      }
+    });
+  });
+
+  wrap.addEventListener('toggle', (e)=>{
+    const d = e.target;
+    if(d.tagName.toLowerCase()!=='details' || !d.open) return;
+    wrap.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
+  }, true);
+})('#faqGrid');
+
+/* Back-to-top */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+// Topbar：往下滑隱藏，往上滑顯示
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide'); // 往下滑：隱藏
+    } else {
+      topbar.classList.remove('hide'); // 往上滑或回頂：顯示
+    }
+
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+
+const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
+const topbar=document.getElementById('topbar');
+function setTopbar(){ topbar
+</script>
+</body>
+</html>

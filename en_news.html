@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>News｜MOPO Ski School</title>
+<meta name="description" content="MOPO News. Announcements, updates, and release notes.">
+
+<!-- ✅ SEO / Open Graph / Twitter Card -->
+<link rel="canonical" href="https://moposki.com/en_news.html">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:title" content="News｜MOPO Ski School">
+<meta property="og:description" content="MOPO News. Announcements, updates, and release notes.">
+<meta property="og:url" content="https://moposki.com/en_news.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPO Ski School">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="News｜MOPO Ski School">
+<meta name="twitter:description" content="MOPO News. Announcements, updates, and release notes.">
+<meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+
+<!-- Fonts（keep consistent with Chinese page） -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+
+<!-- ✅ Shared styles -->
+<link rel="stylesheet" href="common.css">
+
+<!-- Page styles (Desktop: image 2/3 width; mobile unchanged; keep header/footer untouched) -->
+<style>
+  :root { --card-w: 66.666%; }
+
+  .page-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .news-pager button:focus-visible{
+    outline: 2px solid #C8A45D;
+    outline-offset: 2px;
+  }
+  .news-wrap{padding:56px 0;background:#fff}
+  .news-head{
+    display:flex;align-items:flex-end;justify-content:center;
+    gap:16px;margin-bottom:20px;text-align:center;
+  }
+  .news-head h1{
+    margin:0;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#111;width:100%;
+  }
+  /* Page title -2pt vs clamp baseline */
+  .news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+  .news-grid{
+    display:grid;gap:32px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin:0; padding:0;
+  }
+
+  /* ===== Desktop: constrain all card content to 2/3 width, left-aligned, no overflow ===== */
+  .news-card .thumb{
+    width:var(--card-w);
+    margin:0 auto;
+    box-sizing:border-box;
+  }
+  .news-card > .meta,
+  .news-card > h3,
+  .news-card > .excerpt{
+    width:var(--card-w);
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    box-sizing:border-box;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+
+  .news-card{
+    list-style:none;margin:0;padding:0;background:#fff
+  }
+  .news-card .thumb{
+    position:relative;overflow:hidden;border-radius:12px;aspect-ratio:16/9;
+    background:#f2f4f6
+  }
+  .news-card .thumb a{display:block;height:100%}
+  .news-card img{
+    width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);
+    transition:transform .4s ease;
+  }
+  .news-card .thumb:hover img{transform:scale(1.05)}
+  .news-card .meta{
+    margin-top:14px;font-size:14px;color:#567;letter-spacing:.02em
+  }
+  .news-card h3{
+    margin:6px 0 8px;
+    font-size:clamp(18px,2.4vw,22px);
+    line-height:1.35;
+    color:#0E1A24;
+    font-weight:700;
+  }
+  .news-card h3 a{
+    color:inherit;
+    text-decoration:none;
+    border-bottom:none;
+    display:block;
+  }
+  .news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+  .news-card .excerpt{color:#333;font-size:16px;line-height:1.7}
+
+  /* Pagination */
+  .news-pager{
+    display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px
+  }
+  .news-pager button{
+    min-width:36px;height:36px;padding:0 12px;border-radius:8px;border:1px solid #d7dbe0;
+    background:#fff;cursor:pointer;font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+    transition:background .2s,border-color .2s
+  }
+  .news-pager button[aria-current="page"]{
+    background:#0D1B2A;color:#fff;border-color:#0D1B2A
+  }
+  .news-pager button:hover{border-color:#C8A45D}
+
+  /* ===== Mobile: no changes (keep 100%) ===== */
+  @media (max-width: 860px){
+    .news-wrap .container{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .news-grid{
+      grid-template-columns:1fr;
+      justify-items:center;
+      width:100%;
+      margin:0; padding:0;
+    }
+    .news-card{
+      width:100%;
+      max-width:720px;
+      margin:0 auto;
+      text-align:left;
+    }
+    .news-card .thumb{ width:100%; }
+    .news-card > .meta,
+    .news-card > h3,
+    .news-card > .excerpt{ width:100%; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="en_mopoindex.html" class="logo" aria-label="Back to home">MOPO Ski School</a>
+    </div>
+
+    <!-- ===== Top navigation (same structure as Chinese homepage; English text only; English links use en_*) ===== -->
+    <ul class="menu" role="menubar" aria-label="Site navigation">
+      <li role="none"><a role="menuitem" href="en_news.html" aria-current="page">News</a></li>
+      <li role="none"><a role="menuitem" href="en_mopo.html">About MOPO</a></li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="Lessons submenu">
+          <li role="none"><a role="menuitem" href="en_mopoindex.html#pricing">Lesson plans</a></li>
+          <li class="group-title">Resorts</li>
+          <li role="none"><a role="menuitem" href="en_teine.html">Sapporo Teine</a></li>
+          <li role="none"><a role="menuitem" href="en_kokusai.html">Sapporo Kokusai</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Features <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="Features submenu">
+          <li role="none"><a role="menuitem" href="en_safe.html">Safety</a></li>
+          <li role="none"><a role="menuitem" href="en_trip.html">Travel topics</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="en_faq.html">FAQ</a></li>
+      <li role="none"><a role="menuitem" href="en_booking.html">Booking</a></li>
+    </ul>
+
+    <!-- Desktop language -->
+    <div class="lang">
+      <select id="langSelect" aria-label="Select language">
+        <option value="ja">日本語</option>
+        <option value="zh-Hant">繁體中文</option>
+        <option value="en" selected>English</option>
+      </select>
+    </div>
+
+    <!-- Mobile tools -->
+    <div class="mobtools" aria-label="Mobile tools">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="Language">Language</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="Language menu">
+          <a role="menuitem" data-lang="ja" href="ja_news.html">日本語</a>
+          <a role="menuitem" data-lang="zh-Hant" href="news.html">繁體中文</a>
+          <button role="menuitem" disabled style="opacity:.6; font-weight:700;">English (current)</button>
+        </div>
+      </div>
+
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="Open navigation" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="Mobile navigation">
+          <a href="en_news.html" role="menuitem" aria-current="page">News</a>
+          <a href="en_mopo.html" role="menuitem">About MOPO</a>
+
+          <div class="mob-subtitle">Lessons</div>
+          <a href="en_mopoindex.html#pricing" role="menuitem">Lesson plans</a>
+          <div class="mob-subtitle">Resorts</div>
+          <a href="en_teine.html" role="menuitem">Sapporo Teine</a>
+          <a href="en_kokusai.html" role="menuitem">Sapporo Kokusai</a>
+
+          <div class="mob-subtitle">Features</div>
+          <a href="en_safe.html" role="menuitem">Safety</a>
+          <a href="en_trip.html" role="menuitem">Travel topics</a>
+
+          <a href="en_faq.html" role="menuitem">FAQ</a>
+          <a href="en_booking.html" role="menuitem">Booking</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile overlay (shared) -->
+<div id="mobOverlay" aria-hidden="true" hidden></div>
+
+<!-- Content starts: News -->
+<main id="news" aria-label="News">
+  <!-- ===== News-only styles (scoped to this page) ===== -->
+  <style>
+    .news-pager button:focus-visible{
+      outline: 2px solid #C8A45D;
+      outline-offset: 2px;
+    }
+    .news-wrap{padding:56px 0;background:#fff}
+    .news-head{
+      display:flex;align-items:flex-end;justify-content:center;
+      gap:16px;margin-bottom:20px;text-align:center;
+    }
+    .news-head h1{
+      margin:0;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+      font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#111;width:100%;
+    }
+    /* Match top: title -2pt */
+    .news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+    .news-grid{
+      display:grid;gap:32px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      margin:0; padding:0;
+    }
+
+    /* Desktop 2/3 width reinforcement */
+    .news-grid .news-card .thumb{ width:var(--card-w); margin:0 auto; box-sizing:border-box; }
+    .news-grid .news-card > .meta,
+    .news-grid .news-card > h3,
+    .news-grid .news-card > .excerpt{
+      width:var(--card-w);
+      margin-left:auto; margin-right:auto;
+      text-align:left; box-sizing:border-box;
+      overflow-wrap:anywhere; word-break:break-word;
+    }
+    .news-card h3 a{
+      color:inherit; text-decoration:none; border-bottom:none; display:block;
+    }
+    .news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+
+    @media (max-width: 860px){
+      .news-wrap .container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+      .news-grid{
+        grid-template-columns:1fr;
+        justify-items:center;
+        width:100%;
+        margin:0; padding:0;
+      }
+      .news-card{
+        width:100%;
+        max-width:720px;
+        margin:0 auto;
+        text-align:left;
+      }
+      .news-card .thumb{ width:100%; }
+      .news-card > .meta,
+      .news-card > h3,
+      .news-card > .excerpt{ width:100%; }
+    }
+
+    .news-card{
+      list-style:none;margin:0;padding:0;background:#fff
+    }
+    .news-card .thumb{
+      position:relative;overflow:hidden;border-radius:12px;aspect-ratio:16/9;
+      background:#f2f4f6
+    }
+    .news-card .thumb a{display:block;height:100%}
+    .news-card img{
+      width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);
+      transition:transform .4s ease;
+    }
+    .news-card .thumb:hover img{transform:scale(1.05)}
+    .news-card .meta{
+      margin-top:14px;font-size:14px;color:#567;letter-spacing:.02em
+    }
+    .news-card h3{
+      margin:6px 0 8px;
+      font-size:clamp(18px,2.4vw,22px);
+      line-height:1.35;
+      color:#0E1A24;
+      font-weight:700;
+    }
+    .news-card .excerpt{color:#333;font-size:16px;line-height:1.7}
+    /* Pagination */
+    .news-pager{
+      display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px
+    }
+    .news-pager button{
+      min-width:36px;height:36px;padding:0 12px;border-radius:8px;border:1px solid #d7dbe0;
+      background:#fff;cursor:pointer;font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+      transition:background .2s,border-color .2s
+    }
+    .news-pager button[aria-current="page"]{
+      background:#0D1B2A;color:#fff;border-color:#0D1B2A
+    }
+    .news-pager button:hover{border-color:#C8A45D}
+  </style>
+
+  <section class="news-wrap">
+    <div class="container">
+      <div class="news-head">
+        <h1 class="page-title">News</h1>
+      </div>
+
+      <!-- ===== Cards (max 6 per page; auto pagination) ===== -->
+      <ul class="news-grid" id="newsList" aria-live="polite">
+        <!-- 1. Compliance Statement -->
+        <li class="news-card" data-news>
+          <div class="thumb">
+            <a href="./en_news/contactmopo.html" aria-label="Compliance Statement">
+              <img src="img/news/teineroad.jpg" alt="Compliance Statement" loading="lazy">
+            </a>
+          </div>
+          <div class="meta">August 24, 2025</div>
+          <h3><a href="./en_news/contactmopo.html">Compliance Statement</a></h3>
+          <p class="excerpt">MOPO operates in accordance with applicable laws and regulations—proper permits, employment practices, insurance coverage, and safety standards—to ensure a dependable learning experience.</p>
+        </li>
+
+        <!-- 2. Sapporo Teine Resort Guide -->
+        <li class="news-card" data-news>
+          <div class="thumb">
+            <a href="en_teine.html" aria-label="Sapporo Teine Resort Guide">
+              <img src="img/news/teine.jpg" alt="Sapporo Teine Resort Guide" loading="lazy">
+            </a>
+          </div>
+          <div class="meta">August 24, 2025</div>
+          <h3><a href="en_teine.html">Sapporo Teine Resort Guide</a></h3>
+          <p class="excerpt">Convenient access and quality snow, with a well‑equipped kids’ zone. From beginner areas to advanced challenges, it’s ideal for families and progressing riders.</p>
+        </li>
+
+        <!-- 3. Sapporo Kokusai Resort Guide -->
+        <li class="news-card" data-news>
+          <div class="thumb">
+            <a href="en_kokusai.html" aria-label="Sapporo Kokusai Resort Guide">
+              <img src="img/news/kokusai.jpg" alt="Sapporo Kokusai Resort Guide" loading="lazy">
+            </a>
+          </div>
+          <div class="meta">August 24, 2025</div>
+          <h3><a href="en_kokusai.html">Sapporo Kokusai Resort Guide</a></h3>
+          <p class="excerpt">Renowned for abundant natural snowfall, its wide runs and varied terrain balance fun and challenge—great for families and expert training alike.</p>
+        </li>
+
+        <!-- 4. Early-bird -->
+        <li class="news-card" data-news>
+          <div class="thumb">
+            <a href="en_booking.html" aria-label="Early-Bird Priority Reservations (Coming Soon)">
+              <img src="img/news/earlybird.jpg" alt="Early-Bird Priority Reservations (Coming Soon)" loading="lazy">
+            </a>
+          </div>
+          <div class="meta">August 25, 2025</div>
+          <h3><a href="en_booking.html">Early-Bird Priority Reservations (Coming Soon)</a></h3>
+          <p class="excerpt">Reserve before the season and enjoy exclusive perks. Limited slots—please book promptly once announced.</p>
+        </li>
+      </ul>
+
+      <!-- ===== Pagination (auto-generated) ===== -->
+      <nav class="news-pager" id="newsPager" aria-label="News pagination"></nav>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer (same structure; English text; en_ links) ===== -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="Sitemap">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>News</h4>
+          <ul>
+            <li><a href="en_news.html" aria-current="page">News</a></li>
+            <li><a href="en_mopo.html">About MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Lessons</h4>
+          <ul>
+            <li><a href="en_mopoindex.html#pricing">Lesson plans</a></li>
+            <li><a href="en_teine.html">Sapporo Teine</a></li>
+            <li><a href="en_kokusai.html">Sapporo Kokusai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Features</h4>
+          <ul>
+            <li><a href="en_safe.html">Safety</a></li>
+            <li><a href="en_trip.html">Travel topics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Info</h4>
+          <ul>
+            <li><a href="en_legal_tokusho.html">Company info</a></li>
+            <li><a href="en_notice.html">Application guide</a></li>
+            <li><a href="en_faq.html">FAQ</a></li>
+            <li><a href="en_mopoindex.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<div class="fab">
+  <button id="backTop" aria-label="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<!-- ✅ Shared script (topbar scroll, panels, back-to-top, etc.) -->
+<script src="common.js" defer></script>
+
+<!-- Sort + paginate (English date parser: “Month D, YYYY” and ISO fallback) -->
+<script>
+(function(){
+  const perPage = 6;
+  const list   = document.getElementById('newsList');
+  const pager  = document.getElementById('newsPager');
+  if (!list) return;
+
+  const rawItems = Array.from(list.querySelectorAll('[data-news]'));
+
+  const MONTHS = {
+    january:0,february:1,march:2,april:3,may:4,june:5,
+    july:6,august:7,september:8,october:9,november:10,december:11
+  };
+
+  function parseEnDate(text){
+    const t = text.trim();
+    // e.g., "August 24, 2025"
+    const m1 = t.match(/^([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})$/);
+    if (m1){
+      const mo = MONTHS[m1[1].toLowerCase()];
+      const d  = parseInt(m1[2],10);
+      const y  = parseInt(m1[3],10);
+      if (mo>=0) {
+        const dt = new Date(y, mo, d);
+        if (!isNaN(dt.getTime())) return dt;
+      }
+    }
+    // ISO fallback: 2025-08-24
+    const m2 = t.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+    if (m2){
+      const y = parseInt(m2[1],10), mo = parseInt(m2[2],10)-1, d = parseInt(m2[3],10);
+      const dt = new Date(y, mo, d);
+      if (!isNaN(dt.getTime())) return dt;
+    }
+    return null;
+  }
+
+  const withIndex = rawItems.map((el, idx) => ({ el, idx }));
+  withIndex.sort((a,b)=>{
+    const da = parseEnDate(a.el.querySelector('.meta')?.textContent || '') || new Date(0);
+    const db = parseEnDate(b.el.querySelector('.meta')?.textContent || '') || new Date(0);
+    if (db - da !== 0) return db - da;
+    return a.idx - b.idx;
+  });
+
+  withIndex.forEach(({el}) => list.appendChild(el));
+
+  const items = withIndex.map(x => x.el);
+  const pages = Math.ceil(items.length / perPage);
+  let current = 1;
+
+  function render(){
+    items.forEach((el, idx)=>{
+      const p = Math.floor(idx / perPage) + 1;
+      el.style.display = (p === current) ? '' : 'none';
+    });
+
+    pager.innerHTML = '';
+    if (pages <= 1) return;
+    for (let i = 1; i <= pages; i++){
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = i;
+      if (i === current) btn.setAttribute('aria-current','page');
+      btn.addEventListener('click', ()=>{
+        current = i;
+        render();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      pager.appendChild(btn);
+    }
+  }
+
+  render();
+
+  // Footer year
+  const yel = document.getElementById('year');
+  if (yel) yel.textContent = new Date().getFullYear();
+
+  // Desktop language select: keep behavior consistent with mobile links for this page
+  const sel = document.getElementById('langSelect');
+  if (sel){
+    sel.addEventListener('change', () => {
+      const v = sel.value;
+      if (v === 'ja') location.href = 'ja_news.html';
+      else if (v === 'zh-Hant') location.href = 'news.html';
+      else location.href = 'en_news.html';
+    });
+  }
+})();
+</script>
+</body>
+</html>

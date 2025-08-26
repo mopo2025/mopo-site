@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAQ | MOPO Ski School</title>
+<meta name="description" content="MOPO FAQ. Same navigation and language switcher as the homepage, mobile-optimized, single-open accordion behavior, sitemap, and quick booking.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --faq-bg:#F7F6F3;
+  --line:#cfd6d9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+
+/* ===== Topbar ===== */
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+
+/* Desktop menu */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+/* Dropdown */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none;
+  position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px;
+  box-shadow:0 18px 50px rgba(13,27,42,.10);
+  padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* Desktop language switcher */
+.lang select{
+  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a
+}
+
+/* Mobile tools */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+.mobpanel{
+  position:absolute; top:calc(100% + 8px); right:0; min-width:280px;
+  background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow);
+  padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top right; pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease; z-index:400;
+}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mob-subtitle{padding:8px 14px 6px; font-size:12px; font-weight:800; color:#777; letter-spacing:.02em; cursor:default}
+
+/* ===== Page Title ===== */
+.section{padding:72px 0}
+.section__head{display:flex; flex-direction:column; gap:12px}
+.section__head h1{
+  margin:0;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-weight:900;
+  font-size:clamp(22px,2.4vw,30px);
+  letter-spacing:.01em;
+}
+
+/* ===== PC Category (thin line nav) ===== */
+@media (min-width:1024px){
+  .catnav-wrap{max-width:1000px; margin-left:calc(280px + 36px);}
+}
+@media (max-width:1023px){
+  .catnav-wrap { max-width:1000px; margin-left:0; }
+  .catnav a .en { display:none; }
+}
+.catnav{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:10px;
+  border-bottom:1px solid var(--line);
+}
+.catnav a{
+  display:inline-flex; flex-direction:column; align-items:center; gap:6px;
+  padding:10px 6px 14px; text-decoration:none; color:#1e2b32; position:relative;
+}
+.catnav a .en{font:800 10px/1 "Montserrat",sans-serif; letter-spacing:.14em; color:#5b8f87; text-transform:uppercase}
+.catnav a .ja{font-weight:700; font-size:14px; letter-spacing:.02em}
+.catnav a::after{
+  content:""; position:absolute; left:18px; right:18px; bottom:-1px; height:2px;
+  background:#b5c6c8; transform:scaleX(0); transform-origin:left; transition:transform .22s ease, background-color .22s ease;
+}
+.catnav a:hover::after, .catnav a.active::after{ transform:scaleX(1); background:linear-gradient(90deg,var(--gold),var(--gold-2)); }
+
+/* ===== FAQ layout: sticky left + right content (PC) ===== */
+.faqwrap{background:var(--faq-bg)}
+.faq-layout{ display:grid; grid-template-columns:280px 1fr; gap:36px; align-items:start; }
+.stickycol{ position:sticky; top:96px; padding:4px 0 24px; }
+.stickycol .label{ margin:0 0 10px; font-weight:800; letter-spacing:.02em; font-size:28px; color:#0b3a32; border-bottom:2px solid rgba(0,0,0,.12); padding-bottom:8px; }
+.stickycol .sub{ margin:0 8px 12px 0; font-size:12px; color:#8a8f95; letter-spacing:.14em; text-transform:uppercase; font-weight:800; }
+.stickycol .progress{ height:2px; background:#e9e9e9; width:100%; position:relative; overflow:hidden; border-radius:2px; }
+.stickycol .progress i{ position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transition:width .18s ease; }
+
+/* Right content */
+.faqgrid{max-width:1000px; margin:0; display:grid; grid-template-columns:1fr; gap:14px}
+details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+summary::-webkit-details-marker{display:none}
+.faq-title{margin:0; font-size:18px; font-weight:800}
+.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
+.faq-body p{margin:10px 0 0 0}
+.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
+details[open] .chev{ transform:rotate(225deg) }
+
+/* ===== Mobile: section heads (EN + JA label slots preserved) ===== */
+.sec-head{display:none; margin:4px 0 12px}
+.sec-head .en{display:block; font:800 11px/1 "Montserrat",sans-serif; color:#8aa7a1; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px}
+.sec-head .ja{font:800 22px/1.2 "Noto Sans JP",sans-serif; border-bottom:2px solid rgba(0,0,0,.12); padding-bottom:8px}
+
+/* Spacer so next header peeks in when jumping */
+.section-sentinel{height:96px}
+
+/* Footer */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* Back-to-top */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* === RWD (mobile only changes) === */
+@media (max-width:1023px){
+  .faq-layout{ display:block }
+  .stickycol{ display:none }
+
+  .catnav{ border-bottom:0; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .catnav a{ padding:8px 10px; border-radius:999px; border:1px solid #ececec; background:transparent }
+  .catnav a::after{ display:none }
+  .catnav a.active, .catnav a:focus-visible{ border-color:var(--gold); box-shadow:var(--focus) }
+
+  .sec-head{ display:block; margin:0 0 1em; }
+}
+
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:56px 0}
+  .section__head h1{font-size:22px}
+  .fab{ pointer-events:none; } .fab button{ pointer-events:auto; }
+
+  /* Mobile panel size & behavior */
+  .mobpanel{
+    width:min(92vw,320px);
+    max-width:92vw;
+  }
+  .mobpanel a,.mobpanel button{white-space:nowrap}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Topbar (PC dropdown + Mobile panels) ===== -->
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="en_mopoindex.html" class="logo" aria-label="Go to homepage">MOPO Ski School</a>
+    </div>
+
+    <!-- Desktop nav -->
+    <ul class="menu" role="menubar" aria-label="Site navigation">
+      <li role="none"><a role="menuitem" href="en_news.html">News</a></li>
+      <li role="none"><a role="menuitem" href="en_mopo.html">About MOPO</a></li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="Lessons submenu">
+          <li role="none"><a role="menuitem" href="en_mopoindex.html#pricing">Lesson Plans</a></li>
+          <li class="group-title">Ski Resorts</li>
+          <li role="none"><a role="menuitem" href="en_teine.html">Sapporo Teine</a></li>
+          <li role="none"><a role="menuitem" href="en_kokusai.html">Sapporo Kokusai</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Features <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="Features submenu">
+          <li role="none"><a role="menuitem" href="en_safe.html">Safety Tips</a></li>
+          <li role="none"><a role="menuitem" href="en_trip.html">Travel Topics</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="en_faq.html">FAQ</a></li>
+      <li role="none"><a role="menuitem" href="en_booking.html">Booking</a></li>
+    </ul>
+
+    <!-- Desktop language switcher -->
+    <div class="lang">
+      <select id="langSelect" aria-label="Language select">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="en" selected>English</option>
+      </select>
+    </div>
+
+    <!-- Mobile tools -->
+    <div class="mobtools">
+      <!-- Language -->
+      <div class="mobdrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-haspopup="true" aria-expanded="false">Language</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="Language switcher">
+          <button data-lang="zh-Hant" role="menuitem">繁體中文</button>
+          <button data-lang="ja" role="menuitem">日本語</button>
+          <button data-lang="en" role="menuitem">English</button>
+        </div>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobdrop">
+        <button class="iconbtn" aria-label="Open menu" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="Mobile navigation">
+          <a href="en_news.html" role="menuitem">News</a>
+          <a href="en_mopo.html" role="menuitem">About MOPO</a>
+          <div class="mob-subtitle">Lessons</div>
+          <a href="en_mopoindex.html#pricing" role="menuitem">Lesson Plans</a>
+          <div class="mob-subtitle">Ski Resorts</div>
+          <a href="en_teine.html" role="menuitem">Sapporo Teine</a>
+          <a href="en_kokusai.html" role="menuitem">Sapporo Kokusai</a>
+          <div class="mob-subtitle">Features</div>
+          <a href="en_safe.html" role="menuitem">Safety Tips</a>
+          <a href="en_trip.html" role="menuitem">Travel Topics</a>
+          <a href="en_faq.html" role="menuitem">FAQ</a>
+          <a href="en_booking.html" role="menuitem">Booking</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Title + PC thin-line category nav -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>Frequently Asked Questions (FAQ)</h1>
+
+        <div class="catnav-wrap">
+          <nav class="catnav" id="catNav" aria-label="FAQ categories">
+            <a href="#top" class="active"><span class="en">ALL</span><span class="ja">All</span></a>
+            <a href="#sec-course"><span class="en">LESSON</span><span class="ja">Lessons</span></a>
+            <a href="#sec-gear"><span class="en">GEAR</span><span class="ja">Gear</span></a>
+            <a href="#sec-rental"><span class="en">RENTAL</span><span class="ja">Rental</span></a>
+            <a href="#sec-transport"><span class="en">TRANSPORT</span><span class="ja">Transport</span></a>
+            <a href="#sec-travel"><span class="en">TRAVEL</span><span class="ja">Travel</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body: sticky left title + right content -->
+  <section class="section faqwrap" id="top">
+    <div class="container faq-layout">
+      <!-- Left (PC) -->
+      <aside class="stickycol" aria-hidden="true">
+        <p class="sub" id="stickySub">LESSON</p>
+        <h2 class="label" id="stickyLabel">Lesson-related</h2>
+        <div class="progress"><i id="stickyProg"></i></div>
+      </aside>
+
+      <!-- Right content -->
+      <div>
+
+        <!-- Lessons -->
+        <section id="sec-course" class="faq-section" data-sub="LESSON" data-label="Lesson-related" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">LESSON</span><span class="ja">Lesson-related</span></div>
+
+          <div class="faqgrid" id="faqGrid">
+            <!-- Translated content only; structure unchanged -->
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Do you offer half-day lessons?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>We currently offer full-day lessons only. The pace is more comprehensive and both safety and quality are more consistent.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">What languages do you support?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>We support Mandarin, Cantonese, English, and Japanese for smooth communication.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Should I choose skiing or snowboarding?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Pick the one that excites you!</p>
+                <p><strong>Snowboard</strong><br>Like surfing or skateboarding—you may fall more at first, but once it clicks you can play with terrain and tricks freely.</p>
+                <p><strong>Ski</strong><br>Similar to inline or ice skating—more stable from day one, so you’ll feel the joy of sliding quickly. With progress, you can express elegant lines and precise control.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Can snowboarding and skiing be taught together in one lesson?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>No. Posture, balance, and movement mechanics differ greatly, and instructors must use the same equipment as the learner for correct demos and spotting. Mixing both in one session causes conflicting cues and reduces safety and effectiveness. Learn separately first—then practice together on the hill once the basics are in place.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">What’s included in the lesson fee?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Instructor fees are included. Lift tickets, rentals, lunch, and transportation to/from the resort are not included.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">I’m a first-timer. How many days should I book?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Day 1 is great for learning to stop safely. With 2–3 days, most learners can link stable turns and manage speed. Schedule at a comfortable pace—adding a rest day between lessons is helpful if you’re concerned about fatigue.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">What’s the maximum group size per instructor?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Up to 5 learners per instructor. For effectiveness, we recommend grouping people of similar level.</p>
+                <p>If everyone is a beginner, groups of 4 or fewer reduce waiting and increase practice time.</p>
+                <p>Children under 7 are taught one-on-one for safety and quality.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Lesson duration and meeting details?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>Duration</strong><br>Full-day lessons are <strong>about 6 hours (including a 1-hour lunch)</strong>. Your instructor will pace the day to match energy and progress. If a child is attending without a guardian, lunch time and location can be arranged in advance.</p>
+                <p><strong>Meeting point</strong><br>Usually the resort lodge or a designated meeting spot. Your instructor will reach out on the morning of the lesson and share a photo of their outfit so you can recognize them easily.</p>
+                <p><strong>Resort lesson hours</strong><br>
+                  Sapporo Teine: 09:30–15:30<br>
+                  Sapporo Kokusai: 09:30–15:30
+                </p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">From what age can kids join?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Our kids’ lessons are designed for <strong>ages 4–6 (pre-school)</strong> and are always one-on-one for safety and peace of mind.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">For kids, start with skis or a snowboard?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>We generally recommend starting with <strong>skis</strong> for younger children—fewer falls and faster wins help build confidence. Experience with inline or ice skating also translates well to skiing.</p>
+                <p>Kids who love sideways board sports may enjoy snowboarding, but for most under <strong>age 7</strong>, skiing is usually the safer, smoother start.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Any age limits or safety considerations?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>No legal age limit, but safe, enjoyable learning depends on physical condition, coordination, focus, and risk management.</p>
+                <p><strong>Suggested starting ages</strong>: <strong>4+</strong> for skiing; <strong>7+</strong> for snowboarding.</p>
+                <p><strong>Beginners aged 60–64</strong>: If you’re new to sideways sports, we recommend starting on skis. Please consult your physician; private lessons and adequate protective gear improve safety.</p>
+                <p><strong>Age 65+</strong>: Starting as a brand-new beginner may not be suitable for safety reasons. If you already have experience, we can discuss advanced, tailored options.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary>
+                <div><span class="faq-title">What if the weather or snow is bad—how are fees handled?</span></div>
+                <i class="chev" aria-hidden="true"></i>
+              </summary>
+              <div class="faq-body">
+                <p>
+                  If the resort officially suspends lift operations for the entire day due to unavoidable circumstances, we will process refunds in accordance with our
+                  <a href="en_notice.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">
+                    Cancellation & Refund Policy
+                  </a>.
+                  Please contact us if anything is unclear.
+                </p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Should I buy a lift ticket in advance?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>For first-timers, no need. We’ll recommend the most suitable ticket type based on the day’s plan.</p>
+                <p>Advanced riders who expect frequent lift use may benefit from purchasing in advance.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">Do you offer group lessons?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>For this season we focus on private lessons only. If we open group lessons in the future, we’ll announce them on our website and social channels.</p>
+              </div>
+            </details>
+
+          </div>
+        </section>
+
+        <!-- Gear -->
+        <section id="sec-gear" class="faq-section" data-sub="GEAR" data-label="Gear-related" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">GEAR</span><span class="ja">Gear-related</span></div>
+          <div class="faqgrid">
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">Can I rent equipment and outerwear?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Yes. We can refer you to on-mountain rental counters and nearby shops, and provide sizing guidance. You can rent skis/snowboard, boots, poles, plus outerwear like jackets and pants.</p>
+                <p>If instructor checks or adjustments are needed, we recommend the resort’s own rental counter for quick swaps.<br>
+                ※ For <strong>Sapporo Kokusai</strong> lessons, rentals are limited to the <strong>official on-site counter</strong>.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">Can I rent impact shorts, pads, goggles, or gloves?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>Protective gear (impact shorts, knee pads, wrist guards, etc.)</strong><br>
+                Due to hygiene and fit, we recommend bringing your own. For snowboard beginners, full protection is strongly recommended. Try on outerwear <em>with</em> pads to ensure sizing is comfortable and mobile.</p>
+                <p><strong>Goggles & gloves</strong><br>
+                Some shops rent or sell them but stock is limited—please bring your own or reserve in advance. Glasses wearers should look for <strong>OTG</strong> (Over-The-Glasses) goggles.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">Sizing tips for rentals?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Skis/board: based on height and level.<br>
+                Boots: snug to foot length without pain.<br>
+                Poles: elbows at ~90° when holding the grips.<br>
+                When in doubt, your instructor can advise on the day.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">How are ski/snowboard boots different from regular shoes?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Ski and snowboard boots connect to bindings to <strong>support your body and transmit power</strong>.</p>
+                <p><strong>Ski boots</strong>: rigid shells that firmly support the ankle/shin and lock into ski bindings.<br>
+                <strong>Snowboard boots</strong>: more flexible for bending and movement control.</p>
+                <p>Hiking shoes or sneakers cannot attach to bindings and lack required support—use proper boots for safety.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="gear">
+              <summary><div><span class="faq-title">Is a beanie enough—can I skip a helmet and pads?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>We strongly recommend helmets and they are <strong>required during lessons</strong> to protect against falls or collisions.</p>
+                <p>For snowboarding, we also recommend impact shorts, wrist guards, and knee pads—beginners commonly injure wrists and the lower back/hip area. Protective gear reduces risk and helps you learn with confidence.</p>
+              </div>
+            </details>
+
+          </div>
+        </section>
+
+        <!-- Rental -->
+        <section id="sec-rental" class="faq-section" data-sub="RENTAL" data-label="Rental-related" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">RENTAL</span><span class="ja">Rental-related</span></div>
+          <div class="faqgrid">
+
+            <details class="faqcard" data-cat="rental">
+              <summary><div><span class="faq-title">Do I need to reserve rentals in advance?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>During peak periods and weekends, please reserve in advance.</strong> On weekdays you may rent on site, but popular sizes sell out quickly—reserve ahead to be safe.</p>
+                <p>International visitors are often asked for photo ID at rental counters; bringing your passport speeds up the process.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="rental">
+              <summary><div><span class="faq-title">What’s the rental process?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Provide height/weight/foot size → try boots → select skis/board & poles → staff adjust bindings (angles/DIN) → gear check & signature.</p>
+                <p>※ For snowboard beginners, a <strong>duck stance</strong> (symmetrical angles) is often easier—ask the shop staff.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- Transport -->
+        <section id="sec-transport" class="faq-section" data-sub="TRANSPORT" data-label="Transport-related" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">TRANSPORT</span><span class="ja">Transport-related</span></div>
+          <div class="faqgrid">
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">Do you provide transportation?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>We <strong>do not</strong> provide direct transportation due to safety and insurance compliance. Some schools do, but non-compliant operations may void coverage in case of accidents.</p>
+                <p>Please use resort shuttles, public buses, or taxis. We’re happy to help check routes and timetables.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">How do I get from central Sapporo to Sapporo Teine?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>• <strong>JR</strong>: Sapporo Station → Hakodate Line to Teine Station (~15 min) → bus or taxi to the resort (~16 min).</p>
+                <p>• <strong>Bus</strong>: Direct hotel pickups operated by
+                  <a href="https://bigruns.com/" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">BIGRUNS</a>
+                  (<strong>reservation required</strong>).</p>
+                <p>• <strong>Car</strong>: ~40 min from downtown. Parking available (may fill during peak). Winter roads can be icy—snow driving experience recommended.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">How do I get from Sapporo to Onze Ski Resort?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>No-Cruz Onze sits along National Route 5 toward Otaru, ~40 min by car from central Sapporo.</p>
+                <p>Nearest IC: Sapporo–Otaru Expressway “Zenibako IC,” with quick access after exit. Free parking.</p>
+                <p>Public transit: JR from Sapporo to “Zenibako” (~20 min), then taxi (~10 min) or the resort’s free shuttle.</p>
+                <p>Enjoy sweeping views over Ishikari Bay, and night skiing runs until 23:00—one of its biggest draws.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">How do I get from central Sapporo to Mt. Moiwa Ski Resort?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>It’s a metropolitan-area resort ~30 minutes by car from downtown, with free parking.</p>
+                <p>Public transit: Subway Namboku Line from Sapporo/Odori to “Makomanai” (~20 min),</p>
+                <p>then a direct Jotetsu bus to the ski area (~20 min).</p>
+                <p>On weekends/holidays during the season, direct shuttles often run—check schedules in advance. Close to downtown yet rich in nature with varied terrain.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">How do I get from central Sapporo to Sapporo Kokusai?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>• <strong>Direct bus</strong>: from Sapporo Station (North Exit) or Odori Park (Odori Nishi 1) via the
+                  <a href="https://www.jotetsu.co.jp/bus/ski_bus/kokusai_ski.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">Sapporo Kokusai Ski Line</a>
+                  (~90 min / <strong>reservation required</strong>).</p>
+                <p>• <strong>Car</strong>: ~2 hr 15 min from downtown (weather dependent). Recommended only for drivers with ample winter experience.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="transport">
+              <summary><div><span class="faq-title">How do I get from central Sapporo to Rusutsu?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>• <strong>Bus</strong>: Direct services from Sapporo Station / New Chitose Airport (~2.5 hr / <strong>reservation required</strong>), e.g.,
+                  <a href="https://bigruns.com/" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">BIGRUNS</a>.
+                </p>
+                <p>• <strong>Car</strong>: ~2 hr 15 min from downtown (conditions vary with weather). Recommended only for experienced winter drivers.</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- Travel -->
+        <section id="sec-travel" class="faq-section" data-sub="TRAVEL" data-label="Travel-related" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">TRAVEL</span><span class="ja">Travel-related</span></div>
+          <div class="faqgrid">
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">What else should I see and do besides skiing?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>Add some city strolls and scenic stops after riding:</p>
+                <p>• <strong>Near Sapporo Teine</strong>: Head back downtown for Odori Park, museums, and Shiroi Koibito Park. In <strong>February</strong>, the <strong>Sapporo Snow Festival</strong> is a must.</p>
+                <p>• <strong>Near Sapporo Kokusai</strong>: Walk the <strong>Otaru Canal</strong> and Sakaimachi Street for sweets and souvenirs. For night views, try <strong>Mt. Tengu</strong>.</p>
+                <p>• <strong>Near Rusutsu</strong>: Soak with lake views at <strong>Toya Onsen</strong>; on clear days, <strong>Showa-Shinzan</strong> and the <strong>Usuzan Ropeway</strong> offer superb vistas.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">When is the ski season?</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>Typical Hokkaido season</strong>: <strong>late Nov – early Apr</strong>. Higher resorts may run into <strong>May</strong>.</p>
+                <p><strong>Nov–early Dec</strong> snowfall can be inconsistent; lower resorts may open intermittently. For reliable conditions, plan your visit by <strong>early April</strong>.</p>
+                <p><strong>After April</strong>, only some higher resorts operate and terrain trends more intermediate/advanced (some short hikes may be needed).</p>
+                <p><strong>Spring</strong> snow is softer and slower—great for relaxed cruising with gentler falls.</p>
+                <p>Check our website and IG / FB / Threads / X for the latest snow and lesson information.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">Onsen near Sapporo (1): Jozankei Onsen</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>Jozankei</strong> lies in Sapporo’s Minami Ward, nestled in snowy valleys within Shikotsu-Toya National Park—perfect winter healing.</p>
+                <p>The chloride springs help ease muscle fatigue and warm cold hands and feet. Outdoor baths offer magical snowfall views.</p>
+                <p>Footbaths and historic spots dot the area, and <strong>Sapporo Kokusai</strong> is ~20 minutes by car for premium powder.</p>
+                <p>Ride Kokusai by day, then stay in Jozankei and unwind in a snowy open-air bath at night—peak winter vibes.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">Onsen near Sapporo (2): Teine Onsen</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>Teine Onsen</strong> sits at the foot of Mt. Teine in Sapporo’s Nishi Ward. It’s a local, day-use style spot rather than a hot-spring town.</p>
+                <p>The gentle simple springs warm you through and ease post-ride fatigue. Winter views toward Mt. Teine are simple but refreshing.</p>
+                <p>Best for drivers: ski Sapporo Teine in the morning, soak on the way back, then return to your lodging relaxed.</p>
+              </div>
+            </details>
+
+            <details class="faqcard" data-cat="travel">
+              <summary><div><span class="faq-title">Onsen near Sapporo (3): Koganeyu Onsen</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p><strong>Koganeyu</strong> is a small, quiet onsen ~10 minutes by car from Jozankei, with origins back to the Meiji era and a nature-wrapped atmosphere.</p>
+                <p>Simple sulfur springs leave skin silky and help with fatigue and relaxation; winter baths in the snowy valley are delightful.</p>
+                <p>There are only a few inns, but the vibe is warm and calm. Close to Sapporo, great for a day trip or a quiet overnight.</p>
+              </div>
+            </details>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="Sitemap">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+        <div>
+          <h4>News</h4>
+          <ul>
+            <li><a href="en_news.html">News</a></li>
+            <li><a href="en_mopo.html">About MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Lessons</h4>
+          <ul>
+            <li><a href="en_mopoindex.html#pricing">Lesson Fees</a></li>
+            <li><a href="en_teine.html">Sapporo Teine</a></li>
+            <li><a href="en_kokusai.html">Sapporo Kokusai</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Features</h4>
+          <ul>
+            <li><a href="en_safe.html">Safety Knowledge</a></li>
+            <li><a href="en_trip.html">Travel Topics</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Info</h4>
+          <ul>
+            <li><a href="en_legal_tokusho.html">Company Info</a></li>
+            <li><a href="en_notice.html">Terms & Policy</a></li>
+            <li><a href="en_faq.html">FAQ</a></li>
+            <li><a href="en_mopoindex.html#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px; flex-wrap:wrap; gap:10px;">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<!-- Back-to-top -->
+<div class="fab">
+  <button id="backTop" aria-label="Back to top">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+/* Year */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* Mobile: language panel */
+(function(){
+  const btn = document.getElementById('mobLangBtn');
+  const panel = document.getElementById('mobLangPanel');
+  if(!btn || !panel) return;
+
+  function closeAll(){ panel.classList.remove('show'); btn.setAttribute('aria-expanded','false'); }
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const show = !panel.classList.contains('show');
+    document.querySelectorAll('.mobpanel.show').forEach(p=>p.classList.remove('show'));
+    panel.classList.toggle('show', show);
+    btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+  });
+
+  panel.addEventListener('click', (e)=>{
+    const b = e.target.closest('button[data-lang]');
+    if(!b) return;
+    changeLang(b.dataset.lang);
+  });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
+})();
+
+/* Mobile: nav panel */
+(function(){
+  const btn = document.getElementById('mobNavBtn');
+  const panel = document.getElementById('mobNavPanel');
+  if(!btn || !panel) return;
+
+  function closeAll(){ panel.classList.remove('show'); }
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const show = !panel.classList.contains('show');
+    document.querySelectorAll('.mobpanel.show').forEach(p=>p.classList.remove('show'));
+    panel.classList.toggle('show', show);
+  });
+
+  panel.addEventListener('click', (e)=>{
+    const link = e.target.closest('a');
+    if(link){ panel.classList.remove('show'); }
+  });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
+})();
+
+/* Desktop: language select */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+function changeLang(lang){
+  const map = {'zh-Hant':'faq.html','ja':'ja_faq.html','en':'en_faq.html'};
+  window.location.href = map[lang] || 'en_faq.html';
+}
+
+/* PC-only active state for top category nav */
+(function(){
+  const nav = document.getElementById('catNav');
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  const secs = links.map(a=> document.querySelector(a.getAttribute('href')) ).filter(Boolean);
+
+  // Smooth scroll (PC/Mobile)
+  links.forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  const isDesktop = window.matchMedia('(min-width:1024px)').matches;
+
+  if(!isDesktop){
+    // On mobile, de-emphasize (no active)
+    links.forEach(a=> a.classList.remove('active'));
+    return;
+  }
+
+  // Observe and update active (PC)
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(ent=>{
+      if(ent.isIntersecting){
+        links.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === `#${ent.target.id}`));
+      }
+    });
+  }, {root:null, threshold:0.5});
+  secs.forEach(s=> io.observe(s));
+})();
+
+/* FAQ: keep only one <details> open at a time */
+(function singleOpenFAQ(){
+  document.addEventListener('click', (e)=>{
+    const sum = e.target.closest('summary'); if(!sum) return;
+    const cur = sum.parentElement;
+    requestAnimationFrame(()=>{
+      if(cur.open){
+        document.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+      }
+    });
+  });
+  document.addEventListener('toggle', (e)=>{
+    const d = e.target;
+    if(d.tagName.toLowerCase()!=='details' || !d.open) return;
+    document.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
+  }, true);
+})();
+
+/* Back to top */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* Sticky left label switcher (PC only) */
+(function(){
+  if (window.matchMedia('(max-width:1023px)').matches) return;
+
+  const sections = Array.from(document.querySelectorAll('.faq-section'));
+  const stickyLabel = document.getElementById('stickyLabel');
+  const stickySub   = document.getElementById('stickySub');
+  const stickyProg  = document.getElementById('stickyProg');
+
+  let current = sections[0];
+
+  function pickCurrentSection(){
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const focusY = vh * 0.25;
+    let candidate = sections[0];
+    for(const sec of sections){
+      const r = sec.getBoundingClientRect();
+      if(r.top <= focusY) candidate = sec;
+    }
+    return candidate;
+  }
+
+  function updateLabels(next){
+    if(next === current) return;
+    current = next;
+    stickyLabel.textContent = current.dataset.label || '';
+    stickySub.textContent   = current.dataset.sub   || '';
+  }
+
+  function updateProgress(){
+    const r = current.getBoundingClientRect();
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const focusY = vh * 0.25;
+    const start = Math.min(Math.max(focusY - r.top, 0), Math.max(r.height,1));
+    const ratio = Math.min(Math.max(start / Math.max(r.height,1), 0), 1);
+    stickyProg.style.width = (ratio*100)+'%';
+  }
+
+  function onScroll(){
+    const next = pickCurrentSection();
+    updateLabels(next);
+    updateProgress();
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
+})();
+
+/* Topbar hide on scroll down, show on up */
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide');
+    } else {
+      topbar.classList.remove('hide');
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

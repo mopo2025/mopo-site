@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FAQ｜MOPO 滑雪學校</title>
+<meta name="description" content="MOPO FAQ 常見問題。與首頁相同的導覽與語言切換、行動裝置最佳化、一次只開啟一個的手風琴、網站地圖與快速預約。">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --faq-bg:#F7F6F3;
+  --line:#cfd6d9;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+
+/* ===== Topbar（既存） ===== */
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+
+/* 桌面選單（既存） */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+/* 下拉（既存） */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none;
+  position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px;
+  box-shadow:0 18px 50px rgba(13,27,42,.10);
+  padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* 桌面語言切換（既存） */
+.lang select{
+  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a
+}
+
+/* 行動工具（恢復可展開面板） */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+.mobpanel{
+  position:absolute; top:calc(100% + 8px); right:0; min-width:280px;
+  background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow);
+  padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top right; pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease; z-index:400;
+}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mob-subtitle{padding:8px 14px 6px; font-size:12px; font-weight:800; color:#777; letter-spacing:.02em; cursor:default}
+
+/* ===== 頁面標題 ===== */
+.section{padding:72px 0}
+.section__head{display:flex; flex-direction:column; gap:12px}
+.section__head h1{
+  margin:0;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-weight:900;
+  font-size:clamp(22px,2.4vw,30px);
+  letter-spacing:.01em;
+}
+
+/* ===== PC 類別（細線導覽） ===== */
+@media (min-width:1024px){
+  .catnav-wrap{max-width:1000px; margin-left:calc(280px + 36px);}
+}
+@media (max-width:1023px){
+  .catnav-wrap { max-width:1000px; margin-left:0; }
+  .catnav a .en { display:none; }
+}
+.catnav{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:10px;
+  border-bottom:1px solid var(--line);
+}
+.catnav a{
+  display:inline-flex; flex-direction:column; align-items:center; gap:6px;
+  padding:10px 6px 14px; text-decoration:none; color:#1e2b32; position:relative;
+}
+.catnav a .en{font:800 10px/1 "Montserrat",sans-serif; letter-spacing:.14em; color:#5b8f87; text-transform:uppercase}
+.catnav a .ja{font-weight:700; font-size:14px; letter-spacing:.02em}
+.catnav a::after{
+  content:""; position:absolute; left:18px; right:18px; bottom:-1px; height:2px;
+  background:#b5c6c8; transform:scaleX(0); transform-origin:left; transition:transform .22s ease, background-color .22s ease;
+}
+.catnav a:hover::after, .catnav a.active::after{ transform:scaleX(1); background:linear-gradient(90deg,var(--gold),var(--gold-2)); }
+
+/* ===== FAQ 版面：左黏附標題 + 右內容（PC） ===== */
+.faqwrap{background:var(--faq-bg)}
+.faq-layout{ display:grid; grid-template-columns:280px 1fr; gap:36px; align-items:start; }
+.stickycol{ position:sticky; top:96px; padding:4px 0 24px; }
+.stickycol .label{ margin:0 0 10px; font-weight:800; letter-spacing:.02em; font-size:28px; color:#0b3a32; border-bottom:2px solid rgba(0,0,0,.12); padding-bottom:8px; }
+.stickycol .sub{ margin:0 8px 12px 0; font-size:12px; color:#8a8f95; letter-spacing:.14em; text-transform:uppercase; font-weight:800; }
+.stickycol .progress{ height:2px; background:#e9e9e9; width:100%; position:relative; overflow:hidden; border-radius:2px; }
+.stickycol .progress i{ position:absolute; left:0; top:0; bottom:0; width:0%; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transition:width .18s ease; }
+
+/* 右側內容（原內文） */
+.faqgrid{max-width:1000px; margin:0; display:grid; grid-template-columns:1fr; gap:14px}
+details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
+summary::-webkit-details-marker{display:none}
+.faq-title{margin:0; font-size:18px; font-weight:800}
+.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
+.faq-body p{margin:10px 0 0 0}
+.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
+details[open] .chev{ transform:rotate(225deg) }
+
+/* ===== 行動版：每區塊標題（英文＋中文） ===== */
+.sec-head{display:none; margin:4px 0 12px}
+.sec-head .en{display:block; font:800 11px/1 "Montserrat",sans-serif; color:#8aa7a1; letter-spacing:.14em; text-transform:uppercase; margin-bottom:6px}
+.sec-head .ja{font:800 22px/1.2 "Noto Sans JP",sans-serif; border-bottom:2px solid rgba(0,0,0,.12); padding-bottom:8px}
+
+/* 讓切換時能看見下一個標題一點點空間 */
+.section-sentinel{height:96px}
+
+/* Footer（既存） */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* Back-to-top */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* === RWD（只動手機區） === */
+@media (max-width:1023px){
+  .faq-layout{ display:block }
+  .stickycol{ display:none }
+
+  .catnav{ border-bottom:0; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .catnav a{ padding:8px 10px; border-radius:999px; border:1px solid #ececec; background:transparent }
+  .catnav a::after{ display:none }
+  .catnav a.active, .catnav a:focus-visible{ border-color:var(--gold); box-shadow:var(--focus) }
+
+  .sec-head{ display:block; margin:0 0 1em; }
+}
+
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:56px 0}
+  .section__head h1{font-size:22px}
+  .fab{ pointer-events:none; } .fab button{ pointer-events:auto; }
+
+  /* 手機面板尺寸與行為 */
+  .mobpanel{
+    width:min(92vw,320px);
+    max-width:92vw;
+  }
+  .mobpanel a,.mobpanel button{white-space:nowrap}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Topbar（PC 下拉 + 手機面板） ===== -->
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
+    </div>
+
+    <!-- 桌面導覽（不變） -->
+    <ul class="menu" role="menubar" aria-label="網站導覽">
+      <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
+      <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">課程 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="課程子選單">
+          <li role="none"><a role="menuitem" href="index.html#pricing">課程方案</a></li>
+          <li class="group-title">滑雪場介紹</li>
+          <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
+          <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="主題文章子選單">
+          <li role="none"><a role="menuitem" href="safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
+      <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+    </ul>
+
+    <!-- 桌面語言切換（不變） -->
+    <div class="lang">
+      <select id="langSelect" aria-label="語言選擇">
+        <option value="zh-Hant" selected>繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <!-- 行動工具（修復：可展開面板） -->
+    <div class="mobtools">
+      <!-- 語言切換 -->
+      <div class="mobdrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-haspopup="true" aria-expanded="false">語言</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言切換">
+          <button data-lang="zh-Hant" role="menuitem">繁體中文</button>
+          <button data-lang="ja" role="menuitem">日本語</button>
+          <button data-lang="en" role="menuitem">English</button>
+        </div>
+      </div>
+
+      <!-- 側邊選單 -->
+      <div class="mobdrop">
+        <button class="iconbtn" aria-label="開啟選單" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動導覽">
+          <a href="news.html" role="menuitem">最新消息</a>
+          <a href="mopo.html" role="menuitem">關於 MOPO</a>
+          <div class="mob-subtitle">滑雪課程</div>
+          <a href="index.html#pricing" role="menuitem">課程與價格</a>
+          <div class="mob-subtitle">滑雪場介紹</div>
+          <a href="teine.html" role="menuitem">札幌手稻</a>
+          <a href="kokusai.html" role="menuitem">札幌國際</a>
+          <div class="mob-subtitle">主題文章</div>
+          <a href="safe.html" role="menuitem">安全知識</a>
+          <a href="trip.html" role="menuitem">觀光主題</a>
+          <a href="faq.html" role="menuitem">常見問題</a>
+          <a href="booking.html" role="menuitem">預約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 上段：標題 + PC 細線類別 -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <h1>常見問題（FAQ）</h1>
+
+        <div class="catnav-wrap">
+          <nav class="catnav" id="catNav" aria-label="FAQ 類別">
+            <a href="#top" class="active"><span class="en">ALL</span><span class="ja">全部</span></a>
+            <a href="#sec-course"><span class="en">LESSON</span><span class="ja">課程相關</span></a>
+            <a href="#sec-gear"><span class="en">GEAR</span><span class="ja">裝備相關</span></a>
+            <a href="#sec-rental"><span class="en">RENTAL</span><span class="ja">租借相關</span></a>
+            <a href="#sec-transport"><span class="en">TRANSPORT</span><span class="ja">交通相關</span></a>
+            <a href="#sec-travel"><span class="en">TRAVEL</span><span class="ja">旅行相關</span></a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 本文：左黏附標題 + 右內容（內文與連結不變） -->
+  <section class="section faqwrap" id="top">
+    <div class="container faq-layout">
+      <!-- 左：黏附標題（PC） -->
+      <aside class="stickycol" aria-hidden="true">
+        <p class="sub" id="stickySub">LESSON</p>
+        <h2 class="label" id="stickyLabel">課程相關</h2>
+        <div class="progress"><i id="stickyProg"></i></div>
+      </aside>
+
+      <!-- 右：內容 -->
+      <div>
+
+        <!-- 課程 -->
+        <section id="sec-course" class="faq-section" data-sub="LESSON" data-label="課程相關" tabindex="-1">
+          <div class="section-sentinel" aria-hidden="true"></div>
+          <div class="sec-head" aria-hidden="true"><span class="en">LESSON</span><span class="ja">課程相關</span></div>
+
+          <div class="faqgrid" id="faqGrid">
+            <!-- 以下內文保持不變（僅翻譯） -->
+              <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">是否提供半天課？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>目前僅提供「全日」課程，教學節奏更完整，安全與品質也更穩定。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">可使用哪些語言？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>提供中文／廣東話／英文／日文服務，溝通順暢無障礙。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">單板雙板如何選擇？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>你喜歡哪一種，就選那一種就對了！</p>
+            <p><strong>單板（Snowboard）</strong><br>像衝浪或滑板，初學時可能會多摔幾次，但學會後自由度高，可以盡情挑戰各種地形與花式動作。</p>
+            <p><strong>雙板（Ski）</strong><br>像直排輪或溜冰，初學就能滑得穩、滑得順，能很快享受滑行的樂趣，進階後還能展現優雅線條與精準控制。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">單板和雙板可以一起上課嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>單板和雙板的姿勢、平衡、動作原理完全不同，教練必須使用與學員相同的器材才能正確示範與指導。</p>
+    <p>若混在同一堂課，動作口令會互相衝突，且教練無法同時在正確時機給到保護與修正，因此必須分開上課。/p>
+  <p>各自先學好技巧，再一起去雪道練習，進步更快也更安全。/p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">課程費用包含哪些？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>課程價格包含教練授課費用。雪票（纜車費）、雪具租借、午餐及雪場交通等項目則需自理。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">第一次滑雪，應該安排幾天課程比較好？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>一天課程適合體驗滑雪並學會安全停下；</p>
+    <p>若想在雪道上更穩定地轉彎、控制速度並享受滑行樂趣，建議安排二至三天課程。</p>
+    <p>如果平時運動較少，或擔心體力負擔，可以在課程中間安排休息日，既保留學習的連續性，也讓身體有時間恢復。</p>
+    <p>一多數完成三天課程的學員，能在初級雪道上更穩定滑行，摔倒次數也會比第一天明顯減少；</p>
+    <p>而安排四至五天的學員，通常能挑戰更多雪道與不同地形，並在速度與姿勢控制上更有信心。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">每位教練最多可帶幾位學員？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>每位教練的授課人數上限為 5 人，為確保學習效果，建議學員程度相近。</p>
+            <p>若全部為初學者，建議 4 人以內，能減少等待時間並提升學習體驗。</p>
+            <p>7 歲以下兒童採一對一教學，以確保安全與教學品質。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">上課時間與集合方式？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p><strong>課程時長</strong></p>
+             <p>全天課程：約 6 小時（含 1 小時午餐休息）</p>
+  <p>＊教練會依學員狀況調整內容與進度，確保學習效果。</p>
+  <p>＊若小朋友單獨上課，家長可事先與教練約定午餐地點與時間。</p>
+            <p><strong>集合方式</strong></p>
+         <p>通常在雪場大廳或是雪場指定地點集合，並於當天早上與學員聯繫。</p>
+   <p>當天會提供教練穿著照片，方便辨認。</p>
+            <p><strong>各滑雪場上課時間</strong></p>
+            <p>手稻滑雪場：09:30–15:30</p>
+             <p>札幌國際滑雪場：09:30–15:30</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">小朋友幾歲可以參加課程？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>我們的兒童滑雪課程適用於 4 歲至未滿 7 歲的學齡前兒童，並採一對一授課，以保障安全與教學品質。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">小朋友該先學單板還是雙板？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>對年幼初學者而言，雙板較容易入門，摔倒次數也會減少，有助於提升興趣與自信心。</p>
+            <p>如果孩子有直排輪或溜冰的經驗，學雙板會更順利。喜歡滑板等橫向運動的孩子，也可以考慮單板。</p>
+   <p>不過，由於 7 歲以下的肌肉與協調性仍在發展階段，我們通常建議先從雙板學起。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">是否有年齡限制或安全注意事項？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>滑雪沒有法律上的年齡限制，理論上任何年齡都能嘗試，但能否安全學習並有良好成效，取決於體能狀況、協調性、專注力以及對安全風險的管理。</p>
+            <p>建議起始年齡：雙板 4 歲以上；單板 7 歲以上較理想。</p>
+            <p>60～64 歲初學者：除非長期板類運動經驗，建議先由雙板開始並採一對一教學、完整護具。</p>
+            <p>65 歲以上：本校不提供初學課，進階可洽詢。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary>
+            <div><span class="faq-title">若遇天候或雪況不佳，課程費用如何處理？</span></div>
+            <i class="chev" aria-hidden="true"></i>
+          </summary>
+          <div class="faq-body">
+            <p>
+              若因雪場公告纜車全日關閉並暫停營運等不可抗力情況，導致您無法參加課程，將依本校
+              <a href="notice.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">
+                取消與退款政策
+              </a>
+          之例外規定辦理退款。
+            </p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">雪票需要事先購買嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>剛開始學習的學員不需要事先購買雪票，教練會依當天的學員狀況與課程安排，建議最適合的雪票種類。</p>
+            <p>已經是進階學員（需要頻繁搭乘纜車的情況下）則可以考慮提前購買，以節省上課時間。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="course">
+          <summary><div><span class="faq-title">有團體課程嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>MOPO 本季僅提供私人課程。若未來開設團體課程，我們會在官網與社群平台公告，敬請關注最新消息</p>
+          </div>
+        </details>
+
+
+      </div>
+    </section>
+
+    <!-- 裝備 -->
+    <section id="sec-gear" class="faq-section" data-sub="GEAR" data-label="裝備相關" tabindex="-1">
+      <div class="section-sentinel" aria-hidden="true"></div>
+      <div class="sec-head" aria-hidden="true"><span class="en">GEAR</span><span class="ja">裝備相關</span></div>
+      <div class="faqgrid">
+        <details class="faqcard" data-cat="gear">
+          <summary><div><span class="faq-title">滑雪裝備和雪衣雪褲可以租借嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>可以。我們會提供雪場直營與附近租借店家的清單與尺寸建議，方便您租借滑雪板、雪靴、雪杖等裝備做參考，以及雪衣、雪褲等防寒服飾。您也可以自備個人裝備。</p>
+            <p>但需要教練親自確認的話則是各雪場的直營店（因為能夠確認問題後馬上更換）。</p>
+   <p>＊札幌國際的課程僅限使用札幌國際雪場的租借櫃檯。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="gear">
+          <summary><div><span class="faq-title">防摔褲、護具、雪鏡、手套可以租借嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p><strong>＊防摔褲、護膝、護腕等防摔用品</strong></p>
+            <p>這些屬於貼身的私人物品，基於衛生與合身考量，建議自備，並可在滑雪或滑板用品店購買。特別是學習單板的學員，我們強烈建議事先準備好完整防摔裝備。購買或租用雪衣、雪褲前，最好先確認防摔用品的尺寸，以避免雪服過緊或穿著不適。</p>
+            <p><strong>雪鏡與手套</strong></p>
+          <p>部分租借店家會提供租借或販售，但數量有限，建議自備或提前預約。需要戴眼鏡的學員，可選擇專為眼鏡設計的雪鏡（標示「OTG」款式），租借或購買前可先詢問確認。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="gear">
+          <summary><div><span class="faq-title">雪具租借的尺寸如何選擇？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>教練可協助建議：板長依身高程度、靴以腳長貼合不壓迫、杖長手肘約 90 度為佳。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="gear">
+          <summary><div><span class="faq-title">一般鞋與滑雪靴差在哪？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>雪靴是專門搭配滑雪板的專用鞋，分為單板雪靴與雙板雪靴兩種。</p>
+            <p><strong>雙板雪靴（Ski Boots）</strong>：硬殼結構，與固定器連結，提供支撐與力量傳導。<br>
+            <strong>單板雪靴（Snowboard Boots）</strong>：較軟，有彈性，方便做出彎曲與動作控制。</p>
+            <p>一般的登山鞋、球鞋無法用於滑雪，因為無法固定在滑雪板上，也不能提供足夠的支撐與防護。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="gear">
+          <summary><div><span class="faq-title">滑雪可以只戴毛帽，不戴安全帽或護具嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>MOPO 強烈建議滑雪時全程佩戴安全帽，上課時教練也會要求學員配戴。</p>
+            <p>安全帽能有效保護頭部，避免因跌倒或被他人撞擊而受傷，是滑雪時最重要的防護裝備之一。</p>
+   <p>單板學員建議加上防摔褲、護腕、護膝等護具。多年教學經驗顯示，單板初學者最容易受傷的部位是手部、臀部與背部。正確穿戴防護裝備，不僅能降低受傷風險，也能讓學習更安心、更有自信。</p>
+<p>安全是 MOPO 最重視的課程要點，一起安全地滑雪，才能有更多、更持續的進步與成長。</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- 租借 -->
+    <section id="sec-rental" class="faq-section" data-sub="RENTAL" data-label="租借相關" tabindex="-1">
+      <div class="section-sentinel" aria-hidden="true"></div>
+      <div class="sec-head" aria-hidden="true"><span class="en">RENTAL</span><span class="ja">租借相關</span></div>
+      <div class="faqgrid">
+
+        <details class="faqcard" data-cat="rental">
+  <summary><div><span class="faq-title">租雪具要先預約嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+  <div class="faq-body">
+    <p><strong>旺季或假日建議先預約</strong>。平日現場通常租得到，但熱門尺寸很快就會被租光；如果想保險一點，提前預約最安心。</p>
+    <p>外國旅客租用時常會被要求看證件，建議隨身帶護照，這樣手續會快很多。</p>
+  </div>
+</details>
+
+        <details class="faqcard" data-cat="rental">
+          <summary><div><span class="faq-title">租借流程是什麼？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>告知身高／體重／腳長 → 試穿靴子 → 選板與雪杖 → 店員調整固定器（角度／DIN） → 裝備確認與簽名。</p>
+            <p>※ 單板初學者多以<strong>DUCK 站姿</strong>（左右對稱角度）在練習時會更有效率喔。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 交通 -->
+    <section id="sec-transport" class="faq-section" data-sub="TRANSPORT" data-label="交通相關" tabindex="-1">
+      <div class="section-sentinel" aria-hidden="true"></div>
+      <div class="sec-head" aria-hidden="true"><span class="en">TRANSPORT</span><span class="ja">交通相關</span></div>
+      <div class="faqgrid">
+        <details class="faqcard" data-cat="transport">
+          <summary><div><span class="faq-title">是否提供接送服務？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>為了讓您的行程安全又安心，我們依日本相關法規，不直接提供接送服務。</p>
+            <p>雖然有些學校可能會提供，但若方式不符規範，發生事故時保險可能無法理賠。</p>
+      <p>建議您搭乘雪場接駁巴士、路線巴士或計程車等安全方式，我們也可協助查詢路線與時刻表，讓您安排行程更輕鬆。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="transport">
+          <summary><div><span class="faq-title">如何從札幌市區前往手稻滑雪場？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>• <strong>JR 電車</strong>：札幌站搭函館本線至手稻站（約 15 分鐘），再轉乘巴士或計程車至雪場（約 16 分鐘）。</p>
+            <p>• <strong>巴士</strong>：札幌市內多處飯店設有直達接駁巴士
+              <a href="https://bigruns.com/" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">BIGRUNS</a>
+              ，<strong>需提前預約。</strong>。</p>
+            <p>• <strong>自駕</strong>：從札幌市車程約 40 分鐘，雪場備有停車場（旺季容易客滿）。冬季道路易結冰，建議具雪地駕駛經驗者再行駕駛。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="transport">
+          <summary><div><span class="faq-title">如何從札幌前往 Onze 滑雪場？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>ONZE滑雪場位於札幌中心往小樽方向的國道 5 號沿線，自駕約 40 分可達。</p>
+            <p>最近的交流道為札樽自動車道「銭函 IC」，下交流道即可抵達；停車免費。</p>
+            <p>大眾運輸：JR 札幌站搭函館本線至「銭函站」約 20 分，轉乘計程車約 10 分，或搭乘滑雪場免費接駁巴士。</p>
+            <p>雪道可眺望石狩灣景緻，且特別的是ONZE滑雪場夜滑營業至 23:00。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="transport">
+          <summary><div><span class="faq-title">如何從札幌市區前往札幌藻岩山滑雪場？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>札幌藻岩山滑雪場為都會近郊型雪場，駕約 30 分即可抵達，停車免費。</p>
+            <p>大眾運輸：自札幌站或大通站搭札幌市營地鐵南北線至「真駒內站」（約 20 分）。</p>
+            <p>轉乘直達滑雪場的路線巴士（じょうてつ巴士）約 20 分。</p>
+            <p>雪季的週末與假日多有市區直達接駁巴士，建議事先確認時刻表。</p>
+            <p>距離市區近、自然豐富，擁有多樣化雪道是其魅力。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="transport">
+          <summary><div><span class="faq-title">如何從札幌市區前往札幌國際滑雪場？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>• <strong>巴士</strong>：自札幌站北口或大通公園（大通西1）搭乘
+              <a href="https://www.jotetsu.co.jp/bus/ski_bus/kokusai_ski.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">札幌國際滑雪場線</a>
+              （約 90 分／<strong>需提前預約</strong>）。</p>
+            <p>• <strong>自駕</strong>：從札幌市區約90分鐘車程，路況依天氣變化，建議冬季駕駛經驗充足者再自駕。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="transport">
+          <summary><div><span class="faq-title">如何從札幌市區前往留壽都滑雪場？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>• <strong>巴士</strong>：札幌站／新千歲機場有直達巴士（約 2.5 小時／<strong>需預約</strong>），例如：
+              <a href="https://bigruns.com/" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline;">BIGRUNS</a>
+            </p>
+            <p>• <strong>自駕</strong>：市中心約 2 小時 15 分。天候影響路況，建議具雪地駕駛經驗者自駕。</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 旅行 -->
+    <section id="sec-travel" class="faq-section" data-sub="TRAVEL" data-label="旅行相關" tabindex="-1">
+      <div class="section-sentinel" aria-hidden="true"></div>
+      <div class="sec-head" aria-hidden="true"><span class="en">TRAVEL</span><span class="ja">旅行相關</span></div>
+      <div class="faqgrid">
+        <details class="faqcard" data-cat="travel">
+          <summary><div><span class="faq-title">滑雪以外的周邊觀光推薦？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p>滑行後也別錯過城市散步與絕景。</p>
+            <p>• <strong>札幌 Teine 周邊</strong>：返回市中心逛大通公園、美術館、白色戀人公園。<strong>2 月</strong>推薦<strong>札幌雪祭</strong>。</p>
+            <p>• <strong>札幌國際周邊</strong>：漫遊<strong>小樽運河</strong>與堺町通甜點／伴手禮。夜景推薦<strong>天狗山展望台</strong>。</p>
+            <p>• <strong>Rusutsu 周邊</strong>：在<strong>洞爺湖溫泉</strong>享受湖景湯浴；<strong>昭和新山</strong>與<strong>有珠山纜車</strong>晴天視野極佳。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="travel">
+          <summary><div><span class="faq-title">滑雪季是什麼時候？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p><strong>北海道一般雪季</strong>為<strong>11 月下旬至翌年 4 月初</strong>。高海拔雪場有時可滑至<strong>5 月</strong>。</p>
+            <p><strong>11 月〜12 月初</strong>降雪不穩、低海拔雪場營業可能暫停營業。若想更安心，建議在<strong>4 月初</strong>前到訪。</p>
+            <p><strong>4 月以後</strong>僅部分高海拔雪場營業，地形多偏中高級。</p>
+            <p><strong>春季</strong>雪質偏軟、速度較慢，適合悠閒滑行（跌倒衝擊也較小）。</p>
+            <p>最新雪況與課程資訊請關注官網與 IG / FB / Threads / X 更新。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="travel">
+          <summary><div><span class="faq-title">札幌近郊溫泉介紹（一）：定山溪溫泉</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p><strong>定山溪溫泉</strong>位於札幌市南區，座落於被白雪覆蓋的峽谷，冬季最適合療癒身心。</p>
+            <p>泉質為氯化物泉，可舒緩肌肉疲勞、改善手腳冰冷。冬季露天池可一邊欣賞飄雪，體驗「雪見風呂」。</p>
+            <p>溫泉街有定山源泉公園足湯、1866 年由美泉定山開湯的歷史景點。開車約 20 分可到札幌國際滑雪場，粉雪品質佳。</p>
+            <p>上午在札幌國際滑雪，傍晚回定山溪住宿，在雪景圍繞的露天風呂療癒身心，享受冬季一泊旅。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="travel">
+          <summary><div><span class="faq-title">札幌近郊溫泉介紹（二）：手稻溫泉</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p><strong>手稻溫泉</strong>位於札幌市西區手稻山麓，屬都市近郊型溫泉。無定山溪般的旅館街，多為當地人與滑雪後的旅客作為日歸泡湯據點。</p>
+            <p>泉質為溫和的單純泉，能溫暖冰冷身體、緩解滑行疲勞。露天風呂可眺望冬日手稻山，輕鬆且開闊。</p>
+          
+            <p>大眾運輸較受限，推薦自駕者前往。早上在札幌手稻滑雪場滑雪，回程泡湯再返住宿地最舒適。</p>
+          </div>
+        </details>
+
+        <details class="faqcard" data-cat="travel">
+          <summary><div><span class="faq-title">札幌近郊溫泉介紹（三）：小金湯溫泉</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <div class="faq-body">
+            <p><strong>小金湯溫泉</strong>距離定山溪車程僅約 10 分，規模小巧、氣氛靜謐。自明治初期開湯，環境被自然包圍。</p>
+            <p>泉質為單純硫黃泉，肌膚光滑、放鬆疲勞效果佳。冬季在雪景中泡湯別有風情。</p>
+            <p>住宿不多但環境溫馨又安靜；離札幌很近，不管是當天來回還是住一晚都很方便，是在地人很推薦的「隱藏版溫泉」。</p>
+          </div>
+        </details>
+
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer（不變） -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="網站地圖">
+    <div class="container">
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+        <div>
+          <h4>最新消息</h4>
+          <ul>
+            <li><a href="news.html">News</a></li>
+            <li><a href="mopo.html">關於 MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>課程</h4>
+          <ul>
+            <li><a href="index.html#pricing">課程與價格</a></li>
+            <li><a href="teine.html">札幌手稻</a></li>
+            <li><a href="kokusai.html">札幌國際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>主題文章</h4>
+          <ul>
+            <li><a href="safe.html">安全知識</a></li>
+            <li><a href="trip.html">觀光主題</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>資訊</h4>
+          <ul>
+            <li><a href="legal_tokusho.html">公司資訊</a></li>
+            <li><a href="notice.html">報名須知</a></li>
+            <li><a href="faq.html">常見問題</a></li>
+            <li><a href="index.html#contact">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px; flex-wrap:wrap; gap:10px;">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<!-- Back-to-top（不變） -->
+<div class="fab">
+  <button id="backTop" aria-label="回到頂部">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+/* 年 */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* 行動：語言面板（修復） */
+(function(){
+  const btn = document.getElementById('mobLangBtn');
+  const panel = document.getElementById('mobLangPanel');
+  if(!btn || !panel) return;
+
+  function closeAll(){ panel.classList.remove('show'); btn.setAttribute('aria-expanded','false'); }
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const show = !panel.classList.contains('show');
+    document.querySelectorAll('.mobpanel.show').forEach(p=>p.classList.remove('show'));
+    panel.classList.toggle('show', show);
+    btn.setAttribute('aria-expanded', show ? 'true' : 'false');
+  });
+
+  panel.addEventListener('click', (e)=>{
+    const b = e.target.closest('button[data-lang]');
+    if(!b) return;
+    changeLang(b.dataset.lang);
+  });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
+})();
+
+/* 行動：側邊選單面板（修復） */
+(function(){
+  const btn = document.getElementById('mobNavBtn');
+  const panel = document.getElementById('mobNavPanel');
+  if(!btn || !panel) return;
+
+  function closeAll(){ panel.classList.remove('show'); }
+
+  btn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    const show = !panel.classList.contains('show');
+    document.querySelectorAll('.mobpanel.show').forEach(p=>p.classList.remove('show'));
+    panel.classList.toggle('show', show);
+  });
+
+  panel.addEventListener('click', (e)=>{
+    const link = e.target.closest('a');
+    if(link){ panel.classList.remove('show'); }
+  });
+
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAll(); });
+})();
+
+/* 桌面：語言 select（既存） */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+function changeLang(lang){
+  const map = {'zh-Hant':'faq.html','ja':'ja_faq.html','en':'en_faq.html'};
+  window.location.href = map[lang] || 'faq.html';
+}
+
+/* 上段類別：PC only 的 active 切換（行動裝置視為非強調） */
+(function(){
+  const nav = document.getElementById('catNav');
+  const links = [...nav.querySelectorAll('a[href^="#"]')];
+  const secs = links.map(a=> document.querySelector(a.getAttribute('href')) ).filter(Boolean);
+
+  // 點擊平滑卷動（PC/行動共用）
+  links.forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      const target = document.querySelector(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  const isDesktop = window.matchMedia('(min-width:1024px)').matches;
+
+  if(!isDesktop){
+    // 行動：移除 active（不強調）
+    links.forEach(a=> a.classList.remove('active'));
+    return; // 不使用 IntersectionObserver
+  }
+
+  // PC：觀察並更新 active
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(ent=>{
+      if(ent.isIntersecting){
+        links.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === `#${ent.target.id}`));
+      }
+    });
+  }, {root:null, threshold:0.5});
+  secs.forEach(s=> io.observe(s));
+})();
+
+/* FAQ：同時只開一個（原設定維持） */
+(function singleOpenFAQ(){
+  document.addEventListener('click', (e)=>{
+    const sum = e.target.closest('summary'); if(!sum) return;
+    const cur = sum.parentElement;
+    requestAnimationFrame(()=>{
+      if(cur.open){
+        document.querySelectorAll('details[open]').forEach(d=>{ if(d!==cur) d.open = false; });
+      }
+    });
+  });
+  document.addEventListener('toggle', (e)=>{
+    const d = e.target;
+    if(d.tagName.toLowerCase()!=='details' || !d.open) return;
+    document.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
+  }, true);
+})();
+
+/* 回到頂部 */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* 左黏附標題切換（PC only） */
+(function(){
+  if (window.matchMedia('(max-width:1023px)').matches) return;
+
+  const sections = Array.from(document.querySelectorAll('.faq-section'));
+  const stickyLabel = document.getElementById('stickyLabel');
+  const stickySub   = document.getElementById('stickySub');
+  const stickyProg  = document.getElementById('stickyProg');
+
+  let current = sections[0];
+
+  function pickCurrentSection(){
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const focusY = vh * 0.25;
+    let candidate = sections[0];
+    for(const sec of sections){
+      const r = sec.getBoundingClientRect();
+      if(r.top <= focusY) candidate = sec;
+    }
+    return candidate;
+  }
+
+  function updateLabels(next){
+    if(next === current) return;
+    current = next;
+    stickyLabel.textContent = current.dataset.label || '';
+    stickySub.textContent   = current.dataset.sub   || '';
+  }
+
+  function updateProgress(){
+    const r = current.getBoundingClientRect();
+    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    const focusY = vh * 0.25;
+    const start = Math.min(Math.max(focusY - r.top, 0), Math.max(r.height,1));
+    const ratio = Math.min(Math.max(start / Math.max(r.height,1), 0), 1);
+    stickyProg.style.width = (ratio*100)+'%';
+  }
+
+  function onScroll(){
+    const next = pickCurrentSection();
+    updateLabels(next);
+    updateProgress();
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  onScroll();
+})();
+
+/* Topbar：下滑隱藏，上滑顯示（保留） */
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide');
+    } else {
+      topbar.classList.remove('hide');
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

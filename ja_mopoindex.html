@@ -1,0 +1,1158 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOPO Ski School｜MOPO スキースクール </title>
+<meta name="description" content="ヒーロー／ニュースはスクロール連動のモノクロ化・フェード。PCはニュース3枚（140px）、モバイルは2枚（100px）、3秒ローテ。料金は単一展開。お問い合わせは mailto。">
+
+<!-- ✅ 新增：SEO / Open Graph / Twitter Card -->
+<link rel="canonical" href="https://moposki.com/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:title" content="MOPO Ski School｜MOPO スキースクール">
+<meta property="og:description" content="北海道スキー｜多言語インストラクターと学ぶオーダーメイド体験。料金プラン・最新情報・お問い合わせはこちら。">
+<meta property="og:url" content="https://YOUR_CANONICAL_URL/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPO Ski School">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MOPO Ski School｜MOPO スキースクール">
+<meta name="twitter:description" content="北海道スキー｜一人ひとりに合わせたレッスン、多言語で安心サポート">
+<meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<!-- 以上新增結束 -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== 全域字體設定（與首頁一致） ===== */
+body {
+  font-family:"Noto Sans JP","Montserrat",system-ui,Arial,sans-serif;
+  line-height:1.6;
+  color:#0E1A24; /* 與首頁相同的墨色 */
+}
+
+:root{
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --slide:0; --fade:0; --gray:0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-top)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+html, body { overflow-x: hidden; }
+.hero, .news { position: relative; contain: layout paint; }
+
+/* ===== Topbar ===== */
+.topbar{
+  position:fixed; left:0; right:0; top:0;
+  z-index:2000;
+  background:rgba(255,255,255,.24);
+  backdrop-filter:saturate(1.28) blur(18px);
+  border-bottom:1px solid rgba(200,164,93,.24);
+  transition:all .25s ease
+}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
+
+/* デスクトップナビ */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
+.menu>li:hover>a::after{transform:scaleX(1)}
+.topbar.scrolled .menu>li>a{color:#8C723E}
+
+/* ▼ 追加：デスクトップ下拉メニュー */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+.submenu{
+  display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu, .has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+/* 言語（デスクトップ） */
+.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
+
+/* モバイルツール */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.mobdrop{position:relative}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:610}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+
+/* モバイル小見出し */
+.mob-subtitle{
+  padding:8px 14px 6px;
+  font-size:12px;
+  font-weight:800;
+  color:#777;
+  letter-spacing:.02em;
+  cursor:default;
+}
+
+/* モバイル用オーバーレイ */
+#mobOverlay{position:fixed; inset:0; background:rgba(0,0,0,.25); opacity:0; pointer-events:none; visibility:hidden; transition:opacity .18s ease; z-index:590}
+#mobOverlay.show{opacity:1; pointer-events:auto; visibility:visible; backdrop-filter:blur(2px)}
+@supports (-webkit-backdrop-filter: blur(0)){ #mobOverlay.show{ -webkit-backdrop-filter: blur(2px); } }
+#mobOverlay[hidden]{display:none !important; visibility:hidden !important;}
+#mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
+#mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
+
+/* ===== Hero ===== */
+.hero{position:relative; min-height:86vh; display:grid; align-items:center; overflow:hidden; background:var(--bg-mid)}
+.hero__bg{position:absolute; inset:0; transition:filter .25s linear, opacity .25s linear}
+.hero__bg .slide{position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity .8s ease}
+.hero__bg .slide.active{opacity:1}
+.hero__bg .slide:nth-child(1){background-image:url('hero.jpg')}
+.hero__bg .slide:nth-child(2){background-image:url('panel1.jpg')}
+.hero__bg .slide:nth-child(3){background-image:url('panel2.jpg')}
+.hero .container{position:relative; z-index:2}
+.hero__wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center}
+.hero .content{padding-top:10vh; transform:translateX(calc(-60vw * var(--slide))); opacity:calc(1 - var(--fade)); transition:transform .05s linear, opacity .05s linear}
+.hero__bg{filter:grayscale(var(--gray)); opacity:calc(1 - 0.15 * var(--fade))}
+h1{margin:0 0 4px 0}
+.logoLine{display:inline-flex; align-items:flex-end; gap:10px; position:relative}
+.logoLine .main{font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif; font-size:clamp(34px,6.2vw,64px); line-height:1.05; color:#111}
+.logoLine .sub{font-size:.58em; font-weight:800; letter-spacing:.08em; color:#111}
+.logoLine::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-2)); border-radius:999px}
+.subtitle{margin:10px 0 16px; font-size:16px; color:#000}
+.btn{position:relative; isolation:isolate; display:inline-block; padding:10px 14px; border-radius:999px; border:1px solid var(--gold); background:#fff; color:#midnight; font-weight:800; letter-spacing:.02em; overflow:hidden; transition:transform .18s ease, color .25s ease, border-color .25s ease}
+.btn::before{content:""; position:absolute; inset:2px; border-radius:inherit; background:rgba(200,164,93,.0); transform:scale(.1); opacity:0; transition:transform .38s ease, opacity .38s ease, background .38s ease}
+.btn:hover::before{ transform:scale(1); opacity:1; background:rgba(200,164,93,.22) }
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:none; box-shadow:var(--focus)}
+.hero-dots{position:absolute; left:50%; bottom:18px; transform:translateX(-50%); display:flex; gap:8px; z-index:3}
+.hero-dots button{width:46px; height:6px; border-radius:999px; border:0; background:rgba(0,0,0,.25); cursor:pointer}
+.hero-dots button.active{background:rgba(0,0,0,.65)}
+
+/* ===== ニュース ===== */
+.news{ --gap:12px; --size:140px; --visible:2; margin-top:16px; display:flex; justify-content:flex-start; }
+.news-viewport{ overflow:hidden; width: calc(var(--size) * var(--visible) + var(--gap) * (var(--visible) - 1)); }
+.news-row{ display:flex; gap:var(--gap); transform: translateX(calc(var(--newsShift, 1) * var(--slide) * 70vw)); transition: transform .05s linear; }
+.news-card{ flex:0 0 auto; width:var(--size); height:var(--size); border-radius:16px; overflow:hidden; border:0px solid #e9e9e9; position:relative; }
+.news-card img{ width:100%; height:100%; object-fit:cover; display:block; transform:scale(1); transition:transform .35s ease, filter .15s linear; filter: grayscale(var(--gray)); }
+.news-card:hover img{ transform:scale(1.08) }
+@media (max-width:760px){
+  .news{ --size:100px; --visible:2; justify-content:flex-start; }
+  .news-row{ --newsShift:-1; }
+}
+
+/* ===== セクション ===== */
+.section{padding:84px 0}
+#about-mopo.section{background:var(--bg-mid)}
+#pricing.section{background:var(--bg-top)}
+#contact.section{background:var(--bg-mid)}
+.section__head h2{margin:0 0 8px; font-size:26px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
+.muted{color:var(--ink-soft); font-size:14px}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+.reveal.in{opacity:1; transform:none}
+
+.lines .line span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.lines .line:nth-child(1) span {
+  animation-delay: 0.2s;
+}
+.lines .line:nth-child(2) span {
+  animation-delay: 0.6s;
+}
+.lines .line:nth-child(3) span {
+  animation-delay: 1s;
+}
+.lines .line:nth-child(4) span {
+  animation-delay: 1.4s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* ===== 料金 ===== */
+.pricelist{display:grid; grid-template-columns:1fr; gap:14px}
+.pricecard{background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
+.pricecard summary{list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; padding:12px 14px}
+.pricecard summary::-webkit-details-marker{display:none}
+.pricecard .head{display:flex; flex-direction:column; gap:4px}
+.pricecard .title{font-size:17px; font-weight:700}
+.pricecard .desc{color:#516170; font-size:13px}
+.fromrow{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+.fromtag{display:inline-flex; gap:6px; align-items:baseline; font-weight:600; font-size:14px; color:#222}
+.fromtag small{font-weight:600; font-size:12px; color:#666}
+.pricetable{display:grid; gap:10px; padding:0 14px 14px 14px; border-top:1px dashed #eee}
+.season{border:1px dashed #e5e1da; border-radius:10px; padding:10px}
+.season h4{margin:0 0 .25rem 0; font-size:14px}
+.season small{display:block; color:#6f757c; font-size:12px}
+.table{width:100%; border-collapse:separate; border-spacing:0 .35rem; margin-top:.3rem}
+.table thead th{font-weight:600; font-size:12px; color:#6f757c; text-align:left}
+.table td{padding:.35rem .25rem}
+.table .people{width:7rem; font-weight:700; font-size:16px}
+.table .price{font-weight:700; font-size:16px; color:#8B6B2E}
+.table .pp{font-size:12px; color:#7a7f85; font-weight:600}
+.note{margin-top:.4rem; font-size:12px; color:#6f757c}
+.note-row{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.note-row .btns{flex:0 0 auto; display:flex; gap:8px}
+.cta-row{display:none}
+@media (max-width:760px){
+  .hero__wrap{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .pricecard summary{grid-template-columns:1fr; gap:4px; padding:12px}
+  .pricecard .title{font-size:16px}
+  .pricecard .desc{font-size:12px}
+  .fromrow{gap:8px}
+  .fromrow .fromtag{font-size:13px}
+  .pricetable{padding:8px 10px 12px 10px}
+  .table thead{display:none}
+  .table tbody{display:grid; gap:8px}
+  .table tr{display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 8px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:10px}
+  .table td{padding:0}
+  .table .people{font-size:15px}
+  .table .price{font-size:15px; justify-self:end}
+  .table .pp{grid-column:1/-1; justify-self:end; font-size:11px}
+  .note-row{display:block}
+  .note-row .btns{display:none}
+  .cta-row{display:flex; gap:8px; margin:8px 0 0}
+  .cta-row .btn{padding:8px 10px}
+}
+
+/* ===== お問い合わせ ===== */
+.contact-grid{display:grid; grid-template-columns:1fr 320px; gap:24px}
+@media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
+.form{display:grid; gap:12px; max-width:500px}
+.form input, .form textarea{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; font-size:16px; background:#fff}
+.form textarea{min-height:110px}
+.sns{display:grid; grid-template-columns:1fr 1fr; gap:10px; align-content:start; margin-top:6px}
+.sns a{display:inline-flex; align-items:center; justify-content:center; padding:10px 12px; background:transparent; border:1px solid var(--gold); color:#111; font-weight:800; border-radius:12px; transition:background .25s ease, color .25s ease, border-color .25s ease}
+.sns a:hover{background:rgba(200,164,93,.14); color:#111; border-color:#B88F45}
+
+/* ===== フッター ===== */
+.footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
+.sitemap{padding:34px 0}
+.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
+.sitemap a:hover{color:#fff}
+
+/* FAB */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* モバイル：言語ボタンのみ表示 */
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    transform-origin: top right;
+  }
+  .mobpanel a, .mobpanel button{ white-space: nowrap; }
+}
+@media (max-width: 760px) {
+  .form button[type="submit"] {
+    max-width: 200px;
+    width: auto;
+    font-size: 16px;
+    color: #111;
+    background-color: var(--gold);
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    align-self: start;
+  }
+}
+
+/* ===== MOPOについて：背景＋逐行出現（更早觸發）、縮高度 16vh、平滑回彈 ===== */
+.about-hero{
+  --aboutPad: clamp(120px, 28vh, 260px);
+  position:relative;
+  padding: var(--aboutPad) 0;
+  background:transparent;
+  overflow:hidden;
+  transition: padding .9s ease-in-out; /* 平滑縮放與回彈 */
+  will-change: padding;
+}
+.about-hero__bg{ position:absolute; inset:0; overflow:hidden; }
+.about-hero__bg picture,
+.about-hero__bg img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  filter:saturate(1.04) contrast(1.02);
+}
+.about-hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.30));
+  pointer-events:none;
+}
+/* 文字整體上移（更靠上） */
+.about-hero__content{
+  position:relative; z-index:1; display:grid; place-items:center; gap:18px; text-align:center;
+  transform: translateY(-8vh);  /* ↑ 往上推 */
+}
+.visually-hidden{ position:absolute !important; clip:rect(1px,1px,1px,1px); width:1px; height:1px; overflow:hidden; white-space:nowrap; }
+.lines{ display:grid; gap:10px; }
+
+/* 行樣式：更大字距、內文加粗 500、動畫 1.2s */
+.line{
+  opacity:0; transform:translateY(10px);
+  transition:opacity 1.2s ease, transform 1.2s ease;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",
+               "Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif;
+  color:#111; text-shadow:0 1px 0 rgba(255,255,255,.35);
+  letter-spacing:.15em;  /* ↑ 0.15em */
+  word-spacing:.12em;
+  text-rendering:optimizeLegibility;
+}
+.line.big{
+  font-size:clamp(38px, 6.4vw, 72px);
+  font-weight:700;
+}
+.line.sub{
+  font-size:clamp(16px, 2.1vw, 20px);
+  color:#161616;
+  font-weight:500; /* 內文加粗 */
+}
+
+.about-hero.active .lines .line{ opacity:1; transform:none; }
+.about-hero .lines .line:nth-child(1){ transition-delay:0s; }
+.about-hero .lines .line:nth-child(2){ transition-delay:.3s; }
+.about-hero .lines .line:nth-child(3){ transition-delay:.6s; }
+.about-hero .lines .line:nth-child(4){ transition-delay:.9s; }
+
+/* 縮高度（16vh） */
+.about-hero.compact{ --aboutPad: clamp(80px, 16vh, 180px); }
+
+/* Hero 邊界淡化（保留原效果） */
+.hero.dim .hero__bg{ filter:grayscale(0.9) brightness(.96) blur(1px); transition:filter .35s ease; }
+.hero.dim .content{ opacity:.35; transition:opacity .35s ease; }
+
+/* 透明感按鈕 */
+.about-btn{
+  margin-top:12px;
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(200,164,93,.55);
+  background:rgba(255,255,255,.28);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:#111;
+  font-weight:800; letter-spacing:.02em;
+  transition:background .25s ease, border-color .25s ease, transform .15s ease;
+}
+.about-btn:hover{
+  background:rgba(255,255,255,.45);
+  border-color:var(--gold);
+  transform:translateY(-1px);
+}
+.about-btn:focus-visible{ outline:none; box-shadow:var(--focus); }
+
+/* 手機優化 */
+@media (max-width:760px){
+  .about-hero{ padding:120px 0; }
+  .about-hero__content{ transform: translateY(-5vh); } /* 手機略少上移，避免過高 */
+  .about-hero.compact{ --aboutPad: clamp(70px, 20vh, 150px); }
+  .line.sub{ font-size:15px; }
+  .about-btn{ padding:9px 14px; font-size:14px; }
+}
+
+/* === レッスンプラン：桌機把「平日 / 繁忙期」改成左右排列 === */
+@media (min-width: 761px){
+  /* 兩個 .season 橫向排列成左右兩欄 */
+  #pricing .pricetable{
+    grid-template-columns: 1fr 1fr;  /* 原來是單欄，這裡覆寫成雙欄 */
+    gap: 14px 16px;                  /* 行間/列間距 */
+    align-items: start;
+  }
+
+  /* 讓下方補充說明/按鈕列佔滿兩欄（避免擠在左欄） */
+  #pricing .pricetable .note-row,
+  #pricing .pricetable .cta-row{
+    grid-column: 1 / -1;
+  }
+
+  /* 視覺一致：卡片高度撐滿欄位（可選） */
+  #pricing .pricetable .season{
+    height: 100%;
+  }
+}
+
+.note-row small {
+  font-size: 14px; /* 或你要的大小，如16px */
+  color: #000000;  /* 黑色 */
+  display: block;  /* 確保它獨立一行顯示 */
+  margin-bottom: 4px; /* 可選，加點間距讓排版更舒服 */
+}
+
+
+.news-viewport {
+  max-width: calc(2 * 140px + 1 * 12px); /* 卡片寬度 × 2 + gap × 1 */
+  overflow: hidden;
+}
+
+
+</style>
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="#home" class="logo" aria-label="トップへ戻る">MOPO Ski School</a>
+      
+    </div>
+
+    <ul class="menu" role="menubar" aria-label="サイトナビゲーション">
+      <li role="none"><a role="menuitem" href="ja_news.html">最新情報</a></li>
+      <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
+
+      <!-- レッスン：下拉 -->
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="レッスンのサブメニュー">
+          <li role="none"><a role="menuitem" href="#pricing">レッスンプラン</a></li>
+          <li class="group-title">スキー場紹介</li>
+          <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
+          <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+        </ul>
+      </li>
+
+      <!-- 特集記事：下拉 -->
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="特集記事">
+          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="ja_faq.html">よくあるご質問</a></li>
+      <li role="none"><a role="menuitem" href="ja_booking.html">予約</a></li>
+    </ul>
+
+    <div class="lang">
+      <select id="langSelect" aria-label="言語を選択">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja" selected>日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div class="mobtools" aria-label="モバイルツール">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="言語">言語</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="言語メニュー">
+          <a role="menuitem" data-lang="zh-Hant" href="#">繁體中文</a>
+          <a role="menuitem" data-lang="ja" href="#" aria-current="true">日本語</a>
+          <a role="menuitem" data-lang="en" href="#">English</a>
+        </div>
+      </div>
+
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="ナビゲーションを開く" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="モバイルナビ">
+          <a href="ja_news.html" role="menuitem">最新情報</a>
+         <a href="ja_mopo.html" role="menuitem">MOPO について</a>
+
+          <div class="mob-subtitle">レッスン</div>
+          <a href="#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">スキー場紹介</div>
+          <a href="ja_teine.html" role="menuitem">札幌手稲</a>
+          <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+
+          <div class="mob-subtitle">特集記事</div>
+          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_trip.html" role="menuitem">観光トピック</a>
+
+          <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
+          <a href="ja_booking.html" role="menuitem">予約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- モバイル用オーバーレイ -->
+<div id="mobOverlay" aria-hidden="true" hidden></div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home" aria-label="ヒーローセクション">
+    <div class="hero__bg" id="heroBg" aria-hidden="true">
+      <div class="slide active"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+    </div>
+
+    <div class="container hero__wrap">
+      <div class="content">
+        <h1 class="reveal" aria-label="MOPO Ski School">
+          <span class="logoLine">
+            <span class="main">MOPO</span>
+            <span class="sub">ski school</span>
+          </span>
+        </h1>
+        <p class="subtitle reveal">北海道スキー | 多言語インストラクターと学ぶオーダーメイド体験</p>
+
+        <div class="cta reveal" style="gap:12px">
+          <a href="#pricing" class="btn" aria-label="レッスンプラン">レッスンプラン</a>
+          <a href="ja_booking.html" class="btn" aria-label="予約">予約</a>
+        </div>
+
+        <section class="news reveal" id="news" aria-label="最新情報">
+          <div class="news-viewport">
+            <div class="news-row" id="newsRow">
+              <!-- ✅ 新增 lazy loading -->
+              <div class="news-row" id="newsRow">
+  <a class="news-card" href="ja_booking.html" aria-label="早鳥優惠" title="本季預約開放通知">
+    <img src="news/ja_news-1.png" alt="本季預約開放通知" loading="lazy" decoding="async">
+  </a>
+
+  <a class="news-card" href="ja_teine.html" aria-label="手稲" title="手稲">
+    <img src="news/ja_news-2.png" alt="手稲" loading="lazy" decoding="async">
+  </a>
+
+  <a class="news-card" href="ja_kokusai.html" target="_blank" rel="noopener"
+     aria-label="Instagram 札幌国際" title="Instagram 札幌国際">
+    <img src="news/ja_news-3.png" alt="Instagram 札幌国際" loading="lazy" decoding="async">
+  </a>
+</div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="hero-dots" id="heroDots" aria-label="ヒーローインジケーター">
+      <button data-slide="0" class="active" aria-label="1枚目"></button>
+      <button data-slide="1" aria-label="2枚目"></button>
+      <button data-slide="2" aria-label="3枚目"></button>
+    </div>
+  </section>
+
+  <!-- について（背景圖＋逐行出現＋縮高度＋按鈕） -->
+  <section id="about-mopo" class="section about-hero" aria-label="MOPOについて">
+    <div class="about-hero__bg" aria-hidden="true">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="img/mopo-640.webp 640w, img/mopo-960.webp 960w, img/mopo-1280.webp 1280w, img/mopo-1920.webp 1920w"
+          sizes="(max-width: 760px) 100vw, 1200px">
+        <img
+          src="img/mopo-1280.jpg"
+          srcset="img/mopo-640.jpg 640w, img/mopo-960.jpg 960w, img/mopo-1280.jpg 1280w, img/mopo-1920.jpg 1920w"
+          sizes="(max-width: 760px) 100vw, 1200px"
+          alt="" width="1920" height="924"
+          decoding="async" loading="eager" fetchpriority="high">
+      </picture>
+    </div>
+
+ <div class="container about-hero__content">
+  <h2 class="visually-hidden">MOPO について</h2>
+ <div class="lines" aria-label="MOPO の紹介">
+<div class="line big"><span>MOPO</span></div>
+  <div class="line sub"><span>Formosa（美しい島）と Japow（粉雪）</span></div>
+  <div class="line sub"><span>朝日や夕陽の光、粉雪、山脈</span></div>
+  <div class="line sub"><span>自然の美しさを映し、宿す</span></div>
+</div>
+  <a class="about-btn" href="ja_mopo.html" aria-label="MOPO について">MOPO について</a>
+</div>
+  </section>
+
+  <!-- 料金（単一展開） -->
+  <section id="pricing" class="section reveal" aria-label="料金とプラン">
+    <div class="container">
+      <div class="section__head">
+        <h2>レッスンプラン</h2>
+        <p class="muted">終日 6 時間（休憩 1 時間含む）。<span class="mobbr"><br></span>表示は税込価格です。</p>
+      </div>
+
+      <div class="pricelist" id="courseList">
+        <!-- 手稲 -->
+        <details class="pricecard" id="teine"open>
+          <summary>
+            <div class="head">
+              <div class="title">札幌手稲｜プライベート（終日）</div>
+              <div class="desc">安定した雪質・アクセス良好。</div>
+            </div>
+            <div class="fromrow">
+              <span class="fromtag"><small>平日</small> ¥ 72,000〜</span>
+              <span class="fromtag"><small>繁忙期</small> ¥ 82,000〜</span>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="season">
+              <h4>平日</h4>
+              <table class="table" aria-label="手稲・平日料金表">
+                <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="people">1 名</td><td class="price">¥ 72,000</td><td></td></tr>
+                  <tr><td class="people">2 名</td><td class="price">¥ 77,000</td><td class="pp">（1 名あたり ¥ 38,500）</td></tr>
+                  <tr><td class="people">3 名</td><td class="price">¥ 82,000</td><td class="pp">（1 名あたり ¥ 27,333）</td></tr>
+                  <tr><td class="people">4 名</td><td class="price">¥ 87,000</td><td class="pp">（1 名あたり ¥ 21,750）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="season">
+              <h4>繁忙期</h4>
+             
+              <table class="table" aria-label="手稲・繁忙期料金表">
+                <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="people">1 名</td><td class="price">¥ 82,000</td><td></td></tr>
+                  <tr><td class="people">2 名</td><td class="price">¥ 87,000</td><td class="pp">（1 名あたり ¥ 43,500）</td></tr>
+                  <tr><td class="people">3 名</td><td class="price">¥ 92,000</td><td class="pp">（1 名あたり ¥ 30,666）</td></tr>
+                  <tr><td class="people">4 名</td><td class="price">¥ 97,000</td><td class="pp">（1 名あたり ¥ 24,250）</td></tr>
+                </tbody>
+              </table>
+            </div>
+           <div class="note-row">
+  <div class="note">
+    <small style="display:block; color:#000; margin-bottom:4px;">繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
+    ※5 名目は 1 名あたり +¥5,000、最大 5 名まで。対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。
+  </div>
+  <div class="btns">
+    <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
+<a class="btn" href="ja_booking.html">レッスン予約</a>
+  </div>
+</div>
+        </details>
+
+        <!-- 札幌国際 -->
+        <details class="pricecard" id="international"open>
+          <summary>
+            <div class="head">
+              <div class="title">札幌国際｜プライベート（終日）</div>
+              <div class="desc">見晴らし良好・多彩なコース。</div>
+            </div>
+            <div class="fromrow">
+              <span class="fromtag"><small>平日</small> ¥ 89,000〜</span>
+              <span class="fromtag"><small>繁忙期</small> ¥ 99,000〜</span>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="season">
+              <h4>平日</h4>
+              <table class="table" aria-label="札幌国際・平日料金表">
+                <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="people">1 名</td><td class="price">¥ 84,000</td><td></td></tr>
+                  <tr><td class="people">2 名</td><td class="price">¥ 90,000</td><td class="pp">（1 名あたり ¥ 45,000）</td></tr>
+                  <tr><td class="people">3 名</td><td class="price">¥ 96,000</td><td class="pp">（1 名あたり ¥ 32,000）</td></tr>
+                  <tr><td class="people">4 名</td><td class="price">¥ 102,000</td><td class="pp">（1 名あたり ¥ 25,500）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="season">
+              <h4>繁忙期</h4>
+              <table class="table" aria-label="札幌国際・繁忙期料金表">
+                <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="people">1 名</td><td class="price">¥ 94,000</td><td></td></tr>
+                  <tr><td class="people">2 名</td><td class="price">¥ 100,000</td><td class="pp">（1 名あたり ¥ 50,000）</td></tr>
+                  <tr><td class="people">3 名</td><td class="price">¥ 106,000</td><td class="pp">（1 名あたり ¥ 35,333）</td></tr>
+                  <tr><td class="people">4 名</td><td class="price">¥ 112,000</td><td class="pp">（1 名あたり ¥ 28,000）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note-row">
+  <div class="note">
+    <small style="display:block; color:#000; margin-bottom:4px;">繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
+    ※5 名目は 1 名あたり +¥5,000、最大 5 名まで。対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。
+  </div>
+              <div class="btns">
+  <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
+<a class="btn" href="ja_booking.html">レッスン予約</a>
+              </div>
+            </div>
+            <div class="cta-row">
+            <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
+<a class="btn" href="ja_booking.html">レッスン予約</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section id="contact" class="section reveal" aria-label="お問い合わせ">
+    <div class="container">
+      <div class="section__head"><h2>お問い合わせ</h2></div>
+      <div class="contact-grid">
+        <form id="contactForm" class="form" aria-label="お問い合わせフォーム">
+          <input type="text" name="name" placeholder="お名前" required class="reveal" aria-label="お名前">
+          <input type="email" name="email" placeholder="メールアドレス" required class="reveal" aria-label="メールアドレス">
+          <input type="tel" name="phone" placeholder="電話番号（任意）" class="reveal" aria-label="電話番号（任意）">
+          <textarea name="notes" placeholder="ご要望（レッスン内容／レベル／予定日など）" rows="5" class="reveal" aria-label="ご要望"></textarea>
+          <button class="btn reveal" type="submit" style="justify-self:start">送信</button>
+          <div id="contactMsg" style="font-size:18px; color:#0a7a3c"></div>
+        </form>
+
+        <aside aria-label="SNSと連絡先" class="reveal" style="align-self:start">
+          <h3 style="margin:0 0 8px 0;font-size:18px;color:#111">フォローする</h3>
+          <div class="sns" style="display:flex; gap:10px; flex-wrap:wrap;">
+            <!-- ✅ 新增 lazy loading 到社群圖示 -->
+            <a href="https://x.com/你的帳號" target="_blank" rel="noopener noreferrer" aria-label="X（Twitter）">
+              <img src="logo/x.png" alt="X" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.threads.net/@你的帳號" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+              <img src="logo/threads.png" alt="Threads" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.instagram.com/moposkisport/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img src="logo/ig.png" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61579070109729" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="logo/fb.png" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://line.me/ti/p/你的ID" target="_blank" rel="noopener noreferrer" aria-label="LINE">
+              <img src="logo/line.png" alt="LINE" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="サイトマップ">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>最新情報</h4>
+          <ul>
+               <li><a href="ja_news.html">News</a></li>
+            <li><a href="ja_mopo.html">MOPO について</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>レッスン</h4>
+          <ul>
+            <li><a href="#pricing">レッスンプラン</a></li>
+            <li><a href="#teine">札幌手稲</a></li>
+            <li><a href="#international">札幌国際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>特集記事</h4>
+          <ul>
+            <li><a href="ja_safe.html">安全知識</a></li>
+            <li><a href="ja_trip.html">観光トピック</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>情報</h4>
+          <ul>
+            <li><a href="ja_legal_tokusho.html">会社情報</a></li>
+            <li><a href="ja_notice.html">申込案内</a></li>
+            <li><a href="ja_faq.html">よくあるご質問</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<div class="fab">
+  <button id="backTop" aria-label="ページトップへ">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<script>
+// 表示年
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Topbar sticky/fixed 補償
+(function(){
+  const topbar = document.getElementById('topbar');
+  function applySpacer(){
+    if(!topbar) return;
+    document.body.style.paddingTop = topbar.offsetHeight + 'px';
+  }
+  applySpacer();
+  window.addEventListener('resize', applySpacer);
+})();
+
+// Topbar scrolled
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* 言語切替 */
+(function(){
+  const map = {
+    'zh-Hant': 'index.html',
+    'ja': 'ja_mopoindex.html',
+    'en': 'en_mopoindex.html'
+  };
+  const sel = document.getElementById('langSelect');
+  sel?.addEventListener('change', ()=>{
+    const v = sel.value;
+    const url = map[v] || 'index.html';
+    window.location.href = url;
+  });
+  const mobPanel = document.getElementById('mobLangPanel');
+  mobPanel?.addEventListener('click', (e)=>{
+    const a = e.target.closest('[data-lang]');
+    if(!a) return;
+    e.preventDefault();
+    const v = a.getAttribute('data-lang');
+    const url = map[v] || 'index.html';
+    window.location.href = url;
+  });
+})();
+
+/* モバイル言語 & ナビ */
+(function(){
+  const overlay   = document.getElementById('mobOverlay');
+  const langBtn   = document.getElementById('mobLangBtn');
+  const langPanel = document.getElementById('mobLangPanel');
+  const navBtn    = document.getElementById('mobNavBtn');
+  const navPanel  = document.getElementById('mobNavPanel');
+
+  const IOS16 = (() => {
+    const ua = navigator.userAgent || "";
+    const isIOS = /iP(ad|hone|od)/.test(ua);
+    const m = ua.match(/OS (\d+)_/);
+    const major = m ? parseInt(m[1], 10) : 0;
+    return isIOS && major === 16;
+  })();
+
+  function closePanels(){
+    langPanel?.classList.remove('show');
+    navPanel?.classList.remove('show');
+    overlay?.classList.remove('show');
+    overlay?.classList.remove('noblur');
+    if(overlay) overlay.hidden = true;
+  }
+  function openPanel(panel){
+    if(panel !== langPanel) langPanel?.classList.remove('show');
+    if(panel !== navPanel)  navPanel?.classList.remove('show');
+    if(overlay){
+      overlay.hidden = false;
+      overlay.classList.add('show');
+      if(IOS16) overlay.classList.add('noblur');
+    }
+    panel?.classList.add('show');
+  }
+  function togglePanel(panel){
+    if(panel?.classList.contains('show')) closePanels();
+    else openPanel(panel);
+  }
+
+  langBtn?.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(langPanel); });
+  navBtn?.addEventListener('click',  (e)=>{ e.stopPropagation(); togglePanel(navPanel);  });
+
+  overlay?.addEventListener('click', closePanels);
+  document.addEventListener('click', (e)=>{
+    if(e.target.closest('.mobdrop')) return;
+    closePanels();
+  });
+  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanels(); });
+
+  navPanel?.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[href]');
+    if(!a) return;
+    e.preventDefault();
+    const href = a.getAttribute('href') || '#';
+    closePanels();
+    setTimeout(()=>{
+      if(href.startsWith('#')){
+        const el = document.querySelector(href);
+        if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        else { window.location.href = href; }
+      }else{
+        window.location.href = href;
+      }
+    }, 0);
+  });
+})();
+
+/* Hero スライド */
+(function(){
+  const slides = Array.from(document.querySelectorAll('.hero__bg .slide'));
+  const dots = Array.from(document.querySelectorAll('#heroDots button'));
+  let idx = 0, timer = null;
+  function show(i){
+    slides.forEach(s=>s.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    idx = (i+slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+  }
+  function play(){ timer = setInterval(()=> show(idx+1), 6000); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  dots.forEach((d,i)=> d.addEventListener('click', ()=>{ stop(); show(i); play(); }));
+  show(0); play();
+})();
+
+/* ニュース・カルーセル */
+(function(){
+  const row = document.getElementById('newsRow');
+  if(!row) return;
+  const GAP = 12;
+  const mq = window.matchMedia('(max-width:760px)');
+  const isMobile = ()=> mq.matches;
+
+  function visible(){ return isMobile()? 2 : 3; }
+  function cardSize(){ return isMobile()? 100 : 140; }
+
+  let index = 0, timer = null;
+
+  function setupClones(){
+    row.querySelectorAll('.clone').forEach(n=>n.remove());
+    const cards = Array.from(row.children).filter(n=>!n.classList.contains('clone'));
+    for(let i=0;i<visible();i++){
+      const c = cards[i % cards.length].cloneNode(true);
+      c.classList.add('clone');
+      row.appendChild(c);
+    }
+    index = 0;
+    row.style.transition = 'none';
+    row.style.transform = 'translateX(0px)';
+    const vp = row.parentElement;
+    vp.style.width = (cardSize()*visible() + GAP*(visible()-1)) + 'px';
+  }
+
+  function step(){
+    index++;
+    const stepPx = cardSize() + GAP;
+    row.style.transition = 'transform .6s ease';
+    row.style.transform = `translateX(-${stepPx*index}px)`;
+    if(index >= 4){
+      setTimeout(()=>{
+        row.style.transition = 'none';
+        index = 0;
+        row.style.transform = 'translateX(0px)';
+      }, 620);
+    }
+  }
+
+  setupClones();
+  timer = setInterval(step, 3000);
+  mq.addEventListener('change', setupClones);
+})();
+
+/* reveal */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+      else{ e.target.classList.remove('in'); }
+    });
+  }, {threshold:.15});
+  els.forEach(el=> io.observe(el));
+})();
+
+/* タブ（※原 About 已移除，不再使用） */
+// （保留空函式避免潛在錯誤）
+document.querySelectorAll('.tabbtn').forEach(()=>{});
+
+/* 料金：単一展開 */
+(function(){
+  const list = document.getElementById('courseList');
+  list?.addEventListener('toggle', (e)=>{
+    const tgt = e.target;
+    if(tgt.tagName.toLowerCase()!=='details' || !tgt.open) return;
+    list.querySelectorAll('details[open]').forEach(d=>{ if(d!==tgt) d.open=false; });
+  });
+})();
+
+/* お問い合わせ：mailto */
+(function(){
+  const form = document.getElementById('contactForm');
+  const msg  = document.getElementById('contactMsg');
+  if(!form) return;
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email= form.email.value.trim();
+    const phone= form.phone.value.trim();
+    const notes= form.notes.value.trim();
+    const subject = encodeURIComponent(`[お問い合わせ] ${name || 'お名前未入力'}`);
+    const body =
+      encodeURIComponent(`お名前：${name}\nメール：${email}\n電話：${phone}\n\nご要望：\n${notes}\n`);
+    const mailto = `mailto:support@moposki.com?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+    msg.textContent = 'メール作成画面を開きました。送信をご確認ください。';
+  });
+})();
+
+/* スクロール駆動（Hero/News） */
+(function(){
+  const hero = document.getElementById('home');
+  if(!hero) return;
+
+  const DIST_FACTOR = 1.10, GRAY_START = 0.60, EASE_POWER = 3.00;
+  const clamp01 = x => Math.min(1, Math.max(0, x));
+  const ease    = t => Math.pow(clamp01(t), EASE_POWER);
+
+  function onScroll(){
+    const rect = hero.getBoundingClientRect();
+    const vh   = window.innerHeight || 1;
+
+    const raw = clamp01(-rect.top / (vh * DIST_FACTOR));
+    const slide = ease(raw);
+    const fade  = ease(raw);
+
+    const grayRaw = clamp01((raw - GRAY_START) / (1 - GRAY_START));
+    const gray    = ease(grayRaw);
+
+    document.documentElement.style.setProperty('--slide', slide.toFixed(4));
+    document.documentElement.style.setProperty('--fade',  fade.toFixed(4));
+    document.documentElement.style.setProperty('--gray',  gray.toFixed(4));
+  }
+
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+})();
+
+/* トップへ */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+/* Topbar：下スクロールで隠す */
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide');
+    } else {
+      topbar.classList.remove('hide');
+    }
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+/* ===== MOPO：更早觸發的逐行顯示 + 防跳動的縮放（含回彈緩衝） ===== */
+(function(){
+  const about = document.getElementById('about-mopo');
+  const hero  = document.getElementById('home');
+  if(!about || !hero) return;
+
+  let compact = false;         // 目前是否縮小
+  let activeShown = false;     // 文字是否已啟動顯示
+  const hysteresis = 80;       // 遲滯距離（px）避免邊界抖動
+  let enterY = 0;              // 觸發點基準
+
+  function compute() {
+    const rect = about.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const vh = window.innerHeight || 1;
+    const aboutTop = scrollY + rect.top;
+    enterY = aboutTop - vh * 0.85;  // 更早：當下緣進到視窗 15% 就啟動
+  }
+
+  function apply() {
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    // 1) 更早觸發文字出現
+    if (!activeShown && scrollY >= enterY) {
+      about.classList.add('active');
+      hero.classList.add('dim');
+      activeShown = true;
+    }
+    if (activeShown && scrollY < enterY - hysteresis) {
+      // 往上回到啟動點上方一些才收回（避免抖動）
+      about.classList.remove('active');
+      hero.classList.remove('dim');
+      activeShown = false;
+    }
+
+    // 2) 縮高度 with hysteresis（避免在 pricing 交界瘋狂跳）
+    //    基準：滾過 about 區塊頂端 140px 才縮，回去時要高於頂端 60px 才放大
+    const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85; // 約等於 about 真正頂端
+    const shrinkOn  = aboutTopAbs + 140;
+    const shrinkOff = aboutTopAbs + 60;
+
+    if (!compact && scrollY > shrinkOn) {
+      about.classList.add('compact');
+      compact = true;
+    } else if (compact && scrollY < shrinkOff) {
+      about.classList.remove('compact');
+      compact = false;
+    }
+  }
+
+  compute();
+  apply();
+
+  let ticking = false;
+  window.addEventListener('scroll', ()=> {
+    if (!ticking) {
+      requestAnimationFrame(()=>{ apply(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive:true });
+
+  window.addEventListener('resize', ()=> { compute(); apply(); }, { passive:true });
+})();
+</script>
+</body>
+</html>
