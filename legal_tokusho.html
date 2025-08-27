@@ -8,127 +8,326 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg-top:#E7E9EA;--bg-mid:#FFFFFF;--bg-bottom:#9B9793;--midnight:#0D1B2A;--gold:#C8A45D;--gold-2:#E4CFA3;--ink:#0E1A24;--ink-soft:#3E4A57;--shadow:0 18px 50px rgba(13,27,42,.10);--radius:16px;--focus:0 0 0 3px rgba(200,164,93,.22);--faq-bg:#F7F6F3;}
+:root{
+  /* 與主頁一致的色系／陰影／半徑（原樣保留） */
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
+
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  /* 內容背景帶（與 FAQ 的明亮紙感一致） */
+  --faq-bg:#F7F6F3;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--bg-mid)}
-a{color:inherit;text-decoration:none}
-.container{max-width:1200px;margin:0 auto;padding:0 22px}
-.topbar{position:sticky;top:0;z-index:300;background:rgba(255,255,255,.24);backdrop-filter:saturate(1.28) blur(18px);border-bottom:1px solid rgba(200,164,93,.24);transition:all .25s ease}
-.topbar.scrolled{background:rgba(255,255,255,.45)}
-.topbar.hide{transform:translateY(-100%);transition:transform 0.3s ease}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 0}
-.brand{display:flex;align-items:baseline;gap:10px;letter-spacing:.10em;padding-left:8px}
-.brand .logo{font-weight:800;font-size:18px}
-.menu{display:flex;gap:8px;align-items:center;margin:0;padding:0}
-.menu>li{list-style:none;position:relative}
-.menu>li>a{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;border-radius:12px;font-weight:700;color:var(--midnight);position:relative}
-.menu>li>a::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-mid)}
+a{color:inherit; text-decoration:none}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
+
+/* ===== 與主頁一致的 Topbar（原樣） ===== */
+.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
+.topbar.scrolled{ background:rgba(255,255,255,.45) }
+
+.topbar.hide {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
+.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
+
+/* 桌面導覽（單層） */
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu>li{list-style:none; position:relative}
+.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
+.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
 .menu>li:hover>a::after{transform:scaleX(1)}
 .topbar.scrolled .menu>li>a{color:#8C723E}
-.has-dropdown{position:relative}
-.has-dropdown > a .caret{font-size:.9em;margin-left:4px}
-.submenu{display:none;position:absolute;top:calc(100% + 2px);left:0;min-width:220px;background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:var(--shadow);padding:6px 0;z-index:2100}
-.has-dropdown:hover .submenu,.has-dropdown:focus-within .submenu{display:block}
-.submenu li{list-style:none}
-.submenu a{display:block;padding:10px 14px;font-size:14px;color:#222}
-.submenu a:hover{background:rgba(200,164,93,.1)}
-.group-title{padding:8px 14px 6px;font-weight:700;font-size:12px;color:#999;cursor:default}
-.lang select{appearance:none;padding:9px 12px;border-radius:12px;border:1px solid #e6e6e6;background:#fff;font-size:14px;color:#2b3b4a}
-.mobtools{display:none;align-items:center;gap:10px}
-.iconbtn{width:38px;height:38px;border-radius:12px;border:1px solid #e6e6e6;background:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+
+
+
+
+
+/* ▼ 補上：桌面用下拉選單（與主頁一致） */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
+
+/* 子選單預設隱藏、定位在主選單下方 */
+.submenu{
+  display:none;
+  position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
+  background:#fff; border:1px solid #eee; border-radius:12px;
+  box-shadow:0 18px 50px rgba(13,27,42,.10);
+  padding:6px 0; z-index:2100;
+}
+.has-dropdown:hover .submenu,
+.has-dropdown:focus-within .submenu{ display:block; }
+
+.submenu li{ list-style:none; }
+.submenu a{
+  display:block; padding:10px 14px; font-size:14px; color:#222;
+}
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+
+/* 分組標題（スキー場紹介 / 特集記事） */
+.group-title{
+  padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default;
+}
+
+/* 滑出邊緣的空白區，避免游標移出瞬間收合造成「掉選」 */
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
+
+
+
+
+/* 桌面語言（啟用切換） */
+.lang select{
+  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a
+}
+
+/* 手機工具：語言 + 主選單 */
+.mobtools{display:none; align-items:center; gap:10px}
+.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
 .mobdrop{position:relative}
-.mobpanel{position:absolute;left:0;top:calc(100% + 8px);min-width:280px;background:#fff;border:1px solid #eee;border-radius:14px;box-shadow:var(--shadow);padding:6px 0;opacity:0;transform:scale(.98);transform-origin:top left;pointer-events:none;transition:opacity .18s ease,transform .18s ease;z-index:400}
-.mobpanel.show{opacity:1;transform:scale(1);pointer-events:auto}
-.mobpanel a,.mobpanel button{display:block;width:100%;text-align:left;padding:12px 14px;background:#fff;border:0;cursor:pointer}
-.mobLangBtn{padding:0 10px;height:38px;display:inline-flex;align-items:center;gap:6px;border:1px solid #e6e6e6;background:#fff;border-radius:12px;font-size:12px;font-weight:800;color:#333}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:400}
+.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
+
+/* ===== 頁面標題區（沿用 FAQ 的層級與字型） ===== */
 .section{padding:84px 0}
-.section__head h1{margin:0 0 8px;font-size:28px;color:#111;font-family:"Noto Serif TC",serif}
-.muted{color:var(--ink-soft);font-size:14px}
-.paper{background:var(--faq-bg);padding:28px 0}
-.card{max-width:900px;margin:0 auto;background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:var(--shadow)}
-.card__hd{padding:22px 24px;border-bottom:1px dashed #eee}
-.card__hd h2{margin:0;font-size:20px;font-family:"Noto Serif TC",serif}
-.card__bd{padding:10px 16px 22px}
-.list{display:grid;gap:10px}
-.list li{list-style:none;border-bottom:1px dashed #eee;padding:14px 0}
-.term{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
-.term .no{flex:0 0 auto;width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#111;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
-.term h3{margin:0;font-size:17px;font-weight:800;color:#111}
-.term .body{flex:1 1 100%;padding-left:44px;color:#4b5157;font-size:16px;line-height:1.8}
-.footer{background:var(--bg-bottom);color:#f7f7f7;border-top:1px solid rgba(255,255,255,.25)}
+.section__head h1{margin:0 0 8px 0; font-size:28px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif}
+.muted{color:var(--ink-soft); font-size:14px}
+
+/* ===== 內容卡片（改為 card 設計） ===== */
+.paper{
+  background:var(--faq-bg);
+  padding:28px 0;
+}
+.card{
+  max-width:900px; margin:0 auto;
+  background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.card__hd{
+  padding:22px 24px; border-bottom:1px dashed #eee;
+}
+.card__hd h2{
+  margin:0; font-size:20px; letter-spacing:.02em;
+  font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif
+}
+.card__bd{
+  padding:10px 16px 22px 16px; 
+}
+.list{
+  counter-reset:item;
+  display:grid; gap:10px;
+}
+.list li{
+  list-style:none; background:#fff; border-radius:12px;
+  padding:14px 0; border-bottom:1px dashed #eee;
+}
+.list li:last-child{ border-bottom:none }
+.term{
+  display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap;
+}
+.term .no{
+  flex:0 0 auto; width:30px; height:30px; border-radius:8px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-2));
+  color:#111; font-weight:800; display:inline-flex; align-items:center; justify-content:center; font-size:14px;
+}
+
+.term{
+  margin-left:-16px; /* 負值越大越靠左 */
+}
+.term .no{
+  margin-left:0; /* 確保編號本身沒有額外間距 */
+}
+.term h3{
+  margin:0; font-size:17px; font-weight:800; color:#111;
+}
+.term .body{
+  flex:1 1 100%; padding-left:44px; color:#4b5157; font-size:16px; line-height:1.8;
+}
+.term .body p{ margin:6px 0 }
+.note{ color:#6f757c; font-size:14px }
+
+/* ===== Footer（與主頁一致） ===== */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
 .sitemap{padding:34px 0}
-.sitemap .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.sitemap h4{margin:0 0 8px;color:#fff;font-size:14px;font-family:"Noto Serif TC",serif}
-.sitemap ul{list-style:none;padding:0;margin:0;display:grid;gap:6px}
-.sitemap a{color:#ebebeb;font-size:13px}
+.sitemap .cols{display:grid; grid-template-columns:repeat(5,1fr); gap:18px}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif}
+.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
+.sitemap a{color:#ebebeb; font-size:13px}
 .sitemap a:hover{color:#fff}
-.fab{position:fixed;right:16px;bottom:16px;z-index:320}
-.fab button{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.86);border:1px solid rgba(0,0,0,.08);box-shadow:0 8px 20px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* 回到頂部 FAB（與主頁一致） */
+.fab{position:fixed; right:16px; bottom:16px; z-index:320}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+
+/* RWD：與主頁一致 */
+@media (max-width:760px){
+  .menu{display:none}
+  .mobtools{display:flex}
+  .lang{display:none}
+  .section{padding:64px 0}
+  .section__head h1{font-size:24px}
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    transform-origin: top right;
+  }
+  .mobpanel a,
+  .mobpanel button{
+    white-space: nowrap;
+  }
+}
+
+.fab{ pointer-events:none; }
+.fab button{ pointer-events:auto; }
+
+
+/* === 修補：讓手機選單位置與字級跟原檔一致 === */
+@media (max-width:760px){
+  /* 面板對齊到按鈕右側、並保留 4vw 的視窗邊距（92vw 寬度） */
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    /* 跟原檔一致：從右上角展開 */
+    transform-origin: top right;
+    /* 讓面板視覺不要貼超近：加一點內距與陰影一致 */
+    padding: 6px 0;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+  }
+  /* 面板項目：鎖定字級，避免因字體家族差異而忽大忽小 */
+  .mobpanel a,
+  .mobpanel button{
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 12px 14px; /* 跟原檔一樣的觸控區 */
+  }
+  /* 手機小標（例如「レッスン」分組標題）—跟原檔一致 */
+  .mob-subtitle{
+    padding: 8px 14px 6px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #777;
+    letter-spacing: .02em;
+    cursor: default;
+  }
+}
+
+/* （保險）避免浮動的回頂 FAB 擋住觸控 */
+.fab{ pointer-events:none; }
+.fab button{ pointer-events:auto; }
+
+
+
 </style>
 </head>
 <body>
+
+<!-- ===== 與主頁一致的 Topbar（品牌返回 index.html） ===== -->
 <header class="topbar" id="topbar">
   <div class="container nav">
-    <div class="brand"><a href="index.html" class="logo">MOPO Ski School</a></div>
-    <ul class="menu" role="menubar">
-      <li><a href="news.html">最新消息</a></li>
-      <li><a href="mopo.html">關於 MOPO</a></li>
-      <li class="has-dropdown"><a href="#">滑雪課程 <span class="caret">▾</span></a>
-        <ul class="submenu">
-          <li><a href="index.html#pricing">課程與價格</a></li>
-          <li class="group-title">雪場介紹</li>
-          <li><a href="teine.html">札幌手稻</a></li>
-          <li><a href="kokusai.html">札幌國際</a></li>
-        </ul>
-      </li>
-      <li class="has-dropdown"><a href="#">主題文章 <span class="caret">▾</span></a>
-        <ul class="submenu">
-          <li><a href="safe.html">安全知識</a></li>
-          <li><a href="trip.html">觀光主題</a></li>
-        </ul>
-      </li>
-      <li><a href="faq.html">常見問題</a></li>
-      <li><a href="booking.html">預約</a></li>
+    <div class="brand">
+      <a href="index.html" class="logo" aria-label="トップページへ戻る">MOPO Ski School</a>
+   
+    </div>
+
+    <!-- 桌面導覽：與主頁相同項目（改為日文） -->
+<ul class="menu" role="menubar" aria-label="サイトナビゲーション">
+  <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
+  <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
+
+  <li class="has-dropdown" role="none">
+    <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
+    <ul class="submenu" role="menu" aria-label="課程選單">
+      <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
+      <li class="group-title">雪場介紹</li>
+      <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
+      <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
     </ul>
+  </li>
+
+  <li class="has-dropdown" role="none">
+    <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章<span class="caret">▾</span></a>
+    <ul class="submenu" role="menu" aria-label="主題文章選單">
+      <li role="none"><a role="menuitem" href="safe.html">安全知識</a></li>
+      <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
+    </ul>
+  </li>
+
+  <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
+  <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+</ul>
+
+    <!-- 桌面語言（啟用切換） -->
     <div class="lang">
       <select id="langSelect" aria-label="Language select">
-        <option value="zh-Hant" selected>繁體中文</option>
+        <option value="zh-Hant"selected>繁體中文</option>
         <option value="ja">日本語</option>
         <option value="en">English</option>
       </select>
     </div>
+
+    <!-- 手機語言＋主選單 -->
     <div class="mobtools">
       <div class="mobdrop" id="mobLangDrop">
-        <button class="mobLangBtn" id="mobLangBtn">語言</button>
-        <div class="mobpanel" id="mobLangPanel">
-          <button data-lang="zh-Hant">繁體中文</button>
-          <button data-lang="ja">日本語</button>
-          <button data-lang="en">English</button>
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="言語">言語</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu">
+          <button data-lang="zh-Hant" role="menuitem">繁體中文</button>
+          <button data-lang="ja" role="menuitem">日本語</button>
+          <button data-lang="en" role="menuitem">English</button>
         </div>
       </div>
+
       <div class="mobdrop" id="mobNavDrop">
-        <button class="iconbtn" id="mobNavBtn">☰</button>
-        <div class="mobpanel" id="mobNavPanel">
-          <a href="news.html">最新消息</a>
-          <a href="mopo.html">關於 MOPO</a>
-          <div class="mob-subtitle">滑雪課程</div>
-          <a href="index.html#pricing">課程與價格</a>
-          <a href="teine.html">札幌手稻</a>
-          <a href="kokusai.html">札幌國際</a>
-          <div class="mob-subtitle">主題文章</div>
-          <a href="safe.html">安全知識</a>
-          <a href="trip.html">觀光主題</a>
-          <a href="faq.html">常見問題</a>
-          <a href="booking.html">預約</a>
-        </div>
+        <button class="iconbtn" aria-label="ナビゲーションを開く" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="モバイルナビ">
+  <a href="news.html" role="menuitem">最新消息</a>
+  <a href="mopo.html" role="menuitem">關於 MOPO</a>
+
+  <div class="mob-subtitle">滑雪課程</div>
+  <a href="index.html#pricing" role="menuitem">課程與價格</a>
+  <div class="mob-subtitle">雪場介紹</div>
+  <a href="teine.html" role="menuitem">札幌手稻</a>
+  <a href="kokusai.html" role="menuitem">札幌國際</a>
+
+  <div class="mob-subtitle">主題文章</div>
+  <a href="safe.html" role="menuitem">安全知識</a>
+  <a href="trip.html" role="menuitem">觀光主題</a>
+
+  <a href="faq.html" role="menuitem">常見問題</a>
+  <a href="booking.html" role="menuitem">預約</a>
+</div>
       </div>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- ===== 內文保持日文 ===== -->
+  <!-- 頁首標題 -->
   <section class="section">
     <div class="container">
       <div class="section__head">
@@ -137,17 +336,105 @@ a{color:inherit;text-decoration:none}
       </div>
     </div>
   </section>
+
+  <!-- 內容卡片（新設計） -->
   <section class="paper">
     <div class="container">
       <div class="card">
-        <div class="card__hd"><h2>Legal Disclosure</h2></div>
+        <div class="card__hd">
+          <h2>Legal Disclosure</h2>
+        </div>
         <div class="card__bd">
           <ol class="list">
-            <li><div class="term"><div class="no">1</div><h3>会社名</h3><div class="body"><p>MOPO 合同会社</p></div></div></li>
-            <li><div class="term"><div class="no">2</div><h3>フリガナ</h3><div class="body"><p>モポ ゴウドウガイシャ</p></div></div></li>
-            <li><div class="term"><div class="no">3</div><h3>運営統括責任者</h3><div class="body"><p>代表社員　Kogure Hirokazu</p></div></div></li>
-            <li><div class="term"><div class="no">4</div><h3>本社所在地</h3><div class="body"><p>所在地は請求があった場合に、遅滞なく開示いたします。</p></div></div></li>
-            <li><div class="term"><div class="no">5</div><h3>メールアドレス</h3><div class="body"><p><a href="mailto:info@moposki.com">info@moposki.com</a></p></div></div></li>
+            <li>
+              <div class="term">
+                <div class="no">1</div>
+                <h3>会社名</h3>
+                <div class="body"><p>MOPO 合同会社</p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">2</div>
+                <h3>フリガナ</h3>
+                <div class="body"><p>モポ ゴウドウガイシャ</p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">3</div>
+                <h3>運営統括責任者</h3>
+                <div class="body"><p>代表社員　Kogure Hirokazu</p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">4</div>
+                <h3>本社所在地</h3>
+                <div class="body">
+                  <p>所在地は請求があった場合に、遅滞なく開示いたします。</p>
+                  <p class="note">※ 登記簿により確認可能。プライバシー保護のため本頁では非表示。</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">5</div>
+                <h3>メールアドレス</h3>
+                <div class="body"><p><a href="mailto:support@moposki.com" style="text-decoration:underline">info@moposki.com</a></p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">6</div>
+                <h3>販売価格</h3>
+                <div class="body"><p>各商品・サービスの詳細ページに表示</p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">7</div>
+                <h3>お支払い方法</h3>
+                <div class="body"><p>クレジットカード決済</p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">8</div>
+                <h3>役務の提供時期</h3>
+                <div class="body"><p>お客様の予約日に提供</p></div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">9</div>
+                <h3>キャンセル・返金について</h3>
+                <div class="body">
+                  <p>（レッスン開始日を基準に算定）返金額はクレジットカード決済手数料・事務手数料を含む<strong>10％</strong>を差引いた金額となります。</p>
+                  <p>・30日前（含む）以前：レッスン料金の<strong>90％</strong>を返金<br>
+                     ・15〜29日前：<strong>50％</strong>を返金<br>
+                     ・8〜14日前：<strong>30％</strong>を返金<br>
+                     ・7日以内（当日含む）：<strong>返金不可</strong></p>
+                  <p class="note">※ 詳細は注意事項＆細則條項をご確認ください。</p>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="term">
+                <div class="no">10</div>
+                <h3>販売数量の制限等</h3>
+                <div class="body"><p>インストラクターの空き状況により制限あり</p></div>
+              </div>
+            </li>
           </ol>
         </div>
       </div>
@@ -155,24 +442,136 @@ a{color:inherit;text-decoration:none}
   </section>
 </main>
 
-<footer class="footer">
-  <section class="sitemap">
+<!-- Footer / Sitemap（與 FAQ 完全相同，改為日文） -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="サイトマップ">
     <div class="container">
-      <div class="cols">
-        <div><h4>最新消息</h4><ul><li><a href="news.html">News</a></li><li><a href="mopo.html">關於 MOPO</a></li></ul></div>
-        <div><h4>滑雪課程</h4><ul><li><a href="index.html#pricing">課程與價格</a></li><li><a href="teine.html">札幌手稻</a></li><li><a href="kokusai.html">札幌國際</a></li></ul></div>
-        <div><h4>主題文章</h4><ul><li><a href="safe.html">安全知識</a></li><li><a href="trip.html">觀光主題</a></li></ul></div>
-        <div><h4>資訊</h4><ul><li><a href="legal_tokusho.html">公司資訊</a></li><li><a href="notice.html">報名須知</a></li><li><a href="faq.html">常見問題</a></li><li><a href="index.html#contact">聯絡我們</a></li></ul></div>
+      <div class="cols" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+        <div>
+          <h4>最新消息</h4>
+          <ul>
+            <li><a href="news.html">News</a></li>
+            <li><a href="mopo.html">關於 MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>滑雪課程</h4>
+          <ul>
+            <li><a href="index.html#pricing">課程與價格</a></li>
+            <li><a href="teine.html">札幌手稻</a></li>
+            <li><a href="kokusai.html">札幌國際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>主題文章</h4>
+          <ul>
+            <li><a href="safe.html">安全知識</a></li>
+            <li><a href="trip.html">觀光主題</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>資訊</h4>
+          <ul>
+            <li><a href="legal_tokusho.html">公司資訊</a></li>
+            <li><a href="notice.html">報名須知</a></li>
+            <li><a href="faq.html">常見問題</a></li>
+            <li><a href="index.html#contact">聯絡我們</a></li>
+          </ul>
+        </div>
       </div>
-      <div style="padding-top:12px;border-top:1px solid rgba(255,255,255,.25);margin-top:18px">© <span id="year"></span> MOPO Ski School</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px; flex-wrap:wrap; gap:10px;">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
     </div>
   </section>
 </footer>
 
-<div class="fab"><button id="backTop">↑</button></div>
+<!-- 回到頂部 FAB（與主頁一致） -->
+<div class="fab">
+  <button id="backTop" aria-label="回到頂部">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
 <script>
-document.getElementById('year').textContent=new Date().getFullYear();
-document.getElementById('backTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+/* 年份 */
+const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+/* Topbar sticky（與主頁一致） */
+const topbar = document.getElementById('topbar');
+function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+
+/* 手機「語言」面板 */
+(function(){
+  const btn=document.getElementById('mobLangBtn'), panel=document.getElementById('mobLangPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{
+    const b=e.target.closest('button[data-lang]'); if(!b) return;
+    changeLang(b.dataset.lang);
+  });
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* 手機主選單（點連結才關閉）——與 FAQ 相同行為 */
+(function(){
+  const btn=document.getElementById('mobNavBtn'), panel=document.getElementById('mobNavPanel');
+  if(!btn||!panel) return;
+  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+  panel.addEventListener('click', (e)=>{ const link=e.target.closest('a'); if(link){ panel.classList.remove('show'); }});
+  document.addEventListener('click', ()=> panel.classList.remove('show'));
+})();
+
+/* 語言切換（桌面 select 啟用）——請依實際路徑調整 */
+(function(){
+  const sel = document.getElementById('langSelect');
+  if(!sel) return;
+  sel.addEventListener('change', ()=> changeLang(sel.value));
+})();
+
+/* 統一語言跳轉（與 FAQ 相同模式示例） */
+function changeLang(lang){
+  // 例：/ja/tokusho.html、/en/tokusho.html、繁中為 /legal/tokusho.html（依你實際路徑調整）
+  const map = {
+    'zh-Hant': 'legal_tokusho.html',
+    'ja': 'ja_legal_tokusho.html',
+    'en': 'en_legal_tokusho.html'
+  };
+  const url = map[lang] || '/legal/tokusho.html';
+  window.location.href = url;
+}
+
+/* 回到頂部（與主頁一致） */
+document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+// Topbar：往下滑隱藏，往上滑顯示
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const currentY = window.scrollY;
+
+    if (currentY > lastScrollY && currentY > 100) {
+      topbar.classList.add('hide'); // 往下滑：隱藏
+    } else {
+      topbar.classList.remove('hide'); // 往上滑或回頂：顯示
+    }
+
+    lastScrollY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
 </script>
 </body>
 </html>
