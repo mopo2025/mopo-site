@@ -1,47 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<!--
+  MOPO Ski School 的 Sitemap
+  說明：
+  - <urlset>：整個網站地圖的容器
+  - <url>：每個網址區塊
+  - <loc>：實際的網址
+  - <lastmod>：最後更新日期（格式：YYYY-MM-DD）
+  - <priority>：重要性（1.0 最高，0.5 一般）
+-->
 
-  <!-- 中文首頁 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 首頁 -->
   <url>
     <loc>https://moposki.com/</loc>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://moposki.com/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://moposki.com/ja_mopoindex.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moposki.com/en_mopoindex.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moposki.com/"/>
     <lastmod>2025-08-30</lastmod>
+    <priority>1.0</priority>
   </url>
 
   <!-- 日文首頁 -->
   <url>
     <loc>https://moposki.com/ja_mopoindex.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://moposki.com/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://moposki.com/ja_mopoindex.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moposki.com/en_mopoindex.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moposki.com/"/>
     <lastmod>2025-08-30</lastmod>
+    <priority>0.9</priority>
   </url>
 
   <!-- 英文首頁 -->
   <url>
     <loc>https://moposki.com/en_mopoindex.html</loc>
-    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://moposki.com/"/>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://moposki.com/ja_mopoindex.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://moposki.com/en_mopoindex.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moposki.com/"/>
     <lastmod>2025-08-30</lastmod>
+    <priority>0.9</priority>
   </url>
 
-  <!-- 主要分頁 -->
-  <url><loc>https://moposki.com/news.html</loc><lastmod>2025-08-30</lastmod></url>
-  <url><loc>https://moposki.com/mopo.html</loc><lastmod>2025-08-30</lastmod></url>
-  <url><loc>https://moposki.com/faq.html</loc><lastmod>2025-08-30</lastmod></url>
-  <url><loc>https://moposki.com/booking.html</loc><lastmod>2025-08-30</lastmod></url>
-  <url><loc>https://moposki.com/teine.html</loc><lastmod>2025-08-30</lastmod></url>
-  <url><loc>https://moposki.com/kokusai.html</loc><lastmod>2025-08-30</lastmod></url>
+  <!-- 最新消息 -->
+  <url>
+    <loc>https://moposki.com/news.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- News 子頁（範例，可依實際新增） -->
-  <url><loc>https://moposki.com/news/1</loc><lastmod>2025-08-25</lastmod></url>
-  <url><loc>https://moposki.com/news/2</loc><lastmod>2025-08-26</lastmod></url>
+  <!-- 關於 MOPO -->
+  <url>
+    <loc>https://moposki.com/mopo.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FAQ 常見問題 -->
+  <url>
+    <loc>https://moposki.com/faq.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 預約頁面 -->
+  <url>
+    <loc>https://moposki.com/booking.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 札幌手稻雪場 -->
+  <url>
+    <loc>https://moposki.com/teine.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 札幌國際雪場 -->
+  <url>
+    <loc>https://moposki.com/kokusai.html</loc>
+    <lastmod>2025-08-30</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 最新消息內頁 -->
+  <url>
+    <loc>https://moposki.com/news/1</loc>
+    <lastmod>2025-08-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://moposki.com/news/2</loc>
+    <lastmod>2025-08-26</lastmod>
+    <priority>0.6</priority>
+  </url>
 
 </urlset>
