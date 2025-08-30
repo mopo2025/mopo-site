@@ -1069,32 +1069,42 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
     enterY = aboutTop - vh * 0.85;
   }
 
-  function apply() {
-    const scrollY = window.scrollY || window.pageYOffset;
+   function apply() {
+  const scrollY = window.scrollY || window.pageYOffset;
 
-    if (!activeShown && scrollY >= enterY) {
-      about.classList.add('active');
-      hero.classList.add('dim');
-      activeShown = true;
-    }
-    if (activeShown && scrollY < enterY - hysteresis) {
-      about.classList.remove('active');
-      hero.classList.remove('dim');
-      activeShown = false;
-    }
+  // FIX: 檢查 Hero 是否大部分可見（保險條件，避免一直維持灰階）
+  const heroRect = hero.getBoundingClientRect();
+  const heroMostlyVisible =
+    heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 &&
+    (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
 
-    const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
-    const shrinkOn  = aboutTopAbs + 140;
-    const shrinkOff = aboutTopAbs + 60;
-
-    if (!compact && scrollY > shrinkOn) {
-      about.classList.add('compact');
-      compact = true;
-    } else if (compact && scrollY < shrinkOff) {
-      about.classList.remove('compact');
-      compact = false;
-    }
+  // 進入 About → Hero 變灰
+  if (!activeShown && scrollY >= enterY) {
+    about.classList.add('active');
+    hero.classList.add('dim');
+    activeShown = true;
   }
+
+  // 離開 About 或 Hero 回到視窗 → 恢復彩色
+  if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) {
+    about.classList.remove('active');
+    hero.classList.remove('dim');
+    activeShown = false;
+  }
+
+  // 保留原本的縮高度邏輯
+  const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
+  const shrinkOn  = aboutTopAbs + 140;
+  const shrinkOff = aboutTopAbs + 60;
+
+  if (!compact && scrollY > shrinkOn) {
+    about.classList.add('compact');
+    compact = true;
+  } else if (compact && scrollY < shrinkOff) {
+    about.classList.remove('compact');
+    compact = false;
+  }
+}
 
   compute();
   apply();
