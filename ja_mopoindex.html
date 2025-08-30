@@ -1119,36 +1119,42 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
     enterY = aboutTop - vh * 0.85;  // 更早：當下緣進到視窗 15% 就啟動
   }
 
-  function apply() {
-    const scrollY = window.scrollY || window.pageYOffset;
+ function apply() {
+  const scrollY = window.scrollY || window.pageYOffset;
 
-    // 1) 更早觸發文字出現
-    if (!activeShown && scrollY >= enterY) {
-      about.classList.add('active');
-      hero.classList.add('dim');
-      activeShown = true;
-    }
-    if (activeShown && scrollY < enterY - hysteresis) {
-      // 往上回到啟動點上方一些才收回（避免抖動）
-      about.classList.remove('active');
-      hero.classList.remove('dim');
-      activeShown = false;
-    }
+  // FIX: 檢查 Hero 是否大部分可見（保險條件，避免一直維持灰階）
+  const heroRect = hero.getBoundingClientRect();
+  const heroMostlyVisible =
+    heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 &&
+    (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
 
-    // 2) 縮高度 with hysteresis（避免在 pricing 交界瘋狂跳）
-    //    基準：滾過 about 區塊頂端 140px 才縮，回去時要高於頂端 60px 才放大
-    const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85; // 約等於 about 真正頂端
-    const shrinkOn  = aboutTopAbs + 140;
-    const shrinkOff = aboutTopAbs + 60;
-
-    if (!compact && scrollY > shrinkOn) {
-      about.classList.add('compact');
-      compact = true;
-    } else if (compact && scrollY < shrinkOff) {
-      about.classList.remove('compact');
-      compact = false;
-    }
+  // 進入 About → Hero 變灰
+  if (!activeShown && scrollY >= enterY) {
+    about.classList.add('active');
+    hero.classList.add('dim');
+    activeShown = true;
   }
+
+  // 離開 About 或 Hero 回到視窗 → 恢復彩色
+  if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) {
+    about.classList.remove('active');
+    hero.classList.remove('dim');
+    activeShown = false;
+  }
+
+  // 保留原本的縮高度邏輯
+  const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
+  const shrinkOn  = aboutTopAbs + 140;
+  const shrinkOff = aboutTopAbs + 60;
+
+  if (!compact && scrollY > shrinkOn) {
+    about.classList.add('compact');
+    compact = true;
+  } else if (compact && scrollY < shrinkOff) {
+    about.classList.remove('compact');
+    compact = false;
+  }
+}
 
   compute();
   apply();
