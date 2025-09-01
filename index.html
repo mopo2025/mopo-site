@@ -430,6 +430,7 @@ h1{margin:0 0 4px 0}
           <li role="none"><a role="menuitem" href="#pricing">課程與價格</a></li>
           <li class="group-title">雪場介紹</li>
           <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
+          <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
         </ul>
       </li>
@@ -477,6 +478,7 @@ h1{margin:0 0 4px 0}
           <a href="#pricing" role="menuitem">課程與價格</a>
           <div class="mob-subtitle">雪場介紹</div>
           <a href="teine.html" role="menuitem">札幌手稻</a>
+          <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
 
           <div class="mob-subtitle">主題文章</div>
@@ -525,6 +527,9 @@ h1{margin:0 0 4px 0}
               <a class="news-card" href="booking.html"><img src="news/news-1.png" alt="最新消息 1" loading="lazy" decoding="async"></a>
               <a class="news-card" href="teine.html"><img src="news/news-2.png" alt="最新消息 2" loading="lazy" decoding="async"></a>
               <a class="news-card" href="kokusai.html"><img src="news/news-3.png" alt="最新消息 3" loading="lazy" decoding="async"></a>
+            <a class="news-card" href="/news/4">
+  <img src="news/news-4.png" alt="最新消息 4" loading="lazy" decoding="async">
+</a>
             </div>
           </div>
         </section>
@@ -629,6 +634,75 @@ h1{margin:0 0 4px 0}
 <a class="btn" href="booking.html">預約課程</a>
             </div>
         </details>
+
+
+<!-- ONZE -->
+<details class="pricecard" id="onze" open>
+  <summary>
+    <div class="head">
+      <div class="title">ONZE｜私人課（全日）</div>
+      <div class="desc">臨海絕景、交通便利，雪與海交織的非凡舞台。</div>
+    </div>
+    <div class="fromrow">
+      <span class="fromtag"><small>平日</small> ¥ 72,000 起</span>
+      <span class="fromtag"><small>繁忙期</small> ¥ 82,000 起</span>
+    </div>
+  </summary>
+
+  <div class="pricetable">
+    <!-- 平日 -->
+    <div class="season">
+      <h4>平日</h4>
+      <table class="table" aria-label="ONZE・平日價目表">
+        <thead>
+          <tr><th class="people">人數</th><th class="price">金額</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="people">1 人</td><td class="price">¥ 72,000</td><td></td></tr>
+          <tr><td class="people">2 人</td><td class="price">¥ 77,000</td><td class="pp">（每人 ¥ 38,500）</td></tr>
+          <tr><td class="people">3 人</td><td class="price">¥ 82,000</td><td class="pp">（每人 ¥ 27,333）</td></tr>
+          <tr><td class="people">4 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 21,750）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 繁忙期 -->
+    <div class="season">
+      <h4>繁忙期</h4>
+      <table class="table" aria-label="ONZE・繁忙期價目表">
+        <thead>
+          <tr><th class="people">人數</th><th class="price">金額</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="people">1 人</td><td class="price">¥ 82,000</td><td></td></tr>
+          <tr><td class="people">2 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 43,500）</td></tr>
+          <tr><td class="people">3 人</td><td class="price">¥ 92,000</td><td class="pp">（每人 ¥ 30,666）</td></tr>
+          <tr><td class="people">4 人</td><td class="price">¥ 97,000</td><td class="pp">（每人 ¥ 24,250）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 備註＋按鈕 -->
+    <div class="note-row">
+      <div class="note">
+        <small>繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
+        ※第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。
+      </div>
+      <div class="btns">
+        <a class="btn" href="onze.html">雪場介紹</a>
+        <a class="btn" href="booking.html">預約課程</a>
+      </div>
+    </div>
+
+    <!-- 手機版 CTA（和既有樣式一致） -->
+    <div class="cta-row">
+      <a class="btn" href="onze.html">雪場介紹</a>
+      <a class="btn" href="booking.html">預約課程</a>
+    </div>
+  </div>
+</details>
+
+
 
         <!-- 札幌國際 -->
         <details class="pricecard" id="international" open>
@@ -742,6 +816,7 @@ h1{margin:0 0 4px 0}
           <ul>
             <li><a href="#pricing">課程與價格</a></li>
             <li><a href="#teine">札幌手稻</a></li>
+            <li><a href="onze.html">小樽ONZE</a></li>
             <li><a href="#international">札幌國際</a></li>
           </ul>
         </div>
@@ -903,40 +978,54 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   show(0); play();
 })();
 
-/* 最新消息：桌機 3、手機 2 */
+/* 最新消息：桌機 3、手機 2（支援任意張數，循環播放） */
 (function(){
   const row = document.getElementById('newsRow');
   if(!row) return;
+
   const GAP = 12;
-  const mq = window.matchMedia('(max-width:760px)');
+  const mq  = window.matchMedia('(max-width:760px)');
   const isMobile = ()=> mq.matches;
 
-  function visible(){ return isMobile()? 2 : 3; }
-  function cardSize(){ return isMobile()? 100 : 140; }
+  const baseCards = ()=> Array.from(row.children).filter(n=>!n.classList.contains('clone'));
+  const totalBase = ()=> baseCards().length;
+
+  const visible = ()=> isMobile()? 2 : 3;
+  const cardSize= ()=> isMobile()? 100 : 140;
 
   let index = 0, timer = null;
 
-  function setupClones(){
+  function setup(){
+    // 移除舊的 clone
     row.querySelectorAll('.clone').forEach(n=>n.remove());
-    const cards = Array.from(row.children).filter(n=>!n.classList.contains('clone'));
-    for(let i=0;i<visible();i++){
-      const c = cards[i % cards.length].cloneNode(true);
+
+    // 依目前可視數量補 clone
+    const bases = baseCards();
+    const need  = visible();
+    for(let i=0;i<need;i++){
+      const c = bases[i % bases.length].cloneNode(true);
       c.classList.add('clone');
       row.appendChild(c);
     }
-    index = 0;
-    row.style.transition = 'none';
-    row.style.transform = 'translateX(0px)';
+
+    // 設定 viewport 寬度
     const vp = row.parentElement;
     vp.style.width = (cardSize()*visible() + GAP*(visible()-1)) + 'px';
+
+    // 重置位置
+    index = 0;
+    row.style.transition = 'none';
+    row.style.transform  = 'translateX(0px)';
   }
 
   function step(){
     index++;
     const stepPx = cardSize() + GAP;
     row.style.transition = 'transform .6s ease';
-    row.style.transform = `translateX(-${stepPx*index}px)`;
-    if(index >= 4){
+    row.style.transform  = `translateX(-${stepPx*index}px)`;
+
+    // 當已完整滑過「原生卡片總數」時，用 clone 無縫歸零
+    if(index >= totalBase()){
       setTimeout(()=>{
         row.style.transition = 'none';
         index = 0;
@@ -945,9 +1034,13 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     }
   }
 
-  setupClones();
-  timer = setInterval(step, 3000);
-  mq.addEventListener('change', setupClones);
+  function start(){
+    if(timer) clearInterval(timer);
+    timer = setInterval(step, 3000);
+  }
+
+  setup(); start();
+  mq.addEventListener('change', ()=>{ setup(); start(); });
 })();
 
 /* reveal */
