@@ -441,6 +441,12 @@ h1{margin:0 0 4px 0}
   overflow: hidden;
 }
 
+/* News：桌機顯示 3 張，手機顯示 2 張 */
+.news{ --gap:12px; --size:140px; --visible:3; }
+.news-viewport{ overflow:hidden; width: calc(var(--size) * var(--visible) + var(--gap) * (var(--visible) - 1)); }
+@media (max-width:760px){
+  .news{ --size:100px; --visible:2; }
+}
 
 </style>
 </head>
@@ -463,8 +469,9 @@ h1{margin:0 0 4px 0}
           <li role="none"><a role="menuitem" href="#pricing">レッスンプラン</a></li>
           <li class="group-title">スキー場紹介</li>
           <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
+        <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
           <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
-        </ul>
+      </ul>
       </li>
 
       <!-- 特集記事：下拉 -->
@@ -510,6 +517,7 @@ h1{margin:0 0 4px 0}
           <a href="#pricing" role="menuitem">レッスンプラン</a>
           <div class="mob-subtitle">スキー場紹介</div>
           <a href="ja_teine.html" role="menuitem">札幌手稲</a>
+          <a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
           <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
 
           <div class="mob-subtitle">特集記事</div>
@@ -551,24 +559,25 @@ h1{margin:0 0 4px 0}
           <a href="ja_booking.html" class="btn" aria-label="予約">予約</a>
         </div>
 
-        <section class="news reveal" id="news" aria-label="最新情報">
-          <div class="news-viewport">
-            <div class="news-row" id="newsRow">
-              <!-- ✅ 新增 lazy loading -->
-              <div class="news-row" id="newsRow">
-  <a class="news-card" href="ja_booking.html" aria-label="早鳥優惠" title="本季預約開放通知">
-    <img src="news/ja_news-1.png" alt="本季預約開放通知" loading="lazy" decoding="async">
-  </a>
+<section class="news reveal" id="news" aria-label="最新情報">
+  <div class="news-viewport">
+    <div class="news-row" id="newsRow">
+      <a class="news-card" href="ja_booking.html" aria-label="早鳥優惠" title="本季預約開放通知">
+        <img src="news/ja_news-1.png" alt="本季預約開放通知" loading="lazy" decoding="async">
+      </a>
 
-  <a class="news-card" href="ja_teine.html" aria-label="手稲" title="手稲">
-    <img src="news/ja_news-2.png" alt="手稲" loading="lazy" decoding="async">
-  </a>
+      <a class="news-card" href="ja_teine.html" aria-label="手稲" title="手稲">
+        <img src="news/ja_news-2.png" alt="手稲" loading="lazy" decoding="async">
+      </a>
 
-  <a class="news-card" href="ja_kokusai.html" target="_blank" rel="noopener"
-     aria-label="Instagram 札幌国際" title="Instagram 札幌国際">
-    <img src="news/ja_news-3.png" alt="Instagram 札幌国際" loading="lazy" decoding="async">
-  </a>
-</div>
+      <a class="news-card" href="ja_kokusai.html" aria-label="札幌国際" title="札幌国際">
+        <img src="news/ja_news-3.png" alt="札幌国際" loading="lazy" decoding="async">
+      </a>
+
+      <a class="news-card" href="ja_onze.html#info" aria-label="ONZE 詳細" title="札幌国際 詳細">
+        <img src="news/ja_news-4.png" alt="ONZE 詳細" loading="lazy" decoding="async">
+      </a>
+    </div>
             </div>
           </div>
         </section>
@@ -675,6 +684,84 @@ h1{margin:0 0 4px 0}
 </div>
         </details>
 
+
+<!-- 小樽オーンズ -->
+<details class="pricecard" id="onze" open>
+  <summary>
+    <div class="head">
+      <div class="title">オーンズ｜プライベート（終日）</div>
+      <div class="desc">海を望む絶景・アクセス抜群で気軽に滑れる。</div>
+    </div>
+    <div class="fromrow">
+      <span class="fromtag"><small>平日</small> ¥ 72,000〜</span>
+      <span class="fromtag"><small>繁忙期</small> ¥ 82,000〜</span>
+    </div>
+  </summary>
+
+  <div class="pricetable">
+    <!-- 平日 -->
+    <div class="season">
+      <h4>平日</h4>
+      <table class="table" aria-label="オーンズ・平日料金表">
+        <thead>
+          <tr>
+            <th class="people">人数</th>
+            <th class="price">料金</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="people">1 名</td><td class="price">¥ 72,000</td><td></td></tr>
+          <tr><td class="people">2 名</td><td class="price">¥ 77,000</td><td class="pp">（1 名あたり ¥ 38,500）</td></tr>
+          <tr><td class="people">3 名</td><td class="price">¥ 82,000</td><td class="pp">（1 名あたり ¥ 27,333）</td></tr>
+          <tr><td class="people">4 名</td><td class="price">¥ 87,000</td><td class="pp">（1 名あたり ¥ 21,750）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 繁忙期 -->
+    <div class="season">
+      <h4>繁忙期</h4>
+      <table class="table" aria-label="オーンズ・繁忙期料金表">
+        <thead>
+          <tr>
+            <th class="people">人数</th>
+            <th class="price">料金</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="people">1 名</td><td class="price">¥ 82,000</td><td></td></tr>
+          <tr><td class="people">2 名</td><td class="price">¥ 87,000</td><td class="pp">（1 名あたり ¥ 43,500）</td></tr>
+          <tr><td class="people">3 名</td><td class="price">¥ 92,000</td><td class="pp">（1 名あたり ¥ 30,666）</td></tr>
+          <tr><td class="people">4 名</td><td class="price">¥ 97,000</td><td class="pp">（1 名あたり ¥ 24,250）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 注意書き＋ボタン -->
+    <div class="note-row">
+      <div class="note">
+        <small style="display:block; color:#000; margin-bottom:4px;">繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
+        ※5 名目は 1 名あたり +¥5,000、最大 5 名まで。対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。
+      </div>
+      <div class="btns">
+        <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
+        <a class="btn" href="ja_booking.html">レッスン予約</a>
+      </div>
+    </div>
+
+    <!-- モバイル用CTA -->
+    <div class="cta-row">
+      <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
+      <a class="btn" href="ja_booking.html">レッスン予約</a>
+    </div>
+  </div>
+</details>
+
+
+
+
         <!-- 札幌国際 -->
         <details class="pricecard" id="international"open>
           <summary>
@@ -715,7 +802,7 @@ h1{margin:0 0 4px 0}
             <div class="note-row">
   <div class="note">
     <small style="display:block; color:#000; margin-bottom:4px;">繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
-    ※5 名目は 1 名あたり +¥5,000、最大 5 名まで。対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。
+    ※5 名目は 1 名あたり +¥6,000、最大 5 名まで。対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。
  </div>
               <div class="btns">
   <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
@@ -728,6 +815,9 @@ h1{margin:0 0 4px 0}
             </div>
           </div>
         </details>
+
+
+
       </div>
     </div>
   </section>
@@ -788,7 +878,9 @@ h1{margin:0 0 4px 0}
           <ul>
             <li><a href="#pricing">レッスンプラン</a></li>
             <li><a href="#teine">札幌手稲</a></li>
+          <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="#international">札幌国際</a></li>
+  
           </ul>
         </div>
         <div>
@@ -949,13 +1041,17 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   show(0); play();
 })();
 
-/* ニュース・カルーセル */
+/* ニュース・カルーセル（4 張卡→視窗顯示 3 張輪播；手機顯示 2 張） */
 (function(){
   const row = document.getElementById('newsRow');
   if(!row) return;
+
   const GAP = 12;
   const mq = window.matchMedia('(max-width:760px)');
   const isMobile = ()=> mq.matches;
+
+  const cards = () => Array.from(row.children).filter(n=>!n.classList.contains('clone'));
+  const cardCount = () => cards().length;
 
   function visible(){ return isMobile()? 2 : 3; }
   function cardSize(){ return isMobile()? 100 : 140; }
@@ -963,18 +1059,26 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   let index = 0, timer = null;
 
   function setupClones(){
+    // 清掉舊的 clone
     row.querySelectorAll('.clone').forEach(n=>n.remove());
-    const cards = Array.from(row.children).filter(n=>!n.classList.contains('clone'));
-    for(let i=0;i<visible();i++){
-      const c = cards[i % cards.length].cloneNode(true);
+
+    // 依目前可視數量補上尾端 clones，讓位移循環更平順
+    const base = cards();
+    const need = visible();
+    for(let i=0;i<need;i++){
+      const c = base[i % base.length].cloneNode(true);
       c.classList.add('clone');
       row.appendChild(c);
     }
+
+    // 設定 viewport 寬度
+    const vp = row.parentElement;
+    vp.style.width = (cardSize()*visible() + GAP*(visible()-1)) + 'px';
+
+    // 重置位置
     index = 0;
     row.style.transition = 'none';
     row.style.transform = 'translateX(0px)';
-    const vp = row.parentElement;
-    vp.style.width = (cardSize()*visible() + GAP*(visible()-1)) + 'px';
   }
 
   function step(){
@@ -982,7 +1086,12 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     const stepPx = cardSize() + GAP;
     row.style.transition = 'transform .6s ease';
     row.style.transform = `translateX(-${stepPx*index}px)`;
-    if(index >= 4){
+
+    // 真正的卡總數（不含 clone）
+    const total = cardCount();
+
+    // 當已經完全滑過「原生卡 total 張」時，瞬間回 0 再繼續（使用 clone 避免閃爍）
+    if(index >= total){
       setTimeout(()=>{
         row.style.transition = 'none';
         index = 0;
@@ -991,9 +1100,10 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     }
   }
 
+  // 初始化與事件
   setupClones();
   timer = setInterval(step, 3000);
-  mq.addEventListener('change', setupClones);
+  mq.addEventListener('change', ()=>{ clearInterval(timer); setupClones(); timer = setInterval(step, 3000); });
 })();
 
 /* reveal */
