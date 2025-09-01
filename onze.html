@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小樽 ONZE｜MOPO Ski School</title>
+<meta name="description" content="小樽 ONZE 滑雪場課程｜單板與雙板教學，中文、英文、日文、廣東話，從初學到進階皆可參加。">
+
+<!-- ✅ SEO / Open Graph / Twitter Card -->
+<link rel="canonical" href="https://moposki.com/onze.html">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:title" content="小樽 ONZE｜MOPO Ski School">
+<meta property="og:description" content="小樽 ONZE 滑雪場課程｜單板與雙板教學，中文、英文、日文、廣東話，從初學到進階皆可參加。">
+<meta property="og:url" content="https://moposki.com/onze.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPO Ski School">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="小樽 ONZE｜MOPO Ski School">
+<meta name="twitter:description" content="小樽 ONZE 滑雪場課程｜單板與雙板教學，中文、英文、日文、廣東話，從初學到進階皆可參加。">
+<meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+
+
+
+<!-- ✅ 共用 CSS -->
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
+    </div>
+
+    <!-- 導覽 -->
+    <ul class="menu" role="menubar" aria-label="網站導覽">
+      <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
+      <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="滑雪課程 子選單">
+          <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
+          <li class="group-title">雪場介紹</li>
+          <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
+          <li role="none"><a role="menuitem" href="onze.html" aria-current="page">小樽 ONZE</a></li>
+          <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
+
+        </ul>
+      </li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="主題文章 子選單">
+          <li role="none"><a role="menuitem" href="safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
+      <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+    </ul>
+
+    <div class="lang">
+      <select id="langSelect" aria-label="選擇語言">
+        <option value="zh-Hant" selected>繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div class="mobtools" aria-label="行動工具">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="語言">語言</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言選單">
+          <button role="menuitem" disabled style="opacity:.6; font-weight:700;">繁體中文（目前）</button>
+          <a role="menuitem" data-lang="ja" href="ja_onze.html">日本語</a>
+          <a role="menuitem" data-lang="en" href="en_onze.html">English</a>
+        </div>
+      </div>
+
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="開啟導覽" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動版導覽">
+          <a href="news.html" role="menuitem">最新消息</a>
+          <a href="mopo.html" role="menuitem">關於 MOPO</a>
+
+          <div class="mob-subtitle">滑雪課程</div>
+          <a href="index.html#pricing" role="menuitem">課程與價格</a>
+          <div class="mob-subtitle">雪場介紹</div>
+          <a href="teine.html" role="menuitem">札幌手稻</a>
+          <a href="onze.html" role="menuitem" aria-current="page">小樽 ONZE</a>
+          <a href="kokusai.html" role="menuitem">札幌國際</a>
+
+
+          <div class="mob-subtitle">主題文章</div>
+          <a href="safe.html" role="menuitem">安全知識</a>
+          <a href="trip.html" role="menuitem">觀光主題</a>
+
+          <a href="faq.html" role="menuitem">常見問題</a>
+          <a href="booking.html" role="menuitem">預約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 行動版遮罩 -->
+<div id="mobOverlay" aria-hidden="true" hidden></div>
+
+<main id="home" aria-label="小樽 ONZE">
+  <!-- 只調整此區塊內容／圖片，其餘沿用 -->
+  <style>
+    :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4; }
+
+    /* === HERO === */
+    .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
+    .s-hero::before{content:"";position:absolute;inset:0;background:url("img/onze/onze.jpeg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
+    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
+    .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
+    .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
+    .s-hero h1{font-family:"Noto Serif JP","Noto Sans TC",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
+    .s-hero .s-sub{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px}
+    .s-hero p{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem}
+    @media (max-width:900px){
+      .s-hero{min-height:52vh}
+      .s-hero-inner{grid-template-columns:1fr;padding:52px 18px}
+      .s-hero::after{background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%)}
+      .s-hero p{line-height:2.05;margin-bottom:20px}
+    }
+
+    /* === TOC + Sections === */
+    .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
+    .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
+    @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
+    .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
+    .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
+    .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
+    .s-toc a:hover{background:rgba(0,0,0,.035)}
+    .s-toc a.is-active{font-weight:600}
+
+    .s-section{border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px}
+    .s-section h2{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
+    .s-section p,.s-section li{font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px}
+    .s-section ul{margin:10px 0 0 18px}
+    .public{padding-top:44px;padding-bottom:44px}
+    .public h2{margin-bottom:26px}
+
+    .s-linkbox{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
+    .s-linkbox:hover{transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .s-linktxt{font-size:14px;color:var(--ink)}
+    .s-ico{width:18px;height:18px;opacity:.85;flex:0 0 18px}
+
+    .s-imgframe{display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px}
+    .s-imgframe img{display:block;max-width:100%;height:auto}
+    .s-cap{font-size:13px;color:#555;margin-top:8px}
+
+    /* === Modal Viewer === */
+    .modal{position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+    .modal[aria-hidden="false"]{display:flex}
+    .modal-dialog{width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff}
+    .modal-title{font:600 14px/1 "Noto Sans JP","Noto Sans TC",sans-serif;color:#222}
+    .modal-close{border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px}
+    .modal-close:hover{background:rgba(0,0,0,.05)}
+    .modal-body{background:#fafafa}
+    .modal-body iframe{display:block;width:100%;height:80vh;border:0}
+    .modal-body img{display:block;width:100%;height:auto}
+    @media (max-width:780px){
+      .modal-dialog{width:100%}
+      .modal-body iframe{height:70vh}
+    }
+  </style>
+
+  <!-- HERO -->
+  <section class="s-hero" aria-label="ONZE 主視覺">
+    <div class="s-hero-inner">
+      <div>
+        <div class="s-eyebrow">Otaru</div>
+        <h1>ONZE 滑雪場</h1>
+        <p class="s-sub">大海與夜景交織的雪道，札幌近郊的特等席。</p>
+        <p>從札幌市中心開車僅需 35 分鐘，位於小樽市銭函的 ONZE 滑雪場，以交通便利與「札幌圈最具代表性的夜間滑雪場」而聞名。能遠眺石狩灣的開闊視野令人印象深刻，白天可一覽壯麗海景，傍晚夕陽染紅海面，入夜後城市燈火與雪場光影交織，滑行宛如置身夢境。</p>
+<p class="img-credit">照片提供：ONZE 滑雪場</p>
+      </div>
+      <div><!-- 右側留白，呈現背景照片 --></div>
+    </div>
+
+  </section>
+
+  <!-- BODY -->
+  <section class="s-wrap">
+    <div class="s-layout">
+      <!-- 左：目錄（金色指示條會跟隨） -->
+      <nav class="s-toc" aria-label="章節目錄">
+        <a href="#features" class="is-active">— 雪道特色</a>
+        <a href="#public">— 大眾運輸</a>
+        <a href="#car">— 自行開車</a>
+      </nav>
+
+      <!-- 右：內容 -->
+      <div>
+        <article id="features" class="s-section" aria-labelledby="features-title">
+          <h2 id="features-title">雪場特色</h2>
+
+          <!-- 地圖：本頁以圖片彈窗（非 PDF） -->
+          <button class="s-linkbox js-open-modal" data-modal-type="image" data-src="img/onze/onzemap.jpg" aria-haspopup="dialog" aria-controls="viewerModal">
+            <svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 1v5h5" fill="none" stroke="#222" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="s-linktxt">雪場地圖（點擊顯示）</span>
+          </button>
+          <p></p>
+
+          <p>ONZE 擁有 10 條雪道，無論雙板或單板，從初學到高階都能找到適合的節奏與樂趣。白天晴朗時，從高處的展望雪道可將石狩灣與藍天盡收眼底，雙板下滑時的速度感彷彿直衝大海般震撼。</p>
+          <p>夜間則由全區夜間照明點亮雪道，無論單板或雙板，都能在城市夜景與燈光的映照下盡情享受，感受與白天截然不同的氛圍。雖然 ONZE 在單板族群中特別有人氣，同樣也是雙板愛好者練習與巡航的好去處：初學者能在友善環境中輕鬆上手，高階玩家則可透過不同雪道變化找到挑戰。</p>
+          <p>兒童專區完善，雪橇與雪上遊戲讓家庭旅客安心同樂。租借裝備與更衣室齊備，即使空手到訪也能輕鬆體驗滑雪。ONZE 的魅力，是那份「衝向大海與城市夜色」的獨特體驗。</p>
+          <p><strong>特別提醒：</strong>雪場直營店的單板租借無法調整角度，對初學者可能增加難度，建議事先確認，以確保更舒適的學習體驗。</p>
+
+
+        </article>
+
+        <article id="public" class="s-section public" aria-labelledby="public-title">
+          <h2 id="public-title">大眾運輸</h2>
+          <p>✦ <strong>JR 銭函站 → 免費接駁巴士</strong></p>
+          <p>自 JR 札幌站搭乘快速列車約 21～27 分鐘至銭函站，轉乘免費接駁巴士約 10 分鐘直達雪場，動線清楚、交通便利。</p>
+
+          <!-- 圖片同頁放大 -->
+          <a class="s-imgframe js-open-modal" href="#" data-modal-type="image" data-src="img/onze/onze.png" aria-haspopup="dialog" aria-controls="viewerModal" aria-label="銭函站至雪場接駁資訊（點擊放大）">
+            <img src="img/onze/onze.png" alt="銭函站至雪場接駁資訊">
+          </a>
+          <div class="s-cap">點擊可放大檢視</div>
+        </article>
+
+        <article id="car" class="s-section" aria-labelledby="car-title">
+          <h2 id="car-title">自行開車</h2>
+          <p>園區設有約 1,000 個免費停車位，自駕前往同樣輕鬆。</p>
+          <ul>
+            <li>自札幌市中心約 35 分鐘</li>
+            <li>自小樽市中心約 20 分鐘</li>
+            <li>自新千歲機場約 75 分鐘</li>
+          </ul>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal（PDF / 圖片共用檢視器） -->
+  <div class="modal" id="viewerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="內容檢視器">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="viewerTitle">預覽</div>
+        <button class="modal-close" type="button" aria-label="關閉" id="viewerClose">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#222" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="viewerBody"><!-- 動態插入 --></div>
+    </div>
+  </div>
+
+  <script>
+    /* 目錄：active 與金色指示條 */
+    (function(){
+      const toc = document.querySelector('.s-toc');
+      const links = toc.querySelectorAll('a');
+      const map = {};
+      links.forEach(a => { map[a.hash.slice(1)] = a; });
+
+      function moveIndicator(target){
+        const rect = target.getBoundingClientRect();
+        const parent = toc.getBoundingClientRect();
+        toc.style.setProperty('--indicator-top', (rect.top - parent.top) + 'px');
+        toc.style.setProperty('--indicator-height', rect.height + 'px');
+      }
+      links.forEach(a=>{
+        a.addEventListener('mouseenter', ()=>moveIndicator(a));
+        a.addEventListener('focus', ()=>moveIndicator(a));
+      });
+      toc.addEventListener('mouseleave', ()=>{
+        const active = toc.querySelector('a.is-active') || links[0];
+        moveIndicator(active);
+      });
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            links.forEach(l=>l.classList.remove('is-active'));
+            const a = map[e.target.id]; if(a){ a.classList.add('is-active'); moveIndicator(a); }
+          }
+        });
+      }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
+      ['features','public','car'].forEach(id=>{
+        const el = document.getElementById(id); if(el) io.observe(el);
+      });
+
+      moveIndicator(links[0]);
+    })();
+
+    /* 彈窗（PDF／圖片同頁預覽） */
+    (function(){
+      const modal = document.getElementById('viewerModal');
+      const body  = document.getElementById('viewerBody');
+      const title = document.getElementById('viewerTitle');
+      const closeBtn = document.getElementById('viewerClose');
+
+      function openModal(type, src){
+        body.innerHTML = '';
+        title.textContent = (type === 'pdf') ? '滑道地圖' : '圖片預覽';
+        if(type === 'pdf'){
+          const iframe = document.createElement('iframe');
+          iframe.src = src;
+          iframe.setAttribute('title','PDF 預覽');
+          body.appendChild(iframe);
+        }else{
+          const img = document.createElement('img');
+          img.alt = '放大圖片';
+          img.src = src;
+          body.appendChild(img);
+        }
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      }
+      function closeModal(){
+        modal.setAttribute('aria-hidden','true');
+        body.innerHTML = '';
+        document.body.style.overflow='';
+      }
+      document.querySelectorAll('.js-open-modal').forEach(el=>{
+        el.addEventListener('click', (e)=>{
+          e.preventDefault();
+          openModal(el.dataset.modalType, el.dataset.src);
+        });
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+    })();
+
+    /* 語言切換 → 對應 ONZE */
+    (function(){
+      const sel = document.getElementById('langSelect');
+      if(!sel) return;
+      sel.addEventListener('change', ()=>{
+        const v = sel.value;
+        if (v === 'ja') location.href = 'ja_onze.html';
+        else if (v === 'en') location.href = 'en_onze.html';
+        else location.href = 'onze.html';
+      });
+    })();
+  </script>
+</main>
+
+<!-- Footer -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="網站地圖">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>最新消息</h4>
+          <ul>
+            <li><a href="news.html">News</a></li>
+            <li><a href="mopo.html">關於 MOPO</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>滑雪課程</h4>
+          <ul>
+            <li><a href="index.html#pricing">課程與價格</a></li>
+            <li><a href="teine.html">札幌手稻</a></li>
+            <li><a href="onze.html" aria-current="page">小樽 ONZE</a></li>
+            <li><a href="kokusai.html">札幌國際</a></li>
+
+          </ul>
+        </div>
+        <div>
+          <h4>主題文章</h4>
+          <ul>
+            <li><a href="safe.html">安全知識</a></li>
+            <li><a href="trip.html">觀光主題</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>資訊</h4>
+          <ul>
+            <li><a href="legal_tokusho.html">公司資訊</a></li>
+            <li><a href="notice.html">報名須知</a></li>
+            <li><a href="faq.html">常見問題</a></li>
+            <li><a href="index.html#contact">聯絡我們</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<div class="fab">
+  <button id="backTop" aria-label="回到頁面頂端">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<!-- ✅ 共用 JS -->
+<script src="common.js"></script>
+<script>
+  // 顯示年份
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

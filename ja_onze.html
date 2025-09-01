@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小樽オーンズ｜MOPO スキースクール</title>
+<meta name="description" content="小樽オーンズのページ。詳細情報。">
+
+<!-- ✅ SEO / Open Graph / Twitter Card -->
+<link rel="canonical" href="https://moposki.com/ja_onze.html">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:title" content="小樽オーンズ｜MOPO スキースクール">
+<meta property="og:description" content="札幌近郊・日本海を望むナイターが魅力の小樽オーンズ。アクセスやコース情報をご案内。">
+<meta property="og:url" content="https://moposki.com/ja_onze.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPO Ski School">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="小樽オーンズ｜MOPO スキースクール">
+<meta name="twitter:description" content="札幌近郊・日本海を望むナイターが魅力の小樽オーンズ。アクセスやコース情報をご案内。">
+<meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- ✅ 共通 CSS -->
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="ja_mopoindex.html" class="logo" aria-label="トップへ戻る">MOPO Ski School</a>
+    </div>
+
+    <!-- ===== ナビゲーション（※頂部は元ページと同じ構成・文言） ===== -->
+    <ul class="menu" role="menubar" aria-label="サイトナビ">
+      <li role="none"><a role="menuitem" href="ja_news.html">最新情報</a></li>
+      <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="レッスンサブメニュー">
+          <li role="none"><a role="menuitem" href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+          <li class="group-title">スキー場紹介</li>
+          <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
+    <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
+          <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+        </ul>
+      </li>
+
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu" aria-label="特集記事サブメニュー">
+          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
+        </ul>
+      </li>
+
+      <li role="none"><a role="menuitem" href="ja_faq.html">よくあるご質問</a></li>
+      <li role="none"><a role="menuitem" href="ja_booking.html">予約</a></li>
+    </ul>
+
+    <div class="lang">
+      <select id="langSelect" aria-label="言語を選択">
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja" selected>日本語</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <div class="mobtools" aria-label="モバイルツール">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="言語">言語</button>
+        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="言語メニュー">
+          <a role="menuitem" data-lang="zh-Hant" href="onze.html">繁體中文</a>
+          <button role="menuitem" disabled style="opacity:.6; font-weight:700;">日本語（現在）</button>
+          <a role="menuitem" data-lang="en" href="en_onze.html">English</a>
+        </div>
+      </div>
+
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" aria-label="ナビゲーションを開く" id="mobNavBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="モバイルナビ">
+          <a href="ja_news.html" role="menuitem">最新情報</a>
+          <a href="ja_mopo.html" role="menuitem">MOPO について</a>
+
+          <div class="mob-subtitle">レッスン</div>
+          <a href="ja_mopoindex.html#pricing" role="menuitem">レッスンプラン</a>
+          <a href="ja_teine.html" role="menuitem">札幌手稲</a>
+<a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
+          <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+
+          <div class="mob-subtitle">特集記事</div>
+          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_trip.html" role="menuitem">観光トピック</a>
+
+          <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
+          <a href="ja_booking.html" role="menuitem">予約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- モバイル用オーバーレイ -->
+<div id="mobOverlay" aria-hidden="true" hidden></div>
+
+<main id="home" aria-label="小樽オーンズ">
+  <!-- ===== この内側のみデザイン／機能追加（ヘッダー・フッターは不変更） ===== -->
+  <style>
+    :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4; }
+
+    /* === HERO === */
+    .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
+    .s-hero::before{content:"";position:absolute;inset:0;background:url("img/onze/onze.jpeg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
+    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
+    .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
+    .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
+    .s-hero h1{font-family:"Noto Serif JP",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
+    .s-hero .s-sub{font-family:"Noto Sans JP",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px}
+    .s-hero p{font-family:"Noto Sans JP",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem}
+    @media (max-width:900px){
+      .s-hero{min-height:52vh}
+      .s-hero-inner{grid-template-columns:1fr;padding:52px 18px}
+      .s-hero::after{background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%)}
+      .s-hero p{line-height:2.05;margin-bottom:20px}
+    }
+
+    /* === TOC + Sections === */
+    .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
+    .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
+    @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
+    .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
+    .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
+    .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
+    .s-toc a:hover{background:rgba(0,0,0,.035)}
+    .s-toc a.is-active{font-weight:600}
+
+    .s-section{border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px}
+    .s-section h2{font-family:"Noto Sans JP",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
+    .s-section p,.s-section li{font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px}
+    .s-section ul{margin:10px 0 0 18px}
+    .public{padding-top:44px;padding-bottom:44px}
+    .public h2{margin-bottom:26px}
+
+    .s-linkbox{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
+    .s-linkbox:hover{transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+    .s-linktxt{font-size:14px;color:var(--ink)}
+    .s-ico{width:18px;height:18px;opacity:.85;flex:0 0 18px}
+
+    .s-imgframe{display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px}
+    .s-imgframe img{display:block;max-width:100%;height:auto}
+    .s-cap{font-size:13px;color:#555;margin-top:8px}
+
+    /* === Modal Viewer === */
+    .modal{position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+    .modal[aria-hidden="false"]{display:flex}
+    .modal-dialog{width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff}
+    .modal-title{font:600 14px/1 "Noto Sans JP",sans-serif;color:#222}
+    .modal-close{border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px}
+    .modal-close:hover{background:rgba(0,0,0,.05)}
+    .modal-body{background:#fafafa}
+    .modal-body iframe{display:block;width:100%;height:80vh;border:0}
+    .modal-body img{display:block;width:100%;height:auto}
+    @media (max-width:780px){
+      .modal-dialog{width:100%}
+      .modal-body iframe{height:70vh}
+    }
+  </style>
+
+  <!-- HERO -->
+  <section class="s-hero" aria-label="オーンズ ヒーロー画像">
+    <div class="s-hero-inner">
+      <div>
+        <div class="s-eyebrow">Otaru</div>
+        <h1>オーンズスキー場</h1>
+        <p class="s-sub">海と夜景を一望しながら滑る、札幌近郊の特等席。</p>
+        <p>札幌市中心部から車でわずか30分、小樽市銭函に位置するオーンズスキー場は、アクセスの良さと札幌圏唯一のナイター営業専門ゲレンデとして知られる冬の人気スポットです。石狩湾を望むロケーションは開放感にあふれ、特に夕暮れから夜にかけて広がる夜景とイルミネーションに包まれたナイターは、幻想的な雰囲気を演出します。昼は観光やショッピング、夜は気軽にスキー＆スノーボード——そんなライフスタイルに寄り添う都市型スキーリゾートです。</p>
+      </div>
+      <div><!-- 右側は写真の余白 --></div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section class="s-wrap">
+    <div class="s-layout">
+      <!-- 左：目次（ゴールドライン追従） -->
+      <nav class="s-toc" aria-label="セクション目次">
+        <a href="#features" class="is-active">— ゲレンデの特徴</a>
+        <a href="#public">— 公共交通機関のご案内</a>
+        <a href="#car">— お車でお越しの方</a>
+      </nav>
+
+      <!-- 右：本文 -->
+      <div>
+        <article id="features" class="s-section" aria-labelledby="features-title">
+          <h2 id="features-title">ゲレンデの特徴</h2>
+
+          <!-- コースマップ（画像拡大） -->
+          <button class="s-linkbox js-open-modal" data-modal-type="image" data-src="img/onze/onzemap.jpg" aria-haspopup="dialog" aria-controls="viewerModal">
+            <svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 1v5h5" fill="none" stroke="#222" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="s-linktxt">コースマップ（クリックで表示）</span>
+          </button>
+          <p></p>
+
+          <p>オーンズスキー場には全10コースが整備されており、初級者から上級者まで幅広く楽しめます。特にナイター照明が充実しており、仕事や学校帰りにも立ち寄れるのが魅力。スノーボード利用率が高く、初心者向けレッスンやパークアイテムも用意されています。</p>
+          <p>キッズ専用エリアも完備。ソリや雪あそびなどのアクティビティも充実しているため、ご家族でも安心して過ごせます。レンタルや更衣室も充実しており、手ぶらで気軽に訪れることが可能です。</p>
+        </article>
+
+        <article id="public" class="s-section public" aria-labelledby="public-title">
+          <h2 id="public-title">公共交通機関をご利用の方</h2>
+
+          <p>✦ <strong>JR銭函駅からの無料シャトルバス</strong><br>
+          JR札幌駅から快速列車で約21〜27分。銭函駅下車後、スキー場直通の無料シャトルバスで約10分とアクセス良好です。</p>
+
+          <!-- バス案内（画像拡大） -->
+          <a class="s-imgframe js-open-modal" href="#" data-modal-type="image" data-src="img/onze/ja_onze.png" aria-haspopup="dialog" aria-controls="viewerModal" aria-label="バス案内画像（クリックで拡大）">
+            <img src="img/onze/ja_onze.png" alt="バス案内">
+          </a>
+          <div class="s-cap">クリックして拡大表示</div>
+          <p></p>
+
+        
+        </article>
+
+        <article id="car" class="s-section" aria-labelledby="car-title">
+          <h2 id="car-title">お車をご利用の方</h2>
+          <p>約1,000台を収容できる無料駐車場を完備。アクセスもスムーズです。</p>
+          <ul>
+            <li>札幌中心部から約30分</li>
+            <li>小樽中心部から約20分</li>
+            <li>新千歳空港から約70分</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== モーダル（PDF / 画像 共通ビューア） ===== -->
+  <div class="modal" id="viewerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="コンテンツビューア">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="viewerTitle">プレビュー</div>
+        <button class="modal-close" type="button" aria-label="閉じる" id="viewerClose">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#222" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="modal-body" id="viewerBody"><!-- 動的に挿入 --></div>
+    </div>
+  </div>
+
+  <script>
+    /* ===== 目次：アクティブ連動＋金色ライン追従 ===== */
+    (function(){
+      const toc = document.querySelector('.s-toc');
+      const links = toc.querySelectorAll('a');
+      const map = {};
+      links.forEach(a => { map[a.hash.slice(1)] = a; });
+
+      function moveIndicator(target){
+        const rect = target.getBoundingClientRect();
+        const parent = toc.getBoundingClientRect();
+        toc.style.setProperty('--indicator-top', (rect.top - parent.top) + 'px');
+        toc.style.setProperty('--indicator-height', rect.height + 'px');
+      }
+
+      links.forEach(a=>{
+        a.addEventListener('mouseenter', ()=>moveIndicator(a));
+        a.addEventListener('focus', ()=>moveIndicator(a));
+      });
+      toc.addEventListener('mouseleave', ()=>{
+        const active = toc.querySelector('a.is-active') || links[0];
+        moveIndicator(active);
+      });
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            links.forEach(l=>l.classList.remove('is-active'));
+            const a = map[e.target.id]; if(a){ a.classList.add('is-active'); moveIndicator(a); }
+          }
+        });
+      }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
+      ['features','public','car'].forEach(id=>{
+        const el = document.getElementById(id); if(el) io.observe(el);
+      });
+
+      moveIndicator(links[0]);
+    })();
+
+    /* ===== モーダル（PDF/画像を同ページで開く） ===== */
+    (function(){
+      const modal = document.getElementById('viewerModal');
+      const body  = document.getElementById('viewerBody');
+      const title = document.getElementById('viewerTitle');
+      const closeBtn = document.getElementById('viewerClose');
+
+      function openModal(type, src){
+        body.innerHTML = '';
+        title.textContent = (type === 'pdf') ? 'コースマップ' : '画像プレビュー';
+        if(type === 'pdf'){
+          const iframe = document.createElement('iframe');
+          iframe.src = src;
+          iframe.setAttribute('title','PDF プレビュー');
+          body.appendChild(iframe);
+        }else{
+          const img = document.createElement('img');
+          img.alt = '拡大画像';
+          img.src = src;
+          body.appendChild(img);
+        }
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      }
+      function closeModal(){
+        modal.setAttribute('aria-hidden','true');
+        body.innerHTML = '';
+        document.body.style.overflow='';
+      }
+      document.querySelectorAll('.js-open-modal').forEach(el=>{
+        el.addEventListener('click', (e)=>{
+          e.preventDefault();
+          openModal(el.dataset.modalType, el.dataset.src);
+        });
+      });
+      closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+    })();
+  </script>
+</main>
+
+<!-- Footer（※底部も元ページと同じ構成・文言） -->
+<footer class="footer" role="contentinfo">
+  <section class="sitemap" aria-label="サイトマップ">
+    <div class="container">
+      <div class="cols">
+        <div>
+          <h4>最新情報</h4>
+          <ul>
+            <li><a href="ja_news.html">News</a></li>
+            <li><a href="ja_mopo.html">MOPO について</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>レッスン</h4>
+          <ul>
+            <li><a href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+            <li><a href="ja_teine.html">札幌手稲</a></li>
+            <li><a href="ja_onze.html">小樽オーンズ</a></li>
+            <li><a href="ja_kokusai.html">札幌国際</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>特集記事</h4>
+          <ul>
+            <li><a href="ja_safe.html">安全知識</a></li>
+            <li><a href="ja_trip.html">観光トピック</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>情報</h4>
+          <ul>
+            <li><a href="ja_legal_tokusho.html">会社情報</a></li>
+            <li><a href="ja_notice.html">申込案内</a></li>
+            <li><a href="ja_faq.html">よくあるご質問</a></li>
+            <li><a href="ja_mopoindex.html#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
+        <div>© <span id="year"></span> MOPO Ski School</div>
+      </div>
+    </div>
+  </section>
+</footer>
+
+<div class="fab">
+  <button id="backTop" aria-label="ページトップへ戻る">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
+  </button>
+</div>
+
+<!-- ✅ 共通 JS -->
+<script src="common.js"></script>
+</body>
+</html>
