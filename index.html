@@ -302,6 +302,9 @@ h1{margin:0 0 4px 0}
   }
 }
 
+
+
+
 /* ===== MOPO：背景＋逐行出現＋縮高度＋按鈕（與日文版相同行為） ===== */
 .about-hero{
   --aboutPad: clamp(120px, 28vh, 260px);
@@ -409,6 +412,75 @@ h1{margin:0 0 4px 0}
 .note-row small { font-size:14px; color:#000000; display:block; margin-bottom:4px; }
 
 .news-viewport { max-width: calc(2 * 140px + 1 * 12px); overflow: hidden; }
+
+
+
+/* ===== 價格表：自訂字級與粗細 ===== */
+.table .people {
+  font-size: 18px;   /* 人數字體大小 */
+  font-weight: 700;  /* 人數粗細 */
+}
+
+.table .price {
+  font-size: 18px;   /* 價格字體大小 */
+  font-weight: 800;  /* 價格粗細 */
+  color: #8B6B2E;    /* 金色調，可自行修改 */
+}
+
+.table .pp {
+  font-size: 13px;   /* 人均價格字體大小 */
+  font-weight: 500;  /* 人均粗細 */
+  color: #555;
+}
+
+
+/* ===== 價格表：繁忙期日期的通用版版型（所有雪場） ===== */
+
+/* 桌機（≥761px）：兩欄，日期置頂跨兩欄 */
+@media (min-width: 761px){
+  .pricecard .pricetable{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "dates dates"
+      "standard busy";
+    gap: 14px 16px;
+    align-items: start;
+  }
+  .pricecard .busy-dates{ grid-area: dates; }
+  .pricecard .season.standard{ grid-area: standard; }
+  .pricecard .season.busy{ grid-area: busy; }
+
+  /* 日期外觀（桌機）*/
+  .pricecard .busy-dates{
+    padding: 8px 10px;
+    border: 1px dashed #d9d9d9;
+    border-radius: 10px;
+  }
+  .pricecard .busy-dates small{ font-size: 14px; } /* ← 桌機字級 */
+}
+
+/* 手機（≤760px）：單欄順序＝標準 → 日期 → 繁忙期 */
+@media (max-width: 760px){
+  .pricecard .pricetable{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "standard"
+      "dates"
+      "busy";
+    gap: 10px;
+  }
+  .pricecard .busy-dates{ grid-area: dates; padding: 0 10px; border: 0; }
+  .pricecard .season.standard{ grid-area: standard; }
+  .pricecard .season.busy{ grid-area: busy; }
+
+  .pricecard .busy-dates small{ font-size: 12px; } /* ← 手機字級 */
+}
+
+
+
+
 </style>
 </head>
 <body>
@@ -527,9 +599,7 @@ h1{margin:0 0 4px 0}
               <a class="news-card" href="booking.html"><img src="news/news-1.png" alt="最新消息 1" loading="lazy" decoding="async"></a>
               <a class="news-card" href="teine.html"><img src="news/news-2.png" alt="最新消息 2" loading="lazy" decoding="async"></a>
               <a class="news-card" href="kokusai.html"><img src="news/news-3.png" alt="最新消息 3" loading="lazy" decoding="async"></a>
-            <a class="news-card" href="/news/4">
-  <img src="news/news-4.png" alt="最新消息 4" loading="lazy" decoding="async">
-</a>
+                    <a class="news-card" href="onze.html"><img src="news/news-4.png" alt="最新消息 4" loading="lazy" decoding="async"></a>
             </div>
           </div>
         </section>
@@ -581,60 +651,72 @@ h1{margin:0 0 4px 0}
       </div>
 
       <div class="pricelist" id="courseList">
-              <!-- 手稻 -->
-        <details class="pricecard" id="teine" open>
-          <summary>
-            <div class="head">
-              <div class="title">札幌手稻｜私人課（全日）</div>
-              <div class="desc">雪質穩定、交通便利。</div>
-            </div>
-            <div class="fromrow">
-              <span class="fromtag"><small>平日</small> ¥ 72,000 起</span>
-              <span class="fromtag"><small>繁忙期</small> ¥ 82,000 起</span>
-            </div>
-          </summary>
-          <div class="pricetable">
-            <div class="season">
-              <h4>平日</h4>
-              <table class="table" aria-label="手稻・平日價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 72,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 77,000</td><td class="pp">（每人 ¥ 38,500）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 82,000</td><td class="pp">（每人 ¥ 27,333）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 21,750）</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="season">
-              <h4>繁忙期</h4>
-              <table class="table" aria-label="手稻・繁忙期價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 82,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 43,500）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 92,000</td><td class="pp">（每人 ¥ 30,666）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 97,000</td><td class="pp">（每人 ¥ 24,250）</td></tr>
-                </tbody>
-              </table>
-            </div>
+             
+ <!-- 手稻 -->
 
- <div class="note-row">
-  <div class="note">
+<details class="pricecard" id="teine" open>
+  <summary>
+    <div class="head">
+      <div class="title">手稻｜私人課（全日）</div>
+      <div class="desc">雪質穩定，交通穩定。</div>
+    </div>
+    <div class="fromrow">
+      <span class="fromtag"><small>標準時段</small> ¥ 72,000 起</span>
+      <span class="fromtag"><small>繁忙期時段</small> ¥ 82,000 起</span>
+    </div>
+  </summary>
+       <div class="pricetable">
+  <!-- ★ 繁忙期日期（桌機置頂跨兩欄；手機排在繁忙期表格上方） -->
+  <div class="busy-dates">
     <small>繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
-    ※第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。
   </div>
-              <div class="btns">
-                 <a class="btn" href="teine.html">雪場介紹</a>
-<a class="btn" href="booking.html">預約課程</a>
-              </div>
-            </div>
-            <div class="cta-row">
-            <a class="btn" href="teine.html">雪場介紹</a>
-<a class="btn" href="booking.html">預約課程</a>
-            </div>
-        </details>
 
+  <!-- 標準 / 平日 -->
+  <div class="season standard">
+    <h4>標準價格</h4>
+    <table class="table" aria-label="手稻・標準期間價目表">
+      <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="people">1 人</td><td class="price">¥ 72,000</td><td></td></tr>
+        <tr><td class="people">2 人</td><td class="price">¥ 77,000</td><td class="pp">（每人 ¥ 38,500）</td></tr>
+        <tr><td class="people">3 人</td><td class="price">¥ 82,000</td><td class="pp">（每人 ¥ 27,333）</td></tr>
+        <tr><td class="people">4 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 21,750）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 繁忙期 -->
+  <div class="season busy">
+    <h4>繁忙期價格</h4>
+    <table class="table" aria-label="手稻・繁忙期間價目表">
+      <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="people">1 人</td><td class="price">¥ 82,000</td><td></td></tr>
+        <tr><td class="people">2 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 43,500）</td></tr>
+        <tr><td class="people">3 人</td><td class="price">¥ 92,000</td><td class="pp">（每人 ¥ 30,666）</td></tr>
+        <tr><td class="people">4 人</td><td class="price">¥ 97,000</td><td class="pp">（每人 ¥ 24,250）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 備註＋按鈕（移除重複的「繁忙期：…」那行） -->
+  <div class="note-row">
+    <div class="note">
+       <p>＊小提醒：除繁忙期外，皆適用標準價格；繁忙期費用請依時間表為準</p>
+        <p>＊第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
+    </div>
+    <div class="btns">
+      <a class="btn" href="teine.html">雪場介紹</a>
+      <a class="btn" href="booking.html">預約課程</a>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a class="btn" href="teine.html">雪場介紹</a>
+    <a class="btn" href="booking.html">預約課程</a>
+  </div>
+</div>
+</details>
 
 <!-- ONZE -->
 <details class="pricecard" id="onze" open>
@@ -644,16 +726,21 @@ h1{margin:0 0 4px 0}
       <div class="desc">臨海絕景、交通便利，雪與海交織的非凡舞台。</div>
     </div>
     <div class="fromrow">
-      <span class="fromtag"><small>平日</small> ¥ 72,000 起</span>
-      <span class="fromtag"><small>繁忙期</small> ¥ 82,000 起</span>
+      <span class="fromtag"><small>標準時段</small> ¥ 72,000 起</span>
+      <span class="fromtag"><small>繁忙期時段</small> ¥ 82,000 起</span>
     </div>
   </summary>
 
   <div class="pricetable">
-    <!-- 平日 -->
-    <div class="season">
-      <h4>平日</h4>
-      <table class="table" aria-label="ONZE・平日價目表">
+    <!-- ★ 繁忙期日期：桌機置頂跨兩欄；手機會排到繁忙期表格上方 -->
+    <div class="busy-dates">
+      <small>繁忙期：2025/12/20～01/11・2026/02/12～02/22・2026/02/27～03/01</small>
+    </div>
+
+    <!-- 標準價格 -->
+    <div class="season standard">
+      <h4>標準價格</h4>
+      <table class="table" aria-label="ONZE・標準期間價目表">
         <thead>
           <tr><th class="people">人數</th><th class="price">金額</th><th></th></tr>
         </thead>
@@ -666,10 +753,10 @@ h1{margin:0 0 4px 0}
       </table>
     </div>
 
-    <!-- 繁忙期 -->
-    <div class="season">
-      <h4>繁忙期</h4>
-      <table class="table" aria-label="ONZE・繁忙期價目表">
+    <!-- 繁忙期價格 -->
+    <div class="season busy">
+      <h4>繁忙期價格</h4>
+      <table class="table" aria-label="ONZE・繁忙期間價目表">
         <thead>
           <tr><th class="people">人數</th><th class="price">金額</th><th></th></tr>
         </thead>
@@ -685,8 +772,8 @@ h1{margin:0 0 4px 0}
     <!-- 備註＋按鈕 -->
     <div class="note-row">
       <div class="note">
-        <small>繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
-        ※第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。
+        <p>＊小提醒：除繁忙期間外，皆適用標準價格；繁忙期費用請依時間表為準</p>
+        <p>＊第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
       </div>
       <div class="btns">
         <a class="btn" href="onze.html">雪場介紹</a>
@@ -694,7 +781,6 @@ h1{margin:0 0 4px 0}
       </div>
     </div>
 
-    <!-- 手機版 CTA（和既有樣式一致） -->
     <div class="cta-row">
       <a class="btn" href="onze.html">雪場介紹</a>
       <a class="btn" href="booking.html">預約課程</a>
@@ -704,62 +790,73 @@ h1{margin:0 0 4px 0}
 
 
 
-        <!-- 札幌國際 -->
-        <details class="pricecard" id="international" open>
-          <summary>
-            <div class="head">
-              <div class="title">札幌國際｜私人課（全日）</div>
-              <div class="desc">視野開闊、多樣路線。</div>
-            </div>
-            <div class="fromrow">
-              <span class="fromtag"><small>平日</small> ¥ 89,000 起</span>
-              <span class="fromtag"><small>繁忙期</small> ¥ 99,000 起</span>
-            </div>
-          </summary>
-          <div class="pricetable">
-            <div class="season">
-              <h4>平日</h4>
-              <table class="table" aria-label="札幌國際・平日價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 84,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 90,000</td><td class="pp">（每人 ¥ 45,000）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 96,000</td><td class="pp">（每人 ¥ 32,000）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 102,000</td><td class="pp">（每人 ¥ 25,500）</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="season">
-              <h4>繁忙期</h4>
-              <table class="table" aria-label="札幌國際・繁忙期價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 94,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 100,000</td><td class="pp">（每人 ¥ 50,000）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 106,000</td><td class="pp">（每人 ¥ 35,333）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 112,000</td><td class="pp">（每人 ¥ 28,000）</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="note-row">
-  <div class="note">
-    <small>繁忙期：2025/12/20–01/11・2026/02/12–02/22・2026/02/27–03/01</small>
-    ※第 5 位起每人 +¥6,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。
-  </div>
-              <div class="btns">
-                 <a class="btn" href="kokusai.html">雪場介紹</a>
-<a class="btn" href="booking.html">預約課程</a>
-              </div>
-            </div>
-            <div class="cta-row">
-            <a class="btn" href="kokusai.html">雪場介紹</a>
-<a class="btn" href="booking.html">預約課程</a>
-            </div>
-          </div>
-        </details>
+<!-- 札幌國際 -->
+<details class="pricecard" id="kokusai" open>
+  <summary>
+    <div class="head">
+      <div class="title">札幌國際｜私人課（全日）</div>
+      <div class="desc">視野開闊、多樣路線。</div>
+    </div>
+    <div class="fromrow">
+      <span class="fromtag"><small>標準時段</small> ¥ 84,000 起</span>
+      <span class="fromtag"><small>繁忙期時段</small> ¥ 94,000 起</span>
+    </div>
+  </summary>
+
+  <div class="pricetable">
+    <!-- ★ 繁忙期日期（桌機置頂跨兩欄；手機排在繁忙期表格上方） -->
+    <div class="busy-dates">
+      <small>繁忙期：2025/12/20～01/11・2026/02/12～02/22・2026/02/27～03/01</small>
+    </div>
+
+    <!-- 標準 -->
+    <div class="season standard">
+      <h4>標準價格</h4>
+      <table class="table" aria-label="札幌國際・平日價目表">
+        <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="people">1 人</td><td class="price">¥ 84,000</td><td></td></tr>
+          <tr><td class="people">2 人</td><td class="price">¥ 90,000</td><td class="pp">（每人 ¥ 45,000）</td></tr>
+          <tr><td class="people">3 人</td><td class="price">¥ 96,000</td><td class="pp">（每人 ¥ 32,000）</td></tr>
+          <tr><td class="people">4 人</td><td class="price">¥ 102,000</td><td class="pp">（每人 ¥ 25,500）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 繁忙期 -->
+    <div class="season busy">
+      <h4>繁忙期價格</h4>
+      <table class="table" aria-label="札幌國際・繁忙期價目表">
+        <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="people">1 人</td><td class="price">¥ 94,000</td><td></td></tr>
+          <tr><td class="people">2 人</td><td class="price">¥ 100,000</td><td class="pp">（每人 ¥ 50,000）</td></tr>
+          <tr><td class="people">3 人</td><td class="price">¥ 106,000</td><td class="pp">（每人 ¥ 35,333）</td></tr>
+          <tr><td class="people">4 人</td><td class="price">¥ 112,000</td><td class="pp">（每人 ¥ 28,000）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 備註＋按鈕（不重複「繁忙期：…」） -->
+    <div class="note-row">
+      <div class="note">
+<p>＊小提醒：除繁忙時段外，皆適用標準價格；繁忙期費用請依時間表為準</p>
+       <p>＊第 5 位起每人 +¥6,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
+      </div>
+      <div class="btns">
+        <a class="btn" href="kokusai.html">雪場介紹</a>
+        <a class="btn" href="booking.html">預約課程</a>
       </div>
     </div>
-  </section>
+
+    <div class="cta-row">
+      <a class="btn" href="kokusai.html">雪場介紹</a>
+      <a class="btn" href="booking.html">預約課程</a>
+    </div>
+  </div>
+</details>
+
+
 
   <!-- 聯絡我們 -->
   <section id="contact" class="section reveal" aria-label="聯絡我們">
