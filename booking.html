@@ -112,18 +112,69 @@
   </div>
 </header>
 
-<!-- 行動版遮罩（與主頁一致） -->
-<div id="mobOverlay" aria-hidden="true" hidden></div>
+<!-- ===== 置中訊息區） ===== -->
+<style>
+  :root{
+    --ink:#0f172a; --muted:#64748b; --line:#e5e7eb; --bg-soft:#f8fafc; --brand:#0b3a6e;
+  }
+  #reserve-block{ padding:48px 16px; background:var(--bg-soft); }
+  #reserve-block .wrap{ max-width:1040px; margin:0 auto; }
+  #reserve-block .eyebrow{ font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  #reserve-block .title{ font-weight:700; font-size:clamp(1.5rem,2.6vw,2rem); line-height:1.25; color:var(--ink); margin:0 0 8px; text-wrap:balance; }
+  #reserve-block .kicker{ color:var(--muted); font-size:1rem; margin:0 0 24px; }
+  #reserve-block .divider{ height:1px; background:var(--line); margin:20px 0 28px; }
+  #reserve-block .grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:32px; }
+  #reserve-block .lead{ color:var(--ink); line-height:1.75; font-size:1.05rem; margin:0 0 18px; max-width:60ch; }
+  #reserve-block .features{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 14px; padding:0; margin:0 0 18px; list-style:none; }
+  #reserve-block .features li{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:#fff; color:#1f2937; font-size:.95rem; line-height:1.45; white-space:normal; word-break:break-word; }
+  #reserve-block .features .dot{ width:8px; height:8px; border-radius:50%; background:var(--brand); flex:0 0 8px; }
+  #reserve-block .cta{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 18px; background:var(--brand); color:#fff; border-radius:8px; text-decoration:none; font-weight:600; width:fit-content; }
+  #reserve-block .qrpanel{ border:1px solid var(--line); background:#fff; border-radius:16px; padding:20px; display:flex; flex-direction:column; align-items:flex-start; }
+  #reserve-block .qrpanel h3{ margin:0 0 12px; font-size:1rem; color:var(--ink); font-weight:600; }
+  #reserve-block .qrpanel img{ width:160px; height:auto; border-radius:8px; }
+  #reserve-block .qrpanel p{ margin:10px 0 0; color:var(--muted); font-size:.95rem; }
+  @media (max-width:1024px){ #reserve-block{ padding:40px 16px; } #reserve-block .grid{ grid-template-columns:1fr; gap:24px; } #reserve-block .qrpanel{ align-items:center; } #reserve-block .qrpanel img{ width:140px; } }
+  @media (max-width:600px){ #reserve-block{ padding:32px 16px; } #reserve-block .features{ grid-template-columns:1fr; } #reserve-block .lead{ font-size:1rem; } #reserve-block .qrpanel img{ width:120px; } #reserve-block .cta{ display:block; margin:16px auto; text-align:center; } }
+  html{ scroll-behavior:smooth; }
+</style>
 
-<main id="home" aria-label="預約">
-  <!-- ===== 置中訊息區（僅此內容） ===== -->
-  <section class="page-center">
-    <div class="container">
-      <h1>更多資訊即將更新</h1>
-      <p>Coming Soon</p>
+<section id="reserve-block" aria-label="預約公告">
+  <div class="wrap">
+    <div class="eyebrow">Booking</div>
+    <h2 class="title">2025–26 冬季課程即將開放預約</h2>
+    <p class="kicker">感謝您對 MOPO Ski School 的關注。</p>
+    <div class="divider" role="presentation"></div>
+
+    <div class="grid">
+      <!-- 左：文字 -->
+      <div>
+        <p class="lead">
+          名額有限。現在留下 Email 或 LINE，我們將在預約開放的第一時間通知您。
+          和我們一起在北海道粉雪中，<strong>安全而有效率地進步</strong>。
+        </p>
+
+        <ul class="features" aria-label="重點特色">
+          <li><span class="dot" aria-hidden="true"></span>日本合法登記</li>
+          <li><span class="dot" aria-hidden="true"></span>投保責任保險</li>
+          <li><span class="dot" aria-hidden="true"></span>合格證照教練</li>
+          <li><span class="dot" aria-hidden="true"></span>多語言授課</li>
+        </ul>
+
+        <!-- 若中文站的聯絡錨點在 index.html#contact，保持不變；否則改成你的實際路徑 -->
+        <a href="index.html#contact" class="cta" aria-label="前往聯絡我們">聯絡我們</a>
+      </div>
+
+      <!-- 右：QR -->
+      <aside class="qrpanel" aria-label="加入 LINE">
+        <h3>加入 MOPO 官方 LINE</h3>
+        <img src="img/line.jpeg" alt="MOPO Ski School LINE QR Code" loading="lazy" decoding="async">
+        <p>掃描 QR code 加入。預約開放時，我們會第一時間通知您。</p>
+      </aside>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+
 
 <!-- ===== Footer（與主頁一致） ===== -->
 <footer class="footer" role="contentinfo">
