@@ -116,14 +116,176 @@
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
 <main id="home" aria-label="Booking">
-  <!-- ===== Centered message area (single content) ===== -->
-  <section class="page-center">
-    <div class="container">
-      <h1>More information coming soon</h1>
-      <p>Coming Soon</p>
+<!-- ===== 置中訊息區（Reserve Block / Clean + Mobile-first） ===== -->
+
+<!-- ===== Reservation Block (left-aligned, FAQ-like, no accordion) ===== -->
+<style>
+  :root{
+    --ink:#0f172a;           /* 深字色 */
+    --muted:#64748b;         /* 次要字色 */
+    --line:#e5e7eb;          /* 分隔線 */
+    --bg-soft:#f8fafc;       /* 淺底 */
+    --brand:#0b3a6e;         /* 主色 */
+  }
+
+  #reserve-block{
+    padding:48px 16px;
+    background:var(--bg-soft);
+  }
+  #reserve-block .wrap{
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  /* 區塊標頭（參考 FAQ 規格） */
+  #reserve-block .eyebrow{
+    font-size:.75rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+  #reserve-block .title{
+    font-weight:700;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    line-height:1.25;
+    color:var(--ink);
+    margin:0 0 8px;
+    text-wrap:balance;
+  }
+  #reserve-block .kicker{
+    color:var(--muted);
+    font-size:1rem;
+    margin:0 0 24px;
+  }
+  #reserve-block .divider{
+    height:1px; background:var(--line); margin:20px 0 28px;
+  }
+
+  /* 兩欄版面（桌機） */
+  #reserve-block .grid{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap:32px;
+  }
+
+  /* 文字側 */
+  #reserve-block .lead{
+    color:var(--ink);
+    line-height:1.75;
+    font-size:1.05rem;
+    margin:0 0 18px;
+    max-width: 60ch;
+  }
+  #reserve-block .features{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap:10px 14px;
+    padding:0; margin:0 0 18px; list-style:none;
+  }
+  #reserve-block .features li{
+    display:flex; align-items:center; gap:10px;
+    padding:10px 12px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#fff;
+    color:#1f2937;
+    font-size:.95rem;
+    line-height:1.4;
+    /* 讓長句自動換行，但保持左對齊 */
+    white-space:normal; word-break:break-word;
+  }
+  #reserve-block .features li .dot{
+    width:8px; height:8px; border-radius:50%; background:var(--brand); flex:0 0 8px;
+  }
+
+  #reserve-block .cta{
+    display:inline-flex; align-items:center; justify-content:center;
+    gap:8px; padding:10px 18px;
+    background:var(--brand); color:#fff;
+    border-radius:8px; text-decoration:none; font-weight:600;
+    width: fit-content;
+  }
+
+  /* QR 側 */
+  #reserve-block .qrpanel{
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    display:flex; flex-direction:column; align-items:flex-start;
+  }
+  #reserve-block .qrpanel h3{
+    margin:0 0 12px; font-size:1rem; color:var(--ink); font-weight:600;
+  }
+  #reserve-block .qrpanel img{ width: 160px; height:auto; border-radius:8px; }
+  #reserve-block .qrpanel p{
+    margin:10px 0 0; color:var(--muted); font-size:.95rem;
+  }
+
+  /* RWD：平板與手機 */
+  @media (max-width: 1024px){
+    #reserve-block{ padding:40px 16px; }
+    #reserve-block .grid{ grid-template-columns: 1fr; gap:24px; }
+    #reserve-block .qrpanel{ align-items:center; }
+    #reserve-block .qrpanel img{ width: 140px; }
+  }
+  @media (max-width: 600px){
+    #reserve-block{ padding:32px 16px; }
+    #reserve-block .features{ grid-template-columns: 1fr; }
+    #reserve-block .lead{ font-size:1rem; }
+    #reserve-block .qrpanel img{ width: 120px; }
+  }
+
+@media (max-width: 600px){
+  #reserve-block{ padding:32px 16px; }
+  #reserve-block .features{ grid-template-columns: 1fr; }
+  #reserve-block .lead{ font-size:1rem; }
+  #reserve-block .qrpanel img{ width: 120px; }
+  #reserve-block .cta{
+    display:block;
+    margin:16px auto;   /* 👈 水平置中 */
+    text-align:center;
+  }
+}
+</style>
+
+<section id="reserve-block" aria-label="Booking notice">
+  <div class="wrap">
+    <div class="eyebrow">Booking</div>
+    <h2 class="title">Reservations for the 2025–26 winter season will open soon</h2>
+    <p class="kicker">Thank you for your interest in MOPO Ski School.</p>
+    <div class="divider" role="presentation"></div>
+
+    <div class="grid">
+      <!-- 左：文字 -->
+      <div>
+        <p class="lead">
+          Spots are limited. Leave your email or LINE and we’ll notify you as soon as bookings open.
+          Join us in Hokkaido’s powder snow and <strong>improve safely and efficiently</strong>.
+        </p>
+
+        <ul class="features" aria-label="Key features">
+          <li><span class="dot" aria-hidden="true"></span>Legally registered in Japan</li>
+          <li><span class="dot" aria-hidden="true"></span>Liability insurance</li>
+          <li><span class="dot" aria-hidden="true"></span>Certified instructors</li>
+          <li><span class="dot" aria-hidden="true"></span>Multi-language lessons</li>
+        </ul>
+
+        <a href="en_mopoindex.html#contact" class="cta" aria-label="Go to contact section">Contact Us</a>
+      </div>
+
+      <!-- 右：QR -->
+      <aside class="qrpanel" aria-label="LINE QR">
+        <h3>Join us on LINE</h3>
+        <img src="img/line.jpeg" alt="LINE QR code for MOPO Ski School" loading="lazy" decoding="async">
+        <p>Scan to connect with MOPO Ski School on LINE. We’ll notify you when bookings open.</p>
+      </aside>
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+
 
 <!-- ===== Footer (same as Home) ===== -->
 <footer class="footer" role="contentinfo">
