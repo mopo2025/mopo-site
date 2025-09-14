@@ -370,29 +370,39 @@ details[open] .chev{ transform:rotate(225deg) }
 
 <script>
 /* 年份 */
-const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 /* Topbar sticky */
 const topbar = document.getElementById('topbar');
-function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+function setTopbar(){ if(!topbar) return; topbar.classList.toggle('scrolled', window.scrollY > 10); }
+setTopbar();
+window.addEventListener('scroll', setTopbar, {passive:true});
 
 /* Mobile: Lang panel */
 (function(){
-  const btn=document.getElementById('mobLangBtn'), panel=document.getElementById('mobLangPanel');
-  if(!btn||!panel) return;
+  const btn = document.getElementById('mobLangBtn');
+  const panel = document.getElementById('mobLangPanel');
+  if(!btn || !panel) return;
+
   btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
+
+  // 支援 <a data-lang>：攔截並呼叫 changeLang
   panel.addEventListener('click', (e)=>{
-    const b=e.target.closest('button[data-lang]'); if(!b) return;
-    changeLang(b.dataset.lang);
+    const el = e.target.closest('[data-lang]');
+    if(!el) return;
+    e.preventDefault();
+    changeLang(el.dataset.lang);
   });
+
   document.addEventListener('click', ()=> panel.classList.remove('show'));
 })();
 
 /* Mobile: Nav panel */
 (function(){
-  const btn=document.getElementById('mobNavBtn'), panel=document.getElementById('mobNavPanel');
-  if(!btn||!panel) return;
+  const btn = document.getElementById('mobNavBtn');
+  const panel = document.getElementById('mobNavPanel');
+  if(!btn || !panel) return;
   btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
   panel.addEventListener('click', (e)=>{ const link=e.target.closest('a'); if(link){ panel.classList.remove('show'); }});
   document.addEventListener('click', ()=> panel.classList.remove('show'));
@@ -405,7 +415,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   sel.addEventListener('change', ()=> changeLang(sel.value));
 })();
 
-/* Language routing (notice系列) */
+/* Language routing (notice 系列) */
 function changeLang(lang){
   const map = {
     'zh-Hant': 'notice.html',
@@ -440,11 +450,14 @@ function changeLang(lang){
 })('#faqGrid');
 
 /* Back-to-top */
-document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+const backTop = document.getElementById('backTop');
+if (backTop){
+  backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+}
 
-// Topbar：往下滑隱藏，往上滑顯示
+/* Topbar：下滑隱藏，上滑顯示 */
 (function(){
-  const topbar = document.getElementById('topbar');
+  if(!topbar) return;
   let lastScrollY = window.scrollY;
   let ticking = false;
 
@@ -468,11 +481,6 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
     }
   }, { passive: true });
 })();
-
-
-const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
-const topbar=document.getElementById('topbar');
-function setTopbar(){ topbar
 </script>
 </body>
 </html>
