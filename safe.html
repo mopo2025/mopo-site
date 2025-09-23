@@ -28,156 +28,133 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 
+<!-- ✅ 共用樣式 -->
+<link rel="stylesheet" href="common.css">
+
+<!-- 本頁樣式（PC：圖片2/3，所有文字同寬且不溢出；手機不變；選單/底部不改） -->
 <style>
-/* ===== 保持與主頁一致的全域樣式 ===== */
-body {
-  font-family:"Noto Sans JP","Montserrat",system-ui,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif;
-  line-height:1.6;
-  color:#0E1A24;
-}
+  :root { --card-w: 66.666%; }
 
-:root{
-  --bg-top:#E7E9EA;
-  --bg-mid:#FFFFFF;
-  --bg-bottom:#9B9793;
-
-  --midnight:#0D1B2A;
-  --gold:#C8A45D; --gold-2:#E4CFA3;
-  --ink:#0E1A24; --ink-soft:#3E4A57;
-
-  --shadow:0 18px 50px rgba(13,27,42,.10);
-  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
-
-  --slide:0; --fade:0; --gray:0;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-top)}
-a{color:inherit; text-decoration:none}
-.container{max-width:1200px; margin:0 auto; padding:0 22px}
-html, body { overflow-x: hidden; }
-
-/* ===== Topbar（與主頁一致） ===== */
-.topbar{
-  position:fixed; left:0; right:0; top:0;
-  z-index:2000;
-  background:rgba(255,255,255,.24);
-  backdrop-filter:saturate(1.28) blur(18px);
-  border-bottom:1px solid rgba(200,164,93,.24);
-  transition:all .25s ease
-}
-.topbar.scrolled{ background:rgba(255,255,255,.45) }
-.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
-
-.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
-.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
-@media (max-width:760px){ .brand{padding-left:14px} }
-.brand .logo{font-weight:800; font-size:18px}
-.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
-
-/* 桌面選單 */
-.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
-.menu>li{list-style:none; position:relative}
-.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
-.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
-.menu>li:hover>a::after{transform:scaleX(1)}
-.topbar.scrolled .menu>li>a{color:#8C723E}
-
-/* ▼ 桌機下拉選單 */
-.has-dropdown{ position:relative; }
-.has-dropdown > a{ cursor: default; }
-.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
-.submenu{
-  display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
-  background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
-}
-.has-dropdown:hover .submenu, .has-dropdown:focus-within .submenu{ display:block; }
-.submenu li{ list-style:none; }
-.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
-.submenu a:hover{ background:rgba(200,164,93,.1); }
-.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
-.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
-
-/* 語言（桌機） */
-.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
-
-/* 手機工具 */
-.mobtools{display:none; align-items:center; gap:10px}
-.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
-.mobdrop{position:relative}
-.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:610}
-.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
-.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
-.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
-
-/* 手機小標 */
-.mob-subtitle{
-  padding:8px 14px 6px;
-  font-size:12px;
-  font-weight:800;
-  color:#777;
-  letter-spacing:.02em;
-  cursor:default;
-}
-
-/* 手機遮罩 */
-#mobOverlay{position:fixed; inset:0; background:rgba(0,0,0,.25); opacity:0; pointer-events:none; visibility:hidden; transition:opacity .18s ease; z-index:590}
-#mobOverlay.show{opacity:1; pointer-events:auto; visibility:visible; backdrop-filter:blur(2px)}
-@supports (-webkit-backdrop-filter: blur(0)){ #mobOverlay.show{ -webkit-backdrop-filter: blur(2px); } }
-#mobOverlay[hidden]{display:none !important; visibility:hidden !important;}
-#mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
-#mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
-
-/* ===== 本頁唯一新增：置中內容區塊 ===== */
-.page-center {
-  min-height: 70vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 84px 0;
-  background: var(--bg-mid);
-}
-.page-center h1{
-  margin: 0 0 12px;
-  font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif;
-  font-size: clamp(28px, 5vw, 40px);
-  color:#111;
-  letter-spacing:.02em;
-}
-.page-center p{
-  margin: 0;
-  font-size: clamp(16px, 2.4vw, 18px);
-  color:#333;
-}
-
-/* Footer（與主頁一致） */
-.footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
-.sitemap{padding:34px 0}
-.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
-.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
-.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
-.sitemap a{color:#ebebeb; font-size:13px}
-.sitemap a:hover{color:#fff}
-
-/* FAB */
-.fab{position:fixed; right:16px; bottom:16px; z-index:320}
-.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
-
-/* 手機：只顯示語言按鈕（與主頁一致） */
-@media (max-width:760px){
-  .menu{display:none}
-  .mobtools{display:flex}
-  .lang{display:none}
-  .mobdrop{ position: relative; }
-  .mobpanel{
-    left: auto;
-    right: 0;
-    width: min(92vw, 320px);
-    max-width: 92vw;
-    transform-origin: top right;
+  .page-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+    width: 100%;
   }
-  .mobpanel a, .mobpanel button{ white-space: nowrap; }
-}
+
+  .news-pager button:focus-visible{
+    outline: 2px solid #C8A45D;
+    outline-offset: 2px;
+  }
+  .news-wrap{padding:56px 0;background:#fff}
+  .news-head{
+    display:flex;align-items:flex-end;justify-content:center;
+    gap:16px;margin-bottom:20px;text-align:center;
+  }
+  .news-head h1{
+    margin:0;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#111;width:100%;
+  }
+  /* 頁面大標在 clamp 基礎上 -2pt */
+  .news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+  /* 修正 UL 預設縮排 */
+  .news-grid{
+    display:grid;gap:32px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin:0; padding:0;
+  }
+
+  /* ===== PC：卡片內容全部限制為 2/3 寬、靠左、不溢出 ===== */
+  .news-card .thumb{
+    width:var(--card-w);
+    margin:0 auto;
+    box-sizing:border-box;
+  }
+  .news-card > .meta,
+  .news-card > h3,
+  .news-card > .excerpt{
+    width:var(--card-w);
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    box-sizing:border-box;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+
+  .news-card{
+    list-style:none;margin:0;padding:0;background:#fff
+  }
+  .news-card .thumb{
+    position:relative;overflow:hidden;border-radius:12px;aspect-ratio:16/9;
+    background:#f2f4f6
+  }
+  .news-card .thumb a{display:block;height:100%}
+  .news-card img{
+    width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);
+    transition:transform .4s ease;
+  }
+  .news-card .thumb:hover img{transform:scale(1.05)}
+  .news-card .meta{
+    margin-top:14px;font-size:14px;color:#567;letter-spacing:.02em
+  }
+  .news-card h3{
+    margin:6px 0 8px;
+    font-size:clamp(18px,2.4vw,22px);
+    line-height:1.35;
+    color:#0E1A24;
+    font-weight:700;
+  }
+  .news-card h3 a{
+    color:inherit;
+    text-decoration:none;  /* 不要底線提醒 */
+    border-bottom:none;
+    display:block;
+  }
+  .news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+  .news-card .excerpt{color:#333;font-size:16px;line-height:1.7}
+
+  /* 分頁 */
+  .news-pager{
+    display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px
+  }
+  .news-pager button{
+    min-width:36px;height:36px;padding:0 12px;border-radius:8px;border:1px solid #d7dbe0;
+    background:#fff;cursor:pointer;font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+    transition:background .2s,border-color .2s
+  }
+  .news-pager button[aria-current="page"]{
+    background:#0D1B2A;color:#fff;border-color:#0D1B2A
+  }
+  .news-pager button:hover{border-color:#C8A45D}
+
+  /* ===== 手機：不做任何更動（維持 100%） ===== */
+  @media (max-width: 860px){
+    .news-wrap .container{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .news-grid{
+      grid-template-columns:1fr;
+      justify-items:center;
+      width:100%;
+      margin:0; padding:0;
+    }
+    .news-card{
+      width:100%;
+      max-width:720px;
+      margin:0 auto;
+      text-align:left;
+    }
+    .news-card .thumb{ width:100%; }
+    .news-card > .meta,
+    .news-card > h3,
+    .news-card > .excerpt{ width:100%; }
+  }
+
 </style>
 </head>
 <body>
@@ -266,13 +243,137 @@ html, body { overflow-x: hidden; }
 
 <main id="home" aria-label="專欄文章">
   <!-- ===== 置中訊息區（僅此內容） ===== -->
-  <section class="page-center">
+ <main id="news" aria-label="專欄文章">
+  <!-- ===== News Only Styles（只影響本頁） ===== -->
+  <style>
+.news-pager button:focus-visible{
+  outline: 2px solid #C8A45D;
+  outline-offset: 2px;
+}
+    .news-wrap{padding:56px 0;background:#fff}
+    .news-head{
+      display:flex;align-items:flex-end;justify-content:center;
+      gap:16px;margin-bottom:20px;text-align:center;
+    }
+    .news-head h1{
+      margin:0;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+      font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#111;width:100%;
+    }
+    /* 與上方一致：頁面標題 -2pt */
+    .news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+    .news-grid{
+      display:grid;gap:32px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      margin:0; padding:0;
+    }
+
+    /* PC：2/3 同寬且不溢出（再次宣告以避免他處樣式覆蓋） */
+    .news-grid .news-card .thumb{ width:var(--card-w); margin:0 auto; box-sizing:border-box; }
+    .news-grid .news-card > .meta,
+    .news-grid .news-card > h3,
+    .news-grid .news-card > .excerpt{
+      width:var(--card-w);
+      margin-left:auto; margin-right:auto;
+      text-align:left; box-sizing:border-box;
+      overflow-wrap:anywhere; word-break:break-word;
+    }
+    .news-card h3 a{
+      color:inherit; text-decoration:none; border-bottom:none; display:block;
+    }
+    .news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+
+    @media (max-width: 860px){
+      .news-wrap .container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+      .news-grid{
+        grid-template-columns:1fr;
+        justify-items:center;
+        width:100%;
+        margin:0; padding:0;
+      }
+      .news-card{
+        width:100%;
+        max-width:720px;
+        margin:0 auto;
+        text-align:left;
+      }
+      .news-card .thumb{ width:100%; }
+      .news-card > .meta,
+      .news-card > h3,
+      .news-card > .excerpt{ width:100%; }
+    }
+
+    .news-card{
+      list-style:none;margin:0;padding:0;background:#fff
+    }
+    .news-card .thumb{
+      position:relative;overflow:hidden;border-radius:12px;aspect-ratio:16/9;
+      background:#f2f4f6
+    }
+    .news-card .thumb a{display:block;height:100%}
+    .news-card img{
+      width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);
+      transition:transform .4s ease;
+    }
+    .news-card .thumb:hover img{transform:scale(1.05)}
+    .news-card .meta{
+      margin-top:14px;font-size:14px;color:#567;letter-spacing:.02em
+    }
+    .news-card h3{
+      margin:6px 0 8px;
+      font-size:clamp(18px,2.4vw,22px);
+      line-height:1.35;
+      color:#0E1A24;
+      font-weight:700;
+    }
+    .news-card .excerpt{color:#333;font-size:16px;line-height:1.7}
+    /* 分頁 */
+    .news-pager{
+      display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px
+    }
+    .news-pager button{
+      min-width:36px;height:36px;padding:0 12px;border-radius:8px;border:1px solid #d7dbe0;
+      background:#fff;cursor:pointer;font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+      transition:background .2s,border-color .2s
+    }
+    .news-pager button[aria-current="page"]{
+      background:#0D1B2A;color:#fff;border-color:#0D1B2A
+    }
+    .news-pager button:hover{border-color:#C8A45D}
+  </style>
+
+  <section class="news-wrap">
     <div class="container">
-      <h1>專欄文章</h1>
-      <p>Coming Soon</p>
+      <div class="news-head">
+        <h1 class="page-title">專欄文章</h1>
+        <!-- 需要的話可以放搜尋/篩選；先留白不顯示 -->
+      </div>
+
+ <!-- ===== 卡片清單（每頁最多 6 則；超過自動分頁） ===== -->
+
+<ul class="news-grid" id="newsList" aria-live="polite">
+  <!-- 1. 你是單版派還是雙版派呢？ -->
+  <li class="news-card" data-news>
+    <div class="thumb">
+      <a href="./column/personalityquiz.html" target="_blank" aria-label="你是單版派還是雙版派呢？">
+        <img src="img/news/game1.jpg" alt="你是單版派還是雙版派呢？" loading="lazy">
+      </a>
+    </div>
+    <div class="meta">2025年9月24日</div>
+    <h3><a href="./news/contactmopo.html" target="_blank">你是單版派還是雙版派呢？</a></h3>
+    <p class="excerpt">你是單板派還是雙板派？快透過心理測驗，看看你的滑雪風格傾向！</p>
+  </li>
+</ul>
+
+ <!-- ===== 分頁（自動生成） ===== -->
+      <nav class="news-pager" id="newsPager" aria-label="最新消息分頁"></nav>
     </div>
   </section>
-</main>
+
 
 <!-- ===== Footer（與主頁一致） ===== -->
 <footer class="footer" role="contentinfo">
