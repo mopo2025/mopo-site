@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>單板 vs 雙板 心理測驗（手繪滑雪風）</title>
+<style>
+:root{
+  --bg:#f5f5dc;
+  --ink:#2c3a2f;
+  --muted:#59715f;
+  --brand:#65c3ff;
+  --accent:#ffe08a;
+  --card:#ffffffee;
+  --shadow:0 12px 28px rgba(32,48,38,.12);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.7 "Noto Sans TC",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+/* 背景 */
+.bg{position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(1200px 700px at 10% -10%, #ffffff 22%, transparent 60%),
+    radial-gradient(1200px 700px at 92% 110%, #ffffff 18%, transparent 60%),
+    linear-gradient(180deg,#f5f5dc,#f0eada 40%,#ebe5d5);
+}
+.wrap{max-width:640px;margin:0 auto;padding:20px 16px 64px}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:24px;margin-top:20px;border:1.5px solid rgba(44,58,47,.12);
+      background-image:
+        radial-gradient(ellipse at top left, rgba(255,255,255,.55), transparent 40%),
+        radial-gradient(ellipse at bottom right, rgba(255,255,255,.35), transparent 40%);
+}
+.quiz-card{background-image: url('../img/game/back.jpg'); background-size: cover; background-position: center;}
+.title{display:flex;align-items:center;gap:10px}
+.title h2{margin:0;font-size:28px;font-weight:900}
+.muted{color:var(--muted)}
+.muted.mega-note{font-size:18px;font-weight:800;color:var(--ink);margin:16px 0;}
+/* 題目 & 選項 */
+.q{margin:20px 0 12px;font-size:22px;font-weight:900}
+.opts{display:grid;gap:14px}
+.btn{padding:16px;border-radius:18px;border:2px solid rgba(44,58,47,.18);
+      background:#fff;font-size:18px;font-weight:900;cursor:pointer;
+      box-shadow:0 4px 0 rgba(44,58,47,.12);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(44,58,47,.1)}
+/* 進度條 */
+.progress{height:12px;background:rgba(44,58,47,.09);border-radius:999px;margin-top:14px}
+.bar{height:100%;width:0%;background:linear-gradient(90deg,var(--brand),#9ae6ff,var(--accent));
+    transition:width .4s cubic-bezier(.22,1,.36,1)}
+.step{display:flex;justify-content:space-between;margin-top:10px;font-size:13px;color:var(--muted)}
+.ctrl{display:flex;gap:10px;margin-top:16px}
+.ghost,.share-btn{flex:1;padding:12px;border-radius:12px;font-weight:900; text-align:center; text-decoration: none;}
+.ghost{border:1px solid rgba(44,58,47,.15);background:#fff; color: var(--ink); cursor:pointer;}
+.share-btn{background:linear-gradient(135deg,#b6f4c4,var(--brand));border:0;color:#17301f}
+/* 結果頁 */
+.result p{font-size:16px;margin:12px 0;color:var(--muted)}
+.pill{display:inline-block;padding:8px 16px;border-radius:999px;background:#fff;
+      border:1px solid rgba(44,58,47,.12);font-size:16px;font-weight:800}
+.poster-container{
+  margin:20px 0;border-radius:var(--radius);overflow:hidden;
+  border:1px solid rgba(0,0,0,.05); box-shadow: var(--shadow);
+}
+.poster-container img{display:block;width:100%;height:auto;min-height:200px;}
+.reserve-btn{display:block;margin:16px 0;padding:16px;border-radius:16px;font-weight:900;border:0;cursor:pointer;
+            background:linear-gradient(135deg,#65c3ff,#b6f4c4);color:#17301f;
+            font-size:18px;box-shadow:0 6px 12px rgba(0,0,0,.15);transition:transform .2s ease, box-shadow .2s ease;
+            width:100%;max-width:640px;text-align:center;}
+.reserve-btn:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,0,0,.2);}
+.reserve-btn:active{transform:translateY(0);box-shadow:0 4px 8px rgba(0,0,0,.1);}
+.hint{font-size:14px;color:var(--muted);margin-top:12px}
+.share-grid{display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin:16px 0;}
+/* 手機端優化 */
+@media (max-width: 600px) {
+  .wrap{padding:16px 12px 48px;}
+  .title h2{font-size:24px;}
+  .q{font-size:20px;}
+  .btn{font-size:16px;padding:12px;}
+  .muted{font-size:14px;}
+  .muted.mega-note{font-size:16px;margin:12px 0;}
+  .pill{font-size:14px;padding:6px 12px;}
+  .poster-container img{min-height:250px;}
+  .reserve-btn{font-size:16px;padding:14px;}
+  .share-btn, .ghost{font-size:14px;padding:10px;}
+  .hint{font-size:12px;}
+}
+/* 換題動畫 */
+.qbox-leave{animation:qLeave .28s cubic-bezier(.22,1,.36,1) both}
+.qbox-enter{animation:qEnter .34s cubic-bezier(.22,1,.36,1) both}
+@keyframes qLeave{from{opacity:1;transform:translateY(0)} to{opacity:0;transform:translateY(8px)}}
+@keyframes qEnter{from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+
+<div class="wrap">
+  <section id="quizCard" class="card quiz-card">
+    <div class="title"><h2>你比較偏向單板還是雙板？</h2></div>
+    <p class="muted mega-note">請照直覺作答即可</p>
+
+    <div id="qBox">
+      <div id="qTxt" class="q">問題載入中…</div>
+      <div id="opts" class="opts"></div>
+      <div class="progress"><div id="bar" class="bar"></div></div>
+      <div class="step"><span id="stepTxt">1 / 15</span></div>
+      <div class="ctrl">
+        <button id="backBtn" class="ghost" disabled>上一步</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="resCard" class="card result" style="display:none">
+    <div class="title"><h2>你的測驗結果</h2></div>
+    <div>
+      <div class="pill" id="pillMain">—</div>
+      <div class="poster-container">
+        <img id="resultImage" src="" alt="測驗結果圖片">
+      </div>
+      <p id="description" class="muted">—</p>
+      <p class="muted">心理測驗僅供參考，喜歡哪一種，就選那一種就對了！</p>
+      <p class="muted mega-note">來 MOPO 滑雪學校 把你的潛力轉化為滑雪實力吧！</p>
+      <a href="https://www.moposki.com/" target="_blank" class="reserve-btn">預約課程</a>
+      <div class="ctrl">
+        <button id="againBtn" class="ghost">再玩一次</button>
+        <button id="copyBtn" class="share-btn">複製分享文案</button>
+        <button id="downloadBtn" class="share-btn">下載圖片</button>
+      </div>
+    </div>
+    <div class="share-grid">
+      <a id="fbShare" href="#" target="_blank" class="share-btn">分享到 Facebook</a>
+      <a id="threadsShare" href="#" target="_blank" class="share-btn">分享到 Threads</a>
+    </div>
+    <div class="hint">提醒：Instagram 無法直接分享連結，請下載圖片後手動發布。</div>
+  </section>
+</div>
+
+<script>
+/* ============== 題庫（維持不變） ============== */
+const BANK_A = [
+  {q:"旅行時你通常的習慣是什麼？", axis:'R', a:[
+    {text:"隨性出發，路上遇到什麼就玩什麼", map:[2,0]},
+    {text:"大部分行程規劃好，剩下留彈性給驚喜", map:[0,1]},
+    {text:"每天排得滿滿的才安心", map:[0,2]},
+    {text:"先決定核心行程，其他就看狀況", map:[1,0]},
+  ]},
+  {q:"在一個團體裡，你最常扮演什麼樣的角色？", axis:'P', a:[
+    {text:"熱情帶動氣氛的人", map:[2,0]},
+    {text:"安穩可靠的中流砥柱", map:[0,1]},
+    {text:"偶爾會丟出驚喜的變數", map:[0,2]},
+    {text:"安靜觀察，必要時才發聲", map:[1,0]},
+  ]},
+  {q:"如果要形容你的音樂口味，哪一種最符合？", a:[
+    {text:"嘻哈或搖滾，強烈有力", map:[2,0]},
+    {text:"爵士或老歌，溫和復古", map:[0,1]},
+    {text:"流行或 K-pop，跟上潮流", map:[0,2]},
+    {text:"Lo-fi 或氛圍樂，靜靜陪伴", map:[1,0]},
+  ]},
+  {q:"你覺得『冒險』的定義是什麼？", axis:'P', a:[
+    {text:"挑戰沒做過的事", map:[2,0]},
+    {text:"在熟悉的事物中不斷精進", map:[0,2]},
+    {text:"把意外處理得漂亮就是冒險", map:[0,1]},
+    {text:"人生本來就充滿冒險", map:[1,0]},
+  ]},
+  {q:"朋友臨時改行程時，你通常會怎麼反應？", axis:'R', a:[
+    {text:"覺得很有趣，馬上贊成", map:[2,0]},
+    {text:"先觀察狀況再決定", map:[0,1]},
+    {text:"會有點不安，希望別變太多", map:[0,2]},
+    {text:"只要不影響主要目的就行", map:[0,1]},
+  ]},
+  {q:"對你來說，『技巧』最重要的意義是什麼？", axis:'P', a:[
+    {text:"讓動作更有型、更帥氣", map:[2,0]},
+    {text:"展現打磨後的穩定性", map:[0,2]},
+    {text:"在壓力下保持冷靜", map:[0,1]},
+    {text:"依靠創意臨場發揮", map:[1,0]},
+  ]},
+  {q:"如果用穿搭來比喻你的風格？", a:[
+    {text:"獨特有型，與眾不同", map:[1,0]},
+    {text:"經典百搭，怎麼搭都不出錯", map:[0,1]},
+    {text:"機能至上，注重實用", map:[0,1]},
+    {text:"完全看心情，隨意切換", map:[1,0]},
+  ]},
+  {q:"面對挑戰時，你最在意的元素是什麼？", axis:'P', a:[
+    {text:"能否展現帥氣和表現力", map:[2,0]},
+    {text:"能否保持安全和控制", map:[0,2]},
+    {text:"能否靈活變通與創造", map:[1,0]},
+    {text:"能否表現穩定與持久力", map:[0,1]},
+  ]},
+  {q:"你心中的理想假期是什麼樣子？", axis:'R', a:[
+    {text:"一切隨心，完全無計畫", map:[2,0]},
+    {text:"七成計劃三成驚喜", map:[0,1]},
+    {text:"全程行程都排好", map:[0,2]},
+    {text:"上午玩下午休息，平衡剛好", map:[0,0]},
+  ]},
+  {q:"如果把『摔跤』當比喻，你會怎麼看？", a:[
+    {text:"摔一次也值得，只要帥氣就好", map:[2,0]},
+    {text:"希望下一次摔得更少", map:[0,1]},
+    {text:"摔倒沒關係，只要學到東西", map:[0,0]},
+    {text:"要有策略地承受跌倒", map:[0,2]},
+  ]},
+  {q:"談到『速度』，你第一個反應是什麼？", a:[
+    {text:"越快越刺激越好", map:[2,0]},
+    {text:"必須在可控範圍內才安心", map:[0,2]},
+    {text:"依照情境調整速度", map:[0,0]},
+    {text:"即使高速也要冷靜穩定", map:[0,2]},
+  ]},
+  {q:"你偏好的天氣狀況是？", axis:'R', a:[
+    {text:"突如其來的驚喜天氣", map:[2,0]},
+    {text:"穩定溫暖的晴天", map:[0,2]},
+    {text:"安靜柔和的陰天", map:[0,1]},
+    {text:"多變但不極端", map:[0,0]},
+  ]},
+  {q:"如果你是電影裡的角色，會是哪一種？", axis:'P', a:[
+    {text:"叛逆酷帥的主角", map:[2,0]},
+    {text:"冷靜專業的角色", map:[0,2]},
+    {text:"靈活全能的配角", map:[0,0]},
+    {text:"在關鍵時刻出手的關鍵人", map:[0,2]},
+  ]},
+  {q:"對你來說，自由意味著什麼？", axis:'R', a:[
+    {text:"想做什麼就做什麼", map:[2,0]},
+    {text:"在規則中找到節奏", map:[0,2]},
+    {text:"擁有選擇的權利", map:[0,0]},
+    {text:"心態不被限制", map:[1,0]},
+  ]},
+  {q:"『完美的一天』對你來說是什麼樣子？", axis:'R', a:[
+    {text:"充滿即興與驚喜", map:[2,0]},
+    {text:"完整規劃並確實實現", map:[0,2]},
+    {text:"驚喜與規律各一半", map:[0,0]},
+    {text:"平靜卻充實，不急不徐", map:[0,1]},
+  ]},
+];
+const BANK_B = [
+  {q:"早晨的你通常是什麼狀態？", axis:'R', a:[
+    {text:"睡到自然醒最舒服", map:[2,0]},
+    {text:"設鬧鐘但保留彈性", map:[1,0]},
+    {text:"固定時間起床", map:[0,2]},
+    {text:"先完成清單才安心", map:[0,1]},
+  ]},
+  {q:"參加聚會時，你的定位是什麼？", axis:'P', a:[
+    {text:"氣氛製造者", map:[2,0]},
+    {text:"幕後控場者", map:[0,2]},
+    {text:"臨時表演者", map:[1,0]},
+    {text:"安靜觀察者", map:[0,1]},
+  ]},
+  {q:"點飲料時你偏好的方式？", a:[
+    {text:"新推出的先試試", map:[2,0]},
+    {text:"看心情隨機挑", map:[1,0]},
+    {text:"固定愛喝的口味", map:[0,2]},
+    {text:"先看評價再決定", map:[0,1]},
+  ]},
+  {q:"你對『漂亮』的理解是什麼？", axis:'P', a:[
+    {text:"要吸睛、引人注意", map:[2,0]},
+    {text:"整體和諧一致", map:[0,2]},
+    {text:"簡潔乾淨、乾脆俐落", map:[0,1]},
+    {text:"能說出故事與情緒", map:[1,0]},
+  ]},
+  {q:"假期安排，你會怎麼做？", axis:'R', a:[
+    {text:"臨時說走就走", map:[2,0]},
+    {text:"先排一半行程", map:[0,1]},
+    {text:"全部排滿最安心", map:[0,2]},
+    {text:"保留空白彈性", map:[1,0]},
+  ]},
+  {q:"學新技能時，你的態度是？", axis:'P', a:[
+    {text:"先玩一玩再說", map:[2,0]},
+    {text:"照步驟紮實來", map:[0,2]},
+    {text:"看影片自學整理重點", map:[0,1]},
+    {text:"邊做邊修正路線", map:[1,0]},
+  ]},
+  {q:"穿衣風格最符合哪一種？", a:[
+    {text:"亮眼撞色很有存在感", map:[1,0]},
+    {text:"極簡單色、俐落乾淨", map:[0,2]},
+    {text:"機能實用、方便上手", map:[0,1]},
+    {text:"依場合甜酷切換", map:[1,0]},
+  ]},
+  {q:"當計劃臨時變動時，你會？", axis:'R', a:[
+    {text:"覺得超興奮，想試試新線路", map:[2,0]},
+    {text:"還能接受，觀察一下", map:[0,1]},
+    {text:"感到壓力，希望照原定", map:[0,2]},
+    {text:"守住主要目標即可", map:[0,1]},
+  ]},
+  {q:"成就感對你來自哪裡？", axis:'P', a:[
+    {text:"被大家驚呼與注意", map:[2,0]},
+    {text:"完成效率與速度", map:[0,1]},
+    {text:"解決困難問題的成就", map:[1,0]},
+    {text:"穩穩做到、不犯錯", map:[0,2]},
+  ]},
+  {q:"如果跌倒了，你會怎麼做？", a:[
+    {text:"笑著爬起來再來", map:[2,0]},
+    {text:"記錄原因，下次避免", map:[0,1]},
+    {text:"換個方法再挑戰", map:[1,0]},
+    {text:"先止損保護自己", map:[0,2]},
+  ]},
+  {q:"談到速度，你的偏好是？", a:[
+    {text:"風在耳邊呼嘯越快越好", map:[2,0]},
+    {text:"依情境調整快慢", map:[0,0]},
+    {text:"安全第一、步步為營", map:[0,1]},
+    {text:"高速但保持可控", map:[0,2]},
+  ]},
+  {q:"最喜歡的天氣是？", axis:'R', a:[
+    {text:"變化多端、充滿驚喜", map:[2,0]},
+    {text:"晴朗溫暖最好安排", map:[0,2]},
+    {text:"陰天安靜更專注", map:[0,1]},
+    {text:"晴雨交替、富有節奏", map:[0,0]},
+  ]},
+  {q:"在團隊中，你最像什麼角色？", axis:'P', a:[
+    {text:"表演型的主秀", map:[2,0]},
+    {text:"冷靜的工程師/職人", map:[0,2]},
+    {text:"靈活的萬用牌", map:[0,0]},
+    {text:"善於規劃的戰略家", map:[0,2]},
+  ]},
+  {q:"自由對你而言是什麼？", axis:'R', a:[
+    {text:"不需要解釋，想做就做", map:[2,0]},
+    {text:"隨時能進能退", map:[1,0]},
+    {text:"規則中找到自在", map:[0,2]},
+    {text:"內心安定就是自由", map:[1,0]},
+  ]},
+  {q:"如果今天過得很完美，那應該是？", axis:'R', a:[
+    {text:"靈感滿滿、一路發揮", map:[2,0]},
+    {text:"把待辦清單全部完成", map:[0,2]},
+    {text:"規律與驚喜五五開", map:[0,0]},
+    {text:"慢慢來剛剛好", map:[0,1]},
+  ]},
+];
+
+/* ============== 結果文案庫 ============== */
+const RESULTS = {
+    'SB_P': {
+        pill: '單板派',
+        image: '../img/game/SB_P.jpg',
+        description: '你是雪場的目光焦點，對你來說，滑雪不只是運動，更是展現個人風格的舞台。你熱愛在公園挑戰各種道具，或是在雪道上做出充滿創意的帥氣動作。你不怕摔，只怕不夠帥，享受被朋友驚呼的成就感。',
+    },
+    'SB_R': {
+        pill: '單板派',
+        image: '../img/game/SB_R.jpg',
+        description: '你享受與大自然融為一體的感覺，喜歡在鬆雪或樹林裡尋找屬於自己的線路。對你而言，滑雪是一場心流的體驗，跟隨地形的起伏，感受雪板在腳下的回饋。你不追求極致的技巧，更在乎過程中的自由與暢快。',
+    },
+    'SK_P': {
+        pill: '雙板派',
+        image: '../img/game/SK_P.jpg',
+        description: '你對技術有著極致的追求，享受雪板在雪道上劃出完美弧線的快感。每一次轉彎的角度、速度與力道都在你的精準計算之中。你看重穩定與效率，認為扎實的基本功是挑戰更高難度的基礎，並從不斷精進中獲得巨大滿足。',
+    },
+    'SK_R': {
+        pill: '雙板派',
+        image: '../img/game/SK_R.jpg',
+        description: '你是團隊中可靠的領航員，出發前會仔細研究雪場地圖與天氣，規劃出最有效率、最安全的滑行路線。你擅長風險管理，總能在多變的雪況中做出最佳判斷。對你來說，滑雪的樂趣不僅在於滑行本身，更在於一切盡在掌握的從容。',
+    },
+    'HYBRID': {
+        pill: '混合型',
+        image: '../img/game/HYBRID.jpg',
+        description: '你擁有開放且樂於嘗試的心態，不為自己設限。無論是單板的自由奔放，還是雙板的優雅精準，你都能從中找到樂趣。你享受在不同玩法間切換的彈性，能根據心情、雪況或旅伴，選擇最適合當下的裝備，是雪場上適應力最強的玩家。',
+    }
+};
+
+/* ============== 啟動（隨機選 A 或 B，並洗題） ============== */
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+}
+let QUESTIONS = (Math.random() < 0.5 ? BANK_A : BANK_B).map(q => ({...q}));
+shuffle(QUESTIONS);
+
+/* ============== 狀態 ============== */
+let idx = 0, SB = 0, SK = 0, P = 0, R = 0;
+const qTxt = document.getElementById('qTxt');
+const optsBox = document.getElementById('opts');
+const bar = document.getElementById('bar');
+const stepTxt = document.getElementById('stepTxt');
+const backBtn = document.getElementById('backBtn');
+const quizCard = document.getElementById('quizCard');
+const resCard = document.getElementById('resCard');
+const qBox = document.getElementById('qBox');
+const historyStack = [];
+const ansStack = [];
+
+renderQ();
+
+/* ============== UI 渲染與流程控制 ============== */
+function renderQ() {
+  try {
+    const q = QUESTIONS[idx];
+    if (!q || !q.a) {
+      console.error('題目數據無效', { idx, question: q });
+      return;
+    }
+    qTxt.textContent = q.q;
+    stepTxt.textContent = (idx + 1) + ' / ' + QUESTIONS.length;
+    bar.style.width = ((idx) / QUESTIONS.length * 100) + '%';
+    optsBox.innerHTML = '';
+    q.a.forEach((opt, i) => {
+      const b = document.createElement('button');
+      b.className = 'btn';
+      b.textContent = typeof opt === 'string' ? opt : opt.text;
+      b.addEventListener('click', () => {
+        console.log('選項點擊:', { index: i, text: opt.text || opt });
+        choose(i);
+      });
+      optsBox.appendChild(b);
+    });
+    backBtn.disabled = idx === 0;
+  } catch (err) {
+    console.error('renderQ 錯誤:', err);
+  }
+}
+
+function choose(i) {
+  try {
+    console.log('choose 函數執行:', { idx, selected: i });
+    const q = QUESTIONS[idx];
+    if (!q || !q.a[i]) {
+      console.error('無效的選項', { idx, selected: i });
+      return;
+    }
+    const sel = q.a[i];
+    const add = sel.map || [0, 0];
+    SB += add[0];
+    SK += add[1];
+
+    // 微軸：P=表現/技術、R=即興/規劃
+    if (q.axis === 'P') {
+      if (add[0] > add[1]) P++;
+      else if (add[1] > add[0]) P--;
+    }
+    if (q.axis === 'R') {
+      if (add[0] > add[1]) R++;
+      else if (add[1] > add[0]) R--;
+    }
+
+    historyStack.push(i);
+    ansStack.push({ map: add, axis: q.axis });
+    go(1);
+  } catch (err) {
+    console.error('choose 錯誤:', err);
+  }
+}
+
+backBtn.addEventListener('click', () => {
+  try {
+    if (idx === 0) return;
+    qBox.classList.remove('qbox-enter');
+    qBox.classList.add('qbox-leave');
+    qBox.addEventListener('animationend', function once() {
+      qBox.removeEventListener('animationend', once);
+      idx -= 1;
+      const lastAns = ansStack.pop();
+      const add = lastAns.map || [0, 0];
+      SB -= add[0];
+      SK -= add[1];
+      if (lastAns.axis === 'P') {
+        if (add[0] > add[1]) P--;
+        else if (add[1] > add[0]) P++;
+      }
+      if (lastAns.axis === 'R') {
+        if (add[0] > add[1]) R--;
+        else if (add[1] > add[0]) R++;
+      }
+
+      renderQ();
+      requestAnimationFrame(() => {
+        qBox.classList.remove('qbox-leave');
+        qBox.classList.add('qbox-enter');
+      });
+    });
+  } catch (err) {
+    console.error('backBtn 錯誤:', err);
+  }
+});
+
+function go(delta) {
+  try {
+    qBox.classList.remove('qbox-enter');
+    qBox.classList.add('qbox-leave');
+    qBox.addEventListener('animationend', function once() {
+      qBox.removeEventListener('animationend', once);
+      idx += delta;
+      if (idx < QUESTIONS.length) {
+        renderQ();
+        requestAnimationFrame(() => {
+          qBox.classList.remove('qbox-leave');
+          qBox.classList.add('qbox-enter');
+        });
+      } else {
+        qBox.classList.remove('qbox-leave', 'qbox-enter');
+        showResult();
+      }
+    });
+  } catch (err) {
+    console.error('go 錯誤:', err);
+  }
+}
+
+/* ============== 結果與匯出 ============== */
+function showResult() {
+  try {
+    quizCard.style.display = 'none';
+    resCard.style.display = 'block';
+
+    const diff = SB - SK;
+    let resultKey;
+
+    if (diff >= 4) { // 顯著單板
+      resultKey = P >= 0 ? 'SB_P' : 'SB_R';
+    } else if (diff <= -4) { // 顯著雙板
+      resultKey = P > 0 ? 'SK_P' : 'SK_R';
+    } else { // 混合
+      resultKey = 'HYBRID';
+    }
+
+    const resultData = RESULTS[resultKey];
+
+    document.getElementById('pillMain').textContent = resultData.pill;
+    document.getElementById('resultImage').src = resultData.image;
+    document.getElementById('description').textContent = resultData.description;
+
+    setupShareLinks(resultData);
+
+    // 再玩一次
+    document.getElementById('againBtn').addEventListener('click', () => {
+      idx = 0; SB = 0; SK = 0; P = 0; R = 0;
+      historyStack.length = 0; ansStack.length = 0;
+      QUESTIONS = (Math.random() < 0.5 ? BANK_A : BANK_B).map(q => ({...q}));
+      shuffle(QUESTIONS);
+      resCard.style.display = 'none';
+      quizCard.style.display = 'block';
+      renderQ();
+      qBox.classList.add('qbox-enter');
+    });
+
+    // 下載圖片
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      try {
+        const imgElement = document.getElementById('resultImage');
+        const response = await fetch(imgElement.src);
+        if (!response.ok) throw new Error('圖片載入失敗');
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${resultKey}_result.jpg`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        alert('圖片下載成功！');
+      } catch (err) {
+        console.error('下載圖片失敗:', err);
+        alert('圖片下載失敗，請稍後再試。');
+      }
+    });
+  } catch (err) {
+    console.error('showResult 錯誤:', err);
+  }
+}
+
+// 複製分享文案
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  try {
+    const tPill = document.getElementById('pillMain').textContent;
+    const quizLink = location.href;
+    const shareText = `我的滑雪人格是「${tPill}」！\n\n你也來玩玩看「單板 vs 雙板」心理測驗，看看你是哪一派！\n${quizLink}\n\n#MOPO #滑雪 #Snowboard #Ski #性格測驗`;
+
+    await navigator.clipboard.writeText(shareText);
+    alert('已複製分享文案！請使用「下載圖片」按鈕儲存圖片。');
+  } catch (err) {
+    console.error('文字複製失敗:', err);
+    alert('複製文案失敗，請稍後再試。');
+  }
+});
+
+function setupShareLinks(resultData) {
+  try {
+    const link = encodeURIComponent(location.href);
+    const text = encodeURIComponent(`我的滑雪人格是「${resultData.pill}」！你也來玩玩看，看你是哪一派？`);
+    document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${link}`;
+    document.getElementById('threadsShare').href = `https://www.threads.net/share?url=${link}&text=${text}`;
+  } catch (err) {
+    console.error('setupShareLinks 錯誤:', err);
+  }
+}
+
+function getCurrentResultData() {
+  try {
+    const diff = SB - SK;
+    let resultKey;
+    if (diff >= 4) { resultKey = P >= 0 ? 'SB_P' : 'SB_R'; }
+    else if (diff <= -4) { resultKey = P > 0 ? 'SK_P' : 'SK_R'; }
+    else { resultKey = 'HYBRID'; }
+    return RESULTS[resultKey];
+  } catch (err) {
+    console.error('getCurrentResultData 錯誤:', err);
+    return RESULTS['HYBRID'];
+  }
+}
+</script>
+</body>
+</html>
