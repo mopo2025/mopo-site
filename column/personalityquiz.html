@@ -4,6 +4,30 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>單板 vs 雙板 心理測驗</title>
+
+<meta name="description" content="單板雙板心理測驗">
+
+<link rel="canonical" href="https://moposki.com/safe.html">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+
+<meta property="og:title" content="專欄文章｜MOPO Ski School">
+<meta property="og:description" content="MOPO 專欄文章。單板雙板心理測驗">
+<meta property="og:url" content="https://moposki.com/safe.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPO Ski School">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="./img/game/ta.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="專欄文章｜MOPO 中文滑雪學校">
+<meta name="twitter:description" content="MOPO 單板雙板心理測驗">
+<meta name="twitter:image" content="./img/game/ta.jpg">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --bg:#f5f5dc;
@@ -100,7 +124,7 @@ body{margin:0;font:16px/1.7 "Noto Sans TC",system-ui,sans-serif;background:var(-
     <div class="title"><h2>你比較偏向單板還是雙板？</h2></div>
     <p class="muted mega-note">請照直覺作答即可</p>
 
-    <div id="qBox">
+    <div id="qBox" class="qbox-enter">
       <div id="qTxt" class="q">問題載入中…</div>
       <div id="opts" class="opts"></div>
       <div class="progress"><div id="bar" class="bar"></div></div>
@@ -263,7 +287,7 @@ const BANK_B = [
   ]},
 ];
 
-/* ============== 結果文案庫 ============== */
+/* ============== 結果文案庫（保留你提供的圖片路徑） ============== */
 const RESULTS = {
     'SB_P': {
         pill: '單板派',
@@ -292,7 +316,7 @@ const RESULTS = {
     }
 };
 
-/* ============== 啟動（隨機選 A 或 B，並洗題） ============== */
+/* ============== 啟動與題目洗牌 ============== */
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -302,8 +326,9 @@ function shuffle(a) {
 let QUESTIONS = (Math.random() < 0.5 ? BANK_A : BANK_B).map(q => ({...q}));
 shuffle(QUESTIONS);
 
-/* ============== 狀態 ============== */
+/* ============== 狀態與 DOM 參考 ============== */
 let idx = 0, SB = 0, SK = 0, P = 0, R = 0;
+let lastResultKey = null;
 const qTxt = document.getElementById('qTxt');
 const optsBox = document.getElementById('opts');
 const bar = document.getElementById('bar');
@@ -315,6 +340,7 @@ const qBox = document.getElementById('qBox');
 const historyStack = [];
 const ansStack = [];
 
+/* 初始渲染 */
 renderQ();
 
 /* ============== UI 渲染與流程控制 ============== */
@@ -333,10 +359,7 @@ function renderQ() {
       const b = document.createElement('button');
       b.className = 'btn';
       b.textContent = typeof opt === 'string' ? opt : opt.text;
-      b.addEventListener('click', () => {
-        console.log('選項點擊:', { index: i, text: opt.text || opt });
-        choose(i);
-      });
+      b.addEventListener('click', () => choose(i));
       optsBox.appendChild(b);
     });
     backBtn.disabled = idx === 0;
@@ -347,7 +370,6 @@ function renderQ() {
 
 function choose(i) {
   try {
-    console.log('choose 函數執行:', { idx, selected: i });
     const q = QUESTIONS[idx];
     if (!q || !q.a[i]) {
       console.error('無效的選項', { idx, selected: i });
@@ -360,12 +382,10 @@ function choose(i) {
 
     // 微軸：P=表現/技術、R=即興/規劃
     if (q.axis === 'P') {
-      if (add[0] > add[1]) P++;
-      else if (add[1] > add[0]) P--;
+      if (add[0] > add[1]) P++; else if (add[1] > add[0]) P--;
     }
     if (q.axis === 'R') {
-      if (add[0] > add[1]) R++;
-      else if (add[1] > add[0]) R--;
+      if (add[0] > add[1]) R++; else if (add[1] > add[0]) R--;
     }
 
     historyStack.push(i);
@@ -385,18 +405,17 @@ backBtn.addEventListener('click', () => {
       qBox.removeEventListener('animationend', once);
       idx -= 1;
       const lastAns = ansStack.pop();
-      const add = lastAns.map || [0, 0];
-      SB -= add[0];
-      SK -= add[1];
-      if (lastAns.axis === 'P') {
-        if (add[0] > add[1]) P--;
-        else if (add[1] > add[0]) P++;
+      if (lastAns) {
+        const add = lastAns.map || [0, 0];
+        SB -= add[0];
+        SK -= add[1];
+        if (lastAns.axis === 'P') {
+          if (add[0] > add[1]) P--; else if (add[1] > add[0]) P++;
+        }
+        if (lastAns.axis === 'R') {
+          if (add[0] > add[1]) R--; else if (add[1] > add[0]) R++;
+        }
       }
-      if (lastAns.axis === 'R') {
-        if (add[0] > add[1]) R--;
-        else if (add[1] > add[0]) R++;
-      }
-
       renderQ();
       requestAnimationFrame(() => {
         qBox.classList.remove('qbox-leave');
@@ -431,7 +450,7 @@ function go(delta) {
   }
 }
 
-/* ============== 結果與匯出 ============== */
+/* ============== 結果與匯出（showResult 不再重複綁定按鈕） ============== */
 function showResult() {
   try {
     quizCard.style.display = 'none';
@@ -440,7 +459,7 @@ function showResult() {
     const diff = SB - SK;
     let resultKey;
 
-    if (diff >= 3) { // 顯著單板（調整閾值以適配10題）
+    if (diff >= 3) { // 顯著單板（門檻調整為 3，因題數為 10）
       resultKey = P >= 0 ? 'SB_P' : 'SB_R';
     } else if (diff <= -3) { // 顯著雙板
       resultKey = P > 0 ? 'SK_P' : 'SK_R';
@@ -448,6 +467,7 @@ function showResult() {
       resultKey = 'HYBRID';
     }
 
+    lastResultKey = resultKey;
     const resultData = RESULTS[resultKey];
 
     document.getElementById('pillMain').textContent = resultData.pill;
@@ -455,64 +475,56 @@ function showResult() {
     document.getElementById('description').textContent = resultData.description;
 
     setupShareLinks(resultData);
-
-    // 再玩一次
-    document.getElementById('againBtn').addEventListener('click', () => {
-      idx = 0; SB = 0; SK = 0; P = 0; R = 0;
-      historyStack.length = 0; ansStack.length = 0;
-      QUESTIONS = (Math.random() < 0.5 ? BANK_A : BANK_B).map(q => ({...q}));
-      shuffle(QUESTIONS);
-      resCard.style.display = 'none';
-      quizCard.style.display = 'block';
-      renderQ();
-      qBox.classList.add('qbox-enter');
-    });
-
-    // 下載圖片
-    document.getElementById('downloadBtn').addEventListener('click', async () => {
-      try {
-        const imgElement = document.getElementById('resultImage');
-        const response = await fetch(imgElement.src);
-        if (!response.ok) throw new Error('圖片載入失敗');
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `${resultKey}_result.jpg`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        alert('圖片下載成功！');
-      } catch (err) {
-        console.error('下載圖片失敗:', err);
-        alert('圖片下載失敗，請稍後再試。');
-      }
-    });
   } catch (err) {
     console.error('showResult 錯誤:', err);
   }
 }
 
-// 複製分享文案
-document.getElementById('copyBtn').addEventListener('click', async () => {
+/* 一次性綁定：再玩一次 / 複製分享文案 / 下載圖片（避免重複綁定） */
+document.getElementById('againBtn').onclick = () => {
+  idx = 0; SB = 0; SK = 0; P = 0; R = 0;
+  historyStack.length = 0; ansStack.length = 0;
+  QUESTIONS = (Math.random() < 0.5 ? BANK_A : BANK_B).map(q => ({...q}));
+  shuffle(QUESTIONS);
+  resCard.style.display = 'none'; quizCard.style.display = 'block';
+  renderQ(); qBox.classList.add('qbox-enter');
+};
+
+document.getElementById('copyBtn').onclick = async () => {
   try {
     const tPill = document.getElementById('pillMain').textContent;
     const quizLink = location.href;
     const shareText = `我的滑雪人格是「${tPill}」！\n\n你也來玩玩看「單板 vs 雙板」心理測驗，看看你是哪一派！\n${quizLink}\n\n#MOPO #滑雪 #Snowboard #Ski #性格測驗`;
-
     await navigator.clipboard.writeText(shareText);
     alert('已複製分享文案！請使用「下載圖片」按鈕儲存圖片。');
   } catch (err) {
     console.error('文字複製失敗:', err);
     alert('複製文案失敗，請稍後再試。');
   }
-});
+};
+
+document.getElementById('downloadBtn').onclick = async () => {
+  try {
+    if (!lastResultKey) { alert('尚未產生結果，無法下載。'); return; }
+    const imgElement = document.getElementById('resultImage');
+    const response = await fetch(imgElement.src);
+    if (!response.ok) throw new Error('圖片載入失敗');
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = `${lastResultKey}_result.jpg`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    alert('圖片下載成功！');
+  } catch (err) {
+    console.error('下載圖片失敗:', err);
+    alert('圖片下載失敗，請稍後再試。');
+  }
+};
 
 function setupShareLinks(resultData) {
   try {
     const link = encodeURIComponent(location.href);
-    const text = encodeURIComponent(`我的滑雪人格是「${resultData.pill}」！你也來玩玩看，看你是哪一派？`);
+    const text = encodeURIComponent(`我的滑雪人格是「${resultData.pill}」！你也來玩看看，看你是哪一派？`);
     document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${link}`;
     document.getElementById('threadsShare').href = `https://www.threads.net/share?url=${link}&text=${text}`;
   } catch (err) {
