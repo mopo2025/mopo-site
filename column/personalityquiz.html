@@ -104,7 +104,7 @@ body{margin:0;font:16px/1.7 "Noto Sans TC",system-ui,sans-serif;background:var(-
       <div id="qTxt" class="q">問題載入中…</div>
       <div id="opts" class="opts"></div>
       <div class="progress"><div id="bar" class="bar"></div></div>
-      <div class="step"><span id="stepTxt">1 / 15</span></div>
+      <div class="step"><span id="stepTxt">1 / 10</span></div>
       <div class="ctrl">
         <button id="backBtn" class="ghost" disabled>上一步</button>
       </div>
@@ -137,7 +137,7 @@ body{margin:0;font:16px/1.7 "Noto Sans TC",system-ui,sans-serif;background:var(-
 </div>
 
 <script>
-/* ============== 題庫（維持不變） ============== */
+/* ============== 題庫（簡化為 10 題） ============== */
 const BANK_A = [
   {q:"旅行時你通常的習慣是什麼？", axis:'R', a:[
     {text:"隨性出發，路上遇到什麼就玩什麼", map:[2,0]},
@@ -150,12 +150,6 @@ const BANK_A = [
     {text:"安穩可靠的中流砥柱", map:[0,1]},
     {text:"偶爾會丟出驚喜的變數", map:[0,2]},
     {text:"安靜觀察，必要時才發聲", map:[1,0]},
-  ]},
-  {q:"如果要形容你的音樂口味，哪一種最符合？", a:[
-    {text:"嘻哈或搖滾，強烈有力", map:[2,0]},
-    {text:"爵士或老歌，溫和復古", map:[0,1]},
-    {text:"流行或 K-pop，跟上潮流", map:[0,2]},
-    {text:"Lo-fi 或氛圍樂，靜靜陪伴", map:[1,0]},
   ]},
   {q:"你覺得『冒險』的定義是什麼？", axis:'P', a:[
     {text:"挑戰沒做過的事", map:[2,0]},
@@ -181,23 +175,11 @@ const BANK_A = [
     {text:"機能至上，注重實用", map:[0,1]},
     {text:"完全看心情，隨意切換", map:[1,0]},
   ]},
-  {q:"面對挑戰時，你最在意的元素是什麼？", axis:'P', a:[
-    {text:"能否展現帥氣和表現力", map:[2,0]},
-    {text:"能否保持安全和控制", map:[0,2]},
-    {text:"能否靈活變通與創造", map:[1,0]},
-    {text:"能否表現穩定與持久力", map:[0,1]},
-  ]},
   {q:"你心中的理想假期是什麼樣子？", axis:'R', a:[
     {text:"一切隨心，完全無計畫", map:[2,0]},
     {text:"七成計劃三成驚喜", map:[0,1]},
     {text:"全程行程都排好", map:[0,2]},
     {text:"上午玩下午休息，平衡剛好", map:[0,0]},
-  ]},
-  {q:"如果把『摔跤』當比喻，你會怎麼看？", a:[
-    {text:"摔一次也值得，只要帥氣就好", map:[2,0]},
-    {text:"希望下一次摔得更少", map:[0,1]},
-    {text:"摔倒沒關係，只要學到東西", map:[0,0]},
-    {text:"要有策略地承受跌倒", map:[0,2]},
   ]},
   {q:"談到『速度』，你第一個反應是什麼？", a:[
     {text:"越快越刺激越好", map:[2,0]},
@@ -211,23 +193,11 @@ const BANK_A = [
     {text:"安靜柔和的陰天", map:[0,1]},
     {text:"多變但不極端", map:[0,0]},
   ]},
-  {q:"如果你是電影裡的角色，會是哪一種？", axis:'P', a:[
-    {text:"叛逆酷帥的主角", map:[2,0]},
-    {text:"冷靜專業的角色", map:[0,2]},
-    {text:"靈活全能的配角", map:[0,0]},
-    {text:"在關鍵時刻出手的關鍵人", map:[0,2]},
-  ]},
   {q:"對你來說，自由意味著什麼？", axis:'R', a:[
     {text:"想做什麼就做什麼", map:[2,0]},
     {text:"在規則中找到節奏", map:[0,2]},
     {text:"擁有選擇的權利", map:[0,0]},
     {text:"心態不被限制", map:[1,0]},
-  ]},
-  {q:"『完美的一天』對你來說是什麼樣子？", axis:'R', a:[
-    {text:"充滿即興與驚喜", map:[2,0]},
-    {text:"完整規劃並確實實現", map:[0,2]},
-    {text:"驚喜與規律各一半", map:[0,0]},
-    {text:"平靜卻充實，不急不徐", map:[0,1]},
   ]},
 ];
 const BANK_B = [
@@ -279,47 +249,17 @@ const BANK_B = [
     {text:"感到壓力，希望照原定", map:[0,2]},
     {text:"守住主要目標即可", map:[0,1]},
   ]},
-  {q:"成就感對你來自哪裡？", axis:'P', a:[
-    {text:"被大家驚呼與注意", map:[2,0]},
-    {text:"完成效率與速度", map:[0,1]},
-    {text:"解決困難問題的成就", map:[1,0]},
-    {text:"穩穩做到、不犯錯", map:[0,2]},
-  ]},
-  {q:"如果跌倒了，你會怎麼做？", a:[
-    {text:"笑著爬起來再來", map:[2,0]},
-    {text:"記錄原因，下次避免", map:[0,1]},
-    {text:"換個方法再挑戰", map:[1,0]},
-    {text:"先止損保護自己", map:[0,2]},
-  ]},
   {q:"談到速度，你的偏好是？", a:[
     {text:"風在耳邊呼嘯越快越好", map:[2,0]},
     {text:"依情境調整快慢", map:[0,0]},
     {text:"安全第一、步步為營", map:[0,1]},
     {text:"高速但保持可控", map:[0,2]},
   ]},
-  {q:"最喜歡的天氣是？", axis:'R', a:[
-    {text:"變化多端、充滿驚喜", map:[2,0]},
-    {text:"晴朗溫暖最好安排", map:[0,2]},
-    {text:"陰天安靜更專注", map:[0,1]},
-    {text:"晴雨交替、富有節奏", map:[0,0]},
-  ]},
-  {q:"在團隊中，你最像什麼角色？", axis:'P', a:[
-    {text:"表演型的主秀", map:[2,0]},
-    {text:"冷靜的工程師/職人", map:[0,2]},
-    {text:"靈活的萬用牌", map:[0,0]},
-    {text:"善於規劃的戰略家", map:[0,2]},
-  ]},
   {q:"自由對你而言是什麼？", axis:'R', a:[
     {text:"不需要解釋，想做就做", map:[2,0]},
     {text:"隨時能進能退", map:[1,0]},
     {text:"規則中找到自在", map:[0,2]},
     {text:"內心安定就是自由", map:[1,0]},
-  ]},
-  {q:"如果今天過得很完美，那應該是？", axis:'R', a:[
-    {text:"靈感滿滿、一路發揮", map:[2,0]},
-    {text:"把待辦清單全部完成", map:[0,2]},
-    {text:"規律與驚喜五五開", map:[0,0]},
-    {text:"慢慢來剛剛好", map:[0,1]},
   ]},
 ];
 
@@ -500,9 +440,9 @@ function showResult() {
     const diff = SB - SK;
     let resultKey;
 
-    if (diff >= 4) { // 顯著單板
+    if (diff >= 3) { // 顯著單板（調整閾值以適配10題）
       resultKey = P >= 0 ? 'SB_P' : 'SB_R';
-    } else if (diff <= -4) { // 顯著雙板
+    } else if (diff <= -3) { // 顯著雙板
       resultKey = P > 0 ? 'SK_P' : 'SK_R';
     } else { // 混合
       resultKey = 'HYBRID';
@@ -584,8 +524,8 @@ function getCurrentResultData() {
   try {
     const diff = SB - SK;
     let resultKey;
-    if (diff >= 4) { resultKey = P >= 0 ? 'SB_P' : 'SB_R'; }
-    else if (diff <= -4) { resultKey = P > 0 ? 'SK_P' : 'SK_R'; }
+    if (diff >= 3) { resultKey = P >= 0 ? 'SB_P' : 'SB_R'; }
+    else if (diff <= -3) { resultKey = P > 0 ? 'SK_P' : 'SK_R'; }
     else { resultKey = 'HYBRID'; }
     return RESULTS[resultKey];
   } catch (err) {
