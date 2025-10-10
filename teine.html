@@ -6,11 +6,9 @@
 <title>札幌手稻｜MOPO Ski School</title>
 <meta name="description" content="札幌手稻滑雪場課程｜單板與雙板教學，中文、英文、日文、廣東話，從初學到進階皆可參加。">
 
-<!-- ✅ SEO / Open Graph / Twitter Card -->
+<!-- SEO / Open Graph / Twitter Card -->
 <link rel="canonical" href="https://moposki.com/teine.html">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
-
-
 
 <meta property="og:title" content="札幌手稻｜MOPO Ski School">
 <meta property="og:description" content="札幌手稻滑雪場課程｜單板與雙板教學，中文、英文、日文、廣東話，從初學到進階皆可參加。">
@@ -30,8 +28,110 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
 
-<!-- ✅ 共用 CSS -->
+<!-- 共用 CSS -->
 <link rel="stylesheet" href="common.css">
+<style>
+  :root { 
+    --gold:#CFAF61; 
+    --ink:#0E1A24; 
+    --ink-soft:#2B3A44; 
+    --bg-tint:#F3F4F4; 
+    /* Morandi colors for rental sections */
+    --accent-morandi: #B0A8B9; /* Soft purple-gray */
+    --text-morandi: #5C5B6D; /* Muted dark gray */
+    --muted-morandi: #A8A7B3; /* Light muted gray */
+    --line-morandi: #D9D8E0; /* Soft border */
+    --section1-morandi: #F8F7FA; /* Very light pinkish-gray */
+    --section2-morandi: #F0F2F5; /* Light blue-gray */
+    --section3-morandi: #F5F7F8; /* Light green-gray */
+    --section4-morandi: #FAF9F5; /* Light yellow-gray */
+    --section5-morandi: #F8F6FA; /* Light purple-gray */
+  }
+
+  /* HERO */
+  .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
+  .s-hero::before{content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
+  .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
+  .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
+  .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
+  .s-hero h1{font-family:"Noto Serif JP","Noto Sans TC",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
+  .s-hero .s-sub{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px}
+  .s-hero p{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem}
+  @media (max-width:900px){
+    .s-hero{min-height:52vh}
+    .s-hero-inner{grid-template-columns:1fr;padding:52px 18px}
+    .s-hero::after{background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%)}
+    .s-hero p{line-height:2.05;margin-bottom:20px}
+  }
+
+  /* TOC + Sections */
+  .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
+  .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
+  @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
+  .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
+  .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
+  .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
+  .s-toc a:hover{background:rgba(0,0,0,.035)}
+  .s-toc a.is-active{font-weight:600}
+
+  .s-section{border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px}
+  .s-section h2{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
+  .s-section p,.s-section li{font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px}
+  .s-section ul{margin:10px 0 18px}
+  .public{padding-top:44px;padding-bottom:44px}
+  .public h2{margin-bottom:26px}
+
+  .s-linkbox{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
+  .s-linkbox:hover{transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08)}
+  .s-linktxt{font-size:14px;color:var(--ink)}
+  .s-ico{width:18px;height:18px;opacity:.85;flex:0 0 18px}
+
+  .s-imgframe{display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px}
+  .s-imgframe img{display:block;max-width:100%;height:auto}
+  .s-cap{font-size:13px;color:#555;margin-top:8px}
+
+  /* Rental Table Styles - Morandi Theme */
+  .rental-section {padding: 16px;border-radius: 10px;border: 1px solid var(--line-morandi);margin-bottom: 24px;background: var(--bg-tint);}
+  .rental-section:nth-of-type(1) {background: var(--section1-morandi);}
+  .rental-section:nth-of-type(2) {background: var(--section2-morandi);}
+  .rental-section:nth-of-type(3) {background: var(--section3-morandi);}
+  .rental-section:nth-of-type(4) {background: var(--section4-morandi);}
+  .rental-section:nth-of-type(5) {background: var(--section5-morandi);}
+  .rental-section:nth-of-type(6) {background: var(--section1-morandi);}
+  .rental-section:nth-of-type(7) {background: var(--section2-morandi);}
+  .rental-section:nth-of-type(8) {background: var(--section3-morandi);}
+  .label {display: flex;align-items: center;font-weight: 600;font-size: 16px;margin-bottom: 6px;color: var(--text-morandi);}
+  .label svg {width: 28px;height: 28px;margin-right: 8px; stroke: var(--text-morandi);}
+  .rental-table {width: 100%;border-collapse: collapse;background: #fff;border-radius: 6px;overflow: hidden;font-size: 16px; font-family: "Noto Sans TC", sans-serif;}
+  .rental-table th, .rental-table td {padding: 12px 14px;border-bottom: 1px solid var(--line-morandi); text-align: left;}
+  .rental-table th {background: #f8f8fa; color: var(--muted-morandi); font-weight: 600;}
+  .rental-table tr:last-child td {border-bottom: none;}
+  .muted {color: var(--muted-morandi); font-size: 14px;}
+  .rental-note {background: var(--section1-morandi); padding: 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; line-height: 1.6; color: var(--text-morandi);}
+  .rental-note ul {margin: 10px 0 0 20px; padding-left: 0;}
+  .rental-note li {margin-bottom: 8px;}
+  .rental-disclaimer {font-size: 13px; color: var(--muted-morandi); margin-top: 12px; text-align: center; font-style: italic;}
+  @media (max-width: 600px) {
+    .rental-table {font-size: 14px;}
+    .rental-table th, .rental-table td {padding: 10px 8px;}
+  }
+
+  /* Modal Viewer */
+  .modal{position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
+  .modal[aria-hidden="false"]{display:flex}
+  .modal-dialog{width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff}
+  .modal-title{font:600 14px/1 "Noto Sans JP","Noto Sans TC",sans-serif;color:#222}
+  .modal-close{border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px}
+  .modal-close:hover{background:rgba(0,0,0,.05)}
+  .modal-body{background:#fafafa}
+  .modal-body iframe{display:block;width:100%;height:80vh;border:0}
+  .modal-body img{display:block;width:100%;height:auto}
+  @media (max-width:780px){
+    .modal-dialog{width:100%}
+    .modal-body iframe{height:70vh}
+  }
+</style>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -40,22 +140,19 @@
       <a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
     </div>
 
-    <!-- ===== 導覽（連結依中文主頁；僅文字改為繁中） ===== -->
     <ul class="menu" role="menubar" aria-label="網站導覽">
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
-
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="滑雪課程 子選單">
           <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
           <li class="group-title">雪場介紹</li>
           <li role="none"><a role="menuitem" href="teine.html" aria-current="page">札幌手稻</a></li>
-           <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
+          <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
         </ul>
       </li>
-
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="主題文章 子選單">
@@ -63,7 +160,6 @@
           <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
         </ul>
       </li>
-
       <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
       <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
     </ul>
@@ -85,7 +181,6 @@
           <a role="menuitem" data-lang="en" href="en_teine.html">English</a>
         </div>
       </div>
-
       <div class="mobdrop" id="mobNavDrop">
         <button class="iconbtn" aria-label="開啟導覽" id="mobNavBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
@@ -93,17 +188,14 @@
         <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動版導覽">
           <a href="news.html" role="menuitem">最新消息</a>
           <a href="mopo.html" role="menuitem">關於 MOPO</a>
-
           <div class="mob-subtitle">滑雪課程</div>
           <a href="index.html#pricing" role="menuitem">課程與價格</a>
           <a href="teine.html" role="menuitem" aria-current="page">札幌手稻</a>
           <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
-
           <div class="mob-subtitle">主題文章</div>
           <a href="safe.html" role="menuitem">專欄文章</a>
           <a href="trip.html" role="menuitem">觀光主題</a>
-
           <a href="faq.html" role="menuitem">常見問題</a>
           <a href="booking.html" role="menuitem">預約</a>
         </div>
@@ -112,74 +204,9 @@
   </div>
 </header>
 
-<!-- 行動版遮罩 -->
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
 <main id="home" aria-label="札幌手稻">
-  <!-- ===== 僅此區塊可調整樣式/功能（頂部與底部保持不變） ===== -->
-  <style>
-    :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4; }
-
-    /* === HERO === */
-    .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
-    .s-hero::before{content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
-    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
-    .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
-    .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
-    .s-hero h1{font-family:"Noto Serif JP","Noto Sans TC",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
-    .s-hero .s-sub{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px}
-    .s-hero p{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem}
-    @media (max-width:900px){
-      .s-hero{min-height:52vh}
-      .s-hero-inner{grid-template-columns:1fr;padding:52px 18px}
-      .s-hero::after{background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%)}
-      .s-hero p{line-height:2.05;margin-bottom:20px}
-    }
-
-    /* === TOC + Sections === */
-    .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
-    .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
-    @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
-    .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
-    .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
-    .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
-    .s-toc a:hover{background:rgba(0,0,0,.035)}
-    .s-toc a.is-active{font-weight:600}
-
-    .s-section{border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px}
-    .s-section h2{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
-    .s-section p,.s-section li{font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px}
-    .s-section ul{margin:10px 0 0 18px}
-    .public{padding-top:44px;padding-bottom:44px}
-    .public h2{margin-bottom:26px}
-
-    .s-linkbox{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
-    .s-linkbox:hover{transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08)}
-    .s-linktxt{font-size:14px;color:var(--ink)}
-    .s-ico{width:18px;height:18px;opacity:.85;flex:0 0 18px}
-
-    .s-imgframe{display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px}
-    .s-imgframe img{display:block;max-width:100%;height:auto}
-    .s-cap{font-size:13px;color:#555;margin-top:8px}
-
-    /* === Modal Viewer === */
-    .modal{position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
-    .modal[aria-hidden="false"]{display:flex}
-    .modal-dialog{width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
-    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff}
-    .modal-title{font:600 14px/1 "Noto Sans JP","Noto Sans TC",sans-serif;color:#222}
-    .modal-close{border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px}
-    .modal-close:hover{background:rgba(0,0,0,.05)}
-    .modal-body{background:#fafafa}
-    .modal-body iframe{display:block;width:100%;height:80vh;border:0}
-    .modal-body img{display:block;width:100%;height:auto}
-    @media (max-width:780px){
-      .modal-dialog{width:100%}
-      .modal-body iframe{height:70vh}
-    }
-  </style>
-
-  <!-- HERO -->
   <section class="s-hero" aria-label="手稻主視覺">
     <div class="s-hero-inner">
       <div>
@@ -190,32 +217,27 @@
         <p>在晴朗的日子，登高可遠眺札幌市區與石狩灣的絕美景色。場內規劃完善，多元雪道從新手、進階到高手都能滿足，盡情挑戰自我。</p>
         <p>園區同時設有親子友善的兒童區，無論是家庭、情侶或好友同行，都能在這裡享受專屬的冬日樂趣。</p>
       </div>
-      <div><!-- 右側留白，呈現背景照片 --></div>
+      <div></div>
     </div>
   </section>
 
-  <!-- BODY -->
   <section class="s-wrap">
     <div class="s-layout">
-      <!-- 左：目錄（金色指示條會跟隨） -->
       <nav class="s-toc" aria-label="章節目錄">
         <a href="#features" class="is-active">— 雪場特色</a>
         <a href="#public">— 大眾運輸</a>
         <a href="#car">— 自行開車</a>
+        <a href="#rental">— 雪具租借（官方租借）</a>
       </nav>
 
-      <!-- 右：內容 -->
       <div>
         <article id="features" class="s-section" aria-labelledby="features-title">
           <h2 id="features-title">雪場特色</h2>
-
-          <!-- ✅ PDF 以「同頁彈窗」預覽（不跳離頁面） -->
           <button class="s-linkbox js-open-modal" data-modal-type="pdf" data-src="img/teine/course_map.pdf" aria-haspopup="dialog" aria-controls="viewerModal">
             <svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 1v5h5" fill="none" stroke="#222" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span class="s-linktxt">雪道地圖（點擊顯示）</span>
           </button>
           <p></p>
-
           <p>手稻滑雪場共有 15 條雪道，30%初級、40%中級、30%上級的比例均衡，新手能安心練習，高手也能挑戰極限。場內特別保留兩條天然粉雪道，最受喜愛滑行粉雪的玩家青睞。</p>
           <p>使用族群大約是六成雙板、四成單板，還是許多在地中小學的滑雪教學場地。雪場設有地形公園，適合練習技巧。奧林匹亞區則有 4 歲即可入場的兒童雪區，讓親子同遊更放心。</p>
           <p>無論是情侶、朋友，還是帶小孩的家庭，手稻都能滿足不同需求，讓大家找到屬於自己的雪地樂趣。</p>
@@ -225,13 +247,10 @@
           <h2 id="public-title">大眾運輸</h2>
           <p>✦ <strong>電車＋巴士的便利動線</strong><br></p>
           <p>自新千歲機場或札幌車站搭乘 JR 至手稻站，下車後轉乘 JR 北海道巴士，約 16 分即可抵達雪場。動線順暢，初訪也安心。</p>
-
-          <!-- ✅ 圖片亦以彈窗放大預覽 -->
           <a class="s-imgframe js-open-modal" href="#" data-modal-type="image" data-src="img/teine/teinebus.png" aria-haspopup="dialog" aria-controls="viewerModal" aria-label="手稻站至雪場巴士資訊示意圖（點擊放大）">
             <img src="img/teine/teinebus.png" alt="手稻站至雪場巴士資訊示意圖">
           </a>
           <div class="s-cap">點擊可放大檢視</div>
-
           <p></p>
           <p>✦ <strong>預約制直達巴士「Big Runs」</strong><br></p>
           <p>串連札幌市區主要飯店與 Sapporo Teine 的直達巴士。提供「纜車 7 小時票＋來回車資」超值套票，也可僅預約巴士，舒適直達雪場。</p>
@@ -247,11 +266,222 @@
             <li>自札樽道手稻交流道 IC 約 10 分</li>
           </ul>
         </article>
+
+        <article id="rental" class="s-section" aria-labelledby="rental-title">
+          <h2 id="rental-title">雪具租借（手稻官方租借處）</h2>
+          
+          <div class="rental-note">
+            <p><strong>租借價格依照 2025-2026 手稻滑雪場官方價格提供，僅供參考，詳細資訊請以手稻滑雪場官網公布內容為準。</strong></p>
+            <p>手稻滑雪場提供事先網路預約租借，建議提早預約以確保裝備尺寸與數量。</p>
+            
+            <h3 style="margin-top: 16px; color: var(--text-morandi);">租借流程與注意事項（參考）</h3>
+            <ol>
+              <li>到場後請先至租借櫃檯辦理租借手續，或依預約方式領取裝備。</li>
+              <li>出示有效證件（如身份證、護照等）完成登記。</li>
+              <li>櫃檯人員會協助您挑選雪具，依據 身高、體重、年齡與滑雪經驗 提供建議。</li>
+<p> ⚠重要提醒：這些資訊會影響雪具選擇，請務必填寫正確資料。</p>
+              <li>使用期間請妥善保管租借裝備，如有損壞或遺失需依照官方規定賠償。</li>
+              <li>歸還雪具時，請確認所有裝備齊全，並依租借櫃檯指示完成歸還手續。</li>
+            </ol>
+            
+<p class="rental-disclaimer" style="text-align: center; margin: 0.2em 0; font-size: 0.95em;">
+  提醒：以上資訊僅為參考，最終價格、租借規範與預約方式仍以手稻滑雪場官方公告為準。
+</p>
+<p class="rental-disclaimer" style="text-align: center; margin: 0.2em 0; font-size: 0.95em;">
+  ※價格的括號（ ）內為旺季價格　適用期間：12月27日～1月4日
+</p>
+          </div>
+
+
+
+
+  <div class="rental-note">
+            <p><strong>官方雪具租借點</strong></p>
+            <p>札幌手稻滑雪場的官方雪具租借點位於兩個主要區域：</p>
+            
+             <div class="zone" style="margin-bottom: 1em;">
+    <h3 style="margin-bottom: 0.3em;">1. 奧林匹亞區（Olympia Zone）</h3>
+    <p style="margin: 0.2em 0;">📍 位於奧林匹亞滑雪中心3樓</p>
+    <p style="margin: 0.2em 0; color: #007BFF;">適合初學者，建議初學者在此租借雪具</p>
+  </div>
+
+  <div class="zone" style="margin-bottom: 1em;">
+    <h3 style="margin-bottom: 0.3em;">2. 高地區（Highland Zone）</h3>
+    <p style="margin: 0.2em 0;">📍 位於高地滑雪中心1樓</p>
+    <p style="margin: 0.2em 0; color: #FF4500;">雪道較為陡峭，適合中高級滑雪者租借</p>
+  </div>
+
+  <p style="text-align: center; font-size: 0.95em; margin-top: 0.5em; color: #555;">
+    提醒：建議依照自身滑雪經驗選擇租借區域，並可事先預約以確保裝備尺寸與數量。
+  </p>
+          </div>
+
+
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/><path d="M22 58c4-4 22-34 34-48"/></svg>
+              雙板滑雪套裝 <span class="muted">(雙板+靴+杖)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥8,700 <span class="muted">(¥9,400)</span></td><td>¥7,100 <span class="muted">(¥7,800)</span></td></tr>
+                <tr><td>2天</td><td>¥16,400 <span class="muted">(¥17,800)</span></td><td>¥13,200 <span class="muted">(¥14,600)</span></td></tr>
+                <tr><td>3天</td><td>¥24,100 <span class="muted">(¥26,200)</span></td><td>¥19,300 <span class="muted">(¥21,400)</span></td></tr>
+                <tr><td>道民優惠1天 <span class="muted">※僅限北海道居民</span></td><td>¥6,100</td><td>¥4,800</td></tr>
+                <tr><td>夜場</td><td>¥5,900 <span class="muted">(¥6,300)</span></td><td>¥4,500 <span class="muted">(¥4,900)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/><path d="M22 58c4-4 22-34 34-48"/></svg>
+              雙板滑雪套裝+服裝 <span class="muted">(雙板+靴+杖+外套+褲子，不含手套、帽子、護目鏡等配件)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥15,600 <span class="muted">(¥16,800)</span></td><td>¥12,700 <span class="muted">(¥13,900)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/></svg>
+              雙板滑雪板 <span class="muted">(僅雙板)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥5,900 <span class="muted">(¥6,300)</span></td><td>¥4,600 <span class="muted">(¥5,000)</span></td></tr>
+                <tr><td>夜場</td><td>¥3,900 <span class="muted">(¥4,200)</span></td><td>¥3,100 <span class="muted">(¥3,400)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/></svg>
+              雙板滑雪靴 <span class="muted">(僅靴)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥4,000 <span class="muted">(¥4,300)</span></td><td>¥3,300 <span class="muted">(¥3,600)</span></td></tr>
+                <tr><td>夜場</td><td>¥2,900 <span class="muted">(¥3,200)</span></td><td>¥2,300 <span class="muted">(¥2,600)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M32 8 L36 16 L28 56"/><circle cx="36" cy="16" r="3"/></svg>
+              滑雪杖
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥1,600</td><td>¥1,600</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><rect x="8" y="20" width="48" height="12" rx="6" ry="6"/><path d="M12 24c6 6 36 6 40 0"/></svg>
+              單板滑雪套裝 <span class="muted">(單板+靴)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥8,700 <span class="muted">(¥9,400)</span></td><td>¥7,100 <span class="muted">(¥7,800)</span></td></tr>
+                <tr><td>2天</td><td>¥16,400 <span class="muted">(¥17,800)</span></td><td>¥13,200 <span class="muted">(¥14,600)</span></td></tr>
+                <tr><td>3天</td><td>¥24,100 <span class="muted">(¥26,200)</span></td><td>¥19,300 <span class="muted">(¥21,400)</span></td></tr>
+                <tr><td>道民優惠1天 <span class="muted">※僅限北海道居民</span></td><td>¥6,100</td><td>¥4,800</td></tr>
+                <tr><td>夜場</td><td>¥5,900 <span class="muted">(¥6,300)</span></td><td>¥4,500 <span class="muted">(¥4,900)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><rect x="8" y="20" width="48" height="12" rx="6" ry="6"/><path d="M12 24c6 6 36 6 40 0"/></svg>
+              單板滑雪套裝+服裝 <span class="muted">(單板+靴+外套+褲子，不含手套、帽子、護目鏡等配件)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥15,600 <span class="muted">(¥16,800)</span></td><td>¥12,700 <span class="muted">(¥13,900)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><rect x="8" y="20" width="48" height="12" rx="6" ry="6"/></svg>
+              單板滑雪板 <span class="muted">(僅單板)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥5,900 <span class="muted">(¥6,300)</span></td><td>¥4,600 <span class="muted">(¥5,000)</span></td></tr>
+                <tr><td>夜場</td><td>¥3,900 <span class="muted">(¥4,200)</span></td><td>¥3,100 <span class="muted">(¥3,400)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><rect x="8" y="20" width="48" height="12" rx="6" ry="6"/></svg>
+              單板滑雪靴 <span class="muted">(僅靴)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥4,000 <span class="muted">(¥4,300)</span></td><td>¥3,300 <span class="muted">(¥3,600)</span></td></tr>
+                <tr><td>夜場</td><td>¥2,900 <span class="muted">(¥3,200)</span></td><td>¥2,300 <span class="muted">(¥2,600)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M8 16h48v32H8z"/><path d="M8 32h48"/></svg>
+              滑雪服裝 <span class="muted">(外套+褲子，不含手套等配件)</span>
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>天數</th><th>成人 (13歲以上)</th><th>小學生以下 (12歲以下)</th></tr></thead>
+              <tbody>
+                <tr><td>1天</td><td>¥6,900 <span class="muted">(¥7,400)</span></td><td>¥5,600 <span class="muted">(¥6,100)</span></td></tr>
+                <tr><td>2天</td><td>¥12,800 <span class="muted">(¥13,800)</span></td><td>¥10,200 <span class="muted">(¥11,200)</span></td></tr>
+                <tr><td>3天</td><td>¥18,700 <span class="muted">(¥20,200)</span></td><td>¥14,800 <span class="muted">(¥16,300)</span></td></tr>
+                <tr><td>夜場</td><td>¥4,100 <span class="muted">(¥4,400)</span></td><td>¥3,300 <span class="muted">(¥3,600)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="rental-section">
+            <div class="label">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><circle cx="32" cy="32" r="18"/><path d="M32 20v24M20 32h24"/></svg>
+              配件 (Accessories)
+            </div>
+            <table class="rental-table">
+              <thead><tr><th>項目</th><th>價格</th></tr></thead>
+              <tbody>
+                <tr><td>毛帽・護目鏡・手套（套裝・1天）</td><td>¥3,300 <span class="muted">(¥3,700)</span></td></tr>
+                <tr><td>毛帽・護目鏡・手套（單品・1天）</td><td>¥1,600 <span class="muted">(¥1,800)</span></td></tr>
+                <tr><td>頭盔・1天</td><td>¥3,100 <span class="muted">(¥3,300)</span></td></tr>
+              </tbody>
+            </table>
+          </section>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ===== Modal（PDF / 圖片通用檢視器） ===== -->
   <div class="modal" id="viewerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="內容檢視器">
     <div class="modal-dialog">
       <div class="modal-header">
@@ -260,12 +490,11 @@
           <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#222" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <div class="modal-body" id="viewerBody"><!-- 動態插入 --></div>
+      <div class="modal-body" id="viewerBody"></div>
     </div>
   </div>
 
   <script>
-    /* ===== 目錄：啟用 active 狀態與金色指示條 ===== */
     (function(){
       const toc = document.querySelector('.s-toc');
       const links = toc.querySelectorAll('a');
@@ -296,14 +525,13 @@
           }
         });
       }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car'].forEach(id=>{
+      ['features','public','car','rental'].forEach(id=>{
         const el = document.getElementById(id); if(el) io.observe(el);
       });
 
       moveIndicator(links[0]);
     })();
 
-    /* ===== 彈窗（PDF／圖片同頁預覽） ===== */
     (function(){
       const modal = document.getElementById('viewerModal');
       const body  = document.getElementById('viewerBody');
@@ -343,7 +571,6 @@
       document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
     })();
 
-    // 桌機語言下拉：中文 ↔ 日文/英文（路徑不帶 ja_；他語帶對應前綴）
     (function(){
       const sel = document.getElementById('langSelect');
       if(!sel) return;
@@ -357,7 +584,6 @@
   </script>
 </main>
 
-<!-- Footer（結構不變；文字與連結改為繁中與中文路徑） -->
 <footer class="footer" role="contentinfo">
   <section class="sitemap" aria-label="網站地圖">
     <div class="container">
@@ -408,7 +634,6 @@
   </button>
 </div>
 
-<!-- ✅ 共用 JS -->
 <script src="common.js"></script>
 </body>
 </html>
