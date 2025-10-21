@@ -1,42 +1,56 @@
 # robots.txt for MOPO Ski School
-# 精選開放：允許 Google / Apple / 一般搜尋引擎與 AI 搜索曝光
-# 封鎖純粹做 AI 訓練的爬蟲（Amazon、ByteDance、CCBot、Claude、Meta 等）
+# ✅ 開放搜尋引擎與生成式 AI（Gemini, Apple Intelligence, Bing Copilot 等）
+# 🚫 封鎖純 AI 訓練用爬蟲（Amazon, ByteDance, CCBot, Claude, GPT, Meta）
 
-# ✅ 開放 Google 生成式 AI（Gemini、SGE）
+# Google
+User-agent: Googlebot
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
-# ✅ 開放 Apple AI（Apple Intelligence、Siri、Spotlight）
+# Apple
+User-agent: Applebot
+Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
 
-# 🚫 封鎖 Amazon AI（Amazon 生成式 AI 與推薦系統）
+# Microsoft / Yahoo / DuckDuckGo / Yandex
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# 🚫 Block AI training bots
 User-agent: Amazonbot
 Disallow: /
 
-# 🚫 封鎖 ByteDance AI（TikTok / 抖音 / 今日頭條）
 User-agent: Bytespider
 Disallow: /
 
-# 🚫 封鎖 Common Crawl（公開大規模資料庫，常被 AI 模型用來訓練）
 User-agent: CCBot
 Disallow: /
 
-# 🚫 封鎖 Anthropic Claude AI（ClaudeBot）
 User-agent: ClaudeBot
 Disallow: /
 
-# 🚫 封鎖 OpenAI GPTBot（ChatGPT 訓練用）
 User-agent: GPTBot
 Disallow: /
 
-# 🚫 封鎖 Meta AI（Facebook / Instagram / WhatsApp 的外部 AI 抓取）
 User-agent: meta-externalagent
 Disallow: /
 
-# ✅ 預設：允許所有其他正常搜尋引擎（Googlebot、Bingbot、Yahoo…）
+# ✅ Default allow
 User-agent: *
 Allow: /
 
-# 📌 Sitemap 位置
+# 📌 Sitemap
 Sitemap: https://moposki.com/sitemap.xml
