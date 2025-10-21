@@ -10,21 +10,21 @@
 
   <!-- 中文首頁 -->
   <url>
-    <loc>https://www.moposki.com/</loc>
+ <loc>https://www.moposki.com/</loc>
     <lastmod>2025-08-30</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- 日文首頁 -->
   <url>
-    <loc>https://www.moposki.com/ja_mopoindex.html</loc>
+<loc>https://www.moposki.com/ja_mopoindex.html</loc>
     <lastmod>2025-08-30</lastmod>
     <priority>0.9</priority>
   </url>
 
   <!-- 英文首頁 -->
   <url>
-    <loc>https://www.moposki.com/en_mopoindex.html</loc>
+  <loc>https://www.moposki.com/en_mopoindex.html</loc>
     <lastmod>2025-08-30</lastmod>
     <priority>0.9</priority>
   </url>
