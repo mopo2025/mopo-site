@@ -148,8 +148,8 @@ html, body { overflow-x: hidden; }
 .hero__bg{filter:grayscale(var(--gray)); opacity:calc(1 - 0.15 * var(--fade))}
 h1{margin:0 0 4px 0}
 .logoLine{display:inline-flex; align-items:flex-end; gap:10px; position:relative}
-.logoLine .main{font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif; font-size:clamp(34px,6.2vw,64px); line-height:1.05; color:#111}
-.logoLine .sub{font-size:.58em; font-weight:800; letter-spacing:.08em; color:#111}
+.logoLine .main{font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif; font-size:clamp(34px,6.2vw,64px); line-height:1.05; color:#1}
+.logoLine .sub{font-size:.58em; font-weight:800; letter-spacing:.08em; color:#1}
 .logoLine::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-2)); border-radius:999px}
 .subtitle{margin:10px 0 16px; font-size:16px; color:#000}
 .btn{position:relative; isolation:isolate; display:inline-block; padding:10px 14px; border-radius:999px; border:1px solid var(--gold); background:#fff; color:#midnight; font-weight:800; letter-spacing:.02em; overflow:hidden; transition:transform .18s ease, color .25s ease, border-color .25s ease}
@@ -178,7 +178,7 @@ h1{margin:0 0 4px 0}
 #about-mopo.section{background:var(--bg-mid)}
 #pricing.section{background:var(--bg-top)}
 #contact.section{background:var(--bg-mid)}
-.section__head h2{margin:0 0 8px; font-size:26px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
+.section__head h2{margin:0 0 8px; font-size:26px; letter-spacing:.02em; color:#1; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
 .muted{color:var(--ink-soft); font-size:14px}
 
 /* reveal */
@@ -253,7 +253,7 @@ h1{margin:0 0 4px 0}
   .table td{padding:0}
   .table .people{font-size:15px}
   .table .price{font-size:15px; justify-self:end}
-  .table .pp{grid-column:1/-1; justify-self:end; font-size:11px}
+  .table .pp{grid-column:1/-1; justify-self:end; font-size:px}
   .note-row{display:block}
   .note-row .btns{display:none}
   .cta-row{display:flex; gap:8px; margin:8px 0 0}
@@ -265,10 +265,10 @@ h1{margin:0 0 4px 0}
 @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
 .form{display:grid; gap:12px; max-width:500px}
 .form input, .form textarea{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; font-size:16px; background:#fff}
-.form textarea{min-height:110px}
+.form textarea{min-height:0px}
 .sns{display:grid; grid-template-columns:1fr 1fr; gap:10px; align-content:start; margin-top:6px}
-.sns a{display:inline-flex; align-items:center; justify-content:center; padding:10px 12px; background:transparent; border:1px solid var(--gold); color:#111; font-weight:800; border-radius:12px; transition:background .25s ease, color .25s ease, border-color .25s ease}
-.sns a:hover{background:rgba(200,164,93,.14); color:#111; border-color:#B88F45}
+.sns a{display:inline-flex; align-items:center; justify-content:center; padding:10px 12px; background:transparent; border:1px solid var(--gold); color:#1; font-weight:800; border-radius:12px; transition:background .25s ease, color .25s ease, border-color .25s ease}
+.sns a:hover{background:rgba(200,164,93,.14); color:#1; border-color:#B88F45}
 
 /* ===== フッター ===== */
 .footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
@@ -303,7 +303,7 @@ h1{margin:0 0 4px 0}
     max-width: 200px;
     width: auto;
     font-size: 16px;
-    color: #111;
+    color: #1;
     background-color: var(--gold);
     padding: 10px 16px;
     border-radius: 12px;
@@ -349,7 +349,7 @@ h1{margin:0 0 4px 0}
   transition:opacity 1.2s ease, transform 1.2s ease;
   font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",
                "Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif;
-  color:#111; text-shadow:0 1px 0 rgba(255,255,255,.35);
+  color:#1; text-shadow:0 1px 0 rgba(255,255,255,.35);
   letter-spacing:.15em;  /* ↑ 0.15em */
   word-spacing:.12em;
   text-rendering:optimizeLegibility;
@@ -387,7 +387,7 @@ h1{margin:0 0 4px 0}
   background:rgba(255,255,255,.28);
   backdrop-filter:blur(6px);
   -webkit-backdrop-filter:blur(6px);
-  color:#111;
+  color:#1;
   font-weight:800; letter-spacing:.02em;
   transition:background .25s ease, border-color .25s ease, transform .15s ease;
 }
@@ -661,7 +661,7 @@ h1{margin:0 0 4px 0}
 </div>
 
   <div class="note">
-    <small style="display:block; color:#000; margin-bottom:4px;">Peak seasons: 2025/12/20–01/11, 2026/02/12–02/22, 2026/02/27–03/01</small>
+    <small style="display:block; color:#000; margin-bottom:4px;">Peak seasons: 2025/12/20–01/05, 2026/02/12–02/22, 2026/02/27–03/01</small>
     * An additional ¥5,000 applies for a 5th guest (maximum 5 guests per lesson).
 Liability insurance is included. Lift tickets, rental gear, transportation, and meals are not included.
   </div>
@@ -716,7 +716,7 @@ Liability insurance is included. Lift tickets, rental gear, transportation, and 
     <div class="note-row">
       <div class="note">
         <small style="display:block; color:#000; margin-bottom:4px;">
-          Peak seasons: 2025/12/20–01/11, 2026/02/12–02/22, 2026/02/27–03/01
+          Peak seasons: 2025/12/20–01/05, 2026/02/12–02/22, 2026/02/27–03/01
         </small>
         * An additional ¥5,000 applies for a 5th guest (maximum 5 guests per lesson).
         Liability insurance is included. Lift tickets, rental gear, transportation, and meals are not included.
@@ -777,7 +777,7 @@ Liability insurance is included. Lift tickets, rental gear, transportation, and 
 
     <div class="note-row">
       <div class="note">
-        <small style="display:block; color:#000; margin-bottom:4px;">Peak seasons: 2025/12/20–01/11, 2026/02/12–02/22, 2026/02/27–03/01</small>
+        <small style="display:block; color:#000; margin-bottom:4px;">Peak seasons: 2025/12/20–01/05, 2026/02/12–02/22, 2026/02/27–03/01</small>
         * An additional ¥5,000 applies for a 5th guest (maximum 5 guests per lesson).  
         Liability insurance is included. Lift tickets, rental gear, transportation, and meals are not included.
       </div>
@@ -811,7 +811,7 @@ Liability insurance is included. Lift tickets, rental gear, transportation, and 
         </form>
 
         <aside aria-label="Social & contacts" class="reveal" style="align-self:start">
-          <h3 style="margin:0 0 8px 0;font-size:18px;color:#111">Follow us</h3>
+          <h3 style="margin:0 0 8px 0;font-size:18px;color:#1">Follow us</h3>
           <div class="sns" style="display:flex; gap:10px; flex-wrap:wrap;">
             <!-- ✅ 新增 lazy loading 到社群圖示 -->
             <a href="https://x.com/moposkischool?s=21&t=SMv0gAuFKA2NeZTjB2OMRw" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
