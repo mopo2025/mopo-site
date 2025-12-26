@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Travel Topics | MOPO Ski School</title>
+<meta name="description" content="MOPO Family Exclusive. Sightseeing and unique experiences around Sapporo for your Hokkaido ski trip.">
+
+<link rel="canonical" href="https://moposki.com/trip.html">
+
+<meta property="og:title" content="Travel Topics | MOPO Ski School">
+<meta property="og:description" content="The ultimate 6-day itinerary: Sapporo Teine skiing, Otaru Canal exploration, and classic Hokkaido cuisine.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPO Ski School">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.unsplash.com/photo-1548575097-59914742f36d?q=80&w=2070&auto=format&fit=crop">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../common.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    corePlugins: {
+      preflight: false, 
+    },
+    theme: {
+      extend: {
+        colors: {
+          ink: '#2F4F4F', // Dark Green
+          warm: '#F9F8F6', // Warm Off-White
+          gold: '#CFAF61',
+          accent: '#D4A373', // Latte
+        }
+      }
+    }
+  }
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  .itinerary-wrap {
+      font-family: "Montserrat", sans-serif;
+      color: #2F4F4F;
+      background-color: #F9F8F6;
+      width: 100%;
+  }
+  .serif { font-family: "Noto Serif TC", serif; }
+
+  /* === Side TOC === */
+  .s-toc {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      border: 1px solid rgba(47,79,79,0.1);
+      border-radius: 16px;
+      padding: 12px 0;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(47,79,79,0.05);
+      z-index: 10;
+  }
+  .s-toc a {
+      display: block;
+      padding: 10px 20px;
+      color: #5D6D7E;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+  }
+  .s-toc a:hover { background: #F3F4F6; color: #2F4F4F; }
+  .s-toc a.is-active {
+      font-weight: 700;
+      color: #2F4F4F;
+      background: rgba(47,79,79,0.05);
+      border-left-color: #2F4F4F;
+  }
+
+  /* === Cards & Image Effects === */
+  .warm-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px -10px rgba(47, 79, 79, 0.08);
+      border: 1px solid rgba(47, 79, 79, 0.05);
+      transition: transform 0.3s ease;
+      overflow: hidden;
+      margin-bottom: 40px;
+  }
+  .warm-card:hover { transform: translateY(-5px); }
+  
+  .img-zoom-container { overflow: hidden; height: 100%; min-height: 320px; border-radius: 20px; }
+  .img-zoom-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+  .warm-card:hover .img-zoom-container img { transform: scale(1.05); }
+
+  /* === Transport Collapsible === */
+  .transport-box {
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 24px;
+      background: #FFFFFF;
+  }
+  .transport-header {
+      padding: 16px 20px;
+      background: #FAF9F6;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: #2F4F4F;
+      transition: background 0.2s;
+      font-size: 0.95rem;
+      user-select: none;
+  }
+  .transport-header:hover { background: #F0EFE9; }
+  
+  .transport-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+  }
+  .transport-body.open {
+      max-height: 800px;
+      transition: max-height 0.4s ease-in;
+  }
+  .transport-inner { padding: 0; }
+  .transport-content-pad { padding: 20px; border-top: 1px solid #eee; font-size: 0.95rem; line-height: 1.8; color: #4B5563; }
+
+  /* === Service Badge === */
+  .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border: 1px solid #FDE68A;
+  }
+
+  /* Hotel Slider Styles */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .grabbing { cursor: grabbing !important; cursor: -webkit-grabbing !important; }
+
+  /* Day 5 Image Animation */
+  @keyframes fadeGallery {
+      0%, 45% { opacity: 1; z-index: 10; }
+      55%, 95% { opacity: 0; z-index: 0; }
+      100% { opacity: 1; z-index: 10; }
+  }
+  .slide-img-1 { animation: fadeGallery 10s infinite; } 
+  .slide-img-2 { animation: fadeGallery 10s infinite; animation-delay: 5s; opacity: 0; }
+
+  /* Mobile Adaptation */
+  @media (max-width: 900px) {
+      .s-toc { display: none; }
+      .s-layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="../index.html" class="logo" aria-label="Back to Home">MOPO Ski School</a>
+    </div>
+    
+    <ul class="menu" role="menubar">
+      <li role="none"><a role="menuitem" href="../news.html">News</a></li>
+      <li role="none"><a role="menuitem" href="../mopo.html">About MOPO</a></li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">Lessons <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+          <li role="none"><a role="menuitem" href="../index.html#pricing">Lesson plans</a></li>
+          <li class="group-title">Resorts</li>
+          <li role="none"><a role="menuitem" href="../teine.html">Sapporo Teine</a></li>
+          <li role="none"><a role="menuitem" href="../onze.html">Otaru Onze</a></li>
+          <li role="none"><a role="menuitem" href="../kokusai.html">Sapporo Kokusai</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">Features <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+          <li role="none"><a role="menuitem" href="../safe.html">Safety</a></li>
+          <li role="none"><a role="menuitem" href="../trip.html" aria-current="page">Travel topics</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">Info <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+            <li role="none"><a role="menuitem" href="../legal_tokusho.html">Company info</a></li>
+            <li role="none"><a role="menuitem" href="../notice.html">Application guide</a></li>
+            <li role="none"><a role="menuitem" href="../faq.html">FAQ</a></li>
+            <li role="none"><a role="menuitem" href="../index.html#contact">Contact</a></li>
+        </ul>
+      </li>
+      <li role="none" class="booking-btn-container"><a role="menuitem" href="../booking.html" class="booking-btn">Booking</a></li>
+    </ul>
+
+    <div class="lang">
+      <select id="langSelect"><option value="zh-Hant">繁體中文</option><option value="ja">日本語</option><option value="en" selected>English</option></select>
+    </div>
+
+    <div class="mobtools">
+        <div class="mobdrop" id="mobLangDrop">
+            <button class="mobLangBtn" id="mobLangBtn">Language</button>
+            <div class="mobpanel" id="mobLangPanel"><a href="#">English</a></div>
+        </div>
+        <div class="mobdrop" id="mobNavDrop">
+            <button class="iconbtn" id="mobNavBtn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2"/></svg></button>
+            <div class="mobpanel" id="mobNavPanel">
+                <a href="../news.html">News</a>
+                <a href="../mopo.html">About MOPO</a>
+                <div class="mob-subtitle">Lessons</div>
+                <a href="../index.html#pricing">Lesson plans</a>
+                <a href="../teine.html">Sapporo Teine</a>
+                <a href="../onze.html">Otaru Onze</a>
+                <a href="../kokusai.html">Sapporo Kokusai</a>
+                <div class="mob-subtitle">Features</div>
+                <a href="../safe.html">Safety</a>
+                <a href="../trip.html" aria-current="page">Travel topics</a>
+                <div class="mob-subtitle">Info</div>
+                <a href="../legal_tokusho.html">Company info</a>
+                <a href="../notice.html">Application guide</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../index.html#contact">Contact</a>
+                <a href="../booking.html" class="mob-booking-btn">Booking</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+<main id="itinerary-content" class="itinerary-wrap w-full">
+    
+    <section class="relative h-[65vh] w-full overflow-hidden flex items-center justify-center">
+        
+        <div class="absolute inset-0 z-0">
+            <img src="../img/trip/teine.jpg" class="w-full h-full object-cover opacity-90" alt="Hokkaido Winter Landscape">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#F9F8F6]"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center justify-center h-full py-12">
+            <div class="mb-6">
+                <i data-lucide="snowflake" class="w-8 h-8 text-accent/80 drop-shadow-md"></i>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-3 serif text-white leading-tight drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+                An Introduction to Hokkaido
+            </h1>
+            
+            <p class="text-2xl md:text-4xl font-bold tracking-wider text-accent mb-5 font-sans serif drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">
+                Your Gentle Six-Day Journey
+            </p>
+            
+            <p class="text-lg md:text-2xl font-medium tracking-wide text-ink mb-8 drop-shadow-sm">
+                Experience Sapporo, Otaru, & Culinary Delights
+            </p>
+            
+            <div class="w-32 h-1.5 bg-accent rounded-full shadow-sm mb-10"></div>
+
+            <a href="../booking.html" class="group relative inline-flex items-center gap-2 bg-ink text-warm px-6 py-3 text-base font-bold rounded-full shadow-md hover:bg-accent hover:text-white hover:shadow-lg transition-all duration-300 ease-out transform hover:-translate-y-0.5">
+                <span>Book My First Ski Lesson</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+            </a>
+        </div>
+
+    </section>
+
+    <section class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="s-layout grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10">
+            
+            <nav class="s-toc hidden lg:block">
+                <a href="#features" class="is-active">Trip Highlights</a>
+                <a href="#day1">DAY 1 Arrival in Sapporo</a>
+                <a href="#day2">DAY 2 Teine Ski Debut</a>
+                <a href="#day3">DAY 3 Skill Building</a>
+                <a href="#day4">DAY 4 Otaru Canal</a>
+                <a href="#day5">DAY 5 City vs. Nature Finale</a>
+                <a href="#day6">DAY 6 Airport Exploration</a>
+                <a href="#hotels">Selected Hotels</a>
+            </nav>
+
+            <div class="space-y-16 max-w-full overflow-hidden">
+                
+                <article id="features" class="scroll-mt-32">
+                    <h2 class="text-3xl font-bold mb-8 text-ink serif flex items-center gap-3">
+                        <i data-lucide="star" class="w-6 h-6 text-gold"></i> Why Choose This Journey?
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="mountain" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">Spectacular Scenery</h3><p class="text-xs text-gray-500">Ski while overlooking Ishikari Bay; family-friendly slopes by the sea.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">Professional Instruction</h3><p class="text-xs text-gray-500">Clear, detailed guidance with full instructor support.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="baby" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">Hassle-Free Learning</h3><p class="text-xs text-gray-500">Magic carpets mean saving energy for skiing, not hiking up slopes.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="camera" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">Memories Captured</h3><p class="text-xs text-gray-500">Your instructor will snap photos of your family moments on the snow.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day1" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/jrtower.jpg" alt="Sapporo Night View" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 01</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">SAPPORO</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">Arrival at New Chitose & Embracing the Sapporo Night View</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【Theme: City Lights & Panoramic Heights】</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>New Chitose Airport:</strong> Upon arrival, take the comfortable JR Rapid Airport train directly to central Sapporo.</li>
+                                    <li><strong>JR Tower T38:</strong> Visit this climate-controlled observation deck connected to the station. Enjoy coffee from 160m up, overlooking the snow-covered cityscape.</li>
+                                    <li><strong>Odori Park:</strong> After checking into your hotel, take a gentle evening stroll to admire the dreamy winter illuminations, a signature of the northern winter.</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> Transport Details</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad">
+                                            <p class="font-bold text-ink mb-2">✈️ New Chitose Airport (CTS) → JR Sapporo Station</p>
+                                            <ul class="list-decimal list-inside text-sm space-y-1 text-gray-600">
+                                                <li>After arrival, follow signs for the <strong>"JR Line"</strong> and take the elevator down to <strong>B1F</strong>.</li>
+                                                <li>Purchase a ticket for <strong>"Sapporo"</strong> at the automatic vending machines.</li>
+                                                <li>Board the <strong>"Rapid Airport"</strong> train.</li>
+                                                <li>The ride takes approximately <strong>37-40 minutes</strong>. Disembark at "Sapporo Station".</li>
+                                            </ul>
+                                            <div class="mt-4">
+                                                <a href="https://maps.app.goo.gl/VCohn9THgXaziiFD6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> Open Google Map: Sapporo Station</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day2" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/teine.jpg" alt="Teine Ski Resort" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 02</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">TEINE OLYMPIA</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">Sapporo Teine Debut: Building Confidence & Safety on the Slopes</h3>
+                                <p class="text-sm text-gray-500 mb-4 font-bold tracking-wider">【Theme: Patient Instruction & Stress-Free Magic Carpet Practice】</p>
+                                <div class="service-badge"><i data-lucide="phone-call" class="w-3 h-3"></i> Exclusive Service: Taxi Booking (Requires booking 1 week in advance)</div>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed mt-4">
+                                    <li><strong>Morning Lesson:</strong> Teine Ski Resort (Olympia Zone). Opt for small-group private lessons. Beginners can request instructor assistance with gear booking; coaches will help check equipment and fill out rental forms, ensuring personalized instruction at your pace, without the pressure of keeping up with a large group.</li>
+                                    <li><strong>Afternoon Practice:</strong> Make good use of the <strong>"Magic Carpet (Snow Escalator)"</strong>. It’s an effortless way to ascend beginner slopes without hiking, saving your energy for the fun part.</li>
+                                    <li><strong>Dinner Recommendation:</strong> Nemuro Hanamaru or Toriton Sushi. Both offer fresh, high-quality ingredients and a rich variety that is a crowd-pleaser for the whole family. (Pro tip: Try the fried chicken at Toriton Sushi—it's surprisingly good!)</li>
+                                </ul>
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    <a href="https://maps.app.goo.gl/Dn1Fbr5GEtegCoxp6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> Nemuro Hanamaru</a>
+                                    <a href="https://maps.app.goo.gl/X9i6Vu93uAPQkVyj8" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="fish" class="w-3 h-3"></i> Toriton Sushi Toyohira</a>
+                                </div>
+                            </div>
+                            <div class="transport-box mt-6">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> Transport Details</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">Step 1: JR Sapporo Station → Teine Station</p><p class="text-sm">Take the JR Hakodate Line "Rapid Train" for about 10-15 minutes and disembark at "Teine Station".</p></div>
+                                            <div><p class="font-bold text-ink mb-2">Step 2: Teine Station → Olympia Ski Resort</p><ul class="list-decimal list-inside text-sm space-y-1"><li>Go to the South Exit, Bus Platform 3, and take the "Teine 70" bus.</li><li>Get off at "Teine Olympia" after about 15 minutes.</li></ul></div>
+                                            <div class="flex flex-col gap-2 mt-2">
+                                                <a href="https://maps.app.goo.gl/dTexdjpWxGzo5Vmn7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="map" class="w-3 h-3"></i> Open Google Map: Teine Station South Exit</a>
+                                                <div><a href="https://youtu.be/eq6--bcae3s?si=goOtCrW478d735i6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="video" class="w-3 h-3"></i> Watch Bus Transfer Video</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day3" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/susukino.jpg" alt="Susukino District" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 03</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">LEVEL UP</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">Breaking Through: Mastering the Art of Turning</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【Theme: Technical Breakthroughs & Deep Training in the Olympia Zone】</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>Morning:</strong> Consistent practice is key to progress. Utilize the excellent morning snow conditions to solidify your basics.</li>
+                                    <li><strong>Afternoon:</strong> Challenge yourself with turning. Try the snowboard 'falling leaf' technique on your toe-side, or master ski snowplow turns to experience the joy of controlled steering.</li>
+                                    <li><strong>Evening:</strong> Head to the lively <strong>Susukino</strong> district to sample essential Hokkaido dishes like Genghis Khan grilled lamb or the famous soup curry from GARAKU.</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> Transport Details</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">To/From Ski Resort</p><p class="text-sm">Transport is exactly the same as Day 2 (JR Teine Station + Platform 3 Bus Teine 70).</p></div>
+                                            <div>
+                                                <p class="font-bold text-ink mb-2">Evening travel to Susukino</p>
+                                                <ul class="list-disc list-inside text-sm space-y-1">
+                                                    <li>Subway Namboku Line (Green Line) to "Susukino" station.</li>
+                                                    <li>Or walk via the "Chi-Ka-Ho" underground walkway (approx. 20 mins).</li>
+                                                </ul>
+                                                <div class="mt-4 flex flex-wrap gap-2">
+                                                    <a href="https://maps.app.goo.gl/TspZtgmFRFRXnf5a7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> Susukino Station</a>
+                                                    <a href="https://maps.app.goo.gl/fa3iL1UpEnQXRpfH6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> Genghis Khan (Lamb BBQ)</a>
+                                                    <a href="https://maps.app.goo.gl/ENHZwVcf4ecQeb6X9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="soup" class="w-3 h-3"></i> Soup Curry GARAKU</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+
+
+<div class="my-10 py-3 px-6 bg-ink rounded-full shadow-sm flex flex-col md:flex-row items-center justify-center md:justify-between gap-3 text-center md:text-left max-w-4xl mx-auto ring-1 ring-inset ring-white/10">
+                    <p class="text-warm text-sm font-medium flex items-center gap-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-accent hidden md:block opacity-80"></i>
+                        <span>Inspired by the slopes? Secure your private instructor for these specific days.</span>
+                    </p>
+                    <a href="../booking.html" class="group inline-flex items-center gap-1 text-accent hover:text-white font-bold text-sm transition-colors whitespace-nowrap bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10">
+                        <span>Check availability</span>
+                        <i data-lucide="arrow-right" class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"></i>
+                    </a>
+                </div>
+
+
+                <article id="day4" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/otaru.jpg" alt="Otaru Canal" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 04</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">OTARU</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">Otaru Canal Stroll & One of Hokkaido's Top Three Night Views</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【Theme: Nostalgic Charm & The Romance of Mt. Tengu】</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>Daytime Stroll:</strong> Trade your ski boots for walking shoes and explore Otaru's historic red brick warehouses, glassblowing studios, and renowned confectionery shops like LeTAO and Kitakaro.</li>
+                                    <li><strong>Night View:</strong> Take the ropeway up <strong>Mt. Tengu</strong> for a panoramic view ranked alongside Hakodate and Mt. Moiwa as one of Hokkaido's top three nightscapes.</li>
+                                    <li class="bg-[#FEF3C7] text-[#92400E] p-2 rounded text-xs border border-[#FDE68A]"><strong>⚠️ Pro Tip:</strong> In the event of heavy snow suspending JR train services, consider taking a "Highway Bus" to Otaru as a reliable alternative.</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> Transport Details</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">Step 1: Sapporo → Otaru</p><ul class="list-disc list-inside text-sm space-y-1"><li>Option A (JR): JR Rapid Airport (approx. 35-45 mins).</li><li>Option B (Bus): Highway Otaru Bus (approx. 60 mins).</li></ul></div>
+                                            <div><p class="font-bold text-ink mb-2">Step 2: Otaru Station → Mt. Tengu Ropeway</p><p class="text-sm">From Otaru Station Bus Terminal Platform 4, take the "No. 9 Tenguyama Ropeway Line".</p></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="https://maps.app.goo.gl/CSkr64gDtEAuCGxs5" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> Google Map: Otaru Station</a>
+                                                <a href="https://tenguyama.ckk.chuo-bus.co.jp/" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> Mt. Tengu Ropeway Official Site</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day5" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container relative bg-gray-200">
+                            <img src="../img/trip/beer.jpg" alt="Sapporo Beer Museum" class="object-cover w-full h-full absolute top-0 left-0 slide-img-1">
+                            <img src="../img/trip/shikotsu.jpg" alt="Lake Shikotsu" class="object-cover w-full h-full absolute top-0 left-0 slide-img-2">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 05</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">FINALE</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">Urban Aesthetics & Natural Wonders: The Grand Finale</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【Theme: Tailored Itinerary – Last-Minute Shopping vs. Scenic Onsen Escape】</p>
+                                <div class="space-y-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
+                                        <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="beer" class="w-4 h-4 text-accent"></i> Option A: The Urbanite (Sapporo City)</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed">Visit the <strong>"Sapporo Beer Museum"</strong> to sample historical brews and limited-edition beers in a Meiji-era red brick building. In the afternoon, head to the <strong>"Tanukikoji Shopping Arcade"</strong>. It features Hokkaido's largest Don Quijote and various drugstores, and as it is fully covered, it's the ultimate destination for finalizing your souvenir shopping regardless of snow.</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
+                                        <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="mountain-snow" class="w-4 h-4 text-accent"></i> Option B: The Naturalist (Lake Shikotsu)</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed mb-2">Explore <strong>"Lake Shikotsu"</strong>, famous for having some of Japan's most pristine water and its unique "Shikotsu Blue" color. In winter, the magical <strong>"Ice Festival"</strong> features massive ice sculptures created by spraying water from the lake, spectacular under blue skies or evening lights.</p>
+                                        <p class="text-xs text-gray-500 font-bold">♨️ Recommended Onsen: Marukoma Onsen (Hidden Gem), Tsuruga Mizu no Uta (Luxury)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="transport-box mt-6">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> Transport & Heavy Snow Contingency Plans</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div>
+                                                <p class="font-bold text-ink mb-2">🚌 To/From Lake Shikotsu (Option B)</p>
+                                                <ul class="list-decimal list-inside text-sm space-y-1">
+                                                    <li>JR Sapporo Station → Chitose Station.</li>
+                                                    <li>From Chitose Station West Exit Platform 4, take the "Shikotsu Ko Line" bus.</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-red-50 p-3 rounded border border-red-100"><p class="font-bold text-red-800 text-xs mb-1 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Crucial Winter Travel Tip</p><ul class="text-xs text-red-700 space-y-1"><li>Bus service is extremely infrequent. Please check schedules carefully.</li><li>If the JR Chitose line is suspended due to heavy snow, we strongly recommend staying in Sapporo City to avoid being stranded.</li></ul></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="https://maps.app.goo.gl/p4co3bH2b3DKByWv6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="beer" class="w-3 h-3"></i> Beer Museum</a>
+                                                <a href="https://maps.app.goo.gl/ftofQT5u7WsLd397A" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="shopping-bag" class="w-3 h-3"></i> Tanukikoji</a>
+                                                <a href="https://maps.app.goo.gl/pxJaGbSo2qLNGmCW9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> Lake Shikotsu</a>
+                                                <a href="https://maps.app.goo.gl/wYzHZoGsE4jpKGu1A" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="bus" class="w-3 h-3"></i> Chitose Station</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="last-day" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/airpost.jpg" alt="New Chitose Airport" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">LAST DAY</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">DEPARTURE</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">The Final Surprise: Exploring New Chitose Airport</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【Theme: The Perfect Send-Off – Departing with Full Hearts (and Bags)】</p>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">Don't rush to immigration! Locals often joke that "New Chitose Airport is actually Hokkaido's best theme park". Be sure to arrive <strong>3-4 hours early</strong>; it features hot springs, a movie theater, and even an on-site chocolate factory.</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>🍜 Hokkaido Ramen Dojo:</strong> An essential ritual before leaving. Features famous shops like "Ichigen (rich shrimp broth)" and "Shirakaba Sansou (miso)".</li>
+                                    <li><strong>🍫 Royce' Chocolate World:</strong> Watch the production process through glass windows and buy exclusive items.</li>
+                                    <li><strong>🎀 Hello Kitty Happy Flight:</strong> A vibrant and cute themed area and cafe that kids will love.</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box mt-6">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> Airport Transport & Crucial Reminders</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div>
+                                                <p class="font-bold text-ink mb-2">✈️ Getting to New Chitose Airport (CTS)</p>
+                                                <ul class="list-disc list-inside text-sm space-y-2">
+                                                    <li>From Lake Shikotsu: Direct bus.</li>
+                                                    <li>From Chitose City: JR or Taxi.</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-red-50 p-3 rounded border border-red-100"><p class="font-bold text-red-800 text-xs mb-1 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Crucial Departure Reminders</p><ul class="text-xs text-red-700 space-y-1"><li>Walking between International and Domestic terminals takes a good 10-15 minutes. Please factor this into your schedule.</li><li>In case of heavy snow forecasts on your departure day, we strongly recommend staying at an airport hotel the night before to guarantee you make your flight.</li></ul></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="https://maps.app.goo.gl/Zxu53BnxWuQG1cVt7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="plane" class="w-3 h-3"></i> New Chitose Airport</a>
+                                                <a href="https://maps.app.goo.gl/3Qo3GXb8AGwehGxj6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> Ramen Dojo</a>
+                                                <a href="https://maps.app.goo.gl/VEvvkuT5JGDJ5owG7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="gift" class="w-3 h-3"></i> Royce'</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="hotels" class="scroll-mt-32 w-full max-w-full overflow-hidden relative group/section">
+                    <div class="mb-6 flex flex-wrap items-end justify-between gap-2 px-1">
+                        <div>
+                            <h2 class="text-3xl font-bold text-ink serif flex items-center gap-3 mb-2">
+                                <i data-lucide="bed-double" class="w-6 h-6 text-gold"></i> Selected Accommodation Recommendations
+                            </h2>
+                            <p class="text-sm text-gray-500">Editor’s Rationale: We strongly recommend staying in the <strong>"Sapporo Station Area"</strong> to minimize the effort of hauling ski gear on subways daily.</p>
+                        </div>
+                        <div class="hidden md:flex text-xs text-gray-400 gap-1 items-center whitespace-nowrap">
+                            <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i> Drag or click buttons to scroll
+                        </div>
+                    </div>
+
+                    <div class="relative w-full">
+                        <button onclick="scrollHotels(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="left: 0;"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                        <button onclick="scrollHotels(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="right: 0;"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+
+                        <div id="hotelContainer" class="flex overflow-x-auto pb-8 gap-4 md:gap-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory w-full px-1" style="scroll-behavior: smooth;">
+                            
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/42890/-1/c543e44a172184145ed4eaf372e6155c.jpg?ca=20&ce=1&s=1024x" alt="Keio Plaza Hotel Sapporo" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">Direct Airport Bus</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.keioplaza-sapporo.co.jp/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Keio Plaza Hotel Sapporo <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 5 mins from JR Sapporo St. West Exit</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>Editor's Pick:</strong> An excellent choice for families or multi-generational groups. The <strong>airport bus stop</strong> is right outside the door, eliminating the need to drag luggage through the snow. Rooms are spacious for Sapporo, easily fitting two large ski bags.</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">Classic 5-Star</span><span class="text-sm text-accent font-bold">From ~14,000 JPY</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/22001968/-1/e0052c177e3c690c4c463df2a3893dd3.jpg?ce=0&s=1024x" alt="SAPPORO GRANBELL HOTEL" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-accent text-white text-[10px] px-2 py-1 rounded-full">Rooftop Open-Air Onsen</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.granbellhotel.jp/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">SAPPORO GRANBELL <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 8 mins from Station</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>Editor's Pick:</strong> A post-ski hot spring soak is essential! This hotel features a <strong>"Rooftop Open-Air Bath"</strong>—soaking while fine snow falls around you is a uniquely romantic Hokkaido experience. Features stylish industrial decor that appeals to a younger crowd.</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">Designer Hotel</span><span class="text-sm text-accent font-bold">From ~12,000 JPY</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/635648418.jpg?k=b54f3ae99a16ab43bf666d0fb42dbeb83f4fdd612c627bb2e047fc421414b69b&o=&s=1024x" alt="Hotel Emion Sapporo" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-gold text-white text-[10px] px-2 py-1 rounded-full">Underground Connection</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.hotel-emion.jp/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Hotel Emion Sapporo <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Direct underground link (North Exit)</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>Editor's Pick:</strong> A true winter lifesaver. The underground passage connects directly to Sapporo Station, so <strong>outdoor blizzards won't impact your transit</strong>. Facilities are new, and the breakfast buffet is highly rated, recently ranking in Sapporo's top three.</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">Highly Rated</span><span class="text-sm text-accent font-bold">From ~14,000 JPY</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/7458736/0/3f45b87ad55af8bdd8ccb7f1739d1653.jpg?ce=0&s=1024x" alt="JR Tower Hotel Nikko Sapporo" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">Directly Above Station</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.jrhotels.co.jp/tower/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">JR Tower Hotel Nikko <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Sapporo St. South Exit Direct</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>Editor's Pick:</strong> If your budget allows, look no further. Live <strong>directly above JR Sapporo Station</strong>; simply take the elevator down to the station concourse. Unbeatable high-floor night views, perfect for an indulgent treat for yourself or your partner.</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">Luxury Landmark</span><span class="text-sm text-accent font-bold">From ~26,000 JPY</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/23070878/0/1b59c8564f09a50b6c4dd2497f294830.jpg?ce=2&s=1024x" alt="Solaria Nishitetsu Hotel Sapporo" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-red-800 text-white text-[10px] px-2 py-1 rounded-full">Legendary Breakfast Buffet</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://nnr-h.com/solaria/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Solaria Nishitetsu <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 5 mins from Station</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>Editor's Pick:</strong> Worth booking solely for the incredible <strong>"All-you-can-eat Seafood Don"</strong> breakfast! The public bath is very classy, and it's close to the Former Hokkaido Government Office and Odori Park. A highly rated boutique-style hotel.</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">Refined Business</span><span class="text-sm text-accent font-bold">From ~18,000 JPY</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/property/34467000/0/dbbfd6e3139d0c4cab097eda46d9ccc6.jpeg?ce=2&s=1024xe" alt="Mitsui Garden Hotel Sapporo West" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-gray-600 text-white text-[10px] px-2 py-1 rounded-full">Top Quality Choice</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.gardenhotels.co.jp/sapporo-west/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Mitsui Garden (West) <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 4 mins from Station (West Exit)</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>Editor's Pick:</strong> The trusted quality of the Mitsui brand. A <strong>sophisticated modern aesthetic</strong>, comfortable spacious public bath, and breakfast featuring local Hokkaido ingredients. An excellent value choice for high-quality accommodation.</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">Upscale Business</span><span class="text-sm text-accent font-bold">From ~13,000 JPY</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <script>
+                        const slider = document.getElementById('hotelContainer');
+                        let isDown = false, startX, scrollLeft;
+                        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('grabbing'); slider.style.scrollBehavior = 'auto'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+                        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+                        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+                        slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+                        function scrollHotels(dir) { const c = document.getElementById('hotelContainer'); c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); }
+                    </script>
+                </article>
+
+          <div class="mt-10 mb-10 text-center py-12 px-6 bg-white rounded-[3rem] border border-gray-100 shadow-sm">
+                    <i data-lucide="calendar-heart" class="w-12 h-12 text-accent mx-auto mb-4 drop-shadow"></i>
+                    <h2 class="text-3xl md:text-4xl font-bold text-ink serif mb-4">Ready for Your Hokkaido Winter Story?</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">Secure your lesson slots now to ensure availability.</p>
+
+                    <div class="mb-8">
+                        <a href="../booking.html" class="group relative inline-flex items-center gap-2 bg-ink text-warm px-6 py-3 text-base font-bold rounded-full shadow-lg hover:bg-accent hover:text-white hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1">
+                            <span>Book My First Ski Lesson</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+
+                    <div class="text-sm text-gray-500 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+                        <span class="opacity-80">Have specific questions? Chat with us gently:</span>
+                        <div class="flex items-center gap-4 mt-2 md:mt-0">
+                            <a href="https://lin.ee/HuTp1OW" target="_blank" class="inline-flex items-center gap-1 font-bold text-[#06C755] hover:underline transition hover:opacity-80">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> LINE
+                            </a>
+                            <span class="text-gray-300">|</span>
+                            <a href="https://wa.me/817044206343" target="_blank" class="inline-flex items-center gap-1 font-bold text-[#25D366] hover:underline transition hover:opacity-80">
+                                <i data-lucide="phone" class="w-4 h-4"></i> WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-3 opacity-70">(Response time: Usually within few hours, JST 12:00-22:00)</p>
+                </div>
+
+                </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <section class="sitemap">
+    <div class="container">
+      <div class="cols">
+        <div>
+            <h4>News</h4>
+            <ul>
+                <li><a href="../news.html">News</a></li>
+                <li><a href="../mopo.html">About MOPO</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Lessons</h4>
+            <ul>
+                <li><a href="../index.html#pricing">Lesson plans</a></li>
+                <li><a href="../teine.html">Sapporo Teine</a></li>
+                <li><a href="../onze.html">Otaru Onze</a></li>
+                <li><a href="../kokusai.html">Sapporo Kokusai</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Features</h4>
+            <ul>
+                <li><a href="../safe.html">Safety</a></li>
+                <li><a href="../trip.html">Travel topics</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Info</h4>
+            <ul>
+                <li><a href="../legal_tokusho.html">Company info</a></li>
+                <li><a href="../notice.html">Application guide</a></li>
+                <li><a href="../faq.html">FAQ</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px"><div>© <span id="year"></span> MOPO Ski School</div></div>
+    </div>
+  </section>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('article[id]');
+    const navLinks = document.querySelectorAll('.s-toc a');
+    let current = '';
+    sections.forEach(section => { const sectionTop = section.offsetTop; if (window.scrollY >= sectionTop - 150) current = section.getAttribute('id'); });
+    navLinks.forEach(link => { link.classList.remove('is-active'); if (link.getAttribute('href') === '#' + current) link.classList.add('is-active'); });
+  });
+  function toggleTransport(header) {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('.lucide-chevron-down');
+    if (body.classList.contains('open')) { body.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; } else { body.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
+  }
+</script>
+</body>
+</html>
