@@ -26,188 +26,175 @@
 <meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/logo/logom.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 
+<!-- ✅ 共用樣式 -->
+<link rel="stylesheet" href="common.css">
+
+<!-- 本頁樣式（PC：圖片2/3，所有文字同寬且不溢出；手機不變；選單/底部不改） -->
 <style>
-/* ===== 保持與主頁一致的全域樣式 ===== */
-body {
-  font-family:"Noto Sans JP","Montserrat",system-ui,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif;
-  line-height:1.6;
-  color:#0E1A24;
-}
-:root{
-  --bg-top:#E7E9EA;
-  --bg-mid:#FFFFFF;
-  --bg-bottom:#9B9793;
-  --midnight:#0D1B2A;
-  --gold:#C8A45D; --gold-2:#E4CFA3;
-  --ink:#0E1A24; --ink-soft:#3E4A57;
-  --shadow:0 18px 50px rgba(13,27,42,.10);
-  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
-  --slide:0; --fade:0; --gray:0;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-top)}
-a{color:inherit; text-decoration:none}
-.container{max-width:1200px; margin:0 auto; padding:0 22px}
-html, body { overflow-x: hidden; }
+  :root { --card-w: 66.666%; }
 
-/* ===== Topbar（與主頁一致） ===== */
-.topbar{
-  position:fixed; left:0; right:0; top:0;
-  z-index:2000;
-  background:rgba(255,255,255,.24);
-  backdrop-filter:saturate(1.28) blur(18px);
-  border-bottom:1px solid rgba(200,164,93,.24);
-  transition:all .25s ease
-}
-.topbar.scrolled{ background:rgba(255,255,255,.45) }
-.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
-
-.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
-.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
-@media (max-width:760px){ .brand{padding-left:14px} }
-.brand .logo{font-weight:800; font-size:18px}
-.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
-
-/* 桌面選單 */
-.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
-.menu>li{list-style:none; position:relative}
-.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
-.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
-.menu>li:hover>a::after{transform:scaleX(1)}
-.topbar.scrolled .menu>li>a{color:#8C723E}
-
-/* ▼ 桌機下拉選單 */
-.has-dropdown{ position:relative; }
-.has-dropdown > a{ cursor: default; }
-.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
-.submenu{
-  display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
-  background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
-}
-.has-dropdown:hover .submenu, .has-dropdown:focus-within .submenu{ display:block; }
-.submenu li{ list-style:none; }
-.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
-.submenu a:hover{ background:rgba(200,164,93,.1); }
-.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
-.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
-
-/* 語言（桌機） */
-.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
-
-/* 手機工具 */
-.mobtools{display:none; align-items:center; gap:10px}
-.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
-.mobdrop{position:relative}
-.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:610}
-.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
-.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
-.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
-
-/* 手機小標 */
-.mob-subtitle{
-  padding:8px 14px 6px;
-  font-size:12px;
-  font-weight:800;
-  color:#777;
-  letter-spacing:.02em;
-  cursor:default;
-}
-
-/* 手機遮罩 */
-#mobOverlay{position:fixed; inset:0; background:rgba(0,0,0,.25); opacity:0; pointer-events:none; visibility:hidden; transition:opacity .18s ease; z-index:590}
-#mobOverlay.show{opacity:1; pointer-events:auto; visibility:visible; backdrop-filter:blur(2px)}
-@supports (-webkit-backdrop-filter: blur(0)){ #mobOverlay.show{ -webkit-backdrop-filter: blur(2px); } }
-#mobOverlay[hidden]{display:none !important; visibility:hidden !important;}
-#mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
-#mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
-
-/* ===== 本頁唯一新增：置中內容區塊 ===== */
-.page-center {
-  min-height: 70vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 84px 0;
-  background: var(--bg-mid);
-}
-.page-center h1{
-  margin: 0 0 12px;
-  font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif;
-  font-size: clamp(28px, 5vw, 40px);
-  color:#111;
-  letter-spacing:.02em;
-}
-.page-center p{
-  margin: 0;
-  font-size: clamp(16px, 2.4vw, 18px);
-  color:#333;
-}
-
-/* Footer（與主頁一致） */
-.footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
-.sitemap{padding:34px 0}
-.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
-.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
-.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
-.sitemap a{color:#ebebeb; font-size:13px}
-.sitemap a:hover{color:#fff}
-
-/* FAB */
-.fab{position:fixed; right:16px; bottom:16px; z-index:320}
-.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
-
-/* 手機：只顯示語言按鈕（與主頁一致） */
-@media (max-width:760px){
-  .menu{display:none}
-  .mobtools{display:flex}
-  .lang{display:none}
-  .mobdrop{ position: relative; }
-  .mobpanel{
-    left: auto;
-    right: 0;
-    width: min(92vw, 320px);
-    max-width: 92vw;
-    transform-origin: top right;
+  .page-title {
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+    width: 100%;
   }
-  .mobpanel a, .mobpanel button{ white-space: nowrap; }
-}
+
+  .news-pager button:focus-visible{
+    outline: 2px solid #C8A45D;
+    outline-offset: 2px;
+  }
+  .news-wrap{padding:56px 0;background:#fff}
+  .news-head{
+    display:flex;align-items:flex-end;justify-content:center;
+    gap:16px;margin-bottom:20px;text-align:center;
+  }
+  .news-head h1{
+    margin:0;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+    font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#111;width:100%;
+  }
+  /* 頁面大標在 clamp 基礎上 -2pt */
+  .news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+  /* 修正 UL 預設縮排 */
+  .news-grid{
+    display:grid;gap:32px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    margin:0; padding:0;
+  }
+
+  /* ===== PC：卡片內容全部限制為 2/3 寬、靠左、不溢出 ===== */
+  .news-card .thumb{
+    width:var(--card-w);
+    margin:0 auto;
+    box-sizing:border-box;
+  }
+  .news-card > .meta,
+  .news-card > h3,
+  .news-card > .excerpt{
+    width:var(--card-w);
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    box-sizing:border-box;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+
+  .news-card{
+    list-style:none;margin:0;padding:0;background:#fff
+  }
+  .news-card .thumb{
+    position:relative;overflow:hidden;border-radius:12px;aspect-ratio:16/9;
+    background:#f2f4f6
+  }
+  .news-card .thumb a{display:block;height:100%}
+  .news-card img{
+    width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);
+    transition:transform .4s ease;
+  }
+  .news-card .thumb:hover img{transform:scale(1.05)}
+  .news-card .meta{
+    margin-top:14px;font-size:14px;color:#567;letter-spacing:.02em
+  }
+  .news-card h3{
+    margin:6px 0 8px;
+    font-size:clamp(18px,2.4vw,22px);
+    line-height:1.35;
+    color:#0E1A24;
+    font-weight:700;
+  }
+  .news-card h3 a{
+    color:inherit;
+    text-decoration:none;  /* 不要底線提醒 */
+    border-bottom:none;
+    display:block;
+  }
+  .news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+  .news-card .excerpt{color:#333;font-size:16px;line-height:1.7}
+
+  /* 分頁 */
+  .news-pager{
+    display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px
+  }
+  .news-pager button{
+    min-width:36px;height:36px;padding:0 12px;border-radius:8px;border:1px solid #d7dbe0;
+    background:#fff;cursor:pointer;font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+    transition:background .2s,border-color .2s
+  }
+  .news-pager button[aria-current="page"]{
+    background:#0D1B2A;color:#fff;border-color:#0D1B2A
+  }
+  .news-pager button:hover{border-color:#C8A45D}
+
+  /* ===== 手機：不做任何更動（維持 100%） ===== */
+  @media (max-width: 860px){
+    .news-wrap .container{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .news-grid{
+      grid-template-columns:1fr;
+      justify-items:center;
+      width:100%;
+      margin:0; padding:0;
+    }
+    .news-card{
+      width:100%;
+      max-width:720px;
+      margin:0 auto;
+      text-align:left;
+    }
+    .news-card .thumb{ width:100%; }
+    .news-card > .meta,
+    .news-card > h3,
+    .news-card > .excerpt{ width:100%; }
+  }
+
 </style>
 </head>
 <body>
 <header class="topbar" id="topbar">
   <div class="container nav">
     <div class="brand">
-      <a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
+<a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
     </div>
 
+    <!-- ===== 頂端選單（與主頁完全一致） ===== -->
     <ul class="menu" role="menubar" aria-label="網站導覽">
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
+
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="滑雪課程子選單">
-          <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
+  <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
           <li class="group-title">雪場介紹</li>
           <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
           <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
         </ul>
       </li>
+
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="主題文章子選單">
-          <li role="none"><a role="menuitem" href="safe.html">專欄文章</a></li>
-          <li role="none"><a role="menuitem" href="trip.html" aria-current="page">觀光主題</a></li>
+    <li role="none"><a role="menuitem" href="safe.html" aria-current="page">專欄文章</a></li>
+          <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
         </ul>
       </li>
+
       <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
-      <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+      <li role="none">
+  <a role="menuitem" href="booking.html">預約</a>
+      </li>
     </ul>
 
-    <!-- 語言切換 -->
     <div class="lang">
       <select id="langSelect" aria-label="選擇語言">
         <option value="zh-Hant" selected>繁體中文</option>
@@ -221,12 +208,11 @@ html, body { overflow-x: hidden; }
         <button class="mobLangBtn" id="mobLangBtn" aria-label="語言">語言</button>
         <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言選單">
           <button role="menuitem" disabled style="opacity:.6; font-weight:700;">繁體中文（目前）</button>
-          <a role="menuitem" data-lang="ja" href="ja_trip.html">日本語</a>
-          <a role="menuitem" data-lang="en" href="en_trip.html">English</a>
+     <a role="menuitem" data-lang="ja" href="ja_safe.html">日本語</a>
+         <a role="menuitem" data-lang="en" href="en_safe.html">English</a>
         </div>
       </div>
 
-      <!-- 行動版導覽 -->
       <div class="mobdrop" id="mobNavDrop">
         <button class="iconbtn" aria-label="開啟導覽" id="mobNavBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
@@ -236,17 +222,17 @@ html, body { overflow-x: hidden; }
           <a href="mopo.html" role="menuitem">關於 MOPO</a>
 
           <div class="mob-subtitle">滑雪課程</div>
-          <a href="index.html#pricing" role="menuitem">課程與價格</a>
+         <a href="index.html#pricing" role="menuitem">課程與價格</a>
           <a href="teine.html" role="menuitem">札幌手稻</a>
           <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
 
           <div class="mob-subtitle">主題文章</div>
           <a href="safe.html" role="menuitem">專欄文章</a>
-          <a href="trip.html" role="menuitem" aria-current="page">觀光主題</a>
+          <a href="trip.html" role="menuitem">觀光主題</a>
 
           <a href="faq.html" role="menuitem">常見問題</a>
-          <a href="booking.html" role="menuitem">預約</a>
+   <a href="booking.html" role="menuitem">預約</a>
         </div>
       </div>
     </div>
@@ -256,14 +242,139 @@ html, body { overflow-x: hidden; }
 <!-- 行動版遮罩（與主頁一致） -->
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
-<main id="home" aria-label="觀光主題">
-  <section class="page-center">
+<main id="home" aria-label="專欄文章">
+  <!-- ===== 置中訊息區（僅此內容） ===== -->
+ <main id="news" aria-label="專欄文章">
+  <!-- ===== News Only Styles（只影響本頁） ===== -->
+  <style>
+.news-pager button:focus-visible{
+  outline: 2px solid #C8A45D;
+  outline-offset: 2px;
+}
+    .news-wrap{padding:56px 0;background:#fff}
+    .news-head{
+      display:flex;align-items:flex-end;justify-content:center;
+      gap:16px;margin-bottom:20px;text-align:center;
+    }
+    .news-head h1{
+      margin:0;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+      font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#111;width:100%;
+    }
+    /* 與上方一致：頁面標題 -2pt */
+    .news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+    .news-grid{
+      display:grid;gap:32px;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      margin:0; padding:0;
+    }
+
+    /* PC：2/3 同寬且不溢出（再次宣告以避免他處樣式覆蓋） */
+    .news-grid .news-card .thumb{ width:var(--card-w); margin:0 auto; box-sizing:border-box; }
+    .news-grid .news-card > .meta,
+    .news-grid .news-card > h3,
+    .news-grid .news-card > .excerpt{
+      width:var(--card-w);
+      margin-left:auto; margin-right:auto;
+      text-align:left; box-sizing:border-box;
+      overflow-wrap:anywhere; word-break:break-word;
+    }
+    .news-card h3 a{
+      color:inherit; text-decoration:none; border-bottom:none; display:block;
+    }
+    .news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+
+    @media (max-width: 860px){
+      .news-wrap .container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+      }
+      .news-grid{
+        grid-template-columns:1fr;
+        justify-items:center;
+        width:100%;
+        margin:0; padding:0;
+      }
+      .news-card{
+        width:100%;
+        max-width:720px;
+        margin:0 auto;
+        text-align:left;
+      }
+      .news-card .thumb{ width:100%; }
+      .news-card > .meta,
+      .news-card > h3,
+      .news-card > .excerpt{ width:100%; }
+    }
+
+    .news-card{
+      list-style:none;margin:0;padding:0;background:#fff
+    }
+    .news-card .thumb{
+      position:relative;overflow:hidden;border-radius:12px;aspect-ratio:16/9;
+      background:#f2f4f6
+    }
+    .news-card .thumb a{display:block;height:100%}
+    .news-card img{
+      width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);
+      transition:transform .4s ease;
+    }
+    .news-card .thumb:hover img{transform:scale(1.05)}
+    .news-card .meta{
+      margin-top:14px;font-size:14px;color:#567;letter-spacing:.02em
+    }
+    .news-card h3{
+      margin:6px 0 8px;
+      font-size:clamp(18px,2.4vw,22px);
+      line-height:1.35;
+      color:#0E1A24;
+      font-weight:700;
+    }
+    .news-card .excerpt{color:#333;font-size:16px;line-height:1.7}
+    /* 分頁 */
+    .news-pager{
+      display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:32px
+    }
+    .news-pager button{
+      min-width:36px;height:36px;padding:0 12px;border-radius:8px;border:1px solid #d7dbe0;
+      background:#fff;cursor:pointer;font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+      transition:background .2s,border-color .2s
+    }
+    .news-pager button[aria-current="page"]{
+      background:#0D1B2A;color:#fff;border-color:#0D1B2A
+    }
+    .news-pager button:hover{border-color:#C8A45D}
+  </style>
+
+  <section class="news-wrap">
     <div class="container">
-      <h1>觀光主題</h1>
-      <p>Coming Soon</p>
+      <div class="news-head">
+        <h1 class="page-title">專欄文章</h1>
+        <!-- 需要的話可以放搜尋/篩選；先留白不顯示 -->
+      </div>
+
+ <!-- ===== 卡片清單（每頁最多 6 則；超過自動分頁） ===== -->
+
+<ul class="news-grid" id="newsList" aria-live="polite">
+  <!-- 1. 北海道・雪國六日漫旅 -->
+  <li class="news-card" data-news>
+    <div class="thumb">
+      <a href="./trip1/tripteine6days.html" target="_blank" aria-label="北海道・雪國六日漫旅">
+        <img src="img/news/tripteine6days.jpg" alt="北海道・雪國六日漫旅" loading="lazy">
+      </a>
+    </div>
+    <div class="meta">2025年12月25日</div>
+    <h3><a href="./trip1/tripteine6days.html" target="_blank">北海道・雪國六日漫旅</a></h3>
+    <p class="excerpt">還煩惱行程怎麼安排嗎？第一次來北海道觀光滑雪就上手！北海道六日懶人包。手稻滑雪教學、小樽運河散策、必吃美食住宿攻略，帶家人輕鬆玩雪國</p>
+  </li>
+</ul>
+
+ <!-- ===== 分頁（自動生成） ===== -->
+      <nav class="news-pager" id="newsPager" aria-label="最新消息分頁"></nav>
     </div>
   </section>
-</main>
+
 
 <!-- ===== Footer（與主頁一致） ===== -->
 <footer class="footer" role="contentinfo">
@@ -273,24 +384,24 @@ html, body { overflow-x: hidden; }
         <div>
           <h4>最新消息</h4>
           <ul>
-            <li><a href="news.html">News</a></li>
-            <li><a href="mopo.html">關於 MOPO</a></li>
+          <li><a href="news.html">News</a></li>
+           <li><a href="mopo.html">關於 MOPO</a></li>
           </ul>
         </div>
         <div>
           <h4>滑雪課程</h4>
           <ul>
-            <li><a href="index.html#pricing">課程與價格</a></li>
-            <li><a href="teine.html">札幌手稻</a></li>
-            <li><a href="onze.html">小樽ONZE</a></li>
-            <li><a href="kokusai.html">札幌國際</a></li>
+           <li><a href="index.html#pricing">課程與價格</a></li>
+           <li><a href="teine.html">札幌手稻</a></li>
+           <li><a href="onze.html">小樽ONZE</a></li>
+           <li><a href="kokusai.html">札幌國際</a></li>
           </ul>
         </div>
         <div>
           <h4>主題文章</h4>
           <ul>
             <li><a href="safe.html">專欄文章</a></li>
-            <li><a href="trip.html" aria-current="page">觀光主題</a></li>
+            <li><a href="trip.html">觀光主題</a></li>
           </ul>
         </div>
         <div>
@@ -299,7 +410,7 @@ html, body { overflow-x: hidden; }
             <li><a href="legal_tokusho.html">公司資訊</a></li>
             <li><a href="notice.html">報名須知</a></li>
             <li><a href="faq.html">常見問題</a></li>
-            <li><a href="index.html#contact">聯絡我們</a></li>
+           <li><a href="index.html#contact">聯絡我們</a></li>
           </ul>
         </div>
       </div>
@@ -317,7 +428,8 @@ html, body { overflow-x: hidden; }
 </div>
 
 <script>
-/* 年份與頂欄高度補償 */
+/* ===== 以下腳本完全沿用主頁，不作更動 ===== */
+// 顯示年份 & 頂端列高度補償
 document.getElementById('year').textContent = new Date().getFullYear();
 (function(){
   const topbar = document.getElementById('topbar');
@@ -329,12 +441,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
   window.addEventListener('resize', applySpacer);
 })();
 
-/* 頂欄捲動效果 */
+// Topbar Scrolled / Hide on scroll down
 const topbar = document.getElementById('topbar');
 function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-setTopbar();
-window.addEventListener('scroll', setTopbar, {passive:true});
+setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
 (function(){
+  const topbar = document.getElementById('topbar');
   let lastScrollY = window.scrollY, ticking = false;
   function update() {
     const currentY = window.scrollY;
@@ -347,21 +459,31 @@ window.addEventListener('scroll', setTopbar, {passive:true});
   }, { passive: true });
 })();
 
-/* 語言切換：trip 專用對應 */
+/* 語言切換（沿用主頁對應） */
 (function(){
-  const map = { 'zh-Hant':'trip.html', 'ja':'ja_trip.html', 'en':'en_trip.html' };
+  const map = {
+    'zh-Hant': 'safe.html',
+    'ja': 'ja_safe.html',
+    'en': 'en_safe.html'
+  };
   const sel = document.getElementById('langSelect');
-  sel?.addEventListener('change', ()=>{ window.location.href = map[sel.value] || 'trip.html'; });
+  sel?.addEventListener('change', ()=>{
+    const v = sel.value;
+    const url = map[v] || 'safe.html';
+    window.location.href = url;
+  });
   const mobPanel = document.getElementById('mobLangPanel');
   mobPanel?.addEventListener('click', (e)=>{
     const a = e.target.closest('[data-lang]');
     if(!a) return;
     e.preventDefault();
-    window.location.href = map[a.getAttribute('data-lang')] || 'trip.html';
+    const v = a.getAttribute('data-lang');
+    const url = map[v] || 'safe.html';
+    window.location.href = url;
   });
 })();
 
-/* 手機語言 & 導覽面板開關 + 遮罩 */
+/* 手機語言 & 導覽面板 */
 (function(){
   const overlay   = document.getElementById('mobOverlay');
   const langBtn   = document.getElementById('mobLangBtn');
@@ -394,16 +516,21 @@ window.addEventListener('scroll', setTopbar, {passive:true});
     }
     panel?.classList.add('show');
   }
-  function togglePanel(panel){ panel?.classList.contains('show') ? closePanels() : openPanel(panel); }
+  function togglePanel(panel){
+    if(panel?.classList.contains('show')) closePanels();
+    else openPanel(panel);
+  }
 
   langBtn?.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(langPanel); });
   navBtn?.addEventListener('click',  (e)=>{ e.stopPropagation(); togglePanel(navPanel);  });
 
   overlay?.addEventListener('click', closePanels);
-  document.addEventListener('click', (e)=>{ if(!e.target.closest('.mobdrop')) closePanels(); });
+  document.addEventListener('click', (e)=>{
+    if(e.target.closest('.mobdrop')) return;
+    closePanels();
+  });
   window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanels(); });
 
-  /* 行動導覽點擊後關閉面板並導頁 */
   navPanel?.addEventListener('click', (e)=>{
     const a = e.target.closest('a[href]');
     if(!a) return;
@@ -413,7 +540,8 @@ window.addEventListener('scroll', setTopbar, {passive:true});
     setTimeout(()=>{
       if(href.startsWith('#')){
         const el = document.querySelector(href);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); else window.location.href = href;
+        if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        else { window.location.href = href; }
       }else{
         window.location.href = href;
       }
