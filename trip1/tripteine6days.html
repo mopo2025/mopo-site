@@ -4,25 +4,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>觀光主題｜MOPO Ski School</title>
+<link rel="icon" href="/logo/logom.png" type="image/png">
 <meta name="description" content="MOPO 親子專屬企劃。北海道札幌滑雪旅行的周邊觀光與特色體驗。">
 
-<!-- ✅ SEO / Open Graph -->
 <link rel="canonical" href="https://moposki.com/trip.html">
 <meta property="og:title" content="觀光主題｜MOPO Ski School">
-<meta property="og:description" content="MOPO 親子專屬企劃。札幌手稻粉雪 x 小樽運河 x 頂級味蕾饗宴 6日。">
+<meta property="og:description" content="MOPO 專屬經典行程。札幌手稻滑雪 x 小樽運河 x 經典美食饗宴 6日。">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOPO Ski School">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://images.unsplash.com/photo-1548575097-59914742f36d?q=80&w=2070&auto=format&fit=crop">
 
-<!-- 字體 -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
 
-<!-- ✅ 網站共通 CSS (保留您的相對路徑) -->
 <link rel="stylesheet" href="../common.css">
 
-<!-- ✅ Tailwind CSS (設定 preflight: false 以免破壞原網站 Header/Footer) -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -32,7 +29,7 @@
     theme: {
       extend: {
         colors: {
-          ink: '#2F4F4F', // 墨綠色 (主要標題)
+          ink: '#2F4F4F', // 墨綠色
           warm: '#F9F8F6', // 暖米白
           gold: '#CFAF61',
           accent: '#D4A373', // 拿鐵色
@@ -42,20 +39,16 @@
   }
 </script>
 
-<!-- ✅ Icons & Markdown -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-<!-- 本頁專屬樣式 -->
 <style>
-  /* 確保內容區塊使用新字體，但不影響 header/footer */
   .itinerary-wrap {
       font-family: "Noto Sans TC", sans-serif;
       color: #2F4F4F;
       background-color: #F9F8F6;
       width: 100%;
   }
-  
   .serif { font-family: "Shippori Mincho", serif; }
 
   /* === 側邊目錄 (TOC) === */
@@ -95,7 +88,7 @@
       border: 1px solid rgba(47, 79, 79, 0.05);
       transition: transform 0.3s ease;
       overflow: hidden;
-      margin-bottom: 40px; /* 增加間距 */
+      margin-bottom: 40px;
   }
   .warm-card:hover { transform: translateY(-5px); }
   
@@ -103,7 +96,7 @@
   .img-zoom-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
   .warm-card:hover .img-zoom-container img { transform: scale(1.05); }
 
-  /* === 交通摺疊 (修復版) === */
+  /* === 交通摺疊 === */
   .transport-box {
       border: 1px solid #E5E7EB;
       border-radius: 16px;
@@ -126,17 +119,15 @@
   }
   .transport-header:hover { background: #F0EFE9; }
   
-  /* 使用 max-height 進行動畫 */
   .transport-body {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s ease-out;
   }
   .transport-body.open {
-      max-height: 800px; /* 足夠大的高度 */
+      max-height: 800px;
       transition: max-height 0.4s ease-in;
   }
-  
   .transport-inner { padding: 0; }
   .transport-content-pad { padding: 20px; border-top: 1px solid #eee; font-size: 0.95rem; line-height: 1.8; color: #4B5563; }
 
@@ -155,80 +146,40 @@
       border: 1px solid #FDE68A;
   }
 
+  /* 飯店輪播專用樣式 */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .grabbing { cursor: grabbing !important; cursor: -webkit-grabbing !important; }
+
+  /* Day 5 圖片輪播動畫 */
+  @keyframes fadeGallery {
+      0%, 45% { opacity: 1; z-index: 10; }
+      55%, 95% { opacity: 0; z-index: 0; }
+      100% { opacity: 1; z-index: 10; }
+  }
+  .slide-img-1 { animation: fadeGallery 10s infinite; } 
+  .slide-img-2 { animation: fadeGallery 10s infinite; animation-delay: 5s; opacity: 0; }
+
   /* 手機版適配 */
   @media (max-width: 900px) {
       .s-toc { display: none; }
       .s-layout { grid-template-columns: 1fr; }
   }
-
-  /* AI 區塊樣式 (非浮動) */
-  .ai-section {
-      background-color: #fff;
-      border-radius: 24px;
-      padding: 40px;
-      margin-top: 60px;
-      border: 1px solid #E5E7EB;
-      text-align: center;
-  }
-  .ai-input-group {
-      max-width: 600px;
-      margin: 20px auto 0;
-      position: relative;
-  }
-  .ai-input-group input {
-      width: 100%;
-      padding: 12px 20px;
-      padding-right: 50px;
-      border-radius: 50px;
-      border: 1px solid #ccc;
-      background: #F9F8F6;
-  }
-  .ai-input-group button {
-      position: absolute;
-      right: 5px;
-      top: 5px;
-      background: #2F4F4F;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-  }
-  #ai-response {
-      margin-top: 20px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      background: #F3F4F6;
-      padding: 20px;
-      border-radius: 16px;
-      display: none; /* 預設隱藏 */
-  }
 </style>
 </head>
 <body>
 
-<!-- HEADER (保留原樣) -->
 <header class="topbar" id="topbar">
   <div class="container nav">
     <div class="brand">
       <a href="../index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
     </div>
-
-    <ul class="menu" role="menubar" aria-label="網站導覽">
+    <ul class="menu" role="menubar">
       <li role="none"><a role="menuitem" href="../news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="../mopo.html">關於 MOPO</a></li>
-
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
-        <ul class="submenu" role="menu" aria-label="滑雪課程 子選單">
+        <a role="menuitem" href="#">滑雪課程 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
           <li role="none"><a role="menuitem" href="../index.html#pricing">課程與價格</a></li>
           <li class="group-title">雪場介紹</li>
           <li role="none"><a role="menuitem" href="../teine.html">札幌手稻</a></li>
@@ -236,103 +187,56 @@
           <li role="none"><a role="menuitem" href="../kokusai.html">札幌國際</a></li>
         </ul>
       </li>
-
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
-        <ul class="submenu" role="menu" aria-label="主題文章 子選單">
+        <a role="menuitem" href="#">主題文章 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
           <li role="none"><a role="menuitem" href="../safe.html">安全知識</a></li>
           <li role="none"><a role="menuitem" href="../trip.html" aria-current="page">觀光主題</a></li>
         </ul>
       </li>
-
       <li role="none"><a role="menuitem" href="../faq.html">常見問題</a></li>
       <li role="none"><a role="menuitem" href="../booking.html">預約</a></li>
     </ul>
-
     <div class="lang">
-      <select id="langSelect" aria-label="選擇語言">
-        <option value="zh-Hant" selected>繁體中文</option>
-        <option value="ja">日本語</option>
-        <option value="en">English</option>
-      </select>
+      <select id="langSelect"><option value="zh-Hant" selected>繁體中文</option><option value="ja">日本語</option><option value="en">English</option></select>
     </div>
-
-    <div class="mobtools" aria-label="行動裝置工具">
-      <div class="mobdrop" id="mobLangDrop">
-        <button class="mobLangBtn" id="mobLangBtn" aria-label="語言">語言</button>
-        <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言選單">
-          <button role="menuitem" disabled style="opacity:.6; font-weight:700;">繁體中文（目前）</button>
-          <a role="menuitem" data-lang="ja" href="../news/ja_contactmopo.html">日本語</a>
-          <a role="menuitem" data-lang="en" href="../news/en_contactmopo.html">English</a>
-        </div>
-      </div>
-
-      <div class="mobdrop" id="mobNavDrop">
-        <button class="iconbtn" aria-label="開啟選單" id="mobNavBtn">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動版導覽">
-          <a href="../news.html" role="menuitem">最新消息</a>
-          <a href="../mopo.html" role="menuitem">關於 MOPO</a>
-          <div class="mob-subtitle">滑雪課程</div>
-          <a href="../index.html#pricing" role="menuitem">課程與價格</a>
-          <a href="../teine.html" role="menuitem">札幌手稻</a>
-          <a href="../onze.html" role="menuitem">小樽ONZE</a>
-          <a href="../kokusai.html" role="menuitem">札幌國際</a>
-          <div class="mob-subtitle">主題文章</div>
-          <a href="../safe.html" role="menuitem">安全知識</a>
-          <a href="../trip.html" role="menuitem">觀光主題</a>
-          <a href="../faq.html" role="menuitem">常見問題</a>
-          <a href="../booking.html" role="menuitem">預約</a>
-        </div>
-      </div>
+    <div class="mobtools">
+        <div class="mobdrop" id="mobLangDrop"><button class="mobLangBtn" id="mobLangBtn">語言</button><div class="mobpanel" id="mobLangPanel"><a href="#">繁體中文</a></div></div>
+        <div class="mobdrop" id="mobNavDrop"><button class="iconbtn" id="mobNavBtn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2"/></svg></button><div class="mobpanel" id="mobNavPanel"><a href="../news.html">最新消息</a></div></div>
     </div>
   </div>
 </header>
 
-<div id="mobOverlay" aria-hidden="true" hidden></div>
-
-<!-- ===== MAIN CONTENT ===== -->
 <main id="itinerary-content" class="itinerary-wrap w-full">
     
-    <!-- Hero Banner -->
     <section class="relative h-[65vh] w-full overflow-hidden flex items-center justify-center">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1518775053278-5a52e22cc376?q=80&w=2069&auto=format&fit=crop" 
-                 class="w-full h-full object-cover opacity-90" alt="Hokkaido Snow">
+            <img src="../img/trip/teine.jpg" class="w-full h-full object-cover opacity-90" alt="">
             <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#F9F8F6]"></div>
         </div>
         <div class="relative z-10 text-center px-4 text-white drop-shadow-md max-w-4xl">
-            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 serif">
-                北海道・雪國漫旅
-            </h1>
-            <p class="text-lg md:text-2xl font-medium tracking-widest text-[#FFF8E7] mb-8">
-                親子專屬｜札幌手稻粉雪 x 小樽運河 6日
-            </p>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 serif">北海道・雪國六日漫旅</h1>
+            <p class="text-lg md:text-2xl font-medium tracking-widest text-[#2F4F4F] mb-8">札幌手稻滑雪 x 小樽運河 x 經典美食饗宴</p>
             <div class="mx-auto w-24 h-1 bg-accent rounded-full"></div>
         </div>
     </section>
 
-    <!-- Main Layout -->
     <section class="py-16 px-4 max-w-7xl mx-auto">
         <div class="s-layout grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10">
             
-            <!-- 左側目錄 -->
             <nav class="s-toc hidden lg:block">
                 <a href="#features" class="is-active">行程特色</a>
                 <a href="#day1">DAY 1 抵達札幌</a>
                 <a href="#day2">DAY 2 手稻首滑</a>
-                <a href="#day3">DAY 3 進階挑戰</a>
+                <a href="#day3">DAY 3 技術提升</a>
                 <a href="#day4">DAY 4 小樽運河</a>
                 <a href="#day5">DAY 5 城市/自然</a>
                 <a href="#day6">DAY 6 機場探索</a>
                 <a href="#hotels">嚴選住宿</a>
             </nav>
 
-            <!-- 右側內容 -->
-            <div class="space-y-16">
+            <div class="space-y-16 max-w-full overflow-hidden">
                 
-                <!-- 特色介紹 -->
                 <article id="features" class="scroll-mt-32">
                     <h2 class="text-3xl font-bold mb-8 text-ink serif flex items-center gap-3">
                         <i data-lucide="star" class="w-6 h-6 text-gold"></i> 為什麼選擇這趟旅程？
@@ -340,32 +244,27 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
                             <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="mountain" class="w-7 h-7"></i></div>
-                            <h3 class="font-bold text-ink mb-1">山海絕景</h3>
-                            <p class="text-xs text-gray-500">俯瞰石狩灣<br>全家看海滑雪</p>
+                            <h3 class="font-bold text-ink mb-1">山海絕景</h3><p class="text-xs text-gray-500">俯瞰石狩灣<br>全家看海滑雪</p>
                         </div>
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
                             <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
-                            <h3 class="font-bold text-ink mb-1">安心教學</h3>
-                            <p class="text-xs text-gray-500">詳細解說<br>教練全程守護</p>
+                            <h3 class="font-bold text-ink mb-1">安心教學</h3><p class="text-xs text-gray-500">詳細解說<br>教練全程守護</p>
                         </div>
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
                             <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="baby" class="w-7 h-7"></i></div>
-                            <h3 class="font-bold text-ink mb-1">體貼規劃</h3>
-                            <p class="text-xs text-gray-500">魔毯免爬坡<br>小孩不喊累</p>
+                            <h3 class="font-bold text-ink mb-1">體貼規劃</h3><p class="text-xs text-gray-500">魔毯免爬坡<br>小孩不喊累</p>
                         </div>
-                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
-                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="car" class="w-7 h-7"></i></div>
-                            <h3 class="font-bold text-ink mb-1">計程車代訂</h3>
-                            <p class="text-xs text-gray-500">飯店接送預約<br>帶裝備不狼狽</p>
-                        </div>
+                      <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+    <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="camera" class="w-7 h-7"></i></div>
+    <h3 class="font-bold text-ink mb-1">拍攝留念</h3><p class="text-xs text-gray-500">教練紀錄拍攝<br>留下全家回憶</p>
+</div>
                     </div>
                 </article>
 
-                <!-- DAY 1 -->
                 <article id="day1" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
-                            <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b?q=80&w=1974&auto=format&fit=crop" alt="Sapporo Night">
+                            <img src="../img/trip/jrtower.jpg" alt="Sapporo Night" class="object-cover w-full h-full">
                         </div>
                         <div class="md:w-7/12 p-8 flex flex-col justify-between">
                             <div>
@@ -373,16 +272,14 @@
                                     <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 01</span>
                                     <span class="text-accent text-sm font-bold tracking-widest">SAPPORO</span>
                                 </div>
-                                <h3 class="text-2xl font-bold text-ink mb-3 serif">抵達北國玄關，擁抱璀璨夜景</h3>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">抵達新千歲空港，擁抱札幌雪國夜景</h3>
                                 <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：都會漫遊・高空視野】</p>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
-                                    <li><strong>● 新千歲機場：</strong> 抵達後，全家搭乘舒適的 JR 快速列車直達札幌市中心。</li>
-                                    <li><strong>● JR Tower T38：</strong> 車站直結的溫暖展望台，160m 高空喝咖啡，俯瞰棋盤式雪景。</li>
-                                    <li><strong>● 大通公園：</strong> 飯店入住後輕裝漫步，欣賞專屬北國的夢幻夜間燈火。</li>
+                                    <li><strong>新千歲機場：</strong> 抵達後，全家搭乘舒適的 JR 快速列車直達札幌市中心。</li>
+                                    <li><strong>JR Tower T38：</strong> 車站直結的溫暖展望台，160m 高空喝咖啡，俯瞰棋盤式雪景。</li>
+                                    <li><strong>大通公園：</strong> 飯店入住後輕裝漫步，欣賞專屬北國的夢幻夜間燈火。</li>
                                 </ul>
                             </div>
-                            
-                            <!-- 交通按鈕 -->
                             <div class="transport-box">
                                 <div class="transport-header" onclick="toggleTransport(this)">
                                     <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通詳情</span>
@@ -393,13 +290,13 @@
                                         <div class="transport-content-pad">
                                             <p class="font-bold text-ink mb-2">✈️ 新千歲機場 → JR 札幌站</p>
                                             <ul class="list-decimal list-inside text-sm space-y-1 text-gray-600">
-                                                <li>入境後，請找尋<strong>「JR 線」</strong>指標，搭電梯至 <strong>B1F (地下一樓)</strong>。</li>
-                                                <li>在自動售票機購買往<strong>「札幌 (Sapporo)」</strong>的車票 (大人約 1,150 日圓 / 兒童半價)。</li>
-                                                <li>通過閘門，前往月台搭乘<strong>「快速 Airport (Rapid Airport)」</strong>列車。</li>
+                                                <li>入境後，請找尋<strong>「JR 線」</strong>指標，搭電梯至 <strong>B1F</strong>。</li>
+                                                <li>在自動售票機購買往<strong>「札幌」</strong>的車票。</li>
+                                                <li>搭乘<strong>「快速 Airport」</strong>列車。</li>
                                                 <li>車程約 <strong>37-40 分鐘</strong>，請在「札幌站」下車。</li>
                                             </ul>
                                             <div class="mt-4">
-                                                <a href="https://maps.app.goo.gl/sapporo-station" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：札幌站</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：札幌站</a>
                                             </div>
                                         </div>
                                     </div>
@@ -409,11 +306,10 @@
                     </div>
                 </article>
 
-                <!-- DAY 2 -->
                 <article id="day2" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
-                            <img src="https://images.unsplash.com/photo-1520520263673-982ce1640a34?q=80&w=2070&auto=format&fit=crop" alt="Teine Ski">
+                            <img src="../img/trip/teine.jpg" alt="Teine Ski" class="object-cover w-full h-full">
                         </div>
                         <div class="md:w-7/12 p-8 flex flex-col justify-between">
                             <div>
@@ -421,23 +317,20 @@
                                     <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 02</span>
                                     <span class="text-accent text-sm font-bold tracking-widest">TEINE OLYMPIA</span>
                                 </div>
-                                <h3 class="text-2xl font-bold text-ink mb-3 serif">手稻山首滑，建立安全信賴</h3>
-                                <p class="text-sm text-gray-500 mb-4 font-bold tracking-wider">【主題：詳盡解說・魔毯輕鬆練習】</p>
-                                
-                                <!-- 計程車服務 -->
-                                <div class="service-badge">
-                                    <i data-lucide="phone-call" class="w-3 h-3"></i> 獨家服務：代訂計程車（需一週前預約）
-                                </div>
-
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">手稻體驗滑雪，建立安全與信心</h3>
+                                <p class="text-sm text-gray-500 mb-4 font-bold tracking-wider">【主題：教練細心解說・魔毯輕鬆練習】</p>
+                                <div class="service-badge"><i data-lucide="phone-call" class="w-3 h-3"></i> 獨家服務：代訂計程車（需一週前預約）</div>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed mt-4">
-                                    <li><strong>● 上午課程：</strong> 手稻滑雪場（奧林匹亞區）。教練會細心檢查裝備，並進行安全跌倒與站立教學，消除孩子的不安。</li>
-                                    <li><strong>● 下午練習：</strong> 善用<strong>「魔毯 (雪地電扶梯)」</strong>，不用脫雪板爬坡，省力又好玩。</li>
-                                    <li><strong>● 晚餐推薦：</strong> 根室花丸或多利通迴轉壽司，食材新鮮，全家大滿足。</li>
+                                    <li><strong>上午課程：</strong> 手稻滑雪場（奧林匹亞區）。選擇小班制私人課程，初學者可在訂課時註明需要教練協助裝備，教練會幫忙檢查裝備與填寫租借單，並針對每一位學員進行適合的教學，不需像團體班會有進度趕不上的壓力。</li>
+                                    <li><strong>下午練習：</strong> 善用<strong>「魔毯 (雪地電扶梯)」</strong>，不用脫雪板爬坡，省力又好玩。</li>
+                                    <li><strong>晚餐推薦：</strong> 根室花丸或 toriton壽司，食材新鮮，種類豐富，全家大滿足。（小秘密：喜歡吃炸雞的可在toriton壽司點來嘗試看看喔！）</li>
                                 </ul>
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 根室花丸</a>
+                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="fish" class="w-3 h-3"></i> toriton壽司 豐平店</a>
+                                </div>
                             </div>
-                            
-                            <!-- 交通詳情 -->
-                            <div class="transport-box">
+                            <div class="transport-box mt-6">
                                 <div class="transport-header" onclick="toggleTransport(this)">
                                     <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通詳情</span>
                                     <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
@@ -445,20 +338,12 @@
                                 <div class="transport-body">
                                     <div class="transport-inner">
                                         <div class="transport-content-pad space-y-4 text-gray-600">
-                                            <div>
-                                                <p class="font-bold text-ink mb-2">Step 1: JR 札幌站 → 手稻站 (Teine)</p>
-                                                <p class="text-sm">1. 在札幌站搭乘 JR 函館本線 (往小樽/手稻方向)。<br>2. 搭乘「快速列車」約 10-15 分鐘，在<strong>「手稻站 (Teine)」</strong>下車 (代號 S07)。</p>
+                                            <div><p class="font-bold text-ink mb-2">Step 1: JR 札幌站 → 手稻站 (Teine)</p><p class="text-sm">1. 在札幌站搭乘 JR 函館本線 (往小樽/手稻方向)。<br>2. 搭乘「快速列車」約 10-15 分鐘，在<strong>「手稻站 (Teine)」</strong>下車 (代號 S07)。</p></div>
+                                            <div><p class="font-bold text-ink mb-2">Step 2: 手稻站 → 奧林匹亞滑雪場</p><ul class="list-decimal list-inside text-sm space-y-1"><li>出改札口後，往<strong>「南口 (South Exit)」</strong>方向走。</li><li>下手扶梯到一樓戶外，尋找<strong>「3號公車月台」</strong>。</li><li>搭乘 JR 北海道巴士<strong>「手70」</strong>往 Teine Highland 方向。</li><li>請在<strong>「Teine Olympia (手稲オリンピア前)」</strong>下車 (車程約 15 分鐘)。</li></ul></div>
+                                            <div class="flex flex-col gap-2 mt-2">
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：手稻站南口</a>
+                                                <div><a href="https://youtu.be/eq6--bcae3s?si=goOtCrW478d735i6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="video" class="w-3 h-3"></i> 觀看手稻站轉乘巴士介紹影片 (YouTube)</a><p class="text-[10px] text-gray-400 mt-1 ml-1">影片來源自 TEINE CHANNEL ～サッポロテイネ公式～</p></div>
                                             </div>
-                                            <div>
-                                                <p class="font-bold text-ink mb-2">Step 2: 手稻站 → 奧林匹亞滑雪場</p>
-                                                <ul class="list-decimal list-inside text-sm space-y-1">
-                                                    <li>出改札口後，往<strong>「南口 (South Exit)」</strong>方向走。</li>
-                                                    <li>下手扶梯到一樓戶外，尋找<strong>「3號公車月台」</strong>。</li>
-                                                    <li>搭乘 JR 北海道巴士<strong>「手70」</strong>往 Teine Highland 方向。</li>
-                                                    <li>請在<strong>「Teine Olympia (手稲オリンピア前)」</strong>下車 (車程約 15 分鐘)。</li>
-                                                </ul>
-                                            </div>
-                                            <a href="https://maps.app.goo.gl/teine-station" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：手稻站南口</a>
                                         </div>
                                     </div>
                                 </div>
@@ -467,11 +352,10 @@
                     </div>
                 </article>
 
-                <!-- DAY 3 -->
                 <article id="day3" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
-                            <img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?q=80&w=2052&auto=format&fit=crop" alt="Advanced Ski">
+                            <img src="../img/trip/susukino.jpg" alt="Advanced Ski" class="object-cover w-full h-full">
                         </div>
                         <div class="md:w-7/12 p-8 flex flex-col justify-between">
                             <div>
@@ -482,12 +366,11 @@
                                 <h3 class="text-2xl font-bold text-ink mb-3 serif">突破瓶頸，掌握轉彎的藝術</h3>
                                 <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：技術質變・奧林匹亞區深度修煉】</p>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
-                                    <li><strong>● 上午：</strong> 重複練習是通往自由的捷徑。利用早晨良好雪況鞏固基礎。</li>
-                                    <li><strong>● 下午：</strong> 挑戰「轉彎 (Turn)」。單板 S Turn 或雙板 Parallel，感受掌控速度的樂趣。</li>
-                                    <li><strong>● 傍晚：</strong> 前往<strong>薄野 (Susukino)</strong>，品嚐北海道必吃的成吉思汗烤羊肉。</li>
+                                    <li><strong>上午：</strong> 練習是通往進步的道路。利用早晨良好雪況鞏固基礎。</li>
+                                    <li><strong>下午：</strong> 挑戰「轉彎或是落葉飄」。單板toe side 落葉飄 或 雙板八字滑行轉彎，感受掌控方向的樂趣。</li>
+                                    <li><strong>傍晚：</strong> 前往<strong>薄野 (Susukino)</strong>，品嚐北海道必吃的成吉思汗烤羊肉或是知名湯咖哩 GARAKU</li>
                                 </ul>
                             </div>
-                            
                             <div class="transport-box">
                                 <div class="transport-header" onclick="toggleTransport(this)">
                                     <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通詳情</span>
@@ -496,16 +379,18 @@
                                 <div class="transport-body">
                                     <div class="transport-inner">
                                         <div class="transport-content-pad space-y-4 text-gray-600">
-                                            <div>
-                                                <p class="font-bold text-ink mb-2">往返滑雪場</p>
-                                                <p class="text-sm">交通方式與 Day 2 完全相同 (JR 手稻站 + 3號月台 巴士手70)。</p>
-                                            </div>
+                                            <div><p class="font-bold text-ink mb-2">往返滑雪場</p><p class="text-sm">交通方式與 Day 2 完全相同 (JR 手稻站 + 3號月台 巴士手70)。</p></div>
                                             <div>
                                                 <p class="font-bold text-ink mb-2">晚上前往薄野 (Susukino)</p>
                                                 <ul class="list-disc list-inside text-sm space-y-1">
                                                     <li><strong>地鐵：</strong> 從札幌站搭乘<strong>南北線 (Green Line)</strong>，往真駒內方向搭 2 站，至<strong>「薄野 (Susukino)」</strong>站下車。</li>
                                                     <li><strong>步行：</strong> 經由「地下步行空間 (Chi-Ka-Ho)」，沿途有暖氣，走路約 20 分鐘。</li>
                                                 </ul>
+                                                <div class="mt-4 flex flex-wrap gap-2">
+                                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟google map:薄野站</a>
+                                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 成吉思汗烤羊肉</a>
+                                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="soup" class="w-3 h-3"></i> 湯咖哩 GARAKU</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -515,11 +400,10 @@
                     </div>
                 </article>
 
-                <!-- DAY 4 -->
                 <article id="day4" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
-                            <img src="https://images.unsplash.com/photo-1546255673-c827361a1532?q=80&w=2069&auto=format&fit=crop" alt="Otaru Canal">
+                            <img src="../img/trip/otaru.jpg" alt="Otaru Canal" class="object-cover w-full h-full">
                         </div>
                         <div class="md:w-7/12 p-8 flex flex-col justify-between">
                             <div>
@@ -530,12 +414,11 @@
                                 <h3 class="text-2xl font-bold text-ink mb-3 serif">小樽運河漫步與三大夜景</h3>
                                 <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：懷舊時光・浪漫天狗山】</p>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
-                                    <li><strong>● 白天散策：</strong> 暫時脫下雪靴，探訪小樽紅磚倉庫、玻璃哨子館與著名的甜點店（LeTAO, 北菓樓）。</li>
-                                    <li><strong>● 夜晚絕景：</strong> 搭乘纜車登上<strong>天狗山 (Mt. Tengu)</strong>，俯瞰與函館、藻岩山並列的「北海道三大夜景」。</li>
+                                    <li><strong>白天散策：</strong> 暫時脫下雪靴，探訪小樽紅磚倉庫、玻璃哨子館與著名的甜點店（LeTAO, 北菓樓）。</li>
+                                    <li><strong>夜晚絕景：</strong> 搭乘纜車登上<strong>天狗山 (Mt. Tengu)</strong>，俯瞰與函館、藻岩山並列的「北海道三大夜景」。</li>
                                     <li class="bg-[#FEF3C7] text-[#92400E] p-2 rounded text-xs border border-[#FDE68A]"><strong>⚠️ 領隊小叮嚀：</strong> 若遇大雪導致 JR 停駛，建議改搭「高速巴士」前往小樽。</li>
                                 </ul>
                             </div>
-                            
                             <div class="transport-box">
                                 <div class="transport-header" onclick="toggleTransport(this)">
                                     <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通詳情</span>
@@ -544,16 +427,11 @@
                                 <div class="transport-body">
                                     <div class="transport-inner">
                                         <div class="transport-content-pad space-y-4 text-gray-600">
-                                            <div>
-                                                <p class="font-bold text-ink mb-2">Step 1: 札幌 → 小樽</p>
-                                                <ul class="list-disc list-inside text-sm space-y-1">
-                                                    <li><strong>方案 A (JR)：</strong> 札幌站搭乘 JR 快速 Airport 或區間車，往「小樽」方向，至終點站「小樽站」下車 (約 35-45 分)。</li>
-                                                    <li><strong>方案 B (巴士)：</strong> 札幌站前巴士總站，搭乘「高速小樽號 (High-speed Otaru)」，在小樽站前下車 (約 60 分)。</li>
-                                                </ul>
-                                            </div>
-                                            <div>
-                                                <p class="font-bold text-ink mb-2">Step 2: 小樽站 → 天狗山纜車</p>
-                                                <p class="text-sm">1. 走出 JR 小樽站，正前方的巴士總站。<br>2. 找到<strong>「4號月台」</strong>。<br>3. 搭乘中央巴士<strong>「9號 天狗山纜車線 (Tenguyama Ropeway Line)」</strong>。<br>4. 在終點站「天狗山纜車」下車 (約 17 分鐘)。</p>
+                                            <div><p class="font-bold text-ink mb-2">Step 1: 札幌 → 小樽</p><ul class="list-disc list-inside text-sm space-y-1"><li><strong>方案 A (JR)：</strong> 札幌站搭乘 JR 快速 Airport 或區間車，往「小樽」方向，至終點站「小樽站」下車 (約 35-45 分)。</li><li><strong>方案 B (巴士)：</strong> 札幌站前巴士總站，搭乘「高速小樽號 (High-speed Otaru)」，在小樽站前下車 (約 60 分)。</li></ul></div>
+                                            <div><p class="font-bold text-ink mb-2">Step 2: 小樽站 → 天狗山纜車</p><p class="text-sm">1. 走出 JR 小樽站，正前方的巴士總站。<br>2. 找到<strong>「4號月台」</strong>。<br>3. 搭乘中央巴士<strong>「9號 天狗山纜車線 (Tenguyama Ropeway Line)」</strong>。<br>4. 在終點站「天狗山纜車」下車 (約 17 分鐘)。</p></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：小樽站</a>
+                                                <a href="https://tenguyama.ckk.chuo-bus.co.jp/" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 天狗山纜車官網</a>
                                             </div>
                                         </div>
                                     </div>
@@ -563,42 +441,62 @@
                     </div>
                 </article>
 
-                <!-- DAY 5 -->
                 <article id="day5" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
-                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
-                            <img src="https://images.unsplash.com/photo-1518659173007-9e73f4d45544?q=80&w=1924&auto=format&fit=crop" alt="Lake Shikotsu">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container relative bg-gray-200">
+                            <img src="../img/trip/beer.jpg" alt="Sapporo Beer Museum" class="object-cover w-full h-full absolute top-0 left-0 slide-img-1">
+                            <img src="../img/trip/shikotsu.jpg" alt="Lake Shikotsu" class="object-cover w-full h-full absolute top-0 left-0 slide-img-2">
                         </div>
                         <div class="md:w-7/12 p-8 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center gap-3 mb-2">
                                     <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 05</span>
-                                    <span class="text-accent text-sm font-bold tracking-widest">NATURE & CITY</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">FINALE</span>
                                 </div>
-                                <h3 class="text-2xl font-bold text-ink mb-3 serif">城市美學與自然秘境</h3>
-                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：客製化旅程・盡興採購】</p>
-                                <div class="space-y-3 text-gray-600 text-sm leading-relaxed">
-                                    <div class="bg-[#F9F8F6] p-4 rounded-xl border border-gray-200">
-                                        <strong class="text-ink block mb-1">Option A：都會派</strong>
-                                        <p>札幌啤酒博物館品酩紅磚歷史，接著前往狸小路商店街，一次買齊藥妝與伴手禮。</p>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">城市美學與自然秘境：旅程的最終章</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：客製化旅程・盡興採購 vs 絕景湯泉】</p>
+                                <div class="space-y-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
+                                        <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="beer" class="w-4 h-4 text-accent"></i> Option A：都會派 (札幌市區)</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed">前往<strong>「札幌啤酒博物館」</strong>，在明治時期的紅磚建築中，品味開拓史的歷史與限定版啤酒。午後轉到<strong>「狸小路商店街」</strong>，這裡有全北海道最大的唐吉訶德與藥妝店，且全程有頂蓋不怕風雪，是最後補齊伴手禮的最佳戰場。</p>
                                     </div>
-                                    <div class="bg-[#F9F8F6] p-4 rounded-xl border border-gray-200">
-                                        <strong class="text-ink block mb-1">Option B：自然派</strong>
-                                        <p>探訪神祕的「支笏湖藍」與冰濤祭。當晚可入住千歲或支笏湖畔溫泉。</p>
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
+                                        <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="mountain-snow" class="w-4 h-4 text-accent"></i> Option B：自然派 (支笏湖)</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed mb-2">探訪全日本水質連續奪冠的<strong>「支笏湖」</strong>，欣賞著名的「支笏湖藍」。冬季這裡有夢幻的<strong>「冰濤祭」</strong>，抽取湖水噴灑凍結成的冰柱群，在藍天或夜燈下極為壯觀。</p>
+                                        <p class="text-xs text-gray-500 font-bold">♨️ 嚮導推薦溫泉：丸駒溫泉 (秘湯)、鶴雅水之謌 (奢華)</p>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="transport-box">
+                            <div class="transport-box mt-6">
                                 <div class="transport-header" onclick="toggleTransport(this)">
-                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通詳情</span>
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通與大雪備案</span>
                                     <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
                                 </div>
                                 <div class="transport-body">
                                     <div class="transport-inner">
-                                        <div class="transport-content-pad space-y-2 text-gray-600">
-                                            <p class="font-bold text-ink">前往支笏湖 (Option B)</p>
-                                            <p class="text-sm">1. JR 札幌站 → <strong>JR 千歲站</strong> (約 30 分，非機場站)。<br>2. 千歲站<strong>西口 4號巴士月台</strong>。<br>3. 搭乘<strong>「支笏湖線」</strong> (約 45 分鐘)。</p>
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div>
+                                                <p class="font-bold text-ink mb-2">🚌 往返支笏湖 (Option B) 交通詳解</p>
+                                                <ul class="list-decimal list-inside text-sm space-y-1">
+                                                    <li><strong>JR 移動：</strong> 札幌站 → <strong>千歲站 (Chitose)</strong> (注意：不是新千歲機場站)。<br><span class="text-xs text-gray-400 ml-5">快速 Airport 號約 30 分鐘。</span></li>
+                                                    <li><strong>轉乘巴士：</strong> 出 JR 千歲站閘門後，前往<strong>「西口」</strong>巴士圓環。</li>
+                                                    <li><strong>搭乘路線：</strong> 尋找<strong>「4號月台」</strong>，搭乘中央巴士<strong>「支笏湖線 (空4)」</strong>。</li>
+                                                    <li><strong>車程與費用：</strong> 約 45 分鐘，單程約 1,000 日圓 (可刷 IC 卡)。</li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-red-50 p-3 rounded border border-red-100">
+                                                <p class="font-bold text-red-800 text-xs mb-1 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> MOPO小編的冬季觀光提醒</p>
+                                                <ul class="text-xs text-red-700 space-y-1">
+                                                    <li><strong>1. 班次極少：</strong> 往支笏湖的巴士一天僅約 4-6 班，錯過一班需等 2-3 小時，務必事先查好回程時刻表。</li>
+                                                    <li><strong>2. 大雪備案：</strong> JR 千歲線是北海道最容易因大雪停駛的路線。若 JR 停駛，建議直接留在札幌市區 (Option A)，不要冒險前往山區。</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="beer" class="w-3 h-3"></i> 札幌啤酒博物館</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="shopping-bag" class="w-3 h-3"></i> 狸小路商店街</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 支笏湖溫泉街</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="bus" class="w-3 h-3"></i> JR 千歲站 (轉乘點)</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -607,42 +505,61 @@
                     </div>
                 </article>
 
-                <!-- DAY 6 -->
-                <article id="day6" class="warm-card p-0 scroll-mt-32">
+                <article id="last-day" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
                         <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
-                            <img src="https://images.unsplash.com/photo-1533052448439-d04b61678253?q=80&w=2070&auto=format&fit=crop" alt="Airport">
+                            <img src="../img/trip/airpost.jpg" alt="New Chitose Airport" class="object-cover w-full h-full">
                         </div>
                         <div class="md:w-7/12 p-8 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center gap-3 mb-2">
-                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 06</span>
-                                    <span class="text-accent text-sm font-bold tracking-widest">GOODBYE</span>
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">LAST DAY</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">DEPARTURE</span>
                                 </div>
                                 <h3 class="text-2xl font-bold text-ink mb-3 serif">最後的驚喜，新千歲機場探索</h3>
                                 <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：完美句點・滿載而歸】</p>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">別急著入關！在地人常說：「新千歲機場其實是北海道最好玩的遊樂園」。請務必預留 <strong>3-4 小時</strong> 提前抵達，這裡有溫泉、電影院，甚至還有巧克力工廠。</p>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
-                                    <li><strong>● 拉麵道場：</strong> 離開前必吃的一碗濃郁滋味，集結北海道名店。</li>
-                                    <li><strong>● Royce' 巧克力世界：</strong> 參觀製作過程並購買限定商品。</li>
-                                    <li><strong>● Hello Kitty 區：</strong> 繽紛可愛的主題區，孩子最愛。</li>
-                                    <li><strong>建議：</strong> 機場像是一座大型娛樂城，請務必<strong>大幅提前</strong>抵達機場。</li>
+                                    <li><strong>🍜 北海道拉麵道場：</strong> 離開前必吃的儀式感。集結「一幻 (濃郁蝦湯)」、「白樺山莊 (味噌)」等名店，想吃排隊名店建議預留 30-45 分鐘排隊時間。</li>
+                                    <li><strong>🍫 Royce' Chocolate World：</strong> 位於 3F 連通橋。不僅能透過玻璃窗參觀自動化生產線，還能買到機場限定的動物造型巧克力棒。</li>
+                                    <li><strong>🎀 Hello Kitty Happy Flight：</strong> 繽紛的主題區與咖啡廳，是孩子們放電的最後一站。</li>
                                 </ul>
                             </div>
-                            
-                            <div class="transport-box">
+                            <div class="transport-box mt-6">
                                 <div class="transport-header" onclick="toggleTransport(this)">
-                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看交通詳情</span>
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 查看機場交通與大雪備案</span>
                                     <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
                                 </div>
                                 <div class="transport-body">
                                     <div class="transport-inner">
-                                        <div class="transport-content-pad space-y-2 text-gray-600">
-                                            <p class="font-bold text-ink">前往機場</p>
-                                            <ul class="list-disc list-inside text-sm space-y-1">
-                                                <li><strong>從支笏湖：</strong> 搭乘巴士直達新千歲機場。</li>
-                                                <li><strong>從千歲市區：</strong> 飯店接駁車或計程車 (約 10 分)。</li>
-                                            </ul>
-                                            <p class="text-xs text-orange-600 mt-2">*請確認您的航班位於「國內線」或「國際線」航廈，兩者有連通但距離較遠。</p>
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div>
+                                                <p class="font-bold text-ink mb-2">✈️ 前往新千歲機場 (CTS)</p>
+                                                <ul class="list-disc list-inside text-sm space-y-2">
+                                                    <li>
+                                                        <strong>從支笏湖出發 (Option B)：</strong><br>
+                                                        搭乘<strong>「中央巴士 支笏湖線」</strong>直達機場。
+                                                        <span class="block text-xs text-gray-400 pl-5 mt-1">車程約 55 分鐘，單程約 1,050 日圓。注意班次極少，請務必搭乘早班車。</span>
+                                                    </li>
+                                                    <li>
+                                                        <strong>從千歲市區出發 (JR 千歲站)：</strong><br>
+                                                        搭乘 JR 千歲線 (約 7 分鐘) 或 計程車 (約 10-15 分鐘)。
+                                                        <span class="block text-xs text-gray-400 pl-5 mt-1">若住千歲站附近，建議搭計程車最省力，費用約 1,500-2,000 日圓。</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="bg-red-50 p-3 rounded border border-red-100">
+                                                <p class="font-bold text-red-800 text-xs mb-1 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> 離境前的最後叮嚀</p>
+                                                <ul class="text-xs text-red-700 space-y-1">
+                                                    <li><strong>1. 航廈距離：</strong> 最好逛的商店街都在<strong>「國內線航廈 2F/3F」</strong>。國際線與國內線透過 3F「微笑之路 (Smile Road)」相連，步行需 10-15 分鐘，請預留移動時間。</li>
+                                                    <li><strong>2. 大雪對策：</strong> 回程日若遇暴風雪預報，JR 極可能全線停駛。最保險的備案是<strong>「前一晚直接入住機場內溫泉飯店 (Air Terminal Hotel)」</strong>或千歲市區飯店，確保不會錯過航班。</li>
+                                                </ul>
+                                            </div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="plane" class="w-3 h-3"></i> 新千歲機場</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 北海道拉麵道場</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="gift" class="w-3 h-3"></i> Royce' Chocolate World</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -651,186 +568,151 @@
                     </div>
                 </article>
 
-                <!-- HOTELS -->
-                <article id="hotels" class="scroll-mt-32">
-                    <h2 class="text-3xl font-bold mb-8 text-ink serif flex items-center gap-3">
-                        <i data-lucide="bed-double" class="w-6 h-6 text-gold"></i> 嚴選住宿推薦
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="warm-card group">
-                            <div class="h-48 img-zoom-container">
-                                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/489087569.jpg?k=sample" alt="Keio Plaza">
-                            </div>
-                            <div class="p-6">
-                                <h4 class="font-bold text-ink mb-1">京王廣場飯店札幌</h4>
-                                <p class="text-xs text-gray-400 mb-3">經典氣派｜距車站 5 分</p>
-                                <p class="text-sm text-gray-600 mb-3">優勢是<strong>「房間很大」</strong>，適合家庭攤開行李整理裝備。</p>
-                                <p class="text-xs text-accent font-bold">約 3,000 TWD 起</p>
-                            </div>
+                <article id="hotels" class="scroll-mt-32 w-full max-w-full overflow-hidden relative group/section">
+                    <div class="mb-6 flex flex-wrap items-end justify-between gap-2 px-1">
+                        <div>
+                            <h2 class="text-3xl font-bold text-ink serif flex items-center gap-3 mb-2">
+                                <i data-lucide="bed-double" class="w-6 h-6 text-gold"></i> 嚴選住宿推薦
+                            </h2>
+                            <p class="text-sm text-gray-500">MOPO小編選房邏輯：強烈建議選擇<strong>「札幌站周邊」</strong>，省去每天扛雪具轉乘地鐵的體力消耗。</p>
                         </div>
-                        <div class="warm-card group">
-                            <div class="h-48 img-zoom-container relative">
-                                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/567890123.jpg?k=sample" alt="Granbell" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop'">
-                                <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">2025 新開幕</div>
-                            </div>
-                            <div class="p-6">
-                                <h4 class="font-bold text-ink mb-1">SAPPORO HOTEL by GRANBELL</h4>
-                                <p class="text-xs text-gray-400 mb-3">新地標｜距車站 7 分</p>
-                                <p class="text-sm text-gray-600 mb-3">高樓層設有<strong>天空露天大浴場</strong>，市中心享受溫泉。</p>
-                                <p class="text-xs text-accent font-bold">約 2,600 TWD 起</p>
-                            </div>
-                        </div>
-                        <div class="warm-card group">
-                            <div class="h-48 img-zoom-container relative">
-                                <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/525626359.jpg?k=3f4c6e91f63c47313f8c8d8b6c4b2b6e5e8e8e8e8e8e8e8e8e8e8e8e8e8e8e8e&o=&hp=1" alt="Emion">
-                                <div class="absolute top-3 left-3 bg-gold text-white text-[10px] px-2 py-1 rounded-full">口碑王者</div>
-                            </div>
-                            <div class="p-6">
-                                <h4 class="font-bold text-ink mb-1">Hotel Emion Sapporo</h4>
-                                <p class="text-xs text-gray-400 mb-3">地下連通｜車站旁</p>
-                                <p class="text-sm text-gray-600 mb-3">冬天免吹風直達。早餐評價極高，親子首選。</p>
-                                <p class="text-xs text-accent font-bold">約 3,000 TWD 起</p>
-                            </div>
+                        <div class="hidden md:flex text-xs text-gray-400 gap-1 items-center whitespace-nowrap">
+                            <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i> 可拖曳或點按鈕
                         </div>
                     </div>
-                </article>
 
-                <!-- AI Static Section (Non-floating) -->
-                <article class="ai-section scroll-mt-32">
-                    <h2 class="text-xl font-bold text-ink mb-4 flex items-center justify-center gap-2">
-                        <i data-lucide="sparkles" class="w-5 h-5 text-gold"></i> 
-                        還有疑問嗎？問問 AI 雪國嚮導
-                    </h2>
-                    <div class="ai-input-group">
-                        <input type="text" id="ai-input" placeholder="例如：小孩滑雪需要準備什麼？" 
-                               onkeypress="if(event.key === 'Enter') sendMessage()">
-                        <button onclick="sendMessage()"><i data-lucide="send" class="w-4 h-4"></i></button>
+                    <div class="relative w-full">
+                        <button onclick="scrollHotels(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="left: 0;"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                        <button onclick="scrollHotels(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="right: 0;"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+
+                        <div id="hotelContainer" class="flex overflow-x-auto pb-8 gap-4 md:gap-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory w-full px-1" style="scroll-behavior: smooth;">
+                            
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/42890/-1/c543e44a172184145ed4eaf372e6155c.jpg?ca=20&ce=1&s=1024x" alt="Keio Plaza" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">機場巴士直達</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.keioplaza-sapporo.co.jp/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">京王廣場飯店 <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 距 JR 札幌站西口 5 分</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPO小編點評：</strong>帶小孩或長輩的首選！門口就是<strong>機場巴士站</strong>，完全不需要在雪地拖行李。房間空間在札幌市區算非常寬敞，攤開兩個大滑雪箱也沒問題。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">老牌五星級</span><span class="text-sm text-accent font-bold">約 3,000 TWD 起</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/22001968/-1/e0052c177e3c690c4c463df2a3893dd3.jpg?ce=0&s=1024x" alt="Granbell" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-accent text-white text-[10px] px-2 py-1 rounded-full">天空露天溫泉</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.granbellhotel.jp/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">SAPPORO GRANBELL <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 距車站 8 分</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPO小編點評：</strong>滑雪後絕對要泡湯！這間主打<strong>「天空露天風呂」</strong>，頭頂飄著細雪泡湯是北海道限定的浪漫。裝潢走時髦工業風，年輕人會愛。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">設計師旅店</span><span class="text-sm text-accent font-bold">約 2,600 TWD 起</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/635648418.jpg?k=b54f3ae99a16ab43bf666d0fb42dbeb83f4fdd612c627bb2e047fc421414b69b&o=&s=1024x" alt="Emion" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-gold text-white text-[10px] px-2 py-1 rounded-full">地下連通</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.hotel-emion.jp/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Hotel Emion Sapporo <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 地下通道直結 (北口)</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPO小編點評：</strong>冬天的保命符！走地下連通道直達札幌站，<strong>外面暴風雪也跟你無關</strong>。設施很新，朝食評價是近期札幌的前三名，非常精緻。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">口碑王者</span><span class="text-sm text-accent font-bold">約 3,000 TWD 起</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/7458736/0/3f45b87ad55af8bdd8ccb7f1739d1653.jpg?ce=0&s=1024x" alt="Nikko" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">車站正上方</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.jrhotels.co.jp/tower/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">JR Tower Hotel Nikko <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 札幌站南口直結</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPO小編點評：</strong>預算夠就直上這間！直接住在<strong>JR札幌站樓上</strong>，電梯下樓就是車站。高樓層夜景無敵，是犒賞自己與另一半的最佳選擇。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">奢華地標</span><span class="text-sm text-accent font-bold">約 5,500 TWD 起</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/23070878/0/1b59c8564f09a50b6c4dd2497f294830.jpg?ce=2&s=1024x" alt="Solaria" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-red-800 text-white text-[10px] px-2 py-1 rounded-full">早餐神級</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://nnr-h.com/solaria/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Solaria Nishitetsu <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 距車站 5 分</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPO小編點評：</strong>為了<strong>「海鮮丼吃到飽」</strong>早餐而來絕對值得！大浴場非常有質感，離道廳和大通公園都很近，是近年滿意度極高的精品飯店。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">精緻商務</span><span class="text-sm text-accent font-bold">約 3,800 TWD 起</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/property/34467000/0/dbbfd6e3139d0c4cab097eda46d9ccc6.jpeg?ce=2&s=1024xe" alt="Mitsui" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-gray-600 text-white text-[10px] px-2 py-1 rounded-full">質感首選</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.gardenhotels.co.jp/sapporo-west/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">Mitsui Garden (West) <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 距車站 4 分 (西口)</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPO小編點評：</strong>三井系列的質感保證！走<strong>精緻摩登路線</strong>，大浴場舒適寬敞，早餐能吃到北海道當地食材，是追求住宿品質的高CP值之選。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">高級商旅</span><span class="text-sm text-accent font-bold">約 2,800 TWD 起</span></div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div id="ai-response"></div>
                 </article>
 
             </div>
         </div>
     </section>
-
 </main>
 
-<!-- FOOTER -->
 <footer class="footer" role="contentinfo">
-  <section class="sitemap" aria-label="網站地圖">
+  <section class="sitemap">
     <div class="container">
       <div class="cols">
-        <div>
-          <h4>最新消息</h4>
-          <ul>
-            <li><a href="../news.html">News</a></li>
-            <li><a href="../mopo.html">關於 MOPO</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>滑雪課程</h4>
-          <ul>
-            <li><a href="../index.html#pricing">課程與價格</a></li>
-            <li><a href="../teine.html">札幌手稻</a></li>
-            <li><a href="../onze.html">小樽ONZE</a></li>
-            <li><a href="../kokusai.html">札幌國際</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>主題文章</h4>
-          <ul>
-            <li><a href="../safe.html">安全知識</a></li>
-            <li><a href="../trip.html">觀光主題</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>資訊</h4>
-          <ul>
-            <li><a href="../legal_tokusho.html">公司資訊</a></li>
-            <li><a href="../notice.html">報名須知</a></li>
-            <li><a href="../faq.html">常見問題</a></li>
-            <li><a href="../index.html#contact">聯絡我們</a></li>
-          </ul>
-        </div>
+        <div><h4>最新消息</h4><ul><li><a href="../news.html">News</a></li><li><a href="../mopo.html">關於 MOPO</a></li></ul></div>
+        <div><h4>滑雪課程</h4><ul><li><a href="../index.html#pricing">課程與價格</a></li><li><a href="../teine.html">札幌手稻</a></li><li><a href="../onze.html">小樽ONZE</a></li><li><a href="../kokusai.html">札幌國際</a></li></ul></div>
+        <div><h4>主題文章</h4><ul><li><a href="../safe.html">安全知識</a></li><li><a href="../trip.html">觀光主題</a></li></ul></div>
+        <div><h4>資訊</h4><ul><li><a href="../legal_tokusho.html">公司資訊</a></li><li><a href="../notice.html">報名須知</a></li><li><a href="../faq.html">常見問題</a></li><li><a href="../index.html#contact">聯絡我們</a></li></ul></div>
       </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
-        <div>© <span id="year"></span> MOPO Ski School</div>
-      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px"><div>© <span id="year"></span> MOPO Ski School</div></div>
     </div>
   </section>
 </footer>
 
-<!-- ✅ 共通 JS -->
+<script>
+    const slider = document.getElementById('hotelContainer');
+    let isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('grabbing'); slider.style.scrollBehavior = 'auto'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+    slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+    function scrollHotels(dir) { const c = document.getElementById('hotelContainer'); c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); }
+</script>
+
 <script src="../common.js"></script>
 <script>
-  // 年份更新
   document.getElementById('year').textContent = new Date().getFullYear();
-  
-  // 強制載入圖示 (解決 Logo 不見問題)
-  document.addEventListener("DOMContentLoaded", () => {
-      lucide.createIcons();
-  });
-
-  // 目錄高亮
+  document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
   window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('article[id]');
     const navLinks = document.querySelectorAll('.s-toc a');
     let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      if (window.scrollY >= sectionTop - 150) current = section.getAttribute('id');
-    });
-    navLinks.forEach(link => {
-      link.classList.remove('is-active');
-      if (link.getAttribute('href') === '#' + current) link.classList.add('is-active');
-    });
+    sections.forEach(section => { const sectionTop = section.offsetTop; if (window.scrollY >= sectionTop - 150) current = section.getAttribute('id'); });
+    navLinks.forEach(link => { link.classList.remove('is-active'); if (link.getAttribute('href') === '#' + current) link.classList.add('is-active'); });
   });
-
-  // 交通摺疊開關 (修復點擊失效)
   function toggleTransport(header) {
     const body = header.nextElementSibling;
     const icon = header.querySelector('.lucide-chevron-down');
-    if (body.classList.contains('open')) {
-        body.classList.remove('open');
-        icon.style.transform = 'rotate(0deg)';
-    } else {
-        body.classList.add('open');
-        icon.style.transform = 'rotate(180deg)';
-    }
-  }
-
-  // AI Chat Logic (Static Version)
-  async function sendMessage() {
-      const inputField = document.getElementById('ai-input');
-      const responseBox = document.getElementById('ai-response');
-      const text = inputField.value.trim();
-      
-      if (!text) return;
-      
-      responseBox.style.display = 'block';
-      responseBox.innerHTML = '<span class="text-gray-500">思考中...</span>';
-      inputField.value = '';
-
-      const apiKey = ""; 
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-      const context = `You are the AI Concierge for 'MOPO Ski School Family Trip'. 
-      Context: 6-day Hokkaido family ski trip (Sapporo Teine). 
-      Key Services: Taxi booking available (1 week advance notice), Magic carpet for kids.
-      Tone: Warm, helpful, Traditional Chinese.
-      Itinerary: D1 Airport->Sapporo, D2 Teine(Beginner), D3 Teine(Advanced), D4 Otaru, D5 City/Lake Shikotsu, D6 Airport.`;
-
-      try {
-          const response = await fetch(url, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: context + "\nUser Question: " + text }] }] })
-          });
-          const data = await response.json();
-          const aiText = data.candidates[0].content.parts[0].text;
-          responseBox.innerHTML = marked.parse(aiText);
-      } catch (e) {
-          responseBox.innerHTML = '<span class="text-red-500">連線錯誤，請稍後再試。</span>';
-      }
+    if (body.classList.contains('open')) { body.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; } else { body.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
   }
 </script>
 </body>
