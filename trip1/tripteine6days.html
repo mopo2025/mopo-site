@@ -190,7 +190,7 @@
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#">主題文章 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu">
-          <li role="none"><a role="menuitem" href="../safe.html">專欄文章</li>
+          <li role="none"><a role="menuitem" href="../safe.html">安全知識</a></li>
           <li role="none"><a role="menuitem" href="../trip.html" aria-current="page">觀光主題</a></li>
         </ul>
       </li>
@@ -198,11 +198,36 @@
       <li role="none"><a role="menuitem" href="../booking.html">預約</a></li>
     </ul>
     <div class="lang">
-      <select id="langSelect"><option value="zh-Hant" selected>繁體中文</option><option value="ja">日本語</option><option value="en">English</option></select>
+      <select id="langSelect"><option value="zh-Hant" selected>繁體中文</option>
+<option value="ja">日本語</option><option value="en">English</option></select>
     </div>
     <div class="mobtools">
-        <div class="mobdrop" id="mobLangDrop"><button class="mobLangBtn" id="mobLangBtn">語言</button><div class="mobpanel" id="mobLangPanel"><a href="#">繁體中文</a></div></div>
-        <div class="mobdrop" id="mobNavDrop"><button class="iconbtn" id="mobNavBtn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2"/></svg></button><div class="mobpanel" id="mobNavPanel"><a href="../news.html">最新消息</a></div></div>
+        <div class="mobdrop" id="mobLangDrop">
+            <button class="mobLangBtn" id="mobLangBtn">語言</button>
+            <div class="mobpanel" id="mobLangPanel">
+                <a href="#" class="active">繁體中文</a>
+                <a href="../jp/jp_trip.html">日本語</a>
+                <a href="../en_trip.html">English</a>
+            </div>
+        </div>
+        <div class="mobdrop" id="mobNavDrop">
+            <button class="iconbtn" id="mobNavBtn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2"/></svg></button>
+            <div class="mobpanel" id="mobNavPanel">
+                <a href="../news.html">最新消息</a>
+                <a href="../mopo.html">關於 MOPO</a>
+                <div class="mob-subtitle">滑雪課程</div>
+                <a href="../index.html#pricing">課程與價格</a>
+                <a href="../teine.html">札幌手稻</a>
+                <a href="../onze.html">小樽ONZE</a>
+                <a href="../kokusai.html">札幌國際</a>
+                <div class="mob-subtitle">主題文章</div>
+                <a href="../safe.html">安全知識</a>
+                <a href="../trip.html" aria-current="page" class="active">觀光主題</a>
+                <div class="mob-subtitle">資訊</div>
+                <a href="../faq.html">常見問題</a>
+                <a href="../booking.html" class="mob-booking-btn">預約</a>
+            </div>
+        </div>
     </div>
   </div>
 </header>
@@ -254,7 +279,7 @@
                             <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="baby" class="w-7 h-7"></i></div>
                             <h3 class="font-bold text-ink mb-1">體貼規劃</h3><p class="text-xs text-gray-500">魔毯免爬坡<br>小孩不喊累</p>
                         </div>
-                      <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
     <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="camera" class="w-7 h-7"></i></div>
     <h3 class="font-bold text-ink mb-1">拍攝留念</h3><p class="text-xs text-gray-500">教練紀錄拍攝<br>留下全家回憶</p>
 </div>
@@ -296,7 +321,7 @@
                                                 <li>車程約 <strong>37-40 分鐘</strong>，請在「札幌站」下車。</li>
                                             </ul>
                                             <div class="mt-4">
-                                                <a href="https://maps.app.goo.gl/DRGSXKz86eNjJN1m7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：札幌站</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：札幌站</a>
                                             </div>
                                         </div>
                                     </div>
@@ -321,7 +346,7 @@
                                 <p class="text-sm text-gray-500 mb-4 font-bold tracking-wider">【主題：教練細心解說・魔毯輕鬆練習】</p>
                                 <div class="service-badge"><i data-lucide="phone-call" class="w-3 h-3"></i> 獨家服務：代訂計程車（需一週前預約）</div>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed mt-4">
-                                    <li><strong>上午課程：</strong> 手稻滑雪場（奧林匹亞區）。選擇小班制私人課程，初學者可在訂課時註明需要教練協助裝備，MOPO教練團隊會幫忙檢查裝備與填寫租借單，並針對每一位學員進行適合的教學，不需像團體班會有進度趕不上的壓力。</li>
+                                    <li><strong>上午課程：</strong> 手稻滑雪場（奧林匹亞區）。選擇小班制私人課程，初學者可在訂課時註明需要教練協助裝備，教練會幫忙檢查裝備與填寫租借單，並針對每一位學員進行適合的教學，不需像團體班會有進度趕不上的壓力。</li>
                                     <li><strong>下午練習：</strong> 善用<strong>「魔毯 (雪地電扶梯)」</strong>，不用脫雪板爬坡，省力又好玩。</li>
                                     <li><strong>晚餐推薦：</strong> 根室花丸或 toriton壽司，食材新鮮，種類豐富，全家大滿足。（小秘密：喜歡吃炸雞的可在toriton壽司點來嘗試看看喔！）</li>
                                 </ul>
@@ -341,7 +366,7 @@
                                             <div><p class="font-bold text-ink mb-2">Step 1: JR 札幌站 → 手稻站 (Teine)</p><p class="text-sm">1. 在札幌站搭乘 JR 函館本線 (往小樽/手稻方向)。<br>2. 搭乘「快速列車」約 10-15 分鐘，在<strong>「手稻站 (Teine)」</strong>下車 (代號 S07)。</p></div>
                                             <div><p class="font-bold text-ink mb-2">Step 2: 手稻站 → 奧林匹亞滑雪場</p><ul class="list-decimal list-inside text-sm space-y-1"><li>出改札口後，往<strong>「南口 (South Exit)」</strong>方向走。</li><li>下手扶梯到一樓戶外，尋找<strong>「3號公車月台」</strong>。</li><li>搭乘 JR 北海道巴士<strong>「手70」</strong>往 Teine Highland 方向。</li><li>請在<strong>「Teine Olympia (手稲オリンピア前)」</strong>下車 (車程約 15 分鐘)。</li></ul></div>
                                             <div class="flex flex-col gap-2 mt-2">
-                                                <a href="https://maps.app.goo.gl/JTFV8fBkceA8yKz18" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：手稻站南口</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：手稻站南口</a>
                                                 <div><a href="https://youtu.be/eq6--bcae3s?si=goOtCrW478d735i6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="video" class="w-3 h-3"></i> 觀看手稻站轉乘巴士介紹影片 (YouTube)</a><p class="text-[10px] text-gray-400 mt-1 ml-1">影片來源自 TEINE CHANNEL ～サッポロテイネ公式～</p></div>
                                             </div>
                                         </div>
@@ -363,11 +388,11 @@
                                     <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 03</span>
                                     <span class="text-accent text-sm font-bold tracking-widest">LEVEL UP</span>
                                 </div>
-                                <h3 class="text-2xl font-bold text-ink mb-3 serif">等級Level up,享受滑雪的樂趣!</h3>
-                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：掌握過彎節奏・奧林匹亞區深度對話】</p>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">突破瓶頸，掌握轉彎的藝術</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【主題：技術質變・奧林匹亞區深度修煉】</p>
                                 <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
-                                    <li><strong>上午：</strong> 把基本功練得更紮實，讓身體記住滑行的感覺。</li>
-                                    <li><strong>下午：</strong> 挑戰「轉彎或是落葉飄」。單板toe side 落葉飄 或 雙板八字滑行轉彎，享受隨心所欲控制方向的成就感。</li>
+                                    <li><strong>上午：</strong> 練習是通往進步的道路。利用早晨良好雪況鞏固基礎。</li>
+                                    <li><strong>下午：</strong> 挑戰「轉彎或是落葉飄」。單板toe side 落葉飄 或 雙板八字滑行轉彎，感受掌控方向的樂趣。</li>
                                     <li><strong>傍晚：</strong> 前往<strong>薄野 (Susukino)</strong>，品嚐北海道必吃的成吉思汗烤羊肉或是知名湯咖哩 GARAKU</li>
                                 </ul>
                             </div>
@@ -387,9 +412,9 @@
                                                     <li><strong>步行：</strong> 經由「地下步行空間 (Chi-Ka-Ho)」，沿途有暖氣，走路約 20 分鐘。</li>
                                                 </ul>
                                                 <div class="mt-4 flex flex-wrap gap-2">
-                                                    <a href="https://maps.app.goo.gl/1LECiCDZmKEm6zB48" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟google map:薄野站</a>
-                                                    <a href="https://maps.app.goo.gl/LUNWgAnYXYJE7gFUA" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 成吉思汗烤羊肉</a>
-                                                    <a href="https://maps.app.goo.gl/1odb7JPYtuerBN9Y9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="soup" class="w-3 h-3"></i> 湯咖哩 GARAKU</a>
+                                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟google map:薄野站</a>
+                                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 成吉思汗烤羊肉</a>
+                                                    <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="soup" class="w-3 h-3"></i> 湯咖哩 GARAKU</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -399,6 +424,36 @@
                         </div>
                     </div>
                 </article>
+
+
+  <!-- 貼心長條宣傳區塊 -->
+                <!-- 優雅質感預約區塊：針對想滑雪者的情感訴求 -->
+                <div class="w-full mb-10 bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center gap-6 relative overflow-hidden transition-all hover:shadow-md">
+                    <!-- 裝飾: 左側品牌色邊條 -->
+                    <div class="absolute top-0 left-0 w-1.5 h-full bg-accent"></div>
+                    
+                    <div class="flex-1 text-center md:text-left z-10">
+                        <h4 class="font-bold text-xl text-ink mb-2 serif flex items-center justify-center md:justify-start gap-2">
+                            <i data-lucide="heart" class="w-5 h-5 text-accent"></i>
+                            難得的雪國之旅，想讓回憶更完美嗎？
+                        </h4>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            MOPO 相信，滑雪不只是運動，更是與家人共享的珍貴時光。<br class="hidden md:block">
+                            不想把時間花在摸索與摔倒上嗎？讓專業教練帶領您與孩子，安全、輕鬆地享受在雪地滑行的快樂，拍下最自信的笑容。
+                        </p>
+                    </div>
+                    
+                    <div class="shrink-0 z-10">
+                        <a href="../booking.html" class="inline-flex items-center gap-2 bg-ink text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-accent transition-all duration-300 shadow-md group">
+                            <span>預約您的專屬教練</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+               
+
+
 
                 <article id="day4" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
@@ -430,7 +485,7 @@
                                             <div><p class="font-bold text-ink mb-2">Step 1: 札幌 → 小樽</p><ul class="list-disc list-inside text-sm space-y-1"><li><strong>方案 A (JR)：</strong> 札幌站搭乘 JR 快速 Airport 或區間車，往「小樽」方向，至終點站「小樽站」下車 (約 35-45 分)。</li><li><strong>方案 B (巴士)：</strong> 札幌站前巴士總站，搭乘「高速小樽號 (High-speed Otaru)」，在小樽站前下車 (約 60 分)。</li></ul></div>
                                             <div><p class="font-bold text-ink mb-2">Step 2: 小樽站 → 天狗山纜車</p><p class="text-sm">1. 走出 JR 小樽站，正前方的巴士總站。<br>2. 找到<strong>「4號月台」</strong>。<br>3. 搭乘中央巴士<strong>「9號 天狗山纜車線 (Tenguyama Ropeway Line)」</strong>。<br>4. 在終點站「天狗山纜車」下車 (約 17 分鐘)。</p></div>
                                             <div class="mt-4 flex flex-wrap gap-2">
-                                                <a href="https://maps.app.goo.gl/iNH9bk1mx776dYo56" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：小樽站</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> 開啟 Google Map：小樽站</a>
                                                 <a href="https://tenguyama.ckk.chuo-bus.co.jp/" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 天狗山纜車官網</a>
                                             </div>
                                         </div>
@@ -463,7 +518,7 @@
                                     <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
                                         <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="mountain-snow" class="w-4 h-4 text-accent"></i> Option B：自然派 (支笏湖)</h4>
                                         <p class="text-gray-600 text-sm leading-relaxed mb-2">探訪全日本水質連續奪冠的<strong>「支笏湖」</strong>，欣賞著名的「支笏湖藍」。冬季這裡有夢幻的<strong>「冰濤祭」</strong>，抽取湖水噴灑凍結成的冰柱群，在藍天或夜燈下極為壯觀。</p>
-                                        <p class="text-xs text-gray-500 font-bold">♨️ MOPO小編推薦溫泉：丸駒溫泉 (秘湯)、鶴雅水之謌 (奢華)</p>
+                                        <p class="text-xs text-gray-500 font-bold">♨️ 嚮導推薦溫泉：丸駒溫泉 (秘湯)、鶴雅水之謌 (奢華)</p>
                                     </div>
                                 </div>
                             </div>
@@ -492,10 +547,10 @@
                                                 </ul>
                                             </div>
                                             <div class="mt-4 flex flex-wrap gap-2">
-                                                <a href="https://maps.app.goo.gl/aPgXoS8y993jYBMk7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="beer" class="w-3 h-3"></i> 札幌啤酒博物館</a>
-                                                <a href="https://maps.app.goo.gl/yvc6QcTs2qhsadkCA" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="shopping-bag" class="w-3 h-3"></i> 狸小路商店街</a>
-                                                <a href="https://maps.app.goo.gl/Jjdj7mBDw83mXALf9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 支笏湖遊客中心 </a>
-                                                <a href="https://maps.app.goo.gl/Um515t6sMK2LAKXC8" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="bus" class="w-3 h-3"></i> JR 千歲站 (轉乘點)</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="beer" class="w-3 h-3"></i> 札幌啤酒博物館</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="shopping-bag" class="w-3 h-3"></i> 狸小路商店街</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 支笏湖溫泉街</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="bus" class="w-3 h-3"></i> JR 千歲站 (轉乘點)</a>
                                             </div>
                                         </div>
                                     </div>
@@ -556,9 +611,9 @@
                                                 </ul>
                                             </div>
                                             <div class="mt-4 flex flex-wrap gap-2">
-                                                <a href="https://maps.app.goo.gl/iv5hUdcLHBGemmTE8" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="plane" class="w-3 h-3"></i> 新千歲機場</a>
-                                                <a href="https://maps.app.goo.gl/MMZp72D2SX4uwbwz9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 北海道拉麵道場</a>
-                                                <a href="https://maps.app.goo.gl/dMUpyoxLvKWWHPSb9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="gift" class="w-3 h-3"></i> Royce' Chocolate World</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="plane" class="w-3 h-3"></i> 新千歲機場</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 北海道拉麵道場</a>
+                                                <a href="#" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 transition hover:bg-gray-200"><i data-lucide="gift" class="w-3 h-3"></i> Royce' Chocolate World</a>
                                             </div>
                                         </div>
                                     </div>
@@ -667,9 +722,45 @@
 
                         </div>
                     </div>
+                    
+                    <script>
+                        const slider = document.getElementById('hotelContainer');
+                        let isDown = false, startX, scrollLeft;
+                        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('grabbing'); slider.style.scrollBehavior = 'auto'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+                        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+                        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+                        slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+                        function scrollHotels(dir) { const c = document.getElementById('hotelContainer'); c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); }
+                    </script>
                 </article>
 
+      <div class="mt-10 mb-10 text-center py-12 px-6 bg-white rounded-[3rem] border border-gray-100 shadow-sm">
+        <i data-lucide="calendar-heart" class="w-12 h-12 text-accent mx-auto mb-4 drop-shadow"></i>
+        <h2 class="text-3xl md:text-4xl font-bold text-ink serif mb-4">準備好開始您的北海道之旅了嗎？</h2>
+        <p class="text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">立即預約您的滑雪教練，確保行程順利。</p>
+
+        <div class="mb-8">
+            <a href="../booking.html" class="group relative inline-flex items-center gap-2 bg-ink text-warm px-6 py-3 text-base font-bold rounded-full shadow-lg hover:bg-accent hover:text-white hover:shadow-xl transition-all duration-300 ease-out transform hover:-translate-y-1">
+                <span>預約專屬滑雪課程</span>
+                <i data-lucide="arrow-right" class="w-5 h-5 transition-transform group-hover:translate-x-1"></i>
+            </a>
+        </div>
+
+        <div class="text-sm text-gray-500 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+            <span class="opacity-80">有特別的需求嗎？歡迎聯繫我們：</span>
+            <div class="flex items-center gap-4 mt-2 md:mt-0">
+                <a href="https://lin.ee/HuTp1OW" target="_blank" class="inline-flex items-center gap-1 font-bold text-[#06C755] hover:underline transition hover:opacity-80">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> LINE
+                </a>
+                <span class="text-gray-300">|</span>
+                <a href="https://wa.me/817044206343" target="_blank" class="inline-flex items-center gap-1 font-bold text-[#25D366] hover:underline transition hover:opacity-80">
+                    <i data-lucide="phone" class="w-4 h-4"></i> WhatsApp
+                </a>
             </div>
+        </div>
+        <p class="text-xs text-gray-400 mt-3 opacity-70">(回覆時間：通常在一天內回覆，日本時間 12:00-22:00)</p>
+    </div>
+    </div>
         </div>
     </section>
 </main>
