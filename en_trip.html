@@ -16,14 +16,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOPO Ski School">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<meta property="og:image" content="https://www.moposki.com/img/news/en_tripteine6days.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Travel topics｜MOPO Ski School">
 <meta name="twitter:description" content="MOPO Travel topics. Side trips and signature experiences for ski travel in Sapporo, Hokkaido.">
-<meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
+<meta name="twitter:image" content="https://www.moposki.com/img/news/en_tripteine6days.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
@@ -45,6 +45,8 @@ body {
   --shadow:0 18px 50px rgba(13,27,42,.10);
   --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
   --slide:0; --fade:0; --gray:0;
+  /* Card width variable for PC layout */
+  --card-w: 100%; 
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -124,27 +126,107 @@ html, body { overflow-x: hidden; }
 #mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
 #mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
 
-/* ===== Page: centered message block ===== */
-.page-center {
-  min-height: 70vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 84px 0;
-  background: var(--bg-mid);
+
+/* ===== News / Travel Topics Specific Styles ===== */
+.news-pager button:focus-visible{
+  outline: 2px solid #C8A45D;
+  outline-offset: 2px;
 }
-.page-center h1{
-  margin: 0 0 12px;
-  font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
-  font-size: clamp(28px, 5vw, 40px);
-  color:#111;
-  letter-spacing:.02em;
+.news-wrap{padding:56px 0; background:#fff; min-height: 80vh;}
+.news-head{
+  display:flex; align-items:flex-end; justify-content:center;
+  gap:16px; margin-bottom:20px; text-align:center;
 }
-.page-center p{
-  margin: 0;
-  font-size: clamp(16px, 2.4vw, 18px);
-  color:#333;
+.news-head h1{
+  margin:0; font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
+  font-size:clamp(28px,5vw,40px); letter-spacing:.02em; color:#111; width:100%;
 }
+/* Page title adjustment */
+.news-head .page-title{ font-size: calc(clamp(24px,5vw,36px) - 2pt); }
+
+.news-grid{
+  display:grid; gap:32px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  margin:0; padding:0;
+}
+
+/* PC: Keep consistent width */
+.news-grid .news-card .thumb{ width:var(--card-w); margin:0 auto; box-sizing:border-box; }
+.news-grid .news-card > .meta,
+.news-grid .news-card > h3,
+.news-grid .news-card > .excerpt{
+  width:var(--card-w);
+  margin-left:auto; margin-right:auto;
+  text-align:left; box-sizing:border-box;
+  overflow-wrap:anywhere; word-break:break-word;
+}
+.news-card h3 a{
+  color:inherit; text-decoration:none; border-bottom:none; display:block;
+}
+.news-card h3 a:hover{ text-decoration:none; border-bottom:none; }
+
+@media (max-width: 860px){
+  .news-wrap .container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .news-grid{
+    grid-template-columns:1fr;
+    justify-items:center;
+    width:100%;
+    margin:0; padding:0;
+  }
+  .news-card{
+    width:100%;
+    max-width:720px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .news-card .thumb{ width:100%; }
+  .news-card > .meta,
+  .news-card > h3,
+  .news-card > .excerpt{ width:100%; }
+}
+
+.news-card{
+  list-style:none; margin:0; padding:0; background:#fff
+}
+.news-card .thumb{
+  position:relative; overflow:hidden; border-radius:12px; aspect-ratio:16/9;
+  background:#f2f4f6
+}
+.news-card .thumb a{display:block; height:100%}
+.news-card img{
+  width:100%; height:100%; object-fit:cover; display:block; transform:scale(1);
+  transition:transform .4s ease;
+}
+.news-card .thumb:hover img{transform:scale(1.05)}
+.news-card .meta{
+  margin-top:14px; font-size:14px; color:#567; letter-spacing:.02em
+}
+.news-card h3{
+  margin:6px 0 8px;
+  font-size:clamp(18px,2.4vw,22px);
+  line-height:1.35;
+  color:#0E1A24;
+  font-weight:700;
+}
+.news-card .excerpt{color:#333; font-size:16px; line-height:1.7}
+
+/* Pagination */
+.news-pager{
+  display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:32px
+}
+.news-pager button{
+  min-width:36px; height:36px; padding:0 12px; border-radius:8px; border:1px solid #d7dbe0;
+  background:#fff; cursor:pointer; font:600 14px/1 "Montserrat","Noto Sans JP",sans-serif;
+  transition:background .2s,border-color .2s
+}
+.news-pager button[aria-current="page"]{
+  background:#0D1B2A; color:#fff; border-color:#0D1B2A
+}
+.news-pager button:hover{border-color:#C8A45D}
 
 /* Footer (same as Home) */
 .footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
@@ -260,10 +342,30 @@ html, body { overflow-x: hidden; }
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
 <main id="home" aria-label="Travel topics">
-  <section class="page-center">
+  <section class="news-wrap">
     <div class="container">
-      <h1>Travel topics</h1>
-      <p>Coming Soon</p>
+      <div class="news-head">
+        <h1 class="page-title">Travel topics</h1>
+      </div>
+
+      <!-- ===== Card List ===== -->
+      <ul class="news-grid" id="newsList" aria-live="polite">
+        <!-- 1. Hokkaido 6 Days -->
+        <li class="news-card" data-news>
+          <div class="thumb">
+            <!-- Adjusted link to point to potential English file: en_tripteine6days.html -->
+            <a href="./trip1/en_tripteine6days.html" target="_blank" aria-label="Hokkaido Winter Journey: 6-Day Itinerary">
+              <img src="img/news/tripteine6days.jpg" alt="Hokkaido Winter Journey: 6-Day Itinerary" loading="lazy">
+            </a>
+          </div>
+          <div class="meta">December 25, 2025</div>
+          <h3><a href="./trip1/en_tripteine6days.html" target="_blank">Hokkaido Winter Journey: 6-Day Itinerary</a></h3>
+          <p class="excerpt">Struggling with your itinerary? Here is the perfect 6-day guide for your first ski trip to Hokkaido! Includes Teine ski lessons, a stroll along the Otaru Canal, and must-know tips for food and accommodation. Enjoy a relaxing family trip in the snow country.</p>
+        </li>
+      </ul>
+
+      <!-- ===== Pagination (Generated automatically) ===== -->
+      <nav class="news-pager" id="newsPager" aria-label="News pagination"></nav>
     </div>
   </section>
 </main>
