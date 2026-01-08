@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上課前裝備與地點確認 - MOPO Ski School</title>
+    
+    <!-- 1. 引入 Tailwind CSS (樣式) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. 引入 React 和 ReactDOM (核心庫) -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- 3. 引入 Babel (讓瀏覽器看懂 JSX) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        /* 自定義捲軸樣式 (Optional) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e7e5e4; /* stone-200 */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #44403c; /* stone-700 */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1c1917; /* stone-900 */
+        }
+        /* 避免 iOS Safari 點擊閃爍 */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 動態背景動畫設定 - 速度放慢且顏色加深 */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 25s infinite; /* 更慢的動畫 */
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+<body class="bg-[#E2E5E3] min-h-screen text-stone-800 selection:bg-emerald-200 selection:text-emerald-900 font-sans">
+    <div id="root"></div>
+
+    <!-- 4. 您的 React 程式碼 -->
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // ==========================================
+        // 自定義 SVG 圖示組件
+        // ==========================================
+        
+        // 通用圖示屬性
+        const iconProps = {
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "currentColor",
+            strokeWidth: "2",
+            strokeLinecap: "round",
+            strokeLinejoin: "round"
+        };
+
+        const Check = ({ className }) => (
+            <svg {...iconProps} className={className}><polyline points="20 6 9 17 4 12" /></svg>
+        );
+        const ChevronDown = ({ className }) => (
+            <svg {...iconProps} className={className}><polyline points="6 9 12 15 18 9" /></svg>
+        );
+        const ChevronUp = ({ className }) => (
+            <svg {...iconProps} className={className}><polyline points="18 15 12 9 6 15" /></svg>
+        );
+        const Info = ({ className }) => (
+            <svg {...iconProps} className={className}><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
+        );
+        const Snowflake = ({ className }) => (
+            <svg {...iconProps} className={className}><line x1="2" y1="12" x2="22" y2="12" /><line x1="12" y1="2" x2="12" y2="22" /><path d="M20 16.6L16.6 20" /><path d="M20 7.4L16.6 4" /><path d="M4 7.4L7.4 4" /><path d="M4 16.6L7.4 20" /></svg>
+        );
+        const Shield = ({ className }) => (
+            <svg {...iconProps} className={className}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+        );
+        const AlertCircle = ({ className }) => (
+            <svg {...iconProps} className={className}><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
+        );
+        const RefreshCw = ({ className }) => (
+            <svg {...iconProps} className={className}><path d="M23 4v6h-6" /><path d="M1 20v-6h6" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" /></svg>
+        );
+        const Shirt = ({ className }) => (
+            <svg {...iconProps} className={className}><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" /></svg>
+        );
+        const MapPin = ({ className }) => (
+            <svg {...iconProps} className={className}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+        );
+        const Clock = ({ className }) => (
+            <svg {...iconProps} className={className}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+        );
+        const ArrowRight = ({ className }) => (
+            <svg {...iconProps} className={className}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+        );
+        const X = ({ className }) => (
+            <svg {...iconProps} className={className}><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+        );
+        const ZoomIn = ({ className }) => (
+            <svg {...iconProps} className={className}><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><line x1="11" y1="8" x2="11" y2="14" /><line x1="8" y1="11" x2="14" y2="11" /></svg>
+        );
+
+        // 原本的自定義圖示
+        const IconSkiBoots = ({ className }) => (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+            <path d="M11.5 19a2.5 2.5 0 1 0 5 0a2.5 2.5 0 0 0 -5 0" />
+            <path d="M5 17v-5.5a1.5 1.5 0 0 1 3 0v5.5" />
+            <path d="M12 11.5v5.5" />
+            <path d="M5 12h11.5" />
+            <path d="M15.5 17v-1.28a4 4 0 0 0 -1.17 -2.83l-2.83 -2.83a4 4 0 0 1 -1.17 -2.83v-1.23a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v2.23a4 4 0 0 0 1.17 2.83l2.83 2.83a4 4 0 0 1 1.17 2.83v1.28" />
+          </svg>
+        );
+
+        const IconGloves = ({ className }) => (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M11 21.5a2.5 2.5 0 0 0 2.5 -2.5v-7.5" />
+            <path d="M13 10v-5a2 2 0 0 0 -4 0v7" />
+            <path d="M9 13.5v-6.5a2 2 0 0 0 -4 0v8.5" />
+            <path d="M5 15.5v-4.5a2 2 0 1 0 -4 0v9a1.5 1.5 0 0 0 1.5 1.5h10.5" />
+            <path d="M15.5 16l3.5 3.5l1.5 -1.5l-3.5 -4" />
+            <path d="M15.5 16a2.5 2.5 0 0 1 0 -5h.5" />
+          </svg>
+        );
+
+        const IconGoggles = ({ className }) => (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M3 10h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" />
+            <path d="M17 10h2a2 2 0 0 1 2 2v2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2v-2a2 2 0 0 1 2 -2z" />
+            <path d="M7 12h10" />
+            <path d="M21 12a14 14 0 0 0 -18 0" />
+          </svg>
+        );
+
+        const IconFaceMask = ({ className }) => (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+            <path d="M12 2a9 9 0 0 0 -9 9a8 8 0 0 0 1.44 4.5l.56 .5a3 3 0 0 1 1 2.5v.5a2 2 0 0 0 2 2h4a2 2 0 0 0 2 -2v-.5a3 3 0 0 1 1 -2.5l.56 -.5a8 8 0 0 0 1.44 -4.5a9 9 0 0 0 -9 -9z" />
+            <path d="M8 12h8" />
+          </svg>
+        );
+
+        const IconSocks = ({ className }) => (
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M10 2v12l-4 3l-3 -2l5 -9" />
+            <path d="M14 2v12l4 3l3 -2l-5 -9" />
+            <path d="M6 17v-1.5" />
+            <path d="M18 17v-1.5" />
+          </svg>
+        );
+
+        // ==========================================
+        // 資料設定區
+        // ==========================================
+
+        const MEETING_POINTS_DATA = [
+          {
+            id: 'teine',
+            name: '手稻滑雪場 (Teine)',
+            engName: 'Sapporo Teine',
+            location: '奧林匹亞區 (Olympia) 三樓租借處 (Rental)',
+            image: 'https://www.moposki.com/img/meet/teinemeet.jpg',
+            expanded: false
+          },
+          {
+            id: 'onze',
+            name: 'ONZE 滑雪場',
+            engName: 'Snow Cruise Onze',
+            location: '雪場入口 ONZE 合照掛布前',
+            image: 'https://www.moposki.com/img/meet/onzemeet.jpg',
+            expanded: false
+          },
+          {
+            id: 'k-int',
+            name: '札幌國際滑雪場 (Kokusai)',
+            engName: 'Sapporo Kokusai',
+            location: '一樓租借處 (Rental) 或 服務台前 (Info Desk)',
+            image: 'https://www.moposki.com/img/meet/kokusaimeet.jpg',
+            expanded: false
+          },
+        ];
+
+        const EQUIPMENT_DATA = [
+          {
+            id: 1,
+            category: "核心裝備",
+            name: "雪衣雪褲",
+            engName: "Ski Wear",
+            icon: <Shirt className="w-6 h-6" />,
+            description: "防水、防風是基本要求。建議採用「洋蔥式穿法」：內層排汗、中層保暖、外層防水。",
+            tips: "如果您是自備雪衣，太久沒穿請務必在上課前試穿一下，確認尺寸還合適，並且檢查拉鍊是否正常喔！",
+            badge: "可租借",
+            badgeType: "info",
+            image: "https://www.moposki.com/img/meet/wear.jpg" 
+          },
+          {
+            id: 2,
+            category: "核心裝備",
+            name: "滑雪板 & 雪仗",
+            engName: "Ski/Snowboard",
+            icon: <Snowflake className="w-6 h-6" />,
+            description: "Ski (雙板)：請務必檢查是否拿到兩支雪仗 (Poles)。Snowboard (單板)：確認固定器 (Binding) 螺絲有無鬆動。",
+            tips: "雪場租借的板子長得都很像！強烈建議您用手機拍下板子的編號與放置位置，以免休息回來拿錯別人的板子就尷尬了。",
+            badge: "可租借",
+            badgeType: "info",
+            image: "https://www.moposki.com/img/meet/skisb.jpg"
+          },
+          {
+            id: 3,
+            category: "核心裝備",
+            name: "雪鞋",
+            engName: "Boots",
+            icon: <IconSkiBoots className="w-6 h-6" />,
+            description: "Ski (雙板)：扣環需扣緊，感覺小腿有被包覆住，但不可以痛。穿上後走路像機器人是正常的喔！\nSnowboard (單板)：務必轉緊 BOA 轉盤或拉緊鞋帶，站起來時感覺自己的小腿被鞋舌頂住、微微前傾，這才是正確的滑雪站姿。",
+            tips: "試穿時腳趾輕觸鞋頭，膝蓋彎曲時腳跟不離地，這樣才是合腳的尺寸喔。",
+            badge: "可租借",
+            badgeType: "info",
+            image: "https://www.moposki.com/img/meet/boots.jpg"
+          },
+          {
+            id: 9, 
+            category: "保暖與配件",
+            name: "滑雪襪",
+            engName: "Snow Socks",
+            icon: <IconSocks className="w-6 h-6" />,
+            description: "雪襪非常重要！它會直接影響滑行的舒適度。請不要穿一般的棉質短襪，容易磨破皮或濕掉導致腳底冰冷。",
+            tips: "不論單雙板都必須準備。建議選擇保暖、排汗性佳，且長度超過雪鞋筒高的長襪，避免摩擦不適。",
+            badge: "需自備",
+            badgeType: "warning",
+            image: "https://www.moposki.com/img/meet/socks.jpg"
+          },
+          {
+            id: 4,
+            category: "防護裝備",
+            name: "安全帽",
+            engName: "Helmet",
+            icon: <Shield className="w-6 h-6" />,
+            description: "滑雪安全第一！上課期間請全程配戴。請確認扣環已扣好，且頭部左右搖晃時不會晃動才安全。",
+            tips: "如果您有戴毛帽，請確認戴上毛帽後，安全帽依然能緊密貼合頭部喔。",
+            badge: "可租借",
+            badgeType: "info",
+            image: "https://www.moposki.com/img/meet/helmet.jpg"
+          },
+          {
+            id: 5,
+            category: "防護裝備",
+            name: "護具",
+            engName: "Protective Gear",
+            icon: <Shield className="w-6 h-6" />,
+            description: "包含護臀、護膝、護腕。這是單板 (Snowboard) 初學者「強烈建議」配戴的，能大幅減輕跌倒時的疼痛感。雙板 (Ski) 則可視個人需求選擇。",
+            tips: "小提醒：購買護具前，請先確認您的雪衣褲或手套空間足夠穿戴護具，以免到時塞不進去會有尺寸不合的問題。",
+            badge: "單板強烈建議，需自備",
+            badgeType: "warning",
+            image: "https://www.moposki.com/img/meet/gear.jpg"
+          },
+          {
+            id: 6,
+            category: "保暖與配件",
+            name: "防水手套",
+            engName: "Gloves",
+            icon: <IconGloves className="w-6 h-6" />,
+            description: "請確認手套防水層完好。初學者接觸雪地的機會很多，防水功能至關重要，手濕掉會非常凍喔！",
+            tips: "單板雪友若有配戴護腕，請務必先確認手套開口夠大，能順利套入護具。",
+            badge: "部分雪場可租借或購買",
+            badgeType: "neutral",
+            image: "https://www.moposki.com/img/meet/gloves.jpg"
+          },
+          {
+            id: 7,
+            category: "保暖與配件",
+            name: "雪鏡",
+            engName: "Goggles",
+            icon: <IconGoggles className="w-6 h-6" />,
+            description: "雪地反光強烈，雪鏡能保護眼睛免受紫外線與風雪傷害。請確認鏡片乾淨且無霧氣。",
+            tips: "進到室內休息時，請將雪鏡取下，避免室內外溫差造成鏡片起霧。",
+            badge: "可租借",
+            badgeType: "info",
+            image: "https://www.moposki.com/img/meet/goggle.jpg"
+          },
+          {
+            id: 8,
+            category: "保暖與配件",
+            name: "脖圍 / 面罩",
+            engName: "Face Mask",
+            icon: <IconFaceMask className="w-6 h-6" />,
+            description: "防曬、防風、防寒的好幫手。建議選擇透氣材質，避免呼出的熱氣導致雪鏡起霧。",
+            tips: "脖子保暖了，全身都會暖呼呼！小朋友特別需要注意保暖，建議一定要幫他們準備喔！",
+            badge: "需自備",
+            badgeType: "warning",
+            image: "https://www.moposki.com/img/meet/facemask.jpg"
+          },
+        ];
+
+        // --- 恭喜動畫組件 ---
+        const ConfettiAnimation = ({ onFinish }) => {
+          return (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-stone-900/60 backdrop-blur-sm animate-in fade-in duration-300">
+              <div className="bg-white p-8 rounded-xl shadow-2xl text-center max-w-sm w-11/12 animate-in zoom-in-50 duration-500 relative border-t-4 border-emerald-800">
+                <div className={`mx-auto w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 text-3xl mb-6 shadow-sm`}>
+                  <Check className="w-8 h-8 stroke-[3]" />
+                </div>
+                
+                <h2 className="text-2xl font-bold text-stone-800 mb-2 tracking-wide">
+                  Ready to Go!
+                </h2>
+                <p className="text-stone-600 font-medium mb-8">
+                  太棒了！所有裝備都已確認完畢。<br/>
+                  MOPO 期待與您在雪場相見！
+                </p>
+                
+                <button
+                  onClick={onFinish}
+                  className={`w-full py-4 px-4 rounded-lg bg-emerald-800 text-white font-bold tracking-wide hover:bg-emerald-900 transition-colors shadow-lg shadow-emerald-900/20 active:scale-[0.98] text-lg`}
+                >
+                  關閉視窗
+                </button>
+              </div>
+            </div>
+          );
+        };
+
+        // --- 集合地點清單組件 ---
+        const MeetingPoints = ({ onImageClick }) => {
+          const [points, setPoints] = useState(MEETING_POINTS_DATA);
+
+          const toggleExpand = (id) => {
+            setPoints(points.map(point =>
+              point.id === id ? { ...point, expanded: !point.expanded } : { ...point, expanded: false }
+            ));
+          };
+
+          return (
+            <div id="meeting-points" className={`mt-12 pt-10 border-t border-stone-200`}>
+              {/* 標題區塊 */}
+              <div className="flex items-center gap-4 mb-6 px-1">
+                 <div className="h-8 w-1.5 bg-emerald-800 rounded-full shadow-sm"></div>
+                 <div>
+                    <h3 className={`text-2xl font-bold text-stone-800 tracking-wide flex items-center gap-2`}>
+                      集合地點
+                    </h3>
+                    <p className="text-xs text-stone-500 font-bold tracking-widest uppercase mt-0.5">Meeting Points</p>
+                 </div>
+              </div>
+
+              <div className={`rounded-2xl border border-stone-200 bg-white/70 backdrop-blur-sm shadow-sm overflow-hidden`}>
+                
+                {/* 說明區塊 */}
+                <div className="p-5 border-b border-stone-100 bg-stone-50/50">
+                    <div className="flex gap-4">
+                         <div className="mt-1">
+                            <Info className="w-5 h-5 text-emerald-800" />
+                         </div>
+                         <div className="flex-1">
+                            <h4 className="text-stone-800 font-bold text-lg mb-2">請確認您的預約雪場</h4>
+                            <p className="text-stone-600 text-sm leading-relaxed mb-4">
+                                請參考您的「預約確認信」，確認您上課的地點，並點擊下方選單查看詳細位置與照片。
+                            </p>
+                            
+                             <div className="p-3 bg-emerald-50/50 rounded-lg text-emerald-900 text-sm font-medium border border-emerald-100 mb-3">
+                                 <Info className="w-4 h-4 inline-block mr-1.5 mb-0.5 text-emerald-700" />
+                                 如果需要變更時間或集合地點，請務必「事前」聯繫您的教練喔！
+                             </div>
+
+                            {/* 上課時間 Badge */}
+                            <div className="inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-md border border-stone-200 shadow-sm">
+                                <Clock className="w-4 h-4 text-emerald-800" />
+                                <span className="text-stone-600 text-xs font-medium">正常上課時間: <span className="text-stone-900 font-bold">09:30 - 15:30</span></span>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+
+                {/* 地點列表 */}
+                <div className="divide-y divide-stone-100">
+                  {points.map((point) => (
+                    <div
+                      key={point.id}
+                      className={`transition-all duration-300 group ${
+                        point.expanded 
+                        ? `bg-emerald-50/30` 
+                        : `bg-transparent hover:bg-stone-50`
+                      }`}
+                    >
+                      <div 
+                        className="p-5 flex items-center justify-between cursor-pointer active:bg-stone-100 transition-colors"
+                        onClick={() => toggleExpand(point.id)}
+                      >
+                        <div className="flex items-center gap-4">
+                            {/* 裝飾點 */}
+                            <div className={`w-3 h-3 rounded-full transition-all duration-300 border ${
+                                point.expanded 
+                                ? 'bg-emerald-800 border-emerald-800 scale-110 shadow-sm' 
+                                : 'bg-white border-stone-300'
+                            }`}></div>
+                            
+                            <div>
+                                <h4 className={`font-bold text-lg transition-colors ${point.expanded ? 'text-emerald-900' : 'text-stone-800'}`}>
+                                    {point.name}
+                                </h4>
+                                <p className="text-xs text-stone-500 font-medium mt-0.5">{point.engName}</p>
+                            </div>
+                        </div>
+                        
+                        <div className={`transform transition-transform duration-300 ${point.expanded ? 'rotate-180' : 'rotate-0'}`}>
+                            <ChevronDown className={`w-6 h-6 ${point.expanded ? 'text-emerald-800' : 'text-stone-400'}`} />
+                        </div>
+                      </div>
+
+                      {point.expanded && (
+                        <div className="px-5 pb-8 animate-in slide-in-from-top-2 duration-300">
+                          <div className="pl-7 ml-1.5 space-y-5 border-l-2 border-emerald-100">
+                              {/* 地點描述 */}
+                              <div className="flex items-start gap-3 text-stone-700 text-sm font-medium bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                                <MapPin className="w-5 h-5 text-emerald-800 flex-shrink-0 mt-0.5" />
+                                <span className="leading-relaxed">{point.location}</span>
+                              </div>
+                              
+                              {/* 圖片區塊 - 支援放大 */}
+                              <div 
+                                className="w-full aspect-video rounded-xl overflow-hidden bg-stone-100 border border-stone-200 relative group/image shadow-sm cursor-zoom-in"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onImageClick(point.image, point.name + " 集合點");
+                                }}
+                              >
+                                {/* [圖片插圖備註]: 集合地點實景圖 */}
+                                <img
+                                  src={point.image}
+                                  alt={`${point.name} 集合點`}
+                                  className="w-full h-full object-contain bg-white transition-transform duration-700 group-hover/image:scale-105"
+                                  onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = 'https://placehold.co/600x400/f1f5f9/94a3b8?text=Image+Not+Found';
+                                  }}
+                                />
+                                <div className="absolute bottom-3 left-4 right-4 pointer-events-none">
+                                    <span className="inline-flex items-center text-[11px] text-white bg-stone-900/60 px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm border border-white/10">
+                                        <Info className="w-3 h-3 mr-1.5" /> 點擊放大查看實景
+                                    </span>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // ==========================================
+        // 主程式組件
+        // ==========================================
+        function App() {
+          const [items, setItems] = useState(EQUIPMENT_DATA.map(item => ({ ...item, checked: false, expanded: false })));
+          const [showConfetti, setShowConfetti] = useState(false);
+          const [allChecked, setAllChecked] = useState(false);
+          const [lightboxImage, setLightboxImage] = useState(null); // { src, alt }
+          const [showResetConfirm, setShowResetConfirm] = useState(false); // 重置確認視窗
+
+          // 計算進度
+          const checkedCount = items.filter(i => i.checked).length;
+          const progress = Math.round((checkedCount / items.length) * 100);
+
+          useEffect(() => {
+            if (progress === 100) {
+              if (!allChecked) {
+                setAllChecked(true);
+                setShowConfetti(true);
+              }
+            } else {
+              setAllChecked(false);
+            }
+          }, [progress, allChecked]);
+
+          const toggleCheck = (id) => {
+            setItems(items.map(item =>
+              item.id === id ? { ...item, checked: !item.checked } : item
+            ));
+          };
+
+          const toggleExpand = (id, e) => {
+            e.stopPropagation();
+            setItems(items.map(item =>
+              item.id === id ? { ...item, expanded: !item.expanded } : item
+            ));
+          };
+
+          const handleImageClick = (src, alt) => {
+              if (src) {
+                  setLightboxImage({ src, alt });
+              }
+          };
+
+          // 點擊重置按鈕 -> 打開確認視窗
+          const resetList = () => {
+            setShowResetConfirm(true);
+          };
+
+          // 確認重置 -> 執行動作
+          const confirmReset = () => {
+            setItems(prevItems => prevItems.map(item => ({ ...item, checked: false, expanded: false })));
+            setShowConfetti(false);
+            setAllChecked(false);
+            setShowResetConfirm(false);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          };
+
+          const handleConfettiFinish = () => {
+            setShowConfetti(false);
+          };
+
+          // 取得標籤樣式的輔助函式 - 墨綠色主題適配
+          const getBadgeStyle = (type) => {
+            switch (type) {
+              case 'warning':
+                return 'bg-amber-50 text-amber-700 border border-amber-200/60';
+              case 'info':
+                return 'bg-emerald-50 text-emerald-800 border border-emerald-200/60';
+              case 'neutral':
+                return 'bg-stone-100 text-stone-600 border border-stone-200';
+              default:
+                return 'bg-stone-100 text-stone-500';
+            }
+          };
+
+          return (
+            <div className={`min-h-screen relative overflow-hidden font-sans text-stone-800 pb-32 selection:bg-emerald-100 selection:text-emerald-900`}>
+              {/* 動態背景元素 - 調整為低飽和度墨綠與灰調 */}
+              <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+                  <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-emerald-900/5 rounded-full mix-blend-multiply filter blur-[80px] animate-blob"></div>
+                  <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-teal-900/5 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000"></div>
+                  <div className="absolute -bottom-32 left-20 w-[500px] h-[500px] bg-stone-400/10 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-4000"></div>
+              </div>
+
+              {/* 恭喜動畫層 */}
+              {showConfetti && <ConfettiAnimation onFinish={handleConfettiFinish} />}
+
+              {/* 重置確認視窗 (Custom Modal) */}
+              {showResetConfirm && (
+                <div className="fixed inset-0 z-[150] bg-stone-900/40 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+                    <div className="bg-white rounded-xl shadow-2xl p-6 max-w-xs w-full animate-in zoom-in-95 duration-200 border border-stone-200">
+                        <h3 className="text-lg font-bold text-stone-800 mb-2">確定要重置嗎？</h3>
+                        <p className="text-stone-600 text-sm mb-6">這將會清空所有已勾選的裝備項目。</p>
+                        <div className="flex gap-3">
+                            <button 
+                                onClick={() => setShowResetConfirm(false)}
+                                className="flex-1 py-2.5 rounded-lg border border-stone-300 text-stone-600 font-medium hover:bg-stone-50 transition-colors"
+                            >
+                                取消
+                            </button>
+                            <button 
+                                onClick={confirmReset}
+                                className="flex-1 py-2.5 rounded-lg bg-emerald-700 text-white font-medium hover:bg-emerald-800 transition-colors shadow-sm"
+                            >
+                                確認重置
+                            </button>
+                        </div>
+                    </div>
+                </div>
+              )}
+
+              {/* Lightbox 圖片放大層 */}
+              {lightboxImage && (
+                <div 
+                    className="fixed inset-0 z-[120] bg-stone-900/95 flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in duration-200"
+                    onClick={() => setLightboxImage(null)}
+                >
+                    {/* 關閉按鈕 - 手機版加大 */}
+                    <button 
+                        className="fixed top-6 right-6 p-4 md:p-3 bg-white/10 rounded-full text-white hover:bg-white/20 transition-all backdrop-blur-md border border-white/10 shadow-lg z-[130]"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setLightboxImage(null);
+                        }}
+                        aria-label="Close"
+                    >
+                        <X className="w-8 h-8 md:w-6 md:h-6" />
+                    </button>
+                    
+                    <img 
+                        src={lightboxImage.src} 
+                        alt={lightboxImage.alt} 
+                        className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl animate-in zoom-in-95 duration-300"
+                        onClick={(e) => e.stopPropagation()} // 點擊圖片不關閉
+                    />
+                    
+                    <div className="absolute bottom-8 left-0 right-0 text-center pointer-events-none">
+                        <span className="inline-block bg-black/60 text-white text-sm px-4 py-2 rounded-full backdrop-blur-sm">
+                            {lightboxImage.alt}
+                        </span>
+                    </div>
+                </div>
+              )}
+
+              {/* Header - 手機優化版 */}
+              <header className={`fixed top-0 inset-x-0 z-50 bg-[#F0F2F0]/90 backdrop-blur-md border-b border-stone-200/60 shadow-sm transition-all duration-300`}>
+                <div className="max-w-3xl mx-auto px-5 h-[72px] flex justify-between items-center">
+                  <div className="flex items-center gap-3.5">
+                    {/* Logo */}
+                    <img 
+                        src="https://www.moposki.com/logo/logo.jpg" 
+                        alt="MOPO Logo"
+                        className="w-10 h-10 rounded-lg object-contain shadow-sm bg-white"
+                    />
+                    
+                    <div className="flex flex-col justify-center">
+                        <h1 className="text-lg font-bold text-stone-900 tracking-tight leading-tight">上課前裝備確認</h1>
+                        <p className="text-[10px] text-emerald-800 font-bold tracking-widest uppercase mt-0.5 opacity-80">Pre-Lesson Check</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={resetList}
+                    className="text-stone-400 hover:text-emerald-800 hover:bg-stone-200/50 p-3 rounded-full transition-all active:scale-95 active:bg-stone-300/50"
+                    aria-label="重置清單"
+                  >
+                    <RefreshCw className="w-6 h-6" />
+                  </button>
+                </div>
+                
+                {/* Progress Line - 改為深綠色 */}
+                <div className="absolute bottom-0 left-0 w-full h-[3px] bg-stone-200">
+                  <div
+                    className={`h-full bg-emerald-800 transition-all duration-700 ease-out`}
+                    style={{ width: `${progress}%` }}
+                  ></div>
+                </div>
+              </header>
+
+              {/* Spacer for fixed header */}
+              <div className="h-[72px]"></div>
+
+              <main className="max-w-3xl mx-auto px-4 py-6 md:px-6 relative z-10">
+                {/* Intro Card */}
+                <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-5 border border-stone-200 mb-8 flex flex-col md:flex-row md:items-start gap-4 shadow-sm">
+                    <div className="flex items-center gap-3 md:items-start">
+                        <div className="p-2.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 shadow-sm shrink-0">
+                            <Info className="w-6 h-6" />
+                        </div>
+                        <h2 className="text-lg text-stone-900 font-bold md:hidden">
+                            Welcome to MOPO
+                        </h2>
+                    </div>
+                    <div>
+                      <h2 className="text-lg text-stone-900 font-bold mb-2 hidden md:block">
+                        Welcome to MOPO Ski School
+                      </h2>
+                      <p className="text-sm text-stone-600 leading-relaxed">
+                        歡迎來到 MOPO 滑雪學校！為了讓您的滑雪之旅更順利有趣，我們準備了一份貼心的裝備檢查清單，請您逐一確認喔。
+                        <br/>
+                        <a href="#meeting-points" className="inline-flex items-center mt-3 text-emerald-800 hover:text-emerald-900 font-bold text-xs uppercase tracking-wide border-b border-emerald-200 hover:border-emerald-800 pb-0.5 transition-all">
+                            跳至集合地點 <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                        </a>
+                      </p>
+                    </div>
+                </div>
+
+                {/* 狀態指示條 */}
+                <div className="flex justify-between items-end mb-4 px-1">
+                    <span className="text-xs font-bold text-stone-500 uppercase tracking-widest">Check List</span>
+                    <span className="text-xs font-medium text-emerald-800 bg-white/60 backdrop-blur-sm px-2.5 py-1 rounded-md border border-stone-200 shadow-sm">
+                        完成度: {checkedCount} / {items.length}
+                    </span>
+                </div>
+
+                {/* List Items */}
+                <div className="space-y-4">
+                  {items.map((item) => (
+                    <div
+                      key={item.id}
+                      className={`rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-sm ${
+                        item.checked 
+                        ? `border-emerald-800/30 bg-emerald-50/50` 
+                        : `border-stone-200 bg-white/80 hover:border-emerald-800/50 hover:shadow-md hover:-translate-y-0.5`
+                      }`}
+                    >
+                      {/* Main Click Area */}
+                      <div
+                        className="p-5 flex items-center gap-4 cursor-pointer select-none group active:bg-stone-50 transition-colors"
+                        onClick={() => toggleCheck(item.id)}
+                      >
+                        {/* Checkbox - 深墨綠色風格 */}
+                        <div className={`
+                          flex-shrink-0 w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all duration-300
+                          ${item.checked
+                            ? `bg-emerald-800 border-emerald-800 text-white shadow-sm scale-100`
+                            : `border-stone-300 bg-white text-transparent group-hover:border-emerald-800`}
+                        `}>
+                          <Check className="w-5 h-5 stroke-[3]" />
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-1">
+                            <h3 className={`font-bold text-[17px] leading-tight transition-colors duration-300 ${item.checked ? 'text-stone-400 line-through decoration-stone-300' : 'text-stone-800'}`}>
+                              {item.name}
+                            </h3>
+                            {/* Badge */}
+                            {!item.checked && item.badge && (
+                              <span className={`text-[11px] font-bold px-2 py-0.5 rounded ${getBadgeStyle(item.badgeType)}`}>
+                                {item.badge}
+                              </span>
+                            )}
+                          </div>
+                          
+                          {/* Subtitle / English Name */}
+                          <div className={`flex items-center gap-2 text-xs transition-opacity ${item.checked ? 'opacity-0' : 'opacity-100'}`}>
+                              <span className="text-emerald-800 opacity-80">{item.icon}</span>
+                              <span className="text-stone-400 font-bold uppercase tracking-wider text-[10px]">{item.engName}</span>
+                          </div>
+                        </div>
+
+                        {/* Expand Button */}
+                        <button
+                          onClick={(e) => toggleExpand(item.id, e)}
+                          className={`p-3 -mr-2 rounded-full transition-all ${
+                            item.expanded ? 'bg-stone-100 text-emerald-800' : 'text-stone-400 hover:text-stone-600 hover:bg-stone-100'
+                          }`}
+                        >
+                          {item.expanded ? <ChevronUp className="w-6 h-6" /> : <ChevronDown className="w-6 h-6" />}
+                        </button>
+                      </div>
+
+                      {/* Expanded Details */}
+                      {item.expanded && (
+                        <div className="px-5 pb-6 pl-[4.25rem] animate-in fade-in slide-in-from-top-1 duration-200">
+                          <div className="space-y-4">
+                              <p className="text-stone-600 text-[15px] leading-relaxed whitespace-pre-line">
+                                {item.description}
+                              </p>
+                              
+                              {/* Tips Box */}
+                              <div className="flex items-start gap-3 text-sm bg-amber-50/80 p-4 rounded-xl border border-amber-200/60">
+                                <AlertCircle className="w-5 h-5 text-amber-700 mt-0.5 flex-shrink-0" />
+                                <span className="text-amber-900/90 leading-relaxed text-xs md:text-sm">
+                                    <span className="text-amber-800 font-bold block mb-1">MOPO 教練的小提醒</span>
+                                    {item.tips}
+                                </span>
+                              </div>
+
+                              {/* 裝備圖片顯示區塊 (支援放大) */}
+                              <div 
+                                className="mt-4 w-full aspect-video md:h-48 rounded-xl bg-stone-100 border border-stone-200 overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow cursor-zoom-in"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleImageClick(item.image, item.name);
+                                }}
+                              >
+                                 {item.image ? (
+                                    <img 
+                                        src={item.image} 
+                                        alt={`${item.name} 示意圖`}
+                                        className="w-full h-full object-contain bg-white transition-transform duration-700 group-hover:scale-105"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            e.target.nextSibling.style.display = 'flex';
+                                        }}
+                                    />
+                                 ) : null}
+                                 
+                                 {/* 圖片載入失敗或是沒有圖片時顯示的後備內容 */}
+                                 <div 
+                                    className="flex flex-col items-center justify-center w-full h-full absolute inset-0 bg-stone-100"
+                                    style={{ display: item.image ? 'none' : 'flex' }}
+                                 >
+                                    {React.cloneElement(item.icon, { className: "w-10 h-10 opacity-30 text-stone-500 mb-2" })}
+                                    <span className="text-[10px] uppercase tracking-wider font-medium text-stone-400">
+                                        尚無圖片
+                                    </span>
+                                 </div>
+
+                                 <div className="absolute bottom-2 right-2 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                                     <span className="bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm">
+                                         點擊放大
+                                     </span>
+                                 </div>
+                              </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* 集合地點區塊 */}
+                <MeetingPoints onImageClick={handleImageClick} />
+                
+                {/* Footer */}
+                <div className="mt-20 text-center pb-8 border-t border-stone-200/60 pt-8">
+                    <p className="text-stone-400 text-xs font-bold uppercase tracking-widest">MOPO Ski School</p>
+                    <p className="text-stone-300 text-[10px] mt-1 font-medium">Make Our Planet Outstanding</p>
+                </div>
+              </main>
+            </div>
+          );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
