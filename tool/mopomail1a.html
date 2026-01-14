@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MOPO 滑雪課程預約信件生成器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@600&display=swap');
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f4f4f4;
+            /* Prevent horizontal scroll on mobile */
+            overflow-x: hidden;
+        }
+
+        /* MOPO Brand Colors */
+        :root {
+            --mopo-green: #1B4D3E;
+            --mopo-gold: #D4AF37;
+            --mopo-gold-hover: #b5952f;
+        }
+
+        .text-mopo-green { color: var(--mopo-green); }
+        .bg-mopo-green { background-color: var(--mopo-green); }
+        .border-mopo-green { border-color: var(--mopo-green); }
+        
+        .text-mopo-gold { color: var(--mopo-gold); }
+        .bg-mopo-gold { background-color: var(--mopo-gold); }
+        .hover-bg-mopo-gold:hover { background-color: var(--mopo-gold-hover); }
+
+        .preview-box {
+            white-space: pre-wrap; /* Preserve line breaks */
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #999; 
+        }
+
+        /* Mobile specific fixes */
+        input, select {
+            /* Fix iOS zoom on focus */
+            font-size: 16px !important; 
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Login Screen Overlay -->
+    <div id="login-screen" class="fixed inset-0 bg-mopo-green z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-sm w-full text-center">
+            <h2 class="text-2xl font-bold text-mopo-green mb-2" style="font-family: 'Playfair Display', serif;">MOPO STAFF ONLY</h2>
+            <p class="text-gray-500 mb-6 text-sm">請輸入內部通關密碼</p>
+            
+            <input type="password" id="password-input" class="w-full p-3 border border-gray-300 rounded mb-4 text-center focus:outline-none focus:border-mopo-gold" placeholder="Password">
+            
+            <button onclick="checkPassword()" class="w-full bg-mopo-gold text-white font-bold py-3 rounded hover:bg-yellow-600 transition">
+                進入系統 (Enter)
+            </button>
+            <p id="error-msg" class="text-red-500 text-xs mt-3 hidden">密碼錯誤 (Invalid Password)</p>
+        </div>
+    </div>
+
+    <!-- Main Content (Hidden by default) -->
+    <div id="app-content" class="max-w-7xl mx-auto p-3 md:p-8 hidden">
+        <!-- Header -->
+        <header class="mb-6 md:mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-mopo-green mb-2" style="font-family: 'Playfair Display', serif;">
+                MOPO SKI SCHOOL
+            </h1>
+            <p class="text-gray-600 text-sm md:text-base tracking-wide">預約信件自動生成系統</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            
+            <!-- Left Side: Input Form (5 columns) -->
+            <div class="lg:col-span-5 space-y-4 md:space-y-6">
+                
+                <!-- Language Selector Card -->
+                <div class="bg-white rounded-none border-t-4 border-mopo-green shadow-sm p-4 md:p-6">
+                    <h2 class="text-lg font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+                        1. 選擇信件版本 (Version)
+                    </h2>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50 flex-1 border border-transparent hover:border-gray-200 transition">
+                            <input type="radio" name="emailLang" value="zh" checked class="w-5 h-5 text-mopo-green focus:ring-mopo-green">
+                            <span class="text-gray-700 font-medium">中文版</span>
+                        </label>
+                        <label class="flex items-center space-x-2 cursor-pointer p-2 rounded hover:bg-gray-50 flex-1 border border-transparent hover:border-gray-200 transition">
+                            <input type="radio" name="emailLang" value="en" class="w-5 h-5 text-mopo-green focus:ring-mopo-green">
+                            <span class="text-gray-700 font-medium">English</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Input Form Card -->
+                <div class="bg-white rounded-none border-t-4 border-mopo-gold shadow-sm p-4 md:p-6">
+                    <h2 class="text-lg font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+                        2. 輸入課程資訊 (Info)
+                    </h2>
+
+                    <form id="emailForm" class="space-y-4 md:space-y-5">
+                        
+                        <!-- Student Name -->
+                        <div>
+                            <label class="block text-base font-bold text-gray-700 mb-1">學生名稱 (Name)</label>
+                            <input type="text" id="studentName" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none transition rounded-none" placeholder="例如：王小明 / John Doe">
+                        </div>
+
+                        <!-- Date & Duration Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Date -->
+                            <div>
+                                <label class="block text-base font-bold text-gray-700 mb-1">預約日期 (Date)</label>
+                                <input type="date" id="lessonDate" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
+                            </div>
+                            
+                            <!-- Duration (New) -->
+                            <div>
+                                <label class="block text-base font-bold text-gray-700 mb-1">課程時數 (Duration)</label>
+                                <select id="duration" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
+                                    <option value="full">全日 (Full Day)</option>
+                                    <option value="half">半日 (Half Day)</option>
+                                    <option value="night">夜滑 (Night Ski)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Resort -->
+                        <div>
+                            <label class="block text-base font-bold text-gray-700 mb-1">雪場 (Resort)</label>
+                            <select id="resort" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
+                                <option value="手稻/Teine">Teine 手稻</option>
+                                <option value="Sapporo Kokusai 札幌國際">Sapporo Kokusai 札幌國際</option>
+                                <option value="ONZE">ONZE</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Discipline -->
+                            <div>
+                                <label class="block text-base font-bold text-gray-700 mb-1">課程種類 (Discipline)</label>
+                                <select id="discipline" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
+                                    <option value="單板滑雪 Snowboard">單板 (Snowboard)</option>
+                                    <option value="雙板滑雪 Ski">雙板 (Ski)</option>
+                                </select>
+                            </div>
+                            
+                            <!-- People -->
+                            <div>
+                                <label class="block text-base font-bold text-gray-700 mb-1">人數 (People)</label>
+                                <input type="text" id="people" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none" placeholder="1組（1人）" value="1組（1人）">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Language -->
+                            <div>
+                                <label class="block text-base font-bold text-gray-700 mb-1">授課語言 (Language)</label>
+                                <select id="language" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
+                                    <option value="中文（偏好）">中文</option>
+                                    <option value="英文 English">英文 (English)</option>
+                                    <option value="廣東話 Cantonese">廣東話 (Cantonese)</option>
+                                </select>
+                            </div>
+
+                            <!-- Price -->
+                            <div>
+                                <label class="block text-base font-bold text-gray-700 mb-1">最終金額 (Total)</label>
+                                <div class="relative">
+                                    <input type="text" id="price" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none" placeholder="60,000">
+                                    <span class="absolute right-3 top-3 text-gray-500 text-sm font-bold">JPY</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Notice Toggle -->
+                        <div class="bg-gray-50 p-4 border-l-4 border-gray-300 mt-4">
+                            <label class="flex items-start space-x-3 cursor-pointer">
+                                <input type="checkbox" id="showPaymentNotice" checked class="mt-1 w-5 h-5 text-mopo-green rounded focus:ring-mopo-green">
+                                <div>
+                                    <span class="text-sm md:text-base text-gray-800 font-bold">包含「付款系統更新」通知</span>
+                                    <p class="text-xs text-gray-500 mt-0.5">Include "Payment System Update" notice</p>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <!-- Mobile Only: Scroll to Preview Button -->
+                        <div class="block lg:hidden pt-2">
+                             <button type="button" onclick="document.getElementById('preview-section').scrollIntoView({behavior: 'smooth'})" class="w-full bg-gray-800 text-white py-3 px-4 font-bold rounded-none hover:bg-gray-700 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-arrow-down"></i> 查看預覽 & 複製 (Preview)
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side: Preview (7 columns) -->
+            <div id="preview-section" class="lg:col-span-7 flex flex-col gap-6 pt-4 lg:pt-0">
+                
+                <!-- Subject Preview -->
+                <div class="bg-white rounded-none shadow-sm border border-gray-200">
+                    <div class="bg-mopo-green px-4 py-3 md:px-6 flex justify-between items-center sticky top-0 z-10">
+                        <h2 class="text-white font-medium tracking-wide text-sm md:text-base">標題 (Subject)</h2>
+                        <button onclick="copyToClipboard('emailSubject')" class="text-xs bg-mopo-gold hover:bg-yellow-600 text-white px-3 py-2 transition uppercase font-bold tracking-wider rounded-sm">
+                            COPY
+                        </button>
+                    </div>
+                    <div id="emailSubject" class="text-gray-800 font-medium p-4 bg-white text-sm md:text-base">
+                        <!-- Subject will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Body Preview -->
+                <div class="bg-white rounded-none shadow-sm border border-gray-200 flex-grow flex flex-col">
+                    <div class="bg-gray-800 px-4 py-3 md:px-6 flex justify-between items-center sticky top-0 z-10">
+                        <h2 class="text-white font-medium tracking-wide text-sm md:text-base">內容 (Body)</h2>
+                        <button onclick="copyToClipboard('emailBody')" class="text-xs bg-mopo-gold hover:bg-yellow-600 text-white px-3 py-2 transition uppercase font-bold tracking-wider flex items-center gap-2 rounded-sm">
+                            <i class="fa-regular fa-copy"></i> <span class="hidden md:inline">COPY CONTENT</span><span class="md:hidden">COPY</span>
+                        </button>
+                    </div>
+                    <!-- Height adjusted for mobile: h-96 on small screens, h-[650px] on desktop -->
+                    <div id="emailBody" class="preview-box text-sm md:text-base text-gray-800 p-4 md:p-6 bg-white h-96 lg:h-[650px] overflow-y-auto border-t border-gray-100">
+                        <!-- Body will be injected here -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 md:translate-x-0 md:left-auto md:right-8 bg-mopo-green text-white px-6 py-3 shadow-2xl translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3 z-50 rounded-full md:rounded-none w-max">
+        <i class="fa-solid fa-check text-mopo-gold"></i>
+        <span class="font-medium">Copied! 已複製</span>
+    </div>
+
+    <script>
+        // --- Security / Login Logic ---
+        // 設定您的密碼 (您可以修改這裡)
+        const STAFF_PASSWORD = "mopo66"; 
+
+        function checkPassword() {
+            const input = document.getElementById('password-input');
+            const errorMsg = document.getElementById('error-msg');
+            const loginScreen = document.getElementById('login-screen');
+            const appContent = document.getElementById('app-content');
+
+            if (input.value === STAFF_PASSWORD) {
+                // Password Correct
+                loginScreen.classList.add('hidden'); // Hide Login
+                appContent.classList.remove('hidden'); // Show App
+                
+                // Initialize default date
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                inputs.date.valueAsDate = tomorrow;
+                generateEmail(); // Generate initial preview
+            } else {
+                // Password Incorrect
+                errorMsg.classList.remove('hidden');
+                input.classList.add('border-red-500');
+                input.value = '';
+            }
+        }
+
+        // Allow pressing "Enter" to login
+        document.getElementById('password-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+
+        // --- Generator Logic (Original Code) ---
+
+        // Data Elements
+        const inputs = {
+            name: document.getElementById('studentName'),
+            date: document.getElementById('lessonDate'),
+            duration: document.getElementById('duration'),
+            resort: document.getElementById('resort'),
+            discipline: document.getElementById('discipline'),
+            people: document.getElementById('people'),
+            language: document.getElementById('language'),
+            price: document.getElementById('price'),
+            showPayment: document.getElementById('showPaymentNotice'),
+            langRadios: document.getElementsByName('emailLang')
+        };
+
+        const outputs = {
+            subject: document.getElementById('emailSubject'),
+            body: document.getElementById('emailBody')
+        };
+
+        // Helper: Format Date
+        function formatDate(dateStr, lang) {
+            if (!dateStr) return lang === 'en' ? 'YYYY/MM/DD' : '202X年X月XX日';
+            const d = new Date(dateStr);
+            if (lang === 'en') {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return d.toLocaleDateString('en-US', options);
+            } else {
+                return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+            }
+        }
+
+        // Helper: Format Number with commas
+        function formatNumber(numStr) {
+            if (!numStr) return '';
+            const clean = numStr.replace(/\D/g, '');
+            return Number(clean).toLocaleString();
+        }
+
+        function getSelectedLang() {
+            for (let radio of inputs.langRadios) {
+                if (radio.checked) return radio.value;
+            }
+            return 'zh';
+        }
+
+        // Main Generator Function
+        function generateEmail() {
+            const lang = getSelectedLang();
+            const dateFormatted = formatDate(inputs.date.value, lang);
+            const rawPrice = inputs.price.value;
+            const priceFormatted = rawPrice ? formatNumber(rawPrice) : 'XXX';
+            
+            // Logic for subject line parts
+            let resortFull = inputs.resort.value;
+            let subjectResort = '';
+            
+            if (resortFull.includes('手稻')) subjectResort = lang === 'en' ? 'Teine' : '手稻';
+            else if (resortFull.includes('札幌國際')) subjectResort = lang === 'en' ? 'Sapporo Kokusai' : '札幌國際';
+            else subjectResort = 'ONZE';
+
+            let disciplineVal = inputs.discipline.value;
+            let subjectDiscipline = '';
+            if (disciplineVal.includes('Snowboard')) subjectDiscipline = lang === 'en' ? 'Snowboard' : '單板';
+            else subjectDiscipline = lang === 'en' ? 'Ski' : '雙板';
+
+            const studentName = inputs.name.value.trim() || (lang === 'en' ? '(Student Name)' : '學生名稱');
+
+            if (lang === 'zh') {
+                generateChineseEmail(dateFormatted, subjectResort, subjectDiscipline, priceFormatted, studentName);
+            } else {
+                generateEnglishEmail(dateFormatted, subjectResort, subjectDiscipline, priceFormatted, studentName);
+            }
+        }
+
+        function generateChineseEmail(date, subjectResort, subjectDiscipline, price, name) {
+            // Subject
+            outputs.subject.innerText = `【確認您的預約】${date} ${subjectResort} ${subjectDiscipline}滑雪課程 - MOPO滑雪學校`;
+
+            // Payment Section Logic
+            let paymentSection = '';
+            if (inputs.showPayment.checked) {
+                paymentSection = `
+【關於付款】 付款系統預計於 1 月底前 完成更新。屆時我們會再發信請您確認並完成付款；
+在此之前，我們將為您優先保留預訂名額。`;
+            } else {
+                paymentSection = `
+【關於付款】 請依照後續郵件指示完成付款，我們將為您保留預訂名額。`;
+            }
+
+            // Duration Logic
+            const durationType = inputs.duration.value;
+            let durationText = '（1天）'; // Default fallback
+            let timeBlock = '';
+
+            if (durationType === 'full') {
+                durationText = '（全日）';
+                timeBlock = `【上課時間】 本校基本授課時間為 9:30-15:30。
+如需調整時間，歡迎來信詢問或於課前與教練討論。`;
+            } else if (durationType === 'half') {
+                durationText = '（半日）';
+                timeBlock = `【上課時間】 本校基本授課時間為
+上午班 9:30-12:30
+下午班 13:30-16:30
+如需調整時間，歡迎來信詢問或於課前與教練討論。`;
+            } else if (durationType === 'night') {
+                durationText = '（夜滑）';
+                timeBlock = `【上課時間】 本校基本授課時間為
+16:30~18:30
+如需調整時間，歡迎來信詢問或於課前與教練討論。`;
+            }
+
+            // Body
+            const body = `${name} 您好：
+
+感謝您的預訂，我們已確認您的預訂日期如下：
+
+
+日期 / 上課時間：${date}${durationText}
+
+課程 / Discipline：${inputs.discipline.value}
+
+人數 / People：${inputs.people.value}
+
+雪場 / Resort：${inputs.resort.value}
+
+授課語言 / Lesson language：${inputs.language.value}
+
+最終金額 / Final total：${price} 日圓
+
+${paymentSection}
+
+${timeBlock}
+
+【相關連結】 為了讓您的行程更順利，
+請事先查看： 👉裝備確認表與集合地點確認
+https://www.moposki.com/safe/checklist.html
+歡迎多加使用
+
+
+預約流程簡介：
+
+預約詢問 – 確認課程空位。
+確認預約 – 確認名額後，工作人員將聯繫並安排付款。
+課前聯繫 – 教練將於課程前 3～5 天主動聯繫，確認目標、集合地點與詳細資訊。
+課程當天 – 請於指定地點與教練會合，開啟滑雪之旅！
+課後回饋 – 教練將提供影片講解與建議，協助您持續進步。
+
+
+聯絡我們： 若有任何疑問，歡迎隨時聯繫： Email: support@moposki.com
+
+MOPO 滑雪學校致力於提供專業、安全、值得信賴的體驗，期待與您共度愉快的滑雪時光！
+
+
+Warm regards,
+
+MOPO滑雪學校
+
+客服團隊
+
+MOPO Ski School
+—————————————————————————————————————
+MOPO滑雪學校 MOPO Ski School
+www.moposki.com
+Email : support@moposki.com
+Booking Hotline : +81(0)7044206343`;
+            outputs.body.innerText = body;
+        }
+
+        function generateEnglishEmail(date, subjectResort, subjectDiscipline, price, name) {
+            // Subject
+            outputs.subject.innerText = `[Booking Confirmation] ${date} ${subjectResort} ${subjectDiscipline} Lesson - MOPO Ski School`;
+
+            // Payment Section Logic
+            let paymentSection = '';
+            if (inputs.showPayment.checked) {
+                paymentSection = `
+【Payment】 The payment system is expected to be updated by the end of January. 
+We will email you again to confirm and complete the payment then. 
+In the meantime, we have reserved your spot as a priority.`;
+            } else {
+                paymentSection = `
+【Payment】 Please follow the instructions in the subsequent email to complete the payment. 
+Your spot is currently reserved.`;
+            }
+
+            // Duration Logic
+            const durationType = inputs.duration.value;
+            let durationText = ' (1 Day)'; // Default fallback
+            let timeBlock = '';
+
+            if (durationType === 'full') {
+                durationText = ' (Full Day)';
+                timeBlock = `【Lesson Time】 Our standard lesson time is 9:30 - 15:30.
+If you need to adjust the time, please email us or discuss it with your instructor before the lesson.`;
+            } else if (durationType === 'half') {
+                durationText = ' (Half Day)';
+                timeBlock = `【Lesson Time】 Our standard lesson times are:
+Morning: 9:30 - 12:30
+Afternoon: 13:30 - 16:30
+If you need to adjust the time, please email us or discuss it with your instructor before the lesson.`;
+            } else if (durationType === 'night') {
+                durationText = ' (Night Ski)';
+                timeBlock = `【Lesson Time】 Our standard lesson time is:
+16:30 - 18:30
+If you need to adjust the time, please email us or discuss it with your instructor before the lesson.`;
+            }
+
+            // Body
+            const body = `Dear ${name},
+
+Thank you for your booking. We have confirmed your reservation details as follows:
+
+
+Date / Time: ${date}${durationText}
+
+Discipline: ${inputs.discipline.value}
+
+People: ${inputs.people.value}
+
+Resort: ${inputs.resort.value}
+
+Lesson Language: ${inputs.language.value}
+
+Final Total: ${price} JPY
+
+${paymentSection}
+
+${timeBlock}
+
+【Useful Links】 For a smoother trip, please check in advance:
+👉 Equipment Checklist & Meeting Point
+https://www.moposki.com/safe/en_checklist.html
+
+
+Booking Process:
+
+1. Inquiry – Confirm lesson availability.
+2. Confirmation – Once the spot is confirmed, our staff will contact you for payment.
+3. Pre-lesson Contact – Your instructor will contact you 3-5 days before the lesson to confirm goals, meeting point, and details.
+4. Lesson Day – Meet your instructor at the designated spot and start your ski journey!
+5. Feedback – The instructor will provide video analysis and advice to help you improve.
+
+
+Contact Us: If you have any questions, please feel free to contact us: 
+Email: support@moposki.com
+
+MOPO Ski School is dedicated to providing a professional, safe, and trustworthy experience. We look forward to seeing you on the slopes!
+
+
+Warm regards,
+
+MOPO Ski School
+
+Customer Support Team
+
+—————————————————————————————————————
+MOPO Ski School
+www.moposki.com
+Email : support@moposki.com
+Booking Hotline : +81(0)7044206343`;
+            outputs.body.innerText = body;
+        }
+
+        // Add Event Listeners
+        Object.values(inputs).forEach(item => {
+            // Check if it's a NodeList (like the radio buttons)
+            if (item && item.length !== undefined && !item.addEventListener) { 
+                Array.from(item).forEach(radio => radio.addEventListener('change', generateEmail));
+            } else if (item) {
+                item.addEventListener('input', generateEmail);
+                item.addEventListener('change', generateEmail);
+            }
+        });
+
+        // Copy Function
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            showToast();
+        }
+
+        // Toast Notification
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2000);
+        }
+
+        // Initial Run moved to inside checkPassword() success
+        // const tomorrow = new Date();
+        // tomorrow.setDate(tomorrow.getDate() + 1);
+        // inputs.date.valueAsDate = tomorrow;
+        // generateEmail();
+
+    </script>
+</body>
+</html>
