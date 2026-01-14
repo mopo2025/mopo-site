@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MOPO Ski School｜Private Ski & Snowboard Lessons in Sapporo, Hokkaido</title>
-<meta name="description" content="MOPO Ski School｜Ski & snowboard lessons in the Sapporo area. Professional instruction in Japanese, English, Chinese & Cantonese, for beginners to intermediates.">
+<meta name="description" content="MOPO Ski School｜Ski & snowboard lessons in the Sapporo area. Professional instruction in Japanese, English, Mandarin & Cantonese, for beginners to intermediates.">
 <!-- ✅ 新增：SEO / Open Graph / Twitter Card -->
   <link rel="canonical" href="https://www.moposki.com/en_mopoindex.html" />
 
@@ -49,6 +49,7 @@ body {
   --midnight:#0D1B2A;
   --gold:#C8A45D; --gold-2:#E4CFA3;
   --ink:#0E1A24; --ink-soft:#3E4A57;
+  --green-dark:#1A4D2E; /* 墨綠色 */
 
   --shadow:0 18px 50px rgba(13,27,42,.10);
   --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
@@ -181,6 +182,11 @@ h1{margin:0 0 4px 0}
 .section__head h2{margin:0 0 8px; font-size:26px; letter-spacing:.02em; color:#1; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
 .muted{color:var(--ink-soft); font-size:14px}
 
+/* モバイル用セクションパディング調整（64px -> 40px） */
+@media (max-width:760px) {
+  .section { padding:40px 0; }
+}
+
 /* reveal */
 .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
 .reveal.in{opacity:1; transform:none}
@@ -240,7 +246,7 @@ h1{margin:0 0 4px 0}
 .cta-row{display:none}
 @media (max-width:760px){
   .hero__wrap{grid-template-columns:1fr}
-  .section{padding:64px 0}
+  /* .section padding removed from here, handled above globally */
   .pricecard summary{grid-template-columns:1fr; gap:4px; padding:12px}
   .pricecard .title{font-size:16px}
   .pricecard .desc{font-size:12px}
@@ -320,7 +326,7 @@ h1{margin:0 0 4px 0}
   padding: var(--aboutPad) 0;
   background:transparent;
   overflow:hidden;
-  transition: padding .9s ease-in-out; /* 平滑縮放與回彈 */
+  transition: padding .5s ease-in-out; /* 加快過渡時間至 0.5s 以減少延遲感 */
   will-change: padding;
 }
 .about-hero__bg{ position:absolute; inset:0; overflow:hidden; }
@@ -373,8 +379,8 @@ h1{margin:0 0 4px 0}
 /* 縮高度（16vh） */
 .about-hero.compact{ --aboutPad: clamp(80px, 16vh, 180px); }
 
-/* Hero 邊界淡化（保留原效果） */
-.hero.dim .hero__bg{ filter:grayscale(0.9) brightness(.96) blur(1px); transition:filter .35s ease; }
+/* Hero 邊界淡化（移除黑白濾鏡） */
+.hero.dim .hero__bg{ filter:brightness(.96) blur(1px); transition:filter .35s ease; }
 .hero.dim .content{ opacity:.35; transition:opacity .35s ease; }
 
 /* 透明感按鈕 */
@@ -441,6 +447,108 @@ h1{margin:0 0 4px 0}
   overflow: hidden;
 }
 
+/* ===== 為什麼選擇 MOPO (圖示置中 + 可愛風 + 修復版面) ===== */
+    #why-mopo { background:var(--bg-mid); }
+    #why-mopo .section__head { text-align: center; max-width: 800px; margin: 0 auto 32px; }
+    #why-mopo .section__head h2 { font-size: 22px; }
+
+    .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:10px; }
+    
+    /* 可愛雪花圖標樣式 */
+    .snow-icon {
+      width: 32px; /* 稍微放大一點點 */
+      height: 32px;
+      color: var(--gold);
+      display: block; 
+      margin: 0 auto 12px auto; /* 確保置中 */
+    }
+    
+    /* 統一卡片樣式設定 */
+    .why-item {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-left: 4px solid var(--green-dark);
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 內容置中 */
+      text-align: center; /* 文字置中 */
+      min-width: 0; /* 防止 Grid 破版 */
+    }
+    
+    .why-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(200,164,93,0.15);
+      border-color: var(--gold);
+      z-index: 2;
+    }
+
+    .why-item h3 { 
+      font-size:18px; 
+      font-weight:700; 
+      color:var(--green-dark); 
+      margin:0 0 12px 0; 
+      line-height: 1.4;
+    }
+    .why-item p { 
+      font-size:15px; 
+      color:#555; 
+      margin:0; 
+      text-align: left; /* 內文保持靠左閱讀較舒適 */
+      line-height: 1.7; 
+    }
+    
+    /* 手機版樣式 */
+    .why-mob { display:none; }
+    .why-mob-list { display:flex; flex-direction:column; gap:16px; }
+    .why-mob-card {
+      background: #fff;
+      border: 1px solid #e6e6e6;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .why-mob-card:active { transform: scale(0.98); }
+    
+    .why-mob-card h4 { 
+      font-size:16px; 
+      font-weight:700; 
+      color:var(--green-dark); 
+      margin:0 0 8px 0; 
+      line-height: 1.4;
+    }
+    .why-mob-card p { 
+      font-size:14px; 
+      color:#555; 
+      margin:0; 
+      text-align: left;
+      line-height: 1.6; 
+    }
+
+    @media (max-width: 760px) {
+      .why-desk { display:none; }
+      .why-mob { display:block; }
+      .why-grid { grid-template-columns: 1fr; } /* 保險起見 */
+    }
+
+    /* === 修改處：減少「為什麼選擇 MOPO」與「課程價格」之間的間距 (加強版) === */
+    #why-mopo { padding-bottom: 30px; }
+    #pricing { padding-top: 30px; }
+    @media (max-width: 760px) {
+        /* 強制縮減手機版上下間距，使用 !important 確保覆蓋 */
+        #why-mopo { padding-bottom: 20px !important; }
+        #pricing { padding-top: 20px !important; }
+    }
 
 </style>
 </head>
@@ -564,7 +672,7 @@ h1{margin:0 0 4px 0}
               <a class="news-card" href="en_teine.html"><img src="news/ja_news-2.png" alt="Latest news 3" loading="lazy" decoding="async"></a>
               <a class="news-card" href="en_kokusai.html"><img src="news/ja_news-3.png" alt="Latest news 4" loading="lazy" decoding="async"></a>
               <a class="news-card" href="en_onze.html"><img src="news/ja_news-4.png" alt="Latest news 5" loading="lazy" decoding="async"></a>
-             
+              
             </div>
           </div>
         </section>
@@ -607,6 +715,92 @@ h1{margin:0 0 4px 0}
 </div>
   </section>
 
+  <!-- 新增：Why Choose MOPO 英文版 -->
+  <section id="why-mopo" class="section reveal" aria-label="Why Choose MOPO">
+    <div class="container">
+      <div class="section__head">
+        <h2>Why Choose MOPO Ski School?</h2>
+      </div>
+      
+      <!-- 桌機版 -->
+      <div class="why-desk">
+        <div class="why-grid">
+          <div class="why-item">
+            <!-- 圓潤可愛雪花 -->
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>1. Officially Licensed & Certified</h3>
+            <p>We are a fully registered Japanese company with official teaching permits from the ski resorts. Enjoy a safe, secure, and high-quality lesson experience with total peace of mind.</p>
+          </div>
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>2. Small Groups & Tailored Instruction</h3>
+            <p>We specialize in small group lessons to ensure focused attention for every student. Our instructors adapt the pace and content to your fitness level and progress, creating the most effective learning experience for you.</p>
+          </div>
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>3. Multilingual Support</h3>
+            <p>Designed for international travelers. We offer instruction in English, Chinese, Cantonese, and Japanese. Learn without language barriers in a relaxed and friendly atmosphere.</p>
+          </div>
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>4. Photos & Videos Included</h3>
+            <p>We capture your best moments and learning progress during the lesson. You'll receive high-quality photos and videos afterwards—perfect for memories and technique analysis.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 手機版 -->
+      <div class="why-mob">
+        <div class="why-mob-list">
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>[Officially Licensed]</h4>
+            <p>Certified by ski resorts for a safe and secure experience.</p>
+          </div>
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>[Tailored Progress]</h4>
+            <p>Small groups adapted to your pace—never worry about falling behind.</p>
+          </div>
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>[Multilingual Support]</h4>
+            <p>Lessons in English, Chinese, Cantonese, and Japanese. Easy communication.</p>
+          </div>
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>[Photo & Video Memories]</h4>
+            <p>We capture your ride. Great for memories and analyzing your technique.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 料金（単一展開） -->
   <section id="pricing" class="section reveal" aria-label="Pricing and plans">
     <div class="container">
@@ -643,7 +837,7 @@ h1{margin:0 0 4px 0}
             </div>
             <div class="season">
               <h4>Peak Season Rate</h4>
-             
+              
               <table class="table" aria-label="Teine Peak Season Rate">
                 <thead><tr><th class="people">People</th><th class="price">Price</th><th></th></tr></thead>
                 <tbody>
@@ -814,10 +1008,8 @@ Liability insurance is included. Lift tickets, rental gear, transportation, and 
         <aside aria-label="Social & contacts" class="reveal" style="align-self:start">
           <h3 style="margin:0 0 8px 0;font-size:18px;color:#1">Follow us</h3>
           <div class="sns" style="display:flex; gap:10px; flex-wrap:wrap;">
-            <!-- ✅ 新增 lazy loading 到社群圖示 -->
-            <a href="https://x.com/moposkischool?s=21&t=SMv0gAuFKA2NeZTjB2OMRw" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-              <img src="logo/x.png" alt="X" width="28" height="28" loading="lazy" decoding="async">
-            </a>
+            
+            
             <a href="https://www.threads.com/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads">
               <img src="logo/threads.png" alt="Threads" width="28" height="28" loading="lazy" decoding="async">
             </a>
