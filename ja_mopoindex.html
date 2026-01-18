@@ -449,13 +449,20 @@ h1{margin:0 0 4px 0}
   margin-bottom: 8px;
 }
 
-/* シーズン表示ロジック */
+/* シーズン表示ロジック (Improved Animation) */
 .season { 
   display: none; 
   border:1px dashed #e5e1da; border-radius:10px; padding:10px; 
-  animation: fadeIn 0.3s ease;
 }
-.season.active { display: block; }
+.season.active { 
+  display: block;
+  animation: quickFade 0.15s ease-out;
+}
+
+@keyframes quickFade {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
 
 .table{width:100%; border-collapse:separate; border-spacing:0 .35rem; margin-top:.3rem}
 .table thead th{font-weight:600; font-size:12px; color:#6f757c; text-align:left}
@@ -817,7 +824,7 @@ h1{margin:0 0 4px 0}
       </li>
 
       <li role="none"><a role="menuitem" href="ja_faq.html">よくあるご質問</a></li>
-      <li role="none"><a role="menuitem" href="booking.html" target="_blank" rel="noopener noreferrer">予約</a></li>
+      <li role="none"><a role="menuitem" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">予約</a></li>
     </ul>
 
     <div class="lang">
@@ -858,7 +865,7 @@ h1{margin:0 0 4px 0}
           <a href="ja_trip.html" role="menuitem">観光トピック</a>
 
           <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
-          <a href="ja_booking.html" role="menuitem">予約</a>
+          <a href="booking.html?lang=ja" role="menuitem">予約</a>
         </div>
       </div>
     </div>
@@ -889,7 +896,7 @@ h1{margin:0 0 4px 0}
 
         <div class="cta reveal" style="gap:12px">
           <a href="#pricing" class="btn" aria-label="レッスンプラン">レッスンプラン</a>
-          <a href="booking.html" class="btn" aria-label="予約" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+          <a href="booking.html?lang=ja" class="btn" aria-label="予約" target="_blank" rel="noopener noreferrer">レッスン予約</a>
         </div>
 
 <section class="news reveal" id="news" aria-label="最新情報">
@@ -1040,7 +1047,6 @@ h1{margin:0 0 4px 0}
     <div class="container">
       <div class="section__head">
         <h2>レッスンプラン</h2>
-        <p class="muted">終日 6 時間（休憩 1 時間含む）。<span class="mobbr"><br></span>表示は税込価格です。</p>
       </div>
 
       <div class="pricelist" id="courseList">
@@ -1068,14 +1074,16 @@ h1{margin:0 0 4px 0}
                   <span class="pt-price">60,000<small>JPY 〜</small></span>
                </div>
             </div>
-
+            
+            <!-- New: Explicit Expand Button/Hint -->
             <div class="expand-hint">
                ▼ クリックして料金と詳細を見る
             </div>
 
+            <!-- Summary Buttons (Hidden when open) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_teine.html'">ゲレンデ紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">レッスン予約</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
             </div>
           </summary>
           <div class="pricetable">
@@ -1178,16 +1186,17 @@ h1{margin:0 0 4px 0}
               <div class="note">
                 <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
                 <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
               <div class="btns">
                 <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
               </div>
             </div>
             <div class="cta-row">
               <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+              <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
@@ -1218,13 +1227,15 @@ h1{margin:0 0 4px 0}
                </div>
             </div>
             
+            <!-- New: Explicit Expand Button/Hint -->
             <div class="expand-hint">
                ▼ クリックして料金と詳細を見る
             </div>
 
+            <!-- Summary Buttons (Always Visible) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_onze.html'">ゲレンデ紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">レッスン予約</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
             </div>
           </summary>
           <div class="pricetable">
@@ -1364,16 +1375,17 @@ h1{margin:0 0 4px 0}
               <div class="note">
                 <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
                 <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
               <div class="btns">
                 <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
               </div>
             </div>
             <div class="cta-row">
               <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+              <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
@@ -1397,13 +1409,15 @@ h1{margin:0 0 4px 0}
                </div>
             </div>
             
+            <!-- New: Explicit Expand Button/Hint -->
             <div class="expand-hint">
                ▼ クリックして料金と詳細を見る
             </div>
 
+            <!-- Summary Buttons (Always Visible) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_kokusai.html'">ゲレンデ紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">レッスン予約</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
             </div>
           </summary>
           <div class="pricetable">
@@ -1420,8 +1434,9 @@ h1{margin:0 0 4px 0}
             <div class="course-type-block">
               <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
               <div>
+                <!-- Standard -->
                 <div class="season standard active">
-                  <table class="table">
+                  <table class="table" aria-label="札幌国際・通常期料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
                       <tr><td class="people">1 名</td><td class="price">¥ 84,000</td><td></td></tr>
@@ -1432,8 +1447,10 @@ h1{margin:0 0 4px 0}
                     </tbody>
                   </table>
                 </div>
+                
+                <!-- Busy -->
                 <div class="season busy">
-                  <table class="table">
+                  <table class="table" aria-label="札幌国際・繁忙期料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
                       <tr><td class="people">1 名</td><td class="price">¥ 94,000</td><td></td></tr>
@@ -1444,8 +1461,10 @@ h1{margin:0 0 4px 0}
                     </tbody>
                   </table>
                 </div>
+
+                <!-- Spring -->
                 <div class="season spring">
-                  <table class="table">
+                  <table class="table" aria-label="札幌国際・春スキー料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
                       <tr><td class="people">1 名</td><td class="price">¥ 62,000</td><td></td></tr>
@@ -1463,24 +1482,23 @@ h1{margin:0 0 4px 0}
               <div class="note">
                 <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
                 <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
               <div class="btns">
                 <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
               </div>
             </div>
             <div class="cta-row">
               <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+        <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
       </div>
     </div>
   </section>
-
-  <!-- お問い合わせ -->
   <section id="contact" class="section reveal" aria-label="お問い合わせ">
     <div class="container">
       <div class="section__head"><h2>お問い合わせ</h2></div>
@@ -1569,10 +1587,15 @@ h1{margin:0 0 4px 0}
 </div>
 
 <script>
-// 表示年
-document.getElementById('year').textContent = new Date().getFullYear();
+/**
+ * ====================================================================
+ * COMMON LOGIC (Derived from common.js)
+ * - Year, Topbar behavior, Dynamic Language Switch, Mobile Menu, Favicon
+ * ====================================================================
+ */
 
-// Topbar sticky/fixed 補償
+// 1. Year & Topbar Spacer
+document.getElementById('year').textContent = new Date().getFullYear();
 (function(){
   const topbar = document.getElementById('topbar');
   function applySpacer(){
@@ -1583,36 +1606,60 @@ document.getElementById('year').textContent = new Date().getFullYear();
   window.addEventListener('resize', applySpacer);
 })();
 
-// Topbar scrolled
+// 2. Topbar Scrolled / Hide on scroll
 const topbar = document.getElementById('topbar');
 function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+setTopbar(); 
+window.addEventListener('scroll', setTopbar, {passive:true});
 
-/* 言語切替 */
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY, ticking = false;
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) topbar.classList.add('hide');
+    else topbar.classList.remove('hide');
+    lastScrollY = currentY; ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { 
+      window.requestAnimationFrame(update); 
+      ticking = true; 
+    }
+  }, { passive: true });
+})();
+
+// 3. Language Switch
 (function(){
   const map = {
     'zh-Hant': 'index.html',
     'ja': 'ja_mopoindex.html',
     'en': 'en_mopoindex.html'
   };
+  
   const sel = document.getElementById('langSelect');
-  sel?.addEventListener('change', ()=>{
-    const v = sel.value;
-    const url = map[v] || 'index.html';
-    window.location.href = url;
-  });
+  if (sel){
+    sel.addEventListener('change', ()=>{
+      const v = sel.value;
+      const url = map[v] || 'index.html';
+      window.location.href = url;
+    });
+  }
+
   const mobPanel = document.getElementById('mobLangPanel');
-  mobPanel?.addEventListener('click', (e)=>{
-    const a = e.target.closest('[data-lang]');
-    if(!a) return;
-    e.preventDefault();
-    const v = a.getAttribute('data-lang');
-    const url = map[v] || 'index.html';
-    window.location.href = url;
-  });
+  if (mobPanel){
+    mobPanel.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-lang]');
+      if(!a) return;
+      e.preventDefault();
+      const v = a.getAttribute('data-lang');
+      const url = map[v] || 'index.html';
+      window.location.href = url;
+    });
+  }
 })();
 
-/* モバイル言語 & ナビ */
+// 4. Mobile Nav
 (function(){
   const overlay   = document.getElementById('mobOverlay');
   const langBtn   = document.getElementById('mobLangBtn');
@@ -1678,7 +1725,30 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-/* Hero スライド */
+// 5. Back to Top
+document.getElementById('backTop')?.addEventListener('click', ()=> 
+  window.scrollTo({top:0, behavior:'smooth'}));
+
+// 6. Favicon
+(function() {
+  if (document.querySelector('link[rel="icon"]') || document.querySelector('link[rel="shortcut icon"]')) {
+      return;
+  }
+  var link = document.createElement('link');
+  link.rel = 'icon shortcut icon';
+  link.href = '/logom.png';
+  link.type = 'image/png';
+  document.head.appendChild(link);
+})();
+
+
+/**
+ * ====================================================================
+ * PAGE SPECIFIC LOGIC
+ * ====================================================================
+ */
+
+// Hero Slider
 (function(){
   const slides = Array.from(document.querySelectorAll('.hero__bg .slide'));
   const dots = Array.from(document.querySelectorAll('#heroDots button'));
@@ -1696,7 +1766,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   show(0); play();
 })();
 
-/* ニュース・カルーセル (無限ループ + ドラッグ) */
+// News Carousel (Seamless Loop)
 (function(){
   const row = document.getElementById('newsRow');
   const viewport = row ? row.parentElement : null;
@@ -1706,14 +1776,12 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   const getCardSize = () => window.innerWidth <= 760 ? 100 : 140;
   const getStep = () => getCardSize() + GAP;
 
-  // 1. 複製カードを作成して無限ループを実現
   const originalCards = Array.from(row.querySelectorAll('.news-card:not(.clone)'));
   originalCards.forEach(card => {
       const clone = card.cloneNode(true);
       clone.classList.add('clone');
       row.appendChild(clone);
   });
-  //念のためもう一セット
   originalCards.forEach(card => {
       const clone = card.cloneNode(true);
       clone.classList.add('clone');
@@ -1732,10 +1800,8 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     const currentScroll = viewport.scrollLeft;
     const originalSetWidth = originalCards.length * step;
 
-    // もし最初のセットを超えていたら、瞬時に巻き戻す（見た目上は変化なし）
     if (currentScroll >= originalSetWidth) {
         viewport.scrollTo({ left: currentScroll - originalSetWidth, behavior: 'auto' });
-        // その後、次のステップへスムーズに移動
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                const newBase = currentScroll - originalSetWidth;
@@ -1756,7 +1822,6 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
       if (autoScrollTimer) clearInterval(autoScrollTimer);
   }
 
-  // イベントリスナー
   viewport.addEventListener('mouseenter', () => { isHovered = true; stopAutoPlay(); });
   viewport.addEventListener('mouseleave', () => { isHovered = false; isDragging = false; viewport.classList.remove('active'); startAutoPlay(); });
   
@@ -1765,7 +1830,6 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
       setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000); 
   });
 
-  // ドラッグ機能
   viewport.addEventListener('mousedown', (e) => {
       isDragging = true;
       stopAutoPlay();
@@ -1791,19 +1855,30 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   startAutoPlay();
 })();
 
-/* reveal */
+// Reveal Animation (Modified: Show once and keep it)
 (function(){
-  const els = document.querySelectorAll('.reveal');
+  const els = document.querySelectorAll('.reveal:not(#contact .reveal)');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); }
-      else{ e.target.classList.remove('in'); }
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        // Stop observing once revealed so it doesn't fade out again
+        io.unobserve(e.target); 
+      }
     });
-  }, {threshold:.15});
-  els.forEach(el=> io.observe(el));
+  }, { threshold: 0.15 });
+  els.forEach(el => io.observe(el));
+  function ensureContactVisible(){
+    document.querySelectorAll('#contact .reveal').forEach(el => {
+      el.classList.add('in');
+    });
+  }
+  ensureContactVisible();
+  window.addEventListener('resize', ensureContactVisible);
+  window.addEventListener('load', ensureContactVisible);
 })();
 
-/* 料金：単一展開 */
+// Pricing Toggle
 (function(){
   const list = document.getElementById('courseList');
   list?.addEventListener('toggle', (e)=>{
@@ -1813,7 +1888,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-/* 季節切り替え (Local Logic) */
+// Pricing Tabs (Local Logic)
 (function(){
   const tabButtons = document.querySelectorAll('.tab-btn');
   
@@ -1821,7 +1896,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); 
       
       const container = btn.closest('.pricetable');
       if(!container) return;
@@ -1843,7 +1918,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-/* お問い合わせ：mailto */
+// Contact Mailto
 (function(){
   const form = document.getElementById('contactForm');
   const msg  = document.getElementById('contactMsg');
@@ -1863,119 +1938,73 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-/* スクロール駆動（Hero/News） */
+// Scroll Driven (Hero/News)
 (function(){
   const hero = document.getElementById('home');
   if(!hero) return;
-
   const DIST_FACTOR = 1.10, GRAY_START = 0.60, EASE_POWER = 3.00;
   const clamp01 = x => Math.min(1, Math.max(0, x));
   const ease    = t => Math.pow(clamp01(t), EASE_POWER);
-
   function onScroll(){
     const rect = hero.getBoundingClientRect();
     const vh   = window.innerHeight || 1;
-
     const raw = clamp01(-rect.top / (vh * DIST_FACTOR));
     const slide = ease(raw);
     const fade  = ease(raw);
-
     const grayRaw = clamp01((raw - GRAY_START) / (1 - GRAY_START));
     const gray    = ease(grayRaw);
-
     document.documentElement.style.setProperty('--slide', slide.toFixed(4));
     document.documentElement.style.setProperty('--fade',  fade.toFixed(4));
     document.documentElement.style.setProperty('--gray',  gray.toFixed(4));
   }
-
   onScroll();
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
 })();
 
-/* トップへ */
-document.getElementById('backTop').addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-
-/* Topbar：下スクロールで隠す */
-(function(){
-  const topbar = document.getElementById('topbar');
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  function update() {
-    const currentY = window.scrollY;
-    if (currentY > lastScrollY && currentY > 100) {
-      topbar.classList.add('hide');
-    } else {
-      topbar.classList.remove('hide');
-    }
-    lastScrollY = currentY;
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
-
-/* ===== MOPO：更早觸發的逐行顯示 + 防跳動的縮放（含回彈緩衝） ===== */
+// About Parallax
 (function(){
   const about = document.getElementById('about-mopo');
   const hero  = document.getElementById('home');
   if(!about || !hero) return;
-
   let compact = false;
   let activeShown = false;
   const hysteresis = 80;
   let enterY = 0;
-
   function compute() {
     const rect = about.getBoundingClientRect();
     const scrollY = window.scrollY || window.pageYOffset;
     const vh = window.innerHeight || 1;
     const aboutTop = scrollY + rect.top;
-    enterY = aboutTop - vh * 0.85;  
+    enterY = aboutTop - vh * 0.85; 
   }
-
- function apply() {
-  const scrollY = window.scrollY || window.pageYOffset;
-
-  const heroRect = hero.getBoundingClientRect();
-  const heroMostlyVisible =
-    heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 &&
-    (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
-
-  if (!activeShown && scrollY >= enterY) {
-    about.classList.add('active');
-    hero.classList.add('dim');
-    activeShown = true;
+  function apply() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const heroRect = hero.getBoundingClientRect();
+    const heroMostlyVisible = heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 && (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
+    if (!activeShown && scrollY >= enterY) {
+      about.classList.add('active');
+      hero.classList.add('dim');
+      activeShown = true;
+    }
+    if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) {
+      about.classList.remove('active');
+      hero.classList.remove('dim');
+      activeShown = false;
+    }
+    const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
+    const shrinkOn  = aboutTopAbs + 140;
+    const shrinkOff = aboutTopAbs + 60;
+    if (!compact && scrollY > shrinkOn) {
+      about.classList.add('compact');
+      compact = true;
+    } else if (compact && scrollY < shrinkOff) {
+      about.classList.remove('compact');
+      compact = false;
+    }
   }
-
-  if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) {
-    about.classList.remove('active');
-    hero.classList.remove('dim');
-    activeShown = false;
-  }
-
-  const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
-  const shrinkOn  = aboutTopAbs + 140;
-  const shrinkOff = aboutTopAbs + 60;
-
-  if (!compact && scrollY > shrinkOn) {
-    about.classList.add('compact');
-    compact = true;
-  } else if (compact && scrollY < shrinkOff) {
-    about.classList.remove('compact');
-    compact = false;
-  }
-}
-
   compute();
   apply();
-
   let ticking = false;
   window.addEventListener('scroll', ()=> {
     if (!ticking) {
@@ -1983,7 +2012,6 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
       ticking = true;
     }
   }, { passive:true });
-
   window.addEventListener('resize', ()=> { compute(); apply(); }, { passive:true });
 })();
 </script>
