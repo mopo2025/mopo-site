@@ -432,14 +432,18 @@
     .season { 
       display: none; 
       border:1px dashed #e5e1da; border-radius:10px; padding:10px; 
-      animation: fadeIn 0.3s ease;
+      /* 移除原有的 fadeIn 動畫，避免空白感 */
     }
-    .season.active { display: block; }
+    .season.active { 
+      display: block; 
+      /* 改用極快速的淡入動畫 (0.15s)，且移除位移(transform)，讓切換更俐落 */
+      animation: quickFade 0.15s ease-out;
+    }
     .season h4 { margin:0 0 .25rem 0; font-size:14px; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: none; }
+    @keyframes quickFade {
+      from { opacity: 0.2; } /* 起始透明度設為 0.2 減少空白感 */
+      to { opacity: 1; }
     }
 
     .table { width:100%; border-collapse:separate; border-spacing:0 .35rem; margin-top:.3rem; }
@@ -908,7 +912,6 @@
     <div class="container">
       <div class="section__head">
         <h2>課程與價格</h2>
-        <p class="muted">全日 6 小時（含 1 小時休息）。<span class="mobbr"><br></span>金額為含稅價格。</p>
       </div>
 
       <div class="pricelist" id="courseList">
@@ -1052,6 +1055,7 @@
               <div class="note">
                 <p>＊小提醒：除繁忙期與春季期外，皆適用標準價格；費用請依時間表為準</p>
                 <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊金額為含稅價格。</p>
                 <p>＊已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
               <div class="btns">
@@ -1253,6 +1257,7 @@
               <div class="note">
                 <p>＊小提醒：除繁忙期與春季期外，皆適用標準價格；費用請依時間表為準</p>
                 <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊金額為含稅價格。</p>
                 <p>＊已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
               <div class="btns">
@@ -1359,6 +1364,7 @@
               <div class="note">
                 <p>＊小提醒：除繁忙期與春季期外，皆適用標準價格；費用請依時間表為準</p>
                 <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊金額為含稅價格。</p>
                 <p>＊已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
               <div class="btns">
