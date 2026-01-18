@@ -454,13 +454,15 @@ h1{margin:0 0 4px 0}
   margin-bottom: 8px;
 }
 
-/* Season Display */
+/* Season Display (Modified for better UX - Instant Switch) */
 .season { 
   display: none; 
   border:1px dashed #e5e1da; border-radius:10px; padding:10px; 
-  animation: fadeIn 0.3s ease;
 }
-.season.active { display: block; }
+.season.active { 
+  display: block;
+  /* Animation removed for instant switch */
+}
 
 .table{width:100%; border-collapse:separate; border-spacing:0 .35rem; margin-top:.3rem}
 .table thead th{font-weight:600; font-size:12px; color:#6f757c; text-align:left}
@@ -824,7 +826,7 @@ h1{margin:0 0 4px 0}
       </li>
 
       <li role="none"><a role="menuitem" href="en_faq.html">FAQ</a></li>
-      <li role="none"><a role="menuitem" href="booking.html" target="_blank" rel="noopener noreferrer">Booking</a></li>
+      <li role="none"><a role="menuitem" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Booking</a></li>
     </ul>
 
     <div class="lang">
@@ -865,7 +867,7 @@ h1{margin:0 0 4px 0}
           <a href="en_trip.html" role="menuitem">Travel topics</a>
 
           <a href="en_faq.html" role="menuitem">FAQ</a>
-          <a href="booking.html" role="menuitem">Booking</a>
+          <a href="booking.html?lang=en" role="menuitem">Booking</a>
         </div>
       </div>
     </div>
@@ -895,7 +897,7 @@ h1{margin:0 0 4px 0}
 
         <div class="cta reveal" style="gap:12px">
           <a href="#pricing" class="btn" aria-label="View lesson plans">Lesson plans</a>
-          <a href="booking.html" class="btn" aria-label="Go to booking page" target="_blank" rel="noopener noreferrer">Booking</a>
+          <a href="booking.html?lang=en" class="btn" aria-label="Go to booking page" target="_blank" rel="noopener noreferrer">Booking</a>
         </div>
 
 <section class="news reveal" id="news" aria-label="Latest news">
@@ -1046,7 +1048,6 @@ h1{margin:0 0 4px 0}
     <div class="container">
       <div class="section__head">
         <h2>Lesson plans</h2>
-        <p class="muted">Full-day 6 hours (includes 1-hour break). <span class="mobbr"><br></span>Prices include tax.</p>
       </div>
 
       <div class="pricelist" id="courseList">
@@ -1074,14 +1075,16 @@ h1{margin:0 0 4px 0}
                   <span class="pt-price">60,000<small>JPY ~</small></span>
                </div>
             </div>
-
+            
+            <!-- New: Explicit Expand Button/Hint -->
             <div class="expand-hint">
                ▼ Click to see details and rates
             </div>
 
+            <!-- Summary Buttons (Hidden when open) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='en_teine.html'">View Teine</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">Book now</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=en', '_blank')">Book now</button>
             </div>
           </summary>
           <div class="pricetable">
@@ -1184,16 +1187,17 @@ h1{margin:0 0 4px 0}
               <div class="note">
                 <p>* Regular rates apply outside of peak and spring periods.</p>
                 <p>* Maximum of 5 guests per lesson for quality assurance.</p>
+                <p>* Prices include tax.</p>
                 <p>* Liability insurance included. Lift tickets, gear, transport, and meals excluded.</p>
               </div>
               <div class="btns">
                 <a class="btn" href="en_teine.html">View Teine</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">Book now</a>
+                <a class="btn" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book now</a>
               </div>
             </div>
             <div class="cta-row">
               <a class="btn" href="en_teine.html">View Teine</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">Book now</a>
+              <a class="btn" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book now</a>
             </div>
           </div>
         </details>
@@ -1224,13 +1228,15 @@ h1{margin:0 0 4px 0}
                </div>
             </div>
             
+            <!-- New: Explicit Expand Button/Hint -->
             <div class="expand-hint">
                ▼ Click to see details and rates
             </div>
 
+            <!-- Summary Buttons (Always Visible) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='en_onze.html'">View Onze</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">Book now</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=en', '_blank')">Book now</button>
             </div>
           </summary>
           <div class="pricetable">
@@ -1370,16 +1376,17 @@ h1{margin:0 0 4px 0}
               <div class="note">
                 <p>* Regular rates apply outside of peak and spring periods.</p>
                 <p>* Maximum of 5 guests per lesson.</p>
+                <p>* Prices include tax.</p>
                 <p>* Liability insurance included. Lift tickets, gear, transport, and meals excluded.</p>
               </div>
               <div class="btns">
                 <a class="btn" href="en_onze.html">View Onze</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">Book now</a>
+                <a class="btn" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book now</a>
               </div>
             </div>
             <div class="cta-row">
               <a class="btn" href="en_onze.html">View Onze</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">Book now</a>
+              <a class="btn" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book now</a>
             </div>
           </div>
         </details>
@@ -1403,13 +1410,15 @@ h1{margin:0 0 4px 0}
                </div>
             </div>
             
+            <!-- New: Explicit Expand Button/Hint -->
             <div class="expand-hint">
                ▼ Click to see details and rates
             </div>
 
+            <!-- Summary Buttons (Always Visible) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='en_kokusai.html'">View Kokusai</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">Book now</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=en', '_blank')">Book now</button>
             </div>
           </summary>
           <div class="pricetable">
@@ -1439,6 +1448,7 @@ h1{margin:0 0 4px 0}
                     </tbody>
                   </table>
                 </div>
+                
                 <!-- Busy -->
                 <div class="season busy">
                   <table class="table" aria-label="Kokusai Peak Rate">
@@ -1452,6 +1462,7 @@ h1{margin:0 0 4px 0}
                     </tbody>
                   </table>
                 </div>
+
                 <!-- Spring -->
                 <div class="season spring">
                   <table class="table" aria-label="Kokusai Spring Rate">
@@ -1472,25 +1483,24 @@ h1{margin:0 0 4px 0}
               <div class="note">
                 <p>* Regular rates apply outside of peak and spring periods.</p>
                 <p>* Maximum of 5 guests per lesson.</p>
+                <p>* Prices include tax.</p>
                 <p>* Liability insurance included. Lift tickets, gear, transport, and meals excluded.</p>
               </div>
               <div class="btns">
                 <a class="btn" href="en_kokusai.html">View Kokusai</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">Book now</a>
+                <a class="btn" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book now</a>
               </div>
             </div>
             <div class="cta-row">
               <a class="btn" href="en_kokusai.html">View Kokusai</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">Book now</a>
+        <a class="btn" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book now</a>
             </div>
           </div>
         </details>
       </div>
     </div>
   </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section reveal" aria-label="Contact">
+  <section id="contact" class="section" aria-label="Contact">
     <div class="container">
       <div class="section__head"><h2>Contact</h2></div>
       <div class="contact-grid">
@@ -1506,6 +1516,7 @@ h1{margin:0 0 4px 0}
         <aside aria-label="Social & contacts" class="reveal" style="align-self:start">
           <h3 style="margin:0 0 8px 0;font-size:18px;color:#111">Follow us</h3>
           <div class="sns" style="display:flex; gap:16px; flex-wrap:wrap;">
+            
             <a href="https://www.threads.com/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads">
               <img src="logo/threads.png" alt="Threads" width="32" height="32" loading="lazy" decoding="async">
             </a>
@@ -1576,14 +1587,15 @@ h1{margin:0 0 4px 0}
 </div>
 
 <script>
-// Year
+/**
+ * ====================================================================
+ * COMMON LOGIC (Derived from common.js)
+ * - Year, Topbar behavior, Dynamic Language Switch, Mobile Menu, Favicon
+ * ====================================================================
+ */
+
+// 1. Year & Topbar Spacer
 document.getElementById('year').textContent = new Date().getFullYear();
-
-// Back to Top
-document.getElementById('backTop')?.addEventListener('click', ()=> 
-  window.scrollTo({top:0, behavior:'smooth'}));
-
-// Topbar spacing
 (function(){
   const topbar = document.getElementById('topbar');
   function applySpacer(){
@@ -1594,43 +1606,74 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
   window.addEventListener('resize', applySpacer);
 })();
 
-// Topbar scroll
+// 2. Topbar Scrolled / Hide on scroll
 const topbar = document.getElementById('topbar');
 function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+setTopbar(); 
+window.addEventListener('scroll', setTopbar, {passive:true});
 
-/* Language Switch */
+(function(){
+  const topbar = document.getElementById('topbar');
+  let lastScrollY = window.scrollY, ticking = false;
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) topbar.classList.add('hide');
+    else topbar.classList.remove('hide');
+    lastScrollY = currentY; ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { 
+      window.requestAnimationFrame(update); 
+      ticking = true; 
+    }
+  }, { passive: true });
+})();
+
+// 3. Language Switch
 (function(){
   const map = {
     'zh-Hant': 'index.html',
     'ja': 'ja_mopoindex.html',
     'en': 'en_mopoindex.html'
   };
+  
   const sel = document.getElementById('langSelect');
-  sel?.addEventListener('change', ()=>{
-    const v = sel.value;
-    const url = map[v] || 'index.html';
-    window.location.href = url;
-  });
+  if (sel){
+    sel.addEventListener('change', ()=>{
+      const v = sel.value;
+      const url = map[v] || 'index.html';
+      window.location.href = url;
+    });
+  }
+
   const mobPanel = document.getElementById('mobLangPanel');
-  mobPanel?.addEventListener('click', (e)=>{
-    const a = e.target.closest('[data-lang]');
-    if(!a) return;
-    e.preventDefault();
-    const v = a.getAttribute('data-lang');
-    const url = map[v] || 'index.html';
-    window.location.href = url;
-  });
+  if (mobPanel){
+    mobPanel.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-lang]');
+      if(!a) return;
+      e.preventDefault();
+      const v = a.getAttribute('data-lang');
+      const url = map[v] || 'index.html';
+      window.location.href = url;
+    });
+  }
 })();
 
-/* Mobile Nav */
+// 4. Mobile Nav
 (function(){
   const overlay   = document.getElementById('mobOverlay');
   const langBtn   = document.getElementById('mobLangBtn');
   const langPanel = document.getElementById('mobLangPanel');
   const navBtn    = document.getElementById('mobNavBtn');
   const navPanel  = document.getElementById('mobNavPanel');
-  const IOS16 = /iP(ad|hone|od)/.test(navigator.userAgent || "") && (navigator.userAgent.match(/OS (\d+)_/) || [])[1] === '16';
+
+  const IOS16 = (() => {
+    const ua = navigator.userAgent || "";
+    const isIOS = /iP(ad|hone|od)/.test(ua);
+    const m = ua.match(/OS (\d+)_/);
+    const major = m ? parseInt(m[1], 10) : 0;
+    return isIOS && major === 16;
+  })();
 
   function closePanels(){
     langPanel?.classList.remove('show');
@@ -1650,13 +1693,18 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     panel?.classList.add('show');
   }
   function togglePanel(panel){
-    if(panel?.classList.contains('show')) closePanels(); else openPanel(panel);
+    if(panel?.classList.contains('show')) closePanels();
+    else openPanel(panel);
   }
 
   langBtn?.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(langPanel); });
   navBtn?.addEventListener('click',  (e)=>{ e.stopPropagation(); togglePanel(navPanel);  });
+
   overlay?.addEventListener('click', closePanels);
-  document.addEventListener('click', (e)=>{ if(!e.target.closest('.mobdrop')) closePanels(); });
+  document.addEventListener('click', (e)=>{
+    if(e.target.closest('.mobdrop')) return;
+    closePanels();
+  });
   window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanels(); });
 
   navPanel?.addEventListener('click', (e)=>{
@@ -1668,14 +1716,39 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     setTimeout(()=>{
       if(href.startsWith('#')){
         const el = document.querySelector(href);
-        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-        else window.location.href = href;
-      }else{ window.location.href = href; }
+        if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        else { window.location.href = href; }
+      }else{
+        window.location.href = href;
+      }
     }, 0);
   });
 })();
 
-/* Hero Slider */
+// 5. Back to Top
+document.getElementById('backTop')?.addEventListener('click', ()=> 
+  window.scrollTo({top:0, behavior:'smooth'}));
+
+// 6. Favicon
+(function() {
+  if (document.querySelector('link[rel="icon"]') || document.querySelector('link[rel="shortcut icon"]')) {
+      return;
+  }
+  var link = document.createElement('link');
+  link.rel = 'icon shortcut icon';
+  link.href = '/logom.png';
+  link.type = 'image/png';
+  document.head.appendChild(link);
+})();
+
+
+/**
+ * ====================================================================
+ * PAGE SPECIFIC LOGIC
+ * ====================================================================
+ */
+
+// Hero Slider
 (function(){
   const slides = Array.from(document.querySelectorAll('.hero__bg .slide'));
   const dots = Array.from(document.querySelectorAll('#heroDots button'));
@@ -1693,7 +1766,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   show(0); play();
 })();
 
-/* News Carousel (Seamless Loop) */
+// News Carousel (Seamless Loop)
 (function(){
   const row = document.getElementById('newsRow');
   const viewport = row ? row.parentElement : null;
@@ -1722,6 +1795,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
 
   function autoScroll() {
     if (isHovered || isDragging) return;
+
     const step = getStep();
     const currentScroll = viewport.scrollLeft;
     const originalSetWidth = originalCards.length * step;
@@ -1743,41 +1817,68 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
       if (autoScrollTimer) clearInterval(autoScrollTimer);
       autoScrollTimer = setInterval(autoScroll, 3000);
   }
-  function stopAutoPlay() { if (autoScrollTimer) clearInterval(autoScrollTimer); }
+
+  function stopAutoPlay() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
+  }
 
   viewport.addEventListener('mouseenter', () => { isHovered = true; stopAutoPlay(); });
   viewport.addEventListener('mouseleave', () => { isHovered = false; isDragging = false; viewport.classList.remove('active'); startAutoPlay(); });
+  
   viewport.addEventListener('touchstart', () => { isHovered = true; stopAutoPlay(); }, {passive: true});
-  viewport.addEventListener('touchend', () => { setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000); });
+  viewport.addEventListener('touchend', () => { 
+      setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000); 
+  });
 
   viewport.addEventListener('mousedown', (e) => {
-      isDragging = true; stopAutoPlay(); viewport.classList.add('active');
-      startX = e.pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft;
+      isDragging = true;
+      stopAutoPlay();
+      viewport.classList.add('active');
+      startX = e.pageX - viewport.offsetLeft;
+      scrollLeft = viewport.scrollLeft;
   });
-  viewport.addEventListener('mouseup', () => { isDragging = false; viewport.classList.remove('active'); startAutoPlay(); });
+
+  viewport.addEventListener('mouseup', () => {
+      isDragging = false;
+      viewport.classList.remove('active');
+      startAutoPlay();
+  });
+
   viewport.addEventListener('mousemove', (e) => {
-      if (!isDragging) return; e.preventDefault();
-      const x = e.pageX - viewport.offsetLeft; const walk = (x - startX) * 1.5;
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - viewport.offsetLeft;
+      const walk = (x - startX) * 1.5;
       viewport.scrollLeft = scrollLeft - walk;
   });
+
   startAutoPlay();
 })();
 
-/* Reveal */
+// Reveal Animation (Modified: Show once and keep it)
 (function(){
   const els = document.querySelectorAll('.reveal:not(#contact .reveal)');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('in'); }
-      else{ e.target.classList.remove('in'); }
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        // Stop observing once revealed so it doesn't fade out again
+        io.unobserve(e.target); 
+      }
     });
-  }, {threshold:.15});
-  els.forEach(el=> io.observe(el));
-  function ensureContactVisible(){ document.querySelectorAll('#contact .reveal').forEach(el => el.classList.add('in')); }
-  ensureContactVisible(); window.addEventListener('resize', ensureContactVisible); window.addEventListener('load', ensureContactVisible);
+  }, { threshold: 0.15 });
+  els.forEach(el => io.observe(el));
+  function ensureContactVisible(){
+    document.querySelectorAll('#contact .reveal').forEach(el => {
+      el.classList.add('in');
+    });
+  }
+  ensureContactVisible();
+  window.addEventListener('resize', ensureContactVisible);
+  window.addEventListener('load', ensureContactVisible);
 })();
 
-/* Pricing Toggle */
+// Pricing Toggle
 (function(){
   const list = document.getElementById('courseList');
   list?.addEventListener('toggle', (e)=>{
@@ -1787,28 +1888,37 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-/* Pricing Tabs */
+// Pricing Tabs (Local Logic)
 (function(){
   const tabButtons = document.querySelectorAll('.tab-btn');
+  
   if(!tabButtons.length) return;
+
   tabButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation();
+      e.stopPropagation(); 
+      
       const container = btn.closest('.pricetable');
       if(!container) return;
+
       container.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
+      
       const target = btn.dataset.tab;
+      
       const seasons = container.querySelectorAll('.season');
       seasons.forEach(s => {
-        if(s.classList.contains(target)) s.classList.add('active');
-        else s.classList.remove('active');
+        if(s.classList.contains(target)) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
       });
     });
   });
 })();
 
-/* Contact Mailto */
+// Contact Mailto
 (function(){
   const form = document.getElementById('contactForm');
   const msg  = document.getElementById('contactMsg');
@@ -1827,7 +1937,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-/* Scroll Driven (Hero/News) */
+// Scroll Driven (Hero/News)
 (function(){
   const hero = document.getElementById('home');
   if(!hero) return;
@@ -1851,21 +1961,7 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
   window.addEventListener('resize', onScroll);
 })();
 
-/* Topbar Hide on Scroll */
-(function(){
-  const topbar = document.getElementById('topbar');
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-  function update() {
-    const currentY = window.scrollY;
-    if (currentY > lastScrollY && currentY > 100) topbar.classList.add('hide');
-    else topbar.classList.remove('hide');
-    lastScrollY = currentY; ticking = false;
-  }
-  window.addEventListener('scroll', () => { if (!ticking) { window.requestAnimationFrame(update); ticking = true; } }, { passive: true });
-})();
-
-/* About Parallax */
+// About Parallax
 (function(){
   const about = document.getElementById('about-mopo');
   const hero  = document.getElementById('home');
@@ -1879,23 +1975,42 @@ setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
     const scrollY = window.scrollY || window.pageYOffset;
     const vh = window.innerHeight || 1;
     const aboutTop = scrollY + rect.top;
-    enterY = aboutTop - vh * 0.85;  
+    enterY = aboutTop - vh * 0.85;
   }
- function apply() {
-  const scrollY = window.scrollY || window.pageYOffset;
-  const heroRect = hero.getBoundingClientRect();
-  const heroMostlyVisible = heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 && (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
-  if (!activeShown && scrollY >= enterY) { about.classList.add('active'); hero.classList.add('dim'); activeShown = true; }
-  if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) { about.classList.remove('active'); hero.classList.remove('dim'); activeShown = false; }
-  const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
-  const shrinkOn  = aboutTopAbs + 140;
-  const shrinkOff = aboutTopAbs + 60;
-  if (!compact && scrollY > shrinkOn) { about.classList.add('compact'); compact = true; } 
-  else if (compact && scrollY < shrinkOff) { about.classList.remove('compact'); compact = false; }
-}
-  compute(); apply();
+  function apply() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const heroRect = hero.getBoundingClientRect();
+    const heroMostlyVisible = heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 && (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
+    if (!activeShown && scrollY >= enterY) {
+      about.classList.add('active');
+      hero.classList.add('dim');
+      activeShown = true;
+    }
+    if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) {
+      about.classList.remove('active');
+      hero.classList.remove('dim');
+      activeShown = false;
+    }
+    const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
+    const shrinkOn  = aboutTopAbs + 140;
+    const shrinkOff = aboutTopAbs + 60;
+    if (!compact && scrollY > shrinkOn) {
+      about.classList.add('compact');
+      compact = true;
+    } else if (compact && scrollY < shrinkOff) {
+      about.classList.remove('compact');
+      compact = false;
+    }
+  }
+  compute();
+  apply();
   let ticking = false;
-  window.addEventListener('scroll', ()=> { if (!ticking) { requestAnimationFrame(()=>{ apply(); ticking = false; }); ticking = true; } }, { passive:true });
+  window.addEventListener('scroll', ()=> {
+    if (!ticking) {
+      requestAnimationFrame(()=>{ apply(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive:true });
   window.addEventListener('resize', ()=> { compute(); apply(); }, { passive:true });
 })();
 </script>
