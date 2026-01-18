@@ -1,7 +1,8 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) - 已註解以避免在預覽環境出現 'Script Error' -->
+  <!--
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10,6 +11,7 @@
 
   gtag('config', 'AW-17610938726');
 </script>
+  -->
   
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -324,20 +326,27 @@ details[open] .chev{ transform:rotate(225deg) }
           <div class="sec-head" aria-hidden="true"><span class="en">LESSON</span><span class="ja">課程相關</span></div>
 
           <div class="faqgrid" id="faqGrid">
-            <!-- 以下內文保持不變（僅翻譯） -->
-              <details class="faqcard" data-cat="course">
-          <summary><div><span class="faq-title">是否提供半天課？</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-            <p>目前僅提供「全日」課程，教學節奏更完整，安全與品質也更穩定。</p>
-          </div>
-        </details>
+            
+            <!-- 更新後的內容：課程時段選擇 -->
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">請問有提供半天或晚上的課程嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>有的，為了讓學習安排更靈活，我們依據不同需求規劃了三種方案：</p>
+                <p><strong>全日課程（成效最佳）</strong><br>
+                學習時間完整，進步幅度最大，安全與品質最穩定。</p>
+                <p><strong>半日課程（輕鬆體驗）</strong><br>
+                適合體力有限、兒童，或只想短暫體驗滑雪樂趣的您。</p>
+                <p><strong>夜滑課程（時間彈性）</strong><br>
+                適合白天有觀光行程，想利用晚上時間充實學習的您。</p>
+              </div>
+            </details>
 
-        <details class="faqcard" data-cat="course">
-          <summary><div><span class="faq-title">可使用哪些語言？</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-            <p>提供中文／廣東話／英文／日文服務，溝通順暢無障礙。</p>
-          </div>
-        </details>
+            <details class="faqcard" data-cat="course">
+              <summary><div><span class="faq-title">可使用哪些語言？</span></div><i class="chev" aria-hidden="true"></i></summary>
+              <div class="faq-body">
+                <p>提供中文／廣東話／英文／日文服務，溝通順暢無障礙。</p>
+              </div>
+            </details>
 
         <details class="faqcard" data-cat="course">
   <summary>
@@ -593,7 +602,7 @@ details[open] .chev{ transform:rotate(225deg) }
         <details class="faqcard" data-cat="transport">
           <summary><div><span class="faq-title">如何從札幌市區前往札幌藻岩山滑雪場？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>札幌藻岩山滑雪場為都會近郊型雪場，駕約 30 分即可抵達，停車免費。</p>
+            <p>札幌藻岩山滑雪場為都會近郊型雪場，自駕約 30 分即可抵達，停車免費。</p>
             <p>大眾運輸：自札幌站或大通站搭札幌市營地鐵南北線至「真駒內站」（約 20 分）。</p>
             <p>轉乘直達滑雪場的路線巴士（じょうてつ巴士）約 20 分。</p>
             <p>雪季的週末與假日多有市區直達接駁巴士，建議事先確認時刻表。</p>
@@ -664,7 +673,7 @@ details[open] .chev{ transform:rotate(225deg) }
           <div class="faq-body">
             <p><strong>手稻溫泉</strong>位於札幌市西區手稻山麓，屬都市近郊型溫泉。無定山溪般的旅館街，多為當地人與滑雪後的旅客作為日歸泡湯據點。</p>
             <p>泉質為溫和的單純泉，能溫暖冰冷身體、緩解滑行疲勞。露天風呂可眺望冬日手稻山，輕鬆且開闊。</p>
-          
+           
             <p>大眾運輸較受限，推薦自駕者前往。早上在札幌手稻滑雪場滑雪，回程泡湯再返住宿地最舒適。</p>
           </div>
         </details>
@@ -744,8 +753,10 @@ const y = document.getElementById('year'); if(y) y.textContent = new Date().getF
 
 /* Topbar sticky */
 const topbar = document.getElementById('topbar');
-function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+if(topbar){ // Added safety check
+  function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+  setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
+}
 
 /* 行動：語言面板（修復） */
 (function(){
@@ -875,6 +886,8 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
   const stickySub   = document.getElementById('stickySub');
   const stickyProg  = document.getElementById('stickyProg');
 
+  if(!sections.length || !stickyLabel) return; // Added safety check
+
   let current = sections[0];
 
   function pickCurrentSection(){
@@ -924,9 +937,9 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
   function update() {
     const currentY = window.scrollY;
     if (currentY > lastScrollY && currentY > 100) {
-      topbar.classList.add('hide');
+      if(topbar) topbar.classList.add('hide');
     } else {
-      topbar.classList.remove('hide');
+      if(topbar) topbar.classList.remove('hide');
     }
     lastScrollY = currentY;
     ticking = false;

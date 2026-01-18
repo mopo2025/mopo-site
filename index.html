@@ -148,6 +148,9 @@
     .logoLine .sub { font-size:.58em; font-weight:800; letter-spacing:.08em; color:#111; }
     .logoLine::after { content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg, var(--gold),var(--gold-2)); border-radius:999px; }
     .subtitle { margin:10px 0 16px; font-size:16px; color:#000; }
+    .txt-hide-mob { display: inline; }
+    @media (max-width: 760px) { .txt-hide-mob { display: none; } }
+
     .btn { position:relative; isolation:isolate; display:inline-block; padding:10px 14px; border-radius:999px; border:1px solid var(--gold); background:#fff; color:#midnight; font-weight:800; letter-spacing:.02em; overflow:hidden; transition:transform .18s ease, color .25s ease, border-color .25s ease; }
     .btn::before { content:""; position:absolute; inset:2px; border-radius:inherit; background:rgba(200,164,93,.0); transform:scale(.1); opacity:0; transition:transform .38s ease, opacity .38s ease, background .38s ease; }
     .btn:hover::before { transform:scale(1); opacity:1; background:rgba(200,164,93,.22); }
@@ -157,16 +160,63 @@
     .hero-dots button { width:46px; height:6px; border-radius:999px; border:0; background:rgba(0,0,0,.25); cursor:pointer; }
     .hero-dots button.active { background:rgba(0,0,0,.65); }
 
-    /* ===== 最新消息 ===== */
-    .news { --gap:12px; --size:140px; --visible:2; margin-top:16px; display:flex; justify-content:flex-start; }
-    .news-viewport { overflow:hidden; width: calc(var(--size) * var(--visible) + var(--gap) * (var(--visible) - 1)); }
-    .news-row { display:flex; gap:var(--gap); transform: translateX(calc(var(--newsShift, 1) * var(--slide) * 70vw)); transition: transform .05s linear; }
-    .news-card { flex:0 0 auto; width:var(--size); height:var(--size); border-radius:16px; overflow:hidden; border:0px solid #e9e9e9; position:relative; }
-    .news-card img { width:100%; height:100%; object-fit:cover; display:block; transform:scale(1); transition:transform .35s ease, filter .15s linear; filter: grayscale(var(--gray)); }
+    /* ===== 最新消息 (News) - 與日文版一致 ===== */
+    .news { --gap:12px; --size:140px; --visible:3; margin-top:16px; display:flex; justify-content:flex-start; }
+    
+    .news-viewport { 
+        overflow-x: auto; 
+        overflow-y: hidden;
+        width: calc(var(--size) * var(--visible) + var(--gap) * (var(--visible) - 1));
+        max-width: 100%;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+    
+    .news-viewport::-webkit-scrollbar { display: none; }
+    
+    .news-viewport.active {
+        cursor: grabbing;
+        scroll-snap-type: none; 
+        scroll-behavior: auto; 
+    }
+    
+    .news-row { 
+        display: flex; 
+        gap: var(--gap); 
+        padding-bottom: 4px;
+        width: max-content;
+    }
+    
+    .news-card { 
+        flex: 0 0 auto; 
+        width: var(--size); 
+        height: var(--size); 
+        border-radius: 16px; 
+        overflow: hidden; 
+        position: relative;
+        scroll-snap-align: start; 
+    }
+    
+    .news-card img { 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        display: block; 
+        transform: scale(1); 
+        transition: transform .35s ease, filter .15s linear; 
+        filter: grayscale(var(--gray)); 
+        pointer-events: none;
+    }
+    
     .news-card:hover img { transform:scale(1.08); }
+    
     @media (max-width:760px) {
       .news { --size:100px; --visible:2; justify-content:flex-start; }
-      .news-row { --newsShift:-1; }
     }
 
     /* ===== 區塊 ===== */
@@ -176,6 +226,7 @@
     #contact.section { background:var(--bg-mid); }
     .section__head h2 { margin:0 0 8px; font-size:26px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif; }
     .muted { color:var(--ink-soft); font-size:14px; }
+    @media (max-width:760px) { .section { padding:40px 0; } }
 
     /* reveal */
     .reveal { opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
@@ -196,40 +247,237 @@
       to { opacity: 1; transform: none; }
     }
 
-    /* ===== 價格 ===== */
+    /* ===== 價格 (設計師級排版 - Grid 優化) ===== */
     .pricelist { display:grid; grid-template-columns:1fr; gap:14px; }
     .pricecard { background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); overflow:hidden; }
-    .pricecard summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto; align-items:center; gap:10px; padding:12px 14px; }
+    
+    .pricecard summary { 
+      list-style:none; cursor:pointer; 
+      display:flex; flex-direction: column; gap:12px; 
+      padding:24px; position:relative; 
+    }
     .pricecard summary::-webkit-details-marker { display:none; }
-    .pricecard .head { display:flex; flex-direction:column; gap:4px; }
-    .pricecard .title { font-size:17px; font-weight:700; }
-    .pricecard .desc { color:#516170; font-size:13px; }
-    .fromrow { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .fromtag { display:inline-flex; gap:6px; align-items:baseline; font-weight:600; font-size:14px; color:#222; }
-    .fromtag small { font-weight:600; font-size:12px; color:#666; }
-    .pricetable { display:grid; gap:10px; padding:0 14px 14px 14px; border-top:1px dashed #eee; }
-    .season { border:1px dashed #e5e1da; border-radius:10px; padding:10px; }
+    
+    .pricecard .head { display:flex; flex-direction:column; gap:6px; z-index: 2; position:relative; }
+    .pricecard .title { font-size:20px; font-weight:800; color: var(--ink); letter-spacing: 0.02em; }
+    .pricecard .desc { color:#516170; font-size:14px; line-height:1.6; }
+    
+    .mobile-desc { display: none; }
+    .mobile-thumb { 
+        display: none; 
+        width: 100%; 
+        height: 160px; 
+        object-fit: cover; 
+        border-radius: 12px; 
+        margin-bottom: 16px;
+        order: -1;
+    }
+    
+    .fromrow { 
+        display:grid; 
+        grid-template-columns: 1fr auto 1fr; 
+        align-items: center; 
+        gap: 16px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid #f2f2f2;
+    }
+    
+    .price-tag-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        line-height: 1;
+    }
+    .price-tag-group.left { align-items: flex-start; }
+    .price-tag-group.right { align-items: flex-end; }
+    
+    .pt-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 4px;
+    }
+    .pt-price {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        color: #8B6B2E;
+        letter-spacing: -0.02em;
+    }
+    .pt-price small { 
+        font-size: 11px; 
+        font-weight: 700; 
+        margin-left: 3px; 
+        color: #b09560;
+        text-transform: uppercase;
+    }
+    
+    .price-divider {
+        width: 1px;
+        height: 28px;
+        background-color: #e6e6e6;
+    }
+    
+    .expand-hint {
+        width: 100%;
+        text-align: center;
+        background-color: transparent;
+        color: #bfa15f; 
+        padding: 8px 0 0 0;
+        font-weight: 600;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 8px;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+    .expand-hint:hover { color: #8B6B2E; }
+    
+    .summary-btns {
+        display:flex; gap:10px; margin-top: 8px; z-index: 5; position: relative; width: 100%;
+    }
+    .summary-btns .btn-sm {
+        padding: 12px 20px; 
+        font-size: 15px;     
+        border-radius: 99px;
+        background: #fff;
+        border: 1px solid var(--gold); 
+        color: var(--midnight);
+        font-weight: 700;
+        flex: 1; 
+        text-align: center;
+        transition: all 0.2s;
+    }
+    .summary-btns .btn-sm:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+    .pricecard[open] .summary-btns { display: none; }
+    .pricecard[open] .expand-hint { display: none; }
+    .pricecard[open] .mobile-thumb { display: none; }
+    .pricecard[open] .desc { display: block; }
+
+    .pricetable { 
+      padding: 0 14px 14px 14px; 
+      border-top: 1px dashed #eee; 
+      display: grid;
+      gap: 16px;
+    }
+    
+    /* 雙欄佈局 (桌機) */
+    @media (min-width: 761px){
+      #pricing .pricetable {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 16px;
+        align-items: start;
+      }
+      #pricing .pricetable .note-row,
+      #pricing .pricetable .cta-row {
+        grid-column: 1 / -1;
+      }
+      #pricing .pricetable .season {
+        height: 100%;
+      }
+    }
+
+    .local-tabs {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-start;
+      gap: 8px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 8px 14px;
+      border: 1px solid #ddd;
+      background: #f9f9f9;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: #555;
+      transition: all 0.2s ease;
+      flex: 1;
+      text-align: center;
+      min-width: fit-content;
+    }
+    .tab-btn:hover { background: #eee; }
+    .tab-btn.active {
+      background: var(--midnight);
+      color: #fff;
+      border-color: var(--midnight);
+    }
+
+    .course-type-block {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+    }
+    .course-type-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green-dark);
+      background-color: rgba(26, 77, 46, 0.08);
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    
+    .season { 
+      display: none; 
+      border:1px dashed #e5e1da; border-radius:10px; padding:10px; 
+      animation: fadeIn 0.3s ease;
+    }
+    .season.active { display: block; }
     .season h4 { margin:0 0 .25rem 0; font-size:14px; }
-    .season small { display:block; color:#6f757c; font-size:12px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: none; }
+    }
+
     .table { width:100%; border-collapse:separate; border-spacing:0 .35rem; margin-top:.3rem; }
     .table thead th { font-weight:600; font-size:12px; color:#6f757c; text-align:left; }
     .table td { padding:.35rem .25rem; }
     .table .people { width:7rem; font-weight:700; font-size:16px; }
     .table .price { font-weight:700; font-size:16px; color:#8B6B2E; }
     .table .pp { font-size:12px; color:#7a7f85; font-weight:600; }
+    
     .note { margin-top:.4rem; font-size:12px; color:#6f757c; }
-    .note-row { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .note-row { 
+      display:flex; align-items:center; justify-content:space-between; gap:12px; 
+      grid-column: 1 / -1;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+    .note-row small { font-size: 14px; color: #000000; display: block; margin-bottom: 4px; }
     .note-row .btns { flex:0 0 auto; display:flex; gap:8px; }
     .cta-row { display:none; }
+    
+    .busy-dates {
+      grid-column: 1 / -1;
+      font-size: 13px;
+      color: #666;
+      background: #fdfdfd;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 8px 10px;
+      margin-bottom: 8px;
+    }
+
     @media (max-width:760px) {
       .hero__wrap { grid-template-columns:1fr; }
-      .section { padding:64px 0; }
-      .pricecard summary { grid-template-columns:1fr; gap:4px; padding:12px; }
-      .pricecard .title { font-size:16px; }
-      .pricecard .desc { font-size:12px; }
-      .fromrow { gap:8px; }
-      .fromrow .fromtag { font-size:13px; }
-      .pricetable { padding:8px 10px 12px 10px; }
+      .mobile-thumb { display: block; } 
+      .desktop-desc { display: none; }
+      .mobile-desc { display: inline; }
+      .pricetable { padding:8px 10px 12px 10px; display: flex; flex-direction: column; }
       .table thead { display:none; }
       .table tbody { display:grid; gap:8px; }
       .table tr { display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 8px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:10px; }
@@ -240,7 +488,8 @@
       .note-row { display:block; }
       .note-row .btns { display:none; }
       .cta-row { display:flex; gap:8px; margin:8px 0 0; }
-      .cta-row .btn { padding:8px 10px; }
+      .cta-row .btn { padding:8px 10px; flex: 1; text-align: center; }
+      .local-tabs { gap: 6px; }
     }
 
     /* ===== 聯絡我們 ===== */
@@ -249,9 +498,34 @@
     .form { display:grid; gap:12px; max-width:500px; }
     .form input, .form textarea { border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; font-size:16px; background:#fff; }
     .form textarea { min-height:110px; }
-    .sns { display:grid; grid-template-columns:1fr 1fr; gap:10px; align-content:start; margin-top:6px; }
-    .sns a { display:inline-flex; align-items:center; justify-content:center; padding:10px 12px; background:transparent; border:1px solid var(--gold); color:#111; font-weight:800; border-radius:12px; transition:background .25s ease, color .25s ease, border-color .25s ease; }
-    .sns a:hover { background:rgba(200,164,93,.14); color:#111; border-color:#B88F45; }
+    
+    /* 社交圖示優化 (設計師質感) */
+    .sns { display:flex; gap:16px; align-content:start; margin-top:8px; flex-wrap:wrap; }
+    .sns a { 
+        display:inline-flex; 
+        align-items:center; 
+        justify-content:center; 
+        width: 64px; 
+        height: 64px; 
+        background:#fff; 
+        border:1px solid #e0e0e0; 
+        border-radius:50%; /* 圓形質感更好 */
+        transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .sns a:hover { 
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        border-color: var(--gold);
+    }
+    .sns img { width: 32px; height: 32px; display: block; }
+    
+    /* 手機版保持原樣 (44px) */
+    @media (max-width: 760px) {
+      .sns { gap: 12px; }
+      .sns a { width: 44px; height: 44px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+      .sns img { width: 22px; height: 22px; }
+    }
 
     /* ===== Footer ===== */
     .footer { background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25); }
@@ -299,7 +573,7 @@
 
     /* 修改處：移除了 grayscale(0.9) 黑白濾鏡，僅保留亮度與模糊效果 */
     .hero.dim .hero__bg { filter:brightness(.96) blur(1px); transition:filter .35s ease; }
-    
+      
     .hero.dim .content { opacity:.35; transition:opacity .35s ease; }
     .about-btn { margin-top:12px; display:inline-block; padding:10px 16px; border-radius:999px; border:1px solid rgba(200,164,93,.55); background:rgba(255,255,255,.28); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); color:#111; font-weight:800; letter-spacing:.02em; transition:background .25s ease, border-color .25s ease, transform .15s ease; }
     .about-btn:hover { background:rgba(255,255,255,.45); border-color:var(--gold); transform:translateY(-1px); }
@@ -310,37 +584,6 @@
       .about-hero.compact { --aboutPad: clamp(70px, 20vh, 150px); }
       .line.sub { font-size:15px; }
       .about-btn { padding:9px 14px; font-size:14px; }
-    }
-
-    /* === 價格表：桌機左右兩欄 === */
-    @media (min-width: 761px) {
-      #pricing .pricetable { grid-template-columns: 1fr 1fr; gap: 14px 16px; align-items: start; }
-      #pricing .pricetable .note-row, #pricing .pricetable .cta-row { grid-column: 1 / -1; }
-      #pricing .pricetable .season { height: 100%; }
-    }
-    .note-row small { font-size:14px; color:#000000; display:block; margin-bottom:4px; }
-    .news-viewport { max-width: calc(2 * 140px + 1 * 12px); overflow: hidden; }
-
-    /* ===== 價格表：自訂字級與粗細 ===== */
-    .table .people { font-size: 18px; font-weight: 700; }
-    .table .price { font-size: 18px; font-weight: 800; color: #8B6B2E; }
-    .table .pp { font-size: 13px; font-weight: 500; color: #555; }
-
-    /* ===== 價格表：繁忙期日期的通用版版型 ===== */
-    @media (min-width: 761px) {
-      .pricecard .pricetable { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "dates dates" "standard busy"; gap: 14px 16px; align-items: start; }
-      .pricecard .busy-dates { grid-area: dates; }
-      .pricecard .season.standard { grid-area: standard; }
-      .pricecard .season.busy { grid-area: busy; }
-      .pricecard .busy-dates { padding: 8px 10px; border: 1px dashed #d9d9d9; border-radius: 10px; }
-      .pricecard .busy-dates small { font-size: 14px; }
-    }
-    @media (max-width: 760px) {
-      .pricecard .pricetable { display: grid; grid-template-columns: 1fr; grid-template-areas: "standard" "dates" "busy"; gap: 10px; }
-      .pricecard .busy-dates { grid-area: dates; padding: 0 10px; border: 0; }
-      .pricecard .season.standard { grid-area: standard; }
-      .pricecard .season.busy { grid-area: busy; }
-      .pricecard .busy-dates small { font-size: 12px; }
     }
 
     /* ===== 為什麼選擇 MOPO (圖示置中 + 可愛風 + 修復版面) ===== */
@@ -441,20 +684,10 @@
     #why-mopo { padding-bottom: 30px; }
     #pricing { padding-top: 30px; }
     @media (max-width: 760px) {
-        #why-mopo { padding-bottom: 20px; }
-        #pricing { padding-top: 20px; }
+        #why-mopo { padding-bottom: 20px !important; }
+        #pricing { padding-top: 20px !important; }
     }
   </style>
-
-  <!-- Google tag (gtag.js) google判讀-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17610938726');
-  </script>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -540,10 +773,10 @@
             <span class="sub">ski school</span>
           </span>
         </h1>
-        <p class="subtitle reveal">日本北海道滑雪｜多國語言教練，量身打造的學習體驗。</p>
+        <p class="subtitle reveal">日本北海道滑雪｜<span class="txt-hide-mob">多國語言教練，</span>量身打造的學習體驗。</p>
         <div class="cta reveal" style="gap:12px">
           <a href="#pricing" class="btn" aria-label="課程與價格">課程與價格</a>
-         <a href="booking.html" class="btn" aria-label="預約" target="_blank" rel="noopener noreferrer">預約</a>
+         <a href="booking.html" class="btn" aria-label="預約" target="_blank" rel="noopener noreferrer">預約課程</a>
         </div>
         <section class="news reveal" id="news" aria-label="最新消息">
           <div class="news-viewport">
@@ -677,50 +910,149 @@
         <h2>課程與價格</h2>
         <p class="muted">全日 6 小時（含 1 小時休息）。<span class="mobbr"><br></span>金額為含稅價格。</p>
       </div>
+
       <div class="pricelist" id="courseList">
-        <details class="pricecard" id="teine" open>
+      
+        <!-- 1. 手稻 TEINE -->
+        <details class="pricecard" id="teine">
           <summary>
+            <!-- Mobile Only Thumbnail -->
+            <img class="mobile-thumb" src="img/news/teine.jpg" alt="手稻滑雪場" loading="lazy">
             <div class="head">
-              <div class="title">手稻｜私人課（全日）</div>
-              <div class="desc">雪質穩定，交通穩定。</div>
+              <div class="title">手稻｜私人課（全日/半日）</div>
+              <div class="desc">
+                <span class="desktop-desc">雪質穩定，交通便利。適合初學者與家庭滑雪的最佳選擇。</span>
+                <span class="mobile-desc">雪質穩定，交通便利。</span>
+              </div>
             </div>
+            
             <div class="fromrow">
-              <span class="fromtag"><small>標準時段</small> ¥ 72,000 起</span>
-              <span class="fromtag"><small>繁忙期時段</small> ¥ 82,000 起</span>
+               <div class="price-tag-group left">
+                  <span class="pt-label">Half Day</span>
+                  <span class="pt-price">37,500<small>JPY 起</small></span>
+               </div>
+               <div class="price-divider"></div>
+               <div class="price-tag-group right">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">60,000<small>JPY 起</small></span>
+               </div>
+            </div>
+            
+            <!-- New: Explicit Expand Button/Hint -->
+            <div class="expand-hint">
+               ▼ 點擊查看詳細價格與日期
+            </div>
+
+            <!-- Summary Buttons (Hidden when open) -->
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='teine.html'">雪場介紹</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">預約課程</button>
             </div>
           </summary>
           <div class="pricetable">
             <div class="busy-dates">
-              <small>繁忙期：2025/12/20–01/05・2026/02/12–02/22</small>
+              繁忙期：2025/12/20～01/05・2026/02/12～02/22
             </div>
-            <div class="season standard">
-              <h4>標準價格</h4>
-              <table class="table" aria-label="手稻・標準期間價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 72,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 77,000</td><td class="pp">（每人 ¥ 38,500）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 82,000</td><td class="pp">（每人 ¥ 27,333）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 21,750）</td></tr>
-                </tbody>
-              </table>
+            <!-- 卡片內部分頁切換 -->
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">平日標準</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春季時段 (3/2~5/6)</button>
             </div>
-            <div class="season busy">
-              <h4>繁忙期價格</h4>
-              <table class="table" aria-label="手稻・繁忙期間價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 82,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 43,500）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 92,000</td><td class="pp">（每人 ¥ 30,666）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 97,000</td><td class="pp">（每人 ¥ 24,250）</td></tr>
-                </tbody>
-              </table>
+            
+            <div class="course-type-block">
+              <span class="course-type-title">全日課程 (6小時,含1小時休息） 9:30-15:30</span>
+              <div>
+                <!-- 標準價格 -->
+                <div class="season standard active">
+                  <table class="table" aria-label="手稻・標準期間價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 72,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 77,000</td><td class="pp">（每人 日幣 38,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 82,000</td><td class="pp">（每人 日幣 27,333）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 87,000</td><td class="pp">（每人 日幣 21,750）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 92,000</td><td class="pp">（每人 日幣 18,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 繁忙期價格 -->
+                <div class="season busy">
+                  <table class="table" aria-label="手稻・繁忙期間價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 82,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 87,000</td><td class="pp">（每人 日幣 43,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 92,000</td><td class="pp">（每人 日幣 30,666）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 97,000</td><td class="pp">（每人 日幣 24,250）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 102,000</td><td class="pp">（每人 日幣 20,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 春季價格 (New) -->
+                <div class="season spring">
+                  <table class="table" aria-label="手稻・春季價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 60,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 63,000</td><td class="pp">（每人 日幣 31,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 66,000</td><td class="pp">（每人 日幣 22,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 68,000</td><td class="pp">（每人 日幣 17,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 70,000</td><td class="pp">（每人 日幣 14,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
+
+            <!-- B. 半日課程區塊 (新增) -->
+            <div class="course-type-block">
+              <span class="course-type-title">半日課程 (3小時) 9:30-12:30 或 13:30-16:30</span>
+              <div>
+                <!-- 標準半日 -->
+                <div class="season standard active">
+                  <table class="table" aria-label="手稻・標準期間半日價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 44,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 48,000</td><td class="pp">（每人 日幣 24,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 51,000</td><td class="pp">（每人 日幣 17,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 54,000</td><td class="pp">（每人 日幣 13,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 57,000</td><td class="pp">（每人 日幣 11,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 繁忙期半日 (不提供) -->
+                <div class="season busy" style="background:#f9f9f9; border-color:#e0e0e0;">
+                  <div style="padding: 24px 10px; text-align:center; color:#666;">
+                    <p style="font-size:15px; margin:0; font-weight:700; color:#444;">為維護教學品質，繁忙期間僅開放全日課程預約，敬請見諒。</p>
+                  </div>
+                </div>
+
+                <!-- 春季半日 -->
+                <div class="season spring">
+                  <table class="table" aria-label="手稻・春季半日價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 37,500</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 40,000</td><td class="pp">（每人 日幣 20,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 42,000</td><td class="pp">（每人 日幣 14,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 44,000</td><td class="pp">（每人 日幣 11,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 46,000</td><td class="pp">（每人 日幣 9,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
             <div class="note-row">
               <div class="note">
-                <p>＊小提醒：除繁忙期外，皆適用標準價格；繁忙期費用請依時間表為準</p>
-                <p>＊第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
+                <p>＊小提醒：除繁忙期與春季期外，皆適用標準價格；費用請依時間表為準</p>
+                <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
               <div class="btns">
                 <a class="btn" href="teine.html">雪場介紹</a>
@@ -733,49 +1065,195 @@
             </div>
           </div>
         </details>
-        <details class="pricecard" id="onze" open>
+
+        <!-- 2. 小樽 ONZE -->
+        <details class="pricecard" id="onze">
           <summary>
+            <!-- Mobile Only Thumbnail -->
+            <img class="mobile-thumb" src="img/news/onze.png" alt="小樽ONZE滑雪場" loading="lazy">
             <div class="head">
-              <div class="title">ONZE｜私人課（全日）</div>
-              <div class="desc">臨海絕景、交通便利，雪與海交織的非凡舞台。</div>
+              <div class="title">ONZE｜私人課 (全日/半日/夜滑)</div>
+              <div class="desc">
+                <span class="desktop-desc">坐擁石狩灣海景，交通最便利。營業時間長，是體驗浪漫夜滑與欣賞絕美夜景的唯一選擇。</span>
+                <span class="mobile-desc">石狩灣海景，交通最便利。</span>
+              </div>
             </div>
             <div class="fromrow">
-              <span class="fromtag"><small>標準時段</small> ¥ 72,000 起</span>
-              <span class="fromtag"><small>繁忙期時段</small> ¥ 72,000 起</span>
+               <div class="price-tag-group left">
+                  <span class="pt-label">Half Day</span>
+                  <span class="pt-price">26,000<small>JPY 起</small></span>
+               </div>
+               <div class="price-divider"></div>
+               <div class="price-tag-group right">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">60,000<small>JPY 起</small></span>
+               </div>
+            </div>
+            
+            <!-- New: Explicit Expand Button/Hint -->
+            <div class="expand-hint">
+               ▼ 點擊查看詳細價格與日期
+            </div>
+
+            <!-- Summary Buttons (Always Visible) -->
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='onze.html'">雪場介紹</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">預約課程</button>
             </div>
           </summary>
           <div class="pricetable">
             <div class="busy-dates">
-              <small>繁忙期：2025/12/20～01/05・2026/02/12～02/22</small>
+              繁忙期：2025/12/20～01/05・2026/02/12～02/22
             </div>
-            <div class="season standard">
-              <h4>標準價格</h4>
-              <table class="table" aria-label="ONZE・標準期間價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 72,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 77,000</td><td class="pp">（每人 ¥ 38,500）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 82,000</td><td class="pp">（每人 ¥ 27,333）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 21,750）</td></tr>
-                </tbody>
-              </table>
+            <!-- 卡片內部分頁切換 -->
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">平日標準</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春季時段 (3/2~3/28)</button>
             </div>
-            <div class="season busy">
-              <h4>繁忙期價格</h4>
-              <table class="table" aria-label="ONZE・繁忙期間價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 82,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 87,000</td><td class="pp">（每人 ¥ 43,500）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 92,000</td><td class="pp">（每人 ¥ 30,666）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 97,000</td><td class="pp">（每人 ¥ 24,250）</td></tr>
-                </tbody>
-              </table>
+            
+            <!-- A. 全日課程區塊 -->
+            <div class="course-type-block">
+              <span class="course-type-title">全日課程 (6小時,含1小時休息） 9:30-15:30</span>
+              <div>
+                <!-- 標準全日 -->
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 72,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 77,000</td><td class="pp">（每人 日幣 38,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 82,000</td><td class="pp">（每人 日幣 27,333）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 87,000</td><td class="pp">（每人 日幣 21,750）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 92,000</td><td class="pp">（每人 日幣 18,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 繁忙期全日 -->
+                <div class="season busy">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 82,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 87,000</td><td class="pp">（每人 日幣 43,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 92,000</td><td class="pp">（每人 日幣 30,666）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 97,000</td><td class="pp">（每人 日幣 24,250）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 102,000</td><td class="pp">（每人 日幣 20,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 春季全日 -->
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 60,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 63,000</td><td class="pp">（每人 日幣 31,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 66,000</td><td class="pp">（每人 日幣 22,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 68,000</td><td class="pp">（每人 日幣 17,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 70,000</td><td class="pp">（每人 日幣 14,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
+
+            <!-- B. 半日課程區塊 -->
+            <div class="course-type-block">
+              <span class="course-type-title">半日課程 (3小時) 9:30-12:30 或 13:30-16:30</span>
+              <div>
+                <!-- 標準半日 -->
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 44,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 48,000</td><td class="pp">（每人 日幣 24,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 51,000</td><td class="pp">（每人 日幣 17,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 54,000</td><td class="pp">（每人 日幣 13,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 57,000</td><td class="pp">（每人 日幣 11,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 繁忙期半日 (不提供) -->
+                <div class="season busy" style="background:#f9f9f9; border-color:#e0e0e0;">
+                  <div style="padding: 24px 10px; text-align:center; color:#666;">
+                    <p style="font-size:15px; margin:0; font-weight:700; color:#444;">為維護教學品質，繁忙期間僅開放全日課程預約，敬請見諒。</p>
+                  </div>
+                </div>
+
+                <!-- 春季半日 -->
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 37,500</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 40,000</td><td class="pp">（每人 日幣 20,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 42,000</td><td class="pp">（每人 日幣 14,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 44,000</td><td class="pp">（每人 日幣 11,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 46,000</td><td class="pp">（每人 日幣 9,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- C. 夜滑課程區塊 -->
+            <div class="course-type-block">
+              <span class="course-type-title">夜滑課程 (2小時) 17:00-19:00</span>
+              <div>
+                <!-- 標準夜滑 -->
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 32,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 36,000</td><td class="pp">（每人 日幣 18,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 40,000</td><td class="pp">（每人 日幣 13,333）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 44,000</td><td class="pp">（每人 日幣 11,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 48,000</td><td class="pp">（每人 日幣 9,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 繁忙期夜滑 (保留) -->
+                <div class="season busy">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 38,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 42,000</td><td class="pp">（每人 日幣 21,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 46,000</td><td class="pp">（每人 日幣 15,333）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 50,000</td><td class="pp">（每人 日幣 12,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 54,000</td><td class="pp">（每人 日幣 10,800）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 春季夜滑 -->
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 26,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 29,000</td><td class="pp">（每人 日幣 14,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 32,000</td><td class="pp">（每人 日幣 10,666）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 34,000</td><td class="pp">（每人 日幣 8,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 36,000</td><td class="pp">（每人 日幣 7,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
             <div class="note-row">
               <div class="note">
-                <p>＊小提醒：除繁忙期間外，皆適用標準價格；繁忙期費用請依時間表為準</p>
-                <p>＊第 5 位起每人 +¥5,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
+                <p>＊小提醒：除繁忙期與春季期外，皆適用標準價格；費用請依時間表為準</p>
+                <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
               <div class="btns">
                 <a class="btn" href="onze.html">雪場介紹</a>
@@ -788,49 +1266,100 @@
             </div>
           </div>
         </details>
-        <details class="pricecard" id="kokusai" open>
+
+        <!-- 3. 札幌國際 KOKUSAI -->
+        <details class="pricecard" id="kokusai">
           <summary>
+            <!-- Mobile Only Thumbnail -->
+            <img class="mobile-thumb" src="img/news/kokusai.jpg" alt="札幌國際滑雪場" loading="lazy">
             <div class="head">
               <div class="title">札幌國際｜私人課（全日）</div>
-              <div class="desc">視野開闊、多樣路線。</div>
+              <div class="desc">
+                <span class="desktop-desc">札幌近郊雪質最佳的首選。雪道寬敞、視野開闊，設施完善且對兒童友善，是家庭滑雪的完美去處。</span>
+                <span class="mobile-desc">札幌近郊雪質最佳的首選。</span>
+              </div>
             </div>
             <div class="fromrow">
-              <span class="fromtag"><small>標準時段</small> ¥ 84,000 起</span>
-              <span class="fromtag"><small>繁忙期時段</small> ¥ 94,000 起</span>
+               <div class="price-tag-group left">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">62,000<small>JPY 起</small></span>
+               </div>
+            </div>
+            
+            <!-- New: Explicit Expand Button/Hint -->
+            <div class="expand-hint">
+               ▼ 點擊查看詳細價格與日期
+            </div>
+
+            <!-- Summary Buttons (Always Visible) -->
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='kokusai.html'">雪場介紹</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">預約課程</button>
             </div>
           </summary>
           <div class="pricetable">
             <div class="busy-dates">
-              <small>繁忙期：2025/12/20～01/05・2026/02/12～02/22</small>
+              繁忙期：2025/12/20～01/05・2026/02/12～02/22
             </div>
-            <div class="season standard">
-              <h4>標準價格</h4>
-              <table class="table" aria-label="札幌國際・平日價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 84,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 90,000</td><td class="pp">（每人 ¥ 45,000）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 96,000</td><td class="pp">（每人 ¥ 32,000）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 102,000</td><td class="pp">（每人 ¥ 25,500）</td></tr>
-                </tbody>
-              </table>
+            <!-- 卡片內部分頁切換 -->
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">平日標準</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春季時段 (3/2~5/6)</button>
             </div>
-            <div class="season busy">
-              <h4>繁忙期價格</h4>
-              <table class="table" aria-label="札幌國際・繁忙期價目表">
-                <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
-                <tbody>
-                  <tr><td class="people">1 人</td><td class="price">¥ 94,000</td><td></td></tr>
-                  <tr><td class="people">2 人</td><td class="price">¥ 100,000</td><td class="pp">（每人 ¥ 50,000）</td></tr>
-                  <tr><td class="people">3 人</td><td class="price">¥ 106,000</td><td class="pp">（每人 ¥ 35,333）</td></tr>
-                  <tr><td class="people">4 人</td><td class="price">¥ 112,000</td><td class="pp">（每人 ¥ 28,000）</td></tr>
-                </tbody>
-              </table>
+            
+            <div class="course-type-block">
+              <span class="course-type-title">全日課程 (6小時,含1小時休息） 9:30-15:30</span>
+              <div>
+                <!-- 標準價格 -->
+                <div class="season standard active">
+                  <table class="table" aria-label="札幌國際・平日價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 84,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 90,000</td><td class="pp">（每人 日幣 45,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 96,000</td><td class="pp">（每人 日幣 32,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 102,000</td><td class="pp">（每人 日幣 25,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 108,000</td><td class="pp">（每人 日幣 21,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <!-- 繁忙期價格 -->
+                <div class="season busy">
+                  <table class="table" aria-label="札幌國際・繁忙期價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 94,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 100,000</td><td class="pp">（每人 日幣 50,000）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 106,000</td><td class="pp">（每人 日幣 35,333）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 112,000</td><td class="pp">（每人 日幣 28,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 118,000</td><td class="pp">（每人 日幣 23,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- 春季價格 (New) -->
+                <div class="season spring">
+                  <table class="table" aria-label="札幌國際・春季價目表">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1 人</td><td class="price">日幣 62,000</td><td></td></tr>
+                      <tr><td class="people">2 人</td><td class="price">日幣 65,000</td><td class="pp">（每人 日幣 32,500）</td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 68,000</td><td class="pp">（每人 日幣 22,666）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 70,000</td><td class="pp">（每人 日幣 17,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 72,000</td><td class="pp">（每人 日幣 14,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
+
             <div class="note-row">
               <div class="note">
-                <p>＊小提醒：除繁忙時段外，皆適用標準價格；繁忙期費用請依時間表為準</p>
-                <p>＊第 5 位起每人 +¥6,000，最多 5 人。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
+                <p>＊小提醒：除繁忙期與春季期外，皆適用標準價格；費用請依時間表為準</p>
+                <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
               <div class="btns">
                 <a class="btn" href="kokusai.html">雪場介紹</a>
@@ -860,7 +1389,7 @@
         </form>
         <aside aria-label="社群與聯絡方式" class="reveal" style="align-self:start">
           <h3 style="margin:0 0 8px 0;font-size:18px;color:#111">追蹤我們</h3>
-          <div class="sns" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="sns" style="display:flex; gap:16px; flex-wrap:wrap;">
             
             <a href="https://www.threads.com/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads">
               <img src="logo/threads.png" alt="Threads" width="28" height="28" loading="lazy" decoding="async">
@@ -1155,52 +1684,104 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
   show(0); play();
 })();
 
-// 最新消息：桌機 3、手機 2（支援任意張數，循環播放）
+// 最新消息：無限自動循環 + 拖曳滑動 (Seamless Loop)
 (function(){
   const row = document.getElementById('newsRow');
-  if(!row) return;
+  const viewport = row ? row.parentElement : null;
+  if(!row || !viewport) return;
+
   const GAP = 12;
-  const mq  = window.matchMedia('(max-width:760px)');
-  const isMobile = ()=> mq.matches;
-  const baseCards = ()=> Array.from(row.children).filter(n=>!n.classList.contains('clone'));
-  const totalBase = ()=> baseCards().length;
-  const visible = ()=> isMobile()? 2 : 3;
-  const cardSize= ()=> isMobile()? 100 : 140;
-  let index = 0, timer = null;
-  function setup(){
-    row.querySelectorAll('.clone').forEach(n=>n.remove());
-    const bases = baseCards();
-    const need  = visible();
-    for(let i=0;i<need;i++){
-      const c = bases[i % bases.length].cloneNode(true);
-      c.classList.add('clone');
-      row.appendChild(c);
+  const getCardSize = () => window.innerWidth <= 760 ? 100 : 140;
+  const getStep = () => getCardSize() + GAP;
+
+  // 1. 複製兩組卡片以確保無縫循環
+  const originalCards = Array.from(row.querySelectorAll('.news-card:not(.clone)'));
+  originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      row.appendChild(clone);
+  });
+  // 再複製一組以防萬一
+  originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      row.appendChild(clone);
+  });
+
+  let autoScrollTimer = null;
+  let isHovered = false;
+  let isDragging = false;
+  let startX, scrollLeft;
+
+  function autoScroll() {
+    if (isHovered || isDragging) return;
+
+    const step = getStep();
+    const currentScroll = viewport.scrollLeft;
+    const originalSetWidth = originalCards.length * step;
+
+    // 如果目前捲動位置已經超過了第一組卡片，我們可以在視覺無縫的情況下跳回前面
+    if (currentScroll >= originalSetWidth) {
+        // 瞬間跳回 (scroll-behavior 必須設為 auto 或 instant)
+        viewport.scrollTo({ left: currentScroll - originalSetWidth, behavior: 'auto' });
+        
+        // 跳回後，計算下一個目標位置
+        // 注意：這裡需要給瀏覽器一點時間處理渲染，否則 smooth scroll 可能會被吃掉
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+               const newBase = currentScroll - originalSetWidth;
+               viewport.scrollTo({ left: newBase + step, behavior: 'smooth' });
+            });
+        });
+    } else {
+        // 正常滑動
+        viewport.scrollTo({ left: currentScroll + step, behavior: 'smooth' });
     }
-    const vp = row.parentElement;
-    vp.style.width = (cardSize()*visible() + GAP*(visible()-1)) + 'px';
-    index = 0;
-    row.style.transition = 'none';
-    row.style.transform  = 'translateX(0px)';
   }
-  function step(){
-    index++;
-    const stepPx = cardSize() + GAP;
-    row.style.transition = 'transform .6s ease';
-    row.style.transform  = `translateX(-${stepPx*index}px)`;
-    if(index >= totalBase()){
-      setTimeout(()=>{
-        row.style.transition = 'none';
-        index = 0;
-        row.style.transform = 'translateX(0px)';
-      }, 620);
-    }
+
+  function startAutoPlay() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
+      autoScrollTimer = setInterval(autoScroll, 3000); // 3秒移動一次
   }
-  function start(){
-    if(timer) clearInterval(timer);
-    timer = setInterval(step, 3000);
+
+  function stopAutoPlay() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
   }
-  setup(); start();
-  mq.addEventListener('change', ()=>{ setup(); start(); });
+
+  // 事件監聽
+  viewport.addEventListener('mouseenter', () => { isHovered = true; stopAutoPlay(); });
+  viewport.addEventListener('mouseleave', () => { isHovered = false; isDragging = false; viewport.classList.remove('active'); startAutoPlay(); });
+  
+  viewport.addEventListener('touchstart', () => { isHovered = true; stopAutoPlay(); }, {passive: true});
+  viewport.addEventListener('touchend', () => { 
+      setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000); 
+  });
+
+  // 拖曳功能
+  viewport.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      stopAutoPlay();
+      viewport.classList.add('active');
+      startX = e.pageX - viewport.offsetLeft;
+      scrollLeft = viewport.scrollLeft;
+  });
+
+  viewport.addEventListener('mouseup', () => {
+      isDragging = false;
+      viewport.classList.remove('active');
+      startAutoPlay();
+  });
+
+  viewport.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - viewport.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      viewport.scrollLeft = scrollLeft - walk;
+  });
+
+  // 啟動
+  startAutoPlay();
 })();
 
 // Reveal Animation
@@ -1236,6 +1817,41 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
     list.querySelectorAll('details[open]').forEach(d=>{ if(d!==tgt) d.open=false; });
   });
 })();
+
+// 季節切換 (Local Logic inside each pricecard)
+(function(){
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // 防止觸發 details 展開/收合
+      
+      // 1. 找到當前的父容器 (pricetable)
+      const container = btn.closest('.pricetable');
+      if(!container) return;
+
+      // 2. 移除該容器內所有 Tab 的 active 狀態
+      container.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // 3. 取得目標季節 (standard, busy, spring)
+      const target = btn.dataset.tab;
+      
+      // 4. 更新該容器內的價格表顯示
+      const seasons = container.querySelectorAll('.season');
+      seasons.forEach(s => {
+        if(s.classList.contains(target)) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    });
+  });
+})();
+
 
 // 聯絡我們：mailto
 (function(){

@@ -1,20 +1,10 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17610938726');
-</script>
-  
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- Content Security Policy：嚴格、可在 localhost/部署下使用 -->
+<!-- CSP -->
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' 'unsafe-inline' https://www.gstatic.com https://script.google.com https://script.googleusercontent.com;
@@ -30,119 +20,252 @@
 <title>MOPO 訂課預約申請</title>
 <style>
   :root{
-    --bg:#f6f7f6; --ink:#0f172a; --muted:#5b6b73;
-    --brand:#0ea5e9; --heading:#0b5d45;
-    --card:#ffffff; --ring:rgba(14,165,233,.25);
-    --radius:18px; --rule:#e1e6e9; --rule-strong:#c8d1d6;
-    --ctrl-max:520px;
+    /* 學校配色設定 */
+    /* 背景與基底 */
+    --bg:#f9fbf9; 
+    --ink:#1a2e26; /* 深綠黑色文字 */
+    --muted:#5c7068; /* 灰綠色輔助字 */
+    
+    /* 品牌識別色 */
+    --brand:#c5a059; /* 金色 (Gold) - 用於邊框、強調文字 */
+    --brand-dark:#a3823d; /* 深金色 - 用於 Hover */
+    --heading:#0f3d32; /* 墨綠色 (Ink Green) - 用於標題、主要按鈕背景 */
+    
+    /* UI 元件 */
+    --card:#ffffff; 
+    --ring:rgba(197, 160, 89, 0.4); /* 金色光暈 */
+    --radius:16px; --radius-sm:8px;
+    --border:#e2e8f0;
+    --danger:#ef4444; --success:#10b981;
+    --shadow:0 1px 3px 0 rgba(15, 61, 50, 0.1), 0 1px 2px -1px rgba(15, 61, 50, 0.1);
+    --shadow-lg:0 10px 15px -3px rgba(15, 61, 50, 0.1), 0 4px 6px -4px rgba(15, 61, 50, 0.1);
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
-  .wrap{max-width:980px;margin:28px auto;padding:0 18px}
-  h1{margin:0 0 6px;font-weight:800;letter-spacing:.2px;color:var(--heading)}
-  .muted{color:var(--muted)}
-  .card{background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);box-shadow:0 1px 2px rgba(0,0,0,.04);padding:18px;margin:16px 0}
-  .kicker{display:block;color:#648d86;letter-spacing:.18em;font-weight:800;font-size:.72rem;margin-bottom:6px}
-  h2{margin:0 0 12px;font-size:1.24rem;font-weight:800;letter-spacing:.02em}
-  .rule{height:2px;background:var(--rule-strong);margin:12px 0}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial; -webkit-font-smoothing: antialiased;}
+  
+  .wrap{max-width:800px;margin:20px auto 40px;padding:0 16px}
+  
+  /* Typography */
+  h1{margin:0 0 4px;font-weight:800;letter-spacing:-0.025em;color:var(--heading); font-size:1.75rem;}
+  h2{margin:0 0 16px;font-size:1.25rem;font-weight:700;letter-spacing:-0.01em; color:var(--heading);}
+  h3{margin:0 0 12px;font-size:1.1rem;font-weight:700; color:var(--heading);}
+  .muted{color:var(--muted); font-size:0.95rem;}
+  .kicker{display:block;color:var(--brand);letter-spacing:.1em;font-weight:700;font-size:.75rem;text-transform:uppercase;margin-bottom:4px}
+  
+  /* Cards */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:20px; transition: transform 0.2s, box-shadow 0.2s;}
+  .rule{height:1px;background:var(--border);margin:24px 0}
 
-  .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-  .langBtns{display:flex;gap:8px}
-  .langBtns button{border:1px solid #d1d5db;background:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
-  .langBtns button.active{background:var(--brand);color:#fff;border-color:transparent}
+  /* Topbar */
+  .topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px}
+  .langBtns{display:flex;gap:6px}
+  .langBtns button{border:1px solid var(--border);background:#fff;padding:6px 12px;border-radius:20px;cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--muted);transition:all 0.2s}
+  .langBtns button:hover{background:#f1f5f9; color:var(--heading);}
+  .langBtns button.active{background:var(--heading);color:#fff;border-color:var(--heading)}
   .langSel{display:none}
   @media (max-width:640px){
     .langBtns{display:none}
     .langSel{display:block}
   }
-  .langSel select{
-    padding:8px 12px;border-radius:10px;border:1px solid #d1d5db;background:#fff;min-height:40px;font-size:.95rem;
-  }
+  .langSel select{padding:8px 12px;border-radius:8px;border:1px solid var(--border);}
 
-  .grid{display:grid;gap:14px}
+  /* Grid Layouts */
+  .grid{display:grid;gap:16px}
   .choices-3{grid-template-columns:repeat(3,minmax(0,1fr))}
   .choices-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-  @media (max-width:860px){.choices-3,.choices-2{grid-template-columns:1fr}}
-  .choice{position:relative;display:grid;place-items:center;gap:10px;padding:18px;border-radius:16px;border:2px solid transparent;background:#fff;cursor:pointer;transition:.2s}
-  .choice:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
-  .choice.active{border-color:var(--brand)}
-  .choice img{width:100%;height:160px;object-fit:cover;border-radius:12px}
-  .choice .title{font-weight:900;font-size:1.22rem;letter-spacing:.01em}
-  .choice .sub{color:var(--muted)}
-  .discipline .title{font-size:1.26rem}
-
-  .discipline .media{
-    aspect-ratio: 4/3;
-    width: clamp(240px, 28vw, 360px);
-    border-radius: 12px;
-    overflow: hidden;
-    background:#f3f4f6;
-    display:grid;
-    place-items:center;
+  @media (max-width:768px){.choices-3,.choices-2{grid-template-columns:1fr}}
+  
+  /* Choices (Resort/Type) */
+  .choice{
+    position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;
+    padding:16px;border-radius:var(--radius);border:2px solid transparent;
+    background:#fff;cursor:pointer;transition:all 0.2s ease;
+    box-shadow:var(--shadow);
   }
-  .discipline .media img{ width:100%; height:100%; object-fit:cover; }
-  .discipline .media[data-fit="contain"] img{ object-fit:contain; background:#fff; }
-  @media (max-width:860px){ .discipline .media{ width:100%; } }
+  .choice:hover{transform:translateY(-2px); box-shadow:var(--shadow-lg); border-color:var(--brand-dark);}
+  .choice.active{border-color:var(--brand); background:#fffdf5;} /* 淺金色背景 */
+  .choice img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;}
+  .choice .title{font-weight:800;font-size:1.1rem;text-align:center;line-height:1.3;}
+  .choice .sub{color:var(--muted);font-size:0.85rem;text-align:center;}
+  
+  .discipline .media{aspect-ratio:4/3;width:100%;max-width:200px;border-radius:12px;overflow:hidden;background:#f3f4f6;}
+  .discipline .media img{width:100%;height:100%;object-fit:cover;}
+  
+  .choice.disabled{filter:grayscale(1);opacity:0.6;cursor:not-allowed;}
+  .choice.disabled:hover{transform:none;box-shadow:none;}
+  .badge{position:absolute;top:12px;left:12px;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:20px;background:var(--heading);color:#fff;backdrop-filter:blur(4px); opacity: 0.9;}
 
-  .choice.disabled{filter:grayscale(1) brightness(.9); cursor:not-allowed; border-color:#e5e7eb}
-  .choice.disabled:hover{box-shadow:none; border-color:#e5e7eb}
-  .choice.disabled .badge{background:#0f172a; color:#fff; opacity:.9}
-  .badge{position:absolute;top:10px;left:10px;font-size:.78rem;padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#111}
-
-  .field{display:grid;gap:6px;margin:12px 0; max-width:var(--ctrl-max)}
-  label{font-weight:700;font-size:1.02rem;letter-spacing:.01em}
-  select, input[type="text"], input[type="email"], input[type="date"], textarea{
-    width:100%; padding:14px 14px; border-radius:12px; border:1px solid #d1d5db; background:#fff;
-    font-size:1.05rem; line-height:1.35; min-height:50px;
+  /* Form Elements */
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  input[type="date"]{ overflow:clip; text-overflow:ellipsis; position:relative; }
-  @supports (-webkit-touch-callout: none) { input[type="date"]{ padding-right:36px } }
-  textarea{min-height:110px;resize:vertical}
-  .note{font-size:.92rem;color:#5b6b73;margin-top:6px}
-  .price{font-weight:800;margin-top:8px}
-  .hide{display:none}
+  @media (min-width: 640px) {
+    .form-grid { grid-template-columns: 1fr 1fr; }
+    .form-full { grid-column: 1 / -1; }
+  }
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:12px;border:1px solid #e5e7eb;background:#fff;cursor:pointer;transition:.2s}
-  .btn.primary{background:var(--brand);color:#fff;border-color:transparent}
+  .field{display:flex;flex-direction:column;gap:6px;}
+  label{font-weight:700;font-size:0.9rem;color:var(--heading);}
+  
+  /* 修正：排除 checkbox 以免被全寬度樣式覆蓋 */
+  select, input:not([type="checkbox"]), textarea {
+    width:100%; padding:12px 14px; 
+    border-radius:var(--radius-sm); border:1px solid var(--border); 
+    background:#fff; color:var(--ink);
+    font-size:1rem; line-height:1.5;
+    transition:border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+  }
+  
+  /* Checkbox 專用樣式 */
+  input[type="checkbox"] {
+    width: 20px; 
+    height: 20px;
+    appearance: auto;
+    accent-color: var(--heading); /* 勾選時使用墨綠色 */
+    cursor: pointer;
+    margin-right: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Custom Arrow for Select */
+  .select-wrap { position:relative; }
+  .select-wrap::after {
+    content:""; position:absolute; right:14px; top:50%; transform:translateY(-50%);
+    width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid var(--muted);
+    pointer-events:none;
+  }
+  select { padding-right:36px; }
+
+  select:focus, input:focus, textarea:focus {
+    outline:none; border-color:var(--brand); 
+    box-shadow:0 0 0 3px var(--ring);
+  }
+  
+  /* Error State */
+  .error-shake { animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both; border-color:var(--danger) !important; background: #fff1f2; }
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+  }
+
+  .note{font-size:.85rem;color:var(--muted);margin-top:2px}
+  .note.warn{color:var(--danger);font-weight:600;}
+
+  /* Configure Block */
+  .config-box {
+    background: #fcfdfc;
+    border: 1px dashed var(--brand); /* 金色虛線框 */
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .config-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 16px;
+    color: var(--heading);
+  }
+  .config-header svg { width: 20px; height: 20px; }
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:14px 20px;border-radius:var(--radius-sm);
+    font-weight:700; font-size:1rem;
+    cursor:pointer;transition:all 0.2s; border:none;
+  }
+  .btn.primary{
+    background:var(--heading);color:#fff; /* 墨綠色按鈕 */
+    box-shadow:0 4px 6px -1px rgba(15, 61, 50, 0.2);
+  }
+  .btn.primary:hover { background:#0a2921; transform:translateY(-1px); }
+  .btn.primary:disabled { background:#cbd5e1; cursor:not-allowed; transform:none; box-shadow:none; }
+  
+  .btn.outline{
+    background:#fff; border:2px solid var(--brand); color:var(--brand-dark); /* 金色邊框 */
+  }
+  .btn.outline:hover { background:var(--brand); color:#fff; }
+  
   .btn.full{width:100%}
-  .row-actions{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
 
-  .checkline{position:relative;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-top:12px}
-  .checkline input[type="checkbox"]{margin-top:4px;flex-shrink:0}
-  .checkline label{line-height:1.55;margin:0}
-  .checkline a{color:#0369a1;text-decoration:underline;white-space:nowrap}
-
-  .modal{position:fixed;inset:0;background:rgba(2,6,23,.45);display:none;align-items:center;justify-content:center;padding:16px}
-  .modal .panel{background:#fff;max-width:720px;width:100%;border-radius:16px;padding:18px;border:1px solid #e5e7eb}
-  .modal h3{margin:0 0 8px;font-size:1.12rem}
-  .dt{color:#64748b;font-size:.9rem;margin-bottom:8px}
-  .kv{display:grid;grid-template-columns:160px 1fr;gap:10px;margin:8px 0}
-  .kv b{font-weight:700}
-
-  @media (min-width: 861px) {
-    #step3 #details, #step3 #addonRow { display:grid; justify-items:center; }
-    #step3 .field, #step3 .checkline, #step3 .row-actions, #step3 #priceBox, #step3 #seasonNote {
-      margin-left:auto; margin-right:auto; width:100%; max-width:var(--ctrl-max);
-    }
+  /* Cart Styles */
+  #cartSection { margin-top:0; }
+  .cart-list { display: grid; gap: 12px; }
+  .cart-item { 
+    background:#fff; border:1px solid var(--border); 
+    border-left: 5px solid var(--brand); /* 金色側邊條 */
+    border-radius:var(--radius-sm); padding:16px; 
+    position:relative; 
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    animation: slideIn 0.3s ease-out;
   }
-  .price-old{ text-decoration: line-through; color:#64748b; margin-right:6px; }
-  .price-new{ color:#dc2626; font-weight:800; }
+  @keyframes slideIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+  
+  .cart-item-header { display:flex; justify-content:space-between; margin-bottom:6px; }
+  .cart-date { font-weight:800; color:var(--heading); font-size:1.05rem; }
+  .cart-price { font-weight:800; color:var(--brand-dark); }
+  
+  .cart-detail { font-size:0.9rem; color:var(--muted); line-height:1.5; }
+  .cart-detail b { color:var(--ink); font-weight:600; }
+  
+  .del-btn { 
+    position:absolute; bottom:12px; right:12px; 
+    background:#fee2e2; color:#b91c1c; 
+    border:none; padding:6px 12px; border-radius:6px; 
+    font-size:0.8rem; font-weight:700; cursor:pointer; 
+  }
+  .del-btn:hover { background:#fecaca; }
+
+  .cart-total-bar { 
+    background:var(--heading); color:#fff; /* 墨綠色總計列 */
+    padding:16px; border-radius:var(--radius); 
+    display:flex; justify-content:space-between; align-items:center;
+    margin-top:16px; font-weight:700; font-size:1.1rem;
+  }
+  
+  .empty-cart-msg { 
+    text-align:center; color:var(--muted); padding:30px; 
+    border:2px dashed var(--border); border-radius:var(--radius); 
+    background:#f8fafc;
+  }
+
+  .price-display { margin-top:16px; text-align:right; }
+  .price-old { text-decoration:line-through; color:var(--muted); margin-right:8px; font-size:0.9rem; }
+  .price-curr { font-size:1.5rem; font-weight:800; color:var(--danger); }
+  .price-sub { display:block; font-size:0.85rem; color:var(--muted); margin-top:4px; }
+
+  .hide{display:none}
+  
+  .checkline{position:relative;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;padding:16px; z-index:999; backdrop-filter:blur(2px);}
+  .modal .panel{background:#fff;max-width:600px;width:100%;border-radius:var(--radius);padding:24px;border:1px solid var(--border); max-height:90vh; overflow-y:auto; box-shadow:var(--shadow-lg);}
+  .kv{display:grid;grid-template-columns:140px 1fr;gap:12px;margin:12px 0; border-bottom:1px solid #f1f5f9; padding-bottom:8px; font-size:0.95rem;}
+  .kv b{color:var(--muted);}
+  .kv div{font-weight:600;}
+
 </style>
 </head>
 <body>
 <div class="wrap" id="app">
+  <!-- Topbar -->
   <div class="topbar">
     <div>
       <span class="kicker" data-i="kicker">RESERVATION</span>
-      <h1 data-i="title">MOPO 訂課預約申請</h1>
-      <p class="muted" data-i="intro">依序完成 3 個步驟即可送出選單。</p>
+      <h1 data-i="title">MOPO 訂課預約</h1>
+      <p class="muted" data-i="intro" style="margin:0">簡單 3 步驟完成預約。</p>
     </div>
-    <div class="langBtns" aria-label="Language buttons">
+    <div class="langBtns">
       <button data-lang="zh-Hant" class="active">繁中</button>
       <button data-lang="en">EN</button>
-      <button data-lang="ja">日本語</button>
+      <button data-lang="ja">JP</button>
     </div>
-    <div class="langSel" aria-label="Language select">
+    <div class="langSel">
       <select id="langSelect">
         <option value="zh-Hant" selected>繁中</option>
         <option value="en">English</option>
@@ -151,36 +274,38 @@
     </div>
   </div>
 
+  <!-- Step 1 -->
   <div class="card" id="step1">
-    <span class="kicker" data-i="s1">STEP 1</span>
-    <h2 data-i="s1t">選擇滑雪場地點</h2>
-    <div class="rule"></div>
+    <div class="config-header" style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+      <h2 style="margin:0" data-i="s1t">1. 選擇滑雪場</h2>
+    </div>
     <div class="grid choices-3" id="resortChoices">
       <button type="button" class="choice" data-resort="teine">
         <img src="img/news/teine.jpg" alt="Teine">
         <span class="badge" data-i="badge_coming" style="display:none">即將開放</span>
-        <div class="title" data-i="r_teine">手稻｜私人課（全日）</div>
-        <div class="sub" data-i="r_teine_sub">雪質與交通最便利</div>
+        <div class="title" data-i="r_teine">手稻滑雪場</div>
+        <div class="sub" data-i="r_teine_sub">距離市區最近</div>
       </button>
       <button type="button" class="choice" data-resort="onze">
         <img src="img/news/onze.png" alt="ONZE">
         <span class="badge" data-i="badge_coming" style="display:none">即將開放</span>
-        <div class="title" data-i="r_onze">ONZE｜私人課（全日）</div>
-        <div class="sub" data-i="r_onze_sub">臨海絕景・交通便利</div>
+        <div class="title" data-i="r_onze">ONZE 滑雪場</div>
+        <div class="sub" data-i="r_onze_sub">海景・夜滑</div>
       </button>
       <button type="button" class="choice" data-resort="kokusai">
         <img src="img/news/kokusai.jpg" alt="Kokusai">
         <span class="badge" data-i="badge_coming" style="display:none">即將開放</span>
-        <div class="title" data-i="r_koku">札幌國際｜私人課（全日）</div>
-        <div class="sub" data-i="r_koku_sub">視野開闊・多樣路線</div>
+        <div class="title" data-i="r_koku">札幌國際</div>
+        <div class="sub" data-i="r_koku_sub">雪道豐富</div>
       </button>
     </div>
   </div>
 
+  <!-- Step 2 -->
   <div class="card hide" id="step2">
-    <span class="kicker" data-i="s2">STEP 2</span>
-    <h2 data-i="s2t">選擇課程類別</h2>
-    <div class="rule"></div>
+    <div class="config-header" style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+      <h2 style="margin:0" data-i="s2t">2. 選擇課程類別</h2>
+    </div>
     <div class="grid choices-2 discipline" id="disciplineChoices">
       <button type="button" class="choice" data-type="snowboard">
         <div class="media"><img src="img/booking/snowboard.jpg" alt="Snowboard"></div>
@@ -193,233 +318,360 @@
     </div>
   </div>
 
+  <!-- Step 3 -->
   <div class="card hide" id="step3">
-    <span class="kicker" data-i="s3">STEP 3</span>
-    <h2 data-i="s3t">選擇產品與詳細</h2>
-    <div class="rule"></div>
-
-    <div id="productHeader" style="font-weight:900;font-size:1.12rem;letter-spacing:.01em;margin:2px 0 10px;">
-      <span data-i="prod6h">全日 6 小時課程</span>
+    <div class="config-header" style="margin-bottom:20px; border-bottom:1px solid var(--border); padding-bottom:12px;">
+      <h2 style="margin:0" data-i="s3t">3. 建立預約內容</h2>
     </div>
 
     <div id="details" class="hide">
-      <div class="field">
-        <label data-i="date_label">日期</label>
-        <input type="date" id="date" min="2025-12-06" max="2026-04-20" required />
-        <div class="note" id="dateWarn" style="display:none"></div>
+      <!-- Lesson Configurator -->
+      <div class="config-box">
+        <h3 data-i="lesson_config_title">新增課程 (可加入多組)</h3>
+        
+        <div class="form-grid">
+          <div class="field">
+            <label data-i="date_label">日期 <span style="color:var(--danger)">*</span></label>
+            <input type="date" id="date" min="2025-12-06" max="2026-05-06" />
+            <div class="note warn" id="dateWarn" style="display:none"></div>
+          </div>
+  
+          <div class="field">
+            <label data-i="duration_label">方案選擇 <span style="color:var(--danger)">*</span></label>
+            <div class="select-wrap"><select id="duration"></select></div>
+          </div>
+  
+          <div class="field">
+            <label data-i="days_label">天數</label>
+            <div class="select-wrap"><select id="days"></select></div>
+          </div>
+  
+          <div class="field">
+            <label data-i="people_label">人數</label>
+            <div class="select-wrap"><select id="people"></select></div>
+          </div>
+  
+          <div class="field">
+            <label data-i="level_label">滑行程度</label>
+            <div class="select-wrap"><select id="level"></select></div>
+          </div>
+          
+          <div class="field">
+            <label data-i="name_label">學員稱呼 (可用暱稱) <span style="color:var(--danger)">*</span></label>
+            <input type="text" id="name" placeholder="例：王小明 或 Jason" />
+          </div>
+  
+          <div class="field form-full">
+            <label data-i="kid_age_label">小朋友年齡 (若有請填寫)</label>
+            <input type="text" id="kidAge" inputmode="numeric" placeholder="例：6, 8" />
+          </div>
+
+          <!-- Addon Checkbox -->
+          <div class="field form-full" id="addonRow" style="background:#fff; padding:10px; border-radius:8px; border:1px solid var(--border);">
+            <div class="checkline" style="margin:0">
+              <input type="checkbox" id="addon1h">
+              <label for="addon1h" style="cursor:pointer">
+                <span data-i="addon_txt">＋1 小時追加（春季 ¥13,000｜平日 ¥14,000｜繁忙 ¥15,000）</span>
+              </label>
+            </div>
+          </div>
+  
+          <div class="field">
+              <label data-i="qty_label">組數</label>
+              <div class="select-wrap"><select id="qty"><option value="1">1</option><option value="2">2</option></select></div>
+          </div>
+          
+          <!-- Live Price Display -->
+          <div class="field" style="justify-content:flex-end;">
+             <div class="price-display" id="priceBox"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;">
+          <button class="btn outline full" id="addToCartBtn" type="button">
+            <span style="font-size:1.2rem; margin-right:8px;">＋</span> 
+            <span data-i="add_to_list">加入預約清單</span>
+          </button>
+        </div>
       </div>
 
-      <div class="field">
-        <label data-i="days_label">上課天數</label>
-        <select id="days"></select>
-        <div class="note" data-i="days_note">＊若選多天，我們會依實際可排程日期與您確認</div>
+      <!-- Cart Section -->
+      <div id="cartSection">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+          <h3 data-i="cart_title" style="margin:0">預約清單</h3>
+          <span class="muted" style="font-size:0.85rem;" id="cartCount">0 items</span>
+        </div>
+        
+        <div id="cartList" class="cart-list">
+           <div class="empty-cart-msg" data-i="cart_empty">尚未加入任何課程</div>
+        </div>
+        
+        <div class="cart-total-bar">
+           <span data-i="total_label">總金額</span>
+           <span id="cartTotalDisplay">¥0</span>
+        </div>
       </div>
 
-      <div class="field">
-        <label data-i="people_label">上課人數</label>
-        <select id="people"></select>
+      <div class="rule"></div>
+
+      <!-- Contact Info -->
+      <h3 data-i="contact_info_title">主要聯絡人資訊</h3>
+      <div class="form-grid">
+        <div class="field form-full">
+          <label data-i="email_label">Email (必填)</label>
+          <input type="email" id="email" autocomplete="email" placeholder="example@gmail.com" />
+        </div>
+  
+        <div class="field">
+          <label data-i="contact_pref_label">聯絡管道</label>
+          <div class="select-wrap">
+            <select id="contactPref">
+              <option value="line" data-i="pref_line">LINE</option>
+              <option value="wechat" data-i="pref_wechat">WeChat</option>
+              <option value="whatsapp" data-i="pref_whatsapp">WhatsApp</option>
+              <option value="email" data-i="pref_email">Email</option>
+              <option value="other" data-i="pref_other">其他</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="field">
+          <label id="contactIdLabel" data-i="contact_id_label">ID / 帳號</label>
+          <input type="text" id="contactId" />
+        </div>
+  
+        <div class="field">
+          <label data-i="lang_label">上課語言偏好</label>
+          <div class="select-wrap"><select id="lang"></select></div>
+        </div>
+  
+        <div class="field form-full">
+          <label data-i="memo_label">備註 (特殊需求)</label>
+          <textarea id="memo" placeholder=""></textarea>
+        </div>
       </div>
 
-      <div class="field">
-        <label data-i="level_label">滑行程度</label>
-        <select id="level"></select>
-      </div>
-
-      <div class="field">
-        <label data-i="name_label">稱呼（選填）</label>
-        <input type="text" id="name" placeholder="暱稱或名字即可" />
-      </div>
-
-      <div class="field">
-        <label data-i="kid_age_label">小朋友年齡（非必填）</label>
-        <input type="text" id="kidAge" inputmode="numeric" placeholder="" />
-        <div class="note" data-i="kid_age_note">可填 1–12；多人請以逗號分隔（例：6, 8）。</div>
-      </div>
-
-      <div class="field">
-        <label data-i="email_label">Email（必填）</label>
-        <input type="email" id="email" autocomplete="email" required />
-      </div>
-
-      <div class="field">
-        <label data-i="contact_pref_label">偏好聯絡管道</label>
-        <select id="contactPref">
-          <option value="line" data-i="pref_line">LINE</option>
-          <option value="wechat" data-i="pref_wechat">WeChat</option>
-          <option value="whatsapp" data-i="pref_whatsapp">WhatsApp</option>
-          <option value="email" data-i="pref_email">Email</option>
-          <option value="other" data-i="pref_other">其他</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label id="contactIdLabel" data-i="contact_id_label">聯絡帳號</label>
-        <input type="text" id="contactId" placeholder="" />
-      </div>
-
-      <div class="field">
-        <label data-i="lang_label">上課語言</label>
-        <select id="lang"></select>
-      </div>
-
-      <div class="field">
-        <label data-i="memo_label">備註</label>
-        <textarea id="memo" placeholder=""></textarea>
-      </div>
-
-      <div class="field">
-        <label data-i="qty_label">數量</label>
-        <select id="qty"><option value="1">1</option><option value="2">2</option></select>
-        <div class="note" data-i="qty_note">＊數量指同一組條件的預約筆數（例：兩位教練兩組並行）。</div>
-      </div>
-
-      <div class="field" id="addonRow">
-        <label><input type="checkbox" id="addon1h">
-          <span data-i="addon_txt">＋1 時間追加（通常 ¥16,000｜繁忙期 ¥18,000）</span>
-        </label>
-      </div>
-
-      <p class="price" id="priceBox"></p>
-      <p class="muted" id="seasonNote"></p>
-
-      <div class="checkline">
+      <div class="checkline" id="agreeContainer" style="margin:20px 0; border:1px solid transparent; padding:8px; border-radius:var(--radius-sm);">
         <input type="checkbox" id="agreeNotice" />
-        <label for="agreeNotice">
+        <label for="agreeNotice" style="cursor:pointer; display:flex; align-items:center; flex-wrap:wrap; gap:4px;">
           <span data-i="agree_prefix">我已閱讀並同意 </span>
-          <a id="noticeLink" href="/notice.html" target="_blank" rel="noopener" data-i="notice_title">《課程注意事項》</a>
+          <a id="noticeLink" href="https://www.moposki.com/notice.html" target="_blank" rel="noopener" data-i="notice_title">《課程注意事項》</a>
           <span data-i="agree_suffix"></span>
+          <span style="color:var(--danger)">*</span>
         </label>
       </div>
 
       <div class="row-actions">
-        <button class="btn primary" id="sendBtn" type="button" data-i="sendmenu">送出選單</button>
+        <!-- Default Disabled -->
+        <button class="btn primary full" id="finalSubmitBtn" type="button" disabled>
+          <span data-i="sendmenu">送出所有預約</span>
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal" id="confirmModal" role="dialog" aria-modal="true" aria-hidden="true">
+<!-- Modal -->
+<div class="modal" id="confirmModal">
   <div class="panel">
-    <h3 data-i="review_title">請確認您的預約明細</h3>
-    <div class="dt" data-i="review_hint">確認無誤後按「送出」完成申請。</div>
+    <h3 data-i="review_title">確認預約內容</h3>
+    <div class="muted" style="margin-bottom:16px;" data-i="review_hint">確認無誤後請按下「送出」。</div>
     <div id="reviewList"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
-      <button class="btn" id="backBtn" data-i="back_edit">返回修改</button>
-      <button class="btn primary" id="submitBtn" data-i="submit">送出</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px">
+      <button class="btn outline" id="backBtn" data-i="back_edit">返回修改</button>
+      <button class="btn primary" id="submitBtn" data-i="submit">確認送出</button>
     </div>
   </div>
 </div>
 
 <script>
   /********** 設定區 **********/
- // 雪場開啟設定：true = 開放、false = 關閉
-const RESORT_AVAIL = { 
-  teine:   true,  // 手稻 Teine
-  onze:    true,  // ONZE
-  kokusai: true   // 札幌國際 Kokusai
-};
+  const API_URL = 'https://api.moposki.com';
+  
+  const RESORT_AVAIL = { teine: true, onze: true, kokusai: true };
+  const PREORDER_OPEN_AT = '2025-09-15T00:00:00+09:00'; 
+  function isPreorderOpenNow(){ return Date.now() >= new Date(PREORDER_OPEN_AT).getTime(); }
+  
+  const DATE_MIN='2025-12-06';
+  const DATE_MAX='2026-05-06'; 
+  const DATE_MAX_ONZE='2026-03-28'; 
 
-// 9/15 預購開放（指定年版）
-const PREORDER_OPEN_AT = '2025-09-15T00:00:00+09:00'; // 日本時間
-function isPreorderOpenNow(){
-  return Date.now() >= new Date(PREORDER_OPEN_AT).getTime();
-}
-  const DATE_MIN='2025-12-06', DATE_MAX='2026-04-20';
-  const peakRanges=[{start:'2025-12-20',end:'2026-01-05'},{start:'2026-02-12',end:'2026-02-22'},{start:'2026-02-27',end:'2026-03-01'}];
-  const priceMap={
-    teine:{off:{base:{1:72000,2:77000,3:82000,4:87000},extra5:5000},peak:{base:{1:82000,2:87000,3:92000,4:97000},extra5:5000}},
-    onze:{ off:{base:{1:72000,2:77000,3:82000,4:87000},extra5:5000},peak:{base:{1:82000,2:87000,3:92000,4:97000},extra5:5000}},
-    kokusai:{off:{base:{1:84000,2:90000,3:96000,4:102000},extra5:6000},peak:{base:{1:94000,2:100000,3:106000,4:112000},extra5:6000}}
-  };
-  const ADDON_1H={off:16000, peak:18000};
+  const PEAK_RANGES=[
+    {start:'2025-12-20', end:'2026-01-05'},
+    {start:'2026-02-12', end:'2026-02-22'}
+  ];
+  const SPRING_START = '2026-03-02';
 
   const EARLY_BIRD_DEADLINE = '2025-11-01T01:00:00+09:00';
   const EARLY_BIRD_AMOUNT   = 2000;
   function isEarlyBirdNow(){ return Date.now() <= new Date(EARLY_BIRD_DEADLINE).getTime(); }
 
-  // 換成你的實際 換去Worker
-const API_URL = 'https://api.moposki.com';
+  const PRICING_DB = {
+    teine: {
+      regular: {
+        full: [0, 72000, 77000, 82000, 87000, 92000],
+        half: [0, 44000, 48000, 51000, 54000, 57000]
+      },
+      peak: {
+        full: [0, 82000, 87000, 92000, 97000, 102000] 
+      },
+      spring: {
+        full: [0, 60000, 63000, 66000, 68000, 70000],
+        half: [0, 37500, 40000, 42000, 44000, 46000]
+      }
+    },
+    onze: {
+      regular: {
+        full:  [0, 72000, 77000, 82000, 87000, 92000],
+        half:  [0, 44000, 48000, 51000, 54000, 57000],
+        night: [0, 32000, 36000, 40000, 44000, 48000]
+      },
+      peak: {
+        full:  [0, 82000, 87000, 92000, 97000, 102000],
+        night: [0, 38000, 42000, 46000, 50000, 54000]
+      },
+      spring: {
+        full:  [0, 60000, 63000, 66000, 68000, 70000],
+        half:  [0, 37500, 40000, 42000, 44000, 46000],
+        night: [0, 26000, 29000, 32000, 34000, 36000]
+      }
+    },
+    kokusai: {
+      regular: {
+        full: [0, 84000, 90000, 96000, 102000, 108000]
+      },
+      peak: {
+        full: [0, 94000, 100000, 106000, 112000, 118000]
+      },
+      spring: {
+        full: [0, 62000, 65000, 68000, 70000, 72000]
+      }
+    }
+  };
 
-  /* i18n（保留原內容） */
-  const I18N={ /* --- 你的原始 I18N 物件，完整無改動 --- */ 
-    'zh-Hant':{kicker:'RESERVATION',title:'MOPO 訂課預約',intro:'依序完成 3 個步驟即可送出選單。',
-      s1:'STEP 1',s1t:'選擇滑雪場地點',s2:'STEP 2',s2t:'選擇課程類別',s3:'STEP 3',s3t:'選擇產品與詳細',
-      r_teine:'手稻｜私人課（全日）', r_teine_sub:'雪質與交通穩定',
-      r_onze:'ONZE｜私人課（全日）', r_onze_sub:'臨海絕景・交通便利',
-      r_koku:'札幌國際｜私人課（全日）', r_koku_sub:'視野開闊・多樣路線',
+  const ADDON_1H_PRICE = { regular: 14000, peak: 15000, spring: 13000 };
+
+  /* I18N */
+  const I18N={ 
+    'zh-Hant':{kicker:'RESERVATION',title:'MOPO 訂課預約',intro:'簡單 3 步驟完成預約。',
+      s1:'STEP 1',s1t:'1. 選擇滑雪場',s2:'STEP 2',s2t:'2. 選擇課程類別',s3:'STEP 3',s3t:'3. 建立預約內容',
+      r_teine:'手稻滑雪場', r_teine_sub:'距離市區最近',
+      r_onze:'ONZE 滑雪場', r_onze_sub:'海景・夜滑',
+      r_koku:'札幌國際', r_koku_sub:'雪道豐富',
       ski:'雙板 Ski', snow:'單板 Snowboard',
-      prod6h:'全日 6 小時課程', tap_to_config:'點選以設定細節',
-      addon_txt:'＋1 時間追加（通常 ¥16,000｜繁忙期 ¥18,000）',
-      date_label:'日期', days_label:'上課天數', days_note:'＊若選多天，我們會依實際可排程日期與您確認',
-      people_label:'上課人數', level_label:'滑行程度', name_label:'稱呼',
-      kid_age_label:'小朋友年齡（非必填）', kid_age_note:'可填 1–12；多人請以逗號分隔（例：6, 8）。',
-      email_label:'Email（必填）',
-      contact_pref_label:'偏好聯絡管道',
+      duration_label:'方案選擇',
+      dur_full:'全日課程 (9:30-15:30)', 
+      dur_half_am:'半日課程｜上午 (9:30-12:30)',
+      dur_half_pm:'半日課程｜下午 (13:30-16:30)',
+      dur_night:'夜滑課程 (17:00-19:00)',
+      addon_txt:'＋1 小時追加（春季 ¥13,000｜平日 ¥14,000｜繁忙 ¥15,000）',
+      date_label:'日期', days_label:'天數', days_note:'＊若選多天，我們會依實際可排程日期與您確認',
+      people_label:'人數', level_label:'程度', 
+      name_label:'學員稱呼 (可用暱稱)', name_placeholder:'例：王小明 或 Jason',
+      kid_age_label:'小朋友年齡 (若有請填寫)', kid_age_note:'可填 1–12；多人請以逗號分隔（例：6, 8）。',
+      email_label:'Email (必填)',
+      contact_pref_label:'聯絡管道',
       pref_line:'LINE', pref_wechat:'WeChat', pref_whatsapp:'WhatsApp', pref_email:'Email', pref_other:'其他',
-      contact_id_label:'聯絡帳號', lang_label:'上課語言', memo_label:'備註',
-      qty_label:'數量', qty_note:'＊數量指同一組條件的預約筆數（例：兩位教練兩組並行）。',
+      contact_id_label:'ID / 帳號', lang_label:'上課語言偏好', memo_label:'備註 (特殊需求)',
+      qty_label:'組數', qty_note:'＊數量指同一組條件的預約筆數（例：兩位教練兩組並行）。',
       agree_prefix:'我已閱讀並同意 ', notice_title:'《課程注意事項》', agree_suffix:'',
-      sendmenu:'送出選單',
-      review_title:'請確認您的預約明細', review_hint:'確認無誤後按「送出」完成申請。',
-      back_edit:'返回修改', submit:'送出',
-      season_off:'除繁忙期外，其他時段適用標準價格。',
+      sendmenu:'送出所有預約', review_title:'確認預約內容', review_hint:'確認無誤後請按下「送出」。',
+      back_edit:'返回修改', submit:'確認送出',
       badge_coming:'即將開放',
-      success:'已送出，我們將盡快與您聯絡。回覆可能需要 1～3 個工作日，會盡快為您處理訂單。謝謝您的預訂。',
-      levels:[
-        '完全初學：第一次滑雪','新手：曾有過一點經驗','初級：可滑行於初級雪道',
-        '中階：能滑行於中級雪道','進階：中級雪道流暢，進修高級雪道',
-        '高階：進階技巧練習（滑行粉雪・樹林・跳台等）'
-      ],
-      langs:[
-        '偏好中文','偏好英文','偏好日文','偏好廣東話（中或英文可）','只接受英文','只接受廣東話'
-      ],
-      people_opts:['1','2','3','4','5'], days_opts:['1','2','3','4','5','6','7','8','9','10']
+      success:'已送出，我們將盡快與您聯絡。回覆可能需要 1～3 個工作日。',
+      levels:['完全初學：第一次滑雪','新手：曾有過一點經驗','初級：可滑行於初級雪道','中階：能滑行於中級雪道','進階：中級雪道流暢，進修高級雪道','高階：進階技巧練習'],
+      langs:['偏好中文','偏好英文','偏好日文','偏好廣東話','只接受英文','只接受廣東話'],
+      people_opts:['1','2','3','4','5'], days_opts:['1','2','3','4','5','6','7','8','9','10'],
+      lesson_config_title:'新增課程 (可加入多組)',
+      add_to_list:'加入預約清單',
+      cart_title:'預約清單',
+      cart_empty:'尚未加入任何課程',
+      contact_info_title:'主要聯絡人資訊',
+      del:'刪除', total_label:'總金額'
     },
-    'en':{kicker:'RESERVATION',title:'MOPO Lesson Booking',intro:'Complete the 3 steps to send your selection.',
-      s1:'STEP 1',s1t:'Choose Resort',s2:'STEP 2',s2t:'Choose Discipline',s3:'STEP 3',s3t:'Product & Details',
-      r_teine:'Teine｜Private (Full day)', r_teine_sub:'Reliable snow & access',
-      r_onze:'ONZE｜Private (Full day)', r_onze_sub:'Sea view & easy access',
-      r_koku:'Sapporo Kokusai｜Private (Full day)', r_koku_sub:'Open view, varied runs',
-      ski:'Ski', snow:'Snowboard', prod6h:'Full-day 6h Lesson', tap_to_config:'Tap to configure',
-      addon_txt:'+1h add-on (Off-peak ¥16,000｜Peak ¥18,000)',
-      date_label:'Date', days_label:'Number of Days', days_note:'* For multi-day bookings we will confirm actual schedule with you.',
-      people_label:'Group Size', level_label:'Ability Level', name_label:'Your Name (optional)',
-      kid_age_label:'Child age (optional)', kid_age_note:'Enter 1–12; multiple children separated by commas (e.g., 6, 8).',
-      email_label:'Email (required)', contact_pref_label:'Preferred contact',
+    'en':{kicker:'RESERVATION',title:'MOPO Booking',intro:'3 steps to complete.',
+      s1:'STEP 1',s1t:'1. Choose Resort',s2:'STEP 2',s2t:'2. Choose Discipline',s3:'STEP 3',s3t:'3. Lesson Details',
+      r_teine:'Teine Resort', r_teine_sub:'Closest to city',
+      r_onze:'ONZE Resort', r_onze_sub:'Ocean view & Night',
+      r_koku:'Kokusai Resort', r_koku_sub:'Wide & Various',
+      ski:'Ski', snow:'Snowboard', 
+      duration_label:'Plan',
+      dur_full:'Full Day (9:30-15:30)', 
+      dur_half_am:'Half Day AM (9:30-12:30)',
+      dur_half_pm:'Half Day PM (13:30-16:30)',
+      dur_night:'Night (17:00-19:00)',
+      addon_txt:'+1h add-on (Spring ¥13k｜Reg ¥14k｜Peak ¥15k)',
+      date_label:'Date', days_label:'Days', days_note:'*',
+      people_label:'Pax', level_label:'Level', 
+      name_label:'Student Name / Nickname', name_placeholder:'e.g. John / Sarah',
+      kid_age_label:'Child Age', kid_age_note:'e.g. 6, 8',
+      email_label:'Email (Required)', contact_pref_label:'Contact App',
       pref_line:'LINE', pref_wechat:'WeChat', pref_whatsapp:'WhatsApp', pref_email:'Email', pref_other:'Other',
-      contact_id_label:'Contact ID', lang_label:'Lesson Language', memo_label:'Notes',
-      qty_label:'Quantity', qty_note:'* Quantity = identical bookings (e.g., two instructors in parallel).',
-      agree_prefix:'I have read and agree to ', notice_title:'“Lesson Notice”', agree_suffix:'',
-      sendmenu:'Send Selection', review_title:'Review Your Booking', review_hint:'Press “Submit” to finish.',
-      back_edit:'Back to Edit', submit:'Submit', season_off:'Off-peak pricing applies.',
-      badge_coming:'Coming soon',
-      success:'Submitted! We will contact you shortly. Replies may take 1–3 business days.',
-      levels:['First timer','Beginner: a little experience','Novice: green slopes','Intermediate: blue slopes','Advanced: fluent on blue, stepping into black','Expert: powder/trees/jumps training'],
-      langs:['Prefer English','Prefer Chinese','Prefer Japanese','Prefer Cantonese (CN/EN OK)','English only','Cantonese only'],
-      people_opts:['1','2','3','4','5'], days_opts:['1','2','3','4','5','6','7','8','9','10']
+      contact_id_label:'ID / Account', lang_label:'Language', memo_label:'Requests',
+      qty_label:'Qty', qty_note:'',
+      agree_prefix:'I agree to ', notice_title:'Lesson Notice', agree_suffix:'',
+      sendmenu:'Submit All', review_title:'Review', review_hint:'Click submit to finish.',
+      back_edit:'Edit', submit:'Submit', 
+      badge_coming:'Soon',
+      success:'Submitted! We will contact you shortly.',
+      levels:[
+        'First Timer: First time on snow',
+        'Beginner: Can stop and make turns',
+        'Novice: Comfortable on Green slopes',
+        'Intermediate: Comfortable on Blue slopes',
+        'Advanced: Fluent on Blue, trying Black',
+        'Expert: Powder / Trees / Jumps'
+      ],
+      langs:['English','Chinese','Japanese','Cantonese','English Only','Cantonese Only'],
+      people_opts:['1','2','3','4','5'], days_opts:['1','2','3','4','5','6','7','8','9','10'],
+      lesson_config_title:'Add Lesson (Multiple allowed)',
+      add_to_list:'Add to List',
+      cart_title:'Cart',
+      cart_empty:'No items added',
+      contact_info_title:'Primary Contact',
+      del:'Del', total_label:'Total'
     },
-    'ja':{kicker:'RESERVATION',title:'MOPO レッスン予約',intro:'3ステップで選択内容を送信。',
-      s1:'STEP 1',s1t:'スキー場を選択',s2:'STEP 2',s2t:'種目を選択',s3:'STEP 3',s3t:'商品と詳細',
-      r_teine:'手稲｜プライベート（終日）', r_teine_sub:'安定した雪質・アクセス',
-      r_onze:'ONZE｜プライベート（終日）', r_onze_sub:'海景・アクセス良好',
-      r_koku:'札幌国際｜プライベート（終日）', r_koku_sub:'開放的な景色・多彩なコース',
-      ski:'スキー', snow:'スノーボード', prod6h:'終日 6 時間レッスン', tap_to_config:'タップして詳細を設定',
-      addon_txt:'+1 時間追加（通常 ¥16,000｜繁忙期 ¥18,000）',
-      date_label:'日付', days_label:'受講日数', days_note:'※複数日の場合、実際のスケジュールを確認します。',
-      people_label:'人数', level_label:'レベル', name_label:'お名前（任意）',
-      kid_age_label:'お子さまの年齢（任意）', kid_age_note:'1～12 を入力。複数はカンマ区切り（例：6, 8）',
-      email_label:'メール（必須）', contact_pref_label:'連絡方法の希望',
-      pref_line:'LINE', pref_wechat:'WeChat', pref_whatsapp:'WhatsApp', pref_email:'メール', pref_other:'その他',
-      contact_id_label:'連絡アカウント', lang_label:'受講言語', memo_label:'備考',
-      qty_label:'数量', qty_note:'※同一条件の予約件数（例：講師2名で同時進行）',
-      agree_prefix:'『', notice_title:'受講注意事項', agree_suffix:'』を読み、同意します。',
-      sendmenu:'選択内容を送信', review_title:'予約内容の確認', review_hint:'問題なければ「送信」。',
-      back_edit:'修正に戻る', submit:'送信', season_off:'繁忙期以外は通常料金が適用されます。',
-      badge_coming:'近日公開',
-      success:'送信しました。折り返しに 1～3 営業日いただく場合があります。',
-      levels:['完全初心者：初めて','初級手前：少し経験あり','初級：初級コース可','中級：中級コース可','上級手前：中級は余裕・上級に挑戦','上級：パウダー・ツリー・ジャンプ等'],
-      langs:['日本語希望','中国語希望','英語希望','広東語希望（中/英 可）','英語のみ','広東語のみ'],
-      people_opts:['1','2','3','4','5'], days_opts:['1','2','3','4','5','6','7','8','9','10']
+    'ja':{kicker:'RESERVATION',title:'MOPO 予約',intro:'3ステップで予約完了。',
+      s1:'STEP 1',s1t:'1. スキー場選択',s2:'STEP 2',s2t:'2. 種目選択',s3:'STEP 3',s3t:'3. 予約内容',
+      r_teine:'手稲スキー場', r_teine_sub:'市内から最短',
+      r_onze:'ONZEスキー場', r_onze_sub:'海が見える・ナイター',
+      r_koku:'札幌国際', r_koku_sub:'多彩なコース',
+      ski:'スキー', snow:'スノーボード', 
+      duration_label:'プラン',
+      dur_full:'終日 (9:30-15:30)', 
+      dur_half_am:'半日｜午前 (9:30-12:30)',
+      dur_half_pm:'半日｜午後 (13:30-16:30)',
+      dur_night:'ナイター (17:00-19:00)',
+      addon_txt:'+1時間追加（春季 ¥13,000｜通常 ¥14,000｜繁忙 ¥15,000）',
+      date_label:'日付', days_label:'日数', days_note:'',
+      people_label:'人数', level_label:'レベル', 
+      name_label:'受講生名 / ニックネーム', name_placeholder:'例：太郎 / Hanako',
+      kid_age_label:'お子様の年齢', kid_age_note:'例：6, 8',
+      email_label:'メール (必須)', contact_pref_label:'連絡手段',
+      pref_line:'LINE', pref_wechat:'WeChat', pref_whatsapp:'WhatsApp', pref_email:'Email', pref_other:'その他',
+      contact_id_label:'ID / アカウント', lang_label:'受講言語', memo_label:'備考',
+      qty_label:'数量', qty_note:'',
+      agree_prefix:'', notice_title:'利用規約', agree_suffix:'に同意する',
+      sendmenu:'予約を送信', review_title:'確認', review_hint:'送信ボタンを押してください。',
+      back_edit:'修正', submit:'送信', 
+      badge_coming:'近日',
+      success:'送信しました。',
+      levels:[
+        '完全初心者：初めて滑る方',
+        '初心者：少し経験あり・ターン練習中',
+        '初級：初級コースを滑れる',
+        '中級：中級コースを滑れる',
+        '上級手前：中級は余裕・上級に挑戦',
+        '上級：パウダー・ツリー・ジャンプ等'
+      ],
+      langs:['日本語','中国語','英語','広東語','英語のみ','広東語のみ'],
+      people_opts:['1','2','3','4','5'], days_opts:['1','2','3','4','5','6','7','8','9','10'],
+      lesson_config_title:'レッスン追加 (複数可)',
+      add_to_list:'リストに追加',
+      cart_title:'予約リスト',
+      cart_empty:'追加されていません',
+      contact_info_title:'代表者情報',
+      del:'削除', total_label:'合計'
     }
   };
 
@@ -427,9 +679,12 @@ const API_URL = 'https://api.moposki.com';
   const $=(q,r=document)=>r.querySelector(q);
   const $$=(q,r=document)=>Array.from(r.querySelectorAll(q));
   const money=n=>`¥${Number(n).toLocaleString()}`;
-  const isPeak=d=>{const t=new Date(d).getTime(); return peakRanges.some(({start,end})=> t>=new Date(start).getTime() && t<=new Date(end).getTime());};
-  const inDateRange=d=>{const t=new Date(d).getTime(); return t>=new Date(DATE_MIN).getTime() && t<=new Date(DATE_MAX).getTime();};
-  const mapNotice=lang=>({ 'zh-Hant':'/notice.html','en':'/en_notice.html','ja':'/ja_notice.html' }[lang]||'/notice.html');
+  // 修正 mapNotice 以返回完整網址
+  const mapNotice=lang=>({ 
+    'zh-Hant':'https://www.moposki.com/notice.html',
+    'en':'https://www.moposki.com/en_notice.html',
+    'ja':'https://www.moposki.com/ja_notice.html' 
+  }[lang]||'https://www.moposki.com/notice.html');
 
   function normalizeNumber(val, min=1, max=10){
     let n = parseInt(val, 10);
@@ -439,12 +694,37 @@ const API_URL = 'https://api.moposki.com';
     return n;
   }
 
+  // 日期與季節判斷
+  function getSeason(dateStr) {
+    if (!dateStr) return 'regular';
+    const t = new Date(dateStr).getTime();
+    if (t >= new Date(SPRING_START).getTime()) return 'spring';
+    const isPeak = PEAK_RANGES.some(r => t >= new Date(r.start).getTime() && t <= new Date(r.end).getTime());
+    if (isPeak) return 'peak';
+    return 'regular';
+  }
+
+  function getResortDateLimit(resort) {
+    if (resort === 'onze') return DATE_MAX_ONZE;
+    return DATE_MAX;
+  }
+  function isDateValid(dateStr, resort) {
+    if (!dateStr) return false;
+    const t = new Date(dateStr).getTime();
+    const min = new Date(DATE_MIN).getTime();
+    const max = new Date(getResortDateLimit(resort)).getTime();
+    return t >= min && t <= max;
+  }
+
   /********** 狀態 **********/
-  let current={resort:null,type:null,lang:'zh-Hant'};
+  let current = { resort: null, type: null, lang: 'zh-Hant' };
+  let cart = []; // Shopping Cart
 
   const dateInput=$('#date'), peopleSel=$('#people'), daysSel=$('#days'), qtySel=$('#qty');
-  const levelSel=$('#level'), addon1h=$('#addon1h'), priceBox=$('#priceBox'), seasonNote=$('#seasonNote');
-  const dateWarn=$('#dateWarn');
+  const levelSel=$('#level'), addon1h=$('#addon1h'), priceBox=$('#priceBox');
+  const dateWarn=$('#dateWarn'), durationSel=$('#duration');
+  const cartListEl=$('#cartList'), cartTotalEl=$('#cartTotalDisplay');
+  const finalSubmitBtn=$('#finalSubmitBtn');
 
   const emailInput = $('#email');
   const contactPrefSel = $('#contactPref');
@@ -461,17 +741,17 @@ const API_URL = 'https://api.moposki.com';
   }
 
   const CONTACT_PLACEHOLDERS = {
-    line:{ zh:'請輸入 LINE ID', en:'Enter LINE ID', ja:'LINE ID を入力' },
-    wechat:{ zh:'請輸入 WeChat ID', en:'Enter WeChat ID', ja:'WeChat ID を入力' },
-    whatsapp:{ zh:'請輸入 WhatsApp 帳號或電話', en:'Enter WhatsApp account/number', ja:'WhatsApp アカウント/番号' },
-    email:{ zh:'若選 Email，將以此 Email 聯絡', en:'We will use your email', ja:'メールでご連絡します' },
-    other:{ zh:'請輸入可聯絡的帳號', en:'Enter a reachable contact', ja:'連絡可能なアカウントを入力' }
+    line:{ zh:'請輸入 LINE ID', en:'Enter LINE ID', ja:'LINE ID' },
+    wechat:{ zh:'請輸入 WeChat ID', en:'Enter WeChat ID', ja:'WeChat ID' },
+    whatsapp:{ zh:'請輸入 WhatsApp 帳號', en:'WhatsApp #', ja:'WhatsApp' },
+    email:{ zh:'將以 Email 聯絡', en:'Via Email', ja:'メール連絡' },
+    other:{ zh:'請輸入帳號', en:'Contact Info', ja:'アカウント' }
   };
   function applyContactPlaceholder(){
     if(!contactPrefSel || !contactIdInput) return;
     const m = contactPrefSel.value || 'line';
     const lang = (current.lang==='ja'?'ja':(current.lang==='en'?'en':'zh'));
-    contactIdLabel.textContent = I18N[current.lang].contact_id_label || (lang==='zh'?'聯絡帳號':(lang==='en'?'Contact ID':'連絡アカウント'));
+    contactIdLabel.textContent = I18N[current.lang].contact_id_label || 'ID';
     contactIdInput.placeholder = CONTACT_PLACEHOLDERS[m][lang];
   }
 
@@ -481,13 +761,18 @@ const API_URL = 'https://api.moposki.com';
       const key=el.getAttribute('data-i');
       if(key in L) el.innerHTML=L[key];
     });
+    // Set dynamic placeholder for Name
+    $('#name').placeholder = L.name_placeholder || '';
+    
     $$('#resortChoices .choice .badge').forEach(b=> b.textContent = L.badge_coming);
     $('#noticeLink').href=mapNotice(current.lang);
-    fillOptions(); updatePrice(); applyContactPlaceholder();
-    dateWarn.textContent = (current.lang==='en') ? `Only ${DATE_MIN}–${DATE_MAX} are available.` :
-                          (current.lang==='ja') ? `予約可能期間は ${DATE_MIN}〜${DATE_MAX} です。` :
-                                                  `可預約期間：${DATE_MIN}～${DATE_MAX}`;
+    fillOptions(); 
+    refreshDurationOptions(); 
+    updatePrice(); 
+    applyContactPlaceholder();
+    renderCart(); 
   }
+
   function setLang(lang){
     current.lang=lang;
     document.documentElement.lang=lang;
@@ -500,32 +785,60 @@ const API_URL = 'https://api.moposki.com';
   contactPrefSel?.addEventListener('change', applyContactPlaceholder);
 
   /********** 雪場開關 **********/
- function applyResortAvailability(){
-  const openAll = isPreorderOpenNow(); // 到 9/15 後全部開放
-
-  $$('#resortChoices .choice').forEach(btn=>{
-    const key = btn.dataset.resort;
-
-    // 若開放預購 → 全部可點；否則依原本 RESORT_AVAIL
-    const open = openAll ? true : !!RESORT_AVAIL[key];
-
-    btn.classList.toggle('disabled', !open);
-    btn.setAttribute('aria-disabled', String(!open));
-
-    const badge = $('.badge', btn);
-    if (badge) {
-      if (!open) {
-        // 尚未開放 → 顯示「即將開放」
-        badge.style.display = 'inline-block';
-        badge.textContent = I18N[current.lang].badge_coming;
-      } else {
-        // 已開放 → 隱藏徽章（你也可以改成顯示「預購中」）
-        badge.style.display = 'none';
-        // badge.textContent = '預購中'; // 想顯示就把上一行改成這行
+  function applyResortAvailability(){
+    const openAll = isPreorderOpenNow();
+    $$('#resortChoices .choice').forEach(btn=>{
+      const key = btn.dataset.resort;
+      const open = openAll ? true : !!RESORT_AVAIL[key];
+      btn.classList.toggle('disabled', !open);
+      btn.setAttribute('aria-disabled', String(!open));
+      const badge = $('.badge', btn);
+      if (badge) {
+        badge.style.display = !open ? 'inline-block' : 'none';
+        if (!open) badge.textContent = I18N[current.lang].badge_coming;
       }
+    });
+  }
+
+  /********** 方案 Duration 邏輯 **********/
+  function refreshDurationOptions() {
+    if (!current.resort) return;
+    const oldVal = durationSel.value;
+    const dateVal = dateInput.value;
+    const season = getSeason(dateVal);
+    const resortData = PRICING_DB[current.resort];
+    const seasonData = resortData ? resortData[season] : null;
+    
+    if (!seasonData) {
+        durationSel.innerHTML = '';
+        return;
     }
-  });
-}
+
+    const dbTypes = Object.keys(seasonData);
+    const L = I18N[current.lang];
+    
+    const uiOptions = [];
+    dbTypes.forEach(type => {
+      if (type === 'half') {
+        uiOptions.push({ val: 'half_am', label: L.dur_half_am });
+        uiOptions.push({ val: 'half_pm', label: L.dur_half_pm });
+      } else if (type === 'full') {
+        uiOptions.push({ val: 'full', label: L.dur_full });
+      } else if (type === 'night') {
+        uiOptions.push({ val: 'night', label: L.dur_night });
+      }
+    });
+
+    let html = '';
+    uiOptions.forEach(opt => {
+        html += `<option value="${opt.val}">${opt.label}</option>`;
+    });
+    durationSel.innerHTML = html;
+
+    const exists = uiOptions.some(o => o.val === oldVal);
+    if (exists) durationSel.value = oldVal;
+    else if (uiOptions.length > 0) durationSel.value = uiOptions[0].val;
+  }
 
   /********** 互動流程 **********/
   $('#resortChoices').addEventListener('click', e=>{
@@ -542,27 +855,37 @@ const API_URL = 'https://api.moposki.com';
     btn.classList.add('active'); current.type=btn.dataset.type;
     $('#step3').classList.remove('hide');
     $('#details').classList.remove('hide');
-    $('#addonRow').classList.remove('hide');
+    refreshDurationOptions();
     updatePrice();
   });
 
-  let oldDateValue = '';
-  function onDateFocus() { oldDateValue = dateInput.value || ''; }
-  function onDateBlur() {
-    const newValue = dateInput.value;
-    if (newValue !== oldDateValue) {
-      if (newValue) {
-        if (!inDateRange(newValue)) { dateWarn.style.display = 'block'; }
-        else { dateWarn.style.display = 'none'; }
-      } else { dateWarn.style.display = 'none'; }
-      updatePrice();
+  function validateDate() {
+    const val = dateInput.value;
+    if (!val) { dateWarn.style.display='none'; return; }
+    const limitDate = getResortDateLimit(current.resort);
+    const isValid = isDateValid(val, current.resort);
+    if (!isValid) {
+        let msg = '';
+        if (current.lang === 'en') msg = `Invalid date (Until ${limitDate})`;
+        else msg = `日期無效 (至 ${limitDate} 止)`;
+        dateWarn.textContent = msg;
+        dateWarn.style.display = 'block';
+    } else {
+        dateWarn.style.display = 'none';
     }
   }
-  dateInput.addEventListener('focus', onDateFocus);
-  dateInput.addEventListener('blur', onDateBlur);
+
+  function onDateChange() {
+    validateDate();
+    refreshDurationOptions(); 
+    updatePrice();
+  }
+
+  dateInput.addEventListener('change', onDateChange);
+  dateInput.addEventListener('blur', onDateChange);
 
   ['change','input'].forEach(ev=>{
-    ['people','days','qty','level','lang'].forEach(id=>{
+    ['people','days','qty','level','lang','duration'].forEach(id=>{
       const el=$('#'+id); if(el) el.addEventListener(ev, updatePrice);
     });
     addon1h.addEventListener(ev, updatePrice);
@@ -572,222 +895,373 @@ const API_URL = 'https://api.moposki.com';
     if(step<=1){
       current.type=null; $('#step3').classList.add('hide');
       $$('#disciplineChoices .choice').forEach(c=>c.classList.remove('active'));
+      cart = []; // Clear cart on resort change
+      renderCart();
     }
-    $('#addonRow').classList.add('hide'); $('#details').classList.add('hide');
-    if(dateInput){ oldDateValue = ''; dateInput.value=''; dateWarn.style.display='none'; }
+    $('#details').classList.add('hide');
+    if(dateInput){ dateInput.value=''; dateWarn.style.display='none'; }
     if(peopleSel){ peopleSel.value='1'; }
     if(daysSel){ daysSel.value='1'; }
     if(qtySel){ qtySel.value='1'; }
     if(addon1h){ addon1h.checked=false; }
-    priceBox.textContent=''; seasonNote.textContent=''; $('#agreeNotice').checked=false;
+    priceBox.innerHTML=''; $('#agreeNotice').checked=false;
   }
 
-  function singleDayAmount(){
+  function getCalcData(){
     const resort=current.resort, date=dateInput?.value;
     const ppl=Number(peopleSel?.value||1);
-    if(!resort || !date || !ppl || $('#details').classList.contains('hide')) return null;
-    const season=isPeak(date)?'peak':'off';
-    const r=priceMap[resort][season];
-    const base=r.base[Math.min(ppl,4)] + (ppl>4 ? r.extra5 : 0);
-    const addon=addon1h.checked ? ADDON_1H[season] : 0;
-    return {amount:base+addon, season};
+    const durType = durationSel.value; 
+    
+    if(!resort || !date || !ppl || !durType || $('#details').classList.contains('hide')) return null;
+    if (!isDateValid(date, resort)) return null;
+
+    const season = getSeason(date);
+    let dbKey = durType;
+    if (durType === 'half_am' || durType === 'half_pm') dbKey = 'half';
+
+    const seasonData = PRICING_DB[resort]?.[season];
+    if (!seasonData) return null;
+    const prices = seasonData[dbKey];
+    if (!prices) return null; 
+
+    const base = prices[ppl];
+    
+    // Addon UI logic
+    const showAddon = (dbKey === 'full');
+    $('#addonRow').style.display = showAddon ? 'block' : 'none';
+    if (!showAddon) addon1h.checked = false;
+
+    const addon = (showAddon && addon1h.checked) ? ADDON_1H_PRICE[season] : 0;
+    
+    return { amount: base + addon, season, durType };
   }
 
   function updatePrice(){
-    const r=singleDayAmount();
-    if(!r){ priceBox.textContent=''; seasonNote.textContent=''; return; }
+    const r = getCalcData();
+    if(!r){ priceBox.innerHTML=''; return; }
+    
     const days=Number(daysSel.value||1);
     const qty =Number(qtySel.value||1);
-    const peakTag = r.season==='peak' ? '（繁忙期計價）' : '';
     const total = r.amount * days * qty;
+    
+    const seasonLabel = (r.season==='peak') ? '繁忙期' : (r.season==='spring') ? '春季' : '';
 
     if (isEarlyBirdNow()) {
       const discount   = EARLY_BIRD_AMOUNT * days * qty;
       const finalTotal = Math.max(0, total - discount);
-      const ebNote = `（早鳥 -¥${(EARLY_BIRD_AMOUNT*days*qty).toLocaleString()}）`;
-      priceBox.innerHTML =
-        `<span class="price-old">${money(total)}</span>`+
-        `<span class="price-new">${money(finalTotal)}</span> `+
-        `${peakTag}（單日 ${money(r.amount)} × ${days} 天 × 數量 ${qty}） ${ebNote}`;
+      
+      priceBox.innerHTML = `
+        <span class="price-old">${money(total)}</span>
+        <span class="price-curr">${money(finalTotal)}</span>
+        <span class="price-sub">${seasonLabel} 早鳥優惠中</span>
+      `;
     } else {
-      priceBox.textContent =
-        `${money(total)}${peakTag}（單日 ${money(r.amount)} × ${days} 天 × 數量 ${qty}）`;
+      priceBox.innerHTML = `
+        <span class="price-curr">${money(total)}</span>
+        <span class="price-sub">${seasonLabel}</span>
+      `;
     }
-    seasonNote.textContent = I18N[current.lang].season_off;
   }
 
-  // 打開確認視窗
-  $('#sendBtn').addEventListener('click', ()=>{
-    const L = I18N[current.lang];
-    if(!current.resort) return alert(L.s1t);
-    if(!current.type)  return alert(L.s2t);
-    if(!$('#date').value) return alert(L.date_label);
-    if(!inDateRange($('#date').value)){
-      const msg = (current.lang==='en') ? 'Date is outside bookable period.'
-                : (current.lang==='ja') ? '予約可能期間外の日付です。'
-                : '日期不在可預約期間。';
-      return alert(msg);
-    }
-    const email = (emailInput?.value || '').trim();
-    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ return alert(L.email_label || 'Email'); }
-    const pref = contactPrefSel.value;
-    const cid  = (contactIdInput?.value || '').trim();
-    if(pref !== 'email' && !cid){ return alert((L.contact_id_label || 'Contact ID') + '：必填'); }
-    if(!$('#agreeNotice').checked){
-      const agreeMsg = (current.lang==='en') ? 'Please read and agree to “Lesson Notice” first.'
-                    : (current.lang==='ja') ? '『受講注意事項』に同意してください。'
-                    : '請先閱讀並勾選《課程注意事項》。';
-      return alert(agreeMsg);
-    }
+  /********** CART LOGIC **********/
+  
+  function shakeField(id) {
+    const el = $('#'+id);
+    el.classList.remove('error-shake');
+    void el.offsetWidth; // trigger reflow
+    el.classList.add('error-shake');
+    setTimeout(() => el.classList.remove('error-shake'), 500);
+  }
 
-    const sd = singleDayAmount(); if(!sd) return;
+  $('#addToCartBtn').addEventListener('click', () => {
+    const L = I18N[current.lang];
+    
+    // Fool-proofing Validation
+    let valid = true;
+    if(!$('#date').value) { shakeField('date'); valid=false; }
+    else if(!isDateValid($('#date').value, current.resort)) { shakeField('date'); valid=false; }
+    
+    // Name is required now
+    const nameVal = $('#name').value.trim();
+    if(!nameVal) { shakeField('name'); valid=false; }
+
+    if(!valid) return;
+
+    const r = getCalcData(); 
+    if(!r) return;
+
     const days = Number($('#days').value);
     const qty  = Number($('#qty').value);
-    const total = sd.amount * days * qty;
-
+    const people = Number($('#people').value);
+    
+    const total = r.amount * days * qty;
     const isEB = isEarlyBirdNow();
-    const discount   = isEB ? EARLY_BIRD_AMOUNT * days * qty : 0;
+    const discount = isEB ? EARLY_BIRD_AMOUNT * days * qty : 0;
     const finalTotal = Math.max(0, total - discount);
 
-    const list = [
-      ['Resort', $('#resortChoices .choice.active .title')?.textContent || ''],
-      ['Discipline', $('#disciplineChoices .choice.active .title')?.textContent || ''],
-      [L.date_label, $('#date').value],
-      [L.days_label, $('#days').value],
-      [L.people_label, $('#people').value],
-      [L.level_label, $('#level').value],
-      [L.name_label, ($('#name')?.value||'-')],
-      [L.kid_age_label, ($('#kidAge')?.value||'-')],
-      ['Email', email],
-      [L.contact_pref_label, pref.toUpperCase() + (cid ? `：${cid}` : '')],
-      [L.lang_label, $('#lang').value],
-      [L.memo_label, ($('#memo').value||'-')],
-      [L.qty_label, $('#qty').value],
-      ['Single-day', money(sd.amount)],
-      isEB
-        ? ['Total', `<span class="price-old">${money(total)}</span> <span class="price-new">${money(finalTotal)}</span>（早鳥 -¥${discount.toLocaleString()}）`]
-        : ['Total', money(total)]
-    ];
+    const durText = $('#duration option:checked').text;
+    const levelText = $('#level').value;
+    const ageText = $('#kidAge').value || '-';
 
-    const box = $('#reviewList'); box.innerHTML = '';
-    list.forEach(([k, v]) => {
-      const row = document.createElement('div'); row.className = 'kv';
-      const keyEl = document.createElement('b'); keyEl.textContent = k;
-      const valEl = document.createElement('div');
-      if (k === 'Total') { valEl.innerHTML = String(v); }
-      else { valEl.textContent = typeof v === 'string' ? v : String(v ?? ''); }
-      row.appendChild(keyEl); row.appendChild(valEl); box.appendChild(row);
+    const item = {
+      id: Date.now(),
+      resort: current.resort,
+      resortName: $('#resortChoices .choice.active .title').textContent,
+      discipline: current.type,
+      disciplineName: $('#disciplineChoices .choice.active .title').textContent,
+      date: $('#date').value,
+      durationVal: r.durType,
+      durationLabel: durText,
+      days: days,
+      people: people,
+      level: levelText,
+      name: nameVal, // Used trimmed value
+      kidAge: ageText,
+      qty: qty,
+      total: finalTotal,
+      rawTotal: total,
+      season: r.season,
+      isEB: isEB,
+      discount: discount,
+      basePrice: r.amount,
+      addon: $('#addon1h').checked
+    };
+
+    cart.push(item);
+    renderCart();
+
+    // Reset optional fields
+    $('#name').value = '';
+    $('#kidAge').value = '';
+    updatePrice();
+  });
+
+  function renderCart() {
+    const L = I18N[current.lang];
+    
+    // Handle Submit Button State
+    if(cart.length === 0) {
+      finalSubmitBtn.disabled = true;
+      cartListEl.innerHTML = `<div class="empty-cart-msg">${L.cart_empty}</div>`;
+      cartTotalEl.textContent = '¥0';
+      $('#cartCount').textContent = '';
+      return;
+    }
+
+    finalSubmitBtn.disabled = false;
+    cartListEl.innerHTML = '';
+    let grandTotal = 0;
+
+    cart.forEach((item, idx) => {
+        grandTotal += item.total;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <div class="cart-item-header">
+              <span class="cart-date">#${idx+1} ${item.date}</span>
+              <span class="cart-price">${money(item.total)}</span>
+            </div>
+            <div class="cart-detail">
+              <b>${item.durationLabel}</b><br>
+              ${item.disciplineName} / ${item.people} ${L.people_label} / ${item.level}<br>
+              ${L.days_label}: ${item.days} / ${L.qty_label}: ${item.qty}
+            </div>
+            <div class="cart-detail" style="margin-top:4px; color:var(--ink)">
+              ${item.name}
+            </div>
+            <button class="del-btn" onclick="removeFromCart(${item.id})">${L.del}</button>
+        `;
+        cartListEl.appendChild(div);
     });
+
+    cartTotalEl.textContent = money(grandTotal);
+    $('#cartCount').textContent = `${cart.length} item(s)`;
+  }
+
+  window.removeFromCart = function(id) {
+    cart = cart.filter(x => x.id !== id);
+    renderCart();
+  };
+
+  /********** SUBMIT **********/
+
+  $('#finalSubmitBtn').addEventListener('click', ()=>{
+    const L = I18N[current.lang];
+    
+    // Validation
+    if(cart.length === 0) return;
+    
+    const email = (emailInput?.value || '').trim();
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ shakeField('email'); return alert(L.email_label); }
+    
+    const pref = contactPrefSel.value;
+    const cid  = (contactIdInput?.value || '').trim();
+    if(pref !== 'email' && !cid){ shakeField('contactId'); return alert(L.contact_id_label); }
+    
+    // 強制勾選檢查
+    if(!$('#agreeNotice').checked){
+       shakeField('agreeContainer'); // 視覺震動
+       return alert((current.lang==='en') ? 'Please agree to terms.' : '請同意注意事項。');
+    }
+
+    // Build Summary
+    const box = $('#reviewList'); box.innerHTML = '';
+    let grandTotal = 0;
+
+    const contactRow = document.createElement('div');
+    contactRow.style.paddingBottom = '12px';
+    contactRow.style.marginBottom = '12px';
+    contactRow.style.borderBottom = '1px solid #e2e8f0';
+    contactRow.innerHTML = `
+        <div class="kv"><b>Email</b><div>${email}</div></div>
+        <div class="kv"><b>${L.contact_pref_label}</b><div>${pref.toUpperCase()}: ${cid}</div></div>
+    `;
+    box.appendChild(contactRow);
+
+    cart.forEach((item, idx) => {
+        grandTotal += item.total;
+        const div = document.createElement('div');
+        div.style.marginBottom = '12px';
+        div.style.borderBottom = '1px dashed #cbd5e1';
+        div.style.paddingBottom = '8px';
+        div.innerHTML = `
+            <div style="font-weight:700; margin-bottom:4px; font-size:1.05rem;">${item.date} (${item.durationLabel})</div>
+            <div style="font-size:0.9rem; color:var(--muted); line-height:1.4">
+                ${item.disciplineName} / ${item.people} ppl / ${item.name}<br>
+                Price: ${money(item.total)}
+            </div>
+        `;
+        box.appendChild(div);
+    });
+
+    const totalRow = document.createElement('div');
+    totalRow.style.textAlign = 'right';
+    totalRow.style.fontSize = '1.25rem';
+    totalRow.style.fontWeight = '800';
+    totalRow.style.color = 'var(--danger)';
+    totalRow.style.marginTop = '16px';
+    totalRow.textContent = `Total: ${money(grandTotal)}`;
+    box.appendChild(totalRow);
+
     $('#confirmModal').style.display = 'flex';
   });
 
-  // 關閉確認視窗
   $('#backBtn').addEventListener('click', ()=> $('#confirmModal').style.display='none');
 
-  // 送出到 GAS（綁在外層，只綁一次）
   $('#submitBtn').addEventListener('click', async ()=>{
-    const r=singleDayAmount(); if(!r) return;
-    if(!inDateRange($('#date').value)){
-      const msg = (current.lang==='en') ? 'Date is outside bookable period.' :
-                (current.lang==='ja') ? '予約可能期間外の日付です。' : '日期不在可預約期間。';
-      return alert(msg);
-    }
-    const daysNum = Number($('#days').value) || 1;
-    const qtyNum  = Number($('#qty').value)  || 1;
-    const isEB = isEarlyBirdNow();
-    const discount = isEB ? EARLY_BIRD_AMOUNT * daysNum * qtyNum : 0;
-    const original_total = Number(r.amount) * daysNum * qtyNum;
-    const final_total = Math.max(0, original_total - discount);
+    if(cart.length === 0) return;
+
+    const primary = cart[0];
+    let grandTotal = 0;
+    let totalPeople = 0;
+    
+    let fullMemo = `--- Booking Details (${cart.length} Groups) ---\n`;
+    cart.forEach((item, idx) => {
+        grandTotal += item.total;
+        totalPeople += item.people;
+        fullMemo += `\n[Group ${idx+1}]\n`;
+        fullMemo += `Date: ${item.date}\n`;
+        fullMemo += `Plan: ${item.durationLabel} (${item.disciplineName})\n`;
+        fullMemo += `People: ${item.people} / Level: ${item.level}\n`;
+        fullMemo += `Name: ${item.name} / Age: ${item.kidAge}\n`;
+        fullMemo += `Days: ${item.days} / Qty: ${item.qty}\n`;
+        fullMemo += `Price: ${item.total} (EB: ${item.isEB})\n`;
+        if(item.addon) fullMemo += `(Addon +1h)\n`;
+    });
+    
+    const userMemo = ($('#memo').value || '').trim();
+    if(userMemo) fullMemo += `\n--- User Notes ---\n${userMemo}`;
 
     const payload = {
-      resort: current.resort, discipline: current.type, date: $('#date').value,
-      days: normalizeNumber($('#days').value, 1, 10),
-      people: normalizeNumber($('#people').value, 1, 5),
-      level: $('#level').value, addon_1h: !!$('#addon1h').checked,
-      name: ($('#name').value || '').trim(),
-      kid_age: ($('#kidAge').value || '').trim(),
+      resort: primary.resort, 
+      discipline: primary.discipline,
+      date: primary.date, 
+      duration_type: primary.durationVal,
+      days: primary.days, 
+      people: totalPeople,
+      level: primary.level, 
+      addon_1h: cart.some(c => c.addon),
+      name: (cart.map(c=>c.name).join(', ') || '').substring(0, 100),
+      kid_age: cart.map(c=>c.kidAge).join(', '),
       email: ($('#email').value || '').trim(),
       contact_pref: $('#contactPref').value,
       contact_id: ($('#contactId').value || '').trim(),
       language: $('#lang').value,
-      memo: ($('#memo').value || '').trim(),
-      qty: normalizeNumber($('#qty').value, 1, 2),
-      season: r.season,
-      single_day_amount: Number(r.amount) || 0,
-      original_total_amount: Number(original_total) || 0,
-      is_early_bird: !!isEB,
-      early_bird_discount: Number(discount) || 0,
-      final_total_amount: Number(final_total) || 0,
-      total_amount: Number(final_total) || 0,
+      memo: fullMemo,
+      qty: 1, 
+      season: primary.season,
+      single_day_amount: 0, 
+      original_total_amount: grandTotal, 
+      is_early_bird: cart.some(c=>c.isEB),
+      early_bird_discount: 0, 
+      final_total_amount: grandTotal,
+      total_amount: grandTotal,
       hp: ''
     };
 
-console.log('POSTing to', API_URL, 'with payload:', payload);
+    console.log('Payload:', payload);
 
-  console.log('POSTing to', API_URL, 'with payload:', payload);
+    try {
+      const submitBtnEl = $('#submitBtn');
+      submitBtnEl.disabled = true;
+      submitBtnEl.textContent = 'Sending...';
 
-try {
-  const submitBtnEl = $('#submitBtn');
-  submitBtnEl.disabled = true;
-  submitBtnEl.textContent =
-    (current.lang === 'ja') ? '送信中...' :
-    (current.lang === 'en') ? 'Submitting...' : '送出中...';
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 20000);
 
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 20000);
+      const resp = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      clearTimeout(timer);
 
-  const resp = await fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' }, // 直打 GAS 時改成 application/json
-    body: JSON.stringify(payload),
-    signal: controller.signal
-  });
-  clearTimeout(timer);
+      const raw = await resp.text();
+      let data;
+      try { data = JSON.parse(raw); } catch { data = { status: 'error', message: raw }; }
 
-  console.log('HTTP status:', resp.status, resp.statusText);
+      if (data.status !== 'success') {
+        throw new Error(data.message || `Server error`);
+      }
 
-  // 拿原始字串，再嘗試轉 JSON
-  const raw = await resp.text();
-  let data;
-  try {
-    data = JSON.parse(raw);
-  } catch {
-    data = { status: 'error', message: raw || 'Invalid JSON from server' };
-  }
+      alert(I18N[current.lang].success);
+      $('#confirmModal').style.display = 'none';
+      location.reload();
 
-  console.log('API raw:', raw);
-  console.log('API response:', data);
-  console.log('API response.status:', data.status);
-
-  if (data.status !== 'success') {
-    throw new Error(data.message || `Server error (HTTP ${resp.status})`);
-  }
-
-  // 成功
-  alert(I18N[current.lang].success);
-  $('#confirmModal').style.display = 'none';
-  location.reload();
-
-} catch (e) {
-  console.error('Submit failed:', e);
-  alert(
-    (current.lang==='en' ? 'Failed to submit. Please try again later.'
-      : (current.lang==='ja' ? '送信に失敗しました。しばらくしてからもう一度お試しください。' : '送出失敗，請稍後再試。'
-    )) + '\n' + String(e)
-  );
-} finally {
-  const submitBtnEl = $('#submitBtn');
-  if (submitBtnEl) {
-    submitBtnEl.disabled = false;
-    submitBtnEl.textContent = I18N[current.lang].submit || '送出';
-  }
-}
+    } catch (e) {
+      console.error('Submit failed:', e);
+      alert('Error: ' + String(e));
+    } finally {
+      const submitBtnEl = $('#submitBtn');
+      if (submitBtnEl) {
+        submitBtnEl.disabled = false;
+        submitBtnEl.textContent = I18N[current.lang].submit || '送出';
+      }
+    }
   });
 
-  // 初始化
   (function init(){
-    setLang('zh-Hant');
-    const dateEl=$('#date'); dateEl.min=DATE_MIN; dateEl.max=DATE_MAX;
+    // 網址參數偵測邏輯
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    
+    // 預設語言
+    let defaultLang = 'zh-Hant';
+
+    // 簡單映射
+    if (langParam) {
+      const l = langParam.toLowerCase();
+      if (l.startsWith('en')) defaultLang = 'en';
+      else if (l.startsWith('ja') || l.startsWith('jp')) defaultLang = 'ja';
+      else if (l.startsWith('zh') || l.startsWith('tw')) defaultLang = 'zh-Hant';
+    }
+
+    setLang(defaultLang);
+    
+    const dateEl=$('#date'); 
+    dateEl.min=DATE_MIN; 
+    dateEl.max=DATE_MAX; 
     applyResortAvailability();
     applyContactPlaceholder();
   })();
