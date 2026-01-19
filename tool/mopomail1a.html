@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MOPO 滑雪課程預約信件生成器</title>
+    <title>MOPO 滑雪課程預約信件生成器 v2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -53,7 +53,7 @@
         }
 
         /* Mobile specific fixes */
-        input, select {
+        input, select, textarea {
             /* Fix iOS zoom on focus */
             font-size: 16px !important; 
         }
@@ -88,7 +88,7 @@
             <h1 class="text-3xl md:text-4xl font-bold text-mopo-green mb-2" style="font-family: 'Playfair Display', serif;">
                 MOPO SKI SCHOOL
             </h1>
-            <p class="text-gray-600 text-sm md:text-base tracking-wide">預約信件自動生成系統</p>
+            <p class="text-gray-600 text-sm md:text-base tracking-wide">預約信件自動生成系統 v2.0</p>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
@@ -135,7 +135,7 @@
                                 <input type="date" id="lessonDate" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
                             </div>
                             
-                            <!-- Duration (New) -->
+                            <!-- Duration -->
                             <div>
                                 <label class="block text-base font-bold text-gray-700 mb-1">課程時數 (Duration)</label>
                                 <select id="duration" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none">
@@ -194,15 +194,21 @@
                             </div>
                         </div>
 
-                        <!-- Payment Notice Toggle -->
-                        <div class="bg-gray-50 p-4 border-l-4 border-gray-300 mt-4">
-                            <label class="flex items-start space-x-3 cursor-pointer">
-                                <input type="checkbox" id="showPaymentNotice" checked class="mt-1 w-5 h-5 text-mopo-green rounded focus:ring-mopo-green">
-                                <div>
-                                    <span class="text-sm md:text-base text-gray-800 font-bold">包含「付款系統更新」通知</span>
-                                    <p class="text-xs text-gray-500 mt-0.5">Include "Payment System Update" notice</p>
-                                </div>
+                        <!-- NEW: Payment Link -->
+                        <div class="bg-gray-50 p-4 border-l-4 border-mopo-green">
+                            <label class="block text-base font-bold text-mopo-green mb-1">
+                                <i class="fa-solid fa-link mr-1"></i> 付款連結 (Payment Link)
                             </label>
+                            <input type="text" id="paymentLink" class="w-full p-3 bg-white border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none" placeholder="貼上 Square 連結...">
+                            <p class="text-xs text-gray-500 mt-1">留空將顯示 (連結待補 / Link TBD)</p>
+                        </div>
+
+                        <!-- NEW: Remarks (Notes) -->
+                        <div>
+                            <label class="block text-base font-bold text-gray-700 mb-1">
+                                <i class="fa-regular fa-comment-dots mr-1"></i> 備註 (Remarks)
+                            </label>
+                            <textarea id="remarks" rows="3" class="w-full p-3 bg-gray-50 border border-gray-300 focus:border-mopo-green focus:ring-1 focus:ring-mopo-green outline-none rounded-none" placeholder="如有額外注意事項請填寫於此..."></textarea>
                         </div>
                         
                         <!-- Mobile Only: Scroll to Preview Button -->
@@ -293,7 +299,7 @@
         });
 
 
-        // --- Generator Logic (Original Code) ---
+        // --- Generator Logic ---
 
         // Data Elements
         const inputs = {
@@ -305,7 +311,8 @@
             people: document.getElementById('people'),
             language: document.getElementById('language'),
             price: document.getElementById('price'),
-            showPayment: document.getElementById('showPaymentNotice'),
+            paymentLink: document.getElementById('paymentLink'), // New
+            remarks: document.getElementById('remarks'),         // New
             langRadios: document.getElementsByName('emailLang')
         };
 
@@ -373,16 +380,14 @@
             // Subject
             outputs.subject.innerText = `【確認您的預約】${date} ${subjectResort} ${subjectDiscipline}滑雪課程 - MOPO滑雪學校`;
 
-            // Payment Section Logic
-            let paymentSection = '';
-            if (inputs.showPayment.checked) {
-                paymentSection = `
-【關於付款】 付款系統預計於 1 月底前 完成更新。屆時我們會再發信請您確認並完成付款；
-在此之前，我們將為您優先保留預訂名額。`;
-            } else {
-                paymentSection = `
-【關於付款】 請依照後續郵件指示完成付款，我們將為您保留預訂名額。`;
-            }
+            // Payment Section Logic (Updated)
+            const link = inputs.paymentLink.value.trim();
+            const linkText = link ? link : '(請貼上付款連結)';
+            
+            const paymentSection = `
+【關於付款】 請點選下方連結，並於時間內完成付款，即可完成您的預訂。
+${linkText}
+（本系統採用 Square 支付，可接受信用卡及 Apple Pay，交易安全有保障）`;
 
             // Duration Logic
             const durationType = inputs.duration.value;
@@ -406,6 +411,10 @@
 如需調整時間，歡迎來信詢問或於課前與教練討論。`;
             }
 
+            // Remarks Logic (New)
+            const remarksVal = inputs.remarks.value.trim();
+            const remarksBlock = remarksVal ? `\n【備註 Note】\n${remarksVal}\n` : '';
+
             // Body
             const body = `${name} 您好：
 
@@ -425,7 +434,7 @@
 最終金額 / Final total：${price} 日圓
 
 ${paymentSection}
-
+${remarksBlock}
 ${timeBlock}
 
 【相關連結】 為了讓您的行程更順利，
@@ -467,18 +476,14 @@ Booking Hotline : +81(0)7044206343`;
             // Subject
             outputs.subject.innerText = `[Booking Confirmation] ${date} ${subjectResort} ${subjectDiscipline} Lesson - MOPO Ski School`;
 
-            // Payment Section Logic
-            let paymentSection = '';
-            if (inputs.showPayment.checked) {
-                paymentSection = `
-【Payment】 The payment system is expected to be updated by the end of January. 
-We will email you again to confirm and complete the payment then. 
-In the meantime, we have reserved your spot as a priority.`;
-            } else {
-                paymentSection = `
-【Payment】 Please follow the instructions in the subsequent email to complete the payment. 
-Your spot is currently reserved.`;
-            }
+            // Payment Section Logic (Updated to match Chinese logic)
+            const link = inputs.paymentLink.value.trim();
+            const linkText = link ? link : '(Link to be inserted)';
+
+            const paymentSection = `
+【Payment】 Please click the link below to complete your payment within the specified time to finalize your booking.
+${linkText}
+(Powered by Square. Credit cards and Apple Pay accepted for secure transactions.)`;
 
             // Duration Logic
             const durationType = inputs.duration.value;
@@ -502,6 +507,10 @@ If you need to adjust the time, please email us or discuss it with your instruct
 If you need to adjust the time, please email us or discuss it with your instructor before the lesson.`;
             }
 
+            // Remarks Logic (New)
+            const remarksVal = inputs.remarks.value.trim();
+            const remarksBlock = remarksVal ? `\n【Remarks】\n${remarksVal}\n` : '';
+
             // Body
             const body = `Dear ${name},
 
@@ -521,7 +530,7 @@ Lesson Language: ${inputs.language.value}
 Final Total: ${price} JPY
 
 ${paymentSection}
-
+${remarksBlock}
 ${timeBlock}
 
 【Useful Links】 For a smoother trip, please check in advance:
@@ -590,12 +599,6 @@ Booking Hotline : +81(0)7044206343`;
                 toast.classList.add('translate-y-24', 'opacity-0');
             }, 2000);
         }
-
-        // Initial Run moved to inside checkPassword() success
-        // const tomorrow = new Date();
-        // tomorrow.setDate(tomorrow.getDate() + 1);
-        // inputs.date.valueAsDate = tomorrow;
-        // generateEmail();
 
     </script>
 </body>
