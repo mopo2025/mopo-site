@@ -173,3 +173,24 @@ window.addEventListener('scroll', setTopbar, {passive:true});
 // 回到頂部
 document.getElementById('backTop').addEventListener('click', ()=> 
   window.scrollTo({top:0, behavior:'smooth'}));
+
+/* ✅ 【修正版】動態插入 Favicon */
+(function() {
+  // 1. 檢查 HTML head 中是否已經存在 icon 或 shortcut icon 的宣告
+  if (document.querySelector('link[rel="icon"]') || document.querySelector('link[rel="shortcut icon"]')) {
+      return;
+  }
+
+  var link = document.createElement('link');
+  // 2. 設定 rel 屬性，同時包含 icon 和 shortcut icon 以確保最大兼容性
+  link.rel = 'icon shortcut icon';
+  
+  // 3. 使用「根目錄相對路徑」 (以斜線 / 開頭)
+  // 指向 img 資料夾內的 iconw.png
+  link.href = '/img/iconw.png';
+  
+  link.type = 'image/png';
+  
+  // 將 link 元素加入到 head 中
+  document.head.appendChild(link);
+})();
