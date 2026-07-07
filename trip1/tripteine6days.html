@@ -40,7 +40,6 @@
 </script>
 
 <script src="https://unpkg.com/lucide@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
   .itinerary-wrap {
@@ -149,7 +148,6 @@
   /* 飯店輪播專用樣式 */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .grabbing { cursor: grabbing !important; cursor: -webkit-grabbing !important; }
 
   /* Day 5 圖片輪播動畫 */
   @keyframes fadeGallery {
@@ -280,9 +278,9 @@
                             <h3 class="font-bold text-ink mb-1">體貼規劃</h3><p class="text-xs text-gray-500">魔毯免爬坡<br>小孩不喊累</p>
                         </div>
                         <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
-    <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="camera" class="w-7 h-7"></i></div>
-    <h3 class="font-bold text-ink mb-1">拍攝留念</h3><p class="text-xs text-gray-500">教練紀錄拍攝<br>留下全家回憶</p>
-</div>
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="camera" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">拍攝留念</h3><p class="text-xs text-gray-500">教練紀錄拍攝<br>留下全家回憶</p>
+                        </div>
                     </div>
                 </article>
 
@@ -426,7 +424,7 @@
                 </article>
 
 
-  <!-- 貼心長條宣傳區塊 -->
+                <!-- 貼心長條宣傳區塊 -->
                 <!-- 優雅質感預約區塊：針對想滑雪者的情感訴求 -->
                 <div class="w-full mb-10 bg-white border border-[#E5E7EB] rounded-2xl p-6 md:p-8 shadow-sm flex flex-col md:flex-row items-center gap-6 relative overflow-hidden transition-all hover:shadow-md">
                     <!-- 裝飾: 左側品牌色邊條 -->
@@ -450,10 +448,6 @@
                         </a>
                     </div>
                 </div>
-
-               
-
-
 
                 <article id="day4" class="warm-card p-0 scroll-mt-32">
                     <div class="flex flex-col md:flex-row h-full">
@@ -632,7 +626,7 @@
                             <p class="text-sm text-gray-500">MOPO小編選房邏輯：強烈建議選擇<strong>「札幌站周邊」</strong>，省去每天扛雪具轉乘地鐵的體力消耗。</p>
                         </div>
                         <div class="hidden md:flex text-xs text-gray-400 gap-1 items-center whitespace-nowrap">
-                            <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i> 可拖曳或點按鈕
+                            <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i> 點擊左右按鈕滑動
                         </div>
                     </div>
 
@@ -640,7 +634,7 @@
                         <button onclick="scrollHotels(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="left: 0;"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
                         <button onclick="scrollHotels(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="right: 0;"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
 
-                        <div id="hotelContainer" class="flex overflow-x-auto pb-8 gap-4 md:gap-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory w-full px-1" style="scroll-behavior: smooth;">
+                        <div id="hotelContainer" class="flex overflow-x-auto pb-8 gap-4 md:gap-6 select-none no-scrollbar snap-x snap-mandatory w-full px-1" style="scroll-behavior: smooth;">
                             
                             <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
                                 <div class="h-48 img-zoom-container relative">
@@ -722,16 +716,6 @@
 
                         </div>
                     </div>
-                    
-                    <script>
-                        const slider = document.getElementById('hotelContainer');
-                        let isDown = false, startX, scrollLeft;
-                        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('grabbing'); slider.style.scrollBehavior = 'auto'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-                        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
-                        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
-                        slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
-                        function scrollHotels(dir) { const c = document.getElementById('hotelContainer'); c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); }
-                    </script>
                 </article>
 
       <div class="mt-10 mb-10 text-center py-12 px-6 bg-white rounded-[3rem] border border-gray-100 shadow-sm">
@@ -779,20 +763,18 @@
   </section>
 </footer>
 
-<script>
-    const slider = document.getElementById('hotelContainer');
-    let isDown = false, startX, scrollLeft;
-    slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('grabbing'); slider.style.scrollBehavior = 'auto'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-    slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
-    slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
-    slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
-    function scrollHotels(dir) { const c = document.getElementById('hotelContainer'); c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); }
-</script>
-
 <script src="../common.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
   document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
+  
+  // 飯店左右滑動
+  function scrollHotels(dir) { 
+      const c = document.getElementById('hotelContainer'); 
+      c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); 
+  }
+
+  // 側邊目錄滾動監聽
   window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('article[id]');
     const navLinks = document.querySelectorAll('.s-toc a');
@@ -800,6 +782,8 @@
     sections.forEach(section => { const sectionTop = section.offsetTop; if (window.scrollY >= sectionTop - 150) current = section.getAttribute('id'); });
     navLinks.forEach(link => { link.classList.remove('is-active'); if (link.getAttribute('href') === '#' + current) link.classList.add('is-active'); });
   });
+
+  // 交通詳情手風琴開關
   function toggleTransport(header) {
     const body = header.nextElementSibling;
     const icon = header.querySelector('.lucide-chevron-down');
