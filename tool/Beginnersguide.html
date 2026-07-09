@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOPO北海道滑雪初學者攻略｜給第一次看見雪的你｜MOPO Ski School</title>
+<link rel="icon" href="/logo/logom.png" type="image/png">
+<meta name="description" content="北海道滑雪初學者攻略：從未見過雪的你，該如何準備第一趟北海道滑雪之旅？MOPO提供從穿著、心態到行程安排的完整指南。">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../common.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    corePlugins: { preflight: false },
+    theme: { 
+      extend: { 
+        colors: { 
+          ink: '#2F4F4F', 
+          'ink-light': '#4A6A6A',
+          warm: '#F9F8F6', 
+          gold: '#CFAF61', 
+          'gold-light': '#E8DBB9',
+          accent: '#D4A373' 
+        },
+        fontFamily: {
+          sans: ['"Noto Sans TC"', 'sans-serif'],
+          serif: ['"Shippori Mincho"', '"Noto Serif TC"', 'serif'],
+        }
+      } 
+    }
+  }
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  /* Base Resets & Typography for the guide content */
+  body { background-color: #F9F8F6; color: #333; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  main { font-family: "Noto Sans TC", sans-serif; }
+  .serif { font-family: "Shippori Mincho", "Noto Serif TC", serif; }
+  
+  /* Minimalist Aesthetic Utilities */
+  .vertical-line { width: 1px; height: 60px; background: linear-gradient(to bottom, #CFAF61, transparent); margin: 0 auto; }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+  .fade-up.is-visible { opacity: 1; transform: none; }
+  
+  /* Article Content Styles */
+  .guide-content p { margin-bottom: 1.5em; font-size: 16px; letter-spacing: 0.02em; color: #4A5568;}
+  @media(min-width: 768px) { .guide-content p { font-size: 17px; } }
+  .guide-content strong { color: #2F4F4F; font-weight: 700; }
+  .guide-content ul { margin-bottom: 2em; padding-left: 0; list-style: none;}
+  .guide-content ul li { position: relative; padding-left: 1.5em; margin-bottom: 0.8em; color: #4A5568; line-height: 1.8;}
+  .guide-content ul li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; background-color: #CFAF61; border-radius: 50%; }
+</style>
+</head>
+<body class="pt-[65px]">
+
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand"><a href="../index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a></div>
+    <ul class="menu" role="menubar">
+      <li role="none"><a role="menuitem" href="../news.html">最新消息</a></li>
+      <li role="none"><a role="menuitem" href="../mopo.html">關於 MOPO</a></li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">滑雪課程 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+          <li role="none"><a role="menuitem" href="../index.html#pricing">課程與價格</a></li>
+          <li class="group-title">雪場介紹</li>
+          <li role="none"><a role="menuitem" href="../teine.html">札幌手稻</a></li>
+          <li role="none"><a role="menuitem" href="../onze.html">小樽ONZE</a></li>
+          <li role="none"><a role="menuitem" href="../kokusai.html">札幌國際</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">主題文章 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+          <li role="none"><a role="menuitem" href="../safe.html">專欄文章</a></li>
+          <li role="none"><a role="menuitem" href="../trip.html" aria-current="page">觀光主題</a></li>
+        </ul>
+      </li>
+      <li role="none"><a role="menuitem" href="../faq.html">常見問題</a></li>
+      <li role="none"><a role="menuitem" href="../booking.html">預約</a></li>
+    </ul>
+    <div class="lang">
+      <select id="langSelect"><option value="zh-Hant" selected>繁體中文</option><option value="ja">日本語</option><option value="en">English</option></select>
+    </div>
+    <div class="mobtools">
+      <div class="mobdrop" id="mobLangDrop">
+        <button class="mobLangBtn" id="mobLangBtn">語言</button>
+        <div class="mobpanel" id="mobLangPanel">
+          <a href="../trip1/en_tripteine6days.html">繁體中文</a>
+          <a href="../trip1/en_tripteine6days.html">日本語</a>
+          <a href="../trip1/en_tripteine6days.html">English</a>
+        </div>
+      </div>
+      <div class="mobdrop" id="mobNavDrop">
+        <button class="iconbtn" id="mobNavBtn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2"/></svg></button>
+        <div class="mobpanel" id="mobNavPanel">
+          <a href="../news.html">最新消息</a><a href="../mopo.html">關於 MOPO</a>
+          <div class="mob-subtitle">滑雪課程</div>
+          <a href="../index.html#pricing">課程與價格</a><a href="../teine.html">札幌手稻</a><a href="../onze.html">小樽ONZE</a><a href="../kokusai.html">札幌國際</a>
+          <div class="mob-subtitle">主題文章</div>
+          <a href="../safe.html">專欄文章</a><a href="../trip.html" aria-current="page" class="active">觀光主題</a>
+          <div class="mob-subtitle">資訊</div>
+          <a href="../faq.html">常見問題</a><a href="../booking.html" class="mob-booking-btn">預約</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="w-full pb-32">
+  
+  <!-- Hero Section -->
+  <section class="relative h-[60vh] min-h-[450px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="../img/tool/a.jpg" class="w-full h-full object-cover scale-105 transform origin-center animate-[pulse_20s_ease-in-out_infinite_alternate]" alt="Hokkaido Snow">
+      <div class="absolute inset-0 bg-ink/30"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#F9F8F6] via-transparent to-transparent"></div>
+    </div>
+    
+    <div class="relative z-10 text-center px-6 max-w-3xl mx-auto fade-up mt-8">
+      <p class="text-white/90 tracking-[0.3em] text-sm md:text-base font-medium mb-4 uppercase">Beginner's Guide to Hokkaido</p>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-widest mb-6 serif text-white drop-shadow-lg leading-tight">
+        北海道滑雪初學者攻略
+      </h1>
+      <p class="text-xl md:text-2xl font-serif text-white tracking-widest drop-shadow-md relative inline-block">
+        <span class="absolute -left-8 top-1/2 w-4 h-[1px] bg-gold"></span>
+        給第一次看見雪的你
+        <span class="absolute -right-8 top-1/2 w-4 h-[1px] bg-gold"></span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Container -->
+  <article class="max-w-3xl mx-auto px-6 lg:px-0 -mt-12 relative z-20 guide-content">
+
+    <!-- Chapter 1 -->
+    <section class="bg-white rounded-3xl px-8 py-16 md:px-16 md:py-24 shadow-[0_10px_40px_rgba(47,79,79,0.03)] fade-up mb-8">
+      <div class="text-center mb-16">
+        <span class="text-gold font-bold tracking-[0.2em] text-sm mb-2 block">CHAPTER 01</span>
+        <h2 class="text-3xl md:text-4xl font-serif text-ink tracking-widest">初見雪國</h2>
+        <div class="vertical-line mt-8"></div>
+      </div>
+
+      <p class="text-lg md:text-xl font-serif text-center text-ink-light leading-relaxed mb-16 px-4">
+        飛機落在新千歲機場，踏出艙門的那一刻，腳下白茫茫的大地——對許多從小在溫暖地方長大的人來說，是人生第一次。
+      </p>
+
+      <div class="space-y-16">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-10 items-start">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mt-1">
+            <span class="text-2xl">🌡️</span> 冷，是什麼感覺？
+          </h3>
+          <div>
+            <p>北海道冬天的氣溫，常常落在零下五度到零下十五度之間。對台灣、香港、新加坡、馬來西亞的朋友來說，這個數字可能完全沒有身體記憶。</p>
+            <p>有一個方式可以稍微想像：打開冰箱冷凍庫，把臉湊近感受那股冷氣——然後想像，你要在那樣的環境裡待上一整天。</p>
+            <p>只要準備得適當，這個冷完全可以應對，甚至會覺得很舒爽。準備不對，才會很難受。</p>
+          </div>
+        </div>
+
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-gold-light to-transparent"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-10 items-start">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mt-1">
+            <span class="text-2xl">❄️</span> 室內像夏天<br class="hidden md:block">室外像冰箱
+          </h3>
+          <div>
+            <p>無論是機場、超商、飯店還是餐廳，北海道室內的暖氣總是非常溫暖，維持在 20–25°C。最好的穿法是「外厚內薄」：最外層一件可以快速拉開的防風外套，裡面是輕薄的排汗層——一進室內拉開拉鍊，一出門拉上，輕鬆應對溫差。</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-10 items-start">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mt-1">
+            <span class="text-2xl">❄️</span> 北海道的雪<br class="hidden md:block">比想像中溫柔
+          </h3>
+          <div>
+            <p>很多人以為雪踩起來像剉冰，或是冷凍庫裡硬邦邦的冰塊。其實不是。</p>
+            <p>北海道大部分的雪是「粉雪（Powder Snow）」，摸起來像廚房的麵粉或糖粉——鬆鬆軟軟的，一腳踩下去咯吱作響，身體會慢慢陷進去。跌倒時的衝擊，其實比想像中溫柔很多。</p>
+            <p>真正需要留意的，是被往來行人踩硬的冰面——亮亮的、會反光的那種，摩擦力很低，走在上面要多一分專注。</p>
+          </div>
+        </div>
+
+        <div class="h-px w-full bg-gradient-to-r from-transparent via-gold-light to-transparent"></div>
+
+        <div class="bg-[#FAF9F6] p-8 md:p-10 rounded-2xl border border-gold-light/50">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mb-6">
+            <span class="text-2xl">🌨️</span> 大雪天，要有不同的心理準備
+          </h3>
+          <p class="mb-6">北海道冬天偶爾會遇到大雪，能見度降低，道路和路面的狀況也會改變。這幾件事要提前知道：</p>
+          <ul>
+            <li>交通可能延誤，巴士或電車會誤點或是取消，行程務必保留彈性。</li>
+            <li>大雪天雪場有時會暫停部分纜車或關閉特定路線，出發前建議確認雪場當日公告，MOPO也會在前一日或當天做通知。</li>
+            <li>在大雪中行走，視線受限，要更慢、更小心，不要因為趕時間而大步快走。</li>
+            <li>如果當天雪下得很大，也可以考慮調整計畫——在市區裡吃頓好飯、逛逛溫泉，同樣是北海道很值得的一天。</li>
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6 md:gap-10 items-start">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mt-1">
+            <span class="text-2xl">🐧</span> 走路，像企鵝那樣
+          </h3>
+          <div>
+            <p>離開機場後，最容易滑倒的地方往往不是雪場，而是飯店門口、停車場，或便利商店外面的一小段柏油路。</p>
+            <p>北海道人的日常走法：步伐縮小、膝蓋微彎、重心略向前，整個腳掌踩實——不急不徐，像企鵝那樣移動。避免用腳跟先著地，或是步伐跨太大，那在冰面上很容易失去重心。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Break Image 1 (可點擊放大，自動高寬適應) -->
+    <figure onclick="document.getElementById('modal-img-1').showModal()" class="w-full mx-auto mb-8 rounded-3xl overflow-hidden shadow-lg fade-up relative cursor-zoom-in group">
+      <img src="https://www.moposki.com/img/tool/w.jpg" class="w-full h-auto block transition-transform duration-500 group-hover:scale-105" alt="Winter equipment">
+      <div class="absolute inset-0 bg-ink/10 mix-blend-multiply transition-opacity group-hover:opacity-0 pointer-events-none"></div>
+      <!-- 右下角放大圖示 (+) -->
+      <div class="absolute bottom-4 right-4 w-10 h-10 bg-black/50 text-white flex items-center justify-center rounded-full backdrop-blur-md opacity-80 group-hover:opacity-100 transition-opacity pointer-events-none shadow-md">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      </div>
+    </figure>
+
+    <!-- 原生 Dialog 放大視窗 1 -->
+    <dialog id="modal-img-1" class="bg-transparent m-auto p-0 w-full h-full max-w-none max-h-none backdrop:bg-black/90 backdrop:backdrop-blur-sm cursor-zoom-out" onclick="this.close()">
+      <div class="w-full h-full flex items-center justify-center p-4">
+        <img src="https://www.moposki.com/img/tool/w.jpg" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl" alt="Winter equipment enlarged">
+      </div>
+    </dialog>
+
+    <!-- Chapter 2 -->
+    <section class="bg-white rounded-3xl px-8 py-16 md:px-16 md:py-24 shadow-[0_10px_40px_rgba(47,79,79,0.03)] fade-up mb-8">
+      <div class="text-center mb-16">
+        <span class="text-gold font-bold tracking-[0.2em] text-sm mb-2 block">CHAPTER 02</span>
+        <h2 class="text-3xl md:text-4xl font-serif text-ink tracking-widest">穿對，比穿多更重要</h2>
+        <div class="vertical-line mt-8"></div>
+      </div>
+
+      <p class="text-center mb-16 max-w-2xl mx-auto">滑雪是高強度運動。很多人出發前把所有衣服往身上套，結果滑不到半小時就全身濕透，冷風一吹，濕衣服緊貼著皮膚，這才是真正難受的狀態。</p>
+
+      <div class="space-y-12">
+        <div class="bg-red-50/50 border border-red-100 p-8 md:p-10 rounded-2xl relative overflow-hidden">
+          <div class="absolute -right-4 -top-4 text-9xl opacity-5">⚠️</div>
+          <h3 class="text-xl font-bold text-red-900 serif flex items-center gap-2 mb-4 relative z-10">
+            <span class="text-2xl">⚠️</span> 失溫是什麼？
+          </h3>
+          <p class="relative z-10 text-red-800/80 mb-0">這是一個在熱帶國家幾乎不會遇到的概念，但在雪地裡需要認識它。<br>當身體失去熱量的速度，超過自己補充的速度，就會開始失溫——先是不停發抖、手腳麻木，判斷力慢慢下降，嚴重時有危險。聽起來很嚴重，但只要穿對衣服、保持乾爽，完全可以避免。最常見的失溫原因，就是內層衣物被汗水浸濕後，停下來休息時被冷風一吹。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-2xl bg-gray-50 border border-gray-100">
+            <h3 class="text-lg font-bold text-ink serif flex items-center gap-2 mb-6">
+              <span class="text-xl">🚫</span> 幾樣要避開的
+            </h3>
+            <ul class="mb-0">
+              <li><strong>普通發熱衣與純棉衣物</strong>——吸汗後很難乾，是失溫的主要原因之一。</li>
+              <li><strong>牛仔褲</strong>——沾到雪之後會變重、變硬，像枷鎖一樣限制動作。</li>
+              <li><strong>一般運動鞋</strong>——路邊積雪隨便都超過鞋底，踩下去立刻濕透，而且完全抓不住地面。</li>
+              <li><strong>太陽眼鏡</strong>——只建議春季艷陽的日子，風雪會跑進眼睛造成容易滑行困難，並且沒有防撞的功能。</li>
+            </ul>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-green-50/50 border border-green-100/50">
+            <h3 class="text-lg font-bold text-ink serif flex items-center gap-2 mb-6">
+              <span class="text-xl">✅</span> 幾樣值得自己準備的
+            </h3>
+            <ul class="mb-0">
+              <li><strong>滑雪專用雪襪</strong>——雪鞋非常硬重，只穿普通襪子，小腿前側一天就會被磨破。專用雪襪在腳踝和小腿前側都有加厚緩衝，這個錢很值得花。</li>
+              <li><strong>吸濕排汗長袖內衣 + 中層刷毛</strong>——最內層排汗、中間保暖，外層才是防水雪衣，三層搭配讓身體在運動中保持乾爽。</li>
+              <li><strong>完全防水手套</strong>——毛線手套碰到雪很快就濕，手一凍什麼都做不了，要選滑雪專用的防水款。</li>
+              <li><strong>雪鏡（Goggles）</strong>——不只是遮光，也是保護。白雪會反射強烈紫外線，風雪中沒有雪鏡，眼睛很快就無法睜開。這是安全裝備，不是配件。</li>
+              <li><strong>防風面罩</strong>——雪地的紫外線跟海灘一樣強烈，面罩除了可以保暖，更可以防止臉曬傷或是凍傷喔。</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pt-8">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mb-4">
+            <span class="text-2xl">🎿</span> 租就好，第一次不需要買
+          </h3>
+          <p>雪場或市區的雪具店，都能租到完整裝備：雪衣、雪褲、雪鞋、滑雪板（雙版🎿或單版🏂）、安全帽，有些租借處也都備有手套、雪鏡。——第一次體驗完全夠用，不需要出發前花大錢購買。</p>
+          <p class="mb-0">租借流程大致是這樣的：<br>在網站上提前預約，租借人員就會事先根據資料幫你挑選合適的尺寸，主要是年齡、身高、體重、腳的尺寸。等抵達雪具店或雪場租借區，告知工作人員預約單號，會先試穿雪衣或是雪鞋，確認合身合腳後就完成了。部分熱門雪場更是建議提前預約，旺季現場排隊有時需要等候。費用依雪場和裝備組合不同，全套租借大約落在日幣 6,800 到 20,000 元之間，可以事先查詢目標雪場的官網確認。部分雪場MOPO也有合作的租借商店，MOPO學生預訂租借會有限定折扣喔。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 3 -->
+    <section class="bg-white rounded-3xl px-8 py-16 md:px-16 md:py-24 shadow-[0_10px_40px_rgba(47,79,79,0.03)] fade-up mb-8">
+      <div class="text-center mb-16">
+        <span class="text-gold font-bold tracking-[0.2em] text-sm mb-2 block">CHAPTER 03</span>
+        <h2 class="text-3xl md:text-4xl font-serif text-ink tracking-widest">以札幌、小樽為基地</h2>
+        <div class="vertical-line mt-8"></div>
+      </div>
+
+      <p class="text-lg md:text-xl font-serif text-center text-ink-light leading-relaxed mb-16 px-4">
+        不一定要住頂級度假村才算玩到北海道。很多熟門熟路的旅人更喜歡把札幌市區或小樽當基地——住宿和交通都親民許多，白天滑雪，傍晚回市區，走進居酒屋點一盤海鮮料理、喝一碗湯咖哩，生活感完整而踏實。
+      </p>
+
+      <div class="space-y-8">
+        <div class="bg-[#FAF9F6] p-8 md:p-10 rounded-2xl border border-gold-light/40">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mb-4">
+            <span class="text-2xl">🗺️</span> 小樽可以怎麼安排？
+          </h3>
+          <p class="mb-0 text-gray-700">小樽距離札幌約 50 分鐘車程，是一座保留了大量明治時代倉庫建築的港口小城。對第一次來北海道的人來說，小樽非常適合安排一天不滑雪的緩衝日——沿著運河散步、在玻璃工藝店裡逛逛、吃一頓新鮮海鮮，讓身體好好休息，也讓雪國的氣氛慢慢滲進來。如果住在札幌，當天來回小樽非常方便。</p>
+        </div>
+
+        <div class="bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100">
+          <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mb-6">
+            <span class="text-2xl">🗺️</span> 新手友善雪場
+          </h3>
+          <ul class="mb-0 space-y-4">
+            <li><strong>札幌國際滑雪場</strong>——初學者坡道寬且緩，雪質佳。最重要的是有「魔毯」：就像百貨公司的電扶梯，只是平的、在雪地上，站上去它會自動把你往上帶。完全不需要一開始就面對纜車，可以安心專注練基本功。</li>
+            <li><strong>手稻滑雪場（Sapporo Teine）</strong>——從札幌市區坐火車加巴士就能到，也有「魔毯」，適合想要滑雪又想要觀光的好選擇。</li>
+            <li><strong>ONZE</strong>——如果想挑戰單板（Snowboard），這裡的場地規劃對初學者相對友善。</li>
+          </ul>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-[#FAF9F6] p-8 rounded-2xl border border-gold-light/30">
+            <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mb-4">
+              <span class="text-2xl">🚌</span> 交通提醒
+            </h3>
+            <p class="mb-0 text-gray-700">建議選擇從札幌車站或大通公園有直達接駁巴士或電車的雪場，輕裝當天來回，行程會輕鬆很多。</p>
+          </div>
+          <div class="bg-[#FAF9F6] p-8 rounded-2xl border border-gold-light/30">
+            <h3 class="text-xl font-bold text-ink serif flex items-center gap-2 mb-4">
+              <span class="text-2xl">🗣️</span> 語言不用太擔心
+            </h3>
+            <p class="mb-0 text-gray-700">北海道主要雪場和觀光區的工作人員，基本上能應對簡單的英文溝通，購票、租借通常都沒有問題。許多雪場也有中文介紹資料，出發前可以查詢目標雪場的官網確認。語言不需要成為擔心的理由。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 4 -->
+    <section class="bg-white rounded-3xl px-8 py-16 md:px-16 md:py-24 shadow-[0_10px_40px_rgba(47,79,79,0.03)] fade-up mb-8">
+      <div class="text-center mb-16">
+        <span class="text-gold font-bold tracking-[0.2em] text-sm mb-2 block">CHAPTER 04</span>
+        <h2 class="text-3xl md:text-4xl font-serif text-ink tracking-widest">一天的行程，大概長這樣</h2>
+        <div class="vertical-line mt-8"></div>
+      </div>
+
+      <p class="text-center mb-12">第一次去雪場，對行程節奏完全沒有概念是很正常的。以下是簡單的參考：</p>
+
+      <div class="max-w-lg mx-auto bg-[#FAF9F6] p-8 md:p-12 rounded-3xl border border-gold-light/40">
+        <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gold-light before:to-transparent">
+          
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-gold text-white shadow shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              08
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">07:30-08:00</span>
+              </div>
+              <p class="text-sm mb-0 text-gray-600">從札幌搭乘接駁巴士或是電車出發</p>
+            </div>
+          </div>
+          
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-white text-gold border-gold/30 shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              09
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">09:00</span>
+              </div>
+              <p class="text-sm mb-0 text-gray-600">抵達雪場，完成租借、更換裝備</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-white text-gold border-gold/30 shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              <div class="w-2 h-2 bg-gold rounded-full"></div>
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gold-light bg-[#FFFCF6] shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">09:30</span>
+              </div>
+              <p class="text-sm mb-0 text-ink font-bold">開始上課</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-white text-gold border-gold/30 shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              12
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">12:00</span>
+              </div>
+              <p class="text-sm mb-0 text-gray-600">午餐，讓身體休息</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-white text-gold border-gold/30 shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              13
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">13:00</span>
+              </div>
+              <p class="text-sm mb-0 text-gray-600">下午繼續上課，或自由活動</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-white text-gold border-gold/30 shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              15
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">15:30</span>
+              </div>
+              <p class="text-sm mb-0 text-gray-600">課程結束，歸還裝備，搭車返回市區</p>
+            </div>
+          </div>
+
+          <!-- Timeline Item -->
+          <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#FAF9F6] bg-ink text-white shadow shrink-0 md:order-1 md:group-odd:-ml-5 md:group-even:-mr-5 z-10 font-bold text-sm">
+              18
+            </div>
+            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-100 bg-white shadow-sm">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-gold font-bold font-serif">18:00</span>
+              </div>
+              <p class="text-sm mb-0 text-gray-600">回到札幌，晚餐放鬆</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <p class="text-center mt-8 text-gray-500 text-sm">這個節奏對第一天的初學者來說不會太趕，也不會太鬆。</p>
+    </section>
+
+  
+    
+    <!-- Chapter 5 -->
+    <section class="bg-white rounded-3xl px-8 py-16 md:px-16 md:py-24 shadow-[0_10px_40px_rgba(47,79,79,0.03)] fade-up mb-8">
+      <div class="text-center mb-16">
+        <span class="text-gold font-bold tracking-[0.2em] text-sm mb-2 block">CHAPTER 05</span>
+        <h2 class="text-3xl md:text-4xl font-serif text-ink tracking-widest">第一堂課，從「停下來」開始</h2>
+        <div class="vertical-line mt-8"></div>
+      </div>
+
+      <p class="mb-12">上午穿上雪板、下午從山頂衝下來——這是很多人出發前的想像。現實的第一天，其實是在學一件更重要的事：怎麼讓自己停下來。</p>
+
+      <div class="space-y-12">
+        <div>
+          <h3 class="text-xl font-bold text-ink serif mb-6">能停，才能滑。</h3>
+          <p class="mb-4">前兩小時，你在學的是控制感</p>
+          <ul>
+            <li>課程從穿裝備開始——怎麼穿好那雙硬如盔甲的雪鞋，怎麼正確扣上雪板。接下來是真正的核心：先學停，再學走。</li>
+            <li>雙板初學者會先練「犁式（Pizza）」——兩片板的板頭靠近、板尾張開，像一片披薩。這個姿勢會產生阻力，讓速度慢下來直到停止。能停之後，才開始學透過重心移動來轉向。</li>
+            <li>單板（Snowboard）則是先學用腳跟或腳尖的邊刃壓雪，讓板子橫過坡面煞住。</li>
+            <li>跌倒也有方法： 順勢往後坐，用臀部和大腿吸收衝擊，不要用手去撐地——手腕手傷幾乎都是這個本能動作造成的。知道怎麼跌，身體反而會放鬆，跌倒的次數也會跟著減少。</li>
+          </ul>
+          <p class="font-bold text-ink bg-gray-50 py-4 px-6 rounded-lg inline-block">學會安全停止，這才算踏出了真正的第一步。</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-ink serif mb-4">身體會很誠實</h3>
+          <p>滑雪大量運用到大腿與核心肌群——平時很少被這樣使用的部位。第一天回到飯店，全身上下一定有感覺。</p>
+          <p class="mb-0">如果有餘裕，出發前幾週可以在家做做深蹲、弓箭步、棒式，不需要練得很強，只是讓身體提前熟悉那個發力的感覺，第一天會輕鬆一些。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion Box -->
+    <section class="bg-[#F8F6F0] px-8 py-16 md:px-16 md:py-20 rounded-3xl text-center border border-[#E8DBB9]/60 shadow-sm fade-up">
+      <h3 class="text-2xl md:text-3xl font-serif tracking-widest mb-8 text-ink">最後想說的</h3>
+      <p class="text-ink text-lg md:text-xl leading-[2.2] mb-8 max-w-xl mx-auto">
+        第一次滑雪，MOPO希望大家安全地認識雪、適應雪地<br><br>
+        ——然後在回程的飛機上，開始想著下一次。<br>
+        只要做到這一件事，這趟旅程就已經完整了。🏂❄️<br>
+        MOPO也期待能夠再陪伴大家的美好旅程<br>
+      </p>
+    </section>
+
+  </article>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <section class="sitemap">
+    <div class="container">
+      <div class="cols">
+        <div><h4>最新消息</h4><ul><li><a href="../news.html">News</a></li><li><a href="../mopo.html">關於 MOPO</a></li></ul></div>
+        <div><h4>滑雪課程</h4><ul><li><a href="../index.html#pricing">課程與價格</a></li><li><a href="../teine.html">札幌手稻</a></li><li><a href="../onze.html">小樽ONZE</a></li><li><a href="../kokusai.html">札幌國際</a></li></ul></div>
+        <div><h4>主題文章</h4><ul><li><a href="../safe.html">專欄文章 </a></li><li><a href="../trip.html">觀光主題 </a></li></ul></div>
+        <div><h4>資訊</h4><ul><li><a href="../legal_tokusho.html">公司資訊</a></li><li><a href="../faq.html">常見問題</a></li><li><a href="../index.html#contact">聯絡我們</a></li></ul></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px"><div>© <span id="year"></span> MOPO Ski School</div></div>
+    </div>
+  </section>
+</footer>
+
+<script src="../common.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
+  
+  // Minimalist Scroll Reveal Animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
