@@ -182,7 +182,7 @@
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Features <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="Features submenu">
-          <li role="none"><a role="menuitem" href="en_safe.html">Safety</a></li>
+          <li role="none"><a role="menuitem" href="en_safe.html">Columns</a></li>
           <li role="none"><a role="menuitem" href="en_trip.html">Travel topics</a></li>
         </ul>
       </li>
@@ -229,7 +229,7 @@
           <a href="en_kokusai.html" role="menuitem">Sapporo Kokusai</a>
 
           <div class="mob-subtitle">Features</div>
-          <a href="en_safe.html" role="menuitem">Safety</a>
+          <a href="en_safe.html" role="menuitem">Columns</a>
           <a href="en_trip.html" role="menuitem">Travel topics</a>
 
           <a href="en_faq.html" role="menuitem">FAQ</a>
@@ -425,7 +425,7 @@
   <div class="meta">September 15, 2025</div>
   <h3><a href="./news/en_openbooking.html">Early-Bird Reservations Now Open</a></h3>
   <p class="excerpt">
-    Book by <strong>October 31, 2025</strong> and save <strong>¥2,000 per lesson</strong>.  
+    Book by <strong>October 31, 2025</strong> and save <strong>¥2,000 per lesson</strong>.
     Limited availability — secure your spot today and get ready for an unforgettable season in Hokkaido!
   </p>
 </li>
@@ -442,6 +442,21 @@
   <h3><a href="./trip1/en_tripteine6days.html">An Introduction to Hokkaido</a></h3>
   <p class="excerpt">
     Imagine skiing with an ocean view and ending the day with fresh sushi. We’ve curated a <strong>gentle 6-day itinerary</strong> just for you. From Teine’s slopes to Otaru’s canals, your perfect winter story starts here!
+  </p>
+</li>
+
+
+<!-- 8. booking 2627 (auto-appears at 2026-07-10 12:00 JST) -->
+<li class="news-card" data-news data-publish="2026-07-10T12:00:00+09:00">
+  <div class="thumb">
+    <a href="./news/en_booking2627.html" aria-label="Booking Now Open">
+      <img src="./img/news/en_earlybird2627.jpg" alt="Booking Now Open" loading="lazy">
+    </a>
+  </div>
+  <div class="meta">July 10, 2026</div>
+  <h3><a href="./news/en_booking2627.html">Booking</a></h3>
+  <p class="excerpt">
+   MOPO Ski School's 2027-28 season is open for booking. Reserve by August 31, 2026 to save up to ¥9,000 per lesson through the Super Early Bird offer—secure your instructor and schedule early.
   </p>
 </li>
       </ul>
@@ -476,7 +491,7 @@
         <div>
           <h4>Features</h4>
           <ul>
-            <li><a href="en_safe.html">Safety</a></li>
+            <li><a href="en_safe.html">Columns</a></li>
             <li><a href="en_trip.html">Travel topics</a></li>
           </ul>
         </div>
@@ -514,7 +529,21 @@
   const pager  = document.getElementById('newsPager');
   if (!list) return;
 
-  const rawItems = Array.from(list.querySelectorAll('[data-news]'));
+  // Current absolute instant (timezone-independent). Any card with a
+  // data-publish time in the future is hidden until that moment passes.
+  const now = new Date();
+
+  const rawItems = Array.from(list.querySelectorAll('[data-news]')).filter(el => {
+    const pub = el.getAttribute('data-publish');
+    if (!pub) return true;                 // no schedule → always visible
+    const t = new Date(pub);               // e.g. "2026-07-10T12:00:00+09:00"
+    if (isNaN(t.getTime())) return true;   // bad value → fail open (visible)
+    if (t.getTime() > now.getTime()){      // not yet published → remove
+      el.remove();
+      return false;
+    }
+    return true;
+  });
 
   const MONTHS = {
     january:0,february:1,march:2,april:3,may:4,june:5,
