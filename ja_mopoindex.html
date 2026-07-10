@@ -6,19 +6,15 @@
   <title>MOPO Ski School｜MOPO スキースクール</title>
   <meta name="description" content="MOPO スキースクール｜札幌近郊のスキー＆スノーボードレッスン。多言語対応で、安全に楽しく学べます。">
 
-  <!-- Canonical -->
   <link rel="canonical" href="https://www.moposki.com/ja_mopoindex.html" />
 
-  <!-- Hreflang 語言標註 -->
   <link rel="alternate" href="https://www.moposki.com/" hreflang="zh-Hant" />
   <link rel="alternate" href="https://www.moposki.com/ja_mopoindex.html" hreflang="ja" />
   <link rel="alternate" href="https://www.moposki.com/en_mopoindex.html" hreflang="en" />
   <link rel="alternate" href="https://www.moposki.com/" hreflang="x-default" />
 
-  <!-- Robots -->
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
-  <!-- Open Graph -->
   <meta property="og:title" content="MOPO Ski School｜MOPO スキースクール">
   <meta property="og:description" content="北海道スキースクール｜多言語インストラクターと学ぶ、安全で楽しいカスタムレッスン。">
   <meta property="og:url" content="https://www.moposki.com/ja_mopoindex.html">
@@ -29,21 +25,17 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="MOPO Ski School｜MOPO スキースクール">
   <meta name="twitter:description" content="北海道スキースクール｜一人ひとりに合わせたレッスン、多言語対応で安心して学べます">
   <meta name="twitter:image" content="https://www.moposki.com/logo/statement.jpg">
 
-  <!-- 字型 -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 
-  <!-- 加入 Favicon 設定 -->
-<link rel="icon" href="/img/iconw.png" type="image/png">
+  <link rel="icon" href="/img/iconw.png" type="image/png">
 <link rel="shortcut icon" href="/img/iconw.png" type="image/png">
-    
-<!-- 針對行動裝置 (iPhone/iPad) 的圖示-->
+
 <link rel="apple-touch-icon" href="/img/iconw.png">
   <style>
 /* ===== 全域字體設定（與首頁一致） ===== */
@@ -152,9 +144,9 @@ html, body { overflow-x: hidden; }
 .hero__bg{position:absolute; inset:0; transition:filter .25s linear, opacity .25s linear}
 .hero__bg .slide{position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity .8s ease}
 .hero__bg .slide.active{opacity:1}
-.hero__bg .slide:nth-child(1){background-image:url('mopo.webp')}
-.hero__bg .slide:nth-child(2){background-image:url('panel1.jpg')}
-.hero__bg .slide:nth-child(3){background-image:url('panel2.jpg')}
+.hero__bg .slide:nth-child(1){background-image:url('panel1.jpg')}
+.hero__bg .slide:nth-child(2){background-image:url('panel2.jpg')}
+.hero__bg .slide:nth-child(3){background-image:url('panel3.jpg')}
 .hero .container{position:relative; z-index:2}
 .hero__wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center}
 .hero .content{padding-top:10vh; transform:translateX(calc(-60vw * var(--slide))); opacity:calc(1 - var(--fade)); transition:transform .05s linear, opacity .05s linear}
@@ -168,7 +160,7 @@ h1{margin:0 0 4px 0}
 .txt-hide-mob { display: inline; }
 @media (max-width: 760px) { .txt-hide-mob { display: none; } }
 
-.btn{position:relative; isolation:isolate; display:inline-block; padding:10px 14px; border-radius:999px; border:1px solid var(--gold); background:#fff; color:#midnight; font-weight:800; letter-spacing:.02em; overflow:hidden; transition:transform .18s ease, color .25s ease, border-color .25s ease}
+.btn{position:relative; isolation:isolate; display:inline-block; padding:10px 14px; border-radius:999px; border:1px solid var(--gold); background:#fff; color:var(--midnight); font-weight:800; letter-spacing:.02em; overflow:hidden; transition:transform .18s ease, color .25s ease, border-color .25s ease}
 .btn::before{content:""; position:absolute; inset:2px; border-radius:inherit; background:rgba(200,164,93,.0); transform:scale(.1); opacity:0; transition:transform .38s ease, opacity .38s ease, background .38s ease}
 .btn:hover::before{ transform:scale(1); opacity:1; background:rgba(200,164,93,.22) }
 .btn:active{transform:translateY(1px)}
@@ -180,24 +172,24 @@ h1{margin:0 0 4px 0}
 /* ===== 最新情報 (滑動卡片樣式 - 自動+拖曳) ===== */
 .news { --gap:12px; --size:140px; --visible:3; margin-top:16px; display:flex; justify-content:flex-start; }
 
-.news-viewport { 
+.news-viewport {
     /* 啟用原生橫向捲動 */
-    overflow-x: auto; 
+    overflow-x: auto;
     overflow-y: hidden;
     width: calc(var(--size) * var(--visible) + var(--gap) * (var(--visible) - 1));
     max-width: 100%;
-    
+
     /* 隱藏捲軸但保留功能 */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
-    
+
     /* 啟用 Scroll Snap (一格一格吸附) */
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    
+
     /* 滑鼠游標提示 */
     cursor: grab;
-    
+
     /* 防止選取文字，讓拖曳更順暢 */
     user-select: none;
     -webkit-user-select: none;
@@ -212,31 +204,31 @@ h1{margin:0 0 4px 0}
     scroll-behavior: auto; /* 拖曳時關閉平滑捲動 */
 }
 
-.news-row { 
-    display: flex; 
-    gap: var(--gap); 
+.news-row {
+    display: flex;
+    gap: var(--gap);
     padding-bottom: 4px;
     width: max-content;
 }
 
-.news-card { 
-    flex: 0 0 auto; 
-    width: var(--size); 
-    height: var(--size); 
-    border-radius: 16px; 
-    overflow: hidden; 
+.news-card {
+    flex: 0 0 auto;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 16px;
+    overflow: hidden;
     position: relative;
     scroll-snap-align: start; /* 設定吸附點 */
 }
 
-.news-card img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    display: block; 
-    transform: scale(1); 
-    transition: transform .35s ease, filter .15s linear; 
-    filter: grayscale(var(--gray)); 
+.news-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform .35s ease, filter .15s linear;
+    filter: grayscale(var(--gray));
     pointer-events: none;
 }
 
@@ -286,9 +278,9 @@ h1{margin:0 0 4px 0}
 
 /* summary スタイル */
 .pricecard summary{
-  list-style:none; cursor:pointer; 
-  display:flex; flex-direction: column; gap:12px; 
-  padding:24px; position:relative; 
+  list-style:none; cursor:pointer;
+  display:flex; flex-direction: column; gap:12px;
+  padding:24px; position:relative;
 }
 .pricecard summary::-webkit-details-marker{display:none}
 
@@ -298,21 +290,21 @@ h1{margin:0 0 4px 0}
 
 /* モバイル用サムネイル・説明ロジック */
 .mobile-desc { display: none; }
-.mobile-thumb { 
+.mobile-thumb {
     display: none; /* デスクトップでは非表示 */
-    width: 100%; 
-    height: 160px; 
-    object-fit: cover; 
-    border-radius: 12px; 
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
     margin-bottom: 16px;
     order: -1;
 }
 
 /* 料金表示エリア Grid */
-.fromrow { 
-    display:grid; 
+.fromrow {
+    display:grid;
     grid-template-columns: 1fr auto 1fr; /* 左-中-右 */
-    align-items: center; 
+    align-items: center;
     gap: 16px;
     margin-top: 12px;
     padding-top: 12px;
@@ -344,10 +336,10 @@ h1{margin:0 0 4px 0}
     color: #8B6B2E;
     letter-spacing: -0.02em;
 }
-.pt-price small { 
-    font-size: 11px; 
-    font-weight: 700; 
-    margin-left: 3px; 
+.pt-price small {
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 3px;
     color: #b09560;
     text-transform: uppercase;
 }
@@ -363,7 +355,7 @@ h1{margin:0 0 4px 0}
     width: 100%;
     text-align: center;
     background-color: transparent;
-    color: #bfa15f; 
+    color: #bfa15f;
     padding: 8px 0 0 0;
     font-weight: 600;
     font-size: 13px;
@@ -382,14 +374,14 @@ h1{margin:0 0 4px 0}
     display:flex; gap:10px; margin-top: 8px; z-index: 5; position: relative; width: 100%;
 }
 .summary-btns .btn-sm {
-    padding: 12px 20px; 
-    font-size: 15px;     
+    padding: 12px 20px;
+    font-size: 15px;
     border-radius: 99px;
     background: #fff;
-    border: 1px solid var(--gold); 
+    border: 1px solid var(--gold);
     color: var(--midnight);
     font-weight: 700;
-    flex: 1; 
+    flex: 1;
     text-align: center;
     transition: all 0.2s;
 }
@@ -402,9 +394,9 @@ h1{margin:0 0 4px 0}
 .pricecard[open] .desc { display: block; }
 
 /* 料金テーブルエリア */
-.pricetable { 
-  padding: 0 14px 14px 14px; 
-  border-top: 1px dashed #eee; 
+.pricetable {
+  padding: 0 14px 14px 14px;
+  border-top: 1px dashed #eee;
   display: grid;
   gap: 16px;
 }
@@ -457,11 +449,11 @@ h1{margin:0 0 4px 0}
 }
 
 /* シーズン表示ロジック (Improved Animation) */
-.season { 
-  display: none; 
-  border:1px dashed #e5e1da; border-radius:10px; padding:10px; 
+.season {
+  display: none;
+  border:1px dashed #e5e1da; border-radius:10px; padding:10px;
 }
-.season.active { 
+.season.active {
   display: block;
   animation: quickFade 0.15s ease-out;
 }
@@ -523,13 +515,13 @@ h1{margin:0 0 4px 0}
 /* SNS アイコン（デザイナー級） */
 .sns{display:flex; gap:16px; align-content:start; margin-top:8px; flex-wrap:wrap;}
 .sns a{
-    display:inline-flex; 
-    align-items:center; 
-    justify-content:center; 
-    width: 64px; 
-    height: 64px; 
-    background:#fff; 
-    border:1px solid #e0e0e0; 
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 64px;
+    height: 64px;
+    background:#fff;
+    border:1px solid #e0e0e0;
     border-radius:50%; /* 完全な円形 */
     transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -550,7 +542,7 @@ h1{margin:0 0 4px 0}
 
 
 /* ===== フッター ===== */
-.footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
 .sitemap{padding:34px 0}
 .sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
 .sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
@@ -705,7 +697,7 @@ h1{margin:0 0 4px 0}
   width: 32px; /* 稍微放大一點點 */
   height: 32px;
   color: var(--gold);
-  display: block; 
+  display: block;
   margin: 0 auto 12px auto; /* 確保置中 */
 }
 
@@ -734,19 +726,19 @@ h1{margin:0 0 4px 0}
   z-index: 2;
 }
 
-.why-item h3 { 
-  font-size:18px; 
-  font-weight:700; 
-  color:var(--green-dark); 
-  margin:0 0 12px 0; 
+.why-item h3 {
+  font-size:18px;
+  font-weight:700;
+  color:var(--green-dark);
+  margin:0 0 12px 0;
   line-height: 1.4;
 }
-.why-item p { 
-  font-size:15px; 
-  color:#555; 
-  margin:0; 
+.why-item p {
+  font-size:15px;
+  color:#555;
+  margin:0;
   text-align: left; /* 內文保持靠左閱讀較舒適 */
-  line-height: 1.7; 
+  line-height: 1.7;
 }
 
 /* 手機版樣式 */
@@ -766,19 +758,19 @@ h1{margin:0 0 4px 0}
 }
 .why-mob-card:active { transform: scale(0.98); }
 
-.why-mob-card h4 { 
-  font-size:16px; 
-  font-weight:700; 
-  color:var(--green-dark); 
-  margin:0 0 8px 0; 
+.why-mob-card h4 {
+  font-size:16px;
+  font-weight:700;
+  color:var(--green-dark);
+  margin:0 0 8px 0;
   line-height: 1.4;
 }
-.why-mob-card p { 
-  font-size:14px; 
-  color:#555; 
-  margin:0; 
+.why-mob-card p {
+  font-size:14px;
+  color:#555;
+  margin:0;
   text-align: left;
-  line-height: 1.6; 
+  line-height: 1.6;
 }
 
 @media (max-width: 760px) {
@@ -802,14 +794,13 @@ h1{margin:0 0 4px 0}
   <div class="container nav">
     <div class="brand">
       <a href="#home" class="logo" aria-label="トップへ戻る">MOPO Ski School</a>
-      
+
     </div>
 
     <ul class="menu" role="menubar" aria-label="サイトナビゲーション">
       <li role="none"><a role="menuitem" href="ja_news.html">最新情報</a></li>
       <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
 
-      <!-- レッスン：下拉 -->
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="レッスンのサブメニュー">
@@ -821,7 +812,6 @@ h1{margin:0 0 4px 0}
       </ul>
       </li>
 
-      <!-- 特集記事：下拉 -->
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="特集記事">
@@ -879,11 +869,9 @@ h1{margin:0 0 4px 0}
   </div>
 </header>
 
-<!-- モバイル用オーバーレイ -->
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
 <main>
-  <!-- Hero -->
   <section class="hero" id="home" aria-label="ヒーローセクション">
     <div class="hero__bg" id="heroBg" aria-hidden="true">
       <div class="slide active"></div>
@@ -913,14 +901,14 @@ h1{margin:0 0 4px 0}
     <img src="news/news-1.png" alt="最新情報" loading="lazy" decoding="async">
   </a>
       <a class="news-card" href="ja_teine.html" aria-label="手稲" title="手稲">
-        <img src="news/ja_news-2.png" alt="手稲" loading="lazy" decoding="async">
+        <img src="news/ja_news-4.jpg" alt="手稲" loading="lazy" decoding="async">
       </a>
       <a class="news-card" href="ja_kokusai.html" aria-label="札幌国際" title="札幌国際">
-        <img src="news/ja_news-3.png" alt="札幌国際" loading="lazy" decoding="async">
+        <img src="news/ja_news-5.jpg" alt="札幌国際" loading="lazy" decoding="async">
       </a>
-      <a class="news-card" href="ja_onze.html#info"aria-label="小樽オーンズの詳細"title="小樽オーンズの詳細">
-  <img src="news/ja_news-4.png"alt="小樽オーンズの詳細"loading="lazy" decoding="async">
-</a>
+      <a class="news-card" href="ja_onze.html#info" aria-label="小樽オーンズの詳細" title="小樽オーンズの詳細">
+        <img src="news/ja_news-6.jpg" alt="小樽オーンズの詳細" loading="lazy" decoding="async">
+      </a>
     </div>
   </div>
 </section>
@@ -935,7 +923,6 @@ h1{margin:0 0 4px 0}
     </div>
   </section>
 
-  <!-- について（背景圖＋逐行出現＋縮高度＋按鈕） -->
   <section id="about-mopo" class="section about-hero" aria-label="MOPOについて">
     <div class="about-hero__bg" aria-hidden="true">
       <picture>
@@ -964,14 +951,12 @@ h1{margin:0 0 4px 0}
 </div>
   </section>
 
-  <!-- 新增：MOPO スキースクールが選ばれる理由 (Why Choose MOPO) -->
   <section id="why-mopo" class="section reveal" aria-label="MOPO スキースクールが選ばれる理由">
     <div class="container">
       <div class="section__head">
         <h2>MOPO スキースクールが選ばれる理由</h2>
       </div>
-      
-      <!-- デスクトップ版 -->
+
       <div class="why-desk">
         <div class="why-grid">
           <div class="why-item">
@@ -996,7 +981,7 @@ h1{margin:0 0 4px 0}
               <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
             </svg>
             <h3>3. 英語でのレッスンも可能（ご希望の方）</h3>
-            <p>国際色豊かなスクールならではの強みとして、ご希望の方には英語でのレッスンも提供可能です。 スキー・スノーボードの上達だけでなく、生きた英語に触れられるため、お子様の語学教育や、留学気分の体験としても好評です。。</p>
+            <p>国際色豊かなスクールならではの強みとして、ご希望の方には英語でのレッスンも提供可能です。 スキー・スノーボードの上達だけでなく、生きた英語に触れられるため、お子様の語学教育や、留学気分の体験としても好評です。</p>
           </div>
           <div class="why-item">
             <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1009,7 +994,6 @@ h1{margin:0 0 4px 0}
         </div>
       </div>
 
-      <!-- モバイル版 -->
       <div class="why-mob">
         <div class="why-mob-list">
           <div class="why-mob-card">
@@ -1049,7 +1033,6 @@ h1{margin:0 0 4px 0}
     </div>
   </section>
 
-  <!-- 料金（単一展開） -->
   <section id="pricing" class="section reveal" aria-label="料金とプラン">
     <div class="container">
       <div class="section__head">
@@ -1057,10 +1040,8 @@ h1{margin:0 0 4px 0}
       </div>
 
       <div class="pricelist" id="courseList">
-        <!-- 手稲 -->
         <details class="pricecard" id="teine">
           <summary>
-            <!-- Mobile Only Thumbnail -->
             <img class="mobile-thumb" src="img/news/teine.jpg" alt="手稻滑雪場" loading="lazy">
             <div class="head">
               <div class="title">札幌手稲｜プライベート（終日/半日）</div>
@@ -1069,25 +1050,23 @@ h1{margin:0 0 4px 0}
                 <span class="mobile-desc">安定した雪質・アクセス良好。</span>
               </div>
             </div>
-            
+
             <div class="fromrow">
                <div class="price-tag-group left">
                   <span class="pt-label">Half Day</span>
-                  <span class="pt-price">37,500<small>JPY 〜</small></span>
+                  <span class="pt-price">38,500<small>JPY 〜</small></span>
                </div>
                <div class="price-divider"></div>
                <div class="price-tag-group right">
                   <span class="pt-label">Full Day</span>
-                  <span class="pt-price">60,000<small>JPY 〜</small></span>
+                  <span class="pt-price">64,000<small>JPY 〜</small></span>
                </div>
             </div>
-            
-            <!-- New: Explicit Expand Button/Hint -->
+
             <div class="expand-hint">
                ▼ クリックして料金と詳細を見る
             </div>
 
-            <!-- Summary Buttons (Hidden when open) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_teine.html'">ゲレンデ紹介</button>
                 <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
@@ -1097,91 +1076,77 @@ h1{margin:0 0 4px 0}
             <div class="busy-dates">
               繁忙期：2025/12/20～01/05・2026/02/12～02/22
             </div>
-            <!-- Tab Switch -->
             <div class="local-tabs">
               <button class="tab-btn active" data-tab="standard">通常期</button>
               <button class="tab-btn" data-tab="busy">繁忙期</button>
               <button class="tab-btn" data-tab="spring">春スキー (3/2~5/6)</button>
             </div>
-            
-            <!-- Full Day -->
+
             <div class="course-type-block">
               <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
               <div>
-                <!-- Standard -->
                 <div class="season standard active">
                   <table class="table" aria-label="手稲・通常期料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 72,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 77,000</td><td class="pp">（1名あたり ¥ 38,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 82,000</td><td class="pp">（1名あたり ¥ 27,333）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 87,000</td><td class="pp">（1名あたり ¥ 21,750）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 92,000</td><td class="pp">（1名あたり ¥ 18,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 68,000</td><td class="pp">（2名参加時 1名あたり ¥ 34,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 76,000</td><td class="pp">（1名あたり ¥ 19,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 80,000</td><td class="pp">（1名あたり ¥ 16,000）</td></tr>
                     </tbody>
                   </table>
                 </div>
-                <!-- Busy -->
                 <div class="season busy">
                   <table class="table" aria-label="手稲・繁忙期料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 82,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 87,000</td><td class="pp">（1名あたり ¥ 43,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 92,000</td><td class="pp">（1名あたり ¥ 30,666）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 97,000</td><td class="pp">（1名あたり ¥ 24,250）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 102,000</td><td class="pp">（1名あたり ¥ 20,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 79,000</td><td class="pp">（2名参加時 1名あたり ¥ 39,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 84,000</td><td class="pp">（1名あたり ¥ 28,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 89,000</td><td class="pp">（1名あたり ¥ 22,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 94,000</td><td class="pp">（1名あたり ¥ 18,800）</td></tr>
                     </tbody>
                   </table>
                 </div>
-                <!-- Spring -->
                 <div class="season spring">
                   <table class="table" aria-label="手稲・春スキー料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 60,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 63,000</td><td class="pp">（1名あたり ¥ 31,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 66,000</td><td class="pp">（1名あたり ¥ 22,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 68,000</td><td class="pp">（1名あたり ¥ 17,000）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 14,000）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 64,000</td><td class="pp">（2名参加時 1名あたり ¥ 32,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 67,000</td><td class="pp">（1名あたり ¥ 22,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 17,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 73,000</td><td class="pp">（1名あたり ¥ 14,600）</td></tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-            <!-- Half Day -->
             <div class="course-type-block">
               <span class="course-type-title">半日レッスン (3時間) 9:30-12:30 または 13:30-16:30</span>
               <div>
-                <!-- Standard Half -->
                 <div class="season standard active">
                   <table class="table" aria-label="手稲・通常期半日料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 44,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 48,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 51,000</td><td class="pp">（1名あたり ¥ 17,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 54,000</td><td class="pp">（1名あたり ¥ 13,500）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 57,000</td><td class="pp">（1名あたり ¥ 11,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 43,000</td><td class="pp">（2名参加時 1名あたり ¥ 21,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 15,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 49,000</td><td class="pp">（1名あたり ¥ 12,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 51,000</td><td class="pp">（1名あたり ¥ 10,200）</td></tr>
                     </tbody>
                   </table>
                 </div>
-                <!-- Busy Half (Not available) -->
                 <div class="season busy" style="background:#f9f9f9; border-color:#e0e0e0;">
                   <div style="padding: 24px 10px; text-align:center; color:#666;">
                     <p style="font-size:15px; margin:0; font-weight:700; color:#444;">品質維持のため、繁忙期は終日レッスンのみ承っております。</p>
                   </div>
                 </div>
-                <!-- Spring Half -->
                 <div class="season spring">
                   <table class="table" aria-label="手稲・春スキー半日料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 37,500</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 20,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 42,000</td><td class="pp">（1名あたり ¥ 14,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 44,000</td><td class="pp">（1名あたり ¥ 11,000）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 38,500</td><td class="pp">（2名参加時 1名あたり ¥ 19,250）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 13,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 42,500</td><td class="pp">（1名あたり ¥ 10,625）</td></tr>
                       <tr><td class="people">5 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 9,200）</td></tr>
                     </tbody>
                   </table>
@@ -1209,10 +1174,8 @@ h1{margin:0 0 4px 0}
         </details>
 
 
-        <!-- 小樽オーンズ -->
         <details class="pricecard" id="onze">
           <summary>
-            <!-- Mobile Only Thumbnail -->
             <img class="mobile-thumb" src="img/news/onze.png" alt="小樽ONZE滑雪場" loading="lazy">
             <div class="head">
               <div class="title">オーンズ｜プライベート（終日/半日/ナイター）</div>
@@ -1221,25 +1184,23 @@ h1{margin:0 0 4px 0}
                 <span class="mobile-desc">海を望む絶景・アクセス抜群。</span>
               </div>
             </div>
-            
+
             <div class="fromrow">
                <div class="price-tag-group left">
                   <span class="pt-label">Half Day</span>
-                  <span class="pt-price">26,000<small>JPY 〜</small></span>
+                  <span class="pt-price">30,000<small>JPY 〜</small></span>
                </div>
                <div class="price-divider"></div>
                <div class="price-tag-group right">
                   <span class="pt-label">Full Day</span>
-                  <span class="pt-price">60,000<small>JPY 〜</small></span>
+                  <span class="pt-price">64,000<small>JPY 〜</small></span>
                </div>
             </div>
-            
-            <!-- New: Explicit Expand Button/Hint -->
+
             <div class="expand-hint">
                ▼ クリックして料金と詳細を見る
             </div>
 
-            <!-- Summary Buttons (Always Visible) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_onze.html'">ゲレンデ紹介</button>
                 <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
@@ -1249,14 +1210,12 @@ h1{margin:0 0 4px 0}
             <div class="busy-dates">
               繁忙期：2025/12/20～01/05・2026/02/12～02/22
             </div>
-            <!-- Tab Switch -->
             <div class="local-tabs">
               <button class="tab-btn active" data-tab="standard">通常期</button>
               <button class="tab-btn" data-tab="busy">繁忙期</button>
               <button class="tab-btn" data-tab="spring">春スキー (3/2~3/28)</button>
             </div>
 
-            <!-- Full Day -->
             <div class="course-type-block">
               <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
               <div>
@@ -1264,11 +1223,10 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 72,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 77,000</td><td class="pp">（1名あたり ¥ 38,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 82,000</td><td class="pp">（1名あたり ¥ 27,333）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 87,000</td><td class="pp">（1名あたり ¥ 21,750）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 92,000</td><td class="pp">（1名あたり ¥ 18,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 68,000</td><td class="pp">（2名参加時 1名あたり ¥ 34,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 76,000</td><td class="pp">（1名あたり ¥ 19,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 80,000</td><td class="pp">（1名あたり ¥ 16,000）</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1276,11 +1234,10 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 82,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 87,000</td><td class="pp">（1名あたり ¥ 43,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 92,000</td><td class="pp">（1名あたり ¥ 30,666）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 97,000</td><td class="pp">（1名あたり ¥ 24,250）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 102,000</td><td class="pp">（1名あたり ¥ 20,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 79,000</td><td class="pp">（2名参加時 1名あたり ¥ 39,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 84,000</td><td class="pp">（1名あたり ¥ 28,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 89,000</td><td class="pp">（1名あたり ¥ 22,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 94,000</td><td class="pp">（1名あたり ¥ 18,800）</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1288,18 +1245,16 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 60,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 63,000</td><td class="pp">（1名あたり ¥ 31,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 66,000</td><td class="pp">（1名あたり ¥ 22,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 68,000</td><td class="pp">（1名あたり ¥ 17,000）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 14,000）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 64,000</td><td class="pp">（2名参加時 1名あたり ¥ 32,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 67,000</td><td class="pp">（1名あたり ¥ 22,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 17,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 73,000</td><td class="pp">（1名あたり ¥ 14,600）</td></tr>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
 
-            <!-- Half Day -->
             <div class="course-type-block">
               <span class="course-type-title">半日レッスン (3時間) 9:30-12:30 または 13:30-16:30</span>
               <div>
@@ -1307,11 +1262,10 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 44,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 48,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 51,000</td><td class="pp">（1名あたり ¥ 17,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 54,000</td><td class="pp">（1名あたり ¥ 13,500）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 57,000</td><td class="pp">（1名あたり ¥ 11,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 43,000</td><td class="pp">（2名参加時 1名あたり ¥ 21,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 15,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 49,000</td><td class="pp">（1名あたり ¥ 12,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 51,000</td><td class="pp">（1名あたり ¥ 10,200）</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1324,10 +1278,9 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 37,500</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 20,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 42,000</td><td class="pp">（1名あたり ¥ 14,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 44,000</td><td class="pp">（1名あたり ¥ 11,000）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 38,500</td><td class="pp">（2名参加時 1名あたり ¥ 19,250）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 13,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 42,500</td><td class="pp">（1名あたり ¥ 10,625）</td></tr>
                       <tr><td class="people">5 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 9,200）</td></tr>
                     </tbody>
                   </table>
@@ -1335,7 +1288,6 @@ h1{margin:0 0 4px 0}
               </div>
             </div>
 
-            <!-- Night -->
             <div class="course-type-block">
               <span class="course-type-title">ナイターレッスン (2時間) 17:00-19:00</span>
               <div>
@@ -1343,11 +1295,10 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 32,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 18,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 13,333）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 44,000</td><td class="pp">（1名あたり ¥ 11,000）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 48,000</td><td class="pp">（1名あたり ¥ 9,600）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 32,000</td><td class="pp">（2名参加時 1名あたり ¥ 16,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 34,000</td><td class="pp">（1名あたり ¥ 11,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 9,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 38,000</td><td class="pp">（1名あたり ¥ 7,600）</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1355,11 +1306,10 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 38,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 42,000</td><td class="pp">（1名あたり ¥ 21,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 15,333）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 50,000</td><td class="pp">（1名あたり ¥ 12,500）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 54,000</td><td class="pp">（1名あたり ¥ 10,800）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 33,000</td><td class="pp">（2名参加時 1名あたり ¥ 16,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 12,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 39,000</td><td class="pp">（1名あたり ¥ 9,750）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 42,000</td><td class="pp">（1名あたり ¥ 8,400）</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1367,8 +1317,7 @@ h1{margin:0 0 4px 0}
                   <table class="table">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 26,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 29,000</td><td class="pp">（1名あたり ¥ 14,500）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 30,000</td><td class="pp">（2名参加時 1名あたり ¥ 15,000）</td></tr>
                       <tr><td class="people">3 名</td><td class="price">¥ 32,000</td><td class="pp">（1名あたり ¥ 10,666）</td></tr>
                       <tr><td class="people">4 名</td><td class="price">¥ 34,000</td><td class="pp">（1名あたり ¥ 8,500）</td></tr>
                       <tr><td class="people">5 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 7,200）</td></tr>
@@ -1397,10 +1346,8 @@ h1{margin:0 0 4px 0}
           </div>
         </details>
 
-        <!-- 札幌国際 -->
         <details class="pricecard" id="international">
           <summary>
-            <!-- Mobile Only Thumbnail -->
             <img class="mobile-thumb" src="img/news/kokusai.jpg" alt="札幌国際滑雪場" loading="lazy">
             <div class="head">
               <div class="title">札幌国際｜プライベート（終日）</div>
@@ -1412,16 +1359,14 @@ h1{margin:0 0 4px 0}
             <div class="fromrow">
                <div class="price-tag-group left">
                   <span class="pt-label">Full Day</span>
-                  <span class="pt-price">62,000<small>JPY 〜</small></span>
+                  <span class="pt-price">66,000<small>JPY 〜</small></span>
                </div>
             </div>
-            
-            <!-- New: Explicit Expand Button/Hint -->
+
             <div class="expand-hint">
                ▼ クリックして料金と詳細を見る
             </div>
 
-            <!-- Summary Buttons (Always Visible) -->
             <div class="summary-btns">
                 <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_kokusai.html'">ゲレンデ紹介</button>
                 <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
@@ -1431,54 +1376,47 @@ h1{margin:0 0 4px 0}
             <div class="busy-dates">
               繁忙期：2025/12/20～01/05・2026/02/12～02/22
             </div>
-            <!-- Tab Switch -->
             <div class="local-tabs">
               <button class="tab-btn active" data-tab="standard">通常期</button>
               <button class="tab-btn" data-tab="busy">繁忙期</button>
               <button class="tab-btn" data-tab="spring">春スキー (3/2~5/6)</button>
             </div>
-            
+
             <div class="course-type-block">
               <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
               <div>
-                <!-- Standard -->
                 <div class="season standard active">
                   <table class="table" aria-label="札幌国際・通常期料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 84,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 90,000</td><td class="pp">（1名あたり ¥ 45,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 96,000</td><td class="pp">（1名あたり ¥ 32,000）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 102,000</td><td class="pp">（1名あたり ¥ 25,500）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 108,000</td><td class="pp">（1名あたり ¥ 21,600）</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-                
-                <!-- Busy -->
-                <div class="season busy">
-                  <table class="table" aria-label="札幌国際・繁忙期料金表">
-                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
-                    <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 94,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 100,000</td><td class="pp">（1名あたり ¥ 50,000）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 106,000</td><td class="pp">（1名あたり ¥ 35,333）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 112,000</td><td class="pp">（1名あたり ¥ 28,000）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 118,000</td><td class="pp">（1名あたり ¥ 23,600）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 70,000</td><td class="pp">（2名参加時 1名あたり ¥ 35,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 74,000</td><td class="pp">（1名あたり ¥ 24,666）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 78,000</td><td class="pp">（1名あたり ¥ 19,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 82,000</td><td class="pp">（1名あたり ¥ 16,400）</td></tr>
                     </tbody>
                   </table>
                 </div>
 
-                <!-- Spring -->
+                <div class="season busy">
+                  <table class="table" aria-label="札幌国際・繁忙期料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 81,000</td><td class="pp">（2名参加時 1名あたり ¥ 40,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 86,000</td><td class="pp">（1名あたり ¥ 28,666）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 91,000</td><td class="pp">（1名あたり ¥ 22,750）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 96,000</td><td class="pp">（1名あたり ¥ 19,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
                 <div class="season spring">
                   <table class="table" aria-label="札幌国際・春スキー料金表">
                     <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
                     <tbody>
-                      <tr><td class="people">1 名</td><td class="price">¥ 62,000</td><td></td></tr>
-                      <tr><td class="people">2 名</td><td class="price">¥ 65,000</td><td class="pp">（1名あたり ¥ 32,500）</td></tr>
-                      <tr><td class="people">3 名</td><td class="price">¥ 68,000</td><td class="pp">（1名あたり ¥ 22,666）</td></tr>
-                      <tr><td class="people">4 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 17,500）</td></tr>
-                      <tr><td class="people">5 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 14,400）</td></tr>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 66,000</td><td class="pp">（2名参加時 1名あたり ¥ 33,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 69,000</td><td class="pp">（1名あたり ¥ 23,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 18,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 75,000</td><td class="pp">（1名あたり ¥ 15,000）</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1522,7 +1460,7 @@ h1{margin:0 0 4px 0}
         <aside aria-label="SNSと連絡先" class="reveal" style="align-self:start">
           <h3 style="margin:0 0 8px 0;font-size:18px;color:#111">フォローする</h3>
           <div class="sns" style="display:flex; gap:16px; flex-wrap:wrap;">
-            
+
             <a href="https://www.threads.com/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads">
               <img src="logo/threads.png" alt="Threads" width="28" height="28" loading="lazy" decoding="async">
             </a>
@@ -1560,7 +1498,7 @@ h1{margin:0 0 4px 0}
             <li><a href="ja_teine.html">札幌手稲</a></li>
           <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="ja_kokusai.html">札幌国際</a></li>
- 
+
           </ul>
         </div>
         <div>
@@ -1614,13 +1552,12 @@ document.getElementById('year').textContent = new Date().getFullYear();
 })();
 
 // 2. Topbar Scrolled / Hide on scroll
-const topbar = document.getElementById('topbar');
-function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-setTopbar(); 
-window.addEventListener('scroll', setTopbar, {passive:true});
-
 (function(){
   const topbar = document.getElementById('topbar');
+  function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
+  setTopbar();
+  window.addEventListener('scroll', setTopbar, {passive:true});
+
   let lastScrollY = window.scrollY, ticking = false;
   function update() {
     const currentY = window.scrollY;
@@ -1629,11 +1566,18 @@ window.addEventListener('scroll', setTopbar, {passive:true});
     lastScrollY = currentY; ticking = false;
   }
   window.addEventListener('scroll', () => {
-    if (!ticking) { 
-      window.requestAnimationFrame(update); 
-      ticking = true; 
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
     }
   }, { passive: true });
+})();
+
+// 2b. Desktop dropdown parent links: prevent jumping to top on click
+(function(){
+  document.querySelectorAll('.has-dropdown > a[href="#"]').forEach(a => {
+    a.addEventListener('click', (e) => e.preventDefault());
+  });
 })();
 
 // 3. Language Switch
@@ -1643,7 +1587,7 @@ window.addEventListener('scroll', setTopbar, {passive:true});
     'ja': 'ja_mopoindex.html',
     'en': 'en_mopoindex.html'
   };
-  
+
   const sel = document.getElementById('langSelect');
   if (sel){
     sel.addEventListener('change', ()=>{
@@ -1733,7 +1677,7 @@ window.addEventListener('scroll', setTopbar, {passive:true});
 })();
 
 // 5. Back to Top
-document.getElementById('backTop')?.addEventListener('click', ()=> 
+document.getElementById('backTop')?.addEventListener('click', ()=>
   window.scrollTo({top:0, behavior:'smooth'}));
 
 // 6. Favicon
@@ -1742,7 +1686,7 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
       return;
   }
   var link = document.createElement('link');
-  link.rel = 'icon shortcut icon';
+  link.rel = 'icon';
   link.href = '/logom.png';
   link.type = 'image/png';
   document.head.appendChild(link);
@@ -1831,10 +1775,10 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
 
   viewport.addEventListener('mouseenter', () => { isHovered = true; stopAutoPlay(); });
   viewport.addEventListener('mouseleave', () => { isHovered = false; isDragging = false; viewport.classList.remove('active'); startAutoPlay(); });
-  
+
   viewport.addEventListener('touchstart', () => { isHovered = true; stopAutoPlay(); }, {passive: true});
-  viewport.addEventListener('touchend', () => { 
-      setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000); 
+  viewport.addEventListener('touchend', () => {
+      setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000);
   });
 
   viewport.addEventListener('mousedown', (e) => {
@@ -1870,7 +1814,7 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
       if(e.isIntersecting){
         e.target.classList.add('in');
         // Stop observing once revealed so it doesn't fade out again
-        io.unobserve(e.target); 
+        io.unobserve(e.target);
       }
     });
   }, { threshold: 0.15 });
@@ -1898,21 +1842,21 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
 // Pricing Tabs (Local Logic)
 (function(){
   const tabButtons = document.querySelectorAll('.tab-btn');
-  
+
   if(!tabButtons.length) return;
 
   tabButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); 
-      
+      e.stopPropagation();
+
       const container = btn.closest('.pricetable');
       if(!container) return;
 
       container.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
-      
+
       const target = btn.dataset.tab;
-      
+
       const seasons = container.querySelectorAll('.season');
       seasons.forEach(s => {
         if(s.classList.contains(target)) {
@@ -1983,7 +1927,7 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
     const scrollY = window.scrollY || window.pageYOffset;
     const vh = window.innerHeight || 1;
     const aboutTop = scrollY + rect.top;
-    enterY = aboutTop - vh * 0.85; 
+    enterY = aboutTop - vh * 0.85;
   }
   function apply() {
     const scrollY = window.scrollY || window.pageYOffset;
