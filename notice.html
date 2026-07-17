@@ -1,100 +1,57 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17610938726');
+  </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>報名須知｜MOPO Ski School</title>
 <meta name="description" content="MOPO 報名須知與條款細則。安全提醒、預訂、取消政策等完整資訊。">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css?v=20260713">
 <style>
-:root{
-  --bg-top:#E7E9EA;
-  --bg-mid:#FFFFFF;
-  --bg-bottom:#9B9793;
-  --midnight:#0D1B2A;
-  --gold:#C8A45D; --gold-2:#E4CFA3;
-  --ink:#0E1A24; --ink-soft:#3E4A57;
-  --shadow:0 18px 50px rgba(13,27,42,.10);
-  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
-  --faq-bg:#F7F6F3;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-mid)}
-a{color:inherit; text-decoration:none}
-.container{max-width:1200px; margin:0 auto; padding:0 22px}
-.topbar{position:sticky; top:0; z-index:300; background:rgba(255,255,255,.24); backdrop-filter:saturate(1.28) blur(18px); border-bottom:1px solid rgba(200,164,93,.24); transition:all .25s ease}
-.topbar.scrolled{ background:rgba(255,255,255,.45) }
-.topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
-.nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
-.brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
-.brand .logo{font-weight:800; font-size:18px}
-.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
-.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
-.menu>li{list-style:none; position:relative}
-.menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
-.menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
-.menu>li:hover>a::after{transform:scaleX(1)}
-.topbar.scrolled .menu>li>a{color:#8C723E}
-.has-dropdown{ position:relative; }
-.has-dropdown > a{ cursor: default; }
-.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
-.submenu{display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px; background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;}
-.has-dropdown:hover .submenu,.has-dropdown:focus-within .submenu{ display:block; }
-.submenu li{ list-style:none; }
-.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
-.submenu a:hover{ background:rgba(200,164,93,.1); }
-.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
-.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
-.mobtools{display:none; align-items:center; gap:10px}
-.iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
-.mobdrop{position:relative}
-.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:400}
-.mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
-.mobpanel a,.mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
-.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
-.section{padding:84px 0}
-.section__head h1{margin:0 0 8px 0; font-size:28px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif}
-.muted{color:var(--ink-soft); font-size:14px}
-.lead-title{max-width:1000px; margin:0 auto 18px auto; text-align:center; font-family:"Noto Serif TC","PMingLiU","MingLiU",serif; font-weight:900; font-size:20px; letter-spacing:.02em; color:#111;}
-.faqwrap{background:var(--faq-bg)}
-.faqgrid{max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:14px}
-details.faqcard{background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
-summary{list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px}
-summary::-webkit-details-marker{display:none}
-.faq-title{margin:0; font-size:18px; font-weight:800}
-.faq-body{padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee}
-.faq-body p{margin:10px 0 0 0}
-.chev{flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px}
-details[open] .chev{ transform:rotate(225deg) }
-.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
-.sitemap{padding:34px 0}
-.sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
-.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
-.sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
-.sitemap a{color:#ebebeb; font-size:13px}
-.sitemap a:hover{color:#fff}
-.fab{position:fixed; right:16px; bottom:16px; z-index:320}
-.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
-@media (max-width:760px){
-  .menu{display:none}
-  .mobtools{display:flex}
-  .lang{display:none}
-  .section{padding:64px 0}
-  .section__head h1{font-size:24px}
-  .mobdrop{ position: relative; }
-  .mobpanel{left:auto; right:0; width:min(92vw,320px); max-width:92vw; transform-origin:top right;}
-  .mobpanel a,.mobpanel button{ white-space: nowrap; }
-}
-.mob-subtitle{padding:6px 14px 2px; font-size:12px; font-weight:bold; color:#999; cursor:default;}
-</style>
+    :root { --bg-top:#E7E9EA; --bg-mid:#FFFFFF; --bg-bottom:#9B9793; --midnight:#0D1B2A; --gold:#C8A45D; --gold-2:#E4CFA3; --ink:#0E1A24; --ink-soft:#3E4A57; --shadow:0 18px 50px rgba(13,27,42,.10); --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22); --faq-bg:#F7F6F3 }
+    * { box-sizing:border-box }
+    html { scroll-behavior:smooth }
+    body { margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","PingFang TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-mid) }
+    a { color:inherit; text-decoration:none }
+    .container { max-width:1200px; margin:0 auto; padding:0 22px }
+    .section { padding:84px 0 }
+    .section__head h1 { margin:0 0 8px 0; font-size:28px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif }
+    .muted { color:var(--ink-soft); font-size:14px }
+    .lead-title { max-width:1000px; margin:0 auto 18px auto; text-align:center; font-family:"Noto Serif TC","PMingLiU","MingLiU",serif; font-weight:900; font-size:20px; letter-spacing:.02em; color:#111 }
+    .faqwrap { background:var(--faq-bg) }
+    .faqgrid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:14px }
+    details.faqcard { background:#fff; border:1px solid #eee; border-radius:16px; box-shadow:var(--shadow); overflow:hidden }
+    summary { list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px }
+    summary::-webkit-details-marker { display:none }
+    .faq-title { margin:0; font-size:18px; font-weight:800 }
+    .faq-body { padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee }
+    .faq-body p { margin:10px 0 0 0 }
+    .chev { flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px }
+    details[open] .chev { transform:rotate(225deg) }
+    @media (max-width:760px) {
+      .section { padding:64px 0 }
+      .section__head h1 { font-size:24px }
+    }
+  </style>
+  <link rel="icon" href="/img/iconw.png" type="image/png">
+  <link rel="shortcut icon" href="/img/iconw.png" type="image/png">
+  <link rel="apple-touch-icon" href="/img/iconw.png">
+  <link rel="canonical" href="https://moposki.com/notice.html" />
 </head>
 <body>
 <header class="topbar" id="topbar">
   <div class="container nav">
     <div class="brand">
-      <a href="index.html" class="logo" aria-label="回首頁">MOPO Ski School</a>
+      <a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
     </div>
     <ul class="menu" role="menubar" aria-label="網站導覽">
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
@@ -117,8 +74,9 @@ details[open] .chev{ transform:rotate(225deg) }
         </ul>
       </li>
       <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
-      <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+      <li role="none"><a role="menuitem" href="booking.html" target="_blank" rel="noopener noreferrer">預約</a></li>
     </ul>
+
     <div class="lang">
       <select id="langSelect" aria-label="選擇語言">
         <option value="zh-Hant" selected>繁體中文</option>
@@ -126,11 +84,12 @@ details[open] .chev{ transform:rotate(225deg) }
         <option value="en">English</option>
       </select>
     </div>
+
     <div class="mobtools" aria-label="行動工具">
       <div class="mobdrop" id="mobLangDrop">
         <button class="mobLangBtn" id="mobLangBtn" aria-label="語言">語言</button>
         <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言選單">
-          <a role="menuitem" data-lang="zh-Hant" href="notice.html" aria-current="true">繁體中文</a>
+          <a role="menuitem" data-lang="zh-Hant" href="#" aria-current="true">繁體中文</a>
           <a role="menuitem" data-lang="ja" href="ja_notice.html">日本語</a>
           <a role="menuitem" data-lang="en" href="en_notice.html">English</a>
         </div>
@@ -152,12 +111,14 @@ details[open] .chev{ transform:rotate(225deg) }
           <a href="safe.html" role="menuitem">專欄文章</a>
           <a href="trip.html" role="menuitem">觀光主題</a>
           <a href="faq.html" role="menuitem">常見問題</a>
-          <a href="booking.html" role="menuitem">預約</a>
+          <a href="booking.html" role="menuitem" target="_blank" rel="noopener noreferrer">預約</a>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<div id="mobOverlay" aria-hidden="true" hidden></div>
 
 <main>
   <!-- 頁首標題 -->
@@ -279,7 +240,7 @@ details[open] .chev{ transform:rotate(225deg) }
 • 學員須於取消發生後 24 小時內 以電子郵件通知本校，並附上官方取消證明。<br>
 • 不包含個人改票、轉機延誤、簽證或檢疫問題等情況。</p>
 
-            <p>※ 例外規定之上述退款金額退還 100%。</p>
+            <p>※ 例外規定之上述退款金額退還 95%。</p>
 				 <p>※ 退款金額若涉及不同幣別，因銀行與發卡行規則，可能會有匯率差額或海外跨境交易費用，該部分由銀行直接向學員收取，敬請理解。</p>
 <p>（上述取消政策僅在報名時已明確告知並經學員同意時適用。）</p>
           </div>
@@ -351,79 +312,22 @@ details[open] .chev{ transform:rotate(225deg) }
           </ul>
         </div>
       </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
-        <div>© <span id="year"></span> MOPO Ski School</div>
-      </div>
+      <div class="copyright">© <span id="year"></span> MOPO Ski School</div>
     </div>
   </section>
 </footer>
 
-
-<!-- Back-to-top FAB -->
 <div class="fab">
   <button id="backTop" aria-label="回到頂部">
     <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
   </button>
 </div>
 
+
+<!-- Back-to-top FAB -->
+
+<script src="common.js?v=20260713"></script>
 <script>
-/* 年份 */
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* Topbar sticky */
-const topbar = document.getElementById('topbar');
-function setTopbar(){ if(!topbar) return; topbar.classList.toggle('scrolled', window.scrollY > 10); }
-setTopbar();
-window.addEventListener('scroll', setTopbar, {passive:true});
-
-/* Mobile: Lang panel */
-(function(){
-  const btn = document.getElementById('mobLangBtn');
-  const panel = document.getElementById('mobLangPanel');
-  if(!btn || !panel) return;
-
-  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
-
-  // 支援 <a data-lang>：攔截並呼叫 changeLang
-  panel.addEventListener('click', (e)=>{
-    const el = e.target.closest('[data-lang]');
-    if(!el) return;
-    e.preventDefault();
-    changeLang(el.dataset.lang);
-  });
-
-  document.addEventListener('click', ()=> panel.classList.remove('show'));
-})();
-
-/* Mobile: Nav panel */
-(function(){
-  const btn = document.getElementById('mobNavBtn');
-  const panel = document.getElementById('mobNavPanel');
-  if(!btn || !panel) return;
-  btn.addEventListener('click', (e)=>{ e.stopPropagation(); panel.classList.toggle('show'); });
-  panel.addEventListener('click', (e)=>{ const link=e.target.closest('a'); if(link){ panel.classList.remove('show'); }});
-  document.addEventListener('click', ()=> panel.classList.remove('show'));
-})();
-
-/* Desktop: Lang select */
-(function(){
-  const sel = document.getElementById('langSelect');
-  if(!sel) return;
-  sel.addEventListener('change', ()=> changeLang(sel.value));
-})();
-
-/* Language routing (notice 系列) */
-function changeLang(lang){
-  const map = {
-    'zh-Hant': 'notice.html',
-    'ja': 'ja_notice.html',
-    'en': 'en_notice.html'
-  };
-  const url = map[lang] || 'notice.html';
-  window.location.href = url;
-}
-
 /* Accordion: 同時只開一個 */
 (function singleOpen(containerSel){
   const wrap = document.querySelector(containerSel);
@@ -446,39 +350,6 @@ function changeLang(lang){
     wrap.querySelectorAll('details[open]').forEach(x=>{ if(x!==d) x.open = false; });
   }, true);
 })('#faqGrid');
-
-/* Back-to-top */
-const backTop = document.getElementById('backTop');
-if (backTop){
-  backTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
-}
-
-/* Topbar：下滑隱藏，上滑顯示 */
-(function(){
-  if(!topbar) return;
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  function update() {
-    const currentY = window.scrollY;
-
-    if (currentY > lastScrollY && currentY > 100) {
-      topbar.classList.add('hide'); // 往下滑：隱藏
-    } else {
-      topbar.classList.remove('hide'); // 往上滑或回頂：顯示
-    }
-
-    lastScrollY = currentY;
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
 </script>
 </body>
 </html>

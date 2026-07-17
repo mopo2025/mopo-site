@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17610938726');
+  </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>札幌手稻｜MOPO Ski School</title>
@@ -29,109 +37,88 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
 
 <!-- 共用 CSS -->
-<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="common.css?v=20260713">
 <style>
-  :root { 
-    --gold:#CFAF61; 
-    --ink:#0E1A24; 
-    --ink-soft:#2B3A44; 
-    --bg-tint:#F3F4F4; 
-    /* Morandi colors for rental sections */
-    --accent-morandi: #B0A8B9; /* Soft purple-gray */
-    --text-morandi: #5C5B6D; /* Muted dark gray */
-    --muted-morandi: #A8A7B3; /* Light muted gray */
-    --line-morandi: #D9D8E0; /* Soft border */
-    --section1-morandi: #F8F7FA; /* Very light pinkish-gray */
-    --section2-morandi: #F0F2F5; /* Light blue-gray */
-    --section3-morandi: #F5F7F8; /* Light green-gray */
-    --section4-morandi: #FAF9F5; /* Light yellow-gray */
-    --section5-morandi: #F8F6FA; /* Light purple-gray */
-  }
-
-  /* HERO */
-  .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
-  .s-hero::before{content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
-  .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
-  .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
-  .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
-  .s-hero h1{font-family:"Noto Serif JP","Noto Sans TC",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
-  .s-hero .s-sub{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px}
-  .s-hero p{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem}
-  @media (max-width:900px){
-    .s-hero{min-height:52vh}
-    .s-hero-inner{grid-template-columns:1fr;padding:52px 18px}
-    .s-hero::after{background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%)}
-    .s-hero p{line-height:2.05;margin-bottom:20px}
-  }
-
-  /* TOC + Sections */
-  .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
-  .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
-  @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
-  .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
-  .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
-  .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
-  .s-toc a:hover{background:rgba(0,0,0,.035)}
-  .s-toc a.is-active{font-weight:600}
-
-  .s-section{border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px}
-  .s-section h2{font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
-  .s-section p,.s-section li{font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px}
-  .s-section ul{margin:10px 0 18px}
-  .public{padding-top:44px;padding-bottom:44px}
-  .public h2{margin-bottom:26px}
-
-  .s-linkbox{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
-  .s-linkbox:hover{transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08)}
-  .s-linktxt{font-size:14px;color:var(--ink)}
-  .s-ico{width:18px;height:18px;opacity:.85;flex:0 0 18px}
-
-  .s-imgframe{display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px}
-  .s-imgframe img{display:block;max-width:100%;height:auto}
-  .s-cap{font-size:13px;color:#555;margin-top:8px}
-
-  /* Rental Table Styles - Morandi Theme */
-  .rental-section {padding: 16px;border-radius: 10px;border: 1px solid var(--line-morandi);margin-bottom: 24px;background: var(--bg-tint);}
-  .rental-section:nth-of-type(1) {background: var(--section1-morandi);}
-  .rental-section:nth-of-type(2) {background: var(--section2-morandi);}
-  .rental-section:nth-of-type(3) {background: var(--section3-morandi);}
-  .rental-section:nth-of-type(4) {background: var(--section4-morandi);}
-  .rental-section:nth-of-type(5) {background: var(--section5-morandi);}
-  .rental-section:nth-of-type(6) {background: var(--section1-morandi);}
-  .rental-section:nth-of-type(7) {background: var(--section2-morandi);}
-  .rental-section:nth-of-type(8) {background: var(--section3-morandi);}
-  .label {display: flex;align-items: center;font-weight: 600;font-size: 16px;margin-bottom: 6px;color: var(--text-morandi);}
-  .label svg {width: 28px;height: 28px;margin-right: 8px; stroke: var(--text-morandi);}
-  .rental-table {width: 100%;border-collapse: collapse;background: #fff;border-radius: 6px;overflow: hidden;font-size: 16px; font-family: "Noto Sans TC", sans-serif;}
-  .rental-table th, .rental-table td {padding: 12px 14px;border-bottom: 1px solid var(--line-morandi); text-align: left;}
-  .rental-table th {background: #f8f8fa; color: var(--muted-morandi); font-weight: 600;}
-  .rental-table tr:last-child td {border-bottom: none;}
-  .muted {color: var(--muted-morandi); font-size: 14px;}
-  .rental-note {background: var(--section1-morandi); padding: 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; line-height: 1.6; color: var(--text-morandi);}
-  .rental-note ul {margin: 10px 0 0 20px; padding-left: 0;}
-  .rental-note li {margin-bottom: 8px;}
-  .rental-disclaimer {font-size: 13px; color: var(--muted-morandi); margin-top: 12px; text-align: center; font-style: italic;}
-  @media (max-width: 600px) {
-    .rental-table {font-size: 14px;}
-    .rental-table th, .rental-table td {padding: 10px 8px;}
-  }
-
-  /* Modal Viewer */
-  .modal{position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
-  .modal[aria-hidden="false"]{display:flex}
-  .modal-dialog{width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
-  .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff}
-  .modal-title{font:600 14px/1 "Noto Sans JP","Noto Sans TC",sans-serif;color:#222}
-  .modal-close{border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px}
-  .modal-close:hover{background:rgba(0,0,0,.05)}
-  .modal-body{background:#fafafa}
-  .modal-body iframe{display:block;width:100%;height:80vh;border:0}
-  .modal-body img{display:block;width:100%;height:auto}
-  @media (max-width:780px){
-    .modal-dialog{width:100%}
-    .modal-body iframe{height:70vh}
-  }
-</style>
+    :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4; --accent-morandi: #B0A8B9; --text-morandi: #5C5B6D; --muted-morandi: #A8A7B3; --line-morandi: #D9D8E0; --section1-morandi: #F8F7FA; --section2-morandi: #F0F2F5; --section3-morandi: #F5F7F8; --section4-morandi: #FAF9F5; --section5-morandi: #F8F6FA }
+    .s-hero { position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink) }
+    .s-hero::before { content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01) }
+    .s-hero::after { content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%) }
+    .s-hero-inner { position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px }
+    .s-eyebrow { font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px }
+    .s-hero h1 { font-family:"Noto Serif JP","Noto Sans TC",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance }
+    .s-hero .s-sub { font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px }
+    .s-hero p { font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem }
+    @media (max-width:900px) {
+      .s-hero { min-height:52vh }
+      .s-hero-inner { grid-template-columns:1fr;padding:52px 18px }
+      .s-hero::after { background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%) }
+      .s-hero p { line-height:2.05;margin-bottom:20px }
+    }
+    .s-wrap { max-width:1100px;margin:0 auto;padding:48px 16px 40px }
+    .s-layout { display:grid;grid-template-columns:260px 1fr;gap:32px }
+    @media (max-width:980px) {
+      .s-layout { grid-template-columns:1fr }
+    }
+    .s-toc { position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px }
+    .s-toc::before { content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease }
+    .s-toc a { display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none }
+    .s-toc a:hover { background:rgba(0,0,0,.035) }
+    .s-toc a.is-active { font-weight:600 }
+    .s-section { border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px }
+    .s-section h2 { font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink) }
+    .s-section p,.s-section li { font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px }
+    .s-section ul { margin:10px 0 18px }
+    .public { padding-top:44px;padding-bottom:44px }
+    .public h2 { margin-bottom:26px }
+    .s-linkbox { display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease }
+    .s-linkbox:hover { transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08) }
+    .s-linktxt { font-size:14px;color:var(--ink) }
+    .s-ico { width:18px;height:18px;opacity:.85;flex:0 0 18px }
+    .s-imgframe { display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px }
+    .s-imgframe img { display:block;max-width:100%;height:auto }
+    .s-cap { font-size:13px;color:#555;margin-top:8px }
+    .rental-section { padding: 16px;border-radius: 10px;border: 1px solid var(--line-morandi);margin-bottom: 24px;background: var(--bg-tint) }
+    .rental-section:nth-of-type(1) { background: var(--section1-morandi) }
+    .rental-section:nth-of-type(2) { background: var(--section2-morandi) }
+    .rental-section:nth-of-type(3) { background: var(--section3-morandi) }
+    .rental-section:nth-of-type(4) { background: var(--section4-morandi) }
+    .rental-section:nth-of-type(5) { background: var(--section5-morandi) }
+    .rental-section:nth-of-type(6) { background: var(--section1-morandi) }
+    .rental-section:nth-of-type(7) { background: var(--section2-morandi) }
+    .rental-section:nth-of-type(8) { background: var(--section3-morandi) }
+    .label { display: flex;align-items: center;font-weight: 600;font-size: 16px;margin-bottom: 6px;color: var(--text-morandi) }
+    .label svg { width: 28px;height: 28px;margin-right: 8px; stroke: var(--text-morandi) }
+    .rental-table { width: 100%;border-collapse: collapse;background: #fff;border-radius: 6px;overflow: hidden;font-size: 16px; font-family: "Noto Sans TC", sans-serif }
+    .rental-table th, .rental-table td { padding: 12px 14px;border-bottom: 1px solid var(--line-morandi); text-align: left }
+    .rental-table th { background: #f8f8fa; color: var(--muted-morandi); font-weight: 600 }
+    .rental-table tr:last-child td { border-bottom: none }
+    .muted { color: var(--muted-morandi); font-size: 14px }
+    .rental-note { background: var(--section1-morandi); padding: 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; line-height: 1.6; color: var(--text-morandi) }
+    .rental-note ul { margin: 10px 0 0 20px; padding-left: 0 }
+    .rental-note li { margin-bottom: 8px }
+    .rental-disclaimer { font-size: 13px; color: var(--muted-morandi); margin-top: 12px; text-align: center; font-style: italic }
+    @media (max-width: 600px) {
+      .rental-table { font-size: 14px }
+      .rental-table th, .rental-table td { padding: 10px 8px }
+    }
+    .modal { position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999 }
+    .modal[aria-hidden="false"] { display:flex }
+    .modal-dialog { width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25) }
+    .modal-header { display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff }
+    .modal-title { font:600 14px/1 "Noto Sans JP","Noto Sans TC",sans-serif;color:#222 }
+    .modal-close { border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px }
+    .modal-close:hover { background:rgba(0,0,0,.05) }
+    .modal-body { background:#fafafa }
+    .modal-body iframe { display:block;width:100%;height:80vh;border:0 }
+    .modal-body img { display:block;width:100%;height:auto }
+    @media (max-width:780px) {
+      .modal-dialog { width:100% }
+      .modal-body iframe { height:70vh }
+    }
+  </style>
+  <link rel="icon" href="/img/iconw.png" type="image/png">
+  <link rel="shortcut icon" href="/img/iconw.png" type="image/png">
+  <link rel="apple-touch-icon" href="/img/iconw.png">
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -139,29 +126,28 @@
     <div class="brand">
       <a href="index.html" class="logo" aria-label="回到首頁">MOPO Ski School</a>
     </div>
-
     <ul class="menu" role="menubar" aria-label="網站導覽">
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
-        <ul class="submenu" role="menu" aria-label="滑雪課程 子選單">
+        <ul class="submenu" role="menu" aria-label="滑雪課程子選單">
           <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
           <li class="group-title">雪場介紹</li>
-          <li role="none"><a role="menuitem" href="teine.html" aria-current="page">札幌手稻</a></li>
+          <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
           <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
         </ul>
       </li>
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">主題文章 <span class="caret">▾</span></a>
-        <ul class="submenu" role="menu" aria-label="主題文章 子選單">
+        <ul class="submenu" role="menu" aria-label="主題文章子選單">
           <li role="none"><a role="menuitem" href="safe.html">專欄文章</a></li>
           <li role="none"><a role="menuitem" href="trip.html">觀光主題</a></li>
         </ul>
       </li>
       <li role="none"><a role="menuitem" href="faq.html">常見問題</a></li>
-      <li role="none"><a role="menuitem" href="booking.html">預約</a></li>
+      <li role="none"><a role="menuitem" href="booking.html" target="_blank" rel="noopener noreferrer">預約</a></li>
     </ul>
 
     <div class="lang">
@@ -176,7 +162,7 @@
       <div class="mobdrop" id="mobLangDrop">
         <button class="mobLangBtn" id="mobLangBtn" aria-label="語言">語言</button>
         <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="語言選單">
-          <button role="menuitem" disabled style="opacity:.6; font-weight:700;">繁體中文（目前）</button>
+          <a role="menuitem" data-lang="zh-Hant" href="#" aria-current="true">繁體中文</a>
           <a role="menuitem" data-lang="ja" href="ja_teine.html">日本語</a>
           <a role="menuitem" data-lang="en" href="en_teine.html">English</a>
         </div>
@@ -185,19 +171,20 @@
         <button class="iconbtn" aria-label="開啟導覽" id="mobNavBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動版導覽">
+        <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動導覽">
           <a href="news.html" role="menuitem">最新消息</a>
           <a href="mopo.html" role="menuitem">關於 MOPO</a>
           <div class="mob-subtitle">滑雪課程</div>
           <a href="index.html#pricing" role="menuitem">課程與價格</a>
-          <a href="teine.html" role="menuitem" aria-current="page">札幌手稻</a>
+          <div class="mob-subtitle">雪場介紹</div>
+          <a href="teine.html" role="menuitem">札幌手稻</a>
           <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
           <div class="mob-subtitle">主題文章</div>
           <a href="safe.html" role="menuitem">專欄文章</a>
           <a href="trip.html" role="menuitem">觀光主題</a>
           <a href="faq.html" role="menuitem">常見問題</a>
-          <a href="booking.html" role="menuitem">預約</a>
+          <a href="booking.html" role="menuitem" target="_blank" rel="noopener noreferrer">預約</a>
         </div>
       </div>
     </div>
@@ -205,6 +192,7 @@
 </header>
 
 <div id="mobOverlay" aria-hidden="true" hidden></div>
+
 
 <main id="home" aria-label="札幌手稻">
   <section class="s-hero" aria-label="手稻主視覺">
@@ -228,6 +216,7 @@
         <a href="#public">— 大眾運輸</a>
         <a href="#car">— 自行開車</a>
         <a href="#rental">— 雪具租借（官方租借）</a>
+        <a href="#sotorent">— 雪具租借（車站租借）</a>
       </nav>
 
       <div>
@@ -478,9 +467,88 @@
             </table>
           </section>
         </article>
+
+ <article id="sotorent" class="s-section" aria-labelledby="sotorent-title">
+  <h2 id="sotorent-title">雪具租借（車站租借）</h2>
+  
+  <div class="rental-note">
+    <p><strong>SOTORENT 手稻站前店 — 雪具租借 2025-26</strong></p>
+    <p>SOTORENT 提供滑雪板與單板滑雪短期租借服務，適合初學者到中高級滑雪者。租借服務位於手稻車站外，步行約 3 分鐘即可到達。</p>
+    <p>詳細資訊請以 <a href="https://en.soto.rent" target="_blank" style="color: var(--accent-morandi); text-decoration: underline;">SOTORENT 官網</a> 公布內容為準。</p>
+    <p class="rental-disclaimer">※價格的括號（ ）內為旺季價格 適用期間：12月27日～1月4日</p>
+    
+    <h3 style="margin-top: 16px; color: var(--text-morandi);">📍 店鋪位置</h3>
+    <p>手稻站前（札幌市手稻區）</p>
+    <p>簡單地圖示意：</p>
+    <pre class="sotorent-map">[JR手稻站出口] ── 徒步約3分鐘 ── [SOTORENT 店鋪]</pre>
+    
+    <h3 style="margin-top: 16px; color: var(--text-morandi);">📝 租借規則與注意事項</h3>
+    <ul>
+      <li>請於預約時輸入使用者鞋碼、年齡、身高、體重、滑雪或單板等級</li>
+      <li>租借品可於租借前日下午 3 時後領取，歸還期限為租借結束日隔日上午 11 時</li>
+      <li>配送服務：單程 ¥4,000</li>
+      <li>山岳滑雪 / Backcountry 裝備取貨：銭函店，手稻店取貨需加 ¥3,000</li>
+      <li>租借數量有限，請提早預約</li>
+    </ul>
+    
+    <p class="rental-disclaimer">提醒：以上資訊僅為參考，最終價格與規範以 SOTORENT 官方公告為準。</p>
+  </div>
+
+  <section class="rental-section">
+    <div class="label">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/><path d="M22 58c4-4 22-34 34-48"/></svg>
+      標準 Standard 套裝 <span class="muted">(1~3天價格)</span>
+    </div>
+    <table class="rental-table">
+      <thead><tr><th>類型</th><th>內容</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
+      <tbody>
+        <tr><td>大人</td><td>滑雪板或單板 + 滑雪杖 + 綁定 + 靴子</td><td>¥6,000 <span class="muted">(¥6,500)</span></td><td>¥10,200 <span class="muted">(¥11,000)</span></td><td>¥14,000 <span class="muted">(¥15,100)</span></td></tr>
+        <tr><td>大人</td><td>滑雪板或單板 + 綁定</td><td>¥4,800 <span class="muted">(¥5,200)</span></td><td>¥8,200 <span class="muted">(¥8,800)</span></td><td>¥11,200 <span class="muted">(¥12,000)</span></td></tr>
+        <tr><td>兒童 <span class="muted">(12歲以下)</span></td><td>滑雪板或單板 + 綁定 + 靴子</td><td>¥4,800 <span class="muted">(¥5,200)</span></td><td>¥8,200 <span class="muted">(¥8,800)</span></td><td>¥11,200 <span class="muted">(¥12,000)</span></td></tr>
+        <tr><td>兒童 <span class="muted">(12歲以下)</span></td><td>滑雪板或單板 + 綁定</td><td>¥4,000 <span class="muted">(¥4,300)</span></td><td>¥6,800 <span class="muted">(¥7,300)</span></td><td>¥9,400 <span class="muted">(¥10,100)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="rental-section">
+    <div class="label">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/><path d="M22 58c4-4 22-34 34-48"/></svg>
+      標準 Full 套裝 <span class="muted">(含服裝、護具，1~3天價格)</span>
+    </div>
+    <table class="rental-table">
+      <thead><tr><th>類型</th><th>內容</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
+      <tbody>
+        <tr><td>大人</td><td>滑雪板或單板 + 服裝上下 + 頭盔 + 護目鏡 + 手套</td><td>¥11,000 <span class="muted">(¥11,900)</span></td><td>¥18,700 <span class="muted">(¥20,200)</span></td><td>¥25,700 <span class="muted">(¥27,700)</span></td></tr>
+        <tr><td>兒童</td><td>滑雪板或單板 + 服裝上下 + 頭盔 + 護目鏡 + 手套</td><td>¥7,700 <span class="muted">(¥8,300)</span></td><td>¥13,100 <span class="muted">(¥14,100)</span></td><td>¥18,000 <span class="muted">(¥19,400)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="rental-section">
+    <div class="label">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><circle cx="32" cy="32" r="18"/><path d="M32 20v24M20 32h24"/></svg>
+      單品租借 <span class="muted">(1~3天價格)</span>
+    </div>
+    <table class="rental-table">
+      <thead><tr><th>租借項目</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
+      <tbody>
+        <tr><td>大人服裝上或下</td><td>¥2,500 <span class="muted">(¥2,700)</span></td><td>¥4,300 <span class="muted">(¥4,600)</span></td><td>¥5,900 <span class="muted">(¥6,300)</span></td></tr>
+        <tr><td>兒童服裝上或下</td><td>¥1,500 <span class="muted">(¥1,600)</span></td><td>¥2,600 <span class="muted">(¥2,800)</span></td><td>¥3,500 <span class="muted">(¥3,800)</span></td></tr>
+        <tr><td>頭盔或護目鏡</td><td>¥1,800 <span class="muted">(¥1,900)</span></td><td>¥3,100 <span class="muted">(¥3,300)</span></td><td>¥4,200 <span class="muted">(¥4,500)</span></td></tr>
+        <tr><td>兒童頭盔或護目鏡</td><td>¥1,200 <span class="muted">(¥1,300)</span></td><td>¥2,000 <span class="muted">(¥2,200)</span></td><td>¥2,800 <span class="muted">(¥3,000)</span></td></tr>
+        <tr><td>滑雪靴或單板靴</td><td>¥3,000 <span class="muted">(¥3,200)</span></td><td>¥5,100 <span class="muted">(¥5,500)</span></td><td>¥7,000 <span class="muted">(¥7,500)</span></td></tr>
+        <tr><td>滑雪杖</td><td>¥1,500 <span class="muted">(¥1,600)</span></td><td>¥2,600 <span class="muted">(¥2,800)</span></td><td>¥3,500 <span class="muted">(¥3,800)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <p class="rental-disclaimer">官方網站：<a href="https://en.soto.rent" target="_blank" style="color: var(--accent-morandi); text-decoration: underline;">SOTORENT</a></p>
+</article>
+
       </div>
     </div>
   </section>
+
 
   <div class="modal" id="viewerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="內容檢視器">
     <div class="modal-dialog">
@@ -599,7 +667,7 @@
           <h4>滑雪課程</h4>
           <ul>
             <li><a href="index.html#pricing">課程與價格</a></li>
-            <li><a href="teine.html" aria-current="page">札幌手稻</a></li>
+            <li><a href="teine.html">札幌手稻</a></li>
             <li><a href="onze.html">小樽ONZE</a></li>
             <li><a href="kokusai.html">札幌國際</a></li>
           </ul>
@@ -621,19 +689,18 @@
           </ul>
         </div>
       </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px">
-        <div>© <span id="year"></span> MOPO Ski School</div>
-      </div>
+      <div class="copyright">© <span id="year"></span> MOPO Ski School</div>
     </div>
   </section>
 </footer>
 
 <div class="fab">
-  <button id="backTop" aria-label="回到頁面頂端">
+  <button id="backTop" aria-label="回到頂部">
     <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l7 7h-5v7H10v-7H5z" fill="#333"/></svg>
   </button>
 </div>
 
-<script src="common.js"></script>
+
+<script src="common.js?v=20260713"></script>
 </body>
 </html>
