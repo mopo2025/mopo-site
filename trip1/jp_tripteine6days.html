@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>観光トピック｜MOPOスキースクール</title>
+<meta name="description" content="MOPO親子限定企画。北海道札幌スキー旅行の周辺観光と特別な体験をご紹介します。">
+
+<link rel="canonical" href="https://moposki.com/ja_trip.html">
+<meta property="og:title" content="観光トピック｜MOPOスキースクール">
+<meta property="og:description" content="MOPO専用の定番コース。札幌テイネスキー場 × 小樽運河 × 定番グルメの饗宴6日間。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOPOスキースクール">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://images.unsplash.com/photo-1548575097-59914742f36d?q=80&w=2070&auto=format&fit=crop">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../common.css?v=20260713">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    corePlugins: {
+      preflight: false, 
+    },
+    theme: {
+      extend: {
+        colors: {
+          ink: '#2F4F4F', // Dark Green
+          warm: '#F9F8F6', // Warm Off-White
+          gold: '#CFAF61',
+          accent: '#D4A373', // Latte
+        }
+      }
+    }
+  }
+</script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<style>
+  .itinerary-wrap {
+      font-family: "Noto Sans JP", sans-serif; /* Changed for Japanese */
+      color: #2F4F4F;
+      background-color: #F9F8F6;
+      width: 100%;
+  }
+  .serif { font-family: "Shippori Mincho", serif; } /* Changed for Japanese headers */
+
+  /* === Side TOC === */
+  .s-toc {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      border: 1px solid rgba(47,79,79,0.1);
+      border-radius: 16px;
+      padding: 12px 0;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(47,79,79,0.05);
+      z-index: 10;
+  }
+  .s-toc a {
+      display: block;
+      padding: 10px 20px;
+      color: #5D6D7E;
+      font-size: 15px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+  }
+  .s-toc a:hover { background: #F3F4F6; color: #2F4F4F; }
+  .s-toc a.is-active {
+      font-weight: 700;
+      color: #2F4F4F;
+      background: rgba(47,79,79,0.05);
+      border-left-color: #2F4F4F;
+  }
+
+  /* === Cards & Image Effects === */
+  .warm-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px -10px rgba(47, 79, 79, 0.08);
+      border: 1px solid rgba(47, 79, 79, 0.05);
+      transition: transform 0.3s ease;
+      overflow: hidden;
+      margin-bottom: 40px;
+  }
+  .warm-card:hover { transform: translateY(-5px); }
+  
+  .img-zoom-container { overflow: hidden; height: 100%; min-height: 320px; border-radius: 20px; }
+  .img-zoom-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+  .warm-card:hover .img-zoom-container img { transform: scale(1.05); }
+
+  /* === Transport Collapsible === */
+  .transport-box {
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 24px;
+      background: #FFFFFF;
+  }
+  .transport-header {
+      padding: 16px 20px;
+      background: #FAF9F6;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: #2F4F4F;
+      transition: background 0.2s;
+      font-size: 0.95rem;
+      user-select: none;
+  }
+  .transport-header:hover { background: #F0EFE9; }
+  
+  .transport-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+  }
+  .transport-body.open {
+      max-height: 800px;
+      transition: max-height 0.4s ease-in;
+  }
+  .transport-inner { padding: 0; }
+  .transport-content-pad { padding: 20px; border-top: 1px solid #eee; font-size: 0.95rem; line-height: 1.8; color: #4B5563; }
+
+  /* === Service Badge === */
+  .service-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border: 1px solid #FDE68A;
+  }
+
+  /* Hotel Slider Styles */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .grabbing { cursor: grabbing !important; cursor: -webkit-grabbing !important; }
+
+  /* Day 5 Image Animation */
+  @keyframes fadeGallery {
+      0%, 45% { opacity: 1; z-index: 10; }
+      55%, 95% { opacity: 0; z-index: 0; }
+      100% { opacity: 1; z-index: 10; }
+  }
+  .slide-img-1 { animation: fadeGallery 10s infinite; } 
+  .slide-img-2 { animation: fadeGallery 10s infinite; animation-delay: 5s; opacity: 0; }
+
+  /* Mobile Adaptation */
+  @media (max-width: 900px) {
+      .s-toc { display: none; }
+      .s-layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="container nav">
+    <div class="brand">
+      <a href="../ja_index.html" class="logo" aria-label="ホームに戻る">MOPO Ski School</a>
+    </div>
+    <ul class="menu" role="menubar">
+      <li role="none"><a role="menuitem" href="../ja_news.html">最新情報</a></li>
+      <li role="none"><a role="menuitem" href="../ja_mopo.html">MOPOについて</a></li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">レッスン <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+          <li role="none"><a role="menuitem" href="../ja_index.html#pricing">レッスンプラン</a></li>
+          <li class="group-title">ゲレンデ紹介</li>
+          <li role="none"><a role="menuitem" href="../ja_teine.html">札幌テイネ</a></li>
+          <li role="none"><a role="menuitem" href="../ja_onze.html">小樽ONZE</a></li>
+          <li role="none"><a role="menuitem" href="../ja_kokusai.html">札幌国際</a></li>
+        </ul>
+      </li>
+      <li class="has-dropdown" role="none">
+        <a role="menuitem" href="#">特集記事 <span class="caret">▾</span></a>
+        <ul class="submenu" role="menu">
+          <li role="none"><a role="menuitem" href="../ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="../ja_trip.html" aria-current="page">観光トピック</a></li>
+        </ul>
+      </li>
+      <li role="none"><a role="menuitem" href="../ja_faq.html">よくあるご質問</a></li>
+      <li role="none"><a role="menuitem" href="../booking.html">ご予約</a></li>
+    </ul>
+    <div class="lang">
+      <select id="langSelect"><option value="zh-Hant">繁體中文</option><option value="ja" selected>日本語</option><option value="en">English</option></select>
+    </div>
+    <div class="mobtools">
+        <div class="mobdrop" id="mobLangDrop"><button class="mobLangBtn" id="mobLangBtn">言語</button><div class="mobpanel" id="mobLangPanel"><a href="#">日本語</a></div></div>
+        <div class="mobdrop" id="mobNavDrop"><button class="iconbtn" id="mobNavBtn"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#333" stroke-width="2"/></svg></button><div class="mobpanel" id="mobNavPanel"><a href="../ja_news.html">最新情報</a></div></div>
+    </div>
+  </div>
+</header>
+
+<main id="itinerary-content" class="itinerary-wrap w-full">
+    
+    <section class="relative h-[65vh] w-full overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="../img/trip/teine.jpg" class="w-full h-full object-cover opacity-90" alt="">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-[#F9F8F6]"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 text-white drop-shadow-md max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6 serif">北海道・雪国6日間の旅</h1>
+            <p class="text-lg md:text-2xl font-medium tracking-widest text-[#2F4F4F] mb-8">札幌テイネスキー場 × 小樽運河 × 定番グルメの饗宴</p>
+            <div class="mx-auto w-24 h-1 bg-accent rounded-full"></div>
+        </div>
+    </section>
+
+    <section class="py-16 px-4 max-w-7xl mx-auto">
+        <div class="s-layout grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-10">
+            
+            <nav class="s-toc hidden lg:block">
+                <a href="#features" class="is-active">ツアーの魅力</a>
+                <a href="#day1">DAY 1 札幌到着</a>
+                <a href="#day2">DAY 2 テイネ初滑り</a>
+                <a href="#day3">DAY 3 技術向上</a>
+                <a href="#day4">DAY 4 小樽運河</a>
+                <a href="#day5">DAY 5 都市と自然</a>
+                <a href="#day6">DAY 6 空港探索</a>
+                <a href="#hotels">厳選ホテル</a>
+            </nav>
+
+            <div class="space-y-16 max-w-full overflow-hidden">
+                
+                <article id="features" class="scroll-mt-32">
+                    <h2 class="text-3xl font-bold mb-8 text-ink serif flex items-center gap-3">
+                        <i data-lucide="star" class="w-6 h-6 text-gold"></i> この旅を選ぶ理由
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="mountain" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">山海の絶景</h3><p class="text-xs text-gray-500">石狩湾を一望<br>家族で海を見ながらスキー</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="shield-check" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">安心の指導</h3><p class="text-xs text-gray-500">丁寧な解説<br>インストラクターが完全サポート</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="baby" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">優しい設計</h3><p class="text-xs text-gray-500">スノーエスカレーターで登坂なし<br>お子様も疲れ知らず</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-[2rem] border border-gray-100 text-center hover:shadow-lg transition">
+                            <div class="w-14 h-14 bg-[#FAF3E0] rounded-full flex items-center justify-center mx-auto mb-3 text-ink"><i data-lucide="car" class="w-7 h-7"></i></div>
+                            <h3 class="font-bold text-ink mb-1">記念撮影</h3><p class="text-xs text-gray-500">インストラクターが撮影<br>家族の思い出を残します</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day1" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/jrtower.jpg" alt="Sapporo Night" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 01</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">SAPPORO</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">新千歳空港到着、札幌の雪景色と夜景を満喫</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【テーマ：都市散策・高層からの眺望】</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>新千歳空港：</strong> 到着後、ご家族で快適なJR快速列車に乗り、札幌中心部へ直行します。</li>
+                                    <li><strong>JRタワーT38：</strong> 駅直結の暖かい展望台。地上160mからコーヒーを片手に、碁盤の目状の雪景色を見下ろせます。</li>
+                                    <li><strong>大通公園：</strong> ホテルにチェックイン後、身軽になって散策へ。北国ならではの幻想的な夜のイルミネーションをお楽しみください。</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 交通アクセスの詳細を見る</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad">
+                                            <p class="font-bold text-ink mb-2">✈️ 新千歳空港 → JR札幌駅</p>
+                                            <ul class="list-decimal list-inside text-sm space-y-1 text-gray-600">
+                                                <li>到着後、<strong>「JR線」</strong>の案内表示に従い、エレベーターで<strong>B1F</strong>へ移動してください。</li>
+                                                <li>自動券売機で<strong>「札幌」</strong>までの切符を購入します。</li>
+                                                <li><strong>「快速エアポート」</strong>に乗車します。</li>
+                                                <li>所要時間は約<strong>37〜40分</strong>です。「札幌駅」で下車してください。</li>
+                                            </ul>
+                                            <div class="mt-4">
+                                                <a href="https://maps.app.goo.gl/VCohn9THgXaziiFD6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> Googleマップを開く：札幌駅</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day2" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/teine.jpg" alt="Teine Ski" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 02</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">TEINE OLYMPIA</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">テイネスキー体験、安全と自信を築く</h3>
+                                <p class="text-sm text-gray-500 mb-4 font-bold tracking-wider">【テーマ：インストラクターの丁寧な解説・スノーエスカレーターで楽々練習】</p>
+                                <div class="service-badge"><i data-lucide="phone-call" class="w-3 h-3"></i> サービス：タクシー手配（要1週間前予約）</div>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed mt-4">
+                                    <li><strong>午前レッスン：</strong> 札幌テイネスキー場（オリンピアゾーン）。少人数制のプライベートレッスンを選択。初心者の方は予約時にインストラクターによる用具サポートが必要な旨を記載いただくと、用具の確認やレンタル申込書の記入をお手伝いします。グループレッスンのように進度についていけないというプレッシャーもありません。</li>
+                                    <li><strong>午後練習：</strong> <strong>「スノーエスカレーター」</strong>を活用しましょう。スキー板を外して坂を登る必要がなく、楽に楽しく練習できます。</li>
+                                    <li><strong>夕食のおすすめ：</strong> 根室花まる、またはトリトン寿司。新鮮な食材、豊富な種類で、ご家族全員が大満足できます。（こっそり情報：トリトン寿司では、鶏の唐揚げもぜひ試してみてください！）</li>
+                                </ul>
+                                <div class="mt-3 flex flex-wrap gap-2">
+                                    <a href="https://maps.app.goo.gl/Dn1Fbr5GEtegCoxp6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> 根室花まる</a>
+                                    <a href="https://maps.app.goo.gl/X9i6Vu93uAPQkVyj8" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="fish" class="w-3 h-3"></i> トリトン寿司 豊平店</a>
+                                </div>
+                            </div>
+                            <div class="transport-box mt-6">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 交通アクセスの詳細を見る</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">ステップ1：JR札幌駅 → 手稲駅</p><p class="text-sm">JR函館本線「快速列車」で約10〜15分、「手稲駅」で下車します。</p></div>
+                                            <div><p class="font-bold text-ink mb-2">ステップ2：手稲駅 → オリンピアスキー場</p><ul class="list-decimal list-inside text-sm space-y-1"><li>南口3番乗り場から「手70」バスに乗車します。</li><li>約15分後、「テイネオリンピア前」で下車します。</li></ul></div>
+                                            <div class="flex flex-col gap-2 mt-2">
+                                                <a href="https://maps.app.goo.gl/dTexdjpWxGzo5Vmn7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="map" class="w-3 h-3"></i> Googleマップを開く：手稲駅南口</a>
+                                                <div><a href="https://youtu.be/eq6--bcae3s?si=goOtCrW478d735i6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200 w-fit"><i data-lucide="video" class="w-3 h-3"></i> バスの乗り換え動画を見る</a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day3" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/susukino.jpg" alt="Advanced Ski" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 03</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">LEVEL UP</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">壁を突破、ターン技術を習得</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【テーマ：技術的な変化・オリンピアゾーンでの集中練習】</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>午前：</strong> 練習こそが上達への道です。朝の良い雪質を利用して基礎を固めましょう。</li>
+                                    <li><strong>午後：</strong> 「ターン」や「木の葉滑り」に挑戦。スノーボードのトゥサイド木の葉滑りや、スキーのハの字ターンで、方向をコントロールする楽しさを体感してください。</li>
+                                    <li><strong>夕方：</strong> <strong>すすきの</strong>へ向かい、北海道必食のジンギスカンや、有名なスープカレー「GARAKU」を味わいましょう。</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 交通アクセスの詳細を見る</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">スキー場への往復</p><p class="text-sm">2日目と同じ交通手段です（JR手稲駅 ＋ 3番乗り場バス 手70）。</p></div>
+                                            <div>
+                                                <p class="font-bold text-ink mb-2">夜のすすきのへの移動</p>
+                                                <ul class="list-disc list-inside text-sm space-y-1">
+                                                    <li>地下鉄南北線（グリーンライン）で「すすきの」駅へ。</li>
+                                                    <li>または、「チ・カ・ホ（札幌駅前通地下歩行空間）」経由で徒歩約20分。</li>
+                                                </ul>
+                                                <div class="mt-4 flex flex-wrap gap-2">
+                                                    <a href="https://maps.app.goo.gl/TspZtgmFRFRXnf5a7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> すすきの駅</a>
+                                                    <a href="https://maps.app.goo.gl/fa3iL1UpEnQXRpfH6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> ジンギスカン</a>
+                                                    <a href="https://maps.app.goo.gl/ENHZwVcf4ecQeb6X9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="soup" class="w-3 h-3"></i> スープカレー GARAKU</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day4" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/otaru.jpg" alt="Otaru Canal" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 04</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">OTARU</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">小樽運河散策と日本三大夜景</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【テーマ：ノスタルジックな時間・ロマンチックな天狗山】</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>昼の散策：</strong> スノーブーツを一旦脱いで、小樽の赤レンガ倉庫、ガラス工房、有名なスイーツ店（LeTAO、北菓楼）を訪ねましょう。</li>
+                                    <li><strong>夜の絶景：</strong> ロープウェイで<strong>天狗山</strong>に登り、函館、藻岩山と並ぶ「北海道三大夜景」を見下ろします。</li>
+                                    <li class="bg-[#FEF3C7] text-[#92400E] p-2 rounded text-xs border border-[#FDE68A]"><strong>⚠️ ガイドからのアドバイス：</strong> 大雪でJRが運休した場合は、「高速バス」で小樽へ向かうことをお勧めします。</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 交通アクセスの詳細を見る</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">ステップ1：札幌 → 小樽</p><ul class="list-disc list-inside text-sm space-y-1"><li>プランA（JR）：JR快速エアポート（約35〜45分）。</li><li>プランB（バス）：高速おたる号（約60分）。</li></ul></div>
+                                            <div><p class="font-bold text-ink mb-2">ステップ2：小樽駅 → 天狗山ロープウェイ</p><p class="text-sm">小樽駅前バスターミナル4番乗り場から、「9番 天狗山ロープウェイ線」に乗車します。</p></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="https://maps.app.goo.gl/CSkr64gDtEAuCGxs5" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="map" class="w-3 h-3"></i> Googleマップ：小樽駅</a>
+                                                <a href="https://tenguyama.ckk.chuo-bus.co.jp/" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 天狗山ロープウェイ公式サイト</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="day5" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container relative bg-gray-200">
+                            <img src="../img/trip/beer.jpg" alt="Sapporo Beer Museum" class="object-cover w-full h-full absolute top-0 left-0 slide-img-1">
+                            <img src="../img/trip/shikotsu.jpg" alt="Lake Shikotsu" class="object-cover w-full h-full absolute top-0 left-0 slide-img-2">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">DAY 05</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">FINALE</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">都市の美学と自然の秘境</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【テーマ：カスタマイズの旅・ショッピング満喫 vs 絶景温泉】</p>
+                                <div class="space-y-4">
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
+                                        <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="beer" class="w-4 h-4 text-accent"></i> オプションA：都会派（札幌市内）</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed"><strong>「札幌ビール博物館」</strong>へ。明治時代の赤レンガ建築の中で、開拓の歴史と限定ビールを味わいます。午後は<strong>「狸小路商店街」</strong>へ移動。北海道最大のドン・キホーテやドラッグストアがあり、全天候型のアーケードなので吹雪でも安心。最後のお土産探しに最適な場所です。</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-100 transition hover:border-gray-300">
+                                        <h4 class="font-bold text-ink mb-1 flex items-center gap-2"><i data-lucide="mountain-snow" class="w-4 h-4 text-accent"></i> オプションB：自然派（支笏湖）</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed mb-2">日本一の水質を連続で獲得し、「支笏湖ブルー」で知られる<strong>「支笏湖」</strong>を探訪。冬には幻想的な<strong>「氷濤まつり」</strong>が開催され、湖水を吹き付けて凍らせた氷柱群が青空や夜のライトアップの下で壮観です。</p>
+                                        <p class="text-xs text-gray-500 font-bold">♨️ ガイドおすすめ温泉：丸駒温泉（秘湯）、しこつ湖 鶴雅リゾートスパ 水の謌（ラグジュアリー）</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="transport-box mt-6">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 交通アクセスと大雪時の対応を見る</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">🚌 支笏湖への往復（オプションB）</p><ul class="list-decimal list-inside text-sm space-y-1"><li>JR札幌駅 → 千歳駅。</li><li>千歳駅西口4番乗り場から「支笏湖線」バスに乗車。</li></ul></div>
+                                            <div class="bg-red-50 p-3 rounded border border-red-100"><p class="font-bold text-red-800 text-xs mb-1 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> MOPOの冬の観光アドバイス</p><ul class="text-xs text-red-700 space-y-1"><li>バスの本数は非常に少ないです。</li><li>JR千歳線が運休の場合は、無理せず札幌市内に留まることをお勧めします。</li></ul></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="https://maps.app.goo.gl/p4co3bH2b3DKByWv6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="beer" class="w-3 h-3"></i> ビール博物館</a>
+                                                <a href="https://maps.app.goo.gl/ftofQT5u7WsLd397A" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="shopping-bag" class="w-3 h-3"></i> 狸小路</a>
+                                                <a href="https://maps.app.goo.gl/pxJaGbSo2qLNGmCW9" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="mountain" class="w-3 h-3"></i> 支笏湖</a>
+                                                <a href="https://maps.app.goo.gl/wYzHZoGsE4jpKGu1A" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="bus" class="w-3 h-3"></i> 千歳駅</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="last-day" class="warm-card p-0 scroll-mt-32">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="md:w-5/12 h-64 md:h-auto img-zoom-container">
+                            <img src="../img/trip/airpost.jpg" alt="New Chitose Airport" class="object-cover w-full h-full">
+                        </div>
+                        <div class="md:w-7/12 p-8 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="bg-ink text-white px-3 py-1 rounded-full text-xs font-bold tracking-widest">LAST DAY</span>
+                                    <span class="text-accent text-sm font-bold tracking-widest">DEPARTURE</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-ink mb-3 serif">最後の驚き、新千歳空港探検</h3>
+                                <p class="text-sm text-gray-500 mb-6 font-bold tracking-wider">【テーマ：完璧な締めくくり・大満足の帰路】</p>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4">すぐに出国手続きをしないでください！地元の人々は「新千歳空港は実は北海道で一番楽しいテーマパーク」だと言います。温泉、映画館、さらにはチョコレート工場までありますので、必ず<strong>3〜4時間</strong>余裕を持って到着してください。</p>
+                                <ul class="text-gray-600 text-sm space-y-3 leading-relaxed">
+                                    <li><strong>🍜 北海道ラーメン道場：</strong> 出発前に必ず食べるべき儀式。「一幻（濃厚海老スープ）」「白樺山荘（味噌）」などの名店が集結しています。</li>
+                                    <li><strong>🍫 ロイズ チョコレートワールド：</strong> 製造過程を見学し、空港限定の商品を購入できます。</li>
+                                    <li><strong>🎀 ハローキティ ハッピーフライト：</strong> カラフルで可愛いテーマエリア。お子様が最後に遊ぶのに最適です。</li>
+                                </ul>
+                            </div>
+                            <div class="transport-box mt-6">
+                                <div class="transport-header" onclick="toggleTransport(this)">
+                                    <span class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-ink"></i> 空港へのアクセスと注意点</span>
+                                    <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 transition-transform"></i>
+                                </div>
+                                <div class="transport-body">
+                                    <div class="transport-inner">
+                                        <div class="transport-content-pad space-y-4 text-gray-600">
+                                            <div><p class="font-bold text-ink mb-2">✈️ 新千歳空港 (CTS) へ向かう</p><ul class="list-disc list-inside text-sm space-y-2"><li>支笏湖から：直通バスに乗車。</li><li>千歳市内から：JRまたはタクシー。</li></ul></div>
+                                            <div class="bg-red-50 p-3 rounded border border-red-100"><p class="font-bold text-red-800 text-xs mb-1 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> 最後の注意点</p><ul class="text-xs text-red-700 space-y-1"><li>国際線と国内線のターミナル間は徒歩で10〜15分かかります。</li><li>大雪の予報がある場合は、前夜に空港周辺のホテルに宿泊することをお勧めします。</li></ul></div>
+                                            <div class="mt-4 flex flex-wrap gap-2">
+                                                <a href="https://maps.app.goo.gl/Zxu53BnxWuQG1cVt7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="plane" class="w-3 h-3"></i> 新千歳空港</a>
+                                                <a href="https://maps.app.goo.gl/3Qo3GXb8AGwehGxj6" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="utensils" class="w-3 h-3"></i> ラーメン道場</a>
+                                                <a href="https://maps.app.goo.gl/VEvvkuT5JGDJ5owG7" target="_blank" class="inline-flex items-center gap-1 text-ink font-bold hover:underline text-xs bg-gray-100 px-3 py-2 rounded-full border border-gray-200"><i data-lucide="gift" class="w-3 h-3"></i> ロイズ</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="hotels" class="scroll-mt-32 w-full max-w-full overflow-hidden relative group/section">
+                    <div class="mb-6 flex flex-wrap items-end justify-between gap-2 px-1">
+                        <div>
+                            <h2 class="text-3xl font-bold text-ink serif flex items-center gap-3 mb-2">
+                                <i data-lucide="bed-double" class="w-6 h-6 text-gold"></i> 厳選宿泊施設のご案内
+                            </h2>
+                            <p class="text-sm text-gray-500">MOPOのホテル選びのポイント：毎日スキー用具を持って地下鉄に乗り換える体力の消耗を避けるため、<strong>「札幌駅周辺」</strong>を強くお勧めします。</p>
+                        </div>
+                        <div class="hidden md:flex text-xs text-gray-400 gap-1 items-center whitespace-nowrap">
+                            <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i> ドラッグまたはボタンでスクロール
+                        </div>
+                    </div>
+
+                    <div class="relative w-full">
+                        <button onclick="scrollHotels(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="left: 0;"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+                        <button onclick="scrollHotels(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/90 shadow-md p-2 rounded-full text-ink hover:bg-accent hover:text-white transition-opacity opacity-0 md:group-hover/section:opacity-100 hidden md:block" style="right: 0;"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+
+                        <div id="hotelContainer" class="flex overflow-x-auto pb-8 gap-4 md:gap-6 cursor-grab select-none no-scrollbar snap-x snap-mandatory w-full px-1" style="scroll-behavior: smooth;">
+                            
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/42890/-1/c543e44a172184145ed4eaf372e6155c.jpg?ca=20&ce=1&s=1024x" alt="Keio Plaza" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">空港バス直結</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.keioplaza-sapporo.co.jp/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">京王プラザホテル札幌 <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> JR札幌駅西口から徒歩5分</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPOのコメント：</strong>お子様連れやご年配の方に最適！玄関前が<strong>空港バス乗り場</strong>なので、雪道で荷物を引きずる必要が全くありません。部屋は札幌市内では非常に広く、大きなスキーバッグを2つ広げても問題ありません。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">老舗5つ星</span><span class="text-sm text-accent font-bold">13,000 JPY〜</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/22001968/-1/e0052c177e3c690c4c463df2a3893dd3.jpg?ce=0&s=1024x" alt="Granbell" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-accent text-white text-[10px] px-2 py-1 rounded-full">天空露天風呂</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.granbellhotel.jp/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">札幌グランベルホテル <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 駅から徒歩8分</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPOのコメント：</strong>スキーの後は絶対に温泉！ここは<strong>「天空露天風呂」</strong>が売りで、頭に細雪が舞い落ちる中での入浴は北海道ならではのロマンチックな体験です。内装はお洒落なインダストリアル風で、若い方に人気です。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">デザイナーズホテル</span><span class="text-sm text-accent font-bold">13,000 JPY〜</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/635648418.jpg?k=b54f3ae99a16ab43bf666d0fb42dbeb83f4fdd612c627bb2e047fc421414b69b&o=&s=1024x" alt="Emion" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-gold text-white text-[10px] px-2 py-1 rounded-full">地下直結</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.hotel-emion.jp/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">ホテルエミオン札幌 <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 地下通路直結（北口）</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPOのコメント：</strong>冬の命綱！地下の連絡通路で札幌駅まで直結しているので、<strong>外が吹雪でも関係ありません</strong>。施設は新しく、朝食は最近の札幌でトップ3に入るほど評価が高く、非常に洗練されています。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">口コミ高評価</span><span class="text-sm text-accent font-bold">15,000 JPY〜〜</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/7458736/0/3f45b87ad55af8bdd8ccb7f1739d1653.jpg?ce=0&s=1024x" alt="Nikko" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-ink text-white text-[10px] px-2 py-1 rounded-full">駅の真上</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.jrhotels.co.jp/tower/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">JRタワーホテル日航札幌 <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 札幌駅南口直結</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPOのコメント：</strong>予算が許せば、迷わずここへ！<strong>JR札幌駅の真上</strong>に位置し、エレベーターで降りればすぐに駅です。高層階からの夜景は最高で、自分へのご褒美やパートナーとの滞在に最適です。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">ラグジュアリーなランドマーク</span><span class="text-sm text-accent font-bold">27,000 JPY〜</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/hotelImages/23070878/0/1b59c8564f09a50b6c4dd2497f294830.jpg?ce=2&s=1024x" alt="Solaria" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-red-800 text-white text-[10px] px-2 py-1 rounded-full">神レベルの朝食</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://nnr-h.com/solaria/sapporo/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">ソラリア西鉄ホテル札幌 <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 駅から徒歩5分</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPOのコメント：</strong><strong>「海鮮丼食べ放題」</strong>の朝食のために泊まる価値が絶対にあります！大浴場は非常に質感が高く、道庁や大通公園にも近いため、近年満足度が非常に高いブティックホテルです。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">洗練されたビジネスホテル</span><span class="text-sm text-accent font-bold">18,000 JPY〜</span></div>
+                                </div>
+                            </div>
+
+                            <div class="flex-none w-[280px] md:w-[320px] snap-center warm-card">
+                                <div class="h-48 img-zoom-container relative">
+                                    <img src="https://pix8.agoda.net/property/34467000/0/dbbfd6e3139d0c4cab097eda46d9ccc6.jpeg?ce=2&s=1024xe" alt="Mitsui" class="object-cover w-full h-full pointer-events-none">
+                                    <div class="absolute top-3 left-3 bg-gray-600 text-white text-[10px] px-2 py-1 rounded-full">質感重視</div>
+                                </div>
+                                <div class="p-6">
+                                    <h4 class="font-bold text-ink mb-1 truncate"><a href="https://www.gardenhotels.co.jp/sapporo-west/" target="_blank" class="hover:text-accent transition-colors flex items-center gap-1">三井ガーデンホテル札幌ウエスト <i data-lucide="external-link" class="w-3 h-3 text-gray-400"></i></a></h4>
+                                    <p class="text-xs text-gray-400 mb-3 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> 駅から徒歩4分（西口）</p>
+                                    <div class="text-sm text-gray-600 mb-3 leading-relaxed"><strong>MOPOのコメント：</strong>三井系列ならではの品質保証！<strong>洗練されたモダンな路線</strong>で、大浴場は快適で広く、朝食では北海道の地元食材を楽しむことができます。宿泊の質を追求する上でコストパフォーマンスの高い選択肢です。</div>
+                                    <div class="flex items-center justify-between mt-4 border-t border-gray-100 pt-3"><span class="text-xs text-gray-400">ハイクラスビジネス</span><span class="text-sm text-accent font-bold">13,000 JPY〜</span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                    <script>
+                        const slider = document.getElementById('hotelContainer');
+                        let isDown = false, startX, scrollLeft;
+                        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('grabbing'); slider.style.scrollBehavior = 'auto'; startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+                        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+                        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('grabbing'); slider.style.scrollBehavior = 'smooth'; });
+                        slider.addEventListener('mousemove', (e) => { if (!isDown) return; e.preventDefault(); const x = e.pageX - slider.offsetLeft; const walk = (x - startX) * 2; slider.scrollLeft = scrollLeft - walk; });
+                        function scrollHotels(dir) { const c = document.getElementById('hotelContainer'); c.scrollBy({ left: dir * c.clientWidth * 0.8, behavior: 'smooth' }); }
+                    </script>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <section class="sitemap">
+    <div class="container">
+      <div class="cols">
+        <div><h4>最新情報</h4><ul><li><a href="../ja_news.html">最新情報</a></li><li><a href="../ja_mopo.html">MOPOについて</a></li></ul></div>
+        <div><h4>レッスン</h4><ul><li><a href="../ja_index.html#pricing">レッスンプラン</a></li><li><a href="../ja_teine.html">札幌テイネ</a></li><li><a href="../ja_onze.html">小樽ONZE</a></li><li><a href="../ja_kokusai.html">札幌国際</a></li></ul></div>
+        <div><h4>特集記事</h4><ul><li><a href="../ja_safe.html">安全知識</a></li><li><a href="../ja_trip.html">観光トピック</a></li></ul></div>
+        <div><h4>情報</h4><ul><li><a href="../ja_legal_tokusho.html">会社概要</a></li><li><a href="../ja_notice.html">申込案内</a></li><li><a href="../ja_faq.html">よくあるご質問</a></li><li><a href="../ja_index.html#contact">お問い合わせ</a></li></ul></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px"><div>© <span id="year"></span> MOPO Ski School</div></div>
+    </div>
+  </section>
+</footer>
+
+<script src="../common.js?v=20260713"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('article[id]');
+    const navLinks = document.querySelectorAll('.s-toc a');
+    let current = '';
+    sections.forEach(section => { const sectionTop = section.offsetTop; if (window.scrollY >= sectionTop - 150) current = section.getAttribute('id'); });
+    navLinks.forEach(link => { link.classList.remove('is-active'); if (link.getAttribute('href') === '#' + current) link.classList.add('is-active'); });
+  });
+  function toggleTransport(header) {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('.lucide-chevron-down');
+    if (body.classList.contains('open')) { body.classList.remove('open'); icon.style.transform = 'rotate(0deg)'; } else { body.classList.add('open'); icon.style.transform = 'rotate(180deg)'; }
+  }
+</script>
+</body>
+</html>

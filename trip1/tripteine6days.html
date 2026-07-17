@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17610938726');
+  </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>觀光主題｜MOPO Ski School</title>
@@ -18,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../common.css?v=20260713">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -203,9 +211,8 @@
         <div class="mobdrop" id="mobLangDrop">
             <button class="mobLangBtn" id="mobLangBtn">語言</button>
             <div class="mobpanel" id="mobLangPanel">
-                <a href="#" class="active">繁體中文</a>
-                <a href="https://www.moposki.com/trip1/tripteine6days.html" class="active">日本語</a>
-                <a href="../trip1/en_tripteine6days.html">English</a>
+                <a href="#" aria-current="true">繁體中文</a>
+                <a href="en_tripteine6days.html">English</a>
             </div>
         </div>
         <div class="mobdrop" id="mobNavDrop">
@@ -219,7 +226,7 @@
                 <a href="../onze.html">小樽ONZE</a>
                 <a href="../kokusai.html">札幌國際</a>
                 <div class="mob-subtitle">主題文章</div>
-                <a href="../safe.html">安全知識</a>
+                <a href="../safe.html">專欄文章</a>
                 <a href="../trip.html" aria-current="page" class="active">觀光主題</a>
                 <div class="mob-subtitle">資訊</div>
                 <a href="../faq.html">常見問題</a>
@@ -763,9 +770,8 @@
   </section>
 </footer>
 
-<script src="../common.js"></script>
+<script src="../common.js?v=20260713"></script>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
   document.addEventListener("DOMContentLoaded", () => { lucide.createIcons(); });
   
   // 飯店左右滑動
