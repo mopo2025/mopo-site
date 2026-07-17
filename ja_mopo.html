@@ -1,26 +1,43 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MOPO について｜MOPO Ski School（日本語）</title>
-<meta name="description" content="写真フルブリード 6:4 × テキスト。PCは画像高さ800px固定。スクロールで行単位のスローアニメ（入／出）。">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MOPO Ski School｜MOPO スキースクール</title>
+  <meta name="description" content="MOPO スキースクール｜札幌近郊のスキー＆スノーボードレッスン。多言語対応で、安全に楽しく学べます。">
 
-<link rel="canonical" href="https://moposki.com/jp_mopo.html">
-<meta property="og:title" content="MOPO について｜MOPO Ski School（日本語）">
-<meta property="og:description" content="写真フルブリード 6:4 × テキスト。PCは画像高さ800px固定。">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MOPO Ski School">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.moposki.com/ja_mopoindex.html" />
 
-<!-- Fonts（與首頁一致） -->
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="alternate" href="https://www.moposki.com/" hreflang="zh-Hant" />
+  <link rel="alternate" href="https://www.moposki.com/ja_mopoindex.html" hreflang="ja" />
+  <link rel="alternate" href="https://www.moposki.com/en_mopoindex.html" hreflang="en" />
+  <link rel="alternate" href="https://www.moposki.com/" hreflang="x-default" />
 
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
-<style>
+  <meta property="og:title" content="MOPO Ski School｜MOPO スキースクール">
+  <meta property="og:description" content="北海道スキースクール｜多言語インストラクターと学ぶ、安全で楽しいカスタムレッスン。">
+  <meta property="og:url" content="https://www.moposki.com/ja_mopoindex.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MOPO Ski School">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://www.moposki.com/logo/statement.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MOPO Ski School｜MOPO スキースクール">
+  <meta name="twitter:description" content="北海道スキースクール｜一人ひとりに合わせたレッスン、多言語対応で安心して学べます">
+  <meta name="twitter:image" content="https://www.moposki.com/logo/statement.jpg">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/img/iconw.png" type="image/png">
+<link rel="shortcut icon" href="/img/iconw.png" type="image/png">
+
+<link rel="apple-touch-icon" href="/img/iconw.png">
+  <style>
 /* ===== 全域字體設定（與首頁一致） ===== */
 body {
   font-family:"Noto Sans JP","Montserrat",system-ui,Arial,sans-serif;
@@ -29,65 +46,47 @@ body {
 }
 
 :root{
-  --bg-top:#E7E9EA; --bg-bottom:#9B9793;
-  --ink:#0E1A24; --ink-soft:#3E4A57; --midnight:#0D1B2A;
-  --gold:#C8A45D; --gold-2:#E4CFA3;
-  --shadow:0 18px 50px rgba(13,27,42,.10);
-  --container-pad:22px;
-  --line-dur:1.2s; --line-gap:0.35s;
-}
+  --bg-top:#E7E9EA;
+  --bg-mid:#FFFFFF;
+  --bg-bottom:#9B9793;
 
-/* ===== Base ===== */
+  --midnight:#0D1B2A;
+  --gold:#C8A45D; --gold-2:#E4CFA3;
+  --ink:#0E1A24; --ink-soft:#3E4A57;
+  --green-dark:#1A4D2E; /* 墨綠色 */
+
+  --shadow:0 18px 50px rgba(13,27,42,.10);
+  --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
+
+  --slide:0; --fade:0; --gray:0;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0; background:var(--bg-top); color:var(--ink);
-  font-family:"Noto Serif JP","Yu Mincho","Hiragino Mincho ProN","Noto Serif TC","Songti TC",serif;
-  font-weight:600; line-height:2.1; font-size:15.5px;
-}
+body{margin:0; font:16px/1.7 "Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif; color:var(--ink); background:var(--bg-top)}
 a{color:inherit; text-decoration:none}
-.container{max-width:1200px; margin:0 auto; padding:0 var(--container-pad)}
+.container{max-width:1200px; margin:0 auto; padding:0 22px}
 html, body { overflow-x: hidden; }
+.hero, .news { position: relative; contain: layout paint; }
 
-/* ===== Topbar（與首頁一致） ===== */
+/* ===== Topbar ===== */
 .topbar{
-  position:fixed; left:0; right:0; top:0; z-index:2000;
+  position:fixed; left:0; right:0; top:0;
+  z-index:2000;
   background:rgba(255,255,255,.24);
   backdrop-filter:saturate(1.28) blur(18px);
   border-bottom:1px solid rgba(200,164,93,.24);
-  transition:all .25s ease;
-  font-family:"Noto Sans JP","Montserrat",system-ui,Arial,sans-serif;
-}
-/* ===== 導覽選單字體樣式（與首頁一致） ===== */
-.nav a {
-  font-family: "Montserrat","Noto Sans JP",sans-serif;
-  font-weight: 700;      /* 導覽項目粗體 */
-  font-size: 15px;
-  letter-spacing: .08em;
-  text-decoration: none;
-  color: inherit;
-}
-.brand a {
-  font-weight: 800; /* MOPO Ski School Logo 粗體更明顯 */
-  font-family: "Montserrat","Noto Sans JP",sans-serif;
+  transition:all .25s ease
 }
 .topbar.scrolled{ background:rgba(255,255,255,.45) }
 .topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
 
 .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
 .brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
-/* 與首頁一致的粗體設定 */
-.brand .logo{
-  font-family: "Montserrat","Noto Sans JP",sans-serif;
-  font-weight: 800;   /* 首頁用 800 */
-  font-size: 18px;    /* 與首頁一致 */
-  letter-spacing: .10em;
-}
-.brand .sub{
-  font-weight: 700;   /* 首頁是 700 */
-  letter-spacing: .06em;
-}
+@media (max-width:760px){ .brand{padding-left:14px} }
+.brand .logo{font-weight:800; font-size:18px}
+.brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
 
+/* デスクトップナビ */
 .menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
 .menu>li{list-style:none; position:relative}
 .menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:700; color:var(--midnight); position:relative}
@@ -95,266 +94,740 @@ html, body { overflow-x: hidden; }
 .menu>li:hover>a::after{transform:scaleX(1)}
 .topbar.scrolled .menu>li>a{color:#8C723E}
 
-.has-dropdown{position:relative}
-.has-dropdown>a{cursor:default}
-.has-dropdown>a .caret{font-size:.9em;margin-left:4px}
+/* ▼ 追加：デスクトップ下拉メニュー */
+.has-dropdown{ position:relative; }
+.has-dropdown > a{ cursor: default; }
+.has-dropdown > a .caret{ font-size:.9em; margin-left:4px; }
 .submenu{
   display:none; position:absolute; top:calc(100% + 2px); left:0; min-width:220px;
   background:#fff; border:1px solid #eee; border-radius:12px; box-shadow:var(--shadow); padding:6px 0; z-index:2100;
 }
-.has-dropdown:hover .submenu,.has-dropdown:focus-within .submenu{display:block}
-.submenu li{list-style:none}
-.submenu a{display:block; padding:10px 14px; font-size:14px; color:#222}
-.submenu a:hover{background:rgba(200,164,93,.1)}
-.group-title{padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999}
+.has-dropdown:hover .submenu, .has-dropdown:focus-within .submenu{ display:block; }
+.submenu li{ list-style:none; }
+.submenu a{ display:block; padding:10px 14px; font-size:14px; color:#222; }
+.submenu a:hover{ background:rgba(200,164,93,.1); }
+.group-title{ padding:8px 14px 6px; font-weight:700; font-size:12px; color:#999; cursor:default; }
+.has-dropdown::after{ content:""; position:absolute; left:0; right:0; top:100%; height:12px; }
 
-.lang select{
-  appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a;
-  font-family:"Noto Sans JP","Montserrat",sans-serif;
-}
+/* 言語（デスクトップ） */
+.lang select{appearance:none; padding:9px 12px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; font-size:14px; color:#2b3b4a}
 
-/* 手機工具列（與首頁一致） */
-.mobtools{display:none; align-items:center; gap:10px; font-family:"Noto Sans JP","Montserrat",sans-serif}
+/* モバイルツール */
+.mobtools{display:none; align-items:center; gap:10px}
 .iconbtn{width:38px; height:38px; border-radius:12px; border:1px solid #e6e6e6; background:#fff; display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
 .mobdrop{position:relative}
-.mobpanel{
-  position:absolute; top:calc(100% + 8px); right:12px;
-  width:min(92vw,320px); max-width:92vw;
-  background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow);
-  padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top right; pointer-events:none;
-  transition:opacity .18s ease, transform .18s ease; z-index:610;
-}
+.mobpanel{position:absolute; left:0; top:calc(100% + 8px); min-width:280px; background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); padding:6px 0; opacity:0; transform:scale(.98); transform-origin:top left; pointer-events:none; transition:opacity .18s ease, transform .18s ease; z-index:610}
 .mobpanel.show{opacity:1; transform:scale(1); pointer-events:auto}
-.mobpanel a,.mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
-.mob-subtitle{ padding:8px 14px 6px; font-size:12px; font-weight:800; color:#777; letter-spacing:.02em; cursor:default }
+.mobpanel a, .mobpanel button{display:block; width:100%; text-align:left; padding:12px 14px; background:#fff; border:0; cursor:pointer}
+.mobLangBtn{padding:0 10px; height:38px; display:inline-flex; align-items:center; gap:6px; border:1px solid #e6e6e6; background:#fff; border-radius:12px; font-size:12px; font-weight:800; color:#333}
 
-/* ===== ABOUT Rows（內容區—不變） ===== */
-main{ padding-top:64px }
-.section{ padding:0 }
-.about-row{ position:relative; }
-.row-inner{
-  width:100vw; margin-left:50%; transform:translateX(-50%);
-  display:grid; grid-template-columns:6fr 4fr; align-items:stretch;
-}
-.visual{ position:relative; }
-.visual picture,.visual img{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; object-position:center;
-  transform:translateY(16px); opacity:0;
-  transition:transform 1s cubic-bezier(.2,.6,.2,1), opacity .8s ease;
-}
-.about-row.in .visual picture,
-.about-row.in .visual img{ transform:translateY(0); opacity:1 }
-
-/* 桌機：文字欄垂直置中 */
-@media (min-width:761px){
-  .visual{ height:800px; }
-  .textside{ display:flex; align-items:center; }
-  .textbox{ width:100%; max-width:560px; margin:0 auto; padding:0; }
-  .about-row + .about-row{ margin-top:0 }
-}
-/* 左右配置（預設 6:4） */
-.about-row.left  .row-inner > .visual{ grid-column:1 }
-.about-row.left  .row-inner > .textside{ grid-column:2 }
-.about-row.right .row-inner{ grid-template-columns:4fr 6fr }
-.about-row.right .row-inner > .textside{ grid-column:1 }
-.about-row.right .row-inner > .visual{ grid-column:2 }
-
-/* 価値：5:5 置中（你之前的需求） */
-.about-row.values .row-inner{ grid-template-columns:1fr 1fr; }
-.about-row.values .textbox{ text-align:center; }
-.about-row.values .inline-lines{ align-items:center; }
-
-/* 文字：一句一列 + 逐行淡入 */
-.textbox{ background:transparent; border:none; box-shadow:none; }
-.textbox h2{ margin:0 0 8px 0; font-size:18.5px; letter-spacing:.06em; font-weight:700; color:#111; }
-.textbox .line{
-  display:block; width:100%; margin-bottom:.6em;
-  opacity:0; transform:translateY(14px);
-  transition:opacity var(--line-dur) ease, transform var(--line-dur) ease;
-  transition-delay: calc(var(--i, 0) * var(--line-gap));
-}
-.textbox.in .line{ opacity:1; transform:none }
-.inline-lines{ display:flex; flex-wrap:wrap; gap:10px 14px; align-items:flex-start; }
-
-/* 信念：桌機滿版背景＋白字 */
-@media (min-width:761px){
-  .belief .row-inner{ position:relative; display:block; }
-  .belief .visual{ position:relative; height:100vh; }
-  .belief .visual::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.55) 100%);
-    pointer-events:none;
-  }
-  .belief .textside{
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .belief .textbox{
-    max-width:820px; text-align:center; color:#fff;
-    text-shadow:0 1px 10px rgba(0,0,0,.35);
-  }
-  .belief .textbox h2{ color:#fff; }
-  .belief .inline-lines{ display:flex; flex-direction:column; gap:10px; align-items:center; }
+/* モバイル小見出し */
+.mob-subtitle{
+  padding:8px 14px 6px;
+  font-size:12px;
+  font-weight:800;
+  color:#777;
+  letter-spacing:.02em;
+  cursor:default;
 }
 
-/* ===== Footer（與首頁一致） ===== */
-.footer{ background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25);
-  font-family:"Noto Sans JP","Montserrat","Helvetica Neue",Arial,sans-serif; }
+/* モバイル用オーバーレイ */
+#mobOverlay{position:fixed; inset:0; background:rgba(0,0,0,.25); opacity:0; pointer-events:none; visibility:hidden; transition:opacity .18s ease; z-index:590}
+#mobOverlay.show{opacity:1; pointer-events:auto; visibility:visible; backdrop-filter:blur(2px)}
+@supports (-webkit-backdrop-filter: blur(0)){ #mobOverlay.show{ -webkit-backdrop-filter: blur(2px); } }
+#mobOverlay[hidden]{display:none !important; visibility:hidden !important;}
+#mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
+#mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
+
+/* ===== Hero ===== */
+.hero{position:relative; min-height:86vh; display:grid; align-items:center; overflow:hidden; background:var(--bg-mid)}
+.hero__bg{position:absolute; inset:0; transition:filter .25s linear, opacity .25s linear}
+.hero__bg .slide{position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity .8s ease}
+.hero__bg .slide.active{opacity:1}
+.hero__bg .slide:nth-child(1){background-image:url('panel1.jpg')}
+.hero__bg .slide:nth-child(2){background-image:url('panel2.jpg')}
+.hero__bg .slide:nth-child(3){background-image:url('panel3.jpg')}
+.hero .container{position:relative; z-index:2}
+.hero__wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; align-items:center}
+.hero .content{padding-top:10vh; transform:translateX(calc(-60vw * var(--slide))); opacity:calc(1 - var(--fade)); transition:transform .05s linear, opacity .05s linear}
+.hero__bg{filter:grayscale(var(--gray)); opacity:calc(1 - 0.15 * var(--fade))}
+h1{margin:0 0 4px 0}
+.logoLine{display:inline-flex; align-items:flex-end; gap:10px; position:relative}
+.logoLine .main{font-family:"Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif; font-size:clamp(34px,6.2vw,64px); line-height:1.05; color:#111}
+.logoLine .sub{font-size:.58em; font-weight:800; letter-spacing:.08em; color:#111}
+.logoLine::after{content:""; position:absolute; left:0; right:0; bottom:-8px; height:2px; background:linear-gradient(90deg, var(--gold), var(--gold-2)); border-radius:999px}
+.subtitle{margin:10px 0 16px; font-size:16px; color:#000}
+.txt-hide-mob { display: inline; }
+@media (max-width: 760px) { .txt-hide-mob { display: none; } }
+
+.btn{position:relative; isolation:isolate; display:inline-block; padding:10px 14px; border-radius:999px; border:1px solid var(--gold); background:#fff; color:var(--midnight); font-weight:800; letter-spacing:.02em; overflow:hidden; transition:transform .18s ease, color .25s ease, border-color .25s ease}
+.btn::before{content:""; position:absolute; inset:2px; border-radius:inherit; background:rgba(200,164,93,.0); transform:scale(.1); opacity:0; transition:transform .38s ease, opacity .38s ease, background .38s ease}
+.btn:hover::before{ transform:scale(1); opacity:1; background:rgba(200,164,93,.22) }
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:none; box-shadow:var(--focus)}
+.hero-dots{position:absolute; left:50%; bottom:18px; transform:translateX(-50%); display:flex; gap:8px; z-index:3}
+.hero-dots button{width:46px; height:6px; border-radius:999px; border:0; background:rgba(0,0,0,.25); cursor:pointer}
+.hero-dots button.active{background:rgba(0,0,0,.65)}
+
+/* ===== 最新情報 (滑動卡片樣式 - 自動+拖曳) ===== */
+.news { --gap:12px; --size:140px; --visible:3; margin-top:16px; display:flex; justify-content:flex-start; }
+
+.news-viewport {
+    /* 啟用原生橫向捲動 */
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: calc(var(--size) * var(--visible) + var(--gap) * (var(--visible) - 1));
+    max-width: 100%;
+
+    /* 隱藏捲軸但保留功能 */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+
+    /* 啟用 Scroll Snap (一格一格吸附) */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    /* 滑鼠游標提示 */
+    cursor: grab;
+
+    /* 防止選取文字，讓拖曳更順暢 */
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 隱藏 Webkit 瀏覽器的捲軸 */
+.news-viewport::-webkit-scrollbar { display: none; }
+
+.news-viewport.active {
+    cursor: grabbing;
+    scroll-snap-type: none; /* 拖曳時暫時關閉吸附 */
+    scroll-behavior: auto; /* 拖曳時關閉平滑捲動 */
+}
+
+.news-row {
+    display: flex;
+    gap: var(--gap);
+    padding-bottom: 4px;
+    width: max-content;
+}
+
+.news-card {
+    flex: 0 0 auto;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start; /* 設定吸附點 */
+}
+
+.news-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1);
+    transition: transform .35s ease, filter .15s linear;
+    filter: grayscale(var(--gray));
+    pointer-events: none;
+}
+
+.news-card:hover img { transform:scale(1.08); }
+
+@media (max-width:760px) {
+  .news { --size:100px; --visible:2; justify-content:flex-start; }
+}
+
+/* ===== セクション ===== */
+.section{padding:84px 0}
+#about-mopo.section{background:var(--bg-mid)}
+#pricing.section{background:var(--bg-top)}
+#contact.section{background:var(--bg-mid)}
+.section__head h2{margin:0 0 8px; font-size:26px; letter-spacing:.02em; color:#111; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
+.muted{color:var(--ink-soft); font-size:14px}
+
+/* モバイル用セクションパディング調整（64px -> 40px） */
+@media (max-width:760px) {
+  .section { padding:40px 0; }
+}
+
+/* reveal */
+.reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
+.reveal.in{opacity:1; transform:none}
+
+.lines .line span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.lines .line:nth-child(1) span { animation-delay: 0.2s; }
+.lines .line:nth-child(2) span { animation-delay: 0.6s; }
+.lines .line:nth-child(3) span { animation-delay: 1s; }
+.lines .line:nth-child(4) span { animation-delay: 1.4s; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: none; }
+}
+
+
+/* ===== 料金 (デザイナー級レイアウト - Grid) ===== */
+.pricelist{display:grid; grid-template-columns:1fr; gap:14px}
+.pricecard{background:#fff; border:1px solid #eee; border-radius:14px; box-shadow:var(--shadow); overflow:hidden}
+
+/* summary スタイル */
+.pricecard summary{
+  list-style:none; cursor:pointer;
+  display:flex; flex-direction: column; gap:12px;
+  padding:24px; position:relative;
+}
+.pricecard summary::-webkit-details-marker{display:none}
+
+.pricecard .head{display:flex; flex-direction:column; gap:6px; z-index: 2; position:relative;}
+.pricecard .title{font-size:20px; font-weight:800; color: var(--ink); letter-spacing: 0.02em;}
+.pricecard .desc{color:#516170; font-size:14px; line-height:1.6;}
+
+/* モバイル用サムネイル・説明ロジック */
+.mobile-desc { display: none; }
+.mobile-thumb {
+    display: none; /* デスクトップでは非表示 */
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    order: -1;
+}
+
+/* 料金表示エリア Grid */
+.fromrow {
+    display:grid;
+    grid-template-columns: 1fr auto 1fr; /* 左-中-右 */
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #f2f2f2;
+}
+
+/* 料金タグデザイン */
+.price-tag-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+}
+.price-tag-group.left { align-items: flex-start; }
+.price-tag-group.right { align-items: flex-end; }
+
+.pt-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+}
+.pt-price {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #8B6B2E;
+    letter-spacing: -0.02em;
+}
+.pt-price small {
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 3px;
+    color: #b09560;
+    text-transform: uppercase;
+}
+
+.price-divider {
+    width: 1px;
+    height: 28px;
+    background-color: #e6e6e6;
+}
+
+/* 展開ヒント */
+.expand-hint {
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    color: #bfa15f;
+    padding: 8px 0 0 0;
+    font-weight: 600;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.expand-hint:hover { color: #8B6B2E; }
+
+/* 要約ボタン */
+.summary-btns {
+    display:flex; gap:10px; margin-top: 8px; z-index: 5; position: relative; width: 100%;
+}
+.summary-btns .btn-sm {
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 99px;
+    background: #fff;
+    border: 1px solid var(--gold);
+    color: var(--midnight);
+    font-weight: 700;
+    flex: 1;
+    text-align: center;
+    transition: all 0.2s;
+}
+.summary-btns .btn-sm:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+/* 状態切り替えロジック */
+.pricecard[open] .summary-btns { display: none; }
+.pricecard[open] .expand-hint { display: none; }
+.pricecard[open] .mobile-thumb { display: none; }
+.pricecard[open] .desc { display: block; }
+
+/* 料金テーブルエリア */
+.pricetable {
+  padding: 0 14px 14px 14px;
+  border-top: 1px dashed #eee;
+  display: grid;
+  gap: 16px;
+}
+
+/* シーズン切り替えタブ */
+.local-tabs {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: #555;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+  min-width: fit-content;
+}
+.tab-btn:hover { background: #eee; }
+.tab-btn.active {
+  background: var(--midnight);
+  color: #fff;
+  border-color: var(--midnight);
+}
+
+/* コースタイプ見出し */
+.course-type-block {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+}
+.course-type-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-dark);
+  background-color: rgba(26, 77, 46, 0.08);
+  padding: 6px 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* シーズン表示ロジック (Improved Animation) */
+.season {
+  display: none;
+  border:1px dashed #e5e1da; border-radius:10px; padding:10px;
+}
+.season.active {
+  display: block;
+  animation: quickFade 0.15s ease-out;
+}
+
+@keyframes quickFade {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+.table{width:100%; border-collapse:separate; border-spacing:0 .35rem; margin-top:.3rem}
+.table thead th{font-weight:600; font-size:12px; color:#6f757c; text-align:left}
+.table td{padding:.35rem .25rem}
+.table .people{width:7rem; font-weight:700; font-size:16px}
+.table .price{font-weight:700; font-size:16px; color:#8B6B2E}
+.table .pp{font-size:12px; color:#7a7f85; font-weight:600}
+.note{margin-top:.4rem; font-size:12px; color:#6f757c}
+.note-row{display:flex; align-items:center; justify-content:space-between; gap:12px; grid-column: 1 / -1; margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee;}
+.note-row .btns{flex:0 0 auto; display:flex; gap:8px}
+.cta-row{display:none}
+
+.busy-dates {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: #666;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+}
+
+@media (max-width:760px){
+  .hero__wrap{grid-template-columns:1fr}
+  .pricetable{padding:8px 10px 12px 10px; display: flex; flex-direction: column;}
+  .mobile-thumb { display: block; }
+  .desktop-desc { display: none; }
+  .mobile-desc { display: inline; }
+  .table thead{display:none}
+  .table tbody{display:grid; gap:8px}
+  .table tr{display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 8px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:10px}
+  .table td{padding:0}
+  .table .people{font-size:15px}
+  .table .price{font-size:15px; justify-self:end}
+  .table .pp{grid-column:1/-1; justify-self:end; font-size:11px}
+  .note-row{display:block}
+  .note-row .btns{display:none}
+  .cta-row{display:flex; gap:8px; margin:8px 0 0}
+  .cta-row .btn{padding:8px 10px; flex: 1; text-align: center;}
+  .local-tabs { gap: 6px; }
+}
+
+/* ===== お問い合わせ ===== */
+.contact-grid{display:grid; grid-template-columns:1fr 320px; gap:24px}
+@media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
+.form{display:grid; gap:12px; max-width:500px}
+.form input, .form textarea{border:1px solid #e6e6e6; border-radius:12px; padding:10px 12px; font-size:16px; background:#fff}
+.form textarea{min-height:110px}
+
+/* SNS アイコン（デザイナー級） */
+.sns{display:flex; gap:16px; align-content:start; margin-top:8px; flex-wrap:wrap;}
+.sns a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width: 64px;
+    height: 64px;
+    background:#fff;
+    border:1px solid #e0e0e0;
+    border-radius:50%; /* 完全な円形 */
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.sns a:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-color: var(--gold);
+}
+.sns img{ width: 32px; height: 32px; display: block; }
+
+/* モバイル版 SNS はサイズ維持 */
+@media (max-width: 760px) {
+  .sns { gap: 12px; }
+  .sns a { width: 44px; height: 44px; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+  .sns img { width: 22px; height: 22px; }
+}
+
+
+/* ===== フッター ===== */
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
 .sitemap{padding:34px 0}
 .sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
-.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif JP",serif}
+.sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
 .sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
 .sitemap a{color:#ebebeb; font-size:13px}
 .sitemap a:hover{color:#fff}
 
-/* FAB（與首頁一致） */
+/* FAB */
 .fab{position:fixed; right:16px; bottom:16px; z-index:320}
-.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-family:"Noto Sans JP","Montserrat",sans-serif}
+.fab button{width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.86); border:1px solid rgba(0,0,0,.08); box-shadow:0 8px 20px rgba(0,0,0,.12), inset 0 0 0 1px rgba(255,255,255,.4); backdrop-filter:blur(6px); display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
 
-/* ======= 手機版（保留你之前的行為） ======= */
+/* モバイル：言語ボタンのみ表示 */
 @media (max-width:760px){
   .menu{display:none}
   .mobtools{display:flex}
   .lang{display:none}
-
-  section[aria-label="MOPO の紹介"]{
-    background:url('img/mopo4.jpeg') center/cover no-repeat;
-    position:relative;
+  .mobdrop{ position: relative; }
+  .mobpanel{
+    left: auto;
+    right: 0;
+    width: min(92vw, 320px);
+    max-width: 92vw;
+    transform-origin: top right;
   }
-  .visual{ display:none !important; }
-  .row-inner{ display:block; }
-
-  .textside{ position:relative; }
-  .textbox{
-    position:relative; z-index:1;
-    color:#fff; text-shadow:0 1px 10px rgba(0,0,0,.35);
-    max-width:92vw; margin:0 auto; padding:12vh 0 10vh;
-    text-align:center;
+  .mobpanel a, .mobpanel button{ white-space: nowrap; }
+}
+@media (max-width: 760px) {
+  .form button[type="submit"] {
+    max-width: 200px;
+    width: auto;
+    font-size: 16px;
+    color: #111;
+    background-color: var(--gold);
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    align-self: start;
   }
-  .textbox h2{ color:#fff; font-size:20px; margin-bottom:10px; }
-  .inline-lines{ display:flex; flex-direction:column; gap:8px; align-items:center; }
-  .inline-lines .line{ display:block; }
 }
 
-/* 動作最小化 */
-@media (prefers-reduced-motion:reduce){
-  .visual img,.textbox .line{ transition:none !important }
+/* ===== MOPOについて：背景＋逐行出現（更早觸發）、縮高度 16vh、平滑回彈 ===== */
+.about-hero{
+  --aboutPad: clamp(120px, 28vh, 260px);
+  position:relative;
+  padding: var(--aboutPad) 0;
+  background:transparent;
+  overflow:hidden;
+  transition: padding .5s ease-in-out; /* 加快過渡時間至 0.5s 以減少延遲感 */
+  will-change: padding;
+}
+.about-hero__bg{ position:absolute; inset:0; overflow:hidden; }
+.about-hero__bg picture,
+.about-hero__bg img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center;
+  filter:saturate(1.04) contrast(1.02);
+}
+.about-hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.30));
+  pointer-events:none;
+}
+/* 文字整體上移（更靠上） */
+.about-hero__content{
+  position:relative; z-index:1; display:grid; place-items:center; gap:18px; text-align:center;
+  transform: translateY(-8vh);  /* ↑ 往上推 */
+}
+.visually-hidden{ position:absolute !important; clip:rect(1px,1px,1px,1px); width:1px; height:1px; overflow:hidden; white-space:nowrap; }
+.lines{ display:grid; gap:10px; }
+
+/* 行樣式：更大字距、內文加粗 500、動畫 1.2s */
+.line{
+  opacity:0; transform:translateY(10px);
+  transition:opacity 1.2s ease, transform 1.2s ease;
+  font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",
+               "Noto Serif TC","Hiragino Mincho ProN","Songti TC",serif;
+  color:#111; text-shadow:0 1px 0 rgba(255,255,255,.35);
+  letter-spacing:.15em;  /* ↑ 0.15em */
+  word-spacing:.12em;
+  text-rendering:optimizeLegibility;
+}
+.line.big{
+  font-size:clamp(38px, 6.4vw, 72px);
+  font-weight:700;
+}
+.line.sub{
+  font-size:clamp(16px, 2.1vw, 20px);
+  color:#161616;
+  font-weight:500; /* 內文加粗 */
 }
 
-/* 統一：圖片/文字 50:50（需要時可用於任一段落） */
-.about-row .row-inner{ display:flex; align-items:stretch; }
-.about-row .visual{ flex:1 1 50%; }
-.about-row .textside{
-  flex:1 1 50%;
-  display:flex; justify-content:center; align-items:center; text-align:center;
+.about-hero.active .lines .line{ opacity:1; transform:none; }
+.about-hero .lines .line:nth-child(1){ transition-delay:0s; }
+.about-hero .lines .line:nth-child(2){ transition-delay:.3s; }
+.about-hero .lines .line:nth-child(3){ transition-delay:.6s; }
+.about-hero .lines .line:nth-child(4){ transition-delay:.9s; }
+
+/* 縮高度（16vh） */
+.about-hero.compact{ --aboutPad: clamp(80px, 16vh, 180px); }
+
+/* Hero 邊界淡化（移除黑白濾鏡） */
+.hero.dim .hero__bg{ filter:brightness(.96) blur(1px); transition:filter .35s ease; }
+.hero.dim .content{ opacity:.35; transition:opacity .35s ease; }
+
+/* 透明感按鈕 */
+.about-btn{
+  margin-top:12px;
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  border:1px solid rgba(200,164,93,.55);
+  background:rgba(255,255,255,.28);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  color:#111;
+  font-weight:800; letter-spacing:.02em;
+  transition:background .25s ease, border-color .25s ease, transform .15s ease;
 }
-.about-row .textbox .line{ display:block; margin:6px 0; }
-
-/* === 讓內容緊貼頂部選單下方（移除多餘空隙） === */
-main{ padding-top:0 !important; }
-.section{ padding-top:0; }               /* 你原本就是 0，這裡再保險一次 */
-.section:first-of-type{ margin-top:0; }  /* 避免意外的外距 */
-.about-row:first-child{ margin-top:0; }  /* 第一個區塊緊貼 */
-
-
-/* === 手機「語言」選單：黑色、同系字體、較細 === */
-#mobLangPanel { 
-  color: #000 !important; 
+.about-btn:hover{
+  background:rgba(255,255,255,.45);
+  border-color:var(--gold);
+  transform:translateY(-1px);
 }
-#mobLangPanel a,
-#mobLangPanel a:link,
-#mobLangPanel a:visited,
-#mobLangPanel a:hover,
-#mobLangPanel a:active,
-#mobLangPanel [role="menuitem"] {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important; /* iOS Safari 防藍字 */
-  font-family: "Montserrat","Noto Sans JP",system-ui,Arial,sans-serif !important;
-  font-weight: 500 !important;   /* 較細 */
-  font-size: 15px;
-  letter-spacing: .05em;
-  text-decoration: none !important;
+.about-btn:focus-visible{ outline:none; box-shadow:var(--focus); }
+
+/* 手機優化 */
+@media (max-width:760px){
+  .about-hero{ padding:120px 0; }
+  .about-hero__content{ transform: translateY(-5vh); } /* 手機略少上移，避免過高 */
+  .about-hero.compact{ --aboutPad: clamp(70px, 20vh, 150px); }
+  .line.sub{ font-size:15px; }
+  .about-btn{ padding:9px 14px; font-size:14px; }
+}
+
+.note-row small {
+  font-size: 14px; /* 或你要的大小，如16px */
+  color: #000000;  /* 黑色 */
+  display: block;  /* 確保它獨立一行顯示 */
+  margin-bottom: 4px; /* 可選，加點間距讓排版更舒服 */
+}
+
+/* ===== 為什麼選擇 MOPO (圖示置中 + 可愛風 + 修復版面) ===== */
+#why-mopo { background:var(--bg-mid); }
+#why-mopo .section__head { text-align: center; max-width: 800px; margin: 0 auto 32px; }
+#why-mopo .section__head h2 { font-size: 22px; }
+
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:10px; }
+
+/* 可愛雪花圖標樣式 */
+.snow-icon {
+  width: 32px; /* 稍微放大一點點 */
+  height: 32px;
+  color: var(--gold);
+  display: block;
+  margin: 0 auto 12px auto; /* 確保置中 */
+}
+
+/* 統一卡片樣式設定 */
+.why-item {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid var(--green-dark);
+  border-radius: 12px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 內容置中 */
+  text-align: center; /* 文字置中 */
+  min-width: 0; /* 防止 Grid 破版 */
+}
+
+.why-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(200,164,93,0.15);
+  border-color: var(--gold);
+  z-index: 2;
+}
+
+.why-item h3 {
+  font-size:18px;
+  font-weight:700;
+  color:var(--green-dark);
+  margin:0 0 12px 0;
+  line-height: 1.4;
+}
+.why-item p {
+  font-size:15px;
+  color:#555;
+  margin:0;
+  text-align: left; /* 內文保持靠左閱讀較舒適 */
+  line-height: 1.7;
+}
+
+/* 手機版樣式 */
+.why-mob { display:none; }
+.why-mob-list { display:flex; flex-direction:column; gap:16px; }
+.why-mob-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.why-mob-card:active { transform: scale(0.98); }
+
+.why-mob-card h4 {
+  font-size:16px;
+  font-weight:700;
+  color:var(--green-dark);
+  margin:0 0 8px 0;
+  line-height: 1.4;
+}
+.why-mob-card p {
+  font-size:14px;
+  color:#555;
+  margin:0;
+  text-align: left;
   line-height: 1.6;
 }
 
-/* === 手機「導航」選單：比原本 700 再細一些 === */
-#mobNavPanel {
-  color: #222 !important;
-}
-#mobNavPanel a,
-#mobNavPanel a:link,
-#mobNavPanel a:visited,
-#mobNavPanel a:hover,
-#mobNavPanel a:active,
-#mobNavPanel [role="menuitem"] {
-  color: #222 !important;
-  -webkit-text-fill-color: #222 !important;
-  font-family: "Montserrat","Noto Sans JP",system-ui,Arial,sans-serif !important;
-  font-weight: 600 !important;   /* 比 700 再薄一點 */
-  text-decoration: none !important;
-  line-height: 1.6;
+@media (max-width: 760px) {
+  .why-desk { display:none; }
+  .why-mob { display:block; }
+  .why-grid { grid-template-columns: 1fr; } /* 保險起見 */
 }
 
-/* === 強制語言選單的超連結變黑 === */
-#mobLangPanel a[href],
-#mobLangPanel a[href]:link,
-#mobLangPanel a[href]:visited,
-#mobLangPanel a[href]:hover,
-#mobLangPanel a[href]:active {
-  color: #000 !important;
-  -webkit-text-fill-color: #000 !important; /* iOS Safari 專用，防藍色 */
-  text-decoration: none !important;
-  font-family: "Montserrat","Noto Sans JP",system-ui,Arial,sans-serif !important;
-  font-weight: 500 !important;
-  font-size: 15px !important;
-  letter-spacing: .05em !important;
-  line-height: 1.6 !important;
+/* === 修改處：減少「為什麼選擇 MOPO」與「課程價格」之間的間距 (加強版) === */
+#why-mopo { padding-bottom: 30px; }
+#pricing { padding-top: 30px; }
+@media (max-width: 760px) {
+    /* 強制縮減手機版上下間距，使用 !important 確保覆蓋，稍微放寬避免過擠 */
+    #why-mopo { padding-bottom: 20px !important; }
+    #pricing { padding-top: 20px !important; }
 }
 
-
-/* === Footer 強制字重 === */
-.footer .sitemap h4 {
-  font-weight: 700 !important;   /* 標題維持粗體 */
-}
-.footer .sitemap a {
-  font-weight: 500 !important;   /* 連結比標題細，但不會太細 */
-}
+  /* ===== 頂欄高度全站統一（中日英一致，與 common.css 相同設定） ===== */
+  .topbar{ font-size:16px; line-height:1.7 }
+  .topbar .nav{ padding:12px 0 }
+  .topbar .menu>li>a{ padding-top:10px; padding-bottom:10px }
+  .topbar .brand .logo{ font-size:18px }
 </style>
 </head>
 <body>
 <header class="topbar" id="topbar">
   <div class="container nav">
     <div class="brand">
-      <a href="ja_mopoindex.html" class="logo" aria-label="トップへ戻る">MOPO Ski School</a>
-     
+      <a href="#home" class="logo" aria-label="トップへ戻る">MOPO Ski School</a>
+
     </div>
 
     <ul class="menu" role="menubar" aria-label="サイトナビゲーション">
       <li role="none"><a role="menuitem" href="ja_news.html">最新情報</a></li>
-      <li role="none"><a role="menuitem" href="ja_mopo.html" aria-current="page">MOPO について</a></li>
+      <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
 
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="レッスンのサブメニュー">
-          <li role="none"><a role="menuitem" href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+          <li role="none"><a role="menuitem" href="#pricing">レッスンプラン</a></li>
           <li class="group-title">スキー場紹介</li>
           <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
           <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
           <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
-        </ul>
+      </ul>
       </li>
 
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
-        <ul class="submenu" role="menu" aria-label="特集記事のサブメニュー">
+        <ul class="submenu" role="menu" aria-label="特集記事">
           <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
           <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
         </ul>
       </li>
 
       <li role="none"><a role="menuitem" href="ja_faq.html">よくあるご質問</a></li>
-      <li role="none"><a role="menuitem" href="booking.html" target="_blank" rel="noopener noreferrer">予約</a></li>
+      <li role="none"><a role="menuitem" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">予約</a></li>
     </ul>
 
     <div class="lang">
@@ -367,7 +840,7 @@ main{ padding-top:0 !important; }
 
     <div class="mobtools" aria-label="モバイルツール">
       <div class="mobdrop" id="mobLangDrop">
-        <button class="iconbtn" id="mobLangBtn" aria-label="言語">言語</button>
+        <button class="mobLangBtn" id="mobLangBtn" aria-label="言語">言語</button>
         <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="言語メニュー">
           <a role="menuitem" data-lang="zh-Hant" href="#">繁體中文</a>
           <a role="menuitem" data-lang="ja" href="#" aria-current="true">日本語</a>
@@ -381,118 +854,635 @@ main{ padding-top:0 !important; }
         </button>
         <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="モバイルナビ">
           <a href="ja_news.html" role="menuitem">最新情報</a>
-          <a href="ja_mopo.html" role="menuitem" aria-current="page">MOPO について</a>
+         <a href="ja_mopo.html" role="menuitem">MOPO について</a>
+
           <div class="mob-subtitle">レッスン</div>
-          <a href="ja_mopoindex.html#pricing" role="menuitem">レッスンプラン</a>
-          <div class="mob-subtitle">雪場紹介</div>
+          <a href="#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">スキー場紹介</div>
           <a href="ja_teine.html" role="menuitem">札幌手稲</a>
           <a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
           <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+
           <div class="mob-subtitle">特集記事</div>
           <a href="ja_safe.html" role="menuitem">安全知識</a>
           <a href="ja_trip.html" role="menuitem">観光トピック</a>
+
           <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
-          <a href="booking.html" role="menuitem" target="_blank" rel="noopener noreferrer">予約</a>
+          <a href="booking.html?lang=ja" role="menuitem">予約</a>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- 行動版遮罩（必要時顯示） -->
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
-<main id="top">
-  <section class="section" aria-label="MOPO の紹介">
+<main>
+  <section class="hero" id="home" aria-label="ヒーローセクション">
+    <div class="hero__bg" id="heroBg" aria-hidden="true">
+      <div class="slide active"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+    </div>
 
-    <!-- 1：MOPO（圖片5:文字5，文字垂直置中，一句一列） -->
-    <article class="about-row left">
-      <div class="row-inner">
-        <div class="visual"><img src="img/mopo1.jpeg" alt=""></div>
-        <div class="textside">
-          <div class="textbox center-lines">
-            <h2>MOPO</h2>
-            <p class="line">Formosa（美しい島）</p>
-            <p class="line">Japow（粉雪）</p>
-            <p class="line">朝日や夕陽の光、粉雪、山脈</p>
-            <p class="line">自然の美しさを映し、宿す</p>
+    <div class="container hero__wrap">
+      <div class="content">
+        <h1 class="reveal" aria-label="MOPO Ski School">
+          <span class="logoLine">
+            <span class="main">MOPO</span>
+            <span class="sub">ski school</span>
+          </span>
+        </h1>
+        <p class="subtitle reveal">北海道スキー | <span class="txt-hide-mob">多言語インストラクターと学ぶ</span>オーダーメイド体験</p>
+
+        <div class="cta reveal" style="gap:12px">
+          <a href="#pricing" class="btn" aria-label="レッスンプラン">レッスンプラン</a>
+          <a href="booking.html?lang=ja" class="btn" aria-label="予約" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+        </div>
+
+<section class="news reveal" id="news" aria-label="最新情報">
+  <div class="news-viewport">
+    <div class="news-row" id="newsRow">
+    <a class="news-card" href="./ja_news.html" aria-label="最新情報" title="最新情報">
+    <img src="news/news-1.png" alt="最新情報" loading="lazy" decoding="async">
+  </a>
+      <a class="news-card" href="ja_teine.html" aria-label="手稲" title="手稲">
+        <img src="news/ja_news-2.png" alt="手稲" loading="lazy" decoding="async">
+      </a>
+      <a class="news-card" href="ja_kokusai.html" aria-label="札幌国際" title="札幌国際">
+        <img src="news/ja_news-3.png" alt="札幌国際" loading="lazy" decoding="async">
+      </a>
+      <a class="news-card" href="ja_onze.html#info" aria-label="小樽オーンズの詳細" title="小樽オーンズの詳細">
+        <img src="news/ja_news-4.png" alt="小樽オーンズの詳細" loading="lazy" decoding="async">
+      </a>
+    </div>
+  </div>
+</section>
+
+      </div>
+    </div>
+
+    <div class="hero-dots" id="heroDots" aria-label="ヒーローインジケーター">
+      <button data-slide="0" class="active" aria-label="1枚目"></button>
+      <button data-slide="1" aria-label="2枚目"></button>
+      <button data-slide="2" aria-label="3枚目"></button>
+    </div>
+  </section>
+
+  <section id="about-mopo" class="section about-hero" aria-label="MOPOについて">
+    <div class="about-hero__bg" aria-hidden="true">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="img/mopo-640.webp 640w, img/mopo-960.webp 960w, img/mopo-1280.webp 1280w, img/mopo-1920.webp 1920w"
+          sizes="(max-width: 760px) 100vw, 1200px">
+        <img
+          src="img/mopo-1280.jpg"
+          srcset="img/mopo-640.jpg 640w, img/mopo-960.jpg 960w, img/mopo-1280.jpg 1280w, img/mopo-1920.jpg 1920w"
+          sizes="(max-width: 760px) 100vw, 1200px"
+          alt="" width="1920" height="924"
+          decoding="async" loading="eager" fetchpriority="high">
+      </picture>
+    </div>
+
+ <div class="container about-hero__content">
+  <h2 class="visually-hidden">MOPO について</h2>
+ <div class="lines" aria-label="MOPO 的介紹">
+<div class="line big"><span>MOPO</span></div>
+  <div class="line sub"><span>Formosa（美しい島）と Japow（粉雪）</span></div>
+  <div class="line sub"><span>朝日や夕陽の光、粉雪、山脈</span></div>
+  <div class="line sub"><span>自然の美しさを映し、宿す</span></div>
+</div>
+  <a class="about-btn" href="ja_mopo.html" aria-label="MOPO について">MOPO について</a>
+</div>
+  </section>
+
+  <section id="why-mopo" class="section reveal" aria-label="MOPO スキースクールが選ばれる理由">
+    <div class="container">
+      <div class="section__head">
+        <h2>MOPO スキースクールが選ばれる理由</h2>
+      </div>
+
+      <div class="why-desk">
+        <div class="why-grid">
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>1. 認可スクールだから安心</h3>
+            <p>日本の正規法人として登録されており、各スキー場の認可を受けたスクールです。法令を遵守した安全で質の高いレッスンを提供しますので、安心して受講いただけます。</p>
+          </div>
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>2. 少人数制で、一人ひとりに合わせた指導</h3>
+            <p>講師が一人ひとりに目を配れるよう、少人数制を徹底。お客様の体力や上達度に合わせて内容を調整し、最も効率の良いオーダーメイドのレッスンを行います。</p>
+          </div>
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>3. 英語でのレッスンも可能（ご希望の方）</h3>
+            <p>国際色豊かなスクールならではの強みとして、ご希望の方には英語でのレッスンも提供可能です。 スキー・スノーボードの上達だけでなく、生きた英語に触れられるため、お子様の語学教育や、留学気分の体験としても好評です。</p>
+          </div>
+          <div class="why-item">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h3>4. 思い出に残る写真・動画撮影サービス</h3>
+            <p>レッスン中の滑走シーンや素敵な瞬間をインストラクターが撮影します。データはレッスンの振り返りや、旅の思い出としてお持ち帰りいただけます。</p>
           </div>
         </div>
       </div>
-    </article>
 
-    <!-- 2：価値（5:5，置中） -->
-    <article class="about-row right values">
-      <div class="row-inner">
-        <div class="textside">
-          <div class="textbox inline-lines">
-            <span class="line"><strong><h2>私たちが大切にする価値</h2></strong></span>
-            <span class="line"><strong>誠実であること</strong></span>
-            <span class="line">約束を守り、仲間やお客様の信頼を裏切らない</span>
-            <span class="line"><strong>助け合うこと</strong></span>
-            <span class="line">一人で抱え込まず、声をかけ合い、支え合う</span>
-            <span class="line"><strong>安全第一</strong></span>
-            <span class="line">自分も仲間も守るために無理をしない</span>
-            <span class="line"><strong>共感すること</strong></span>
-            <span class="line">多様な背景を尊重し、学び合う姿勢を持つ</span>
-            <span class="line"><strong>自由な自己表現</strong></span>
-            <span class="line">考えや感情、個性を大切にし、互いに尊重する</span>
+      <div class="why-mob">
+        <div class="why-mob-list">
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>【認可スクール】</h4>
+            <p>正規の許可を得た安心・安全なスクールです。</p>
           </div>
-        </div>
-        <div class="visual"><img src="img/mopo2.jpeg" alt=""></div>
-      </div>
-    </article>
-
-    <!-- 3：指導方針（文字欄垂直置中） -->
-    <article class="about-row left">
-      <div class="row-inner">
-        <div class="visual">
-          <picture>
-            <source srcset="img/mopo3.jpeg" type="image/jpeg">
-            <img src="img/mopo3.jpeg" alt="">
-          </picture>
-        </div>
-        <div class="textside">
-          <div class="textbox inline-lines">
-            <span class="line"><h2>指導方針</h2></span>
-            <span class="line">安全を最優先に</span>
-            <span class="line">雪山での安心と信頼を守る</span>
-            <span class="line">個性を尊重し</span>
-            <span class="line">一人ひとりの成長を誠実に支える</span>
-            <span class="line">多様な文化と価値観を受け入れ</span>
-            <span class="line">共に学び合う環境を創る</span>
-            <span class="line">自然への敬意を忘れず</span>
-            <span class="line">雪山の魅力と責任を次世代へ伝える</span>
-            <span class="line">常に技術と心を磨き</span>
-            <span class="line">指導の質を高め続ける</span>
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>【オーダーメイド指導】</h4>
+            <p>少人数制で、ペースに合わせたきめ細かなサポート。</p>
+          </div>
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>英語でのレッスンも可能</h4>
+          <p>ご希望で英語講習も対応。スキーと同時にプチ留学体験が楽しめます。</p>
+          </div>
+          <div class="why-mob-card">
+            <svg class="snow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/><path d="M2 12h20"/>
+              <path d="m4.93 4.93 14.14 14.14"/><path d="m4.93 19.07 14.14-14.14"/>
+            </svg>
+            <h4>【撮影サービス付】</h4>
+            <p>滑走シーンを撮影。上達の確認や旅の記念に。</p>
           </div>
         </div>
       </div>
-    </article>
+    </div>
+  </section>
 
-    <!-- 4：信念（桌機滿版，手機維持全段背景） -->
-    <article class="about-row right belief">
-      <div class="row-inner">
-        <div class="visual"><img src="img/mopo4.jpeg" alt=""></div>
-        <div class="textside">
-          <div class="textbox inline-lines">
-            <h2>MOPO の 信念</h2>
-            <span class="line">MOPOは、美しさを宿す言葉です</span>
-            <span class="line">自然の光や雪の色を映しながら</span>
-            <span class="line">家族や文化から受け継いだ</span>
-            <span class="line">「自ら誰かを手伝う」という</span>
-            <span class="line">誠実さと信頼を尊びます</span>
-            <span class="line">私たちは</span>
-            <span class="line">スクールを通して</span>
-            <span class="line">人と人が出会い</span>
-            <span class="line">互いを認め合い</span>
-            <span class="line">小さな円を広げることで</span>
-            <span class="line">やがて社会の調和や信頼に寄与する未来を目指します</span>
-          </div>
-        </div>
+  <section id="pricing" class="section reveal" aria-label="料金とプラン">
+    <div class="container">
+      <div class="section__head">
+        <h2>レッスンプラン</h2>
       </div>
-    </article>
 
+      <div class="pricelist" id="courseList">
+        <details class="pricecard" id="teine">
+          <summary>
+            <img class="mobile-thumb" src="img/news/teine.jpg" alt="手稻滑雪場" loading="lazy">
+            <div class="head">
+              <div class="title">札幌手稲｜プライベート（終日/半日）</div>
+              <div class="desc">
+                <span class="desktop-desc">安定した雪質・アクセス良好。初心者やファミリーに最適です。</span>
+                <span class="mobile-desc">安定した雪質・アクセス良好。</span>
+              </div>
+            </div>
+
+            <div class="fromrow">
+               <div class="price-tag-group left">
+                  <span class="pt-label">Half Day</span>
+                  <span class="pt-price">38,500<small>JPY 〜</small></span>
+               </div>
+               <div class="price-divider"></div>
+               <div class="price-tag-group right">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">64,000<small>JPY 〜</small></span>
+               </div>
+            </div>
+
+            <div class="expand-hint">
+               ▼ クリックして料金と詳細を見る
+            </div>
+
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_teine.html'">ゲレンデ紹介</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="busy-dates">
+              繁忙期：2025/12/20～01/05・2026/02/12～02/22
+            </div>
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">通常期</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春スキー (3/2~5/6)</button>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table" aria-label="手稲・通常期料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 68,000</td><td class="pp">（2名参加時 1名あたり ¥ 34,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 76,000</td><td class="pp">（1名あたり ¥ 19,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 80,000</td><td class="pp">（1名あたり ¥ 16,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy">
+                  <table class="table" aria-label="手稲・繁忙期料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 79,000</td><td class="pp">（2名参加時 1名あたり ¥ 39,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 84,000</td><td class="pp">（1名あたり ¥ 28,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 89,000</td><td class="pp">（1名あたり ¥ 22,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 94,000</td><td class="pp">（1名あたり ¥ 18,800）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season spring">
+                  <table class="table" aria-label="手稲・春スキー料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 64,000</td><td class="pp">（2名参加時 1名あたり ¥ 32,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 67,000</td><td class="pp">（1名あたり ¥ 22,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 17,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 73,000</td><td class="pp">（1名あたり ¥ 14,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">半日レッスン (3時間) 9:30-12:30 または 13:30-16:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table" aria-label="手稲・通常期半日料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 43,000</td><td class="pp">（2名参加時 1名あたり ¥ 21,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 15,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 49,000</td><td class="pp">（1名あたり ¥ 12,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 51,000</td><td class="pp">（1名あたり ¥ 10,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy" style="background:#f9f9f9; border-color:#e0e0e0;">
+                  <div style="padding: 24px 10px; text-align:center; color:#666;">
+                    <p style="font-size:15px; margin:0; font-weight:700; color:#444;">品質維持のため、繁忙期は終日レッスンのみ承っております。</p>
+                  </div>
+                </div>
+                <div class="season spring">
+                  <table class="table" aria-label="手稲・春スキー半日料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 38,500</td><td class="pp">（2名参加時 1名あたり ¥ 19,250）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 13,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 42,500</td><td class="pp">（1名あたり ¥ 10,625）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 9,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-row">
+              <div class="note">
+                <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
+                <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
+                <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
+              </div>
+              <div class="btns">
+                <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
+                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
+              <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+            </div>
+          </div>
+        </details>
+
+
+        <details class="pricecard" id="onze">
+          <summary>
+            <img class="mobile-thumb" src="img/news/onze.png" alt="小樽ONZE滑雪場" loading="lazy">
+            <div class="head">
+              <div class="title">オーンズ｜プライベート（終日/半日/ナイター）</div>
+              <div class="desc">
+                <span class="desktop-desc">海を望む絶景・アクセス抜群。ナイター営業も長く、夜景を見ながらの滑走は格別です。</span>
+                <span class="mobile-desc">海を望む絶景・アクセス抜群。</span>
+              </div>
+            </div>
+
+            <div class="fromrow">
+               <div class="price-tag-group left">
+                  <span class="pt-label">Half Day</span>
+                  <span class="pt-price">30,000<small>JPY 〜</small></span>
+               </div>
+               <div class="price-divider"></div>
+               <div class="price-tag-group right">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">64,000<small>JPY 〜</small></span>
+               </div>
+            </div>
+
+            <div class="expand-hint">
+               ▼ クリックして料金と詳細を見る
+            </div>
+
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_onze.html'">ゲレンデ紹介</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="busy-dates">
+              繁忙期：2025/12/20～01/05・2026/02/12～02/22
+            </div>
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">通常期</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春スキー (3/2~3/28)</button>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 68,000</td><td class="pp">（2名参加時 1名あたり ¥ 34,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 76,000</td><td class="pp">（1名あたり ¥ 19,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 80,000</td><td class="pp">（1名あたり ¥ 16,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 79,000</td><td class="pp">（2名参加時 1名あたり ¥ 39,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 84,000</td><td class="pp">（1名あたり ¥ 28,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 89,000</td><td class="pp">（1名あたり ¥ 22,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 94,000</td><td class="pp">（1名あたり ¥ 18,800）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 64,000</td><td class="pp">（2名参加時 1名あたり ¥ 32,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 67,000</td><td class="pp">（1名あたり ¥ 22,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 17,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 73,000</td><td class="pp">（1名あたり ¥ 14,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">半日レッスン (3時間) 9:30-12:30 または 13:30-16:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 43,000</td><td class="pp">（2名参加時 1名あたり ¥ 21,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 15,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 49,000</td><td class="pp">（1名あたり ¥ 12,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 51,000</td><td class="pp">（1名あたり ¥ 10,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy" style="background:#f9f9f9; border-color:#e0e0e0;">
+                  <div style="padding: 24px 10px; text-align:center; color:#666;">
+                    <p style="font-size:15px; margin:0; font-weight:700; color:#444;">品質維持のため、繁忙期は終日レッスンのみ承っております。</p>
+                  </div>
+                </div>
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 38,500</td><td class="pp">（2名参加時 1名あたり ¥ 19,250）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 40,000</td><td class="pp">（1名あたり ¥ 13,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 42,500</td><td class="pp">（1名あたり ¥ 10,625）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 46,000</td><td class="pp">（1名あたり ¥ 9,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">ナイターレッスン (2時間) 17:00-19:00</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 32,000</td><td class="pp">（2名参加時 1名あたり ¥ 16,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 34,000</td><td class="pp">（1名あたり ¥ 11,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 9,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 38,000</td><td class="pp">（1名あたり ¥ 7,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 33,000</td><td class="pp">（2名参加時 1名あたり ¥ 16,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 12,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 39,000</td><td class="pp">（1名あたり ¥ 9,750）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 42,000</td><td class="pp">（1名あたり ¥ 8,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 30,000</td><td class="pp">（2名参加時 1名あたり ¥ 15,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 32,000</td><td class="pp">（1名あたり ¥ 10,666）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 34,000</td><td class="pp">（1名あたり ¥ 8,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 36,000</td><td class="pp">（1名あたり ¥ 7,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-row">
+              <div class="note">
+                <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
+                <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
+                <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
+              </div>
+              <div class="btns">
+                <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
+                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
+              <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="pricecard" id="international">
+          <summary>
+            <img class="mobile-thumb" src="img/news/kokusai.jpg" alt="札幌国際滑雪場" loading="lazy">
+            <div class="head">
+              <div class="title">札幌国際｜プライベート（終日）</div>
+              <div class="desc">
+                <span class="desktop-desc">札幌近郊屈指の雪質。広大なコースで見晴らしも良好、ファミリーにも最適です。</span>
+                <span class="mobile-desc">札幌近郊屈指の雪質。</span>
+              </div>
+            </div>
+            <div class="fromrow">
+               <div class="price-tag-group left">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">66,000<small>JPY 〜</small></span>
+               </div>
+            </div>
+
+            <div class="expand-hint">
+               ▼ クリックして料金と詳細を見る
+            </div>
+
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_kokusai.html'">ゲレンデ紹介</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="busy-dates">
+              繁忙期：2025/12/20～01/05・2026/02/12～02/22
+            </div>
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">通常期</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春スキー (3/2~5/6)</button>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table" aria-label="札幌国際・通常期料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 70,000</td><td class="pp">（2名参加時 1名あたり ¥ 35,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 74,000</td><td class="pp">（1名あたり ¥ 24,666）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 78,000</td><td class="pp">（1名あたり ¥ 19,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 82,000</td><td class="pp">（1名あたり ¥ 16,400）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="season busy">
+                  <table class="table" aria-label="札幌国際・繁忙期料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 81,000</td><td class="pp">（2名参加時 1名あたり ¥ 40,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 86,000</td><td class="pp">（1名あたり ¥ 28,666）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 91,000</td><td class="pp">（1名あたり ¥ 22,750）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 96,000</td><td class="pp">（1名あたり ¥ 19,200）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="season spring">
+                  <table class="table" aria-label="札幌国際・春スキー料金表">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 66,000</td><td class="pp">（2名参加時 1名あたり ¥ 33,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 69,000</td><td class="pp">（1名あたり ¥ 23,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 18,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 75,000</td><td class="pp">（1名あたり ¥ 15,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-row">
+              <div class="note">
+                <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
+                <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
+                <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
+              </div>
+              <div class="btns">
+                <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
+                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
+        <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+  <section id="contact" class="section reveal" aria-label="お問い合わせ">
+    <div class="container">
+      <div class="section__head"><h2>お問い合わせ</h2></div>
+      <div class="contact-grid">
+        <form id="contactForm" class="form" aria-label="お問い合わせフォーム">
+          <input type="text" name="name" placeholder="お名前" required class="reveal" aria-label="お名前">
+          <input type="email" name="email" placeholder="メールアドレス" required class="reveal" aria-label="メールアドレス">
+          <input type="tel" name="phone" placeholder="電話番号（任意）" class="reveal" aria-label="電話番号（任意）">
+          <textarea name="notes" placeholder="ご要望（レッスン内容／レベル／予定日など）" rows="5" class="reveal" aria-label="ご要望"></textarea>
+          <button class="btn reveal" type="submit" style="justify-self:start">送信</button>
+          <div id="contactMsg" style="font-size:18px; color:#0a7a3c"></div>
+        </form>
+
+        <aside aria-label="SNSと連絡先" class="reveal" style="align-self:start">
+          <h3 style="margin:0 0 8px 0;font-size:18px;color:#111">フォローする</h3>
+          <div class="sns" style="display:flex; gap:16px; flex-wrap:wrap;">
+
+            <a href="https://www.threads.com/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+              <img src="logo/threads.png" alt="Threads" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.instagram.com/moposkischool/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img src="logo/ig.png" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61581290857769" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="logo/fb.png" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+            <a href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer" aria-label="LINE">
+              <img src="logo/line.png" alt="LINE" width="28" height="28" loading="lazy" decoding="async">
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
   </section>
 </main>
 
@@ -503,17 +1493,18 @@ main{ padding-top:0 !important; }
         <div>
           <h4>最新情報</h4>
           <ul>
-            <li><a href="/news">News</a></li>
-            <li><a href="#top">MOPO について</a></li>
+               <li><a href="ja_news.html">News</a></li>
+            <li><a href="ja_mopo.html">MOPO について</a></li>
           </ul>
         </div>
         <div>
           <h4>レッスン</h4>
           <ul>
-            <li><a href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+            <li><a href="#pricing">レッスンプラン</a></li>
             <li><a href="ja_teine.html">札幌手稲</a></li>
-            <li><a href="ja_onze.html">小樽オーンズ</a></li>
+          <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="ja_kokusai.html">札幌国際</a></li>
+
           </ul>
         </div>
         <div>
@@ -529,7 +1520,7 @@ main{ padding-top:0 !important; }
             <li><a href="ja_legal_tokusho.html">会社情報</a></li>
             <li><a href="ja_notice.html">申込案内</a></li>
             <li><a href="ja_faq.html">よくあるご質問</a></li>
-            <li><a href="ja_mopoindex.html#contact">お問い合わせ</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
           </ul>
         </div>
       </div>
@@ -547,115 +1538,439 @@ main{ padding-top:0 !important; }
 </div>
 
 <script>
-// 年
-document.getElementById('year').textContent = new Date().getFullYear();
+/**
+ * ====================================================================
+ * COMMON LOGIC (Derived from common.js)
+ * - Year, Topbar behavior, Dynamic Language Switch, Mobile Menu, Favicon
+ * ====================================================================
+ */
 
-// Topbar padding（與首頁一致）
+// 1. Year & Topbar Spacer
+document.getElementById('year').textContent = new Date().getFullYear();
 (function(){
   const topbar = document.getElementById('topbar');
-  function pad(){ document.body.style.paddingTop = topbar.offsetHeight + 'px'; }
-  pad(); window.addEventListener('resize', pad);
+  function applySpacer(){
+    if(!topbar) return;
+    document.body.style.paddingTop = topbar.offsetHeight + 'px';
+  }
+  applySpacer();
+  window.addEventListener('resize', applySpacer);
 })();
 
-// Topbar scroll effects（與首頁一致）
+// 2. Topbar Scrolled / Hide on scroll
 (function(){
   const topbar = document.getElementById('topbar');
   function setTopbar(){ topbar.classList.toggle('scrolled', window.scrollY > 10) }
-  setTopbar(); window.addEventListener('scroll', setTopbar, {passive:true});
-  let lastY = window.scrollY, ticking = false;
-  function update(){ const y=window.scrollY; if (y>lastY && y>100) topbar.classList.add('hide'); else topbar.classList.remove('hide'); lastY=y; ticking=false; }
-  window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } }, {passive:true});
+  setTopbar();
+  window.addEventListener('scroll', setTopbar, {passive:true});
+
+  let lastScrollY = window.scrollY, ticking = false;
+  function update() {
+    const currentY = window.scrollY;
+    if (currentY > lastScrollY && currentY > 100) topbar.classList.add('hide');
+    else topbar.classList.remove('hide');
+    lastScrollY = currentY; ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 
-// 語言切換（統一桌機/手機；僅換檔名前綴，不改檔名與資料夾）
-(function () {
-  const path = location.pathname;
-  const dir  = path.replace(/[^/]*$/, '');      // 目前資料夾（含最後一個 /）
-  const file = path.split('/').pop() || '';     // 目前檔名（如 en_mopo.html）
-  const base = file.replace(/^(ja_|en_)/i, ''); // 去掉語言前綴 → mopo.html
+// 2b. Desktop dropdown parent links: prevent jumping to top on click
+(function(){
+  document.querySelectorAll('.has-dropdown > a[href="#"]').forEach(a => {
+    a.addEventListener('click', (e) => e.preventDefault());
+  });
+})();
 
-  // 目前語言（用於同步桌機下拉的預設值）
-  const currentLang =
-    file.startsWith('ja_') ? 'ja' :
-    file.startsWith('en_') ? 'en' : 'zh-Hant';
+// 3. Language Switch
+(function(){
+  const map = {
+    'zh-Hant': 'index.html',
+    'ja': 'ja_mopoindex.html',
+    'en': 'en_mopoindex.html'
+  };
 
-  const prefix = { 'zh-Hant': '', 'ja': 'ja_', 'en': 'en_' };
-
-  function buildUrl(lang){
-    const pfx  = prefix[lang] ?? '';
-    return dir + pfx + base; // 只換前綴，例如 ja_ + mopo.html
-  }
-  function go(lang){
-    const target = buildUrl(lang);
-    const here   = location.pathname + location.search + location.hash;
-    if (target !== here) location.href = target; // 不會再導到 *_index.html
-  }
-
-  // 桌機 <select>
   const sel = document.getElementById('langSelect');
   if (sel){
-    if (sel.value !== currentLang) sel.value = currentLang;
-    const on = ()=> go(sel.value);
-    sel.addEventListener('change', on);
-    sel.addEventListener('input',  on);
+    sel.addEventListener('change', ()=>{
+      const v = sel.value;
+      const url = map[v] || 'index.html';
+      window.location.href = url;
+    });
   }
 
-  // 手機語言面板（data-lang）
   const mobPanel = document.getElementById('mobLangPanel');
-  const mobBtn   = document.getElementById('mobLangBtn');
-  mobBtn?.addEventListener('click', (e)=>{ e.stopPropagation(); mobPanel?.classList.toggle('show'); });
-  mobPanel?.addEventListener('click', (e)=>{
-    const a = e.target.closest('[data-lang]');
+  if (mobPanel){
+    mobPanel.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-lang]');
+      if(!a) return;
+      e.preventDefault();
+      const v = a.getAttribute('data-lang');
+      const url = map[v] || 'index.html';
+      window.location.href = url;
+    });
+  }
+})();
+
+// 4. Mobile Nav
+(function(){
+  const overlay   = document.getElementById('mobOverlay');
+  const langBtn   = document.getElementById('mobLangBtn');
+  const langPanel = document.getElementById('mobLangPanel');
+  const navBtn    = document.getElementById('mobNavBtn');
+  const navPanel  = document.getElementById('mobNavPanel');
+
+  const IOS16 = (() => {
+    const ua = navigator.userAgent || "";
+    const isIOS = /iP(ad|hone|od)/.test(ua);
+    const m = ua.match(/OS (\d+)_/);
+    const major = m ? parseInt(m[1], 10) : 0;
+    return isIOS && major === 16;
+  })();
+
+  function closePanels(){
+    langPanel?.classList.remove('show');
+    navPanel?.classList.remove('show');
+    overlay?.classList.remove('show');
+    overlay?.classList.remove('noblur');
+    if(overlay) overlay.hidden = true;
+  }
+  function openPanel(panel){
+    if(panel !== langPanel) langPanel?.classList.remove('show');
+    if(panel !== navPanel)  navPanel?.classList.remove('show');
+    if(overlay){
+      overlay.hidden = false;
+      overlay.classList.add('show');
+      if(IOS16) overlay.classList.add('noblur');
+    }
+    panel?.classList.add('show');
+  }
+  function togglePanel(panel){
+    if(panel?.classList.contains('show')) closePanels();
+    else openPanel(panel);
+  }
+
+  langBtn?.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(langPanel); });
+  navBtn?.addEventListener('click',  (e)=>{ e.stopPropagation(); togglePanel(navPanel);  });
+
+  overlay?.addEventListener('click', closePanels);
+  document.addEventListener('click', (e)=>{
+    if(e.target.closest('.mobdrop')) return;
+    closePanels();
+  });
+  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closePanels(); });
+
+  navPanel?.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[href]');
     if(!a) return;
     e.preventDefault();
-    go(a.getAttribute('data-lang'));
+    const href = a.getAttribute('href') || '#';
+    closePanels();
+    setTimeout(()=>{
+      if(href.startsWith('#')){
+        const el = document.querySelector(href);
+        if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        else { window.location.href = href; }
+      }else{
+        window.location.href = href;
+      }
+    }, 0);
   });
 })();
 
-// 手機選單（與首頁一致）
-(function(){
-  const overlay=document.getElementById('mobOverlay');
-  const navBtn=document.getElementById('mobNavBtn');
-  const navPanel=document.getElementById('mobNavPanel');
-  function closeAll(){ navPanel?.classList.remove('show'); overlay.hidden=true; overlay.classList.remove('show'); }
-  function toggle(panel){ panel?.classList.contains('show')?closeAll():(overlay.hidden=false, overlay.classList.add('show'), panel?.classList.add('show')); }
-  navBtn?.addEventListener('click', e=>{ e.stopPropagation(); toggle(navPanel); });
-  overlay?.addEventListener('click', closeAll);
-  document.addEventListener('click', e=>{ if(!e.target.closest('.mobdrop')) closeAll(); });
-  window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeAll(); });
+// 5. Back to Top
+document.getElementById('backTop')?.addEventListener('click', ()=>
+  window.scrollTo({top:0, behavior:'smooth'}));
+
+// 6. Favicon
+(function() {
+  if (document.querySelector('link[rel="icon"]') || document.querySelector('link[rel="shortcut icon"]')) {
+      return;
+  }
+  var link = document.createElement('link');
+  link.rel = 'icon';
+  link.href = '/logom.png';
+  link.type = 'image/png';
+  document.head.appendChild(link);
 })();
 
-// ===== 逐句顯示（下滑出現、上滑還原）—保留你的內文行為 =====
+
+/**
+ * ====================================================================
+ * PAGE SPECIFIC LOGIC
+ * ====================================================================
+ */
+
+// Hero Slider
 (function(){
-  let lastY = window.scrollY;
-  const rows  = Array.from(document.querySelectorAll('.about-row'));
-  const texts = Array.from(document.querySelectorAll('.textbox'));
-  texts.forEach(tb=>{
-    const lines = tb.querySelectorAll('.line');
-    lines.forEach((ln,i)=> ln.style.setProperty('--i', i));
+  const slides = Array.from(document.querySelectorAll('.hero__bg .slide'));
+  const dots = Array.from(document.querySelectorAll('#heroDots button'));
+  let idx = 0, timer = null;
+  function show(i){
+    slides.forEach(s=>s.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    idx = (i+slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    dots[idx].classList.add('active');
+  }
+  function play(){ timer = setInterval(()=> show(idx+1), 6000); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  dots.forEach((d,i)=> d.addEventListener('click', ()=>{ stop(); show(i); play(); }));
+  show(0); play();
+})();
+
+// News Carousel (Seamless Loop)
+(function(){
+  const row = document.getElementById('newsRow');
+  const viewport = row ? row.parentElement : null;
+  if(!row || !viewport) return;
+
+  const GAP = 12;
+  const getCardSize = () => window.innerWidth <= 760 ? 100 : 140;
+  const getStep = () => getCardSize() + GAP;
+
+  const originalCards = Array.from(row.querySelectorAll('.news-card:not(.clone)'));
+  originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      row.appendChild(clone);
   });
+  originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      clone.classList.add('clone');
+      row.appendChild(clone);
+  });
+
+  let autoScrollTimer = null;
+  let isHovered = false;
+  let isDragging = false;
+  let startX, scrollLeft;
+
+  function autoScroll() {
+    if (isHovered || isDragging) return;
+
+    const step = getStep();
+    const currentScroll = viewport.scrollLeft;
+    const originalSetWidth = originalCards.length * step;
+
+    if (currentScroll >= originalSetWidth) {
+        viewport.scrollTo({ left: currentScroll - originalSetWidth, behavior: 'auto' });
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+               const newBase = currentScroll - originalSetWidth;
+               viewport.scrollTo({ left: newBase + step, behavior: 'smooth' });
+            });
+        });
+    } else {
+        viewport.scrollTo({ left: currentScroll + step, behavior: 'smooth' });
+    }
+  }
+
+  function startAutoPlay() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
+      autoScrollTimer = setInterval(autoScroll, 3000);
+  }
+
+  function stopAutoPlay() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
+  }
+
+  viewport.addEventListener('mouseenter', () => { isHovered = true; stopAutoPlay(); });
+  viewport.addEventListener('mouseleave', () => { isHovered = false; isDragging = false; viewport.classList.remove('active'); startAutoPlay(); });
+
+  viewport.addEventListener('touchstart', () => { isHovered = true; stopAutoPlay(); }, {passive: true});
+  viewport.addEventListener('touchend', () => {
+      setTimeout(() => { isHovered = false; startAutoPlay(); }, 2000);
+  });
+
+  viewport.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      stopAutoPlay();
+      viewport.classList.add('active');
+      startX = e.pageX - viewport.offsetLeft;
+      scrollLeft = viewport.scrollLeft;
+  });
+
+  viewport.addEventListener('mouseup', () => {
+      isDragging = false;
+      viewport.classList.remove('active');
+      startAutoPlay();
+  });
+
+  viewport.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - viewport.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      viewport.scrollLeft = scrollLeft - walk;
+  });
+
+  startAutoPlay();
+})();
+
+// Reveal Animation (Modified: Show once and keep it)
+(function(){
+  const els = document.querySelectorAll('.reveal:not(#contact .reveal)');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        // Stop observing once revealed so it doesn't fade out again
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(el => io.observe(el));
+  function ensureContactVisible(){
+    document.querySelectorAll('#contact .reveal').forEach(el => {
+      el.classList.add('in');
+    });
+  }
+  ensureContactVisible();
+  window.addEventListener('resize', ensureContactVisible);
+  window.addEventListener('load', ensureContactVisible);
+})();
+
+// Pricing Toggle
+(function(){
+  const list = document.getElementById('courseList');
+  list?.addEventListener('toggle', (e)=>{
+    const tgt = e.target;
+    if(tgt.tagName.toLowerCase()!=='details' || !tgt.open) return;
+    list.querySelectorAll('details[open]').forEach(d=>{ if(d!==tgt) d.open=false; });
+  });
+})();
+
+// Pricing Tabs (Local Logic)
+(function(){
+  const tabButtons = document.querySelectorAll('.tab-btn');
+
+  if(!tabButtons.length) return;
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      const container = btn.closest('.pricetable');
+      if(!container) return;
+
+      container.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      const target = btn.dataset.tab;
+
+      const seasons = container.querySelectorAll('.season');
+      seasons.forEach(s => {
+        if(s.classList.contains(target)) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    });
+  });
+})();
+
+// Contact Mailto
+(function(){
+  const form = document.getElementById('contactForm');
+  const msg  = document.getElementById('contactMsg');
+  if(!form) return;
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email= form.email.value.trim();
+    const phone= form.phone.value.trim();
+    const notes= form.notes.value.trim();
+    const subject = encodeURIComponent(`[お問い合わせ] ${name || 'お名前未入力'}`);
+    const body =
+      encodeURIComponent(`お名前：${name}\nメール：${email}\n電話：${phone}\n\nご要望：\n${notes}\n`);
+    const mailto = `mailto:support@moposki.com?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+    msg.textContent = 'メール作成画面を開きました。送信をご確認ください。';
+  });
+})();
+
+// Scroll Driven (Hero/News)
+(function(){
+  const hero = document.getElementById('home');
+  if(!hero) return;
+  const DIST_FACTOR = 1.10, GRAY_START = 0.60, EASE_POWER = 3.00;
+  const clamp01 = x => Math.min(1, Math.max(0, x));
+  const ease    = t => Math.pow(clamp01(t), EASE_POWER);
   function onScroll(){
-    const dirDown = window.scrollY >= lastY;
-    const vh = innerHeight;
-    rows.forEach(r=>{
-      const rect = r.getBoundingClientRect();
-      if (rect.top < vh*0.85 && rect.bottom > vh*0.15) r.classList.add('in');
-      else r.classList.remove('in');
-    });
-    texts.forEach(tb=>{
-      const rect = tb.getBoundingClientRect();
-      if (dirDown){ if (rect.top < vh*0.72) tb.classList.add('in'); }
-      else{ if (rect.top > vh*0.85) tb.classList.remove('in'); }
-    });
-    lastY = window.scrollY;
+    const rect = hero.getBoundingClientRect();
+    const vh   = window.innerHeight || 1;
+    const raw = clamp01(-rect.top / (vh * DIST_FACTOR));
+    const slide = ease(raw);
+    const fade  = ease(raw);
+    const grayRaw = clamp01((raw - GRAY_START) / (1 - GRAY_START));
+    const gray    = ease(grayRaw);
+    document.documentElement.style.setProperty('--slide', slide.toFixed(4));
+    document.documentElement.style.setProperty('--fade',  fade.toFixed(4));
+    document.documentElement.style.setProperty('--gray',  gray.toFixed(4));
   }
   onScroll();
-  addEventListener('scroll', onScroll, {passive:true});
-  addEventListener('resize', onScroll);
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
 })();
 
-// 回到頂部
-document.getElementById('backTop').addEventListener('click', ()=> scrollTo({top:0, behavior:'smooth'}));
+// About Parallax
+(function(){
+  const about = document.getElementById('about-mopo');
+  const hero  = document.getElementById('home');
+  if(!about || !hero) return;
+  let compact = false;
+  let activeShown = false;
+  const hysteresis = 80;
+  let enterY = 0;
+  function compute() {
+    const rect = about.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const vh = window.innerHeight || 1;
+    const aboutTop = scrollY + rect.top;
+    enterY = aboutTop - vh * 0.85;
+  }
+  function apply() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const heroRect = hero.getBoundingClientRect();
+    const heroMostlyVisible = heroRect.top > -20 && heroRect.bottom - 120 > 0 && heroRect.height > 0 && (heroRect.height - Math.abs(heroRect.top)) / heroRect.height >= 0.85;
+    if (!activeShown && scrollY >= enterY) {
+      about.classList.add('active');
+      hero.classList.add('dim');
+      activeShown = true;
+    }
+    if (activeShown && (scrollY < enterY - hysteresis || heroMostlyVisible)) {
+      about.classList.remove('active');
+      hero.classList.remove('dim');
+      activeShown = false;
+    }
+    const aboutTopAbs = enterY + (window.innerHeight || 0) * 0.85;
+    const shrinkOn  = aboutTopAbs + 140;
+    const shrinkOff = aboutTopAbs + 60;
+    if (!compact && scrollY > shrinkOn) {
+      about.classList.add('compact');
+      compact = true;
+    } else if (compact && scrollY < shrinkOff) {
+      about.classList.remove('compact');
+      compact = false;
+    }
+  }
+  compute();
+  apply();
+  let ticking = false;
+  window.addEventListener('scroll', ()=> {
+    if (!ticking) {
+      requestAnimationFrame(()=>{ apply(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive:true });
+  window.addEventListener('resize', ()=> { compute(); apply(); }, { passive:true });
+})();
 </script>
 </body>
 </html>
