@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="zh-Hant" class="scroll-smooth">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17610938726');
+  </script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MOPO北海道滑雪初學者攻略｜給第一次看見雪的你｜MOPO Ski School</title>
@@ -10,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@700;900&family=Shippori+Mincho:wght@500;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../common.css">
+<link rel="stylesheet" href="../common.css?v=20260713">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
@@ -90,9 +98,9 @@
       <div class="mobdrop" id="mobLangDrop">
         <button class="mobLangBtn" id="mobLangBtn">語言</button>
         <div class="mobpanel" id="mobLangPanel">
-          <a href="../trip1/en_tripteine6days.html">繁體中文</a>
-          <a href="../trip1/en_tripteine6days.html">日本語</a>
-          <a href="../trip1/en_tripteine6days.html">English</a>
+          <a href="#" aria-current="true">繁體中文</a>
+          <a href="../ja_mopoindex.html">日本語</a>
+          <a href="../en_mopoindex.html">English</a>
         </div>
       </div>
       <div class="mobdrop" id="mobNavDrop">
@@ -501,9 +509,8 @@
   </section>
 </footer>
 
-<script src="../common.js"></script>
+<script src="../common.js?v=20260713"></script>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
   document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
   
   // Minimalist Scroll Reveal Animation
