@@ -577,7 +577,31 @@ $('#finalSubmitBtn').addEventListener('click', () => {
   for(const id of ['contactName', 'email', 'contactId', 'agreeNotice']) if(!$('#'+id).checkValidity()) return $('#'+id).reportValidity();
   // 確認視窗：日期完整年月日、標籤依語言、每筆與總計皆顯示原價＋優惠價，客人不會忘記折扣
   const Lr = I18N[current.lang], rvTot = cart.reduce((s,c)=>s+c.tot,0), rvRaw = cart.reduce((s,c)=>s+c.raw,0);
-  $('#reviewList').innerHTML = `<div class="kv" style="border-bottom:1px solid #e2e8f0;margin-bottom:8px;padding-bottom:8px"><b>Name</b><div>${$('#contactName').value}</div><b>Email</b><div>${$('#email').value}</div></div><div class="kv"><b>${$('#contactPref').value.toUpperCase()}</b><div>${$('#contactId').value}</div></div>` + cart.map(c => `<div style="margin-bottom:8px;border-bottom:1px dashed #cbd5e1;padding-bottom:8px"><div style="font-weight:700;margin-bottom:2px"><span class="cart-resort-tag">${c.rName}</span>${fmtDate(c.date)} (${c.durLbl})</div><div style="font-size:.85rem;color:var(--muted)">${c.tName} / ${c.pax} ${Lr.people_label} / ${c.level.split('：')[0]}（${Lr.ages_label}: ${c.kid}）<br>${c.raw > c.tot ? `<s>${money(c.raw)}</s> <b style="color:var(--danger)">${money(c.tot)}</b>` : `<b>${money(c.tot)}</b>`}</div></div>`).join('') + `${rvRaw > rvTot ? `<div style="text-align:right;font-size:.85rem;color:var(--muted);font-weight:600"><s>${money(rvRaw)}</s>　${Lr.discount_label} −${money(rvRaw - rvTot)}</div>` : ''}<div style="text-align:right;font-size:1.15rem;font-weight:800;color:var(--danger)">${Lr.total_label}: ${money(rvTot)}</div>`;
+  // ===== 安全顯示（防 DOM XSS）：使用者自由輸入（姓名/Email/聯絡ID）一律以 textContent 放入固定結構，不進 innerHTML =====
+  // 註：購物明細與總計均為開發者控制內容（金額、日期、固定標籤、select 值、數字型年齡），不含使用者自由文字，維持原樣式。
+  // 註：此處僅改「前端顯示」寫入方式，未更動送往後端的 payload（欄位、型別、JSON、編碼皆不變）。
+  const reviewEl = $('#reviewList');
+  reviewEl.textContent = '';
+  // 聯絡人區塊：固定 HTML 結構 + textContent 填入原始使用者文字（保留中/日/英/換行/Emoji/特殊符號的可讀內容）
+  const kvContact = document.createElement('div');
+  kvContact.className = 'kv';
+  kvContact.style.cssText = 'border-bottom:1px solid #e2e8f0;margin-bottom:8px;padding-bottom:8px';
+  const bName = document.createElement('b'); bName.textContent = 'Name';
+  const dName = document.createElement('div'); dName.textContent = $('#contactName').value;
+  const bMail = document.createElement('b'); bMail.textContent = 'Email';
+  const dMail = document.createElement('div'); dMail.textContent = $('#email').value;
+  kvContact.append(bName, dName, bMail, dMail);
+  const kvId = document.createElement('div');
+  kvId.className = 'kv';
+  const bPref = document.createElement('b'); bPref.textContent = $('#contactPref').value.toUpperCase();
+  const dId = document.createElement('div'); dId.textContent = $('#contactId').value;
+  kvId.append(bPref, dId);
+  reviewEl.append(kvContact, kvId);
+  // 明細＋總計：開發者控制內容，於分離容器組好後再搬入（版面與樣式與原本完全一致）
+  const detailWrap = document.createElement('div');
+  detailWrap.style.display = 'contents';
+  detailWrap.innerHTML = cart.map(c => `<div style="margin-bottom:8px;border-bottom:1px dashed #cbd5e1;padding-bottom:8px"><div style="font-weight:700;margin-bottom:2px"><span class="cart-resort-tag">${c.rName}</span>${fmtDate(c.date)} (${c.durLbl})</div><div style="font-size:.85rem;color:var(--muted)">${c.tName} / ${c.pax} ${Lr.people_label} / ${c.level.split('：')[0]}（${Lr.ages_label}: ${c.kid}）<br>${c.raw > c.tot ? `<s>${money(c.raw)}</s> <b style="color:var(--danger)">${money(c.tot)}</b>` : `<b>${money(c.tot)}</b>`}</div></div>`).join('') + `${rvRaw > rvTot ? `<div style="text-align:right;font-size:.85rem;color:var(--muted);font-weight:600"><s>${money(rvRaw)}</s>　${Lr.discount_label} −${money(rvRaw - rvTot)}</div>` : ''}<div style="text-align:right;font-size:1.15rem;font-weight:800;color:var(--danger)">${Lr.total_label}: ${money(rvTot)}</div>`;
+  reviewEl.append(detailWrap);
   // 判斷是否為 LINE 聯絡管道，展開確認好友勾選框
   $('#lineCheckWrap').classList.toggle('hide', $('#contactPref').value !== 'line');
   $('#lineAddedCheck').checked = false;
