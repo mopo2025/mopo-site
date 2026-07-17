@@ -1,10 +1,4 @@
-/* ===== 全域樣式 ===== */
-body {
-  font-family:"Noto Sans JP","Montserrat",system-ui,Arial,"Noto Sans TC","Hiragino Sans","Microsoft JhengHei",sans-serif;
-  line-height:1.6;
-  color:#0E1A24;
-}
-
+/* ===== 全域樣式（與線上版一致；日英版頁面不受影響） ===== */
 :root{
   --bg-top:#E7E9EA;
   --bg-mid:#FFFFFF;
@@ -13,6 +7,7 @@ body {
   --midnight:#0D1B2A;
   --gold:#C8A45D; --gold-2:#E4CFA3;
   --ink:#0E1A24; --ink-soft:#3E4A57;
+  --green-dark:#1A4D2E;
 
   --shadow:0 18px 50px rgba(13,27,42,.10);
   --radius:16px; --focus:0 0 0 3px rgba(200,164,93,.22);
@@ -38,6 +33,12 @@ html, body { overflow-x: hidden; }
 .topbar.scrolled{ background:rgba(255,255,255,.45) }
 .topbar.hide { transform: translateY(-100%); transition: transform 0.3s ease; }
 
+/* ===== 頂欄高度全站統一（中日英一致） ===== */
+.topbar{ font-size:16px; line-height:1.7 }
+.topbar .nav{ padding:12px 0 }
+.topbar .menu>li>a{ padding-top:10px; padding-bottom:10px }
+.topbar .brand .logo{ font-size:18px }
+
 .nav{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:12px 0}
 .brand{display:flex; align-items:baseline; gap:10px; letter-spacing:.10em; padding-left:8px}
 @media (max-width:760px){ .brand{padding-left:14px} }
@@ -45,7 +46,7 @@ html, body { overflow-x: hidden; }
 .brand .sub{font-weight:700; color:var(--ink-soft); letter-spacing:.06em}
 
 /* 桌面選單 */
-.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0}
+.menu{display:flex; gap:8px; align-items:center; margin:0; padding:0; list-style:none}
 .menu>li{list-style:none; position:relative}
 .menu>li>a{display:inline-flex; align-items:center; gap:8px; padding:10px 12px; border-radius:12px; font-weight:600; color:var(--midnight); position:relative}
 .menu>li>a::after{content:""; position:absolute; left:12px; right:12px; bottom:6px; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-2)); transform:scaleX(0); transform-origin:left; transition:transform .22s ease}
@@ -120,13 +121,14 @@ html, body { overflow-x: hidden; }
 }
 
 /* Footer */
-.footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
+.footer{background:var(--bg-bottom); color:#f7f7f7; border-top:1px solid rgba(255,255,255,.25)}
 .sitemap{padding:34px 0}
 .sitemap .cols{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
 .sitemap h4{margin:0 0 8px; color:#fff; font-size:14px; font-family:"Noto Serif TC","Hiragino Sans","Songti TC",serif}
 .sitemap ul{list-style:none; padding:0; margin:0; display:grid; gap:6px}
 .sitemap a{color:#ebebeb; font-size:13px}
 .sitemap a:hover{color:#fff}
+.footer .copyright{padding-top:12px; border-top:1px solid rgba(255,255,255,.25); margin-top:18px}
 
 /* FAB */
 .fab{position:fixed; right:16px; bottom:16px; z-index:320}
@@ -147,3 +149,25 @@ html, body { overflow-x: hidden; }
   }
   .mobpanel a, .mobpanel button{ white-space: nowrap; }
 }
+
+/* ===== 繁中版統一（只作用於 html[lang="zh-Hant"]，日英版維持原樣） ===== */
+html[lang="zh-Hant"] .topbar{ -webkit-backdrop-filter:saturate(1.28) blur(18px); }
+html[lang="zh-Hant"] .menu>li>a{ font-weight:700; }
+
+/* 繁中選單標籤較短，加寬間距與內距，使選單整體寬度與日英版一致（約 660px） */
+html[lang="zh-Hant"] .menu{ gap:14px; }
+html[lang="zh-Hant"] .menu>li>a{ padding:10px 16px; }
+html[lang="zh-Hant"] .menu>li>a::after{ left:16px; right:16px; }
+html[lang="zh-Hant"] .topbar,
+html[lang="zh-Hant"] .footer{
+  font-family:"Montserrat","Helvetica Neue",Helvetica,Arial,"Noto Sans TC","Noto Sans JP","Hiragino Sans","Microsoft JhengHei",sans-serif;
+  font-size:16px;
+  line-height:1.7;
+}
+/* 注意：頂欄的 .container 同時是 .nav（上下內距 12px 由 .topbar .nav 控制），這裡不能設 padding */
+html[lang="zh-Hant"] .topbar .container,
+html[lang="zh-Hant"] .footer .container{
+  max-width:1200px;
+  margin:0 auto;
+}
+html[lang="zh-Hant"] .footer .container{ padding:0 22px; }
