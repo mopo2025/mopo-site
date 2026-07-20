@@ -170,8 +170,8 @@ window.addEventListener('scroll', setTopbar, {passive:true});
   });
 })();
 
-// 回到頂部
-document.getElementById('backTop').addEventListener('click', ()=> 
+// 回到頂部（防呆：部分頁面沒有 backTop 按鈕）
+document.getElementById('backTop')?.addEventListener('click', ()=>
   window.scrollTo({top:0, behavior:'smooth'}));
 
 /* ✅ 【修正版】動態插入 Favicon */
