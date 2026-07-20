@@ -64,9 +64,10 @@ window.addEventListener('scroll', setTopbar, {passive:true});
     // 語言前綴
     const prefixOf = { 'zh-Hant': '', ja: 'ja_', en: 'en_' };
 
-    // 🔧 檔名特例：日/英 mopoindex → 繁中用 mopo.html
+    // 🔧 檔名特例：首頁 index ↔ mopoindex（日/英首頁檔名為 mopoindex）
     function baseFor(lang){
-      if (base === 'mopoindex.html' && lang === 'zh-Hant') return 'mopo.html';
+      if (base === 'index.html' && (lang === 'ja' || lang === 'en')) return 'mopoindex.html';
+      if (base === 'mopoindex.html' && lang === 'zh-Hant') return 'index.html';
       return base;
     }
 
