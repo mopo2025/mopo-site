@@ -55,8 +55,16 @@
     summary { list-style:none; padding:18px 22px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:8px }
     summary::-webkit-details-marker { display:none }
     .faq-title { margin:0; font-size:18px; font-weight:800 }
-    .faq-body { padding:0 18px 16px 18px; color:#4b5157; font-size:16px; line-height:1.8; border-top:1px dashed #eee }
-    .faq-body p { margin:10px 0 0 0 }
+    .faq-body { padding:0 18px 18px 18px; color:#4b5157; font-size:16px; line-height:1.85; border-top:1px dashed #eee }
+    .faq-body p { margin:12px 0 0 0 }
+    .faq-body strong { color:#2b3138 }
+    .faq-sub { margin:20px 0 2px; font-size:16px; font-weight:800; color:#0b3a32; letter-spacing:.02em; line-height:1.5 }
+    .faq-body > .faq-sub:first-child { margin-top:6px }
+    .faq-body ul { margin:10px 0 0; padding-left:1.25em }
+    .faq-body li { margin:6px 0 }
+    .faq-div { border:0; border-top:1px solid #ededed; margin:20px 0 0 }
+    .faq-note { background:var(--faq-bg); border-left:3px solid var(--gold); border-radius:10px; padding:12px 14px; margin:16px 0 0 }
+    .faq-note p:first-child { margin-top:0 }
     .chev { flex:0 0 auto; width:18px; height:18px; border:2px solid #8a9096; border-left:0; border-top:0; transform:rotate(45deg); transition:transform .2s ease; margin-left:8px }
     details[open] .chev { transform:rotate(225deg) }
     .sec-head { display:none; margin:4px 0 12px }
@@ -75,6 +83,17 @@
     @media (max-width:760px) {
       .section { padding:56px 0 }
       .section__head h1 { font-size:22px }
+      .container { padding:0 16px }
+      .faqgrid { gap:10px }
+      details.faqcard { border-radius:12px; box-shadow:0 8px 22px rgba(13,27,42,.07) }
+      summary { padding:15px 16px; align-items:flex-start; -webkit-tap-highlight-color:transparent }
+      .faq-title { font-size:16px; line-height:1.55 }
+      .chev { width:14px; height:14px; margin-top:5px }
+      .faq-body { padding:0 16px 18px 16px; font-size:15px; line-height:1.95; letter-spacing:.01em }
+      .faq-body p { margin:12px 0 0 0 }
+      .faq-sub { font-size:15px; margin:18px 0 2px }
+      .faq-body ul { padding-left:1.1em }
+      .faq-note { padding:12px; margin:14px 0 0 }
     }
   </style>
   <link rel="icon" href="/img/iconw.png" type="image/png">
@@ -202,80 +221,137 @@
             <details class="faqcard" data-cat="course">
               <summary><div><span class="faq-title">請問有提供半天或晚上的課程嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
               <div class="faq-body">
-                <p>有的，為了讓學習安排更靈活，我們依據不同需求規劃了三種方案：</p>
-                <p><strong>全日課程（成效最佳）</strong><br>
-                學習時間完整，進步幅度最大，安全與品質最穩定。</p>
-                <p><strong>半日課程（輕鬆體驗）</strong><br>
-                適合體力有限、兒童，或只想短暫體驗滑雪樂趣的您。</p>
-                <p><strong>夜滑課程（時間彈性）</strong><br>
-                適合白天有觀光行程，想利用晚上時間充實學習的您。</p>
+                <p>有的！為了配合不同的旅遊安排與學習需求，我們提供全日、半日及夜滑課程，可依照您的行程自由選擇。</p>
+
+                <h3 class="faq-sub">🏔 全日課程（最推薦）</h3>
+                <p>適合第一次滑雪，或希望有較完整學習體驗的旅客。全日課程有較充裕的時間循序漸進地練習，教練也能依照每位學員的學習狀況調整教學內容，讓整體學習更從容、更有成就感。</p>
+
+                <h3 class="faq-sub">⛷ 半日課程（輕鬆體驗）</h3>
+                <p>適合體力有限、兒童，或希望先體驗滑雪，同時安排其他觀光行程的旅客。如果只是想感受滑雪的樂趣，半日課程也是很不錯的選擇。</p>
+
+                <h3 class="faq-sub">🌙 夜滑課程（時間更彈性）</h3>
+                <p>適合白天已有其他行程，希望利用晚上時間體驗滑雪或持續練習的旅客。</p>
+
+                <hr class="faq-div">
+                <p>如果行程安排較充裕，我們也很推薦規劃 <strong>2～3 天課程</strong>。滑雪是一項需要透過反覆練習建立身體記憶的運動，每一天都會在前一天的基礎上持續進步，動作也會越來越自然。許多學員都表示，多天課程不僅能更扎實地建立基礎，也更容易感受到自己的成長，在學習過程中獲得更高的滿足感與成就感。</p>
+
+                <div class="faq-note">
+                  <p>如果不確定哪一種課程最適合您，也歡迎告訴我們同行人數、年齡、是否有滑雪經驗以及旅遊天數，我們會依照您的需求提供最適合的課程建議。</p>
+                </div>
               </div>
             </details>
 
             <details class="faqcard" data-cat="course">
               <summary><div><span class="faq-title">可使用哪些語言？</span></div><i class="chev" aria-hidden="true"></i></summary>
               <div class="faq-body">
-                <p>提供中文／廣東話／英文／日文服務，溝通順暢無障礙。</p>
+                <p>我們提供 <strong>中文（國語）／廣東話／英文／日文</strong> 等語言服務，可依照您的需求安排合適的教練。</p>
+                <p>良好的溝通，不只是聽得懂教學內容，更能讓教練即時了解每位學員的狀況，依照每位學員的學習節奏，提供更適合的教學引導。無論是孩子、長輩，還是情侶、朋友同行，都能更自在地享受滑雪的樂趣，留下美好的回憶。</p>
               </div>
             </details>
 
         <details class="faqcard" data-cat="course">
   <summary>
-    <div><span class="faq-title">單板雙板如何選擇？</span></div>
+    <div><span class="faq-title">單板（Snowboard）和雙板（Ski）該怎麼選？</span></div>
     <i class="chev" aria-hidden="true"></i>
   </summary>
   <div class="faq-body">
-    <p>你喜歡哪一種，就選那一種就對了！</p>
-    <p><strong>單板（Snowboard）</strong><br>
-      像衝浪或滑板，初學時可能會多摔幾次，但學會後自由度高，可以盡情挑戰各種地形與花式動作。
-    </p>
-    <p><strong>雙板（Ski）</strong><br>
-      像直排輪或溜冰，初學就能滑得穩、滑得順，能很快享受滑行的樂趣，進階後還能展現優雅線條與精準控制。
-    </p>
+    <p>其實沒有「哪一種比較好」，只有<strong>哪一種更適合您</strong>。</p>
+    <p>單板（Snowboard）與雙板（Ski）各有不同的特色，除了個人興趣之外，也可以依照年齡、同行成員、旅遊方式，以及未來是否持續滑雪等因素來選擇。</p>
 
-    <!-- 新增提示文字與連結（另開新分頁） -->
-    <p>
-  如果選擇困難，不妨來玩看看心理測驗吧 — 
-  <a href="./column/personalityquiz.html" target="_blank" rel="noopener noreferrer">
-    前往 <span style="color:red;">「單板 vs 雙板」</span> 心理測驗
-  </a>
-</p>
+    <hr class="faq-div">
+    <h3 class="faq-sub">🏂 單板（Snowboard）</h3>
+    <p>如果您喜歡滑板、衝浪等板類運動，或享受挑戰自我、一步步突破的成就感，單板會是很不錯的選擇。</p>
+    <p>雖然初學時通常需要花一些時間適應平衡，也可能會多跌倒幾次，但隨著技巧逐漸建立，滑行自由度相當高。未來無論是自由滑行、粉雪（Powder）、地形公園（Park）或平花（Ground Tricks），都能享受不同的滑雪樂趣，因此深受許多年輕族群及喜歡挑戰的旅客喜愛。</p>
+
+    <hr class="faq-div">
+    <h3 class="faq-sub">🎿 雙板（Ski）</h3>
+    <p>如果希望較快享受滑行的樂趣、與家人一起體驗滑雪，或未來有持續滑雪、探索世界各地滑雪場的規劃，雙板通常會是值得考慮的選擇。</p>
+    <p>雙板發展歷史較悠久，因此世界各地許多滑雪場的雪道設計、纜車動線及教學系統，都是以雙板發展而來，包括北海道許多知名滑雪場也是如此。此外，在部分海外滑雪場，基於雪道設計、安全管理或營運規範，可能設有僅限雙板滑行的區域，甚至有少數滑雪場僅開放雙板滑行。因此，若未來有計畫前往日本其他地區、歐洲、北美（美國、加拿大）等不同國家的滑雪場，雙板通常會有更廣泛的適用性。</p>
+
+    <hr class="faq-div">
+    <h3 class="faq-sub">🤔 還是不知道該怎麼選？</h3>
+    <p>您可以從以下幾個方向思考：</p>
+    <ul>
+      <li><strong>興趣</strong>：喜歡板類運動，還是偏好穩定流暢的滑行方式？</li>
+      <li><strong>年齡</strong>：是否有孩子或長輩同行？希望全家一起享受滑雪？</li>
+      <li><strong>旅行規劃</strong>：這趟是體驗滑雪，還是希望未來持續滑雪、精進技巧？</li>
+      <li><strong>未來目標</strong>：是否有機會前往日本其他地區、歐洲、北美等不同國家的滑雪場？</li>
+    </ul>
+    <p>每位旅客的需求、目標與旅行方式都不同，因此適合的答案也不會完全一樣。</p>
+    <p>如果還是不確定，也歡迎告訴我們您的年齡、同行成員、運動經驗，以及這趟旅行的規劃，我們會依照您的需求提供最適合的建議，而不是推薦固定的答案。</p>
+
+    <hr class="faq-div">
+    <h3 class="faq-sub">🌨 最後，想和您分享一個觀念</h3>
+    <p>對許多人來說，第一次選擇單板或雙板，不只是決定這趟北海道之旅要體驗哪一項運動，更可能是開啟滑雪旅程的第一步。未來無論持續探索世界各地的雪場，或是每年回到北海道享受雪季，選擇適合自己的滑雪方式，都比選擇哪一種「比較好」更重要。</p>
+
+    <div class="faq-note">
+      <p>如果看完還是不知道哪一種比較適合，不妨試試我們的
+        <a href="./column/personalityquiz.html" target="_blank" rel="noopener noreferrer" style="color:#C8A45D; text-decoration:underline; font-weight:700;">「單板 vs 雙板」心理測驗</a>，或直接與我們聊聊，我們很樂意依照您的需求，協助您找到最適合自己的滑雪方式。</p>
+    </div>
   </div>
 </details>
 
         <details class="faqcard" data-cat="course">
           <summary><div><span class="faq-title">單板和雙板可以一起上課嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>單板和雙板的姿勢、平衡、動作原理完全不同，教練必須使用與學員相同的器材才能正確示範與指導。</p>
-    <p>若混在同一堂課，動作口令會互相衝突，且教練無法同時在正確時機給到保護與修正，因此必須分開上課。 </p>
-  <p>各自先學好技巧，再一起去雪道練習，進步更快也更安全。 </p>
+            <p>為了提供最佳的教學品質，我們的課程原則上會安排單板（Snowboard）與雙板（Ski）<strong>分開授課</strong>。</p>
+            <p>雖然都是滑雪運動，但兩者的站姿、平衡方式、轉彎技巧及教學內容都有很大的不同。教練需要使用與學員相同的器材，才能正確示範動作，並在適當的時機提供即時的引導與修正。</p>
+            <p>若將單板與雙板安排在同一堂課，教學節奏容易互相影響，教練也無法同時兼顧兩種不同的教學方式，因此整體學習效果通常會受到影響。</p>
+            <p>我們希望每位學員都能獲得最好的學習體驗，因此原則上會建議分開安排課程。待建立基本技巧後，再一起探索雪道、欣賞風景，享受屬於彼此的滑雪時光，通常會是更理想的安排。</p>
           </div>
         </details>
 
         <details class="faqcard" data-cat="course">
-          <summary><div><span class="faq-title">課程費用包含哪些？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <summary><div><span class="faq-title">課程費用包含哪些服務？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>課程價格包含教練授課費用。雪票（纜車費）、雪具租借、午餐及雪場交通等項目則需自理。</p>
+            <p>課程費用主要包含<strong>私人教練授課、課程規劃與學習安排</strong>，讓教練能依照每位學員的程度、目標及學習進度，提供合適的教學內容。</p>
+            <p>此外，我們也為課程投保<strong>最高日幣 3 億元第三人責任保險</strong>，希望讓每位學員都能更安心地享受滑雪。</p>
+            <p>雪票（纜車票）、雪具租借、午餐及往返雪場交通等個人費用，則需由學員自行安排。</p>
+            <p>我們希望將課程費用維持在透明且合理的範圍，因此雪票、雪具租借及交通等項目皆採分開安排。每位旅客都能依照自己的需求與預算自由選擇，不必為未使用的服務支付額外費用。</p>
+            <div class="faq-note">
+              <p>若您是第一次到北海道滑雪，也不用擔心。我們會依照您的課程安排，提供雪票、雪具租借及交通等相關建議，協助您更輕鬆地完成行前準備。</p>
+            </div>
           </div>
         </details>
 
         <details class="faqcard" data-cat="course">
-          <summary><div><span class="faq-title">第一次滑雪，應該安排幾天課程比較好？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <summary><div><span class="faq-title">第一次滑雪，建議安排幾天課程？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>一天課程適合體驗滑雪並學會安全停下；</p>
-    <p>若想在雪道上更穩定地轉彎、控制速度並享受滑行樂趣，建議安排二至三天課程。</p>
-    <p>如果平時運動較少，或擔心體力負擔，可以在課程中間安排休息日，既保留學習的連續性，也讓身體有時間恢復。</p>
-    <p>一多數完成三天課程的學員，能在初級雪道上更穩定滑行，摔倒次數也會比第一天明顯減少；</p>
-    <p>而安排四至五天的學員，通常能挑戰更多雪道與不同地形，並在速度與姿勢控制上更有信心。</p>
+            <p>如果是第一次滑雪，我們通常會依照您的旅遊天數、學習目標及體力狀況，協助規劃最適合的課程安排。</p>
+
+            <h3 class="faq-sub">⛷️ 1 天課程｜體驗滑雪</h3>
+            <p>適合想體驗滑雪、認識基本技巧的旅客。課程會以建立正確觀念、安全停下、控制方向及熟悉雪地環境為主要目標，讓您輕鬆踏出滑雪的第一步。</p>
+
+            <h3 class="faq-sub">🏔️ 2～3 天課程｜最推薦</h3>
+            <p>如果希望真正享受滑雪的樂趣，我們通常會建議安排 2～3 天課程。</p>
+            <p>滑雪是一項需要透過反覆練習建立身體記憶的運動，經過一天的練習與休息後，第二天開始往往更容易找回前一天的動作感覺，學習也會更加順暢。多數學員在完成 2～3 天課程後，通常能更穩定地控制速度、完成轉彎，也更有信心享受滑行的樂趣。</p>
+
+            <h3 class="faq-sub">❄️ 4～5 天課程｜持續進步</h3>
+            <p>如果希望利用這趟旅程更扎實地學習滑雪，或未來有持續滑雪的規劃，4～5 天課程能讓您有更充裕的時間練習與累積經驗。</p>
+            <p>多數學員除了能更穩定地在初級雪道滑行，也會開始嘗試更多不同的雪道與地形，在速度控制、轉彎技巧及整體滑行流暢度上，都會比剛開始時更加有信心。</p>
+
+            <hr class="faq-div">
+            <h3 class="faq-sub">💡 如果擔心體力怎麼辦？</h3>
+            <p>如果平時較少運動，或希望兼顧旅遊與休息，也可以安排「<strong>上課一天、休息一天</strong>」，或在課程中間安排一天自由活動。</p>
+            <p>適當的休息除了能恢復體力，也有助於身體整理前一天學到的動作，許多學員會發現，休息後重新上課時，動作反而變得更加自然，學習也更加順利。</p>
+
+            <hr class="faq-div">
+            <h3 class="faq-sub">🌨️ 我們的建議</h3>
+            <p>每位旅客的目標都不同，因此沒有「一定要上幾天」的標準答案。</p>
+            <p>如果您的目標只是體驗滑雪，1 天課程就能留下美好的回憶；如果希望真正享受滑雪、建立穩定的基礎，我們通常會推薦 2～3 天課程。若未來希望持續滑雪，甚至探索世界各地的雪場，4～5 天課程則能讓您擁有更扎實的基礎，為未來的滑雪旅程做好準備。</p>
           </div>
         </details>
 
         <details class="faqcard" data-cat="course">
-          <summary><div><span class="faq-title">每位教練最多可帶幾位學員？</span></div><i class="chev" aria-hidden="true"></i></summary>
+          <summary><div><span class="faq-title">每位教練最多可以帶幾位學員？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>每位教練的授課人數上限為 5 人，為確保學習效果，建議學員程度相近。</p>
-            <p>若全部為初學者，建議 4 人以內，能減少等待時間並提升學習體驗。</p>
-            <p>7 歲以下兒童採一對一教學，以確保安全與教學品質。</p>
+            <p>每位教練的授課人數上限為 <strong>5 人</strong>。不過，實際適合的人數仍需依照學員的年齡、滑雪程度及學習目標來安排。</p>
+            <p>如果同行學員的程度相近，教練較容易安排共同的練習內容，整體教學節奏也會更加順暢。若程度差距較大，教練需要分別照顧不同的學習進度，其他學員等待的時間也可能增加。</p>
+            <p>若全員皆為初學者，我們通常建議安排 <strong>4 人以內</strong>。人數較精簡時，教練能有更多時間觀察每位學員的動作、即時提供協助與修正，也能減少輪流練習及等待的時間，讓每位學員獲得更完整的學習體驗。</p>
+            <p><strong>7 歲以下兒童原則上採一對一教學。</strong>年幼孩子在體力、專注力及情緒反應上需要更細緻的照顧，教練也能依照孩子當天的狀況調整課程節奏，讓孩子以更適合自己的方式認識滑雪、建立信心。</p>
+            <div class="faq-note">
+              <p>若同行成員的年齡或程度差異較大，也歡迎提前告訴我們。我們會依照實際組合提供適合的分組與教練安排建議，兼顧一起旅行的樂趣與每位學員的學習品質。</p>
+            </div>
           </div>
         </details>
 
@@ -298,26 +374,30 @@
         <details class="faqcard" data-cat="course">
           <summary><div><span class="faq-title">小朋友幾歲可以參加課程？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>我們的兒童滑雪課程適用於 4 歲至未滿 7 歲的學齡前兒童，並採一對一授課，以保障安全與教學品質。</p>
+            <p>MOPO 的兒童滑雪課程適用於 <strong>4 歲至未滿 7 歲</strong>的學齡前兒童，並採<strong>一對一教學</strong>，讓教練能全程陪伴孩子學習，兼顧安全與教學品質。</p>
           </div>
         </details>
 
         <details class="faqcard" data-cat="course">
           <summary><div><span class="faq-title">小朋友該先學單板還是雙板？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>對年幼初學者而言，雙板較容易入門，摔倒次數也會減少，有助於提升興趣與自信心。</p>
-            <p>如果孩子有直排輪或溜冰的經驗，學雙板會更順利。喜歡滑板等橫向運動的孩子，也可以考慮單板。</p>
-   <p>不過，由於 7 歲以下的肌肉與協調性仍在發展階段，我們通常建議先從雙板學起。</p>
+            <p>對於年幼的初學者而言，<strong>雙板</strong>通常較容易入門，站立較穩定、摔倒次數也相對較少，有助於建立學習興趣與自信心。</p>
+            <p>如果孩子有直排輪或溜冰等經驗，學習雙板往往會更順利；若平時接觸滑板、衝浪等橫向板類運動，則也可以考慮從單板開始。</p>
+            <p>不過，由於 7 歲以下的孩子肌力、平衡感及身體協調性仍在發展中，MOPO 一般會建議先從雙板開始學習。當孩子建立良好的滑行基礎後，日後再轉換為單板也會更加順利。</p>
           </div>
         </details>
 
         <details class="faqcard" data-cat="course">
           <summary><div><span class="faq-title">是否有年齡限制或安全注意事項？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>滑雪沒有法律上的年齡限制，理論上任何年齡都能嘗試，但能否安全學習並有良好成效，取決於體能狀況、協調性、專注力以及對安全風險的管理。</p>
-            <p>建議起始年齡：雙板 4 歲以上；單板 7 歲以上較理想。</p>
-            <p>60～64 歲初學者：除非長期板類運動經驗，建議先由雙板開始並採一對一教學、完整護具。</p>
-            <p>65 歲以上：本校不提供初學課，進階可洽詢。</p>
+            <p>滑雪本身沒有法律上的年齡限制，是否適合學習主要取決於個人的體能狀況、平衡與協調能力、專注力，以及對安全風險的管理。</p>
+            <p>MOPO 建議的初學年齡為：</p>
+            <ul>
+              <li><strong>雙板</strong>：4 歲以上</li>
+              <li><strong>單板</strong>：7 歲以上較為理想</li>
+            </ul>
+            <p><strong>60～64 歲初學者</strong>，若平時沒有滑雪或其他板類運動經驗，建議先從雙板開始，並採一對一教學及配戴完整護具，以兼顧安全與學習品質。</p>
+            <p><strong>65 歲以上</strong>的初學者，基於安全考量，本校目前不提供初學課程；如已有滑雪經驗，歡迎事先與我們聯繫，我們將依個人滑雪經驗、身體狀況及課程內容評估是否適合安排。</p>
           </div>
         </details>
 
@@ -340,15 +420,16 @@
         <details class="faqcard" data-cat="course">
           <summary><div><span class="faq-title">雪票需要事先購買嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>剛開始學習的學員不需要事先購買雪票，教練會依當天的學員狀況與課程安排，建議最適合的雪票種類。</p>
-            <p>已經是進階學員（需要頻繁搭乘纜車的情況下）則可以考慮提前購買，以節省上課時間。</p>
+            <p>一般來說，初學者不需要事先購買雪票。教練會依當天的學員程度、課程內容及練習進度，建議最適合的雪票種類，避免購買不必要的票券。</p>
+            <p>若您已有滑雪經驗，且課程需要頻繁搭乘纜車，則可考慮提前購買雪票，以節省當天排隊購票的時間。</p>
           </div>
         </details>
 
         <details class="faqcard" data-cat="course">
           <summary><div><span class="faq-title">有團體課程嗎？</span></div><i class="chev" aria-hidden="true"></i></summary>
           <div class="faq-body">
-            <p>MOPO 本季僅提供私人課程。若未來開設團體課程，我們會在官網與社群平台公告，敬請關注最新消息</p>
+            <p>MOPO 本季僅提供私人課程，讓教練能依照每位學員的程度、學習目標及進度安排課程內容，提供更安全、更有效率的學習體驗。</p>
+            <p>若未來開設團體課程，我們將於官網及社群平台公告，歡迎持續關注最新消息。</p>
           </div>
         </details>
 
