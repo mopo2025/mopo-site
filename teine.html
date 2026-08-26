@@ -101,6 +101,64 @@
       .rental-table { font-size: 14px }
       .rental-table th, .rental-table td { padding: 10px 8px }
     }
+    /* Rental tables: keep the original full-width table layout on every screen. */
+    .rental-section { overflow:hidden }
+    .rental-table { table-layout:auto }
+    .rental-table th { white-space:nowrap }
+    .rental-table td { vertical-align:middle }
+    .price-main { font-weight:700; color:var(--ink); white-space:nowrap }
+    .price-peak { display:block; margin-top:2px; font-size:12px; color:var(--muted-morandi); white-space:nowrap }
+    .rental-subtitle { margin:0 0 14px; color:var(--muted-morandi); font-size:13px; line-height:1.7 }
+
+    /* SOTORENT: preserve centered columns like the original design. */
+    #sotorent .soto-price-table { width:100%; table-layout:fixed }
+    #sotorent .soto-price-table th,
+    #sotorent .soto-price-table td {
+      text-align:center;
+      white-space:normal;
+      overflow-wrap:anywhere;
+      word-break:normal;
+    }
+    #sotorent .soto-price-table th:nth-child(1),
+    #sotorent .soto-price-table td:nth-child(1) { width:14%; font-weight:600; color:var(--ink) }
+    #sotorent .soto-price-table th:nth-child(2),
+    #sotorent .soto-price-table td:nth-child(2) { width:38%; text-align:left }
+    #sotorent .soto-price-table th:nth-child(n+3),
+    #sotorent .soto-price-table td:nth-child(n+3) { width:16% }
+
+    @media (max-width: 700px) {
+      .s-section { padding:26px 14px; border-radius:14px }
+      .rental-section { padding:12px 8px; margin-bottom:18px }
+      .label { align-items:flex-start; font-size:15px; line-height:1.5 }
+      .label svg { width:23px; height:23px; margin-top:1px }
+      .rental-note { padding:14px; font-size:13.5px }
+
+      #sotorent .soto-price-table { font-size:12px }
+      #sotorent .soto-price-table th,
+      #sotorent .soto-price-table td { padding:8px 4px; line-height:1.45 }
+      #sotorent .soto-price-table th:nth-child(1),
+      #sotorent .soto-price-table td:nth-child(1) { width:14% }
+      #sotorent .soto-price-table th:nth-child(2),
+      #sotorent .soto-price-table td:nth-child(2) { width:35%; text-align:left }
+      #sotorent .soto-price-table th:nth-child(n+3),
+      #sotorent .soto-price-table td:nth-child(n+3) { width:17% }
+      #sotorent .price-main { font-size:12px }
+    }
+
+    @media (max-width: 420px) {
+      .s-section { padding-left:10px; padding-right:10px }
+      .rental-section { padding:10px 5px }
+      #sotorent .soto-price-table { font-size:10.5px }
+      #sotorent .soto-price-table th,
+      #sotorent .soto-price-table td { padding:7px 2px; line-height:1.35 }
+      #sotorent .soto-price-table th:nth-child(1),
+      #sotorent .soto-price-table td:nth-child(1) { width:13% }
+      #sotorent .soto-price-table th:nth-child(2),
+      #sotorent .soto-price-table td:nth-child(2) { width:36% }
+      #sotorent .soto-price-table th:nth-child(n+3),
+      #sotorent .soto-price-table td:nth-child(n+3) { width:17% }
+      #sotorent .price-main { font-size:10.5px; letter-spacing:-.02em }
+    }
     .modal { position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999 }
     .modal[aria-hidden="false"] { display:flex }
     .modal-dialog { width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25) }
@@ -260,7 +318,7 @@
           <h2 id="rental-title">雪具租借（手稻官方租借處）</h2>
           
           <div class="rental-note">
-            <p><strong>租借價格依照 2025-2026 手稻滑雪場官方價格提供，僅供參考，詳細資訊請以手稻滑雪場官網公布內容為準。</strong></p>
+            <p><strong>以下依照手稻滑雪場 2025-2026 官方租借價目整理，僅保留本頁目前刊載的租借項目。實際價格與供應內容請以雪場官方公告為準。</strong></p>
             <p>手稻滑雪場提供事先網路預約租借，建議提早預約以確保裝備尺寸與數量。</p>
             
             <h3 style="margin-top: 16px; color: var(--text-morandi);">租借流程與注意事項（參考）</h3>
@@ -277,7 +335,7 @@
   提醒：以上資訊僅為參考，最終價格、租借規範與預約方式仍以手稻滑雪場官方公告為準。
 </p>
 <p class="rental-disclaimer" style="text-align: center; margin: 0.2em 0; font-size: 0.95em;">
-  ※價格的括號（ ）內為旺季價格　適用期間：12月27日～1月4日
+  ※括號內為旺季價格，適用期間：12月27日～1月4日
 </p>
           </div>
 
@@ -470,42 +528,46 @@
 
  <article id="sotorent" class="s-section" aria-labelledby="sotorent-title">
   <h2 id="sotorent-title">雪具租借（車站租借）</h2>
-  
+
   <div class="rental-note">
-    <p><strong>SOTORENT 手稻站前店 — 雪具租借 2025-26</strong></p>
-    <p>SOTORENT 提供滑雪板與單板滑雪短期租借服務，適合初學者到中高級滑雪者。租借服務位於手稻車站外，步行約 3 分鐘即可到達。</p>
-    <p>詳細資訊請以 <a href="https://en.soto.rent" target="_blank" style="color: var(--accent-morandi); text-decoration: underline;">SOTORENT 官網</a> 公布內容為準。</p>
-    <p class="rental-disclaimer">※價格的括號（ ）內為旺季價格 適用期間：12月27日～1月4日</p>
-    
-    <h3 style="margin-top: 16px; color: var(--text-morandi);">📍 店鋪位置</h3>
-    <p>手稻站前（札幌市手稻區）</p>
-    <p>簡單地圖示意：</p>
-    <pre class="sotorent-map">[JR手稻站出口] ── 徒步約3分鐘 ── [SOTORENT 店鋪]</pre>
-    
-    <h3 style="margin-top: 16px; color: var(--text-morandi);">📝 租借規則與注意事項</h3>
+    <p><strong>SOTORENT 手稻站前店 — 2026-27 租借價格</strong></p>
+    <p>SOTORENT 位於 JR 手稻站附近，步行約 3 分鐘。以下僅整理較常使用的 <strong>1～3 天</strong>租借價格，方便手機查閱。</p>
+    <p>Standard 為初學～中級適用裝備；Premium 為中高級、全山與粉雪取向裝備。Premium 套裝含免費過夜保管。</p>
     <ul>
-      <li>請於預約時輸入使用者鞋碼、年齡、身高、體重、滑雪或單板等級</li>
-      <li>租借品可於租借前日下午 3 時後領取，歸還期限為租借結束日隔日上午 11 時</li>
-      <li>配送服務：單程 ¥4,000</li>
-      <li>山岳滑雪 / Backcountry 裝備取貨：銭函店，手稻店取貨需加 ¥3,000</li>
-      <li>租借數量有限，請提早預約</li>
+      <li>兒童價適用於 12 歲以下。</li>
+      <li>手套不提供租借。</li>
+      <li>實際庫存、尺寸與租借規範請以 SOTORENT 官方公告為準。</li>
     </ul>
-    
-    <p class="rental-disclaimer">提醒：以上資訊僅為參考，最終價格與規範以 SOTORENT 官方公告為準。</p>
   </div>
 
   <section class="rental-section">
     <div class="label">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/><path d="M22 58c4-4 22-34 34-48"/></svg>
-      標準 Standard 套裝 <span class="muted">(1~3天價格)</span>
+      Standard 標準套裝
     </div>
-    <table class="rental-table">
+    <p class="rental-subtitle">雙板與單板皆可選擇。</p>
+    <table class="rental-table soto-price-table">
       <thead><tr><th>類型</th><th>內容</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
       <tbody>
-        <tr><td>大人</td><td>滑雪板或單板 + 滑雪杖 + 綁定 + 靴子</td><td>¥6,000 <span class="muted">(¥6,500)</span></td><td>¥10,200 <span class="muted">(¥11,000)</span></td><td>¥14,000 <span class="muted">(¥15,100)</span></td></tr>
-        <tr><td>大人</td><td>滑雪板或單板 + 綁定</td><td>¥4,800 <span class="muted">(¥5,200)</span></td><td>¥8,200 <span class="muted">(¥8,800)</span></td><td>¥11,200 <span class="muted">(¥12,000)</span></td></tr>
-        <tr><td>兒童 <span class="muted">(12歲以下)</span></td><td>滑雪板或單板 + 綁定 + 靴子</td><td>¥4,800 <span class="muted">(¥5,200)</span></td><td>¥8,200 <span class="muted">(¥8,800)</span></td><td>¥11,200 <span class="muted">(¥12,000)</span></td></tr>
-        <tr><td>兒童 <span class="muted">(12歲以下)</span></td><td>滑雪板或單板 + 綁定</td><td>¥4,000 <span class="muted">(¥4,300)</span></td><td>¥6,800 <span class="muted">(¥7,300)</span></td><td>¥9,400 <span class="muted">(¥10,100)</span></td></tr>
+        <tr><td>成人</td><td>雙板＋雪杖＋雪靴<br>或 單板＋固定器＋雪靴</td><td data-day="1天"><span class="price-main">¥7,800</span></td><td data-day="2天"><span class="price-main">¥13,300</span></td><td data-day="3天"><span class="price-main">¥18,300</span></td></tr>
+        <tr><td>成人</td><td>雙板＋雪杖<br>或 單板＋固定器</td><td data-day="1天"><span class="price-main">¥6,800</span></td><td data-day="2天"><span class="price-main">¥11,700</span></td><td data-day="3天"><span class="price-main">¥15,900</span></td></tr>
+        <tr><td>兒童</td><td>雙板＋雪杖＋雪靴<br>或 單板＋固定器＋雪靴</td><td data-day="1天"><span class="price-main">¥6,800</span></td><td data-day="2天"><span class="price-main">¥11,700</span></td><td data-day="3天"><span class="price-main">¥15,900</span></td></tr>
+        <tr><td>兒童</td><td>雙板＋雪杖<br>或 單板＋固定器</td><td data-day="1天"><span class="price-main">¥5,800</span></td><td data-day="2天"><span class="price-main">¥9,900</span></td><td data-day="3天"><span class="price-main">¥13,500</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="rental-section">
+    <div class="label">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M8 16h48v32H8z"/><path d="M8 32h48"/></svg>
+      Standard Full 標準全套裝
+    </div>
+    <p class="rental-subtitle">Standard 雪具＋外套＋褲子＋頭盔＋護目鏡。</p>
+    <table class="rental-table soto-price-table">
+      <thead><tr><th>類型</th><th>內容</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
+      <tbody>
+        <tr><td>成人</td><td>標準雪具全套＋服裝與配件</td><td data-day="1天"><span class="price-main">¥13,000</span></td><td data-day="2天"><span class="price-main">¥22,100</span></td><td data-day="3天"><span class="price-main">¥30,000</span></td></tr>
+        <tr><td>兒童</td><td>標準雪具全套＋服裝與配件</td><td data-day="1天"><span class="price-main">¥9,800</span></td><td data-day="2天"><span class="price-main">¥17,600</span></td><td data-day="3天"><span class="price-main">¥24,700</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -513,13 +575,31 @@
   <section class="rental-section">
     <div class="label">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M10 58c6-6 24-36 40-52"/><path d="M22 58c4-4 22-34 34-48"/></svg>
-      標準 Full 套裝 <span class="muted">(含服裝、護具，1~3天價格)</span>
+      Premium 高階套裝
     </div>
-    <table class="rental-table">
+    <p class="rental-subtitle">中高級、全山與粉雪取向裝備。</p>
+    <table class="rental-table soto-price-table">
       <thead><tr><th>類型</th><th>內容</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
       <tbody>
-        <tr><td>大人</td><td>滑雪板或單板 + 服裝上下 + 頭盔 + 護目鏡 + 手套</td><td>¥11,000 <span class="muted">(¥11,900)</span></td><td>¥18,700 <span class="muted">(¥20,200)</span></td><td>¥25,700 <span class="muted">(¥27,700)</span></td></tr>
-        <tr><td>兒童</td><td>滑雪板或單板 + 服裝上下 + 頭盔 + 護目鏡 + 手套</td><td>¥7,700 <span class="muted">(¥8,300)</span></td><td>¥13,100 <span class="muted">(¥14,100)</span></td><td>¥18,000 <span class="muted">(¥19,400)</span></td></tr>
+        <tr><td>成人</td><td>雙板＋雪杖＋雪靴<br>或 單板＋固定器＋雪靴</td><td data-day="1天"><span class="price-main">¥9,800</span></td><td data-day="2天"><span class="price-main">¥17,600</span></td><td data-day="3天"><span class="price-main">¥24,700</span></td></tr>
+        <tr><td>成人</td><td>雙板＋雪杖<br>或 單板＋固定器</td><td data-day="1天"><span class="price-main">¥8,800</span></td><td data-day="2天"><span class="price-main">¥15,800</span></td><td data-day="3天"><span class="price-main">¥22,100</span></td></tr>
+        <tr><td>兒童</td><td>雙板＋雪杖＋雪靴<br>或 單板＋固定器＋雪靴</td><td data-day="1天"><span class="price-main">¥7,800</span></td><td data-day="2天"><span class="price-main">¥13,300</span></td><td data-day="3天"><span class="price-main">¥18,300</span></td></tr>
+        <tr><td>兒童</td><td>雙板＋雪杖<br>或 單板＋固定器</td><td data-day="1天"><span class="price-main">¥6,800</span></td><td data-day="2天"><span class="price-main">¥11,700</span></td><td data-day="3天"><span class="price-main">¥15,900</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="rental-section">
+    <div class="label">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><path d="M8 16h48v32H8z"/><path d="M8 32h48"/></svg>
+      Premium Full 高階全套裝
+    </div>
+    <p class="rental-subtitle">Premium 雪具＋外套＋褲子＋頭盔＋護目鏡。</p>
+    <table class="rental-table soto-price-table">
+      <thead><tr><th>類型</th><th>內容</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
+      <tbody>
+        <tr><td>成人</td><td>高階雪具全套＋服裝與配件</td><td data-day="1天"><span class="price-main">¥15,000</span></td><td data-day="2天"><span class="price-main">¥25,500</span></td><td data-day="3天"><span class="price-main">¥34,800</span></td></tr>
+        <tr><td>兒童</td><td>高階雪具全套＋服裝與配件</td><td data-day="1天"><span class="price-main">¥11,000</span></td><td data-day="2天"><span class="price-main">¥19,800</span></td><td data-day="3天"><span class="price-main">¥27,400</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -527,22 +607,28 @@
   <section class="rental-section">
     <div class="label">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" stroke="#111" fill="none" stroke-width="2"><circle cx="32" cy="32" r="18"/><path d="M32 20v24M20 32h24"/></svg>
-      單品租借 <span class="muted">(1~3天價格)</span>
+      雪靴・服裝・配件
     </div>
-    <table class="rental-table">
-      <thead><tr><th>租借項目</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
+    <p class="rental-subtitle">單品租借。手套不提供租借。</p>
+    <table class="rental-table soto-price-table">
+      <thead><tr><th>類型</th><th>項目</th><th>1天</th><th>2天</th><th>3天</th></tr></thead>
       <tbody>
-        <tr><td>大人服裝上或下</td><td>¥2,500 <span class="muted">(¥2,700)</span></td><td>¥4,300 <span class="muted">(¥4,600)</span></td><td>¥5,900 <span class="muted">(¥6,300)</span></td></tr>
-        <tr><td>兒童服裝上或下</td><td>¥1,500 <span class="muted">(¥1,600)</span></td><td>¥2,600 <span class="muted">(¥2,800)</span></td><td>¥3,500 <span class="muted">(¥3,800)</span></td></tr>
-        <tr><td>頭盔或護目鏡</td><td>¥1,800 <span class="muted">(¥1,900)</span></td><td>¥3,100 <span class="muted">(¥3,300)</span></td><td>¥4,200 <span class="muted">(¥4,500)</span></td></tr>
-        <tr><td>兒童頭盔或護目鏡</td><td>¥1,200 <span class="muted">(¥1,300)</span></td><td>¥2,000 <span class="muted">(¥2,200)</span></td><td>¥2,800 <span class="muted">(¥3,000)</span></td></tr>
-        <tr><td>滑雪靴或單板靴</td><td>¥3,000 <span class="muted">(¥3,200)</span></td><td>¥5,100 <span class="muted">(¥5,500)</span></td><td>¥7,000 <span class="muted">(¥7,500)</span></td></tr>
-        <tr><td>滑雪杖</td><td>¥1,500 <span class="muted">(¥1,600)</span></td><td>¥2,600 <span class="muted">(¥2,800)</span></td><td>¥3,500 <span class="muted">(¥3,800)</span></td></tr>
+        <tr><td>成人</td><td>雙板雪靴／單板雪靴</td><td data-day="1天"><span class="price-main">¥3,000</span></td><td data-day="2天"><span class="price-main">¥5,400</span></td><td data-day="3天"><span class="price-main">¥7,600</span></td></tr>
+        <tr><td>成人</td><td>外套／褲子（單件）</td><td data-day="1天"><span class="price-main">¥3,000</span></td><td data-day="2天"><span class="price-main">¥5,400</span></td><td data-day="3天"><span class="price-main">¥7,600</span></td></tr>
+        <tr><td>成人</td><td>頭盔</td><td data-day="1天"><span class="price-main">¥2,000</span></td><td data-day="2天"><span class="price-main">¥3,600</span></td><td data-day="3天"><span class="price-main">¥5,000</span></td></tr>
+        <tr><td>成人</td><td>護目鏡</td><td data-day="1天"><span class="price-main">¥2,000</span></td><td data-day="2天"><span class="price-main">¥3,600</span></td><td data-day="3天"><span class="price-main">¥5,000</span></td></tr>
+        <tr><td>成人</td><td>護具組（護腕、護肘、護膝）</td><td data-day="1天"><span class="price-main">¥2,000</span></td><td data-day="2天"><span class="price-main">¥3,600</span></td><td data-day="3天"><span class="price-main">¥5,000</span></td></tr>
+        <tr><td>成人</td><td>護臀</td><td data-day="1天"><span class="price-main">¥1,500</span></td><td data-day="2天"><span class="price-main">¥2,700</span></td><td data-day="3天"><span class="price-main">¥3,800</span></td></tr>
+        <tr><td>成人</td><td>Turtle 護臀</td><td data-day="1天"><span class="price-main">¥2,000</span></td><td data-day="2天"><span class="price-main">¥3,600</span></td><td data-day="3天"><span class="price-main">¥5,000</span></td></tr>
+        <tr><td>兒童</td><td>雙板雪靴／單板雪靴</td><td data-day="1天"><span class="price-main">¥2,000</span></td><td data-day="2天"><span class="price-main">¥3,600</span></td><td data-day="3天"><span class="price-main">¥5,000</span></td></tr>
+        <tr><td>兒童</td><td>外套／褲子（單件）</td><td data-day="1天"><span class="price-main">¥2,000</span></td><td data-day="2天"><span class="price-main">¥3,600</span></td><td data-day="3天"><span class="price-main">¥5,000</span></td></tr>
+        <tr><td>兒童</td><td>頭盔</td><td data-day="1天"><span class="price-main">¥1,500</span></td><td data-day="2天"><span class="price-main">¥2,700</span></td><td data-day="3天"><span class="price-main">¥3,800</span></td></tr>
+        <tr><td>兒童</td><td>護目鏡</td><td data-day="1天"><span class="price-main">¥1,500</span></td><td data-day="2天"><span class="price-main">¥2,700</span></td><td data-day="3天"><span class="price-main">¥3,800</span></td></tr>
       </tbody>
     </table>
   </section>
 
-  <p class="rental-disclaimer">官方網站：<a href="https://en.soto.rent" target="_blank" style="color: var(--accent-morandi); text-decoration: underline;">SOTORENT</a></p>
+  <p class="rental-disclaimer">官方網站：<a href="https://en.soto.rent" target="_blank" rel="noopener noreferrer" style="color: var(--accent-morandi); text-decoration: underline;">SOTORENT</a></p>
 </article>
 
       </div>
@@ -593,7 +679,7 @@
           }
         });
       }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car','rental'].forEach(id=>{
+      ['features','public','car','rental','sotorent'].forEach(id=>{
         const el = document.getElementById(id); if(el) io.observe(el);
       });
 
