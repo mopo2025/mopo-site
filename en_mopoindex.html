@@ -446,6 +446,63 @@
   .topbar .nav{ padding:12px 0 }
   .topbar .menu>li>a{ padding-top:10px; padding-bottom:10px }
   .topbar .brand .logo{ font-size:18px }
+
+    /* ===== Index-aligned Why Choose MOPO + Contact only ===== */
+    #why-mopo { background: var(--bg-mid); padding-bottom: 34px }
+    #pricing { padding-top: 30px }
+    #why-mopo .section__head { text-align: center; max-width: 800px; margin: 0 auto 34px }
+    #why-mopo .section__head h2 { font-size: 22px; font-weight: 700; letter-spacing: .04em }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 6px }
+    .snow-icon { width: 16px; height: 16px; color: #b99a5a; display: block; margin: 0 auto 13px; stroke-width: 1.8 }
+    .why-item { background: #fff; border: 1px solid #e5e1da; border-left: 1px solid #e5e1da; border-radius: 14px; padding: 27px 27px 28px; box-shadow: 0 5px 18px rgba(13,27,42,.055); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; display: block; text-align: center; min-width: 0 }
+    .why-item:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(13,27,42,.075); border-color: #d8c8a6 }
+    .why-item h3 { font-size: 16px; font-weight: 700; color: #222; margin: 0 0 11px; line-height: 1.5; letter-spacing: .02em; text-align: center }
+    .why-item p { font-size: 14px; color: #5f6469; margin: 0; text-align: left; line-height: 1.8; letter-spacing: .01em }
+
+    #contact { padding-top: 46px; padding-bottom: 44px; }
+    .contact-modern { max-width: 820px; margin: 0 auto; text-align: center; }
+    .contact-modern .contact-kicker { margin: 0 0 8px; font-family: "Montserrat", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .22em; color: #9a8a6a; text-transform: uppercase; }
+    .contact-modern h2 { margin: 0; font-family: "Noto Serif TC", serif; font-size: clamp(24px, 3vw, 31px); font-weight: 700; letter-spacing: .05em; color: #171717; }
+    .contact-modern .contact-copy { margin: 10px auto 0; max-width: none; color: #62676d; font-size: 14px; line-height: 1.7; letter-spacing: .015em; white-space: nowrap; }
+    .contact-primary { margin: 22px auto 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; max-width: 720px; }
+    .contact-btn { height: 58px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #ded8cd; border-radius: 12px; background: #fff; color: #252525; text-decoration: none; font-size: 14px; font-weight: 700; letter-spacing: .01em; box-shadow: 0 2px 10px rgba(24,24,24,.025); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease; }
+    .contact-btn:hover { transform: translateY(-1px); border-color: #cbb889; box-shadow: 0 5px 16px rgba(24,24,24,.05); }
+    .contact-btn-icon { width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .contact-btn-icon img,.contact-btn-icon svg { width: 24px; height: 24px; }
+    .contact-btn-booking { background: #fbfaf7; border-color: #d9caab; color: #6e5525; }
+    .contact-email { margin: 0; }
+    .contact-email a { min-height: 38px; display: inline-flex; align-items:center; justify-content:center; gap:7px; padding:0 14px; color:#555; font-size:12.5px; font-weight:700; border-radius:10px; }
+    .contact-email a:hover { background:#faf8f3; color:#6e5525; }
+    .contact-resources { margin: 10px auto 0; display:flex; justify-content:center; align-items:center; gap:18px; flex-wrap:nowrap; }
+    .contact-resources a { padding:7px 8px; color:#555; font-size:12.5px; font-weight:700; border-radius:8px; }
+    .contact-resources a:hover { background:#faf8f3; color:#6e5525; }
+    .contact-social { margin-top: 15px; }
+    .contact-modern .social-label { margin: 0 0 10px !important; font-family: Montserrat,sans-serif; font-size:13px; font-weight:700; letter-spacing:.16em; color:#8a7650; }
+    .contact-modern .social-row { display:flex; justify-content:center; gap:10px; }
+    .contact-modern .social-row a { width:42px; height:42px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; opacity:.88; transition:transform .18s ease,opacity .18s ease,background .18s ease; }
+    .contact-modern .social-row a:hover { transform:translateY(-1px); opacity:1; background:#faf8f3; }
+    .contact-modern .social-row img { width:21px; height:21px; object-fit:contain; }
+
+    @media (max-width:760px) {
+      #why-mopo { padding-bottom: 22px !important }
+      #pricing { padding-top: 20px !important }
+      #why-mopo .section__head { margin-bottom: 24px }
+      .why-grid { grid-template-columns: 1fr; gap: 12px }
+      .why-item { padding: 22px 21px 23px; border-radius: 12px }
+      .snow-icon { width: 14px; height: 14px; margin: 0 auto 11px }
+      .why-item:active { transform: none }
+      .why-item h3 { font-size: 15px; margin-bottom: 7px }
+      .why-item p { font-size: 14px; line-height: 1.72 }
+      #contact { padding-top:38px; padding-bottom:38px; }
+      .contact-modern .contact-copy { margin-top:8px; max-width:330px; white-space: normal; }
+      .contact-primary { margin-top:18px; grid-template-columns:1fr 1fr; gap:8px; }
+      .contact-btn { height:54px; border-radius:11px; }
+      .contact-btn-booking { grid-column:1 / -1; height:50px; }
+      .contact-social { margin-top:15px; }
+      .contact-modern .social-label { font-size:12.5px; margin-bottom:8px !important; }
+      .contact-modern .social-row a { width:40px; height:40px; }
+    }
+
 </style>
 </head>
 <body>
@@ -552,7 +609,7 @@
           <div class="news-viewport" id="newsViewport">
             <div class="news-row" id="newsRow">
               <a class="news-card" href="./en_news.html"><img src="news/news-1.png" alt="Latest news 1" loading="lazy" decoding="async"></a>
-              <a class="news-card" id="newsCard2" data-reveal-at="2026-07-10T03:00:00Z" style="display:none" href="./news/en_booking2627.html"><img src="news/en_news-2.jpg" alt="Latest news 2" loading="lazy" decoding="async"></a>
+              <a class="news-card" id="newsCard2" data-reveal-at="2026-07-10T03:00:00Z" style="display:none" href="./news/en_ebooking2627.html"><img src="news/en_news-2.jpg" alt="Latest news 2" loading="lazy" decoding="async"></a>
               <a class="news-card" href="./trip1/en_tripteine6days.html"><img src="news/en_news-1.jpg" alt="Latest news 3" loading="lazy" decoding="async"></a>
               <a class="news-card" href="en_teine.html"><img src="news/en_news-4.jpg" alt="Latest news 4" loading="lazy" decoding="async"></a>
               <a class="news-card" href="en_kokusai.html"><img src="news/en_news-5.jpg" alt="Latest news 5" loading="lazy" decoding="async"></a>
@@ -1025,33 +1082,21 @@
   <!-- Contact -->
   <section id="contact" class="section" aria-label="Contact us">
     <div class="container">
-      <div class="section__head"><h2>Contact Us</h2></div>
-      <div class="contact-grid">
-        <form id="contactForm" class="form" aria-label="Contact form">
-          <input type="text" name="name" placeholder="Name" required class="reveal" aria-label="Name">
-          <input type="email" name="email" placeholder="Email" required class="reveal" aria-label="Email">
-          <input type="tel" name="phone" placeholder="Phone (optional)" class="reveal" aria-label="Phone (optional)">
-          <textarea name="notes" placeholder="Notes (lesson requests / skill level / preferred dates, etc.)" rows="5" class="reveal" aria-label="Notes"></textarea>
-          <button class="btn reveal" type="submit" style="justify-self:start">Submit</button>
-          <div id="contactMsg" style="font-size:18px; color:#0a7a3c"></div>
-        </form>
-        <aside aria-label="Social &amp; contact" class="reveal" style="align-self:start">
-          <h3 style="margin:0 0 8px 0; font-size:18px; color:#111">Follow Us</h3>
-          <div class="sns">
-            <a href="https://www.threads.com/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads">
-              <img src="logo/threads.png" alt="Threads" width="28" height="28" loading="lazy" decoding="async">
-            </a>
-            <a href="https://www.instagram.com/moposkischool/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <img src="logo/ig.png" alt="Instagram" width="28" height="28" loading="lazy" decoding="async">
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61581290857769" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-              <img src="logo/fb.png" alt="Facebook" width="28" height="28" loading="lazy" decoding="async">
-            </a>
-            <a href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer" aria-label="LINE">
-              <img src="logo/line.png" alt="LINE" width="28" height="28" loading="lazy" decoding="async">
-            </a>
-          </div>
-        </aside>
+      <div class="contact-modern reveal">
+        <p class="contact-kicker">CONTACT</p>
+        <h2>How Can We Help?</h2>
+        <p class="contact-copy">For lesson bookings, schedule questions, or anything else, feel free to contact us.</p>
+        <div class="contact-primary" aria-label="Main contact options">
+          <a class="contact-btn" href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer"><span class="contact-btn-icon"><img src="logo/line.png" alt=""></span><span>LINE</span></a>
+          <a class="contact-btn" href="https://wa.me/message/UNIMMBBQN5NTC1" target="_blank" rel="noopener noreferrer"><span class="contact-btn-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#25D366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.45L3.5 20.5l1.4-4.25A8.5 8.5 0 1 1 20.5 11.7Z"></path><path d="M8.2 7.6c.2-.45.42-.46.73-.47h.62c.2 0 .42.08.54.36.13.3.48 1.16.52 1.25.05.08.08.18.02.3-.06.12-.1.2-.2.31-.1.1-.2.23-.29.31-.1.1-.2.2-.08.4.12.2.52.86 1.12 1.4.77.69 1.42.9 1.62 1 .2.1.32.08.44-.05.12-.14.5-.58.63-.78.13-.2.26-.17.44-.1.18.06 1.12.53 1.31.63.2.1.33.15.38.23.05.08.05.48-.1.94-.16.46-.91.88-1.25.94-.32.06-.73.1-1.18-.04-.27-.09-.62-.2-1.07-.4-.19-.08-3.37-1.24-4.61-4.27-.12-.3-.02-.46.09-.58Z"></path></svg></span><span>WhatsApp</span></a>
+          <a class="contact-btn contact-btn-booking" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer"><span class="contact-btn-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#8B6B2E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"></rect><path d="M8 3v4M16 3v4M4 10h16"></path></svg></span><span>Book a Lesson</span></a>
+        </div>
+        <nav class="contact-resources" aria-label="Helpful resources"><a href="en_faq.html">FAQ</a><div class="contact-email"><a href="mailto:support@moposki.com"><span aria-hidden="true">✉</span><span>Email</span></a></div></nav>
+        <div class="contact-social"><p class="social-label">FOLLOW MOPO</p><div class="social-row" aria-label="MOPO social media">
+          <a href="https://www.instagram.com/moposkischool/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="logo/ig.png" alt=""></a>
+          <a href="https://www.threads.net/@moposkischool" target="_blank" rel="noopener noreferrer" aria-label="Threads"><img src="logo/threads.png" alt=""></a>
+          <a href="https://www.facebook.com/profile.php?id=61581290857769" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="logo/fb.png" alt=""></a>
+        </div></div>
       </div>
     </div>
   </section>
