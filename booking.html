@@ -62,6 +62,7 @@ h3{margin:0 0 10px;font-size:1.02rem;font-weight:800;color:var(--heading)}
 /* ===== 選擇卡片 ===== */
 .grid{display:grid;gap:10px}
 .choices-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.choices-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 .choices-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .choice{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border-radius:14px;border:2px solid var(--border);background:#fff;cursor:pointer;font-family:inherit;color:inherit;transition:border-color .2s var(--ease),box-shadow .2s var(--ease),transform .2s var(--ease)}
 .choice:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--brand)}
@@ -79,7 +80,7 @@ h3{margin:0 0 10px;font-size:1.02rem;font-weight:800;color:var(--heading)}
 .badge{position:absolute;top:8px;left:8px;font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:12px;background:var(--heading);color:#fff;opacity:.92}
 /* 手機：雪場卡片改橫向緊湊排列（縮短捲動距離、單手好點） */
 @media(max-width:768px){
-  .choices-3,.choices-2{grid-template-columns:1fr}
+  .choices-4,.choices-3,.choices-2{grid-template-columns:1fr}
   #resortChoices .choice{flex-direction:row;gap:12px;padding:10px;min-height:88px}
   #resortChoices .choice img{width:112px;aspect-ratio:4/3;flex-shrink:0}
   #resortChoices .choice .choice-txt{align-items:flex-start;flex:1}
@@ -228,7 +229,7 @@ dialog[open]{animation:pop .3s var(--ease)}
     <div class="config-header" style="margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:8px">
       <h2 style="margin:0" data-i="s1t">1. 選擇滑雪場</h2>
     </div>
-    <div class="grid choices-3" id="resortChoices">
+    <div class="grid choices-4" id="resortChoices">
       <button type="button" class="choice" data-resort="teine">
         <img src="img/news/teine.jpg" alt="Teine"><span class="badge" data-i="badge_coming" style="display:none">即將開放</span>
         <div class="choice-txt"><div class="title" data-i="r_teine">手稻滑雪場</div><div class="sub" data-i="r_teine_sub">距離市區最近</div></div>
@@ -240,6 +241,10 @@ dialog[open]{animation:pop .3s var(--ease)}
       <button type="button" class="choice" data-resort="kokusai">
         <img src="img/news/kokusai.jpg" alt="Kokusai"><span class="badge" data-i="badge_coming" style="display:none">即將開放</span>
         <div class="choice-txt"><div class="title" data-i="r_koku">札幌國際</div><div class="sub" data-i="r_koku_sub">雪道豐富</div></div>
+      </button>
+      <button type="button" class="choice" data-resort="asari">
+        <img src="img/asari/asari.jpg" alt="Asarigawa Onsen"><span class="badge" data-i="badge_coming" style="display:none">即將開放</span>
+        <div class="choice-txt"><div class="title" data-i="r_asari">朝里川温泉</div><div class="sub" data-i="r_asari_sub">温泉・近隣宿泊</div></div>
       </button>
     </div>
   </div>
@@ -341,7 +346,7 @@ const money = n => `¥${Number(n).toLocaleString()}`;
 const MONTHS_EN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const fmtDate = d => { const [y, m, dd] = d.split('-'); return current.lang === 'en' ? `${MONTHS_EN[+m - 1]} ${+dd}, ${y}` : `${y}年${+m}月${+dd}日`; };
 const API_URL = 'https://api.moposki.com';
-const RESORT_AVAIL = { teine: true, onze: true, kokusai: true };
+const RESORT_AVAIL = { teine: true, onze: true, kokusai: true, asari: true };
 // ===== 預購折扣時段 + 雪季結束（皆以「日本時間」判斷） =====
 // 以絕對時刻（+09:00）比較 Date.now()，不受使用者所在時區影響。已開賣，無鎖定期。
 // ⚠️ 前端僅為體驗把關；「雪季結束後禁止預訂」的硬性驗證，務必於 Apps Script 收單端以伺服器時間再判斷一次。
@@ -359,7 +364,7 @@ const getTier = () => {
 };
 // 課程可預訂日期範圍（防呆機制）：每個滑雪場各自設定「x月X日 ~ p月P日」的可預訂區間，
 // 使用者無法在日期欄位選到範圍以外的日子（原生 min/max 限制 + JS 二次驗證）。
-const RESORT_DATES = { teine: {min:'2026-11-25',max:'2027-05-06'}, onze: {min:'2026-12-16',max:'2027-03-31'}, kokusai: {min:'2026-11-22',max:'2027-05-06'} };
+const RESORT_DATES = { teine: {min:'2026-11-25',max:'2027-05-06'}, onze: {min:'2026-12-16',max:'2027-03-31'}, kokusai: {min:'2026-11-22',max:'2027-05-06'}, asari: {min:'2026-12-18',max:'2027-04-05'} };
 // ===== 日期跟隨現實時間（以日本時間為準） =====
 // todayJST()：取得日本時間的今天日期；effMin()：實際可選的最早日期 = max(雪季開始日, 今天)
 // → 雪季已開始後，過去的日子不可再選；每分鐘的定時器也會讓開著不動的頁面自動更新。
@@ -394,6 +399,12 @@ const PRICING_DB = {
     spring:  { full: addYen(BASE.spring.full,  2000) },
     regular: { full: addYen(BASE.regular.full, 2000) },
     peak:    { full: addYen(BASE.peak.full,    2000) }
+  },
+  // 朝里川：終日レッスンのみ。手稲・ONZE と同じ早鳥時期・割引価格を適用。
+  asari: {
+    spring:  { full: BASE.spring.full },
+    regular: { full: BASE.regular.full },
+    peak:    { full: BASE.peak.full }
   }
 };
 const I18N = {
@@ -401,6 +412,21 @@ const I18N = {
   'en': { kicker:'RESERVATION',title:'MOPO Booking',intro:'3 steps to complete.',s1t:'1. Choose Resort',s2t:'2. Choose Discipline',s3t:'3. Lesson Details',r_teine:'Teine Resort',r_teine_sub:'Closest to city',r_onze:'ONZE Resort',r_onze_sub:'Ocean view & Night',r_koku:'Kokusai Resort',r_koku_sub:'Wide & Various',ski:'Ski',snow:'Snowboard',duration_label:'Plan',dur_full:'Full Day (9:30-15:30)',dur_half_am:'Half Day AM (9:30-12:30)',dur_half_pm:'Half Day PM (13:30-16:30)',dur_night:'Night (17:00-19:00)',addon_txt:'+1h add-on (Spring ¥9.5k | Reg ¥10.5k | Peak ¥11.5k)',date_label:'Date',date_range_hint:'Bookable dates: {min} – {max}',date_pick_resort_first:'Please select a resort first',days_label:'Days',people_label:'Pax',level_label:'Level',name_label:'Representative Name',name_placeholder:'e.g. John',age_label:'Student Ages (Req)',age_ph:'Student',email_label:'Email',contact_pref_label:'Contact App',pref_line:'LINE',pref_whatsapp:'WhatsApp',pref_instagram:'Instagram',pref_facebook:'Facebook',pref_wechat:'WeChat',pref_email:'Email',pref_other:'Other',ages_label:'Ages',discount_label:'Discount',contact_id_label:'ID / Account',line_warn_title:'⚠️ LINE Add Friend Notice',line_warn_txt:'For non-Japan LINE accounts, please scan the QR code to add our official account as ID search is unavailable. Thank you!',lang_label:'Language',memo_label:'Requests',qty_label:'Qty',agree_prefix:'I agree to ',notice_title:'Lesson Notice',agree_suffix:'',sendmenu:'Submit All',review_title:'Review',review_hint:'Click submit to finish.',back_edit:'Edit',submit:'Submit',badge_coming:'Soon',success:'Submitted!',levels:['First Timer: First time on snow', 'Beginner: Can stop and make turns', 'Novice: Comfortable on Green slopes', 'Intermediate: Comfortable on Blue slopes', 'Advanced: Fluent on Blue, trying Black', 'Expert: Powder / Trees / Jumps'],langs:['English','Chinese','Japanese','Cantonese','English Only','Cantonese Only'],people_opts:['1','2','3','4','5'],days_opts:['1','2','3','4','5','6','7','8','9','10'],lesson_config_title:'Add Lesson',add_to_list:'Add to List',cart_title:'Cart',cart_empty:'No items added',cart_keep_hint:'💡 To book another resort or discipline, just re-select above — items already in your list are kept, so you can submit everything at once.',s1s:'Resort',s2s:'Discipline',s3s:'Details',sticky_go:'Review & Submit ▸',contact_info_title:'Primary Contact',del:'Del',total_label:'Total',url:'https://www.moposki.com/en_notice.html',line_check:'Added LINE Support Friend',line_check_alert:'Please confirm you have added our LINE account.',seasons:{spring:'Early/Spring',regular:'Regular',peak:'Peak'},tier:{super:'Super Early',early:'Early Bird',late:'Last Call'},gate_ended:'❄️ The season has ended. Thank you all for your support — we look forward to seeing you next winter!',gate_closed:'Pre-order discount ended on Dec 10. Booking is still available at standard price — please contact us.',process_toggle:'💡 First time booking? See how it works',process_s1_title:'Submit Your Request',process_s1_desc:"Tell us your preferred date and group size, and we'll match you with the best instructor for your experience and goals.",process_s2_title:'Confirm & Pay',process_s2_desc:"Once your instructor's availability is confirmed, we'll email you the payment details, meeting point, and a beginner-friendly gear checklist. Complete payment to secure your booking.",process_s3_title:'Pre-Lesson Check-In',process_s3_desc:"Your instructor will reach out before the lesson to learn your goals and share a weather update.",process_s4_title:'Lesson Day: Learn at Ease',process_s4_desc:"Just relax and enjoy! Your instructor will guide you step by step, tailored to your level — whether it's your first time on snow or you're ready to level up.",process_s5_title:'Lasting Memories',process_s5_desc:"After the lesson, you'll receive photos and videos along with personalized tips to track your progress." },
   'ja': { kicker:'RESERVATION',title:'MOPO 予約',intro:'3ステップで予約完了。',s1t:'1. スキー場選択',s2t:'2. 種目選択',s3t:'3. 予約内容',r_teine:'手稲スキー場',r_teine_sub:'市内から最短',r_onze:'ONZEスキー場',r_onze_sub:'海・ナイター',r_koku:'札幌国際',r_koku_sub:'多彩なコース',ski:'スキー',snow:'スノーボード',duration_label:'プラン',dur_full:'終日 (9:30-15:30)',dur_half_am:'半日午前 (9:30-12:30)',dur_half_pm:'半日午後 (13:30-16:30)',dur_night:'ナイター (17:00-19:00)',addon_txt:'+1時間追加（春季 ¥9,500｜通常 ¥10,500｜繁忙期 ¥11,500）',date_label:'日付',date_range_hint:'予約可能日：{min} ～ {max}',date_pick_resort_first:'先にスキー場を選択してください',days_label:'日数',people_label:'人数',level_label:'レベル',name_label:'代表者名',name_placeholder:'例：太郎',age_label:'受講生年齢 (必須)',age_ph:'受講生',email_label:'メール',contact_pref_label:'連絡手段',pref_line:'LINE',pref_whatsapp:'WhatsApp',pref_instagram:'Instagram',pref_facebook:'Facebook',pref_wechat:'WeChat',pref_email:'メール',pref_other:'その他',ages_label:'年齢',discount_label:'割引',contact_id_label:'ID / アカウント',line_warn_title:'⚠️ LINE 友だち追加について',line_warn_txt:'日本国外のLINEアカウントをご利用の方は、ID検索での追加ができないため、こちらのQRコードをスキャンして公式アカウントの追加をお願いいたします。',lang_label:'受講言語',memo_label:'備考',qty_label:'数量',agree_prefix:'',notice_title:'レッスン注意事項',agree_suffix:'を確認の上、同意します',sendmenu:'予約を送信',review_title:'確認',review_hint:'送信ボタンを押してください。',back_edit:'修正',submit:'送信',badge_coming:'近日公開',success:'送信しました。',levels:['完全初心者：初めて滑る方', '初心者：少し経験あり・ターン練習中', '初級：初級コースを滑れる', '中級：中級コースを滑れる', '上級手前：中級は余裕・上級に挑戦', '上級：パウダー・ツリー・ジャンプ等'],langs:['日本語','中国語','英語','広東語','英語のみ','広東語のみ'],people_opts:['1','2','3','4','5'],days_opts:['1','2','3','4','5','6','7','8','9','10'],lesson_config_title:'レッスン追加',add_to_list:'リストに追加',cart_title:'予約リスト',cart_empty:'追加されていません',cart_keep_hint:'💡 別のスキー場・種目を予約する場合は、上で再選択してください。追加済みのリストは保持され、まとめて送信できます。',s1s:'スキー場',s2s:'種目',s3s:'予約内容',sticky_go:'確認へ進む ▸',contact_info_title:'代表者情報',del:'削除',total_label:'合計',url:'https://www.moposki.com/ja_notice.html',line_check:'公式LINEを追加しました',line_check_alert:'LINE友だち追加の確認にチェックを入れてください。',seasons:{spring:'シーズン初め/春',regular:'通常',peak:'繁忙期'},tier:{super:'超早割',early:'早割',late:'直前割'},gate_ended:'❄️ 今シーズンの営業は終了いたしました。たくさんのご支援ありがとうございました。また来シーズンお会いしましょう。',gate_closed:'事前割引は 12/10 で終了しました。通常価格でのご予約は可能です。お問い合わせください。',process_toggle:'💡 初めてのご予約ですか？予約の流れはこちら',process_s1_title:'ご予約',process_s1_desc:'ご希望の日程と人数をご入力ください。滑走経験やご要望に合わせて、担当インストラクターを手配いたします。',process_s2_title:'確認とお支払い',process_s2_desc:'インストラクターの空き状況を確認後、お支払い方法・集合場所・持ち物リストをメールにてご案内いたします。お支払い完了をもってご予約確定となります。',process_s3_title:'事前のご連絡',process_s3_desc:'レッスン前にインストラクターより直接ご連絡し、目標の確認や当日の天候に応じたご案内をいたします。',process_s4_title:'レッスン当日',process_s4_desc:'リラックスしてお越しください。レベルに合わせて丁寧にご指導いたします。',process_s5_title:'レッスン後のフォロー',process_s5_desc:'レッスン終了後、当日の滑走動画と個別アドバイスをお送りいたします。' }
 };
+Object.assign(I18N['zh-Hant'], {
+  r_asari:'朝里川溫泉滑雪場', r_asari_sub:'溫泉・鄰近住宿',
+  dur_full_asari:'全天課程（6 小時，含 1 小時休息）9:30-15:30',
+  per_person:'每人', seasons_asari:{spring:'春季滑雪 (3/6～4/5)',regular:'通常期',peak:'繁忙期'}
+});
+Object.assign(I18N.en, {
+  r_asari:'Asarigawa Onsen', r_asari_sub:'Onsen & nearby stays',
+  dur_full_asari:'Full Day (6 hours, including a 1-hour break) 9:30-15:30',
+  per_person:'per person', seasons_asari:{spring:'Spring skiing (Mar 6–Apr 5)',regular:'Regular',peak:'Peak'}
+});
+Object.assign(I18N.ja, {
+  r_asari:'朝里川温泉スキー場', r_asari_sub:'温泉・近隣宿泊',
+  dur_full_asari:'終日レッスン（6時間、休憩1時間含む）9:30-15:30',
+  per_person:'1名あたり', seasons_asari:{spring:'春スキー (3/6～4/5)',regular:'通常期',peak:'繁忙期'}
+});
 let current = { resort: null, type: null, lang: 'zh-Hant' }, cart = [];
 // 依上課日期的月日判斷季節（跨年區間已拆開，字串解析避免時區位移）
 function getSeason(d) {
@@ -410,6 +436,12 @@ function getSeason(d) {
   return 'regular';
 }
 const isDateValid = (d, r) => { if(!d || !r) return false; const t = new Date(d).getTime(), b = RESORT_DATES[r]; return t >= new Date(effMin(r)).getTime() && t <= new Date(b.max).getTime(); };
+const isLessonRangeValid = (d, r, days) => {
+  if (!isDateValid(d, r)) return false;
+  const end = new Date(d + 'T00:00:00Z');
+  end.setUTCDate(end.getUTCDate() + Number(days || 1) - 1);
+  return end.toISOString().slice(0, 10) <= RESORT_DATES[r].max;
+};
 function updateAgeInputs() {
   const pax = Number($('#people').value || 1), L = I18N[current.lang], old = $$('.age-input').map(i=>i.value);
   $('#ageInputs').innerHTML = Array.from({length: pax}, (_,i) => `<input type="number" class="age-input" placeholder="${L.age_ph} ${i+1}" value="${old[i]||''}" required min="1" max="99">`).join('');
@@ -419,13 +451,13 @@ function updateDateRangeHint() {
   const L = I18N[current.lang], hint = $('#dateRangeHint');
   if (!current.resort) { hint.className = 'note hint'; hint.textContent = L.date_pick_resort_first; return; }
   const b = RESORT_DATES[current.resort], range = L.date_range_hint.replace('{min}', effMin(current.resort)).replace('{max}', b.max);
-  const val = $('#date').value, valid = !val || isDateValid(val, current.resort);
+  const val = $('#date').value, valid = !val || isLessonRangeValid(val, current.resort, $('#days').value);
   hint.className = valid ? 'note hint' : 'note warn';
   hint.textContent = valid ? range : `⚠️ ${range}`;
 }
 function updateAddBtnState() {
   const ended = getTier().state === 'ended';
-  const valid = !ended && !!(current.resort && current.type && $('#date').value && isDateValid($('#date').value, current.resort));
+  const valid = !ended && !!(current.resort && current.type && $('#date').value && isLessonRangeValid($('#date').value, current.resort, $('#days').value));
   $('#addToCartBtn').disabled = !valid;
 }
 // ===== 開賣時間管制提示 + 送出按鈕鎖定 =====
@@ -463,7 +495,7 @@ function refreshDurations() {
   const L = I18N[current.lang];
   Object.keys(sData).forEach(k => {
     if(k==='half') d.innerHTML += `<option value="half_am">${L.dur_half_am}</option><option value="half_pm">${L.dur_half_pm}</option>`;
-    else d.innerHTML += `<option value="${k}">${L['dur_'+k]}</option>`;
+    else d.innerHTML += `<option value="${k}">${k === 'full' && current.resort === 'asari' ? L.dur_full_asari : L['dur_'+k]}</option>`;
   });
   if(Array.from(d.options).some(o => o.value === v)) d.value = v;
 }
@@ -483,6 +515,8 @@ $('#resortChoices').addEventListener('click', e => {
   const b = e.target.closest('.choice'); if(!b || b.classList.contains('disabled')) return;
   $$('#resortChoices .choice').forEach(c => c.classList.remove('active'));
   b.classList.add('active'); current.resort = b.dataset.resort;
+  $('#addonRow').style.display = current.resort === 'asari' ? 'none' : 'block';
+  if (current.resort === 'asari') $('#addon1h').checked = false;
   // 防呆機制：將該滑雪場「可預訂時間」設為日期欄位原生 min/max，瀏覽器與日期選擇器會直接擋掉範圍外日期
   $('#date').min = effMin(current.resort); $('#date').max = RESORT_DATES[current.resort].max;
   $('#step2').classList.remove('hide');
@@ -503,17 +537,18 @@ function resetStep3() {
   if (!cart.length) { $('#step3').classList.add('hide'); $('#details').classList.add('hide'); }
   current.type = null;
   $$('#disciplineChoices .choice').forEach(c => c.classList.remove('active'));
+  $('#addonRow').style.display = current.resort === 'asari' ? 'none' : 'block';
   $('#date').value = ''; $('#priceBox').innerHTML = ''; updateDateRangeHint();
   updateAddBtnState(); updateStepper();
 }
 function getCalcData() {
   const r = current.resort, d = $('#date').value, p = Number($('#people').value || 1), dur = $('#duration').value;
-  if (!r || !d || !p || !dur || !isDateValid(d, r)) return null;
+  if (!r || !d || !p || !dur || !isLessonRangeValid(d, r, $('#days').value)) return null;
   const season = getSeason(d), planKey = dur.includes('half') ? 'half' : dur;
   const cell = PRICING_DB[r]?.[season]?.[planKey];
   if (!cell) return null;
   const b = paxBracket(p), tier = getTier();
-  const showAddon = planKey === 'full'; $('#addonRow').style.display = showAddon ? 'block' : 'none';
+  const showAddon = planKey === 'full' && r !== 'asari'; $('#addonRow').style.display = showAddon ? 'block' : 'none';
   if (!showAddon) $('#addon1h').checked = false;
   const addon = (showAddon && $('#addon1h').checked) ? ADDON_1H_PRICE[season] : 0;
   const orig = cell.orig[b] + addon;
@@ -526,15 +561,18 @@ function updatePrice() {
   if(!d) return box.innerHTML = '';
   const mult = Number($('#days').value) * Number($('#qty').value);
   const tot = d.amount * mult, origTot = d.orig * mult;
-  const seasonLbl = L.seasons[d.season];
+  const seasonLbl = current.resort === 'asari' ? L.seasons_asari[d.season] : L.seasons[d.season];
   const tierLbl = d.tier.key ? L.tier[d.tier.key] : '';
+  const pax = Number($('#people').value || 1);
+  const perPersonLbl = current.resort === 'asari' && pax > 1 ? `｜${L.per_person} ${money(Math.floor(d.amount / pax))}` : '';
   box.innerHTML = (d.tier.state === 'open' && origTot > tot)
-    ? `<span class="price-old">${money(origTot)}</span><span class="price-curr">${money(tot)}</span><span class="price-sub">${tierLbl}｜${seasonLbl}</span>`
-    : `<span class="price-curr">${money(tot)}</span><span class="price-sub">${seasonLbl}</span>`;
+    ? `<span class="price-old">${money(origTot)}</span><span class="price-curr">${money(tot)}</span><span class="price-sub">${tierLbl}｜${seasonLbl}${perPersonLbl}</span>`
+    : `<span class="price-curr">${money(tot)}</span><span class="price-sub">${seasonLbl}${perPersonLbl}</span>`;
 }
 ['change', 'input'].forEach(ev => $('#details').addEventListener(ev, e => {
   if (['date','people','days','qty','level','lang','duration','addon1h'].includes(e.target.id)) {
     if(e.target.id === 'date') { updateDateRangeHint(); refreshDurations(); }
+    if(e.target.id === 'days') updateDateRangeHint();
     if(e.target.id === 'people') updateAgeInputs();
     updatePrice();
     updateAddBtnState();
@@ -543,7 +581,7 @@ function updatePrice() {
 $('#addToCartBtn').addEventListener('click', () => {
   if (getTier().state === 'ended') return; // 雪季結束，暫停預約
   const d = $('#date');
-  if(!d.checkValidity() || !isDateValid(d.value, current.resort)) return d.reportValidity();
+  if(!d.checkValidity() || !isLessonRangeValid(d.value, current.resort, $('#days').value)) return d.reportValidity();
   for(let a of $$('.age-input')) if(!a.checkValidity()) return a.reportValidity();
   const c = getCalcData(); if(!c) return;
   const days = Number($('#days').value), qty = Number($('#qty').value);
