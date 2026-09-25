@@ -41,6 +41,27 @@
   <url><loc>https://moposki.com/kokusai.html</loc><lastmod>2025-08-30</lastmod></url>
 
   <url><loc>https://moposki.com/onze.html</loc><lastmod>2026-07-13</lastmod></url>
+  <url>
+    <loc>https://moposki.com/asari.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://moposki.com/asari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moposki.com/en_asari.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://moposki.com/ja_asari.html"/>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://moposki.com/en_asari.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://moposki.com/asari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moposki.com/en_asari.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://moposki.com/ja_asari.html"/>
+    <lastmod>2026-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://moposki.com/ja_asari.html</loc>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://moposki.com/asari.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://moposki.com/en_asari.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://moposki.com/ja_asari.html"/>
+    <lastmod>2026-09-20</lastmod>
+  </url>
   <url><loc>https://moposki.com/safe.html</loc><lastmod>2026-07-13</lastmod></url>
   <url><loc>https://moposki.com/trip.html</loc><lastmod>2026-07-13</lastmod></url>
   <url><loc>https://moposki.com/notice.html</loc><lastmod>2026-07-13</lastmod></url>
