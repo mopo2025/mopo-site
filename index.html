@@ -895,13 +895,14 @@ summary:focus-visible {
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪場介紹 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="滑雪課程子選單">
-          <li role="none"><a role="menuitem" href="#pricing">課程與價格</a></li>
-          <li class="group-title">雪場介紹</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
           <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
+          <li role="none"><a role="menuitem" href="asari.html">朝里川溫泉</a></li>
         </ul>
       </li>
       <li class="has-dropdown" role="none">
@@ -939,12 +940,11 @@ summary:focus-visible {
         <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動導覽">
           <a href="news.html" role="menuitem">最新消息</a>
           <a href="mopo.html" role="menuitem">關於 MOPO</a>
-          <div class="mob-subtitle">滑雪課程</div>
-          <a href="#pricing" role="menuitem">課程與價格</a>
-          <div class="mob-subtitle">雪場介紹</div>
+          <div class="mob-subtitle">滑雪場介紹</div>
           <a href="teine.html" role="menuitem">札幌手稻</a>
           <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
+          <a href="asari.html" role="menuitem">朝里川溫泉</a>
           <div class="mob-subtitle">主題文章</div>
           <a href="safe.html" role="menuitem">專欄文章</a>
           <a href="trip.html" role="menuitem">觀光主題</a>
@@ -1455,6 +1455,95 @@ summary:focus-visible {
             </div>
           </div>
         </details>
+
+        <!-- 4. Asarigawa Onsen -->
+        <details class="pricecard" id="asari">
+          <summary>
+            <img class="mobile-thumb" src="img/asari/asari.jpg" alt="朝里川溫泉滑雪場" loading="lazy">
+            <div class="head">
+              <div class="title">朝里川溫泉｜私人課（全日）</div>
+              <div class="desc">
+                <span class="desktop-desc">2026/12/18 起提供全天課程。春季期間：2027/3/6～3/29。</span>
+                <span class="mobile-desc">全日課程｜2026/12/18 起</span>
+              </div>
+            </div>
+            <div class="fromrow">
+              <div class="price-tag-group left">
+                <span class="pt-label">Full Day</span>
+                <span class="pt-price">64,000<small>JPY 起</small></span>
+              </div>
+            </div>
+            <div class="expand-hint"><span class="hint-open">查看詳細價格與日期 <span aria-hidden="true">⌄</span></span><span class="hint-close" aria-label="收合"><span aria-hidden="true">⌃</span></span></div>
+            <div class="summary-btns">
+              <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='asari.html'">雪場介紹</button>
+              <button class="btn-sm" onclick="event.stopPropagation(); window.open('asari.html#lesson', '_blank')">預約課程</button>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="busy-dates">繁忙期：2026/12/23～2027/01/04・2027/02/05～2027/02/11</div>
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">平日</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春季 (3/6~3/29)</button>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">全日課程 (6小時,含1小時休息） 9:30-15:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1~2 人</td><td class="price">日幣 68,000</td><td></td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 72,000</td><td class="pp">（每人 日幣 24,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 76,000</td><td class="pp">（每人 日幣 19,000）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 80,000</td><td class="pp">（每人 日幣 16,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1~2 人</td><td class="price">日幣 79,000</td><td></td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 84,000</td><td class="pp">（每人 日幣 28,000）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 89,000</td><td class="pp">（每人 日幣 22,250）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 94,000</td><td class="pp">（每人 日幣 18,800）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人數</th><th class="price">金額</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1~2 人</td><td class="price">日幣 64,000</td><td></td></tr>
+                      <tr><td class="people">3 人</td><td class="price">日幣 67,000</td><td class="pp">（每人 日幣 22,333）</td></tr>
+                      <tr><td class="people">4 人</td><td class="price">日幣 70,000</td><td class="pp">（每人 日幣 17,500）</td></tr>
+                      <tr><td class="people">5 人</td><td class="price">日幣 73,000</td><td class="pp">（每人 日幣 14,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-row">
+              <div class="note">
+                <p>＊可上課期間：2026/12/18～2027/3/29，僅提供全日課程。春季為 2027/3/6～3/29，其餘日期依平日或繁忙期計價。</p>
+                <p>＊全日課程價格已依 2026-2027 雪季更新，請依時間表為準</p>
+                <p>＊小班制為維護品質最多上課人數為5人</p>
+                <p>＊金額為含稅價格。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
+              </div>
+              <div class="btns">
+                <a class="btn" href="asari.html">雪場介紹</a>
+                <a class="btn" href="asari.html#lesson" target="_blank" rel="noopener noreferrer">預約課程</a>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="asari.html">雪場介紹</a>
+              <a class="btn" href="asari.html#lesson" target="_blank" rel="noopener noreferrer">預約課程</a>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -1537,12 +1626,13 @@ summary:focus-visible {
           </ul>
         </div>
         <div>
-          <h4>滑雪課程</h4>
+          <h4>滑雪場介紹</h4>
           <ul>
-            <li><a href="#pricing">課程與價格</a></li>
+            
             <li><a href="teine.html">札幌手稻</a></li>
             <li><a href="onze.html">小樽ONZE</a></li>
             <li><a href="kokusai.html">札幌國際</a></li>
+            <li><a href="asari.html">朝里川溫泉</a></li>
           </ul>
         </div>
         <div>

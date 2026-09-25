@@ -155,6 +155,24 @@ details[open] .chev{ transform:rotate(225deg) }
   .topbar .menu>li>a{ padding-top:10px; padding-bottom:10px }
   .topbar .brand .logo{ font-size:18px }
 </style>
+<style id="refund-policy-style">
+#cancellation-policy { scroll-margin-top: 110px; }
+#cancellation-policy .faq-body h3 { font-size: 1.05rem; line-height: 1.6; margin: 28px 0 12px; }
+#cancellation-policy .faq-body h3:first-child { margin-top: 0; }
+#cancellation-policy .faq-body ul { padding-left: 1.5em; }
+#cancellation-policy .faq-body li { margin-bottom: 10px; line-height: 1.85; }
+.refund-policy-link { text-decoration: underline; text-underline-offset: 3px; }
+.refund-policy-link:focus-visible { outline: 2px solid #77867e; outline-offset: 4px; }
+</style>
+<style id="notice-terms-style">
+#faqGrid .faq-body h3 { margin: 26px 0 8px; font-size: 1.05rem; line-height: 1.65; color: #253b40; }
+#faqGrid .faq-body h3:first-child { margin-top: 20px; }
+#faqGrid .faq-body p { margin: 10px 0; overflow-wrap: anywhere; }
+#faqGrid .faq-body ul { padding-left: 1.5em; margin: 12px 0; }
+#faqGrid .faq-body li { margin: 8px 0; line-height: 1.85; }
+#faqGrid .faq-body a { text-decoration: underline; text-underline-offset: 3px; }
+#faqGrid .faq-body a:focus-visible { outline: 2px solid #77867e; outline-offset: 3px; }
+</style>
 </head>
 <body>
 
@@ -171,13 +189,14 @@ details[open] .chev{ transform:rotate(225deg) }
 
       <!-- Lessons: dropdown -->
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Ski Resorts <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="Lessons submenu">
-          <li role="none"><a role="menuitem" href="#pricing">Lesson Plans</a></li>
-          <li class="group-title">Ski Resorts</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="en_teine.html">Sapporo Teine</a></li>
           <li role="none"><a role="menuitem" href="en_onze.html">Otaru Onze</a></li>
           <li role="none"><a role="menuitem" href="en_kokusai.html">Sapporo Kokusai</a></li>
+          <li role="none"><a role="menuitem" href="en_asari.html">Asarigawa Onsen</a></li>
         </ul>
       </li>
 
@@ -220,12 +239,11 @@ details[open] .chev{ transform:rotate(225deg) }
           <a href="en_news.html" role="menuitem">Latest News</a>
           <a href="en_mopo.html" role="menuitem">About MOPO</a>
 
-          <div class="mob-subtitle">Lessons</div>
-          <a href="#pricing" role="menuitem">Lesson Plans</a>
           <div class="mob-subtitle">Ski Resorts</div>
           <a href="en_teine.html" role="menuitem">Sapporo Teine</a>
           <a href="en_onze.html" role="menuitem">Otaru Onze</a>
           <a href="en_kokusai.html" role="menuitem">Sapporo Kokusai</a>
+          <a href="en_asari.html" role="menuitem">Asarigawa Onsen</a>
 
           <div class="mob-subtitle">Features</div>
           <a href="en_safe.html" role="menuitem">columns</a>
@@ -261,132 +279,202 @@ details[open] .chev{ transform:rotate(225deg) }
 
         <!-- Section 1 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">1. Risks of Snow Sports and Health Conditions</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	Skiing and other snow sports are high‑risk activities. You may be injured due to foreseeable factors such as falls, collisions, changes in weather conditions, changes in snow surface conditions, equipment malfunction, and other reasonably predictable causes. We take reasonable safety measures and provide necessary instruction; however, such risks cannot be completely eliminated. Learners must fully understand this and accept it at their own responsibility.</p>
-<p>2.	Learners (including children) and their parents/guardians understand and accept the above risks and bear responsibility for participation. We strongly recommend enrolling in travel accident insurance, sports accident insurance, or overseas medical insurance that covers skiing activities before the lesson.</p>
-<p>3.	We are not responsible, before, during, or after the lesson, for loss, damage, theft, or replacement costs of the learner’s equipment. Learners are responsible for keeping their equipment secure and should obtain insurance that covers equipment loss if necessary.</p>
-<p>4.	Learners have a duty to confirm that they do not have any medical conditions or symptoms for which a physician has prohibited snow sports (e.g., severe heart disease, uncontrolled hypertension, osteoporosis, recent major surgery, pregnancy). If you have any concerns about your health, contact us in advance and submit a physician’s clearance if required.</p>
-<p>5.	If fever, shortness of breath, severe pain, or other poor health conditions arise before the lesson begins, you should refrain from attending on that day. If you still wish to attend, you must inform the coach in advance of your condition and any medical instructions. For safety reasons, the coach has the authority to adjust, suspend, or terminate the lesson; in such cases, no refund will be provided.</p>
-<p>6.	Coaches and staff have the authority, for safety reasons, to refuse participation by learners deemed unfit to attend. If a learner intentionally conceals a health problem and causes damage to themselves or others, we and the coach bear no responsibility and no refund will be issued.</p>
-<p>7.	In principle, we accept applications from learners of all ages. However, due to risk characteristics, we do not offer beginner ski or snowboard lessons for learners aged 65 or older. If you wish to take advanced lessons, please contact us in advance; after a safety assessment, we will decide whether participation is possible.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">1. Snow Sports Risks and Health</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Inherent risks</h3>
+<p>Skiing, snowboarding and other snow sports involve risks of injury from falls, collisions, changes in weather or snow conditions, equipment problems and other hazards. Serious injuries may be life-threatening. The School takes reasonable safety measures and provides necessary instruction, but cannot eliminate all risks. Participants must understand these risks and follow their instructor’s safety directions and resort rules.</p>
+<h3>2. Minors and insurance</h3>
+<p>Minors require the consent of a parent or legal guardian, who should help confirm their fitness to participate. All participants are encouraged to obtain injury, medical and personal liability insurance covering their intended snow sports, and to check the scope of coverage.</p>
+<h3>3. Equipment and belongings</h3>
+<p>Participants must take care of their equipment and belongings. The School is not liable for loss, damage or theft that is not attributable to the School or its instructors.</p>
+<h3>4. Health information</h3>
+<p>Anyone advised by a doctor not to participate in snow sports should refrain from doing so. Participants with an illness, injury, recent surgery or other condition affecting safe participation should consult a doctor beforehand and provide the School with necessary information. A medical opinion or supporting document may be requested where needed.</p>
+<h3>5. Pregnancy</h3>
+<p>For safety reasons, the School does not accept pregnant participants for on-snow lessons. If pregnancy is confirmed after a booking is formed, please contact the School promptly and provide necessary supporting documentation. The exceptional refund provisions in Section 6 will apply. Participants who knew of both their pregnancy and this restriction when booking are not eligible for this exception; the standard cancellation provisions and applicable law will apply.</p>
+<h3>6. Illness and safety decisions</h3>
+<p>If you feel unwell before or during a lesson, tell your instructor immediately and do not push yourself to participate. For specific and reasonable safety reasons, the School or instructor may adjust, suspend or stop a lesson, or decline participation, explaining the reason. Refunds are handled under Section 6.</p>
+<h3>7. Accurate information and responsibility</h3>
+<p>Participants and parents or legal guardians must accurately disclose information necessary for lesson safety. Liability for harm resulting from concealed or false information will be determined by the actual causal connection, each party’s fault and applicable law. These provisions do not exclude any liability that the School or its instructors have under the law.</p>
+<h3>8. Age and eligibility</h3>
+<p>Under the School’s safety policy, beginner skiing and snowboarding lessons are not available to participants over 65. Experienced participants seeking lessons to improve their skills should contact the School before applying for an individual assessment. Children’s eligibility is set out in Section 4.</p>
+</div>
+</details>
 
         <!-- Section 2 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">2. Booking Services</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	Tuition fees are calculated based on factors such as the course time slot selected by the learner, the ski resort location, and any specified instructor, and are finalized at the amount stated in our confirmation notice. A booking is officially established upon completion of payment.</p>
-<p>2.	Within 1–3 business days after submitting a booking request, our office will check instructor and course arrangements and send payment guidance.</p>
-<p>3.	Our price displays are based on Japanese Yen (JPY). Amounts shown in other currencies are for reference only.</p>
-<p>4.	If payment is not completed within the specified period after payment guidance is sent, the application becomes invalid. If you still wish to take the lesson, please apply again.</p>
-<p>5.	We do not guarantee reservation slots before payment is completed. Capacity is allocated in order of payment.</p>
-<p>6.	If you book through a third‑party platform or travel agency, you must comply with that platform’s (agency’s) terms, and these Terms will also apply supplementally.</p>
-<p>7.	If you have special requests (language, equipment, itinerary, etc.), you must notify us before payment and obtain written confirmation. We will accommodate where possible but cannot guarantee fulfillment.</p>
-<p>8.	If a lesson cannot be held due to instructor force majeure (injury, illness, transport delay, etc.), we will promptly notify you and arrange an instructor with equivalent qualifications. In this case, tuition is not refunded. If you have paid a designation fee, you may choose to:<br>
-　- Switch to another instructor and carry over the designation fee (deemed a new designation of that instructor), or<br>
-　- Switch to a lesson with an equivalent instructor and receive a refund of the designation fee (tuition is non‑refundable).<br>
-　If, due to force majeure, no lesson can be held on the day (e.g., we are unable to dispatch an instructor, or the resort is closed all day), you may choose a reschedule or a refund in accordance with our “Cancellation and Refund Policy.”</p>
-<p>9.	Learners have a duty to confirm that the application details (name, date, resort, course content, etc.) are correct. If a misentry makes lesson arrangements impossible, the “Cancellation and Refund Policy” will apply.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">2. Booking</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Lesson fees</h3>
+<p>Fees depend on the time slot, resort, group size and lesson content. The amount stated in the School’s payment request applies. All fees are in Japanese yen (JPY); amounts displayed in other currencies are estimates only.</p>
+<h3>2. Applications and payment deadlines</h3>
+<p>Within 1–3 business days after an application is submitted, the School will check availability and send a payment request. Applications expire if payment is not completed by the deadline. Please submit a new application if you still wish to book.</p>
+<h3>3. Payment priority and availability</h3>
+<p>A payment request does not reserve a place. The School gives priority to bookings that meet the application requirements in the order of completed payment timestamps recorded by the payment system. A payment deadline does not guarantee availability until that deadline.</p>
+<h3>4. When a booking is formed</h3>
+<p>After payment, the School will promptly check the arrangements. A booking is formed when the School’s Booking Confirmation reaches the participant. A payment receipt or payment completion message is not a Booking Confirmation.</p>
+<p>If no place is available and the School cannot accept the booking, it will notify the participant promptly and refund the full amount received, without cancellation or administration deductions. A different date or lesson will be arranged only with the participant’s agreement.</p>
+<h3>5. Third-party bookings</h3>
+<p>Bookings made through a platform or travel agency are subject to the terms disclosed and agreed to at booking, with these terms applying as supplementary provisions. Any inconsistency should be clarified before payment.</p>
+<h3>6. Special requests</h3>
+<p>Please submit requests concerning language, equipment, itineraries or other needs before payment. The School will check whether it can accommodate them, and the arrangements confirmed by both parties in writing will apply. Unconfirmed requests cannot be guaranteed.</p>
+<h3>7. Instructor assignments and changes</h3>
+<p>Unless a particular instructor has been agreed upon in writing, the School assigns an instructor who meets the confirmed lesson requirements. If the planned instructor is unavailable because of injury, illness, transport disruption or a similar reason, the School will notify the participant promptly and arrange a replacement with comparable teaching ability who meets the agreed language and lesson requirements.</p>
+<p>Where no particular instructor was agreed upon and the agreed conditions remain unchanged, a change of instructor alone does not normally entitle the participant to free cancellation. If a particular instructor was confirmed in writing, or the replacement cannot meet the agreed requirements, the School will consult the participant. If no agreement is reached, the undelivered portion will be handled under Section 6.</p>
+<h3>8. Checking booking details</h3>
+<p>Please check names, dates, resort, group size and lesson details carefully. Contact the School promptly about errors. Any resulting change or cancellation is handled according to the circumstances and Sections 5 and 6.</p>
+</div>
+</details>
 
         <!-- Section 3 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">3. Notes on Attending Lessons</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	Instructors will flexibly adjust lesson content and locations according to the learner’s skill level and the day’s weather and snow conditions.</p>
-<p>2.	Due to weather, snow conditions, resort operations, or other safety factors, lesson content, meeting locations, or times may change. We will notify you promptly and make adjustments.</p>
-<p>3.	Learners must prepare appropriate, serviceable ski equipment (goggles, gloves, ski boots, skis, poles, snowboard boots, snowboard, helmet, etc.).<br>
-　If the instructor identifies damage, unfitness, or safety concerns, they will explain the reasons and recommend replacement or rental.<br>
-　If the learner does not follow the recommendation, the instructor may refuse participation for safety reasons; in such cases, tuition will not be refunded.</p>
-<p>4.	If during the lesson a learner fails to follow the instructor’s directions or engages in clearly dangerous behavior, the instructor has the authority to terminate the lesson immediately. In such cases, tuition will not be refunded, and whether subsequent lessons may continue will be determined by us.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">3. Attending Lessons</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Adjustments to lessons</h3>
+<p>Instructors may appropriately adjust lesson content and terrain according to participants’ ability, weather, snow conditions and resort operations. The School will promptly notify participants and coordinate any necessary change to the meeting place or time. Changes to the date or resort require both parties’ agreement.</p>
+<h3>2. Equipment and safety</h3>
+<p>Participants must provide or rent properly fitting equipment in working order, including goggles, gloves, boots, skis or a snowboard, and a helmet. If equipment raises safety concerns, the instructor will explain the issue and ask the participant to replace it or rent suitable equipment. Participation may be suspended or declined until the issue is resolved.</p>
+<h3>3. Safety directions and conduct</h3>
+<p>Participants must follow their instructor’s safety directions and resort rules. If dangerous conduct continues after a warning, the instructor may suspend or end the lesson. A lesson may be stopped immediately if there is an imminent danger.</p>
+<h3>4. Lunch breaks and free time</h3>
+<p>Lunch breaks are not instructional time. Where a period has clearly been identified as free time without instructor accompaniment or instruction, the School is not liable for accidents during participants’ independent skiing or snowboarding unless attributable to the School or its instructors. Children’s lunch arrangements are governed by Section 4.</p>
+<h3>5. Incomplete or stopped lessons</h3>
+<p>If a participant cannot attend or complete a lesson for the above reasons, the School will consider the cause, the instruction already provided and Section 6. Any later lesson arrangements require separate confirmation.</p>
+</div>
+</details>
 
         <!-- Section 4 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">4. Notes on Children’s Courses</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	Age and participation conditions<br>
-　For children’s lessons, the minimum age is 7 years for snowboarding and 4 years for skiing. Children must be able to use the restroom independently and put on/take off equipment by themselves. For safety, we may request documents to verify age.</p>
-<p>2.	One‑to‑one lesson principle<br>
-　Children aged 4 to 7 are, in principle, taught one‑to‑one by an instructor.</p>
-<p>3.	Parental responsibility<br>
-　The instructor’s role is limited to instruction and does not constitute childcare. Parents must remain reachable within the resort at all times and be prepared to pick up the child or respond to emergencies when necessary.</p>
-<p>4.	Safety and restrictions on participation<br>
-　If the child does not meet participation conditions, equipment is inappropriate, or circumstances impede ensuring safety during the lesson, the instructor may refuse participation; in such cases, tuition will not be refunded.</p>
-<p>5.	Emergency contacts and health information<br>
-　Before the lesson begins, parents must provide emergency contact details and health information (including allergies and medical history).</p>
-<p>6.	Lift ticket preparation<br>
-　For advanced children’s courses, parents must prepare a valid lift ticket in advance. If the lesson cannot proceed because a lift ticket is not held, no refund or make‑up lesson will be provided.</p>
-<p>7.	Lunch arrangements<br>
-　Lunch costs are not included in tuition. Parents are responsible for agreeing on a meeting time for the lunch break in advance and for providing the child with any necessary cash.</p>
-<p>8.	Response to allergies and dietary restrictions<br>
-　If the child has allergies or dietary restrictions, notify us prior to the lesson. We will accommodate where possible; however, as resort and dining environments are beyond our control, parents acknowledge that certain risks remain.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">4. Children’s Lessons</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Age and eligibility</h3>
+<p>Snowboarding lessons are for children aged 7 and above; skiing lessons are for children aged 4 and above. Children must be able to use the toilet and put on and take off their equipment independently. Proof of age may be requested where necessary.</p>
+<h3>2. One-to-one instruction</h3>
+<p>For safety and teaching reasons, children aged 4–6 may attend one-to-one lessons only and may not share a lesson with other participants.</p>
+<h3>3. Parent or guardian availability</h3>
+<p>Lessons provide snow sports instruction, not childcare. A parent or legal guardian must remain at the resort, be reachable, collect and return the child at the agreed times, and assist with emergencies when needed.</p>
+<h3>4. Health and emergency contacts</h3>
+<p>Before the lesson, provide emergency contact details and health information relevant to safety, including allergies, illnesses and other needs.</p>
+<h3>5. Safety and eligibility restrictions</h3>
+<p>If a child does not meet the participation requirements, has unsafe equipment or is not fit to participate that day, the instructor may explain the reason and suspend or decline participation. Refunds are handled under Section 6.</p>
+<h3>6. Lift passes</h3>
+<p>Please obtain the lift pass specified in the School’s pre-lesson instructions. Delays caused by not having the required pass do not normally extend the scheduled finishing time. Refunds for missed instruction are handled under Section 6.</p>
+<h3>7. Lunch and handover</h3>
+<p>A parent or legal guardian must collect the child and accompany them during lunch and the break. The School does not provide lunchtime childcare or instructor-accompanied meals. Complete handover at the agreed time and place, and return the child to the meeting point before the afternoon lesson begins.</p>
+<p>The instructor will ensure that the child has been handed over to the parent or legal guardian. Children will not be left alone simply because the lunch break has begun. Lunch is not included in the lesson fee.</p>
+<h3>8. Allergies and dietary needs</h3>
+<p>Please disclose allergies and dietary restrictions in advance. Parents or guardians should check food ingredients and make necessary preparations. The School will assist where practicable, but cannot guarantee that resort or restaurant environments are completely free of allergens.</p>
+</div>
+</details>
 
         <!-- Section 5 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">5. Booking Changes</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	If you wish to change the course date, time, location, or instructor, apply by email no later than 7 days before the lesson start, and the change becomes valid upon our confirmation reply.</p>
-<p>2.	Changes depend on instructor schedules and the conditions of resorts and facilities. We will make best efforts to adjust but cannot guarantee availability.</p>
-<p>3.	If a price difference arises due to the change, the learner must pay any shortfall; if a refund arises, it will follow the refund policy.</p>
-<p>4.	Requests for changes made less than 7 days before the lesson start are, in principle, treated as cancellations and are subject to our Cancellation and Refund Policy. However, if adjustments are possible depending on instructor schedules, we may exceptionally accept changes.</p>
-<p>5.	When settling differences due to season changes (busy/regular periods), a handling fee may be charged.</p>
-<p>6.	If you booked through a third‑party platform or travel agency, the procedures and fees for changes follow that platform’s regulations, and these Terms also apply. In case of inconsistency, the platform’s regulations take precedence.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">5. Booking Changes</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Requests and deadlines</h3>
+<p>Requests to change dates, times, resort, group size or instructor must be sent by email no later than 8 days before the lesson date. Dates are calculated in Japan Standard Time. Changes take effect only when confirmed by the School in writing.</p>
+<h3>2. Availability and confirmation</h3>
+<p>Changes depend on instructor and resort availability. The School will try to assist but cannot guarantee a change. The original booking remains valid until a change is confirmed. A change request does not itself cancel a booking.</p>
+<h3>3. Price differences</h3>
+<p>If a change affects lesson pricing, group size or seasonal rates, the School will disclose the revised amount in advance and obtain the participant’s agreement before collecting or refunding the difference. Refunds for reduced numbers or cancelled portions are calculated under Section 6. Any other necessary charge must be explained, including its amount and reason, and agreed to in advance.</p>
+<h3>4. Requests within 7 days</h3>
+<p>Changes from 7 days before the lesson date through the lesson day are generally not accepted, although the School may make an exception if arrangements permit. If a change is unavailable and the participant chooses to cancel, Section 6 applies.</p>
+<h3>5. Cancellation after rescheduling</h3>
+<p>If a lesson is rescheduled at the participant’s request and later cancelled, the standard cancellation period is still calculated from that lesson’s originally booked date and the date the School receives the cancellation notice. Postponing a lesson does not restore eligibility for a higher refund percentage. Before confirming the change, the School will explain the applicable dates and calculation in writing and obtain the participant’s agreement.</p>
+<p>This restriction does not apply to rescheduling agreed upon because of circumstances involving the School or resort; cancellation conditions will be confirmed separately. Exceptional refund provisions and applicable legal requirements continue to apply. Cancellation charges will not be duplicated or exceed the amount permitted by law.</p>
+<h3>6. Third-party bookings</h3>
+<p>Request changes through the original booking platform or travel agency. Procedures and fees follow the terms disclosed and agreed to when booking. Any inconsistency with these terms should be clarified before the change is processed.</p>
+</div>
+</details>
 
         <!-- Section 6 -->
-        <details class="faqcard">
-          <summary><div><span class="faq-title">6. Cancellation and Refund Policy</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>General Rules</p>
-<p>•	35 days (inclusive) before the lesson start: 100% of tuition refunded<br>
-•	15–34 days before the lesson start: 50% of tuition refunded<br>
-•	8–14 days before the lesson start: 30% of tuition refunded<br>
-•	Within 7 days (including the day of the lesson): non‑refundable</p>
-<p>Exceptional Rules (supporting documentation required)<br>
-In the following cases, the above general rules do not apply; 100% of tuition will be refunded :</p>
-<p>1.	Illness or injury (a doctor’s certificate may be required)</p>
-<p>2.	Force majeure (e.g., full‑day resort closure, government entry restrictions; official proof required)</p>
-<p>3.	Flight cancellation (when all of the following conditions are met)<br>
-　- There is official proof from the airline that the cancellation is due to operational reasons (weather, equipment failure, ATC restrictions, etc.)<br>
-　- Due to the cancellation, the learner cannot arrive at the lesson location on the lesson day or the previous day<br>
-　- The learner notifies us by email within 24 hours after the cancellation and attaches official proof<br>
-　- Personal changes, missed connections, visa or quarantine issues are excluded</p>
-<p>Other<br>
-•	If a refund relates to a foreign‑currency transaction, exchange rate differences or overseas transaction fees are charged directly by financial institutions; we bear no responsibility.<br>
-•	The above cancellation policy applies only when it is clearly stated at the time of application and the learner has consented.</p>
-          </div>
-        </details>
+        <details class="faqcard" id="cancellation-policy">
+<summary><div><span class="faq-title">6. Cancellation and Refunds</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Notice and calculation of dates</h3>
+<p>Send cancellation requests to <a href="mailto:support@moposki.com">support@moposki.com</a>, stating the booking name, lesson dates and booking reference.</p>
+<p>The cancellation date is the date the School receives the notice, calculated in Japan Standard Time (JST), not the date the School replies. Each lesson date is day 0; the previous day is 1 day before.</p>
+<p>For bookings covering multiple days, cancellation periods and refunds are calculated separately for each lesson date, covering only cancelled or affected dates. Rescheduled lessons are subject to Section 5’s cancellation-after-rescheduling provisions.</p>
+<h3>2. Standard cancellation policy</h3>
+<p>Unless an exceptional refund or applicable law requires otherwise, cancellations for personal reasons are refunded as follows:</p>
+<ul>
+<li>35 or more days before the lesson date, including day 35: 100% refund.</li>
+<li>15–34 days before the lesson date: 50% refund.</li>
+<li>8–14 days before the lesson date: 30% refund.</li>
+<li>From 7 days before the lesson date through the lesson day, or non-attendance: normally no refund.</li>
+</ul>
+<p>The retained amount is the cancellation charge. No additional fixed-percentage card or administration fee is added. Cancellation charges must not exceed what the law permits; any excess will be waived or refunded. The School will explain the calculation basis upon request.</p>
+<h3>3. Reduced participant numbers</h3>
+<p>If only some participants cancel a shared booking or private group lesson and the others can attend as planned, the refund base is the difference between the original and revised group prices, using the same group-size price schedule that applied when booking. The standard or exceptional refund percentage is then applied to that difference.</p>
+<p>The original fee is not divided equally among participants. If reducing the group size produces no price difference, there is normally no refund, unless applicable law requires otherwise.</p>
+<h3>4. Exceptional refunds for illness, injury and other circumstances</h3>
+<p>Where the School can still provide the lesson but a participant cannot attend for one of the following reasons, an exceptional refund may be requested:</p>
+<ul>
+<li>Illness or injury: provide a medical certificate or other medical documentation showing an inability to participate on the booked date. Only information necessary for assessment is required.</li>
+<li>Pregnancy confirmed after booking: provide necessary supporting documentation in accordance with the pregnancy restriction in Section 1.</li>
+<li>Government restrictions: new or changed entry restrictions or similar measures introduced after the booking was formed must directly prevent participation. Provide an official announcement or other evidence. Failure to complete visa or entry requirements that already applied is not covered.</li>
+<li>Official flight cancellation: a flight forming the principal means of travel must have been officially cancelled by the airline because of weather, mechanical problems, air traffic restrictions or a similar cause, directly preventing arrival in time for the lesson. Provide the original itinerary and airline cancellation confirmation. Voluntary ticket changes or cancellations, flight delays alone and missed connections are generally not covered, although another applicable exception may be considered.</li>
+</ul>
+<p>The scope of an exceptional refund is limited as follows:</p>
+<ul>
+<li>Illness, injury and pregnancy exceptions apply to cancellations requested before the start of each affected day’s lesson. Supporting documents may be submitted later as described below.</li>
+<li>Only affected participants and dates are covered; the exception does not automatically extend to the whole group, booking or all remaining dates.</li>
+<li>If a minor cannot attend because of illness or injury, a parent or legal guardian who must provide necessary care and consequently cannot attend their own booked lesson may also qualify. This normally covers one necessary caregiver; additional reasonable needs will be assessed from the evidence and circumstances.</li>
+<li>Participants who booked knowing they could not attend on the agreed date are not eligible. A pre-existing medical condition alone does not establish such knowledge.</li>
+</ul>
+<p>Notify the School promptly after learning of the circumstances, normally by email within 24 hours. If hospitalisation, disaster, communication failure or another reasonable cause prevents timely notice, or documentation has not yet been issued, explain the reason and provide it within a reasonable period. The School will consider the circumstances and will not automatically reject a request solely because notice was late.</p>
+<p>Once eligibility is confirmed, at least 95% of the applicable refund base will normally be refunded. For cancellation of an entire lesson, the base is the fee for the affected date. For a reduction in participant numbers, it is the price difference under paragraph 3 of this section.</p>
+<p>Any deduction must be a reasonably substantiated cancellation charge permitted by law, capped at 5% of the refund base. The School will explain the amount and basis. If no charge may be collected, the base will be refunded in full. A more favourable refund under the standard policy or applicable law takes precedence, without duplicate deductions.</p>
+<h3>5. Stopping after a lesson begins and safety-related exclusions</h3>
+<p>If a participant stops after that day’s lesson has begun because of injury, illness or another personal reason not attributable to the School or instructor, the remaining time that day is normally non-refundable and will not be made up, except for amounts that must be refunded by law.</p>
+<p>If illness or injury also prevents attendance on later booked dates, an exceptional refund may still be requested before each day’s lesson begins, with supporting evidence.</p>
+<p>Where the School can provide the agreed lesson but a participant cannot attend because they fail to meet previously disclosed eligibility conditions, lack suitable equipment or a lift pass, or refuse reasonable safety directions, the standard cancellation policy and the actual circumstances generally apply. The instructor’s decision to stop participation does not, by itself, make this a School cancellation.</p>
+<p>Where the School or instructor is responsible, or an exceptional refund applies, the relevant provisions and applicable law govern.</p>
+<h3>6. School cancellations or inability to provide lessons</h3>
+<p>If the School cannot provide the agreed lesson because of resort closure, government orders, disaster, inability to arrange an instructor or another cause distinct from the participant’s personal inability to attend, the participant may choose either mutually agreed rescheduling or a full refund for the undelivered portion. No cancellation or administration fee is charged on that portion.</p>
+<p>Rescheduling, changing resorts or replacing a refund with credit requires the participant’s agreement.</p>
+<p>If part of a lesson has been delivered, the refund will be calculated reasonably from the confirmed fee, instructional hours and actual undelivered portion. Lunch breaks are not instructional time, and partial delivery will not automatically be treated as completion of the entire lesson.</p>
+<p>This paragraph does not limit other legal rights arising from the School’s breach of contract, intentional misconduct or negligence.</p>
+<h3>7. Refund method, payment-provider fees and exchange differences</h3>
+<p>Refunds are normally processed in the original transaction currency through the original payment method. The School will provide the refund amount and processing updates. Posting times depend on the bank, card issuer and payment provider.</p>
+<p>Whether overseas transaction fees or similar charges originally imposed by a bank or card issuer are returned is determined by that institution. The School does not separately collect those fees.</p>
+<p>Exchange rates may differ between payment and refund, resulting in a different amount on the participant’s statement. Once the School has correctly refunded the amount due in the original transaction currency, it does not normally compensate for conversion differences caused by the bank or card issuer, except where the School is legally responsible.</p>
+<h3>8. Disclosure and order of application</h3>
+<p>This policy is provided before the booking is formed. The version disclosed and agreed to at that time applies. Revisions do not automatically replace the agreed conditions of existing bookings.</p>
+<p>If another provision concerning cancellation or refunds conflicts with this section, this section prevails. This policy does not exclude or restrict participants’ statutory rights. Mandatory legal requirements prevail over conflicting terms.</p>
+</div>
+</details>
 
         <!-- Section 7 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">7. Handling of Personal Information</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	We collect, use, and store learners’ personal information in accordance with Japan’s Act on the Protection of Personal Information and other applicable data‑protection laws (including regulations in the learner’s place of residence).</p>
-<p>2.	Purposes of collection are limited to lesson arrangements, emergency contact, payment processing, and marketing notices to which the learner has consented.</p>
-<p>3.	We do not sell or provide personal information to third parties, except where required by law or where processing is委trusted within the scope necessary for lesson operations. Contractors are required to comply with protection standards equivalent to ours.</p>
-<p>4.	Learners may request to view, correct, or delete their personal information and may withdraw consent for its use. However, where retention is required by law or accounting record obligations, deletion will occur after the statutory period expires.</p>
-<p>5.	If personal information is transferred outside Japan, we will implement appropriate security measures based on the guidelines of the Personal Information Protection Commission.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">7. Personal Information</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Collection and use</h3>
+<p>The School collects and uses personal information in accordance with Japan’s Act on the Protection of Personal Information and other applicable laws for bookings, lesson arrangements, safety management, emergency contact, payments, refunds and necessary record keeping. Marketing messages require separate consent and may be stopped at any time.</p>
+<h3>2. Health information</h3>
+<p>Medical history, allergies and other health information are collected only as necessary for safe participation and refund assessment, with the consent of the individual or legal representative as required by law, unless a statutory exception applies.</p>
+<h3>3. Security and service providers</h3>
+<p>The School takes appropriate security measures and does not sell personal information. It does not disclose information to third parties without consent or a legal basis. Where processing is entrusted to a service provider for operational needs, the School restricts its use and provides necessary supervision.</p>
+<h3>4. Access, correction and deletion</h3>
+<p>Requests for access, correction, suspension of use or deletion may be sent to <a href="mailto:support@moposki.com">support@moposki.com</a>. The School will verify identity and respond in accordance with the law. If information must be retained for legal or other legitimate reasons, the School will explain why and delete it at an appropriate time after retention is no longer necessary.</p>
+<h3>5. Overseas processing</h3>
+<p>When providing personal data to a third party outside Japan, the School will supply required information, obtain necessary consent or verify that a statutory exception applies, and implement necessary safeguards in accordance with the law.</p>
+</div>
+</details>
 
         <!-- Section 8 -->
         <details class="faqcard">
-          <summary><div><span class="faq-title">8. Dispute Resolution</span></div><i class="chev" aria-hidden="true"></i></summary>
-          <div class="faq-body">
-<p>1.	These Terms are governed by and construed in accordance with the laws of Japan.</p>
-<p>2.	In the event of a dispute, both parties shall negotiate in good faith to achieve an amicable resolution.</p>
-<p>3.	If negotiations fail, the Tokyo District Court shall have exclusive agreed jurisdiction as the court of first instance.</p>
-<p>4.	If there is any inconsistency between the Japanese version and other language versions of these Terms, the Japanese version shall prevail.</p>
-          </div>
-        </details>
+<summary><div><span class="faq-title">8. Dispute Resolution</span></div><i class="chev" aria-hidden="true"></i></summary>
+<div class="faq-body">
+<h3>1. Governing law</h3>
+<p>These terms are governed by Japanese law, without excluding any mandatory consumer protection provisions that legally apply.</p>
+<h3>2. Consultation</h3>
+<p>The parties will first seek to resolve disputes through good-faith consultation. This does not limit either party’s right to seek legal remedies.</p>
+<h3>3. Courts</h3>
+<p>To the extent permitted by law, the Tokyo District Court or Tokyo Summary Court shall be the agreed court of exclusive jurisdiction at first instance. Any overriding legal rules on jurisdiction will apply.</p>
+<h3>4. Language versions</h3>
+<p>If interpretations of the language versions differ, the Japanese version will normally serve as the basis for interpretation. This does not exclude participants’ statutory rights or exempt the School from liability for mistranslations or inaccurate statements.</p>
+</div>
+</details>
 
       </div><!-- /.faqgrid -->
     </div><!-- /.container -->
@@ -406,12 +494,13 @@ In the following cases, the above general rules do not apply; 100% of tuition wi
           </ul>
         </div>
         <div>
-          <h4>Lessons</h4>
+          <h4>Ski Resorts</h4>
           <ul>
-            <li><a href="#pricing">Lesson Plans</a></li>
+            
             <li><a href="en_teine.html">Sapporo Teine</a></li>
             <li><a href="en_onze.html">Otaru Onze</a></li>
             <li><a href="en_kokusai.html">Sapporo Kokusai</a></li>
+            <li><a href="en_asari.html">Asarigawa Onsen</a></li>
           </ul>
         </div>
         <div>
@@ -547,6 +636,19 @@ document.getElementById('backTop').addEventListener('click', ()=> window.scrollT
   }, { passive: true });
 })();
 
+</script>
+<script id="refund-policy-deeplink">
+(() => {
+  function openPolicy() {
+    if (location.hash !== '#cancellation-policy') return;
+    const policy = document.getElementById('cancellation-policy');
+    policy.open = true;
+    requestAnimationFrame(() => policy.scrollIntoView({ block: 'start', behavior: 'instant' }));
+  }
+  addEventListener('hashchange', openPolicy);
+  addEventListener('load', openPolicy);
+  openPolicy();
+})();
 </script>
 </body>
 </html>

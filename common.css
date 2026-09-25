@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+
+/* 日文頁面共通字體：保留各頁 h1 與品牌標誌原有字體 */
+html[lang="ja"] body :where(*):not(h1):not(h1 *):not(.logo):not(.logo *):not(.material-icons):not([class*="fa-"]) {
+  font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif !important;
+}
+html[lang="ja"] .topbar .brand,
+html[lang="ja"] .topbar .brand * {
+  font-family:"Montserrat","Helvetica Neue",Arial,sans-serif !important;
+}
+html[lang="ja"] .sitemap h4 { font-weight:700 !important; }
+html[lang="ja"] .sitemap a { font-weight:500 !important; }
+
 /* ===== 全域樣式（與線上版一致；日英版頁面不受影響） ===== */
 :root{
   --bg-top:#E7E9EA;

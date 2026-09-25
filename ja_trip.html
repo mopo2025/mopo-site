@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>観光トピック｜MOPO Ski School</title>
-<meta name="description" content="MOPO 特集：観光トピックトピック。モデルコース、交通、周辺情報など。">
+<meta name="description" content="北海道のスキーと街歩きを楽しむ旅のご案内。札幌テイネ・小樽を巡る6日間のモデルプランをご紹介します。">
 
 <!-- ✅ SEO / Open Graph / Twitter Card -->
 <link rel="canonical" href="https://moposki.com/ja_trip.html">
@@ -32,18 +32,32 @@
 <!-- ✅ 共用樣式 -->
 <link rel="stylesheet" href="common.css?v=20260718b">
 
-<!-- 僅本頁用：置中訊息（如暫無內容時） -->
 <style>
-  .page-center{
-    min-height:70vh; display:grid; place-items:center; text-align:center; padding:84px 0; background:#fff;
+  #trip { background: #fff; font-family: "Noto Sans JP", sans-serif; }
+  .news-wrap { padding: 128px 0 80px; min-height: 70vh; }
+  .news-head { margin-bottom: 40px; text-align: center; }
+  .news-head h1 { margin: 0; font-family: "Noto Serif JP", serif; font-size: clamp(28px,5vw,40px); letter-spacing: .02em; color: #172b34; }
+  .news-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; list-style: none; margin: 0; padding: 0; }
+  .news-card { margin: 0; padding: 0; min-width: 0; }
+  .news-card > * { width: 66.666%; margin-left: auto; margin-right: auto; }
+  .news-card .thumb { overflow: hidden; border-radius: 12px; aspect-ratio: 1759/894; background: #f2f4f6; }
+  .news-card .thumb a { display: block; height: 100%; }
+  .news-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+  .news-card .thumb:hover img { transform: scale(1.04); }
+  .news-card .meta { margin-top: 16px; margin-bottom: 6px; font-size: 12px; color: #6a7773; letter-spacing: .06em; }
+  .news-card h2 { margin-top: 6px; margin-bottom: 10px; font-size: clamp(18px,2.4vw,22px); line-height: 1.6; font-weight: 500; color: #203b35; }
+  .news-card h2 a { display: block; }
+  .news-card .excerpt { margin-top: 0; font-size: 14px; line-height: 1.9; color: #58615d; }
+  .news-card a:focus-visible { outline: 2px solid #77867e; outline-offset: 4px; }
+  .news-card .thumb:focus-within { outline: 2px solid #77867e; outline-offset: 4px; }
+  @media (max-width: 860px) {
+    .news-wrap { padding: 104px 0 56px; }
+    .news-head { margin-bottom: 28px; }
+    .news-grid { grid-template-columns: 1fr; }
+    .news-card { width: 100%; max-width: 720px; margin: 0 auto; }
+    .news-card > * { width: 100%; }
   }
-  .page-center h1{
-    margin:0 0 12px; font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
-    font-size:clamp(28px,5vw,40px); color:#111; letter-spacing:.02em;
-  }
-  .page-center p{
-    margin:0; font-size:clamp(16px,2.4vw,18px); color:#333;
-  }
+  @media (prefers-reduced-motion: reduce) { .news-card img { transition: none; } }
 </style>
 </head>
 <body>
@@ -59,20 +73,21 @@
       <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
 
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">スキー場紹介 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="レッスン サブメニュー">
-          <li role="none"><a role="menuitem" href="index.html#pricing">料金プラン</a></li>
-          <li class="group-title">スキー場紹介</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
           <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
           <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+          <li role="none"><a role="menuitem" href="ja_asari.html">朝里川温泉</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="特集記事">
-          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_safe.html">ブログ記事</a></li>
           <li role="none"><a role="menuitem" href="ja_trip.html" aria-current="page">観光トピック</a></li>
         </ul>
       </li>
@@ -109,14 +124,15 @@
           <a href="ja_news.html" role="menuitem">最新情報</a>
           <a href="ja_mopo.html" role="menuitem">MOPO について</a>
 
-          <div class="mob-subtitle">レッスン</div>
-          <a href="index.html#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">スキー場紹介</div>
+          
           <a href="ja_teine.html" role="menuitem">札幌手稲</a>
           <a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
           <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+          <a href="ja_asari.html" role="menuitem">朝里川温泉</a>
 
           <div class="mob-subtitle">特集記事</div>
-          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_safe.html" role="menuitem">ブログ記事</a>
           <a href="ja_trip.html" role="menuitem" aria-current="page">観光トピック</a>
 
           <a href="ja_faq.html" role="menuitem">よくある質問</a>
@@ -131,11 +147,21 @@
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
 <main id="trip" aria-label="観光トピック">
-  <!-- 你可以把這塊替換成真正的內容；現在先顯示「近日公開」 -->
-  <section class="page-center">
+  <section class="news-wrap" aria-labelledby="trip-title">
     <div class="container">
-      <h1>観光トピック</h1>
-      <p>近日公開</p>
+      <div class="news-head"><h1 id="trip-title">観光トピック</h1></div>
+      <ul class="news-grid">
+        <li class="news-card">
+          <div class="thumb">
+            <a href="trip1/jp_tripteine6days.html" aria-label="雪の記憶を、重ねる旅。北海道6日間のモデルプランを見る">
+              <img src="img/news/ja_tripteine6days.png" alt="雪の記憶を、重ねる旅。札幌テイネ・小樽運河・北海道の味覚を楽しむ冬の六日間" width="1759" height="894" loading="lazy">
+            </a>
+          </div>
+          <p class="meta">北海道｜札幌・小樽｜6日間</p>
+          <h2><a href="trip1/jp_tripteine6days.html">雪の記憶を、重ねる旅。</a></h2>
+          <p class="excerpt">日本人インストラクターと滑る札幌テイネ、小樽の街歩き、北海道の味覚。ご自身の滑りを磨く時間も、親子で楽しむひとときも大切にした、6日間のモデルプランです。</p>
+        </li>
+      </ul>
     </div>
   </section>
 </main>
@@ -153,18 +179,19 @@
           </ul>
         </div>
         <div>
-          <h4>レッスン</h4>
+          <h4>スキー場紹介</h4>
           <ul>
-            <li><a href="index.html#pricing">レッスンプラン</a></li>
+            
             <li><a href="ja_teine.html">札幌手稲</a></li>
             <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="ja_kokusai.html">札幌国際</a></li>
+            <li><a href="ja_asari.html">朝里川温泉</a></li>
           </ul>
         </div>
         <div>
           <h4>特集記事</h4>
           <ul>
-            <li><a href="ja_safe.html">安全知識</a></li>
+            <li><a href="ja_safe.html">ブログ記事</a></li>
             <li><a href="ja_trip.html" aria-current="page">観光トピック</a></li>
           </ul>
         </div>

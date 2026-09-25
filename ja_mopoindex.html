@@ -32,6 +32,7 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="icon" href="/img/iconw.png" type="image/png">
 <link rel="shortcut icon" href="/img/iconw.png" type="image/png">
@@ -765,6 +766,12 @@ h1{margin:0 0 4px 0}
 }
 
 </style>
+<style id="jp-font-consistency">
+html[lang="ja"] body :where(*):not(h1):not(h1 *):not(.logo):not(.logo *):not(.material-icons):not([class*="fa-"]){font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif!important}
+html[lang="ja"] .topbar .brand,html[lang="ja"] .topbar .brand *{font-family:"Montserrat","Helvetica Neue",Arial,sans-serif!important}
+html[lang="ja"] #about-mopo .line.big,html[lang="ja"] #about-mopo .line.big *{font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho","Noto Serif TC","Songti TC",serif!important}
+html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a{font-weight:500!important}
+</style>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -779,20 +786,21 @@ h1{margin:0 0 4px 0}
       <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
 
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">スキー場紹介 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="レッスンのサブメニュー">
-          <li role="none"><a role="menuitem" href="#pricing">レッスンプラン</a></li>
-          <li class="group-title">スキー場紹介</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
           <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
           <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+          <li role="none"><a role="menuitem" href="ja_asari.html">朝里川温泉</a></li>
       </ul>
       </li>
 
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="特集記事">
-          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_safe.html">ブログ記事</a></li>
           <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
         </ul>
       </li>
@@ -827,15 +835,14 @@ h1{margin:0 0 4px 0}
           <a href="ja_news.html" role="menuitem">最新情報</a>
          <a href="ja_mopo.html" role="menuitem">MOPO について</a>
 
-          <div class="mob-subtitle">レッスン</div>
-          <a href="#pricing" role="menuitem">レッスンプラン</a>
           <div class="mob-subtitle">スキー場紹介</div>
           <a href="ja_teine.html" role="menuitem">札幌手稲</a>
           <a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
           <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+          <a href="ja_asari.html" role="menuitem">朝里川温泉</a>
 
           <div class="mob-subtitle">特集記事</div>
-          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_safe.html" role="menuitem">ブログ記事</a>
           <a href="ja_trip.html" role="menuitem">観光トピック</a>
 
           <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
@@ -1380,6 +1387,102 @@ h1{margin:0 0 4px 0}
             </div>
           </div>
         </details>
+
+        <!-- 4. Asarigawa Onsen -->
+        <details class="pricecard" id="asari">
+          <summary>
+            <img class="mobile-thumb" src="img/asari/asari.jpg" alt="朝里川温泉スキー場" loading="lazy">
+            <div class="head">
+              <div class="title">朝里川温泉｜プライベート（終日）</div>
+              <div class="desc">
+                <span class="desktop-desc">2026年12月18日より終日レッスンをご案内します。春スキー期間は2027年3月6日～3月29日です。</span>
+                <span class="mobile-desc">終日レッスン｜2026年12月18日から</span>
+              </div>
+            </div>
+            <div class="fromrow">
+               <div class="price-tag-group left">
+                  <span class="pt-label">Full Day</span>
+                  <span class="pt-price">64,000<small>JPY 〜</small></span>
+               </div>
+            </div>
+
+            <div class="expand-hint">
+               ▼ クリックして料金と詳細を見る
+            </div>
+
+            <div class="summary-btns">
+                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_asari.html'">スキー場紹介</button>
+                <button class="btn-sm" onclick="event.stopPropagation(); window.open('ja_asari.html#lesson', '_blank')">レッスン予約</button>
+            </div>
+          </summary>
+          <div class="pricetable">
+            <div class="busy-dates">
+              繁忙期：2026/12/23～2027/01/04・2027/02/05～02/11
+            </div>
+            <div class="local-tabs">
+              <button class="tab-btn active" data-tab="standard">通常期</button>
+              <button class="tab-btn" data-tab="busy">繁忙期</button>
+              <button class="tab-btn" data-tab="spring">春スキー (3/6～3/29)</button>
+            </div>
+
+            <div class="course-type-block">
+              <span class="course-type-title">終日レッスン (6時間, 休憩1時間含む) 9:30-15:30</span>
+              <div>
+                <div class="season standard active">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 68,000</td><td class="pp">（2名参加時 1名あたり ¥ 34,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 72,000</td><td class="pp">（1名あたり ¥ 24,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 76,000</td><td class="pp">（1名あたり ¥ 19,000）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 80,000</td><td class="pp">（1名あたり ¥ 16,000）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season busy">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 79,000</td><td class="pp">（2名参加時 1名あたり ¥ 39,500）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 84,000</td><td class="pp">（1名あたり ¥ 28,000）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 89,000</td><td class="pp">（1名あたり ¥ 22,250）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 94,000</td><td class="pp">（1名あたり ¥ 18,800）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="season spring">
+                  <table class="table">
+                    <thead><tr><th class="people">人数</th><th class="price">料金</th><th></th></tr></thead>
+                    <tbody>
+                      <tr><td class="people">1〜2 名</td><td class="price">¥ 64,000</td><td class="pp">（2名参加時 1名あたり ¥ 32,000）</td></tr>
+                      <tr><td class="people">3 名</td><td class="price">¥ 67,000</td><td class="pp">（1名あたり ¥ 22,333）</td></tr>
+                      <tr><td class="people">4 名</td><td class="price">¥ 70,000</td><td class="pp">（1名あたり ¥ 17,500）</td></tr>
+                      <tr><td class="people">5 名</td><td class="price">¥ 73,000</td><td class="pp">（1名あたり ¥ 14,600）</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-row">
+              <div class="note">
+                <p>＊レッスン期間：2026年12月18日～2027年3月29日。終日レッスンのみ。春スキー期間は2027年3月6日～3月29日です。それ以外は通常期・繁忙期の各料金が適用されます。</p>
+                <p>＊繁忙期および春スキー期間以外は通常期料金となります。</p>
+                <p>＊少人数制で品質を維持するため、最大5名様までとなります。</p>
+                <p>＊表示は税込価格です。</p>
+                <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
+              </div>
+              <div class="btns">
+                <a class="btn" href="ja_asari.html">スキー場紹介</a>
+                <a class="btn" href="ja_asari.html#lesson" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+              </div>
+            </div>
+            <div class="cta-row">
+              <a class="btn" href="ja_asari.html">スキー場紹介</a>
+        <a class="btn" href="ja_asari.html#lesson" target="_blank" rel="noopener noreferrer">レッスン予約</a>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -1460,19 +1563,20 @@ h1{margin:0 0 4px 0}
           </ul>
         </div>
         <div>
-          <h4>レッスン</h4>
+          <h4>スキー場紹介</h4>
           <ul>
-            <li><a href="#pricing">レッスンプラン</a></li>
+            
             <li><a href="ja_teine.html">札幌手稲</a></li>
           <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="ja_kokusai.html">札幌国際</a></li>
+            <li><a href="ja_asari.html">朝里川温泉</a></li>
 
           </ul>
         </div>
         <div>
           <h4>特集記事</h4>
           <ul>
-            <li><a href="ja_safe.html">安全知識</a></li>
+            <li><a href="ja_safe.html">ブログ記事</a></li>
             <li><a href="ja_trip.html">観光トピック</a></li>
           </ul>
         </div>

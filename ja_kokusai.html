@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>札幌国際｜MOPO スキースクール </title>
-<meta name="description" content="札幌国際のページ。詳細情報は近日公開予定。">
+<meta name="description" content="札幌中心部から約60分。豊富なパウダースノーと全7コース、定山渓温泉も楽しめる札幌国際スキー場をご紹介します。">
 
 <!-- ✅ SEO / Open Graph / Twitter Card -->
 <link rel="canonical" href="https://moposki.com/ja_kokusai.html">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
 <meta property="og:title" content="札幌国際｜MOPO スキースクール">
-<meta property="og:description" content="詳細情報は近日公開予定。">
+<meta property="og:description" content="札幌から日帰りで楽しめる、雪質とロングシーズンが魅力の札幌国際スキー場。">
 <meta property="og:url" content="https://moposki.com/ja_kokusai.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOPO Ski School">
@@ -22,7 +22,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="札幌国際｜MOPO スキースクール">
-<meta name="twitter:description" content="詳細情報は近日公開予定。">
+<meta name="twitter:description" content="札幌から日帰りで楽しめる、雪質とロングシーズンが魅力の札幌国際スキー場。">
 <meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,14 @@
 
 <!-- ✅ 共通 CSS -->
 <link rel="stylesheet" href="common.css?v=20260718b">
+<style>
+.resort-booking-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.resort-booking-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid #ccd5cf;border-radius:999px;color:#304c43;background:#fff;font-size:14px;text-decoration:none}
+.resort-booking-actions .primary{background:#304c43;color:#fff;border-color:#304c43}
+.resort-booking-actions a:hover{opacity:.85}
+.resort-booking-actions a:focus-visible{outline:2px solid #77867e;outline-offset:3px}
+@media(max-width:640px){.resort-booking-actions{flex-direction:column}}
+</style>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -44,20 +52,21 @@
       <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
 
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">スキー場紹介 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="レッスンサブメニュー">
-          <li role="none"><a role="menuitem" href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
-          <li class="group-title">スキー場紹介</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="ja_teine.html">札幌手稲</a></li>
           <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
           <li role="none"><a role="menuitem" href="ja_kokusai.html" aria-current="page">札幌国際</a></li>
+          <li role="none"><a role="menuitem" href="ja_asari.html" aria-current="page">朝里川温泉</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="特集記事サブメニュー">
-          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_safe.html">ブログ記事</a></li>
           <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
         </ul>
       </li>
@@ -92,14 +101,15 @@
           <a href="ja_news.html" role="menuitem">最新情報</a>
           <a href="ja_mopo.html" role="menuitem">MOPO について</a>
 
-          <div class="mob-subtitle">レッスン</div>
-          <a href="ja_mopoindex.html#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">スキー場紹介</div>
+          
           <a href="ja_teine.html" role="menuitem">札幌手稲</a>
           <a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
           <a href="ja_kokusai.html" role="menuitem" aria-current="page">札幌国際</a>
+          <a href="ja_asari.html" role="menuitem" aria-current="page">朝里川温泉</a>
 
           <div class="mob-subtitle">特集記事</div>
-          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_safe.html" role="menuitem">ブログ記事</a>
           <a href="ja_trip.html" role="menuitem">観光トピック</a>
 
           <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
@@ -120,8 +130,8 @@
 
     /* === HERO === */
     .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
-    .s-hero::before{content:"";position:absolute;inset:0;background:url("panel2.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
-    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
+    .s-hero::before{content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.14) saturate(1.03)}
+    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.48) 45%, rgba(255,255,255,.08) 100%)}
     .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
     .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
     .s-hero h1{font-family:"Noto Serif JP",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
@@ -176,6 +186,11 @@
       .modal-dialog{width:100%}
       .modal-body iframe{height:70vh}
     }
+    html,body{overflow-x:clip}
+    .resort-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.resort-detail-card{padding:20px;border:1px solid #dfe7e2;border-radius:14px;background:#f8faf8}.resort-detail-card h3{margin:0 0 8px;color:#214943;font-size:17px}.resort-detail-card p{margin:0;font-size:14px;line-height:1.72}.resort-details{margin-top:16px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7;overflow:hidden}.resort-details summary{cursor:pointer;padding:16px 18px;color:#1f554b;font-weight:700;list-style:none}.resort-details summary::-webkit-details-marker{display:none}.resort-details summary::after{content:"＋";float:right}.resort-details[open] summary::after{content:"－"}.resort-details-body{padding:0 18px 18px}.resort-details-body p:last-child{margin-bottom:0}.resort-details-link{display:inline-flex;margin-top:4px;color:#1b6555;font-weight:700;text-decoration:none}.rental-note{padding:18px 20px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7}.rental-note strong{color:#254744}.rental-note a{display:inline-flex;align-items:center;margin-top:4px;padding:10px 15px;border:1px solid #cbb47f;border-radius:999px;background:#fff;color:#263c40;font-size:13px;font-weight:700;text-decoration:none}
+    .s-toc::before{display:none}.s-toc a.is-active{background:#e5efea;color:#174d43;font-weight:700}.preflight-list{list-style:none!important;margin:4px 0 0!important;padding:0;border-top:1px solid #e6e9e8}.preflight-list li{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;margin:0!important;padding:18px 0;border-bottom:1px solid #e6e9e8;color:#33474c}.preflight-list strong{color:#173238}.preflight-list a{color:#23665b;font-weight:700;text-decoration:underline;text-underline-offset:3px}.lesson-cta{background:linear-gradient(145deg,#fff 0%,#f4f8f6 100%)}.lesson-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.lesson-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border:1px solid #bfd0ca;border-radius:999px;background:#fff;color:#214e47;font-size:13px;font-weight:800;text-decoration:none;transition:.2s ease}.lesson-actions a:hover{transform:translateY(-1px);border-color:#8eaaa2;box-shadow:0 6px 16px rgba(31,75,68,.09)}.lesson-actions .primary{border-color:#245e54;background:#245e54;color:#fff}.lesson-small{margin-top:12px!important;color:#68777a!important;font-size:13px!important}
+    @media(min-width:981px){.s-toc{position:sticky!important;top:96px;max-height:calc(100vh - 116px);overflow-y:auto;align-self:start}.s-layout{align-items:start}}
+    @media(max-width:640px){.resort-detail-grid{grid-template-columns:1fr}.resort-detail-card{padding:17px}.preflight-list li{grid-template-columns:1fr;gap:3px;padding:15px 0}.lesson-actions{display:grid;grid-template-columns:1fr}.lesson-actions a{width:100%}}
   </style>
 
   <!-- HERO -->
@@ -184,8 +199,8 @@
       <div>
         <div class="s-eyebrow">Sapporo</div>
         <h1>札幌国際スキー場</h1>
-        <p class="s-sub">街から1時間で、雪の別世界へ。</p>
-        <p>定山渓温泉の山並みに寄り添う札幌国際スキー場は、豊かな天然雪に恵まれた冬の舞台です。きめ細やかなパウダースノーは世界中のスキーヤー・スノーボーダーを魅了し、日帰りでも気軽に訪れられる利便性と、雄大な自然の静けさを同時に味わえます。</p>
+        <p class="s-sub">札幌から約1時間。上質な雪と温泉を楽しむ一日へ。</p>
+        <p>札幌中心部から車で約60分。定山渓の山々に広がる札幌国際スキー場は、豊富な積雪とロングシーズンが魅力です。初めての方が安心して滑れるワイドなコースから、パウダースノーを楽しめる非圧雪エリアまで、レベルに合わせた一日を過ごせます。滑走後に定山渓温泉へ立ち寄れるのも、このエリアならではの楽しみです。</p>
       </div>
       <div><!-- 右側は写真の余白 --></div>
     </div>
@@ -196,9 +211,15 @@
     <div class="s-layout">
       <!-- 左：目次（ゴールドライン追従） -->
       <nav class="s-toc" aria-label="セクション目次">
-        <a href="#features" class="is-active">— ゲレンデの特徴</a>
-        <a href="#public">— 公共交通機関のご案内</a>
-        <a href="#car">— お車でお越しの方</a>
+        <a href="#features" class="is-active">ゲレンデの特徴</a>
+        <a href="#courses">レベル別コース案内</a>
+        <a href="#experience">山頂の景色・施設</a>
+        <a href="#jozankei">定山渓温泉</a>
+        <a href="#public">公共交通機関のご案内</a>
+        <a href="#car">お車でお越しの方</a>
+        <a href="#rental">レンタル</a>
+        <a href="#plan">出発前の確認</a>
+        <a href="#lesson">レッスン予約</a>
       </nav>
 
       <!-- 右：本文 -->
@@ -212,9 +233,38 @@
             <span class="s-linktxt">コースマップ（クリックで表示）</span>
           </button>
 <p></p>
-          <p>札幌国際スキー場には全7コースが整備されており、初級30％、中級40％、上級30％とバランス良く構成されています。ワイドで緩やかなゲレンデは初心者やファミリーに最適でありながら、最長3.6kmのロングクルージングコースは滑りごたえ十分です。</p>
-          <p>また、豪雪地帯ならではの非圧雪ゾーンも多く、ふかふかの深雪を堪能できるのは札幌国際ならでは。ナチュラルな地形を活かした滑走は、上級者やパウダーファンから高い支持を得ています。</p>
-          <p>利用者層はスキーが約5割、スノーボードが約5割と拮抗しており、幅広い層に親しまれています。特に観光客の比率が高く、国内外からの旅行者が多く訪れる国際的なゲレンデです。札幌市街から近いため、地元の学生や社会人の一日利用も盛んです。</p>
+          <p>全7コースは初級30％、中級40％、上級30％の構成。例年11月中旬から5月上旬まで滑走でき、市内のスキー場の中でも長くシーズンを楽しめます。</p>
+          <p>初心者には幅の広い緩斜面や、ウッディーコースとメルヘンコースをつなぐ約3.6kmのロングランがおすすめです。経験者は最大斜度30度のダウンヒルコースやコブ斜面、降雪後の非圧雪エリアで滑り応えのある一本を楽しめます。</p>
+          <p>札幌を拠点に日帰りしやすく、定山渓温泉と組み合わせやすい立地も魅力です。朝からしっかり滑り、帰りに温泉で体を温めるなど、北海道らしい冬の一日を気軽に計画できます。</p>
+        </article>
+
+        <article id="courses" class="s-section" aria-labelledby="courses-title">
+          <h2 id="courses-title">レベルに合わせたコース選び</h2>
+          <p>コンパクトで分かりやすいゲレンデ構成ながら、基本練習から急斜面まで段階的に楽しめます。初めて訪れる際は、当日の視界や雪質も確認しながら無理のないコースを選びましょう。</p>
+          <div class="resort-detail-grid">
+            <div class="resort-detail-card"><h3>初めてのスキー・スノーボード</h3><p>幅の広い緩斜面で、停止やターン、リフトの乗り降りを落ち着いて練習できます。</p></div>
+            <div class="resort-detail-card"><h3>ロングクルージング</h3><p>ウッディーコースとメルヘンコースをつなぐ約3.6kmのルートは、連続ターンの練習にも適しています。</p></div>
+            <div class="resort-detail-card"><h3>パウダー・自然地形</h3><p>降雪後は指定された非圧雪エリアで深雪を楽しめます。閉鎖区域や管理区域外には立ち入らないでください。</p></div>
+            <div class="resort-detail-card"><h3>上級者向け</h3><p>最大斜度30度のダウンヒルコースやコブ斜面は、安定したターンとスピードコントロールが求められます。</p></div>
+          </div>
+        </article>
+
+        <article id="experience" class="s-section" aria-labelledby="experience-title">
+          <h2 id="experience-title">山頂の景色、雪遊び、ゲレンデグルメ</h2>
+          <p>スカイキャビンで標高約1,100mの山頂エリアへ。晴れた日には石狩湾を望むことができ、厳しい冷え込みと水分の条件がそろうと樹氷も見られます。滑走しない方も、ゴンドラ往復乗車で冬山の景色を楽しめます。</p>
+          <p>山麓にはファミリー向けの雪遊びエリアがあり、センターハウス内には複数の飲食店、山頂にはカフェがあります。名物の「国際カレーラーメン」をはじめ、焼きたてピザやソフトクリームも紹介されています。</p>
+          <p>スキー・スノーボード用品からウェアまでレンタルできるため、札幌観光と組み合わせて身軽に立ち寄りやすいスキー場です。</p>
+        </article>
+
+        <article id="jozankei" class="s-section" aria-labelledby="jozankei-title">
+          <h2 id="jozankei-title">定山渓温泉と組み合わせる楽しみ方</h2>
+          <p>定山渓温泉は、支笏洞爺国立公園の渓谷に広がる温泉地です。札幌国際スキー場から車で約30分。雪景色を眺めながら露天風呂で体を温める、札幌近郊ならではのアフタースキーを楽しめます。</p>
+          <details class="resort-details"><summary>宿泊・立ち寄りプランを詳しく見る</summary><div class="resort-details-body">
+            <p><strong>日帰り：</strong>滑走後に日帰り入浴を受け付けている施設へ立ち寄り、札幌へ戻るプラン。受付時間や休館日は施設ごとに異なるため、事前確認が必要です。</p>
+            <p><strong>温泉に宿泊：</strong>翌朝は雪の渓谷や足湯をゆっくり巡ることができます。スキー場まで約30分のため、連日の滑走拠点としても利用しやすい立地です。</p>
+            <p><strong>冬の風景：</strong>雪に包まれた渓谷は水墨画のような景観を見せます。厳冬期には「雪灯路」などの催しが行われることもあります。</p>
+            <a class="resort-details-link" href="https://jozankei.jp/" target="_blank" rel="noopener noreferrer">定山渓観光協会の公式情報を見る ↗</a>
+          </div></details>
         </article>
 
         <article id="public" class="s-section public" aria-labelledby="public-title">
@@ -236,13 +286,20 @@
 
         <article id="car" class="s-section" aria-labelledby="car-title">
           <h2 id="car-title">お車をご利用の方</h2>
-          <p>駐車場は約1,200台を収容可能で、無料でご利用いただけます。積雪の多い地域ですが、道路整備が行き届いており安心です。</p>
+          <p>1,850台分の無料駐車場があります。冬の山道では積雪や凍結、視界不良が発生するため、冬装備を整え、時間に余裕を持ってお越しください。雪道運転に不慣れな場合は予約制バスの利用がおすすめです。</p>
           <ul>
-            <li>新千歳空港から（高速道路利用で）約90分</li>
+            <li>新千歳空港から約100分</li>
             <li>札幌中心部から約60分</li>
-            <li>小樽中心部から約70分</li>
+            <li>小樽中心部から約40分</li>
+            <li>朝里ICから約20分</li>
+            <li>定山渓温泉から約30分</li>
           </ul>
+          <p>小樽方面の道道1号小樽定山渓線は、冬季に一部区間が19:00〜翌7:00の夜間通行止めとなります。天候や道路状況によって所要時間が変わるため、当日の交通情報をご確認ください。</p>
         </article>
+        <article id="rental" class="s-section" aria-labelledby="rental-title"><h2 id="rental-title">レンタル（当校推奨）</h2><div class="rental-note"><p><strong>受講される方には、札幌国際スキー場での直接レンタルをおすすめしています。</strong></p><p>スキー・スノーボードセット、ブーツ、ウェアを取り扱っています。Web予約にも対応しており、事前決済後に発行されるQRコードを用意しておくと、当日の受け取りがスムーズです。</p><a href="https://www.sapporo-kokusai.jp/rental/" target="_blank" rel="noopener noreferrer">公式レンタル・Web予約を見る ↗</a></div></article>
+        <article id="plan" class="s-section" aria-labelledby="plan-title"><h2 id="plan-title">出発前に確認したい3つのこと</h2><ul class="preflight-list"><li><strong>装備の確認</strong><span>出発前にMOPOの装備チェックリストを確認し、防寒着、グローブ、スキーソックス、プロテクターなど必要なものがそろっているか確認してください。</span></li><li><strong>レッスン料金とレンタル</strong><span>レッスン料金にはインストラクター用リフト券と受講者の第三者賠償責任保険が含まれます。受講者のリフト券とレンタル用品は別途必要です。札幌国際ではレンタルのWeb予約が可能で、当校ではスキー場での直接レンタルをおすすめしています。 <a href="https://www.sapporo-kokusai.jp/rental/" target="_blank" rel="noopener noreferrer">公式レンタル情報を見る ↗</a></span></li><li><strong>交通と集合</strong><span>バス移動、リフト券購入、レンタル受け取りの時間に余裕を持ってお越しください。集合時間と場所は予約確定メッセージでご案内します。</span></li></ul></article>
+        <article id="lesson" class="s-section lesson-cta" aria-labelledby="lesson-title"><h2 id="lesson-title">札幌国際でレッスンを受けたい方へ</h2><p>MOPOでは、札幌国際でスキー・スノーボードのプライベートレッスンを実施しています。オンラインフォームから希望日を選んでご予約ください。レベル差やグループ分けに迷う場合は、希望日、人数、年齢、滑走経験をLINEまたはメールでお知らせいただければ、適した受講方法をご案内します。</p><div class="lesson-actions"><a class="primary" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスンを予約する</a><a href="ja_mopoindex.html#pricing">レッスン料金を見る</a><a href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer">LINEで問い合わせる</a><a href="mailto:support@moposki.com?subject=札幌国際レッスンのお問い合わせ&body=希望日：%0A人数：%0A大人／子どもの年齢：%0Aスキーまたはスノーボード：%0A滑走経験：">メールで問い合わせる</a></div><p class="lesson-small">希望日、人数、お子さまの年齢、参加者ごとのスキー・スノーボード経験をお知らせください。</p></article>
+
       </div>
     </div>
   </section>
@@ -292,7 +349,7 @@
           }
         });
       }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car'].forEach(id=>{
+      ['features','courses','experience','jozankei','public','car','rental','plan','lesson'].forEach(id=>{
         const el = document.getElementById(id); if(el) io.observe(el);
       });
 
@@ -354,18 +411,19 @@
           </ul>
         </div>
         <div>
-          <h4>レッスン</h4>
+          <h4>スキー場紹介</h4>
           <ul>
-            <li><a href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+            
             <li><a href="ja_teine.html">札幌手稲</a></li>
             <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="ja_kokusai.html" aria-current="page">札幌国際</a></li>
+            <li><a href="ja_asari.html" aria-current="page">朝里川温泉</a></li>
           </ul>
         </div>
         <div>
           <h4>特集記事</h4>
           <ul>
-            <li><a href="ja_safe.html">安全知識</a></li>
+            <li><a href="ja_safe.html">ブログ記事</a></li>
             <li><a href="ja_trip.html">観光トピック</a></li>
           </ul>
         </div>

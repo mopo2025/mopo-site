@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Columns｜MOPO Ski School</title>
-<meta name="description" content="MOPO Safety. Pre‑ski safety reminders, resort rules, and essential basics.">
+<title>Ski Guides &amp; Columns｜MOPO Ski School</title>
+<meta name="description" content="Practical guides for first-time skiing in Hokkaido, including winter travel, resort choices, clothing, rentals and lesson-day preparation.">
 
 <!-- ✅ SEO / Open Graph / Twitter Card -->
 <link rel="canonical" href="https://moposki.com/en_safe.html">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
-<meta property="og:title" content="Columns｜MOPO Ski School">
-<meta property="og:description" content="MOPO Safety. Pre‑ski safety reminders, resort rules, and essential basics.">
+<meta property="og:title" content="Ski Guides &amp; Columns｜MOPO Ski School">
+<meta property="og:description" content="Plan your first Hokkaido ski trip with practical guidance for a comfortable family day on snow.">
 <meta property="og:url" content="https://moposki.com/en_safe.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOPO Ski School">
@@ -21,8 +21,8 @@
 <meta property="og:image:height" content="630">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Columns｜MOPO Ski School">
-<meta name="twitter:description" content="MOPO Safety. Pre‑ski safety reminders, resort rules, and essential basics.">
+<meta name="twitter:title" content="Ski Guides &amp; Columns｜MOPO Ski School">
+<meta name="twitter:description" content="Plan your first Hokkaido ski trip with practical guidance for a comfortable family day on snow.">
 <meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,27 +128,32 @@ html, body { overflow-x: hidden; }
 #mobOverlay.noblur{backdrop-filter:none !important; -webkit-backdrop-filter:none !important}
 #mobOverlay.noblur.show{background:rgba(0,0,0,.35)}
 
-/* ===== Page: centered message block ===== */
-.page-center {
-  min-height: 70vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 84px 0;
-  background: var(--bg-mid);
+/* ===== Page: article cards ===== */
+.blog-wrap{min-height:70vh;padding:56px 0;background:#fff}
+.blog-head{margin:0 0 40px;text-align:center}
+.blog-head h1{margin:0;font-family:"Noto Serif JP","Georgia",serif;font-size:clamp(28px,5vw,40px);letter-spacing:.02em;color:#172b34}
+.blog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px;list-style:none;margin:0;padding:0}
+.blog-card{margin:0;padding:0;min-width:0}
+.blog-card>*{width:66.666%;margin-left:auto;margin-right:auto}
+.blog-card .thumb{overflow:hidden;border-radius:12px;aspect-ratio:1759/894;background:#f2f4f6}
+.blog-card .thumb a{display:block;height:100%}
+.blog-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.blog-card .thumb:hover img{transform:scale(1.04)}
+.blog-card .meta{margin-top:16px;margin-bottom:6px;font-size:12px;font-weight:700;color:#6a7773;letter-spacing:.08em;text-transform:uppercase}
+.blog-card h2{margin-top:6px;margin-bottom:10px;font-size:clamp(18px,2.4vw,22px);line-height:1.5;font-weight:700;color:#203b35}
+.blog-card h2 a{display:block;color:inherit;text-decoration:none}
+.blog-card .excerpt{margin-top:0;font-size:14px;line-height:1.85;color:#58615d}
+.read-more{display:flex;align-items:center;gap:6px;margin-top:14px;color:#355c54;font-size:13px;font-weight:700;text-decoration:none}
+.read-more:hover{text-decoration:underline}
+.blog-card a:focus-visible{outline:2px solid #77867e;outline-offset:4px}
+@media(max-width:860px){
+  .blog-wrap{padding:56px 0}
+  .blog-head{margin-bottom:28px}
+  .blog-grid{grid-template-columns:1fr}
+  .blog-card{width:100%;max-width:720px;margin:0 auto}
+  .blog-card>*{width:100%}
 }
-.page-center h1{
-  margin: 0 0 12px;
-  font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;
-  font-size: clamp(28px, 5vw, 40px);
-  color:#111;
-  letter-spacing:.02em;
-}
-.page-center p{
-  margin: 0;
-  font-size: clamp(16px, 2.4vw, 18px);
-  color:#333;
-}
+@media(prefers-reduced-motion:reduce){.blog-card img{transition:none}}
 
 /* Footer (same as Home) */
 .footer{background:var(--bg-bottom); color:var(--f7f7f7,#f7f7f7); border-top:1px solid rgba(255,255,255,.25)}
@@ -199,13 +204,14 @@ html, body { overflow-x: hidden; }
       <li role="none"><a role="menuitem" href="en_mopo.html">About MOPO</a></li>
 
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Ski Resorts <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="Lessons submenu">
-          <li role="none"><a role="menuitem" href="en_mopoindex.html#pricing">Lesson plans</a></li>
-          <li class="group-title">Resorts</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="en_teine.html">Sapporo Teine</a></li>
           <li role="none"><a role="menuitem" href="en_onze.html">Otaru Onze</a></li>
           <li role="none"><a role="menuitem" href="en_kokusai.html">Sapporo Kokusai</a></li>
+          <li role="none"><a role="menuitem" href="en_asari.html">Asarigawa Onsen</a></li>
         </ul>
       </li>
 
@@ -247,11 +253,12 @@ html, body { overflow-x: hidden; }
           <a href="en_news.html" role="menuitem">News</a>
           <a href="en_mopo.html" role="menuitem">About MOPO</a>
 
-          <div class="mob-subtitle">Lessons</div>
-          <a href="en_mopoindex.html#pricing" role="menuitem">Lesson plans</a>
+          <div class="mob-subtitle">Ski Resorts</div>
+          
           <a href="en_teine.html" role="menuitem">Sapporo Teine</a>
           <a href="en_onze.html" role="menuitem">Otaru Onze</a>
           <a href="en_kokusai.html" role="menuitem">Sapporo Kokusai</a>
+          <a href="en_asari.html" role="menuitem">Asarigawa Onsen</a>
 
           <div class="mob-subtitle">Features</div>
           <a href="en_safe.html" role="menuitem" aria-current="page">Columns</a>
@@ -268,12 +275,23 @@ html, body { overflow-x: hidden; }
 <!-- Mobile overlay (same as Home) -->
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
-<main id="home" aria-label="Safety">
-  <!-- ===== Centered message area (placeholder content) ===== -->
-  <section class="page-center">
+<main id="home" aria-label="Ski guides and columns">
+  <section class="blog-wrap">
     <div class="container">
-      <h1>Columns</h1>
-      <p>Coming Soon</p>
+      <div class="blog-head"><h1>Columns</h1></div>
+      <ul class="blog-grid">
+        <li class="blog-card">
+          <div class="thumb">
+            <a href="tool/en_Beginnersguide.html" aria-label="Read Your first Hokkaido ski trip">
+              <img src="img/news/en_Beginnersguide.jpg" alt="A snowy Hokkaido landscape for first-time ski travellers" loading="lazy">
+            </a>
+          </div>
+          <p class="meta">FIRST-TIMER'S GUIDE TO HOKKAIDO</p>
+          <h2><a href="tool/en_Beginnersguide.html">Your first Hokkaido ski trip</a></h2>
+          <p class="excerpt">From snowy-day transport and beginner-friendly resorts to clothing, rentals and your first lesson, this practical guide helps families prepare for an easy, enjoyable first ski day in Hokkaido.</p>
+          <a class="read-more" href="tool/en_Beginnersguide.html">Read the guide <span aria-hidden="true">→</span></a>
+        </li>
+      </ul>
     </div>
   </section>
 </main>
@@ -291,12 +309,13 @@ html, body { overflow-x: hidden; }
           </ul>
         </div>
         <div>
-          <h4>Lessons</h4>
+          <h4>Ski Resorts</h4>
           <ul>
-            <li><a href="en_mopoindex.html#pricing">Lesson plans</a></li>
+            
             <li><a href="en_teine.html">Sapporo Teine</a></li>
             <li><a href="en_onze.html">Otaru Onze</a></li>
             <li><a href="en_kokusai.html">Sapporo Kokusai</a></li>
+            <li><a href="en_asari.html">Asarigawa Onsen</a></li>
           </ul>
         </div>
         <div>

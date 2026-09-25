@@ -31,7 +31,150 @@
 
 <!-- ✅ 共通 CSS -->
 <link rel="stylesheet" href="common.css?v=20260718b">
-</head>
+
+<style id="teine-page-style">
+:root{--teine-ink:#142c2c;--teine-muted:#536967;--teine-green:#1e6257;--teine-line:#dce6e2;--teine-cream:#f7f8f5}
+body{font-family:"Noto Sans TC","Noto Sans JP","Hiragino Sans",sans-serif;background:var(--teine-cream)}
+html[lang="ja"] body{font-family:"Noto Sans JP","Hiragino Sans",sans-serif}
+html[lang="en"] body{font-family:"Helvetica Neue",Arial,sans-serif}
+main{padding-bottom:54px;background:var(--teine-cream);color:var(--teine-ink)}
+.s-hero{position:relative;min-height:500px;display:flex;align-items:end;overflow:hidden;background:#435f71 url("panel3.jpg") center 47%/cover no-repeat}
+.s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 34%,rgba(4,24,29,.64) 100%)}
+.s-hero-inner{position:relative;z-index:1;width:min(1200px,100%);margin:0 auto;padding:100px 28px 42px;color:#fff}
+.s-eyebrow{display:block;margin-bottom:12px;font:700 12px/1.3 Montserrat,sans-serif;letter-spacing:.18em;color:#e7dfbd}
+.s-hero h1{font-family:"Noto Serif JP","Noto Sans TC",serif;font-size:clamp(32px,4.4vw,56px);font-weight:600;line-height:1.18;letter-spacing:.02em;margin:0 0 8px;text-shadow:0 2px 20px rgba(0,0,0,.24)}
+.s-hero .s-sub{font-size:clamp(16px,2vw,21px);font-weight:600;line-height:1.5;margin:0;color:#fff}
+.teine-intro{width:min(1160px,calc(100% - 48px));margin:-1px auto 0;padding:32px 0 20px}
+.teine-intro-copy{max-width:1060px;font-size:16px;line-height:1.85;color:#2d4544}
+.teine-intro-copy p{break-inside:avoid;margin:0 0 13px}
+.teine-facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.teine-facts span{display:inline-flex;align-items:center;padding:7px 13px;border-radius:100px;background:#e7efea;color:#21564d;font-size:12px;font-weight:700;letter-spacing:.02em}
+.s-wrap{width:min(1160px,calc(100% - 48px));max-width:none;margin:0 auto;padding:10px 0 30px}
+.s-layout{display:block}
+.s-layout>div{min-width:0}
+.s-toc{position:static;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;border:0;background:none}
+.s-toc::before{display:none}
+.s-toc a{display:inline-flex;align-items:center;min-height:40px;padding:8px 13px;border:1px solid #d4dfd9;border-radius:100px;background:#fff;color:#365450;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+.s-toc a:hover,.s-toc a:focus-visible{background:#e6efea;color:#174d43}
+.s-section{padding:32px 38px;margin:0 0 18px;border:1px solid #e0e7e1;border-radius:18px;background:#fff;box-shadow:0 10px 34px rgba(32,63,55,.04);scroll-margin-top:85px}
+.s-section h2{display:flex;align-items:center;gap:11px;margin:0 0 17px;font-size:clamp(21px,2.5vw,28px);line-height:1.35;font-weight:700;letter-spacing:.01em;color:#183b37}
+.s-section h2::before{content:"";display:block;width:5px;height:24px;flex:0 0 5px;border-radius:4px;background:#b59b61}
+.s-section h3{font-size:17px;color:#20473f}
+.s-section p{max-width:100%;font-size:15.5px;line-height:1.8;color:#334a48;margin:0 0 14px}
+.s-section p:last-child{margin-bottom:0}
+.teine-actions{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0 0}
+.teine-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border:1px solid #c7dbd1;border-radius:9px;background:#f1f7f3;color:#155b4e;text-decoration:none;font-size:13px;font-weight:700;line-height:1.35}
+.teine-actions a:hover,.teine-actions a:focus-visible{background:#dfeee6}
+.teine-rental{padding:15px 19px;margin:15px 0;border:1px solid #d9e6df;border-radius:14px;background:#fbfcfb;overflow:hidden}
+.teine-rental h3{margin:0 0 7px!important;font-size:18px!important;line-height:1.4}
+.teine-rental-hint{font-size:13px!important;color:#60736f!important;margin:0 0 11px!important}
+.teine-rental details{margin-top:8px;border-top:1px solid var(--teine-line)}
+.teine-rental summary{cursor:pointer;list-style:none;padding:12px 2px;color:#1b6555;font-size:14px;font-weight:700;line-height:1.45}
+.teine-rental summary::-webkit-details-marker{display:none}
+.teine-rental summary::after{content:"＋";float:right;margin-left:10px}
+.teine-rental[open]>summary::after,.teine-rental details[open]>summary::after{content:"－"}
+.teine-price{width:100%;border-collapse:collapse;table-layout:auto;background:#fff;font-size:14px;line-height:1.5}
+.teine-price th,.teine-price td{padding:11px 14px;border-bottom:1px solid #e7eeea;text-align:left;vertical-align:top}
+.teine-price th{font-weight:700;color:#4c6661;background:#eef4f0}
+.teine-price th:not(:first-child),.teine-price td:not(:first-child){text-align:right;white-space:nowrap;width:118px}
+.teine-price td:first-child{font-weight:500;color:#28413e}
+.teine-rental .teine-price:last-child{margin-bottom:4px}
+.teine-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:20px 0 9px}
+.teine-photo-slot{display:grid;place-items:center;aspect-ratio:16/10;padding:15px;border:1px dashed #9db8ac;border-radius:13px;background:linear-gradient(145deg,#eef3ef,#f9faf7);color:#668075;font-size:13px;font-weight:600;text-align:center}
+.teine-caption,.teine-season{font-size:12.5px!important;color:#6b7e79!important;line-height:1.6!important}
+.teine-cta{background:linear-gradient(120deg,#eaf3ed,#fffdfa);border-color:#d3e2d9}
+.teine-cta .teine-actions a:first-child{background:#1a594b;border-color:#1a594b;color:#fff}
+.teine-cta .teine-actions a:first-child:hover{background:#103f35}
+.teine-season{margin:16px 0}
+@media(max-width:800px){.s-hero{min-height:390px}.teine-intro-copy{columns:1}.s-section{padding:27px 26px}}
+@media(max-width:600px){.s-hero{min-height:300px;background-position:50% 51%}.s-hero-inner{padding:95px 20px 26px}.s-hero h1{font-size:32px}.s-hero .s-sub{font-size:15px}.teine-intro,.s-wrap{width:calc(100% - 28px)}.teine-intro{padding:22px 4px 12px}.teine-intro-copy{font-size:15px;line-height:1.7}.teine-intro-copy p{margin-bottom:10px}.teine-facts{gap:6px;margin-top:11px}.teine-facts span{font-size:11px;padding:6px 9px}.s-toc{flex-wrap:nowrap;overflow-x:auto;gap:7px;margin:0 -14px 14px;padding:0 14px 5px;scrollbar-width:none}.s-toc::-webkit-scrollbar{display:none}.s-toc a{font-size:12px;min-height:36px;padding:7px 11px}.s-section{padding:22px 18px;margin-bottom:12px;border-radius:15px}.s-section h2{font-size:20px;margin-bottom:12px}.s-section h2::before{height:20px}.s-section p{font-size:14.5px;line-height:1.7;margin-bottom:11px}.teine-actions{display:grid;grid-template-columns:1fr;margin-top:13px}.teine-actions a{width:100%;justify-content:flex-start;font-size:13px}.teine-rental{padding:13px 12px;margin:12px 0}.teine-rental h3{font-size:16px!important}.teine-price{font-size:13px}.teine-price th,.teine-price td{padding:9px 7px}.teine-price th:not(:first-child),.teine-price td:not(:first-child){width:78px}.teine-rental details .teine-price{font-size:12px}.teine-rental details .teine-price th:not(:first-child),.teine-rental details .teine-price td:not(:first-child){width:72px}.teine-photo-grid{display:grid;grid-auto-flow:column;grid-auto-columns:68%;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:7px}.teine-photo-slot{aspect-ratio:16/10;padding:12px;font-size:12px;scroll-snap-align:start}}
+@media(max-width:370px){.teine-rental details .teine-price th,.teine-rental details .teine-price td{padding:8px 4px;font-size:11px}.teine-rental details .teine-price th:not(:first-child),.teine-rental details .teine-price td:not(:first-child){width:64px}}
+
+/* Match the Asarigawa resort page layout and visual system. */
+body,main{background:#edf0ef}
+.s-hero{display:block;min-height:560px;padding:166px 0 132px;background:linear-gradient(90deg,rgba(25,48,49,.79) 0%,rgba(25,48,49,.52) 48%,rgba(25,48,49,.14) 100%),url("panel3.jpg") center 55%/cover no-repeat}
+.s-hero::after{left:0;right:0;top:auto;bottom:-1px;height:150px;background:linear-gradient(to bottom,rgba(237,240,239,0),#edf0ef)}
+.s-hero-inner{width:min(1200px,100%);padding:0 22px}
+.s-eyebrow{font-size:11px;letter-spacing:.2em;color:#f1dfb9;margin-bottom:18px}
+.s-hero h1{max-width:760px;font-size:clamp(34px,5vw,60px);line-height:1.2;margin-bottom:18px}
+.s-hero .s-sub{max-width:710px;font-size:clamp(18px,2.3vw,23px);line-height:1.55;color:#f7f3e9;margin:0 0 16px}
+.s-hero-intro{max-width:760px;font-size:16px;line-height:1.9;color:#edf3ef;margin:0}
+.teine-intro{position:relative;z-index:2;width:min(1160px,100%);margin:-38px auto 0;padding:0 22px}
+.teine-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:0;padding:22px 26px;border:1px solid #e3e7e4;border-radius:18px;background:#fff;box-shadow:0 12px 34px rgba(13,27,42,.07)}
+.teine-facts div{padding:1px 0 1px 13px;border-left:2px solid #c8a45d;color:#16343b;font-size:14px;font-weight:700;line-height:1.5}
+.teine-facts .fact-label{display:block;padding:0;border-radius:0;background:none;margin-bottom:5px;color:#637174;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.teine-intro-copy{max-width:1060px;margin:26px 0 0;color:#4c5f61;font-size:15px;line-height:1.85}
+.teine-intro-copy p{margin-bottom:10px}
+.s-wrap{width:min(1160px,100%);padding:0 22px 82px}
+.s-layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:28px;align-items:start;margin-top:38px}
+.s-toc{position:sticky;top:88px;display:block;padding:14px;margin:0;border:1px solid #e2e5e4;border-radius:14px;background:#fff}
+.s-toc a{display:block;min-height:0;padding:10px 12px;border:0;border-radius:8px;background:none;color:#3c5057;font-size:14px;line-height:1.45;white-space:normal}
+.s-toc a:hover,.s-toc a:focus-visible{background:#f2f4f0;color:#213e40}
+.s-section{padding:34px;margin-bottom:20px;border:1px solid #e2e5e4;border-radius:18px;box-shadow:none}
+.s-section h2{display:block;margin:0 0 14px;color:#172b34;font:700 clamp(22px,2.6vw,28px)/1.4 "Noto Serif JP","Noto Serif TC",serif}
+.s-section h2::before{display:none}
+.s-section p{font-size:15px;line-height:1.85;color:#52616a;margin-bottom:20px}
+.teine-actions a{gap:8px;padding:10px 15px;min-height:0;border:1px solid #cbb47f;border-radius:999px;background:#fff;color:#263c40;font-size:13px}
+.teine-actions a:hover,.teine-actions a:focus-visible{background:#f9f6ed}
+.teine-rental{background:#f9faf7;border-color:#e2e9e4}
+.teine-rental h3{color:#254744}
+.teine-price th{background:#eef4f0}
+.teine-photo-slot{background:linear-gradient(145deg,#f7f8f5,#eef3ef);border-color:#bbcbbd}
+.teine-route-map{padding:22px 24px 17px;margin:20px 0;background:linear-gradient(125deg,#fbfaf6,#f0f5f1);border:1px solid #e4e9df;border-radius:17px}
+.teine-route-title{font-size:15px;font-weight:700;color:#244944;margin-bottom:19px}
+.teine-journey{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:0;padding:0;list-style:none}
+.teine-journey li{position:relative;min-width:0;text-align:center;padding:0 6px 8px}
+.teine-journey li:not(:last-child)::after{content:"";position:absolute;left:calc(50% + 24px);top:20px;width:calc(100% - 41px);border-top:2px solid #a9c4bc}
+.teine-route-dot{position:relative;z-index:1;display:grid;place-items:center;width:42px;height:42px;margin:0 auto 10px;border-radius:50%;background:#315c53;color:#fff;font:700 13px Montserrat,sans-serif}
+.teine-journey li:last-child .teine-route-dot{background:#b58d53}
+.teine-journey strong{display:block;font-size:13px;line-height:1.4;color:#203e3c}.teine-journey small{display:block;margin-top:4px;font-size:11px;line-height:1.55;color:#6b7a74}
+.teine-drive-map{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.teine-drive-map div{padding:12px 14px;border:1px solid #e2e9e3;border-radius:11px;background:#f8f9f7}
+.teine-drive-map strong{display:block;color:#294d46;font-size:13px}.teine-drive-map span{display:block;color:#826640;font-weight:700;font-size:14px}
+.teine-cta{background:linear-gradient(110deg,#edf3ef,#f8f7f2);border-color:#e2e5e4}
+.teine-cta .teine-actions a:first-child{background:#1a4d3f;border-color:#1a4d3f;border-radius:999px;color:#fff;padding:12px 22px}
+.teine-cta .teine-actions a:first-child:hover{background:#143c31}
+.fab button{background:rgba(255,255,255,.9);color:#28564e}
+@media(max-width:900px){.s-layout{grid-template-columns:1fr;gap:20px}.s-toc{position:static;display:flex;flex-wrap:wrap;gap:2px}.s-toc a{flex:0 0 auto}}
+@media(max-width:640px){.s-hero{min-height:0;padding:142px 0 120px;background-position:42% 62%}.s-hero-inner{padding:0 16px}.s-hero h1{font-size:clamp(32px,8vw,42px)}.s-hero .s-sub{font-size:17px;line-height:1.5}.s-hero-intro{font-size:14px;line-height:1.65}.teine-intro{width:100%;padding:0 16px}.teine-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:18px}.teine-facts div{font-size:12px;line-height:1.5}.teine-facts .fact-label{font-size:10px}.teine-intro-copy{font-size:14px;line-height:1.7;margin-top:20px}.s-wrap{width:100%;padding:0 16px 56px}.s-layout{margin-top:22px;gap:16px}.s-toc{display:flex;flex-wrap:wrap;overflow:visible;margin:0;padding:10px;border:1px solid #e2e5e4;border-radius:14px;background:#fff}.s-toc a{font-size:12px;min-height:0;padding:8px 10px;white-space:normal}.s-section{padding:25px 20px;margin-bottom:14px;border-radius:18px}.s-section h2{font-size:22px;margin-bottom:12px}.s-section p{font-size:14px;line-height:1.75}.teine-actions{display:flex;gap:8px}.teine-actions a{width:auto;min-height:40px;justify-content:center}.teine-route-map{padding:18px}.teine-journey{grid-template-columns:1fr;gap:0}.teine-journey li{display:grid;grid-template-columns:42px minmax(0,1fr);column-gap:13px;text-align:left;padding:0 0 20px}.teine-journey li:last-child{padding-bottom:0}.teine-route-dot{grid-row:span 2;margin:0}.teine-journey li:not(:last-child)::after{left:20px;top:43px;height:calc(100% - 42px);width:0;border-top:0;border-left:2px solid #a9c4bc}.teine-drive-map{gap:6px}.teine-drive-map div{padding:9px}.teine-drive-map strong{font-size:11px}.teine-drive-map span{font-size:12px}.teine-photo-grid{display:grid;grid-auto-flow:column;grid-auto-columns:72%;grid-template-columns:none;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory}.teine-photo-slot{aspect-ratio:16/10;scroll-snap-align:start}}
+
+/* Full-width Teine hero based on the supplied Kokusai and Asarigawa references. */
+.s-hero{position:relative;isolation:isolate;display:flex;align-items:center;width:100%;min-height:690px;margin:0;padding:126px 24px 112px;overflow:hidden;background:#dbe9f5}
+.s-hero::after{content:"";display:block;position:absolute;z-index:1;inset:0;height:auto;background:linear-gradient(to top,#edf0ef 0%,rgba(237,240,239,0) 26%),linear-gradient(90deg,rgba(248,251,253,.94) 0%,rgba(248,251,253,.84) 31%,rgba(248,251,253,.46) 55%,rgba(248,251,253,.04) 86%)}
+.s-hero-inner{position:relative;z-index:2;width:min(1100px,100%);max-width:none;margin:0 auto;padding:0;color:#172d37;text-align:left}
+.s-eyebrow{display:block;margin:0 0 15px;color:#2f615d;font-size:11px;font-weight:700;letter-spacing:.17em}
+.s-hero h1{max-width:690px;margin:0 0 14px;color:#172d37;font-size:clamp(38px,4.4vw,58px);line-height:1.2;text-shadow:none}
+.s-hero .s-sub{max-width:690px;margin:0 0 18px;color:#23584d;font-size:clamp(18px,2.2vw,23px);line-height:1.5}
+.s-hero-intro,.teine-hero-more{max-width:650px;margin:0;color:#263c43;font-size:16px;line-height:1.84}
+.s-hero-intro{margin-bottom:12px}
+.teine-hero-more p{margin:0 0 11px}
+.teine-hero-more p:last-child{margin-bottom:0}
+.teine-hero-image{position:absolute;z-index:0;inset:0;display:block;width:100%;height:100%;margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none}
+.teine-hero-image img{display:block;width:100%;height:100%;aspect-ratio:auto;border-radius:0;object-fit:cover;object-position:center 62%;filter:none}
+.teine-intro{position:relative;z-index:2;width:min(1160px,100%);margin:-42px auto 0;padding:0 22px}
+@media(max-width:800px){.s-hero{min-height:650px;padding:112px 20px 100px}.s-hero-inner{width:min(100%,680px)}.s-hero-intro,.teine-hero-more{font-size:15px;line-height:1.75}.s-hero::after{background:linear-gradient(to top,#edf0ef 0%,rgba(237,240,239,0) 24%),linear-gradient(90deg,rgba(248,251,253,.94) 0%,rgba(248,251,253,.77) 70%,rgba(248,251,253,.36) 100%)}}
+@media(max-width:640px){.s-hero{display:flex;align-items:flex-start;width:100%;min-height:670px;padding:92px 18px 115px}.s-hero-inner{width:100%;padding:0 2px}.s-eyebrow{margin-bottom:11px;font-size:10px}.s-hero h1{font-size:clamp(33px,8vw,41px);margin-bottom:10px}.s-hero .s-sub{font-size:17px;margin-bottom:13px}.s-hero-intro,.teine-hero-more{max-width:none;color:#263c43;font-size:14px;line-height:1.72}.s-hero-intro{margin-bottom:10px}.teine-hero-more p{margin-bottom:9px}.teine-hero-image{grid-row:auto;margin:0;box-shadow:none}.teine-hero-image img{object-position:center 62%}.s-hero::after{background:linear-gradient(180deg,rgba(248,251,253,.93) 0%,rgba(248,251,253,.82) 48%,rgba(248,251,253,.38) 72%,#edf0ef 100%)}.teine-intro{width:100%;margin:-30px auto 0;padding:0 16px}}
+
+/* SOTORENT photo gallery. */
+#sotorent .teine-photo-grid{display:grid;grid-template-columns:.8fr 1.333fr 1.333fr .8fr;gap:9px;margin:20px 0 22px;overflow:hidden}
+#sotorent .teine-photo-slot{display:block;width:100%;height:auto;margin:0;padding:0;overflow:hidden;border:0;border-radius:10px;background:#eef1ef}
+#sotorent .teine-photo-slot--portrait{aspect-ratio:1122/1402}
+#sotorent .teine-photo-slot--landscape{aspect-ratio:1448/1086}
+#sotorent .teine-photo-slot img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:640px){#sotorent .teine-photo-grid{display:flex;gap:9px;margin:16px -20px 19px;padding:0 20px 7px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}#sotorent .teine-photo-grid::-webkit-scrollbar{display:none}#sotorent .teine-photo-slot{flex:0 0 auto;height:220px;scroll-snap-align:start}#sotorent .teine-photo-slot--portrait{width:176px}#sotorent .teine-photo-slot--landscape{width:293px}}
+
+/* Click-to-enlarge SOTORENT gallery. */
+#sotorent button.teine-photo-slot{position:relative;cursor:zoom-in;appearance:none;-webkit-appearance:none}
+#sotorent button.teine-photo-slot::after{content:"＋";position:absolute;right:9px;bottom:9px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);color:#23443f;font:600 18px/1 sans-serif;box-shadow:0 3px 12px rgba(0,0,0,.15)}
+#sotorent button.teine-photo-slot img{transition:transform .22s ease}
+#sotorent button.teine-photo-slot:hover img,#sotorent button.teine-photo-slot:focus-visible img{transform:scale(1.025)}
+#sotorent button.teine-photo-slot:focus-visible{outline:3px solid #b78d4e;outline-offset:3px}
+.sotorent-lightbox{width:auto;max-width:94vw;height:auto;max-height:94vh;margin:auto;padding:0;border:0;background:transparent;overflow:visible}
+.sotorent-lightbox::backdrop{background:rgba(8,18,22,.82);backdrop-filter:blur(3px)}
+.sotorent-lightbox img{display:block;max-width:90vw;max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 20px 70px rgba(0,0,0,.4)}
+.sotorent-lightbox-close{position:absolute;z-index:2;top:-15px;right:-15px;display:grid;place-items:center;width:42px;height:42px;padding:0;border:0;border-radius:50%;background:#fff;color:#1e3439;font:400 28px/1 sans-serif;cursor:pointer;box-shadow:0 5px 22px rgba(0,0,0,.3)}
+@media(max-width:640px){.sotorent-lightbox img{max-width:94vw;max-height:84vh}.sotorent-lightbox-close{top:-14px;right:0}}
+</style></head>
 <body>
 <header class="topbar" id="topbar">
   <div class="container nav">
@@ -45,20 +188,21 @@
       <li role="none"><a role="menuitem" href="ja_mopo.html">MOPO について</a></li>
 
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">レッスン <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">スキー場紹介 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="レッスンサブメニュー">
-          <li role="none"><a role="menuitem" href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
-          <li class="group-title">スキー場紹介</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="ja_teine.html" aria-current="page">札幌手稲</a></li>
           <li role="none"><a role="menuitem" href="ja_onze.html">小樽オーンズ</a></li>
           <li role="none"><a role="menuitem" href="ja_kokusai.html">札幌国際</a></li>
+          <li role="none"><a role="menuitem" href="ja_asari.html">朝里川温泉</a></li>
         </ul>
       </li>
 
       <li class="has-dropdown" role="none">
         <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">特集記事 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="特集記事サブメニュー">
-          <li role="none"><a role="menuitem" href="ja_safe.html">安全知識</a></li>
+          <li role="none"><a role="menuitem" href="ja_safe.html">ブログ記事</a></li>
           <li role="none"><a role="menuitem" href="ja_trip.html">観光トピック</a></li>
         </ul>
       </li>
@@ -93,14 +237,15 @@
           <a href="ja_news.html" role="menuitem">最新情報</a>
           <a href="ja_mopo.html" role="menuitem">MOPO について</a>
 
-          <div class="mob-subtitle">レッスン</div>
-          <a href="ja_mopoindex.html#pricing" role="menuitem">レッスンプラン</a>
+          <div class="mob-subtitle">スキー場紹介</div>
+          
           <a href="ja_teine.html" role="menuitem" aria-current="page">札幌手稲</a>
           <a href="ja_onze.html" role="menuitem">小樽オーンズ</a>
           <a href="ja_kokusai.html" role="menuitem">札幌国際</a>
+          <a href="ja_asari.html" role="menuitem">朝里川温泉</a>
 
           <div class="mob-subtitle">特集記事</div>
-          <a href="ja_safe.html" role="menuitem">安全知識</a>
+          <a href="ja_safe.html" role="menuitem">ブログ記事</a>
           <a href="ja_trip.html" role="menuitem">観光トピック</a>
 
           <a href="ja_faq.html" role="menuitem">よくあるご質問</a>
@@ -114,235 +259,17 @@
 <!-- モバイル用オーバーレイ -->
 <div id="mobOverlay" aria-hidden="true" hidden></div>
 
-<main id="home" aria-label="札幌手稲">
-  <!-- ===== この内側のみデザイン／機能追加（ヘッダー・フッターは不変更） ===== -->
-  <style>
-    :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4; }
-
-    /* === HERO === */
-    .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
-    .s-hero::before{content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
-    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
-    .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
-    .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
-    .s-hero h1{font-family:"Noto Serif JP",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
-    .s-hero .s-sub{font-family:"Noto Sans JP",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px}
-    .s-hero p{font-family:"Noto Sans JP",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem}
-    @media (max-width:900px){
-      .s-hero{min-height:52vh}
-      .s-hero-inner{grid-template-columns:1fr;padding:52px 18px}
-      .s-hero::after{background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%)}
-      .s-hero p{line-height:2.05;margin-bottom:20px}
-    }
-
-    /* === TOC + Sections === */
-    .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
-    .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
-    @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
-    .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
-    .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
-    .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
-    .s-toc a:hover{background:rgba(0,0,0,.035)}
-    .s-toc a.is-active{font-weight:600}
-
-    .s-section{border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px}
-    .s-section h2{font-family:"Noto Sans JP",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink)}
-    .s-section p,.s-section li{font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px}
-    .s-section ul{margin:10px 0 0 18px}
-    .public{padding-top:44px;padding-bottom:44px}
-    .public h2{margin-bottom:26px}
-
-    /* === 小さめサムネ風のリンク（PDF も画像と同じ“拡大プレビュー”挙動） === */
-    .s-linkbox{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,0,0,.18);border-radius:12px;background:#fff;padding:10px 12px;text-decoration:none;cursor:pointer;transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease}
-    .s-linkbox:hover{transform:translateY(-1px);border-color:rgba(0,0,0,.34);box-shadow:0 6px 20px rgba(0,0,0,.08)}
-    .s-linktxt{font-size:14px;color:var(--ink)}
-    .s-ico{width:18px;height:18px;opacity:.85;flex:0 0 18px}
-
-    .s-imgframe{display:block;border:1px solid rgba(0,0,0,.18);border-radius:12px;overflow:hidden;margin-top:14px}
-    .s-imgframe img{display:block;max-width:100%;height:auto}
-    .s-cap{font-size:13px;color:#555;margin-top:8px}
-
-    /* === Modal Viewer === */
-    .modal{position:fixed;inset:0;background:rgba(10,15,20,.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:9999}
-    .modal[aria-hidden="false"]{display:flex}
-    .modal-dialog{width:min(100%,980px);max-height:90vh;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.25)}
-    .modal-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid rgba(0,0,0,.08);background:#fff}
-    .modal-title{font:600 14px/1 "Noto Sans JP",sans-serif;color:#222}
-    .modal-close{border:0;background:#fff;cursor:pointer;padding:8px;border-radius:8px}
-    .modal-close:hover{background:rgba(0,0,0,.05)}
-    .modal-body{background:#fafafa}
-    .modal-body iframe{display:block;width:100%;height:80vh;border:0}
-    .modal-body img{display:block;width:100%;height:auto}
-    @media (max-width:780px){
-      .modal-dialog{width:100%}
-      .modal-body iframe{height:70vh}
-    }
-  </style>
-
-  <!-- HERO -->
-  <section class="s-hero" aria-label="手稲ヒーロー画像">
-    <div class="s-hero-inner">
-      <div>
-        <div class="s-eyebrow">Sapporo</div>
-        <h1>手稲スキー場</h1>
-        <p class="s-sub">雪山の魅力を、もっと身近に。</p>
-        <p>札幌市西部に位置する手稲は、手稲山を中心とした自然と都市が調和する冬の行楽地です。市街地からわずかな距離にあり「札幌の裏庭」とも呼ばれています。</p>
-        <p>晴れた日には、ゲレンデ上部から札幌市街や石狩湾を一望することができ、その絶景も大きな魅力のひとつです。整備の行き届いた多彩なコースが揃っており、初心者からステップアップを目指す中級者、さらにはハイレベルな滑走を求める上級者まで、誰もが思い思いに楽しめます。ファミリー向けのキッズパークもあり、子どもから大人まで、カップルや友人同士でも、それぞれに合った冬の楽しみを見つけることができます。</p>
-      </div>
-      <div><!-- 右側は写真の余白 --></div>
-    </div>
-  </section>
-
-  <!-- BODY -->
-  <section class="s-wrap">
-    <div class="s-layout">
-      <!-- 左：目次（ゴールドライン追従） -->
-      <nav class="s-toc" aria-label="セクション目次">
-        <a href="#features" class="is-active">— ゲレンデの特徴</a>
-        <a href="#public">— 公共交通機関のご案内</a>
-        <a href="#car">— お車でお越しの方</a>
-      </nav>
-
-      <!-- 右：本文 -->
-      <div>
-        <article id="features" class="s-section" aria-labelledby="features-title">
-          <h2 id="features-title">ゲレンデの特徴</h2>
-
-          <!-- ✅ PDF を画像と同じ“拡大プレビュー”で開く（PDF 文言なし） -->
-          <button class="s-linkbox js-open-modal" data-modal-type="pdf" data-src="img/teine/course_map.pdf" aria-haspopup="dialog" aria-controls="viewerModal">
-            <svg class="s-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm8 1v5h5" fill="none" stroke="#222" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span class="s-linktxt">コースマップ（クリックで表示）</span>
-          </button>
-<p></p>
-          <p>手稲スキー場には全15コースがあり、レベルに応じて初級30％、中級40％、上級30％に分かれています。初心者でも安心して楽しめる一方で、上級者のチャレンジに応えるコースも揃っています。その中には、自然の雪をそのまま残した非圧雪コースが2本あり、深雪やナチュラルなコンディションを好む上級スキーヤーやスノーボーダーから高い人気を得ています。</p>
-          <p>利用者層はスキーが約6割、スノーボードが約4割とバランスが良く、地域の小中学校のスキー授業にも利用されるなど、教育的な側面も強いゲレンデです。また、山頂付近にはジャンプ台やレールなどを備えたテレインパークがあり、トリックや技術を磨きたい人に最適。さらにオリンピアゾーンには4歳から楽しめるキッズパークも整備されており、親子で安心して遊べる環境が整っています。</p>
-          <p>手稲スキー場は、年齢やレベルを問わず、多彩なニーズに応えることができるスキーリゾートです。訪れるすべての人が、自分だけの特別なスノー体験を見つけられる場所です。</p>
-        </article>
-
-        <article id="public" class="s-section public" aria-labelledby="public-title">
-          <h2 id="public-title">公共交通機関をご利用の方</h2>
-          <p>✦ <strong>電車＋バスで快適アクセス</strong><br>
-  <p></p>
-          新千歳空港や札幌駅からJRをご利用いただき、手稲駅で下車。そこからJR北海道バスにご乗車いただくと、約16分でゲレンデに到着いたします。スムーズにアクセスできるので、初めての方にも安心です。</p>
-
-          <!-- ✅ 画像も同じモーダルで拡大（ページ遷移なし） -->
-          <a class="s-imgframe js-open-modal" href="#" data-modal-type="image" data-src="img/teine/ja_teinebus.png" aria-haspopup="dialog" aria-controls="viewerModal" aria-label="手稲駅からのバス案内画像（クリックで拡大）">
-            <img src="img/teine/ja_teinebus.png" alt="手稲駅からのバス案内">
-          </a>
-          <div class="s-cap">クリックして拡大表示</div>
-<p></p>
-          <p>✦ <strong>予約制直行バス「ビッグランズ号」</strong><br>
-<p></p>
-          札幌市内の主要ホテルとサッポロテイネを直接結ぶ便利な直行バスです。リフト7時間券と往復バス代がセットになったお得なパックのほか、バスのみのご予約も承っております。快適にスキー場へお越しいただけます。</p>
-        </article>
-
-        <article id="car" class="s-section" aria-labelledby="car-title">
-          <h2 id="car-title">お車をご利用の方</h2>
-          <p>お車でのアクセスも便利です。約2,800台を収容できる無料駐車場をご用意しております。</p>
-          <ul>
-            <li>新千歳空港から（高速道路利用で）約60分</li>
-            <li>札幌中心部から約40分</li>
-            <li>小樽中心部から約40分</li>
-            <li>札樽道手稲ICから約10分</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== モーダル（PDF / 画像 共通ビューア） ===== -->
-  <div class="modal" id="viewerModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="コンテンツビューア">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <div class="modal-title" id="viewerTitle">プレビュー</div>
-        <button class="modal-close" type="button" aria-label="閉じる" id="viewerClose">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="#222" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-      <div class="modal-body" id="viewerBody"><!-- 動的に挿入 --></div>
-    </div>
-  </div>
-
-  <script>
-    /* ===== 目次：アクティブ連動＋金色ライン追従 ===== */
-    (function(){
-      const toc = document.querySelector('.s-toc');
-      const links = toc.querySelectorAll('a');
-      const map = {};
-      links.forEach(a => { map[a.hash.slice(1)] = a; });
-
-      function moveIndicator(target){
-        const rect = target.getBoundingClientRect();
-        const parent = toc.getBoundingClientRect();
-        toc.style.setProperty('--indicator-top', (rect.top - parent.top) + 'px');
-        toc.style.setProperty('--indicator-height', rect.height + 'px');
-      }
-
-      links.forEach(a=>{
-        a.addEventListener('mouseenter', ()=>moveIndicator(a));
-        a.addEventListener('focus', ()=>moveIndicator(a));
-      });
-      toc.addEventListener('mouseleave', ()=>{
-        const active = toc.querySelector('a.is-active') || links[0];
-        moveIndicator(active);
-      });
-
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            links.forEach(l=>l.classList.remove('is-active'));
-            const a = map[e.target.id]; if(a){ a.classList.add('is-active'); moveIndicator(a); }
-          }
-        });
-      }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car'].forEach(id=>{
-        const el = document.getElementById(id); if(el) io.observe(el);
-      });
-
-      moveIndicator(links[0]);
-    })();
-
-    /* ===== モーダル（PDF/画像を同ページで開く） ===== */
-    (function(){
-      const modal = document.getElementById('viewerModal');
-      const body  = document.getElementById('viewerBody');
-      const title = document.getElementById('viewerTitle');
-      const closeBtn = document.getElementById('viewerClose');
-
-      function openModal(type, src){
-        body.innerHTML = '';
-        title.textContent = (type === 'pdf') ? 'コースマップ' : '画像プレビュー';
-        if(type === 'pdf'){
-          const iframe = document.createElement('iframe');
-          iframe.src = src;
-          iframe.setAttribute('title','PDF プレビュー');
-          body.appendChild(iframe);
-        }else{
-          const img = document.createElement('img');
-          img.alt = '拡大画像';
-          img.src = src;
-          body.appendChild(img);
-        }
-        modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow='hidden';
-      }
-      function closeModal(){
-        modal.setAttribute('aria-hidden','true');
-        body.innerHTML = '';
-        document.body.style.overflow='';
-      }
-      document.querySelectorAll('.js-open-modal').forEach(el=>{
-        el.addEventListener('click', (e)=>{
-          e.preventDefault();
-          openModal(el.dataset.modalType, el.dataset.src);
-        });
-      });
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
-      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
-    })();
-  </script>
-</main>
+<main id="home"><section class="s-hero" aria-label="Sapporo Teine"><div class="s-hero-inner"><span class="s-eyebrow">SAPPORO TEINE · HOKKAIDO</span><h1>手稲スキー場</h1><p class="s-sub">雪山の魅力を、もっと身近に。</p><p class="s-hero-intro">札幌市西部に位置する手稲は、手稲山を中心とした自然と都市が調和する冬の行楽地です。市街地からわずかな距離にあり「札幌の裏庭」とも呼ばれています。</p><div class="teine-hero-more"><p>晴れた日には、ゲレンデ上部から札幌市街や石狩湾を一望することができ、その絶景も大きな魅力のひとつです。整備の行き届いた多彩なコースが揃っており、初心者からステップアップを目指す中級者、さらにはハイレベルな滑走を求める上級者まで、誰もが思い思いに楽しめます。</p><p>ファミリー向けのキッズパークもあり、子どもから大人まで、カップルや友人同士でも、それぞれに合った冬の楽しみを見つけることができます。</p></div></div><figure class="teine-hero-image"><img src="panel3.jpg" alt="サッポロテイネのゲレンデ全景" width="2080" height="1560" fetchpriority="high"></figure></section><section class="teine-intro"><div class="teine-facts"><div><span class="fact-label">コース</span>全15コース</div><div><span class="fact-label">エリア</span>オリンピア・ハイランド</div><div><span class="fact-label">アクセス</span>札幌から車で約40分</div><div><span class="fact-label">山頂</span>1,023 m</div></div></section>
+<section class="s-wrap"><div class="s-layout"><div class="resort-toc-rail"><nav class="resort-toc s-toc" aria-label="Contents"><a href="#features">ゲレンデの特徴</a><a href="#public">公共交通機関</a><a href="#car">お車でお越しの方</a><a href="#rental">スキー場レンタル</a><a href="#sotorent">駅前レンタル</a><a href="#lesson">レッスン相談</a></nav></div><div>
+<article id="features" class="s-section"><h2>ゲレンデの特徴</h2><p>2エリアに全15コース。公式案内では初級35％、中級40％、上級25％、最長滑走距離は約6kmです。初心者や家族連れはオリンピア、急斜面に挑戦したい方はハイランドのコースを確認してください。</p><div class="teine-actions"><a href="https://sapporo-teine.com/snow/course" target="_blank" rel="noopener noreferrer">公式コースマップを見る ↗</a><a href="https://sapporo-teine.com/snow/" target="_blank" rel="noopener noreferrer">スキー場公式サイト ↗</a></div></article>
+<article id="public" class="s-section"><h2>公共交通機関</h2><p>JR手稲駅で下車し、南口3番のりばからJR北海道バスに乗り換えます。前シーズンはオリンピアまで約16分、ハイランドまでさらに約12分でした。運行日・運賃・時刻表は出発前にご確認ください。</p><div class="teine-route-map"><div class="teine-route-title">札幌からJR＋バス</div><ol class="teine-journey"><li><span class="teine-route-dot">1</span><strong>札幌駅</strong><small>JRで手稲駅へ</small></li><li><span class="teine-route-dot">2</span><strong>手稲駅</strong><small>南口へ</small></li><li><span class="teine-route-dot">3</span><strong>3番のりば</strong><small>JR北海道バス</small></li><li><span class="teine-route-dot">4</span><strong>サッポロテイネ</strong><small>オリンピア／ハイランド</small></li></ol></div><div class="teine-actions"><a href="https://sapporo-teine.com/snow/access/other" target="_blank" rel="noopener noreferrer">JRバス・スキー場アクセス ↗</a></div><p style="margin-top:18px">予約制のビッグランズ号は札幌市内の指定ホテルとスキー場を結びます。前シーズンは往復バスとリフト7時間券のセット、バスのみの券がありました。今季の詳細は公式情報をご確認ください。</p><div class="teine-actions"><a href="https://sapporo-teine.com/snow/plan/bus-pack" target="_blank" rel="noopener noreferrer">ビッグランズ号の案内 ↗</a></div></article>
+<article id="car" class="s-section"><h2>お車でお越しの方</h2><p>札幌中心部から約40分、手稲ICから約10分。駐車場は無料です。冬の道路状況により所要時間は変わります。オリンピアかハイランドか、目的地を選んでください。</p><div class="teine-drive-map"><div><strong>札幌中心部</strong><span>約40分</span></div><div><strong>手稲IC</strong><span>約10分</span></div><div><strong>駐車場</strong><span>無料</span></div></div><div class="teine-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=Sapporo%20Teine%20Ski%20Resort" target="_blank" rel="noopener noreferrer">Google マップでスキー場を見る ↗</a></div></article>
+<article id="rental" class="s-section"><h2>スキー場レンタル</h2><p>オリンピア・ハイランド両スキーセンターにレンタルがあります。以下は2025–26シーズンの公式料金例で、2026–27料金は未発表です。サイズを確認し、事前予約をおすすめします。</p><p><strong>1日料金例：スキー／ボードセットは大人 ¥8,700・子ども ¥7,100。ウェア付きは大人 ¥15,600・子ども ¥12,700。繁忙期料金は別です。</strong></p><details class="teine-rental"><summary>その他の料金・利用条件を見る</summary><p>交通・レンタル情報はシーズンごとに変わるため、最新の公式情報をご確認ください。</p><div class="teine-actions"><a href="https://sapporo-teine.com/snow/rental/general" target="_blank" rel="noopener noreferrer">スキー場公式レンタル料金 ↗</a></div></details></article>
+<article id="sotorent" class="s-section"><h2>駅前レンタル</h2><p><strong>SOTORENT 手稲駅前店 — 2026–27 レンタル料金</strong></p><p>JR手稲駅から徒歩約3分。まず1日料金を表示し、各項目を開くと2・3日料金を確認できます。子ども料金は12歳以下です。小物の取扱いは店舗にご確認ください。料金は現在のページ掲載情報を基にしているため、予約前に店舗でご確認ください。</p><div class="teine-photo-grid" aria-label="SOTORENT 手稲駅前店の写真"><button class="teine-photo-slot teine-photo-slot--portrait" type="button" data-full="img/teine/sotorent1.jpg" aria-label="SOTORENT 手稲駅前店の外観 — クリックして拡大"><img src="img/teine/sotorent1.jpg" alt="SOTORENT 手稲駅前店の外観" width="1122" height="1402" loading="lazy"></button><button class="teine-photo-slot teine-photo-slot--landscape" type="button" data-full="img/teine/sotorent2.jpg" aria-label="SOTORENT 店内のレンタルエリア — クリックして拡大"><img src="img/teine/sotorent2.jpg" alt="SOTORENT 店内のレンタルエリア" width="1448" height="1086" loading="lazy"></button><button class="teine-photo-slot teine-photo-slot--landscape" type="button" data-full="img/teine/sotorent3.jpg" aria-label="SOTORENT 店内のカウンターと休憩スペース — クリックして拡大"><img src="img/teine/sotorent3.jpg" alt="SOTORENT 店内のカウンターと休憩スペース" width="1448" height="1086" loading="lazy"></button><button class="teine-photo-slot teine-photo-slot--portrait" type="button" data-full="img/teine/sotorent4.jpg" aria-label="SOTORENT 店内のコーヒー — クリックして拡大"><img src="img/teine/sotorent4.jpg" alt="SOTORENT 店内のコーヒー" width="1122" height="1402" loading="lazy"></button></div><div class="teine-actions"><a href="https://www.google.com/maps/search/?api=1&amp;query=SOTORENT%20TEINE%20STATION%20Kitene%20Building%20A%208-27%202-4%20Teinehoncho%20Sapporo" target="_blank" rel="noopener noreferrer">SOTORENT を Google マップで見る ↗</a><a href="https://en.soto.rent/rental/ski-snowbord/store-pickup/" target="_blank" rel="noopener noreferrer">SOTORENT 公式サイト ↗</a><a href="https://en.soto.rent/wp/wp-content/uploads/2026/08/store-26-27-en.pdf" target="_blank" rel="noopener noreferrer">2026–27 PDF ↗</a></div><p class="teine-rental-hint">スキーセットは板とストック、ボードセットは板とビンディングを含みます。フルセットにはウェア上下・ヘルメット・ゴーグルも含まれます。</p><div class="teine-rental"><h3>Standard セット</h3><p class="teine-rental-hint">スキーかボードを選び、ブーツの有無で料金をご確認ください。</p><table class="teine-price"><thead><tr><th>区分／内容</th><th>1日</th></tr></thead><tbody><tr><td>大人 · ブーツ付き</td><td>¥7,800</td></tr><tr><td>大人 · ブーツなし</td><td>¥6,800</td></tr><tr><td>子ども · ブーツ付き</td><td>¥6,800</td></tr><tr><td>子ども · ブーツなし</td><td>¥5,800</td></tr></tbody></table><details name="sotorent-prices"><summary>2・3日料金を見る</summary><table class="teine-price"><thead><tr><th>区分／内容</th><th>2日</th><th>3日</th></tr></thead><tbody><tr><td>大人 · ブーツ付き</td><td>¥13,300</td><td>¥18,300</td></tr><tr><td>大人 · ブーツなし</td><td>¥11,700</td><td>¥15,900</td></tr><tr><td>子ども · ブーツ付き</td><td>¥11,700</td><td>¥15,900</td></tr><tr><td>子ども · ブーツなし</td><td>¥9,900</td><td>¥13,500</td></tr></tbody></table></details></div><div class="teine-rental"><h3>Standard Full セット</h3><table class="teine-price"><thead><tr><th>区分／内容</th><th>1日</th></tr></thead><tbody><tr><td>大人 · 用具・ウェア一式</td><td>¥13,000</td></tr><tr><td>子ども · 用具・ウェア一式</td><td>¥9,800</td></tr></tbody></table><details name="sotorent-prices"><summary>2・3日料金を見る</summary><table class="teine-price"><thead><tr><th>区分／内容</th><th>2日</th><th>3日</th></tr></thead><tbody><tr><td>大人 · 用具・ウェア一式</td><td>¥22,100</td><td>¥30,000</td></tr><tr><td>子ども · 用具・ウェア一式</td><td>¥17,600</td><td>¥24,700</td></tr></tbody></table></details></div><div class="teine-rental"><h3>Premium セット</h3><p class="teine-rental-hint">スキーかボードを選び、ブーツの有無で料金をご確認ください。</p><table class="teine-price"><thead><tr><th>区分／内容</th><th>1日</th></tr></thead><tbody><tr><td>大人 · ブーツ付き</td><td>¥9,800</td></tr><tr><td>大人 · ブーツなし</td><td>¥8,800</td></tr><tr><td>子ども · ブーツ付き</td><td>¥7,800</td></tr><tr><td>子ども · ブーツなし</td><td>¥6,800</td></tr></tbody></table><details name="sotorent-prices"><summary>2・3日料金を見る</summary><table class="teine-price"><thead><tr><th>区分／内容</th><th>2日</th><th>3日</th></tr></thead><tbody><tr><td>大人 · ブーツ付き</td><td>¥17,600</td><td>¥24,700</td></tr><tr><td>大人 · ブーツなし</td><td>¥15,800</td><td>¥22,100</td></tr><tr><td>子ども · ブーツ付き</td><td>¥13,300</td><td>¥18,300</td></tr><tr><td>子ども · ブーツなし</td><td>¥11,700</td><td>¥15,900</td></tr></tbody></table></details></div><div class="teine-rental"><h3>Premium Full セット</h3><table class="teine-price"><thead><tr><th>区分／内容</th><th>1日</th></tr></thead><tbody><tr><td>大人 · 用具・ウェア一式</td><td>¥15,000</td></tr><tr><td>子ども · 用具・ウェア一式</td><td>¥11,000</td></tr></tbody></table><details name="sotorent-prices"><summary>2・3日料金を見る</summary><table class="teine-price"><thead><tr><th>区分／内容</th><th>2日</th><th>3日</th></tr></thead><tbody><tr><td>大人 · 用具・ウェア一式</td><td>¥25,500</td><td>¥34,800</td></tr><tr><td>子ども · 用具・ウェア一式</td><td>¥19,800</td><td>¥27,400</td></tr></tbody></table></details></div><details class="teine-rental" name="sotorent-prices"><summary>ブーツ・ウェア・小物 · 1日 ¥3,000 / ¥3,000</summary><table class="teine-price"><thead><tr><th>区分／内容</th><th>1日</th><th>2日</th><th>3日</th></tr></thead><tbody><tr><td>大人用ブーツ</td><td>¥3,000</td><td>¥5,400</td><td>¥7,600</td></tr><tr><td>大人用ジャケット／パンツ（単品）</td><td>¥3,000</td><td>¥5,400</td><td>¥7,600</td></tr><tr><td>大人用ヘルメット</td><td>¥2,000</td><td>¥3,600</td><td>¥5,000</td></tr><tr><td>大人用ゴーグル</td><td>¥2,000</td><td>¥3,600</td><td>¥5,000</td></tr><tr><td>大人用プロテクターセット</td><td>¥2,000</td><td>¥3,600</td><td>¥5,000</td></tr><tr><td>大人用ヒッププロテクター</td><td>¥1,500</td><td>¥2,700</td><td>¥3,800</td></tr><tr><td>大人用 Turtle ヒッププロテクター</td><td>¥2,000</td><td>¥3,600</td><td>¥5,000</td></tr><tr><td>子ども用ブーツ</td><td>¥2,000</td><td>¥3,600</td><td>¥5,000</td></tr><tr><td>子ども用ジャケット／パンツ（単品）</td><td>¥2,000</td><td>¥3,600</td><td>¥5,000</td></tr><tr><td>子ども用ヘルメット</td><td>¥1,500</td><td>¥2,700</td><td>¥3,800</td></tr><tr><td>子ども用ゴーグル</td><td>¥1,500</td><td>¥2,700</td><td>¥3,800</td></tr></tbody></table></details></article>
+<article id="lesson" class="s-section teine-cta"><h2>手稲でレッスンを受けませんか？</h2><p>MOPOでは手稲でのレッスンを手配できます。日程と料金は確認中で、オンライン予約フォームにはまだ掲載していません。希望日・人数・滑走経験をLINEまたはメールでお知らせください。空き状況、料金、集合方法をご案内します。</p><div class="teine-actions"><a href="mailto:support@moposki.com?subject=%E6%89%8B%E7%A8%B2%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B3%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&amp;body=Preferred%20date%20/%20%E5%B8%8C%E6%9C%9B%E6%97%A5%E6%9C%9F%20/%20%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A%0AGroup%20size%20/%20%E4%BA%BA%E6%95%B8%20/%20%E4%BA%BA%E6%95%B0%EF%BC%9A%0ASki%20or%20snowboard%20/%20%E9%9B%99%E6%9D%BF%E6%88%96%E5%96%AE%E6%9D%BF%20/%20%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%BB%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%EF%BC%9A%0AExperience%20/%20%E6%BB%91%E9%9B%AA%E7%B6%93%E9%A9%97%20/%20%E6%BB%91%E8%B5%B0%E7%B5%8C%E9%A8%93%EF%BC%9A" target="_blank" rel="noopener noreferrer">レッスンを予約する</a><a class="resort-price-link" href="ja_mopoindex.html#pricing">レッスン料金を見る</a><a href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer">LINEで相談</a><a href="mailto:support@moposki.com?subject=%E6%89%8B%E7%A8%B2%E3%83%AC%E3%83%83%E3%82%B9%E3%83%B3%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&amp;body=Preferred%20date%20/%20%E5%B8%8C%E6%9C%9B%E6%97%A5%E6%9C%9F%20/%20%E5%B8%8C%E6%9C%9B%E6%97%A5%EF%BC%9A%0AGroup%20size%20/%20%E4%BA%BA%E6%95%B8%20/%20%E4%BA%BA%E6%95%B0%EF%BC%9A%0ASki%20or%20snowboard%20/%20%E9%9B%99%E6%9D%BF%E6%88%96%E5%96%AE%E6%9D%BF%20/%20%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%BB%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89%EF%BC%9A%0AExperience%20/%20%E6%BB%91%E9%9B%AA%E7%B6%93%E9%A9%97%20/%20%E6%BB%91%E8%B5%B0%E7%B5%8C%E9%A8%93%EF%BC%9A" target="_blank" rel="noopener noreferrer">メールで問い合わせる</a></div><p class="teine-caption" style="margin-top:12px">希望日・人数・滑走経験をお知らせください。</p></article>
+<p class="teine-season">交通・レンタル情報はシーズンごとに変わるため、最新の公式情報をご確認ください。</p>
+</div></div></section></main>
+<dialog class="sotorent-lightbox" id="sotorentLightbox" aria-label="SOTORENT 写真の拡大表示"><button class="sotorent-lightbox-close" type="button" aria-label="拡大写真を閉じる">×</button><img id="sotorentLightboxImage" alt=""></dialog>
 
 <!-- Footer（原本設定を厳守） -->
 <footer class="footer" role="contentinfo">
@@ -357,18 +284,19 @@
           </ul>
         </div>
         <div>
-          <h4>レッスン</h4>
+          <h4>スキー場紹介</h4>
           <ul>
-            <li><a href="ja_mopoindex.html#pricing">レッスンプラン</a></li>
+            
             <li><a href="ja_teine.html" aria-current="page">札幌手稲</a></li>
             <li><a href="ja_onze.html">小樽オーンズ</a></li>
             <li><a href="ja_kokusai.html">札幌国際</a></li>
+            <li><a href="ja_asari.html">朝里川温泉</a></li>
           </ul>
         </div>
         <div>
           <h4>特集記事</h4>
           <ul>
-            <li><a href="ja_safe.html">安全知識</a></li>
+            <li><a href="ja_safe.html">ブログ記事</a></li>
             <li><a href="ja_trip.html">観光トピック</a></li>
           </ul>
         </div>
@@ -397,5 +325,126 @@
 
 <!-- ✅ 共通 JS -->
 <script src="common.js?v=20260718b"></script>
+
+<script>
+(() => {
+  const dialog = document.getElementById('sotorentLightbox');
+  const image = document.getElementById('sotorentLightboxImage');
+  const close = dialog?.querySelector('.sotorent-lightbox-close');
+  if (!dialog || !image || !close) return;
+  document.querySelectorAll('#sotorent .teine-photo-slot[data-full]').forEach(button => {
+    button.addEventListener('click', () => {
+      const thumbnail = button.querySelector('img');
+      image.src = button.dataset.full;
+      image.alt = thumbnail?.alt || '';
+      dialog.showModal();
+    });
+  });
+  const closeDialog = () => dialog.close();
+  close.addEventListener('click', closeDialog);
+  dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
+  dialog.addEventListener('close', () => { image.removeAttribute('src'); image.alt = ''; });
+})();
+</script>
+
+
+<style id="resort-navigation-style">
+/* Keep the viewport as the sticky scroll container. */
+html, body { overflow-x: clip; }
+.resort-toc::before { display: none; }
+.resort-toc a { font-weight: 400; color: #747b78; transition: background-color .16s ease, color .16s ease; }
+.resort-toc a:hover { background: #f7f8f6; color: #303c37; }
+.resort-toc a.is-active {
+  background: #f1f3f0; color: #303c37; font-weight: 600;
+  box-shadow: none;
+}
+.resort-toc a:focus-visible { outline: 2px solid #77867e; outline-offset: 2px; }
+.s-section[id], .asari-section[id] { scroll-margin-top: var(--resort-nav-top, 100px); }
+@media (min-width: 901px) {
+  .resort-toc-rail { position: relative; align-self: start; min-width: 0; }
+  .resort-toc-rail .resort-toc {
+    position: sticky; top: var(--resort-nav-top, 100px); width: 100%; box-sizing: border-box;
+    max-height: min(calc(100dvh - var(--resort-nav-top, 100px) - 24px), var(--resort-rail-height, 10000px));
+    overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
+    scrollbar-width: thin; scrollbar-color: #b8c6bf transparent;
+    margin: 0; padding: 8px; border: 0; border-radius: 10px;
+    background: #fff; box-shadow: none;
+  }
+  .resort-toc a { display: block; padding: 12px 14px; border-radius: 6px; line-height: 1.5; font-size: 14px; }
+}
+@media (max-width: 900px) { .resort-toc-rail { height: auto !important; min-width: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .resort-toc a { transition: none; }
+}
+</style>
+
+<script id="resort-navigation-script">
+(() => {
+  const toc = document.querySelector('.resort-toc');
+  const rail = toc.parentElement;
+  const content = rail.nextElementSibling;
+  const booking = document.getElementById('lesson');
+  const header = document.getElementById('topbar');
+  const desktop = matchMedia('(min-width: 901px)');
+  const items = [...toc.querySelectorAll('a[href^="#"]')].map(link => ({
+    link, section: document.getElementById(link.hash.slice(1))
+  })).filter(item => item.section);
+  let offset = 100;
+  let activeId = '';
+  let pending = false;
+  function updateActive() {
+    pending = false;
+    let current = items[0];
+    for (const item of items) {
+      if (item.section.getBoundingClientRect().top <= offset + 8) current = item;
+    }
+    if (activeId === current.section.id) return;
+    activeId = current.section.id;
+    items.forEach(({ link, section }) => {
+      const active = section.id === activeId;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    if (desktop.matches) {
+      const box = toc.getBoundingClientRect();
+      const item = current.link.getBoundingClientRect();
+      if (item.top < box.top + 10) toc.scrollTop += item.top - box.top - 10;
+      else if (item.bottom > box.bottom - 10) toc.scrollTop += item.bottom - box.bottom + 10;
+    }
+  }
+  function schedule() {
+    if (!pending) { pending = true; requestAnimationFrame(updateActive); }
+  }
+  function measure() {
+    offset = Math.max(24, (header ? header.offsetHeight : 68) + 20);
+    document.documentElement.style.setProperty('--resort-nav-top', offset + 'px');
+    if (desktop.matches) {
+      // End the sticky rail above the final lesson reservation panel.
+      const height = Math.max(0, booking.getBoundingClientRect().top - rail.getBoundingClientRect().top - 24);
+      rail.style.height = height + 'px';
+      rail.style.setProperty('--resort-rail-height', height + 'px');
+    } else {
+      rail.style.removeProperty('height');
+      rail.style.removeProperty('--resort-rail-height');
+    }
+    activeId = '';
+    schedule();
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', measure);
+  addEventListener('load', measure);
+  addEventListener('hashchange', schedule);
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    if (header) observer.observe(header);
+  }
+  if (document.fonts) document.fonts.ready.then(measure);
+  measure();
+})();
+</script>
+
 </body>
 </html>

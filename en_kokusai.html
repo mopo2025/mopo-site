@@ -4,14 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sapporo Kokusai｜MOPO Ski School</title>
-<meta name="description" content="Overview of Sapporo Kokusai Ski Resort. Trails, access, and highlights.">
+<meta name="description" content="Less than an hour from central Sapporo, Sapporo Kokusai offers deep Hokkaido powder, seven varied runs and easy access to Jozankei Onsen.">
 
 <!-- ✅ SEO / Open Graph / Twitter Card -->
 <link rel="canonical" href="https://moposki.com/en_kokusai.html">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
 <meta property="og:title" content="Sapporo Kokusai｜MOPO Ski School">
-<meta property="og:description" content="Overview of Sapporo Kokusai Ski Resort. Trails, access, and highlights.">
+<meta property="og:description" content="Hokkaido powder, long cruising runs and an onsen stop—all within an easy day trip from Sapporo.">
 <meta property="og:url" content="https://moposki.com/en_kokusai.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOPO Ski School">
@@ -22,7 +22,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Sapporo Kokusai｜MOPO Ski School">
-<meta name="twitter:description" content="Overview of Sapporo Kokusai Ski Resort. Trails, access, and highlights.">
+<meta name="twitter:description" content="Hokkaido powder, long cruising runs and an onsen stop—all within an easy day trip from Sapporo.">
 <meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,14 @@
 
 <!-- ✅ Shared CSS -->
 <link rel="stylesheet" href="common.css?v=20260718b">
+<style>
+.resort-booking-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.resort-booking-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid #ccd5cf;border-radius:999px;color:#304c43;background:#fff;font-size:14px;text-decoration:none}
+.resort-booking-actions .primary{background:#304c43;color:#fff;border-color:#304c43}
+.resort-booking-actions a:hover{opacity:.85}
+.resort-booking-actions a:focus-visible{outline:2px solid #77867e;outline-offset:3px}
+@media(max-width:640px){.resort-booking-actions{flex-direction:column}}
+</style>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -44,13 +52,14 @@
       <li role="none"><a role="menuitem" href="en_mopo.html">About MOPO</a></li>
 
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">Ski Resorts <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="Lessons submenu">
-          <li role="none"><a role="menuitem" href="en_mopoindex.html#pricing">Lesson plans</a></li>
-          <li class="group-title">Resorts</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="en_teine.html">Sapporo Teine</a></li>
           <li role="none"><a role="menuitem" href="en_onze.html">Otaru Onze</a></li>
           <li role="none"><a role="menuitem" href="en_kokusai.html" aria-current="page">Sapporo Kokusai</a></li>
+          <li role="none"><a role="menuitem" href="en_asari.html" aria-current="page">Asarigawa Onsen</a></li>
         </ul>
       </li>
 
@@ -94,11 +103,12 @@
           <a href="en_news.html" role="menuitem">News</a>
           <a href="en_mopo.html" role="menuitem">About MOPO</a>
 
-          <div class="mob-subtitle">Lessons</div>
-          <a href="en_mopoindex.html#pricing" role="menuitem">Lesson plans</a>
+          <div class="mob-subtitle">Ski Resorts</div>
+          
           <a href="en_teine.html" role="menuitem">Sapporo Teine</a>
           <a href="en_onze.html" role="menuitem">Otaru Onze</a>
           <a href="en_kokusai.html" role="menuitem" aria-current="page">Sapporo Kokusai</a>
+          <a href="en_asari.html" role="menuitem" aria-current="page">Asarigawa Onsen</a>
 
           <div class="mob-subtitle">Features</div>
           <a href="en_safe.html" role="menuitem">Columns</a>
@@ -122,8 +132,8 @@
 
     /* === HERO === */
     .s-hero{position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink)}
-    .s-hero::before{content:"";position:absolute;inset:0;background:url("panel2.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01)}
-    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%)}
+    .s-hero::before{content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.14) saturate(1.03)}
+    .s-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.48) 45%, rgba(255,255,255,.08) 100%)}
     .s-hero-inner{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px}
     .s-eyebrow{font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px}
     .s-hero h1{font-family:"Noto Serif JP",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance}
@@ -178,6 +188,11 @@
       .modal-dialog{width:100%}
       .modal-body iframe{height:70vh}
     }
+    html,body{overflow-x:clip}
+    .resort-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.resort-detail-card{padding:20px;border:1px solid #dfe7e2;border-radius:14px;background:#f8faf8}.resort-detail-card h3{margin:0 0 8px;color:#214943;font-size:17px}.resort-detail-card p{margin:0;font-size:14px;line-height:1.72}.resort-details{margin-top:16px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7;overflow:hidden}.resort-details summary{cursor:pointer;padding:16px 18px;color:#1f554b;font-weight:700;list-style:none}.resort-details summary::-webkit-details-marker{display:none}.resort-details summary::after{content:"＋";float:right}.resort-details[open] summary::after{content:"－"}.resort-details-body{padding:0 18px 18px}.resort-details-body p:last-child{margin-bottom:0}.resort-details-link{display:inline-flex;margin-top:4px;color:#1b6555;font-weight:700;text-decoration:none}.rental-note{padding:18px 20px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7}.rental-note strong{color:#254744}.rental-note a{display:inline-flex;align-items:center;margin-top:4px;padding:10px 15px;border:1px solid #cbb47f;border-radius:999px;background:#fff;color:#263c40;font-size:13px;font-weight:700;text-decoration:none}
+    .s-toc::before{display:none}.s-toc a.is-active{background:#e5efea;color:#174d43;font-weight:700}.preflight-list{list-style:none!important;margin:4px 0 0!important;padding:0;border-top:1px solid #e6e9e8}.preflight-list li{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;margin:0!important;padding:18px 0;border-bottom:1px solid #e6e9e8;color:#33474c}.preflight-list strong{color:#173238}.preflight-list a{color:#23665b;font-weight:700;text-decoration:underline;text-underline-offset:3px}.lesson-cta{background:linear-gradient(145deg,#fff 0%,#f4f8f6 100%)}.lesson-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.lesson-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border:1px solid #bfd0ca;border-radius:999px;background:#fff;color:#214e47;font-size:13px;font-weight:800;text-decoration:none;transition:.2s ease}.lesson-actions a:hover{transform:translateY(-1px);border-color:#8eaaa2;box-shadow:0 6px 16px rgba(31,75,68,.09)}.lesson-actions .primary{border-color:#245e54;background:#245e54;color:#fff}.lesson-small{margin-top:12px!important;color:#68777a!important;font-size:13px!important}
+    @media(min-width:981px){.s-toc{position:sticky!important;top:96px;max-height:calc(100vh - 116px);overflow-y:auto;align-self:start}.s-layout{align-items:start}}
+    @media(max-width:640px){.resort-detail-grid{grid-template-columns:1fr}.resort-detail-card{padding:17px}.preflight-list li{grid-template-columns:1fr;gap:3px;padding:15px 0}.lesson-actions{display:grid;grid-template-columns:1fr}.lesson-actions a{width:100%}}
   </style>
 
   <!-- HERO -->
@@ -186,8 +201,8 @@
       <div>
         <div class="s-eyebrow">Sapporo</div>
         <h1>Sapporo Kokusai</h1>
-        <p class="s-sub">Just an hour from the city, it opens up a snow-filled escape.</p>
-        <p>Set high in the mountains above Jozankei Onsen, it’s a resort famous for deep, consistent powder and wide-open runs. Whether you’re carving cruisers, chasing fresh lines, or bringing the family for a day on the slopes, Kokusai blends easy access with the feel of a true alpine getaway.</p>
+        <p class="s-sub">Big Hokkaido snow, an easy day trip from Sapporo.</p>
+        <p>Less than an hour from central Sapporo, the city gives way to deep snow and forested mountain runs. Sapporo Kokusai is known for reliable powder, generous pistes and a long season, with terrain for first turns as well as confident skiers and snowboarders. Add a post-ski soak at nearby Jozankei Onsen and it becomes a complete winter day out—without changing your Sapporo base.</p>
       </div>
       <div><!-- Right-side visual whitespace --></div>
     </div>
@@ -198,9 +213,15 @@
     <div class="s-layout">
       <!-- Left: TOC (gold indicator follows scroll) -->
       <nav class="s-toc" aria-label="Section table of contents">
-        <a href="#features" class="is-active">— Resort overview</a>
-        <a href="#public">— by train & bus</a>
-        <a href="#car">— by car</a>
+        <a href="#features" class="is-active">Resort overview</a>
+        <a href="#courses">Choosing a run</a>
+        <a href="#experience">Views & facilities</a>
+        <a href="#jozankei">Jozankei Onsen</a>
+        <a href="#public">Train & bus</a>
+        <a href="#car">By car</a>
+        <a href="#rental">Equipment rental</a>
+        <a href="#plan">Before you go</a>
+        <a href="#lesson">Book a lesson</a>
       </nav>
 
       <!-- Right: Content -->
@@ -214,10 +235,38 @@
             <span class="s-linktxt">Trail map (click to view)</span>
           </button>
           <p></p>
-          <p>There are seven trails in total, with a balanced mix of about 30% beginner, 40% intermediate, and 30% advanced. Wide, gentle runs make the resort approachable for newcomers and families, while the 3.6 km top-to-base course offers a satisfying cruise for those who want longer laps.
-</p>
-          <p>Known for its heavy snowfall, Kokusai also keeps several powder zones ungroomed, giving advanced skiers and snowboarders the chance to enjoy natural terrain and softer turns.</p>
-          <p>The slopes see a near even mix of skiers and snowboarders, with both local riders and visitors from overseas adding to the atmosphere. Its proximity to the city makes it an easy option for a full day on the mountain without the long travel.</p>
+          <p>Seven runs cover a balanced mix of beginner (30%), intermediate (40%) and advanced (30%) terrain. The season typically stretches from mid-November into early May, making Kokusai a strong choice at both ends of a Hokkaido ski holiday.</p>
+          <p>Newcomers can build confidence on broad, gentle slopes before linking into a 3.6-kilometre cruise. More experienced riders can seek out a 30-degree downhill run, moguls and ungroomed powder areas shaped by the resort’s abundant snowfall.</p>
+          <p>Kokusai works especially well for travellers staying in Sapporo: head up for a full day on snow, unwind in Jozankei Onsen afterwards, then return to the city for dinner. It is a simple way to combine mountain time with the food, shopping and nightlife of an urban holiday.</p>
+        </article>
+
+        <article id="courses" class="s-section" aria-labelledby="courses-title">
+          <h2 id="courses-title">Which runs suit your level?</h2>
+          <p>Kokusai is compact enough to navigate easily, while still offering a clear progression from first turns to steeper terrain. Start with the terrain that matches your group and adjust to the day’s visibility and snow conditions.</p>
+          <div class="resort-detail-grid">
+            <div class="resort-detail-card"><h3>First-time skiers and riders</h3><p>Broad, gentle slopes provide room to practise stopping, turning and using the lifts before moving onto longer green runs.</p></div>
+            <div class="resort-detail-card"><h3>Long cruising laps</h3><p>The Woody and Märchen runs can be linked for around 3.6 kilometres—ideal once you can control speed and connect turns comfortably.</p></div>
+            <div class="resort-detail-card"><h3>Powder and natural terrain</h3><p>After fresh snowfall, designated ungroomed areas offer softer, deeper turns. Follow resort signs and never enter closed or out-of-bounds areas.</p></div>
+            <div class="resort-detail-card"><h3>A stronger challenge</h3><p>The 30-degree Downhill course and mogul terrain suit experienced skiers and snowboarders with reliable turn and speed control.</p></div>
+          </div>
+        </article>
+
+        <article id="experience" class="s-section" aria-labelledby="experience-title">
+          <h2 id="experience-title">Summit views, snow play and mountain food</h2>
+          <p>The Sky Cabin climbs towards the 1,100-metre summit area, where clear days can reveal views across Ishikari Bay. In the right cold and humid conditions, snow and ice coat the trees to create juhyo, or “snow monsters”. Non-skiing companions can also take a return gondola ride for the scenery.</p>
+          <p>A snow-play area near the base gives families another way to enjoy the mountain. The resort has several restaurants in the centre house and a summit café; local favourites highlighted by the tourism office include Kokusai curry ramen, freshly baked pizza and soft serve.</p>
+          <p>Skis, snowboards, boots and outerwear are available to rent, making this a practical day trip for travellers from Singapore or Australia who prefer to arrive without bulky equipment.</p>
+        </article>
+
+        <article id="jozankei" class="s-section" aria-labelledby="jozankei-title">
+          <h2 id="jozankei-title">Pair your ski day with Jozankei Onsen</h2>
+          <p>Jozankei is a hot-spring town set in a forested gorge within Shikotsu-Toya National Park, about 30 minutes by car from Sapporo Kokusai. In winter, open-air baths look onto snow-covered trees—an easy way to turn a day on the slopes into a distinctly Hokkaido experience.</p>
+          <details class="resort-details"><summary>Open for stay and itinerary ideas</summary><div class="resort-details-body">
+            <p><strong>Day trip:</strong> Ski during the day, visit a facility offering day-use bathing, then continue to Sapporo. Bathing hours and closing days vary, so check directly before setting out.</p>
+            <p><strong>Stay overnight:</strong> An onsen stay gives you more time for snowy gorge walks, footbaths and a slower evening. The ski resort is around 30 minutes away by car, making Jozankei useful for consecutive snow days.</p>
+            <p><strong>Midwinter atmosphere:</strong> The valley takes on an ink-painting quality under deep snow. Seasonal events such as the Snow Candle Way may also be held; dates change each year.</p>
+            <a class="resort-details-link" href="https://jozankei.jp/en/" target="_blank" rel="noopener noreferrer">Visit the official Jozankei tourism website ↗</a>
+          </div></details>
         </article>
 
         <article id="public" class="s-section public" aria-labelledby="public-title">
@@ -238,13 +287,20 @@
 
         <article id="car" class="s-section" aria-labelledby="car-title">
           <h2 id="car-title">by car</h2>
-          <p>The resort has free parking for about 1,200 cars. While the area sees heavy snowfall, main roads are well maintained. We recommend winter‑driving experience for safety.</p>
+          <p>The resort has 1,850 free parking spaces. Mountain roads may be snowy, icy or affected by poor visibility, so use a properly winter-equipped vehicle and allow extra time. If you are not experienced in winter driving, the reserved bus is the safer option.</p>
           <ul>
-            <li>About 90 minutes from New Chitose Airport (via expressway)</li>
+            <li>About 100 minutes from New Chitose Airport</li>
             <li>About 60 minutes from central Sapporo</li>
-            <li>About 70 minutes from central Otaru</li>
+            <li>About 40 minutes from central Otaru</li>
+            <li>About 20 minutes from Asari IC</li>
+            <li>About 30 minutes from Jozankei Onsen</li>
           </ul>
+          <p>On the Otaru route, part of Hokkaido Route 1 is normally closed overnight from 7 pm to 7 am during winter. Weather and road conditions can add considerable time, so check current notices before departure.</p>
         </article>
+        <article id="rental" class="s-section" aria-labelledby="rental-title"><h2 id="rental-title">Equipment rental—our recommendation</h2><div class="rental-note"><p><strong>We recommend that students rent directly from Sapporo Kokusai.</strong></p><p>The resort offers ski and snowboard sets, boots and snow clothing. Online booking is available; reserving ahead and keeping the issued QR code ready can shorten the collection process on arrival.</p><a href="https://www.sapporo-kokusai.jp/en/rental/" target="_blank" rel="noopener noreferrer">Official rental information and online booking ↗</a></div></article>
+        <article id="plan" class="s-section" aria-labelledby="plan-title"><h2 id="plan-title">Before you go: check these 3 things</h2><ul class="preflight-list"><li><strong>Gear check</strong><span>Use MOPO’s equipment checklist before leaving and make sure your warm layers, gloves, ski socks and protective gear are ready.</span></li><li><strong>Lesson fees and rental</strong><span>Your lesson includes the instructor’s teaching lift pass and third-party liability insurance for students. Student lift tickets and equipment rental are separate. Sapporo Kokusai accepts online rental bookings, and MOPO recommends renting directly from the resort. <a href="https://www.sapporo-kokusai.jp/en/rental/" target="_blank" rel="noopener noreferrer">See official rental information ↗</a></span></li><li><strong>Transport and meeting point</strong><span>Allow enough time for the bus, lift-ticket purchase and equipment collection. Follow the meeting time and location in your booking confirmation.</span></li></ul></article>
+        <article id="lesson" class="s-section lesson-cta" aria-labelledby="lesson-title"><h2 id="lesson-title">Ready for a lesson at Sapporo Kokusai?</h2><p>MOPO offers private ski and snowboard lessons at Sapporo Kokusai. Book your preferred date through the online form. If you are unsure about ability levels or how to split your group, send us the date, group size, ages and experience by WhatsApp or email and we will help you plan.</p><div class="lesson-actions"><a class="primary" href="booking.html?lang=en" target="_blank" rel="noopener noreferrer">Book a lesson now</a><a href="en_mopoindex.html#pricing">View lesson prices</a><a href="https://wa.me/message/UNIMMBBQN5NTC1" target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a><a href="mailto:support@moposki.com?subject=Sapporo%20Kokusai%20lesson%20inquiry&body=Preferred%20date%3A%0AGroup%20size%3A%0AAdult%2Fchild%20ages%3A%0ASki%20or%20snowboard%3A%0AExperience%3A">Email instead</a></div><p class="lesson-small">Please include your preferred date, group size, children’s ages, and each guest’s ski or snowboard experience.</p></article>
+
       </div>
     </div>
   </section>
@@ -294,7 +350,7 @@
           }
         });
       }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car'].forEach(id=>{
+      ['features','courses','experience','jozankei','public','car','rental','plan','lesson'].forEach(id=>{
         const el = document.getElementById(id); if(el) io.observe(el);
       });
 
@@ -356,12 +412,13 @@
           </ul>
         </div>
         <div>
-          <h4>Lessons</h4>
+          <h4>Ski Resorts</h4>
           <ul>
-            <li><a href="en_mopoindex.html#pricing">Lesson plans</a></li>
+            
             <li><a href="en_teine.html">Sapporo Teine</a></li>
             <li><a href="en_onze.html">Otaru Onze</a></li>
             <li><a href="en_kokusai.html" aria-current="page">Sapporo Kokusai</a></li>
+            <li><a href="en_asari.html" aria-current="page">Asarigawa Onsen</a></li>
           </ul>
         </div>
         <div>

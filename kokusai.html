@@ -12,14 +12,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>札幌國際｜MOPO 滑雪學校</title>
-<meta name="description" content="札幌國際滑雪場的介紹頁面。詳細資訊將於近期公開。">
+<meta name="description" content="從札幌市區約一小時抵達札幌國際滑雪場，享受北海道粉雪、7 條多元雪道與定山溪溫泉。查看交通、租借與課程資訊。">
 
 <!-- ✅ SEO / Open Graph / Twitter Card -->
 <link rel="canonical" href="https://moposki.com/kokusai.html">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
 
 <meta property="og:title" content="札幌國際｜MOPO 滑雪學校（繁體中文）">
-<meta property="og:description" content="詳細資訊將於近期公開。">
+<meta property="og:description" content="從札幌出發約一小時，安排粉雪、長距離滑行與定山溪溫泉的一日旅程。">
 <meta property="og:url" content="https://moposki.com/kokusai.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOPO Ski School">
@@ -30,7 +30,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="札幌國際｜MOPO 滑雪學校（繁體中文）">
-<meta name="twitter:description" content="詳細資訊將於近期公開。">
+<meta name="twitter:description" content="從札幌出發約一小時，安排粉雪、長距離滑行與定山溪溫泉的一日旅程。">
 <meta name="twitter:image" content="https://YOUR_OG_IMAGE_URL/og-image.jpg">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +41,14 @@
   <link rel="icon" href="/img/iconw.png" type="image/png">
   <link rel="shortcut icon" href="/img/iconw.png" type="image/png">
   <link rel="apple-touch-icon" href="/img/iconw.png">
+<style>
+.resort-booking-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.resort-booking-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid #ccd5cf;border-radius:999px;color:#304c43;background:#fff;font-size:14px;text-decoration:none}
+.resort-booking-actions .primary{background:#304c43;color:#fff;border-color:#304c43}
+.resort-booking-actions a:hover{opacity:.85}
+.resort-booking-actions a:focus-visible{outline:2px solid #77867e;outline-offset:3px}
+@media(max-width:640px){.resort-booking-actions{flex-direction:column}}
+</style>
 </head>
 <body>
 <header class="topbar" id="topbar">
@@ -52,13 +60,14 @@
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪場介紹 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="滑雪課程子選單">
-          <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
-          <li class="group-title">雪場介紹</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
           <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
+          <li role="none"><a role="menuitem" href="asari.html">朝里川溫泉</a></li>
         </ul>
       </li>
       <li class="has-dropdown" role="none">
@@ -96,12 +105,11 @@
         <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動導覽">
           <a href="news.html" role="menuitem">最新消息</a>
           <a href="mopo.html" role="menuitem">關於 MOPO</a>
-          <div class="mob-subtitle">滑雪課程</div>
-          <a href="index.html#pricing" role="menuitem">課程與價格</a>
-          <div class="mob-subtitle">雪場介紹</div>
+          <div class="mob-subtitle">滑雪場介紹</div>
           <a href="teine.html" role="menuitem">札幌手稻</a>
           <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
+          <a href="asari.html" role="menuitem">朝里川溫泉</a>
           <div class="mob-subtitle">主題文章</div>
           <a href="safe.html" role="menuitem">專欄文章</a>
           <a href="trip.html" role="menuitem">觀光主題</a>
@@ -122,7 +130,7 @@
   <style>
     :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4 }
     .s-hero { position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink) }
-    .s-hero::before { content:"";position:absolute;inset:0;background:url("panel2.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01) }
+    .s-hero::before { content:"";position:absolute;inset:0;background:url("panel1.jpg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01) }
     .s-hero::after { content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%) }
     .s-hero-inner { position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px }
     .s-eyebrow { font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px }
@@ -172,19 +180,57 @@
       .modal-dialog { width:100% }
       .modal-body iframe { height:70vh }
     }
+
+    /* 與手稻頁面一致的介紹版型 */
+    body,main{background:#edf0ef}
+    html,body{overflow-x:clip}
+    .s-hero{display:block;min-height:560px;padding:166px 0 132px;overflow:hidden;background:linear-gradient(90deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.58) 48%,rgba(255,255,255,.10) 100%),url("panel1.jpg") center 55%/cover no-repeat;color:#172d37}
+    .s-hero::before{display:none}
+    .s-hero::after{inset:auto 0 -1px;height:150px;background:linear-gradient(to bottom,rgba(237,240,239,0),#edf0ef)}
+    .s-hero-inner{display:block;width:min(1200px,100%);max-width:none;padding:0 22px}
+    .s-eyebrow{margin-bottom:18px;color:#2f615d;font-size:11px;font-weight:700;letter-spacing:.2em}
+    .s-hero h1{max-width:760px;margin-bottom:18px;color:#172d37;font-size:clamp(34px,5vw,60px);line-height:1.2;text-shadow:0 1px 16px rgba(255,255,255,.55)}
+    .s-hero .s-sub{max-width:710px;margin-bottom:16px;color:#23584d;font-size:clamp(18px,2.3vw,23px);line-height:1.55}
+    .s-hero p{max-width:760px;margin:0;color:#263c43;font-size:16px;line-height:1.9}
+    .kokusai-facts{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:min(1160px,100%);margin:-38px auto 0;padding:22px 26px;border:1px solid #e3e7e4;border-radius:18px;background:#fff;box-shadow:0 12px 34px rgba(13,27,42,.07)}
+    .kokusai-facts div{padding:1px 0 1px 13px;border-left:2px solid #c8a45d;color:#16343b;font-size:14px;font-weight:700;line-height:1.5}
+    .kokusai-facts span{display:block;margin-bottom:5px;color:#637174;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+    .s-wrap{width:min(1160px,100%);max-width:none;padding:0 22px 82px}
+    .s-layout{grid-template-columns:225px minmax(0,1fr);gap:28px;margin-top:38px}
+    .s-toc{padding:14px;border-color:#e2e5e4;border-radius:14px}
+    .s-toc::before{display:none}
+    .s-toc a{padding:10px 12px;border-radius:8px;color:#3c5057;font-size:14px}
+    .s-toc a:hover{background:#f2f4f0;color:#213e40}
+    .s-section{padding:34px;margin-bottom:20px;border-color:#e2e5e4;box-shadow:none}
+    .s-section h2{margin-bottom:14px;color:#172b34;font:700 clamp(22px,2.6vw,28px)/1.4 "Noto Serif JP","Noto Serif TC",serif}
+    .s-section p,.s-section li{color:#52616a;font-size:15px;line-height:1.85}
+    .rental-note{padding:18px 20px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7}
+    .rental-note strong{color:#254744}
+    .rental-note a{display:inline-flex;align-items:center;margin-top:4px;padding:10px 15px;border:1px solid #cbb47f;border-radius:999px;background:#fff;color:#263c40;font-size:13px;font-weight:700;text-decoration:none}
+    .resort-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.resort-detail-card{padding:20px;border:1px solid #dfe7e2;border-radius:14px;background:#f8faf8}.resort-detail-card h3{margin:0 0 8px;color:#214943;font-size:17px}.resort-detail-card p{margin:0;font-size:14px;line-height:1.72}.resort-details{margin-top:16px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7;overflow:hidden}.resort-details summary{cursor:pointer;padding:16px 18px;color:#1f554b;font-weight:700;list-style:none}.resort-details summary::-webkit-details-marker{display:none}.resort-details summary::after{content:"＋";float:right}.resort-details[open] summary::after{content:"－"}.resort-details-body{padding:0 18px 18px}.resort-details-body p:last-child{margin-bottom:0}.resort-details-link{display:inline-flex;margin-top:4px;color:#1b6555;font-weight:700;text-decoration:none}
+    .s-toc a.is-active{background:#e5efea;color:#174d43;font-weight:700}.preflight-list{list-style:none!important;margin:4px 0 0!important;padding:0;border-top:1px solid #e6e9e8}.preflight-list li{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;margin:0!important;padding:18px 0;border-bottom:1px solid #e6e9e8;color:#33474c}.preflight-list strong{color:#173238}.preflight-list a{color:#23665b;font-weight:700;text-decoration:underline;text-underline-offset:3px}.lesson-cta{background:linear-gradient(145deg,#fff 0%,#f4f8f6 100%)}.lesson-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.lesson-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border:1px solid #bfd0ca;border-radius:999px;background:#fff;color:#214e47;font-size:13px;font-weight:800;text-decoration:none;transition:.2s ease}.lesson-actions a:hover{transform:translateY(-1px);border-color:#8eaaa2;box-shadow:0 6px 16px rgba(31,75,68,.09)}.lesson-actions .primary{border-color:#245e54;background:#245e54;color:#fff}.lesson-small{margin-top:12px!important;color:#68777a!important;font-size:13px!important}
+    @media(min-width:981px){.s-toc{position:sticky!important;top:96px;max-height:calc(100vh - 116px);overflow-y:auto;align-self:start}.s-layout{align-items:start}}
+    @media(max-width:640px){.s-hero{min-height:440px;padding:112px 0 95px;background-position:center 55%}.s-hero-inner{padding:0 18px}.s-hero h1{font-size:clamp(32px,8vw,42px);margin-bottom:10px}.s-hero .s-sub{font-size:17px;margin-bottom:13px}.s-hero p{font-size:14px;line-height:1.72}.kokusai-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;width:calc(100% - 32px);padding:18px}.kokusai-facts div{font-size:12px}.s-wrap{width:100%;padding:0 16px 56px}.s-layout{grid-template-columns:1fr;gap:16px;margin-top:22px}.s-toc{position:static;display:flex;flex-wrap:wrap;gap:2px;padding:10px}.s-toc a{padding:8px 10px;font-size:12px}.s-section{padding:25px 20px;margin-bottom:14px}.s-section h2{font-size:22px;margin-bottom:12px}.s-section p,.s-section li{font-size:14px;line-height:1.75}.rental-note{padding:16px}.resort-detail-grid{grid-template-columns:1fr}.resort-detail-card{padding:17px}.preflight-list li{grid-template-columns:1fr;gap:3px;padding:15px 0}.lesson-actions{display:grid;grid-template-columns:1fr}.lesson-actions a{width:100%}}
   </style>
 
   <!-- HERO -->
   <section class="s-hero" aria-label="札幌國際 形象圖">
     <div class="s-hero-inner">
       <div>
-        <div class="s-eyebrow">Sapporo</div>
+        <div class="s-eyebrow">SAPPORO KOKUSAI · HOKKAIDO</div>
         <h1>札幌國際滑雪場</h1>
-        <p class="s-sub">從市區一小時，直達雪白國度。</p>
-        <p>札幌國際滑雪場依著定山溪溫泉群山而建，擁有豐沛天然粉雪。細緻雪質吸引世界各地滑雪與單板愛好者；距離市區近，當天往返輕鬆，在便利交通與山林靜謐之間取得完美平衡。</p>
+        <p class="s-sub">住在札幌，也能把一天交給北海道粉雪。</p>
+        <p>從札幌市區出發約一小時，城市風景便換成定山溪群山環繞的雪白世界。札幌國際以豐沛降雪、開闊雪道和漫長雪季受到旅客喜愛；無論第一次接觸滑雪，或想在天然粉雪中享受流暢滑行，都能找到適合自己的路線。滑雪後再到定山溪泡湯，也很適合排成輕鬆的一日行程。</p>
       </div>
       <div><!-- 右側為視覺留白 --></div>
     </div>
+  </section>
+
+  <section class="kokusai-facts" aria-label="札幌國際滑雪場重點資訊">
+    <div><span>雪道</span>7 條雪道</div>
+    <div><span>最長滑行距離</span>3.6 km</div>
+    <div><span>交通</span>札幌市中心約 60 分鐘</div>
+    <div><span>停車</span>1,850 個免費車位</div>
   </section>
 
   <!-- BODY -->
@@ -192,9 +238,15 @@
     <div class="s-layout">
       <!-- 左：目錄（隨捲動指示） -->
       <nav class="s-toc" aria-label="段落目錄">
-        <a href="#features" class="is-active">— 雪場特色</a>
-        <a href="#public">— 大眾交通</a>
-        <a href="#car">— 自行開車</a>
+        <a href="#features" class="is-active">雪場特色</a>
+        <a href="#courses">雪道怎麼選</a>
+        <a href="#experience">山頂景色與設施</a>
+        <a href="#jozankei">定山溪溫泉</a>
+        <a href="#public">大眾交通</a>
+        <a href="#car">自行開車</a>
+        <a href="#rental">雪具租借</a>
+        <a href="#plan">出發前確認</a>
+        <a href="#lesson">預約課程</a>
       </nav>
 
       <!-- 右：內容 -->
@@ -208,9 +260,38 @@
             <span class="s-linktxt">雪道地圖（點擊放大）</span>
           </button>
           <p></p>
-          <p>全區共有 7 條雪道，難度分布為初級 30%、中級 40%、上級 30%，配置均衡。寬闊而平緩的路線非常適合新手與親子；最長 3.6 公里長距離滑行，滑起來相當過癮。</p>
-          <p>做為豪雪地帶，園區亦保留多處非整地粉雪區域，能盡情享受鬆軟深雪；順著自然地形滑行的樂趣，深受進階玩家與粉雪迷喜愛。</p>
-          <p>使用族群約一半雙板、一半單板，氛圍多元又熱鬧；觀光客比例高，國內外遊客都愛造訪；離市區近，很適合安排一日滑雪行程。</p>
+          <p>札幌國際共有 7 條雪道，從初級 30%、中級 40% 到高級 30%，不同程度都能安排舒服的練習節奏。雪季通常由 11 月中旬延續至 5 月上旬，讓冬季前後造訪札幌的旅客也有機會遇上好雪。</p>
+          <p>初學者可以從寬闊緩坡開始，並挑戰全長約 3.6 公里的長距離路線；熟練後，還有最大斜度約 30 度的陡坡、饅頭雪與非壓雪區，感受札幌豐沛降雪帶來的鬆軟雪感。</p>
+          <p>這裡距離札幌市區不遠，又鄰近定山溪溫泉，特別適合不想頻繁更換住宿的旅客。早上進山滑雪，傍晚泡湯或回到札幌用餐，便能把雪場、溫泉與城市觀光放進同一天。</p>
+        </article>
+
+        <article id="courses" class="s-section" aria-labelledby="courses-title">
+          <h2 id="courses-title">依程度選擇適合的雪道</h2>
+          <p>札幌國際的雪道數量不算龐大，但路線清楚、由初學練習到進階挑戰都能銜接。第一次到訪時，可先依程度安排以下區域，再根據當日雪況調整。</p>
+          <div class="resort-detail-grid">
+            <div class="resort-detail-card"><h3>第一次滑雪</h3><p>寬闊緩坡適合熟悉停止、轉彎與搭乘纜車。初學者完成基本練習後，可循序挑戰較長的綠線。</p></div>
+            <div class="resort-detail-card"><h3>長距離巡航</h3><p>Woody 與 Märchen 路線可串連成約 3.6 公里的滑行距離，適合已能控制速度、想練習連續轉彎的人。</p></div>
+            <div class="resort-detail-card"><h3>粉雪與自然地形</h3><p>降雪後的非壓雪區能感受鬆軟深雪。請依雪場標示滑行，不要進入封閉區域或管理範圍外。</p></div>
+            <div class="resort-detail-card"><h3>進階挑戰</h3><p>最大斜度約 30 度的 Downhill 路線及饅頭雪地形更具挑戰，適合轉彎與速度控制已穩定的滑雪者。</p></div>
+          </div>
+        </article>
+
+        <article id="experience" class="s-section" aria-labelledby="experience-title">
+          <h2 id="experience-title">不只滑雪：山頂景色、玩雪與餐飲</h2>
+          <p>搭乘 Sky Cabin 前往約 1,100 公尺高處，天氣晴朗時可遠望石狩灣；嚴寒且水氣充足時，樹木可能披上雪與冰形成樹冰景觀。即使同行者不滑雪，也能購買纜車往返票欣賞山景。</p>
+          <p>山腳設有親子玩雪區，可體驗雪地遊具；中央小屋內有多間餐廳，山頂亦設咖啡空間。札幌國際咖哩拉麵、現烤披薩與霜淇淋，都是官方觀光介紹中特別提到的雪場餐飲。</p>
+          <p>雪場提供完整的雙板、單板、雪靴與服裝租借，對從台灣或香港出發、不想攜帶大型裝備的旅客相當方便。</p>
+        </article>
+
+        <article id="jozankei" class="s-section" aria-labelledby="jozankei-title">
+          <h2 id="jozankei-title">把滑雪與定山溪溫泉排在一起</h2>
+          <p>定山溪溫泉位於支笏洞爺國立公園的溪谷之中，從札幌國際開車約 30 分鐘。冬季可一邊欣賞覆雪山林，一邊在露天風呂暖身，是札幌近郊很具代表性的「滑雪＋溫泉」玩法。</p>
+          <details class="resort-details"><summary>展開定山溪住宿與行程建議</summary><div class="resort-details-body">
+            <p><strong>當天往返：</strong>白天在札幌國際滑雪，離場後前往提供日歸溫泉的設施泡湯，再返回札幌。各設施的入浴時間與休館日不同，出發前請先確認。</p>
+            <p><strong>住宿一晚：</strong>住在定山溪可以放慢節奏，隔天散步欣賞雪景、足湯與溪谷風光。從溫泉街前往雪場約 30 分鐘，也適合連續安排滑雪日。</p>
+            <p><strong>冬季限定風景：</strong>雪季的溪谷像水墨畫；每年深冬期間亦可能舉行雪燈路等活動，實際日期以定山溪觀光協會公告為準。</p>
+            <a class="resort-details-link" href="https://jozankei.jp/tw/" target="_blank" rel="noopener noreferrer">查看定山溪觀光協會官方資訊 ↗</a>
+          </div></details>
         </article>
 
         <article id="public" class="s-section public" aria-labelledby="public-title">
@@ -231,14 +312,29 @@
 
         <article id="car" class="s-section" aria-labelledby="car-title">
           <h2 id="car-title">自行開車</h2>
-          <p>園區備有約 1,200 個免費停車位；雖位於多雪地區，但主要道路維護良好，自駕前來也很方便。建議具備雪地駕駛經驗，以確保行車安全。
+          <p>園區備有 1,850 個免費停車位。冬季山區可能遇到積雪、結冰與能見度下降，請使用冬季輪胎並預留比導航更充裕的時間；沒有雪地駕駛經驗時，建議改搭預約制巴士。
 </p>
           <ul>
-            <li>自新千歲機場（走高速）約 90 分鐘</li>
+            <li>自新千歲機場約 100 分鐘</li>
             <li>自札幌市中心約 60 分鐘</li>
-            <li>自小樽市中心約 70 分鐘</li>
+            <li>自小樽市中心約 40 分鐘</li>
+            <li>自朝里 IC 約 20 分鐘</li>
+            <li>自定山溪溫泉約 30 分鐘</li>
           </ul>
+          <p>小樽方向使用的道道 1 號小樽定山溪線，冬季部分路段通常於 19:00–翌日 7:00 夜間封閉；天候與道路狀況也會影響車程，請以出發當日公告為準。</p>
         </article>
+        <article id="rental" class="s-section" aria-labelledby="rental-title">
+          <h2 id="rental-title">雪具租借（學校推薦）</h2>
+          <div class="rental-note">
+            <p><strong>我們建議學生直接向札幌國際滑雪場租借雪具。</strong></p>
+            <p>雪場提供雙板、單板、雪靴與滑雪服裝等租借服務，取還裝備方便，也能在上雪場前完成尺寸確認。</p>
+            <p>札幌國際可接受網路預約租借道具。建議在出發前完成預約，當天使用預約後取得的 QR Code 辦理領取，可減少現場等候時間。</p>
+            <a href="https://www.sapporo-kokusai.jp/rental/" target="_blank" rel="noopener noreferrer">前往官方雪具租借／網路預約 ↗</a>
+          </div>
+        </article>
+        <article id="plan" class="s-section" aria-labelledby="plan-title"><h2 id="plan-title">出發前，先確認這 3 件事</h2><ul class="preflight-list"><li><strong>裝備確認</strong><span>出發前，請對照 MOPO 提供的裝備確認表，看看保暖衣物、手套、雪襪與護具等需要的物品是否都準備好了。</span></li><li><strong>課程費用與租借</strong><span>課程已包含教練專用教學雪票與學員第三者責任保險；學員雪票及裝備租借需另行購買。札幌國際可事先網路預約雪具，學校建議直接向雪場租借。 <a href="https://www.sapporo-kokusai.jp/rental/" target="_blank" rel="noopener noreferrer">查看札幌國際官方租借資訊 ↗</a></span></li><li><strong>交通與集合</strong><span>請預留巴士接駁、購票及領取裝備的時間。課程集合地點與時間以預約確認訊息為準。</span></li></ul></article>
+        <article id="lesson" class="s-section lesson-cta" aria-labelledby="lesson-title"><h2 id="lesson-title">想在札幌國際上課？</h2><p>MOPO 提供札幌國際的單板與雙板課程。可直接使用線上表單選擇日期與課程；若不確定程度、同行者適合如何分組，請透過 LINE 或電子郵件告訴我們日期、人數、年齡與滑雪經驗，我們會協助確認。</p><div class="lesson-actions"><a class="primary" href="booking.html?lang=zh-Hant" target="_blank" rel="noopener noreferrer">馬上預約課程</a><a href="index.html#pricing">查看課程價格</a><a href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer">用 LINE 詢問課程</a><a href="mailto:support@moposki.com?subject=札幌國際課程詢問&body=希望日期：%0A人數：%0A成人／兒童年齡：%0A雙板或單板：%0A滑雪經驗：">改用電子郵件</a></div><p class="lesson-small">詢問時請提供希望日期、人數、兒童年齡，以及每位成員的單板／雙板經驗。</p></article>
+
       </div>
     </div>
   </section>
@@ -288,7 +384,7 @@
           }
         });
       }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car'].forEach(id=>{
+      ['features','courses','experience','jozankei','public','car','rental','plan','lesson'].forEach(id=>{
         const el = document.getElementById(id); if(el) io.observe(el);
       });
 
@@ -350,12 +446,13 @@
           </ul>
         </div>
         <div>
-          <h4>滑雪課程</h4>
+          <h4>滑雪場介紹</h4>
           <ul>
-            <li><a href="index.html#pricing">課程與價格</a></li>
+            
             <li><a href="teine.html">札幌手稻</a></li>
             <li><a href="onze.html">小樽ONZE</a></li>
             <li><a href="kokusai.html">札幌國際</a></li>
+            <li><a href="asari.html">朝里川溫泉</a></li>
           </ul>
         </div>
         <div>

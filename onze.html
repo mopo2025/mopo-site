@@ -52,13 +52,14 @@
       <li role="none"><a role="menuitem" href="news.html">最新消息</a></li>
       <li role="none"><a role="menuitem" href="mopo.html">關於 MOPO</a></li>
       <li class="has-dropdown" role="none">
-        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪課程 <span class="caret">▾</span></a>
+        <a role="menuitem" href="#" aria-haspopup="true" aria-expanded="false">滑雪場介紹 <span class="caret">▾</span></a>
         <ul class="submenu" role="menu" aria-label="滑雪課程子選單">
-          <li role="none"><a role="menuitem" href="index.html#pricing">課程與價格</a></li>
-          <li class="group-title">雪場介紹</li>
+          <li role="none"></li>
+          
           <li role="none"><a role="menuitem" href="teine.html">札幌手稻</a></li>
           <li role="none"><a role="menuitem" href="onze.html">小樽ONZE</a></li>
           <li role="none"><a role="menuitem" href="kokusai.html">札幌國際</a></li>
+          <li role="none"><a role="menuitem" href="asari.html">朝里川溫泉</a></li>
         </ul>
       </li>
       <li class="has-dropdown" role="none">
@@ -96,12 +97,11 @@
         <div class="mobpanel" id="mobNavPanel" role="menu" aria-label="行動導覽">
           <a href="news.html" role="menuitem">最新消息</a>
           <a href="mopo.html" role="menuitem">關於 MOPO</a>
-          <div class="mob-subtitle">滑雪課程</div>
-          <a href="index.html#pricing" role="menuitem">課程與價格</a>
-          <div class="mob-subtitle">雪場介紹</div>
+          <div class="mob-subtitle">滑雪場介紹</div>
           <a href="teine.html" role="menuitem">札幌手稻</a>
           <a href="onze.html" role="menuitem">小樽ONZE</a>
           <a href="kokusai.html" role="menuitem">札幌國際</a>
+          <a href="asari.html" role="menuitem">朝里川溫泉</a>
           <div class="mob-subtitle">主題文章</div>
           <a href="safe.html" role="menuitem">專欄文章</a>
           <a href="trip.html" role="menuitem">觀光主題</a>
@@ -121,33 +121,29 @@
   <!-- 只調整此區塊內容／圖片，其餘沿用 -->
   <style>
     :root { --gold:#CFAF61; --ink:#0E1A24; --ink-soft:#2B3A44; --bg-tint:#F3F4F4 }
-    .s-hero { position:relative;min-height:58vh;display:flex;align-items:center;color:var(--ink) }
-    .s-hero::before { content:"";position:absolute;inset:0;background:url("img/onze/onze.jpeg") center/cover no-repeat;filter:brightness(1.02) contrast(1.01) }
-    .s-hero::after { content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(255,255,255,.86) 0%, rgba(255,255,255,.62) 45%, rgba(255,255,255,.18) 100%) }
-    .s-hero-inner { position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:64px 16px;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:32px }
-    .s-eyebrow { font:500 13px/1 "Montserrat",system-ui,sans-serif;letter-spacing:.06em;color:#347066;text-transform:uppercase;margin-bottom:12px }
-    .s-hero h1 { font-family:"Noto Serif JP","Noto Sans TC",serif;font-weight:600;letter-spacing:-.01em;font-size:clamp(28px,4.4vw,44px);line-height:1.26;margin:0 0 14px;color:var(--ink);text-wrap:balance }
-    .s-hero .s-sub { font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:700;color:#134B45;font-size:clamp(17px,2.4vw,22px);line-height:1.6;margin:0 0 14px }
-    .s-hero p { font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-weight:400;color:var(--ink-soft);font-size:clamp(15px,2vw,16.5px);line-height:1.98;margin:0 0 18px;max-width:46rem }
-    @media (max-width:900px) {
-      .s-hero { min-height:52vh }
-      .s-hero-inner { grid-template-columns:1fr;padding:52px 18px }
-      .s-hero::after { background:linear-gradient(180deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.62) 65%, rgba(255,255,255,.18) 100%) }
-      .s-hero p { line-height:2.05;margin-bottom:20px }
-    }
-    .s-wrap { max-width:1100px;margin:0 auto;padding:48px 16px 40px }
-    .s-layout { display:grid;grid-template-columns:260px 1fr;gap:32px }
-    @media (max-width:980px) {
-      .s-layout { grid-template-columns:1fr }
-    }
-    .s-toc { position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px }
+    body,main{background:#edf0ef}
+    .s-hero{position:relative;isolation:isolate;display:flex;align-items:center;width:100%;min-height:690px;margin:0;padding:126px 24px 112px;overflow:hidden;color:var(--ink);background:#dbe9f5}
+    .s-hero::before{content:"";position:absolute;z-index:0;inset:0;background:url("panel2.jpg") center 60%/cover no-repeat;filter:none}
+    .s-hero::after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(to top,#edf0ef 0%,rgba(237,240,239,0) 26%),linear-gradient(90deg,rgba(248,251,253,.94) 0%,rgba(248,251,253,.84) 31%,rgba(248,251,253,.46) 55%,rgba(248,251,253,.04) 86%)}
+    .s-hero-inner{position:relative;z-index:2;display:block;width:min(1100px,100%);max-width:none;margin:0 auto;padding:0}
+    .s-eyebrow{font:700 11px/1.4 Montserrat,system-ui,sans-serif;letter-spacing:.17em;color:#2f615d;text-transform:uppercase;margin:0 0 15px}
+    .s-hero h1{max-width:690px;font:600 clamp(38px,4.4vw,58px)/1.2 "Noto Serif JP","Noto Sans TC",serif;letter-spacing:.015em;color:#172d37;text-shadow:none;text-wrap:balance;margin:0 0 14px}
+    .s-hero .s-sub{max-width:690px;font:700 clamp(18px,2.2vw,23px)/1.5 "Noto Sans JP","Noto Sans TC",sans-serif;color:#23584d;margin:0 0 18px}
+    .s-hero p{max-width:650px;font:400 16px/1.84 "Noto Sans JP","Noto Sans TC",sans-serif;color:#263c43;margin:0 0 12px}
+    .s-hero p.img-credit{margin:14px 0 0;color:#53686c;font-size:11px;line-height:1.5}
+    @media(max-width:800px){.s-hero{min-height:650px;padding:112px 20px 100px}.s-hero-inner{width:min(100%,680px)}.s-hero p{font-size:15px;line-height:1.75}.s-hero::after{background:linear-gradient(to top,#edf0ef 0%,rgba(237,240,239,0) 24%),linear-gradient(90deg,rgba(248,251,253,.94) 0%,rgba(248,251,253,.77) 70%,rgba(248,251,253,.36) 100%)}}
+    @media(max-width:640px){.s-hero{align-items:flex-start;min-height:670px;padding:92px 18px 115px}.s-hero-inner{width:100%;padding:0 2px}.s-eyebrow{margin-bottom:11px;font-size:10px}.s-hero h1{font-size:clamp(33px,8vw,41px);margin-bottom:10px}.s-hero .s-sub{font-size:17px;margin-bottom:13px}.s-hero p{max-width:none;font-size:14px;line-height:1.72}.s-hero p.img-credit{font-size:10px}.s-hero::before{background-position:center 60%}.s-hero::after{background:linear-gradient(180deg,rgba(248,251,253,.93) 0%,rgba(248,251,253,.82) 48%,rgba(248,251,253,.38) 72%,#edf0ef 100%)}}
+    .s-wrap{width:min(1160px,100%);max-width:1160px;margin:0 auto;padding:38px 22px 82px}
+    .s-layout{display:grid;grid-template-columns:225px minmax(0,1fr);gap:28px;align-items:start}
+
+    .s-toc{position:sticky;top:88px;align-self:start;padding:14px;margin:0;border:1px solid #e2e5e4;border-radius:14px;background:#fff;isolation:isolate;--indicator-top:14px;--indicator-height:40px}
     .s-toc::before { content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease }
-    .s-toc a { display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none }
-    .s-toc a:hover { background:rgba(0,0,0,.035) }
+    .s-toc a{display:block;min-height:0;padding:10px 12px;border-radius:8px;color:#3c5057;font-size:14px;line-height:1.45;text-decoration:none}
+    .s-toc a:hover,.s-toc a:focus-visible{background:#f2f4f0;color:#213e40}
     .s-toc a.is-active { font-weight:600 }
-    .s-section { border:1px solid rgba(0,0,0,.12);border-radius:18px;background:#fff;padding:38px 28px;margin-bottom:40px }
-    .s-section h2 { font-family:"Noto Sans JP","Noto Sans TC",sans-serif;font-size:clamp(18px,2.6vw,22px);font-weight:700;letter-spacing:.01em;margin:0 0 22px;color:var(--ink) }
-    .s-section p,.s-section li { font-size:clamp(14.5px,2vw,16.8px);line-height:2.05;color:#333;margin:0 0 20px }
+    .s-section{scroll-margin-top:92px;padding:34px;margin-bottom:20px;border:1px solid #e2e5e4;border-radius:18px;background:#fff}
+    .s-section h2{font:700 clamp(22px,2.6vw,28px)/1.4 "Noto Serif JP","Noto Serif TC",serif;color:#172b34;margin:0 0 14px}
+    .s-section p,.s-section li{font-size:15px;line-height:1.85;color:#52616a;margin:0 0 20px}
     .s-section ul { margin:10px 0 0 18px }
     .public { padding-top:44px;padding-bottom:44px }
     .public h2 { margin-bottom:26px }
@@ -172,7 +168,28 @@
       .modal-dialog { width:100% }
       .modal-body iframe { height:70vh }
     }
-  </style>
+
+    @media(max-width:900px){.s-layout{grid-template-columns:1fr;gap:20px}.s-toc{position:static;display:flex;flex-wrap:wrap;gap:2px}.s-toc a{flex:0 0 auto}}
+    @media(max-width:640px){.s-wrap{width:100%;padding:24px 16px 56px}.s-layout{gap:16px}.s-toc{display:flex;flex-wrap:wrap;overflow:visible;margin:0;padding:10px}.s-toc a{font-size:12px;padding:8px 10px}.s-section{padding:25px 20px;margin-bottom:14px}.s-section h2{font-size:22px;margin-bottom:12px}.s-section p,.s-section li{font-size:14px;line-height:1.75}}
+  
+    /* ONZE: Asari-inspired summary, preparation and lesson sections */
+    .onze-facts-wrap{position:relative;z-index:3;width:min(1160px,100%);margin:-42px auto 0;padding:0 22px}
+    .onze-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;padding:21px 26px;border:1px solid rgba(26,63,58,.08);border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 14px 34px rgba(25,55,50,.09)}
+    .onze-fact{min-width:0;padding:0 18px;border-left:2px solid #d2aa4e;color:#173238;font-size:14px;font-weight:700;line-height:1.5}
+    .onze-fact-label{display:block;margin-bottom:4px;color:#69777a;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .check-list{list-style:none;margin:4px 0 0;padding:0;border-top:1px solid #e6e9e8}
+    .check-list li{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid #e6e9e8;color:#33474c;font-size:15px;line-height:1.75}
+    .check-list strong{color:#173238;font-size:15px}
+    .onze-rental-link,.onze-source a{color:#23665b;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+    .onze-cta{background:linear-gradient(145deg,#fff 0%,#f4f8f6 100%)}
+    .onze-contact-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+    .onze-contact-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border:1px solid #bfd0ca;border-radius:999px;background:#fff;color:#214e47;font-size:13px;font-weight:800;text-decoration:none;transition:.2s ease}
+    .onze-contact-actions a:hover{transform:translateY(-1px);border-color:#8eaaa2;box-shadow:0 6px 16px rgba(31,75,68,.09)}
+    .onze-contact-actions .primary{border-color:#245e54;background:#245e54;color:#fff}
+    .onze-small{margin-top:12px!important;color:#68777a!important;font-size:13px!important}
+    .onze-source{margin:4px 5px 0;color:#68777a;font-size:12px;line-height:1.7}
+    @media(max-width:760px){.onze-facts-wrap{margin:-30px auto 0;padding:0 16px}.onze-facts{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 0;padding:18px 14px}.onze-fact{padding:0 12px;font-size:12px}.onze-fact-label{font-size:9px}.check-list li{grid-template-columns:1fr;gap:3px;padding:15px 0}.onze-contact-actions{display:grid;grid-template-columns:1fr}.onze-contact-actions a{width:100%}}
+</style>
 
   <!-- HERO -->
   <section class="s-hero" aria-label="ONZE 主視覺">
@@ -182,22 +199,25 @@
         <h1>ONZE 滑雪場</h1>
         <p class="s-sub">大海與夜景交織的雪道，札幌近郊的特等席。</p>
         <p>從札幌市中心開車僅需 35 分鐘，位於小樽市銭函的 ONZE 滑雪場，以交通便利與「札幌圈最具代表性的夜間滑雪場」而聞名。能遠眺石狩灣的開闊視野令人印象深刻，白天可一覽壯麗海景，傍晚夕陽染紅海面，入夜後城市燈火與雪場光影交織，滑行宛如置身夢境。</p>
-<p class="img-credit">照片提供：ONZE 滑雪場</p>
       </div>
       <div><!-- 右側留白，呈現背景照片 --></div>
     </div>
 
   </section>
 
+  <div class="onze-facts-wrap" aria-label="ONZE quick facts"><div class="onze-facts"><div class="onze-fact"><span class="onze-fact-label">雪場重點</span>10 條雪道</div><div class="onze-fact"><span class="onze-fact-label">ACCESS</span>札幌開車約 35 分鐘</div><div class="onze-fact"><span class="onze-fact-label">SHUTTLE</span>銭函站免費接駁</div><div class="onze-fact"><span class="onze-fact-label">PARKING</span>約 1,000 個免費車位</div></div></div>
+
   <!-- BODY -->
   <section class="s-wrap">
     <div class="s-layout">
       <!-- 左：目錄（金色指示條會跟隨） -->
-      <nav class="s-toc" aria-label="章節目錄">
-        <a href="#features" class="is-active">— 雪道特色</a>
-        <a href="#public">— 大眾運輸</a>
-        <a href="#car">— 自行開車</a>
-      </nav>
+      <div class="resort-toc-rail"><nav class="resort-toc s-toc" aria-label="章節目錄">
+        <a href="#features" class="is-active">雪道特色</a>
+        <a href="#public">大眾運輸</a>
+        <a href="#car">自行開車</a>
+              <a href="#plan">出發前確認</a>
+        <a href="#lesson">詢問課程</a>
+      </nav></div>
 
       <!-- 右：內容 -->
       <div>
@@ -239,6 +259,23 @@
             <li>自新千歲機場約 75 分鐘</li>
           </ul>
         </article>
+
+        <article id="plan" class="s-section" aria-labelledby="plan-title">
+          <h2 id="plan-title">出發前，先確認這 3 件事</h2>
+          <ul class="check-list">
+            <li><strong>裝備確認</strong><span>出發前，請對照 MOPO 提供的裝備確認表，看看需要的物品是否都準備好了。</span></li>
+            <li><strong>課程費用與租借</strong><span>課程已包含教練專用教學雪票與學員第三者責任保險；學員雪票及裝備租借需另行購買。若在 ONZE 上課，建議事先確認雪場租借裝備、單板固定器設定與付款方式。 <a class="onze-rental-link" href="https://onze.jp/" target="_blank" rel="noopener noreferrer">查看 ONZE 官方租借資訊 ↗</a></span></li>
+            <li><strong>交通與集合</strong><span>預留接駁、購票與租裝備時間，課程集合地點以預約確認訊息為準。</span></li>
+          </ul>
+        </article>
+
+        <article id="lesson" class="s-section onze-cta" aria-labelledby="lesson-title">
+          <h2 id="lesson-title">想在 ONZE 上課？</h2>
+          <p>MOPO 可安排 ONZE 課程，費用與可預約日期正在確認中。線上預約表單目前尚未列出 ONZE；請透過 LINE 或電子郵件告訴我們日期、人數與滑雪經驗，我們會回覆檔期、價格與集合方式。</p>
+          <div class="onze-contact-actions"><a class="primary" href="mailto:support@moposki.com?subject=ONZE%20課程詢問&body=希望日期：%0A人數：%0A雙板或單板：%0A滑雪經驗：">馬上預約課程</a><a class="resort-price-link" href="index.html#pricing">查看課程價格</a><a href="https://lin.ee/l9ZY79L" target="_blank" rel="noopener noreferrer">用 LINE 詢問課程</a><a href="mailto:support@moposki.com?subject=ONZE%20課程詢問&body=希望日期：%0A人數：%0A雙板或單板：%0A滑雪經驗：">改用電子郵件</a></div>
+          <p class="onze-small">請提供希望上課的日期、人數與滑雪經驗。</p>
+        </article>
+        <p class="onze-source">雪場資料與交通時間依官方公開資訊整理；實際營運與交通請以當季公告為準。 <a href="https://onze.jp/" target="_blank" rel="noopener noreferrer">SNOW CRUISE ONZE ↗</a></p>
       </div>
 
     </div>
@@ -272,12 +309,13 @@
           </ul>
         </div>
         <div>
-          <h4>滑雪課程</h4>
+          <h4>滑雪場介紹</h4>
           <ul>
-            <li><a href="index.html#pricing">課程與價格</a></li>
+            
             <li><a href="teine.html">札幌手稻</a></li>
             <li><a href="onze.html">小樽ONZE</a></li>
             <li><a href="kokusai.html">札幌國際</a></li>
+            <li><a href="asari.html">朝里川溫泉</a></li>
           </ul>
         </div>
         <div>
@@ -313,41 +351,7 @@
 <script src="common.js?v=20260718b"></script>
 <script>
 /* 目錄：active 與金色指示條 */
-    (function(){
-      const toc = document.querySelector('.s-toc');
-      const links = toc.querySelectorAll('a');
-      const map = {};
-      links.forEach(a => { map[a.hash.slice(1)] = a; });
-
-      function moveIndicator(target){
-        const rect = target.getBoundingClientRect();
-        const parent = toc.getBoundingClientRect();
-        toc.style.setProperty('--indicator-top', (rect.top - parent.top) + 'px');
-        toc.style.setProperty('--indicator-height', rect.height + 'px');
-      }
-      links.forEach(a=>{
-        a.addEventListener('mouseenter', ()=>moveIndicator(a));
-        a.addEventListener('focus', ()=>moveIndicator(a));
-      });
-      toc.addEventListener('mouseleave', ()=>{
-        const active = toc.querySelector('a.is-active') || links[0];
-        moveIndicator(active);
-      });
-
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            links.forEach(l=>l.classList.remove('is-active'));
-            const a = map[e.target.id]; if(a){ a.classList.add('is-active'); moveIndicator(a); }
-          }
-        });
-      }, {rootMargin:'-40% 0px -55% 0px', threshold:0});
-      ['features','public','car'].forEach(id=>{
-        const el = document.getElementById(id); if(el) io.observe(el);
-      });
-
-      moveIndicator(links[0]);
-    })();
+    
 
     /* 彈窗（PDF／圖片同頁預覽） */
     (function(){
@@ -401,5 +405,104 @@
       });
     })();
 </script>
+
+<style id="resort-navigation-style">
+/* Keep the viewport as the sticky scroll container. */
+html, body { overflow-x: clip; }
+.resort-toc::before { display: none; }
+.resort-toc a { font-weight: 400; color: #747b78; transition: background-color .16s ease, color .16s ease; }
+.resort-toc a:hover { background: #f7f8f6; color: #303c37; }
+.resort-toc a.is-active {
+  background: #f1f3f0; color: #303c37; font-weight: 600;
+  box-shadow: none;
+}
+.resort-toc a:focus-visible { outline: 2px solid #77867e; outline-offset: 2px; }
+.s-section[id], .asari-section[id] { scroll-margin-top: var(--resort-nav-top, 100px); }
+@media (min-width: 901px) {
+  .resort-toc-rail { position: relative; align-self: start; min-width: 0; }
+  .resort-toc-rail .resort-toc {
+    position: sticky; top: var(--resort-nav-top, 100px); width: 100%; box-sizing: border-box;
+    max-height: min(calc(100dvh - var(--resort-nav-top, 100px) - 24px), var(--resort-rail-height, 10000px));
+    overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
+    scrollbar-width: thin; scrollbar-color: #b8c6bf transparent;
+    margin: 0; padding: 8px; border: 0; border-radius: 10px;
+    background: #fff; box-shadow: none;
+  }
+  .resort-toc a { display: block; padding: 12px 14px; border-radius: 6px; line-height: 1.5; font-size: 14px; }
+}
+@media (max-width: 900px) { .resort-toc-rail { height: auto !important; min-width: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .resort-toc a { transition: none; }
+}
+</style>
+
+<script id="resort-navigation-script">
+(() => {
+  const toc = document.querySelector('.resort-toc');
+  const rail = toc.parentElement;
+  const content = rail.nextElementSibling;
+  const booking = document.getElementById('lesson');
+  const header = document.getElementById('topbar');
+  const desktop = matchMedia('(min-width: 901px)');
+  const items = [...toc.querySelectorAll('a[href^="#"]')].map(link => ({
+    link, section: document.getElementById(link.hash.slice(1))
+  })).filter(item => item.section);
+  let offset = 100;
+  let activeId = '';
+  let pending = false;
+  function updateActive() {
+    pending = false;
+    let current = items[0];
+    for (const item of items) {
+      if (item.section.getBoundingClientRect().top <= offset + 8) current = item;
+    }
+    if (activeId === current.section.id) return;
+    activeId = current.section.id;
+    items.forEach(({ link, section }) => {
+      const active = section.id === activeId;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+    if (desktop.matches) {
+      const box = toc.getBoundingClientRect();
+      const item = current.link.getBoundingClientRect();
+      if (item.top < box.top + 10) toc.scrollTop += item.top - box.top - 10;
+      else if (item.bottom > box.bottom - 10) toc.scrollTop += item.bottom - box.bottom + 10;
+    }
+  }
+  function schedule() {
+    if (!pending) { pending = true; requestAnimationFrame(updateActive); }
+  }
+  function measure() {
+    offset = Math.max(24, (header ? header.offsetHeight : 68) + 20);
+    document.documentElement.style.setProperty('--resort-nav-top', offset + 'px');
+    if (desktop.matches) {
+      // End the sticky rail above the final lesson reservation panel.
+      const height = Math.max(0, booking.getBoundingClientRect().top - rail.getBoundingClientRect().top - 24);
+      rail.style.height = height + 'px';
+      rail.style.setProperty('--resort-rail-height', height + 'px');
+    } else {
+      rail.style.removeProperty('height');
+      rail.style.removeProperty('--resort-rail-height');
+    }
+    activeId = '';
+    schedule();
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', measure);
+  addEventListener('load', measure);
+  addEventListener('hashchange', schedule);
+  if ('ResizeObserver' in window) {
+    const observer = new ResizeObserver(measure);
+    observer.observe(content);
+    if (header) observer.observe(header);
+  }
+  if (document.fonts) document.fonts.ready.then(measure);
+  measure();
+})();
+</script>
+
 </body>
 </html>
