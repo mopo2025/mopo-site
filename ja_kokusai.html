@@ -147,7 +147,20 @@
     /* === TOC + Sections === */
     .s-wrap{max-width:1100px;margin:0 auto;padding:48px 16px 40px}
     .s-layout{display:grid;grid-template-columns:260px 1fr;gap:32px}
-    @media (max-width:980px){.s-layout{grid-template-columns:1fr}}
+    @media (max-width:980px){
+      .topbar .nav{padding:12px 16px}
+      .topbar .brand{padding-left:0}
+      .topbar .menu{display:none}
+      .topbar .mobtools{display:flex}
+      .topbar .lang{display:none}
+      .topbar .mobdrop{position:relative}
+      .topbar .mobpanel{left:auto;right:0;width:min(92vw,320px);max-width:92vw;transform-origin:top right}
+      .topbar .mobpanel a,.topbar .mobpanel button{white-space:nowrap}
+      .s-layout{grid-template-columns:1fr}
+      .s-layout>.s-toc{position:static;display:flex;gap:8px;padding:8px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x proximity;scrollbar-width:none}
+      .s-layout>.s-toc::-webkit-scrollbar{display:none}
+      .s-layout>.s-toc a{flex:0 0 auto;padding:10px 13px;border-radius:999px;white-space:nowrap;scroll-snap-align:start;font-size:14px}
+    }
     .s-toc{position:sticky;top:88px;align-self:start;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:10px 0;background:#fff;isolation:isolate;--indicator-top:10px;--indicator-height:40px}
     .s-toc::before{content:"";position:absolute;left:0;top:var(--indicator-top);width:3px;height:var(--indicator-height);background:var(--gold);border-radius:3px;transition:top .18s ease,height .18s ease}
     .s-toc a{display:block;padding:14px 14px 14px 20px;color:var(--ink);font-size:15px;text-decoration:none}
@@ -183,14 +196,37 @@
     .modal-body iframe{display:block;width:100%;height:80vh;border:0}
     .modal-body img{display:block;width:100%;height:auto}
     @media (max-width:780px){
-      .modal-dialog{width:100%}
-      .modal-body iframe{height:70vh}
+      .modal{padding:10px}
+      .modal-dialog{display:flex;flex-direction:column;width:100%;max-height:calc(100dvh - 20px);overflow:hidden}
+      .modal-header{flex:0 0 auto}
+      .modal-body{overflow:auto;overscroll-behavior:contain}
+      .modal-body iframe{height:calc(100dvh - 82px)}
     }
     html,body{overflow-x:clip}
     .resort-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.resort-detail-card{padding:20px;border:1px solid #dfe7e2;border-radius:14px;background:#f8faf8}.resort-detail-card h3{margin:0 0 8px;color:#214943;font-size:17px}.resort-detail-card p{margin:0;font-size:14px;line-height:1.72}.resort-details{margin-top:16px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7;overflow:hidden}.resort-details summary{cursor:pointer;padding:16px 18px;color:#1f554b;font-weight:700;list-style:none}.resort-details summary::-webkit-details-marker{display:none}.resort-details summary::after{content:"＋";float:right}.resort-details[open] summary::after{content:"－"}.resort-details-body{padding:0 18px 18px}.resort-details-body p:last-child{margin-bottom:0}.resort-details-link{display:inline-flex;margin-top:4px;color:#1b6555;font-weight:700;text-decoration:none}.rental-note{padding:18px 20px;border:1px solid #d9e6df;border-radius:14px;background:#f9faf7}.rental-note strong{color:#254744}.rental-note a{display:inline-flex;align-items:center;margin-top:4px;padding:10px 15px;border:1px solid #cbb47f;border-radius:999px;background:#fff;color:#263c40;font-size:13px;font-weight:700;text-decoration:none}
     .s-toc::before{display:none}.s-toc a.is-active{background:#e5efea;color:#174d43;font-weight:700}.preflight-list{list-style:none!important;margin:4px 0 0!important;padding:0;border-top:1px solid #e6e9e8}.preflight-list li{display:grid;grid-template-columns:180px minmax(0,1fr);gap:18px;margin:0!important;padding:18px 0;border-bottom:1px solid #e6e9e8;color:#33474c}.preflight-list strong{color:#173238}.preflight-list a{color:#23665b;font-weight:700;text-decoration:underline;text-underline-offset:3px}.lesson-cta{background:linear-gradient(145deg,#fff 0%,#f4f8f6 100%)}.lesson-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}.lesson-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border:1px solid #bfd0ca;border-radius:999px;background:#fff;color:#214e47;font-size:13px;font-weight:800;text-decoration:none;transition:.2s ease}.lesson-actions a:hover{transform:translateY(-1px);border-color:#8eaaa2;box-shadow:0 6px 16px rgba(31,75,68,.09)}.lesson-actions .primary{border-color:#245e54;background:#245e54;color:#fff}.lesson-small{margin-top:12px!important;color:#68777a!important;font-size:13px!important}
     @media(min-width:981px){.s-toc{position:sticky!important;top:96px;max-height:calc(100vh - 116px);overflow-y:auto;align-self:start}.s-layout{align-items:start}}
-    @media(max-width:640px){.resort-detail-grid{grid-template-columns:1fr}.resort-detail-card{padding:17px}.preflight-list li{grid-template-columns:1fr;gap:3px;padding:15px 0}.lesson-actions{display:grid;grid-template-columns:1fr}.lesson-actions a{width:100%}}
+    @media(max-width:640px){
+      .s-hero{min-height:auto}
+      .s-hero-inner{padding:36px 18px 38px}
+      .s-hero h1{font-size:32px}
+      .s-hero .s-sub{font-size:17px;line-height:1.55}
+      .s-hero p{font-size:14.5px;line-height:1.85;margin-bottom:0}
+      .s-wrap{padding:28px 14px 32px}
+      .s-layout{gap:18px}
+      .s-section{padding:24px 18px;margin-bottom:18px;border-radius:14px}
+      .s-section h2{margin-bottom:16px}
+      .s-section p,.s-section li{line-height:1.9;margin-bottom:16px}
+      .s-linkbox{max-width:100%}
+      .s-linktxt{min-width:0;white-space:normal;text-align:left}
+      .public{padding-top:24px;padding-bottom:24px}
+      .public h2{margin-bottom:18px}
+      .resort-detail-grid{grid-template-columns:1fr}
+      .resort-detail-card{padding:17px}
+      .preflight-list li{grid-template-columns:1fr;gap:3px;padding:15px 0}
+      .lesson-actions{display:grid;grid-template-columns:1fr}
+      .lesson-actions a{width:100%}
+    }
   </style>
 
   <!-- HERO -->
@@ -269,19 +305,16 @@
 
         <article id="public" class="s-section public" aria-labelledby="public-title">
           <h2 id="public-title">公共交通機関をご利用の方</h2>
-          <p>✦ <strong>直行バスでらくらくアクセス</strong><br>
-  <p></p>
-          札幌駅前や市内主要ホテルから、スキー場直行バスが運行しています。予約制で、リフト券とセットになったお得なパックもあり、観光客に大変便利です。</p>
+          <p><strong>✦ 直行バスでらくらくアクセス</strong></p>
+          <p>札幌駅前や市内主要ホテルから、スキー場直行バスが運行しています。予約制で、リフト券とセットになったお得なパックもあり、観光客に大変便利です。</p>
 
           <!-- ✅ 画像も同じモーダルで拡大（ページ遷移なし） -->
           <a class="s-imgframe js-open-modal" href="#" data-modal-type="image" data-src="img/kokusai/ja_kokusaibus.png" aria-haspopup="dialog" aria-controls="viewerModal" aria-label="バス案内画像（クリックで拡大）">
             <img src="img/kokusai/ja_kokusaibus.png" alt="バス案内">
           </a>
           <div class="s-cap">クリックして拡大表示</div>
-<p></p>
-          <p>✦ <strong>定山渓温泉との組み合わせ</strong><br>
-<p></p>
-          定山渓温泉からも路線バスで簡単にアクセス可能。滑走後に温泉で身体を癒やす「スキー＋温泉」の楽しみ方も人気です。</p>
+          <p><strong>✦ 定山渓温泉との組み合わせ</strong></p>
+          <p>定山渓温泉からも路線バスで簡単にアクセス可能。滑走後に温泉で身体を癒やす「スキー＋温泉」の楽しみ方も人気です。</p>
         </article>
 
         <article id="car" class="s-section" aria-labelledby="car-title">
