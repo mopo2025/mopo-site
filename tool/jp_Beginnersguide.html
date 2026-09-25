@@ -339,11 +339,13 @@
 
 <script src="../common.js?v=20260718b"></script>
 <script>
-  document.getElementById('langSelect')?.addEventListener('change', (event) => {
+  const guideLanguagePages = { 'zh-Hant':'Beginnersguide.html', ja:'jp_Beginnersguide.html', en:'en_Beginnersguide.html' };
+  const guideLanguageSelect = document.getElementById('langSelect');
+  ['input', 'change'].forEach((type) => guideLanguageSelect?.addEventListener(type, (event) => {
+    event.preventDefault();
     event.stopImmediatePropagation();
-    const pages = { 'zh-Hant':'Beginnersguide.html', ja:'jp_Beginnersguide.html', en:'en_Beginnersguide.html' };
-    window.location.href = pages[event.currentTarget.value] || 'jp_Beginnersguide.html';
-  }, true);
+    window.location.href = guideLanguagePages[event.currentTarget.value] || 'jp_Beginnersguide.html';
+  }, true));
   const items = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {

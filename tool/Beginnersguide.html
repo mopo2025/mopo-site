@@ -238,8 +238,8 @@
         <button class="mobLangBtn" id="mobLangBtn">語言</button>
         <div class="mobpanel" id="mobLangPanel">
           <a href="#" aria-current="true">繁體中文</a>
-          <a href="../ja_mopoindex.html">日本語</a>
-          <a href="../en_mopoindex.html">English</a>
+          <a href="jp_Beginnersguide.html">日本語</a>
+          <a href="en_Beginnersguide.html">English</a>
         </div>
       </div>
       <div class="mobdrop" id="mobNavDrop">
@@ -663,6 +663,16 @@
 
 <script src="../common.js?v=20260718b"></script>
 <script>
+  // This article uses jp_ (rather than the site's usual ja_) for its Japanese filename.
+  // Intercept both select events so common.js cannot redirect to a non-existent page.
+  const guideLanguagePages = { 'zh-Hant':'Beginnersguide.html', ja:'jp_Beginnersguide.html', en:'en_Beginnersguide.html' };
+  const guideLanguageSelect = document.getElementById('langSelect');
+  ['input', 'change'].forEach((type) => guideLanguageSelect?.addEventListener(type, (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.href = guideLanguagePages[event.currentTarget.value] || 'Beginnersguide.html';
+  }, true));
+
   document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
   
   // Scroll reveal: sections fade in and timeline items enter in sequence.

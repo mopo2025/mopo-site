@@ -307,7 +307,7 @@
         <button class="mobLangBtn" id="mobLangBtn" aria-label="Language">Language</button>
         <div class="mobpanel" id="mobLangPanel" role="menu" aria-label="Language menu">
           <a role="menuitem" href="Beginnersguide.html">繁體中文</a>
-          <a role="menuitem" href="../ja_mopoindex.html">日本語</a>
+          <a role="menuitem" href="jp_Beginnersguide.html">日本語</a>
           <a role="menuitem" href="#" aria-current="true">English</a>
         </div>
       </div>
@@ -869,13 +869,13 @@
 
 <script src="../common.js?v=20260718b"></script>
 <script>
-  // A Japanese edition of this guide is not available yet; send that option to the Japanese home page.
-  document.getElementById('langSelect')?.addEventListener('change', (event) => {
-    if (event.currentTarget.value === 'ja') {
-      event.stopImmediatePropagation();
-      window.location.href = '../ja_mopoindex.html';
-    }
-  }, true);
+  const guideLanguagePages = { 'zh-Hant':'Beginnersguide.html', ja:'jp_Beginnersguide.html', en:'en_Beginnersguide.html' };
+  const guideLanguageSelect = document.getElementById('langSelect');
+  ['input', 'change'].forEach((type) => guideLanguageSelect?.addEventListener(type, (event) => {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.href = guideLanguagePages[event.currentTarget.value] || 'en_Beginnersguide.html';
+  }, true));
 
   document.addEventListener("DOMContentLoaded", () => lucide.createIcons());
   
