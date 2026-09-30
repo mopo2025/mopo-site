@@ -290,7 +290,6 @@ h1{margin:0 0 4px 0}
 .pricecard .desc{color:#516170; font-size:14px; line-height:1.6;}
 
 /* モバイル用サムネイル・説明ロジック */
-.mobile-desc { display: none; }
 .mobile-thumb {
     display: none; /* デスクトップでは非表示 */
     width: 100%;
@@ -389,7 +388,6 @@ h1{margin:0 0 4px 0}
 .summary-btns .btn-sm:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
 
 /* 状態切り替えロジック */
-.pricecard[open] .summary-btns { display: none; }
 .pricecard[open] .expand-hint { display: none; }
 .pricecard[open] .mobile-thumb { display: none; }
 .pricecard[open] .desc { display: block; }
@@ -490,8 +488,6 @@ h1{margin:0 0 4px 0}
   .hero__wrap{grid-template-columns:1fr}
   .pricetable{padding:8px 10px 12px 10px; display: flex; flex-direction: column;}
   .mobile-thumb { display: block; }
-  .desktop-desc { display: none; }
-  .mobile-desc { display: inline; }
   .table thead{display:none}
   .table tbody{display:grid; gap:8px}
   .table tr{display:grid; grid-template-columns:1fr auto; align-items:center; gap:4px 8px; padding:8px 10px; background:#fff; border:1px solid #eee; border-radius:10px}
@@ -990,10 +986,7 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             <img class="mobile-thumb" src="img/news/teine.jpg" alt="手稻滑雪場" loading="lazy">
             <div class="head">
               <div class="title">札幌手稲｜プライベート（終日/半日）</div>
-              <div class="desc">
-                <span class="desktop-desc">安定した雪質・アクセス良好。初心者やファミリーに最適です。</span>
-                <span class="mobile-desc">安定した雪質・アクセス良好。</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="安定した雪質・アクセス良好。">安定した雪質・アクセス良好。初心者やファミリーに最適です。</span></div>
             </div>
 
             <div class="fromrow">
@@ -1013,8 +1006,8 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             </div>
 
             <div class="summary-btns">
-                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_teine.html'">ゲレンデ紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
+                <a class="btn-sm" href="ja_teine.html" onclick="event.stopPropagation()">ゲレンデ紹介</a>
+                <a class="btn-sm" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">レッスン予約</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1106,14 +1099,6 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
                 <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
-                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="ja_teine.html">ゲレンデ紹介</a>
-              <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
@@ -1124,10 +1109,7 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             <img class="mobile-thumb" src="img/news/onze.png" alt="小樽ONZE滑雪場" loading="lazy">
             <div class="head">
               <div class="title">オーンズ｜プライベート（終日/半日/ナイター）</div>
-              <div class="desc">
-                <span class="desktop-desc">海を望む絶景・アクセス抜群。ナイター営業も長く、夜景を見ながらの滑走は格別です。</span>
-                <span class="mobile-desc">海を望む絶景・アクセス抜群。</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="海を望む絶景・アクセス抜群。">海を望む絶景・アクセス抜群。ナイター営業も長く、夜景を見ながらの滑走は格別です。</span></div>
             </div>
 
             <div class="fromrow">
@@ -1147,8 +1129,8 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             </div>
 
             <div class="summary-btns">
-                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_onze.html'">ゲレンデ紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
+                <a class="btn-sm" href="ja_onze.html" onclick="event.stopPropagation()">ゲレンデ紹介</a>
+                <a class="btn-sm" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">レッスン予約</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1280,14 +1262,6 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
                 <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
-                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="ja_onze.html">ゲレンデ紹介</a>
-              <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
@@ -1297,10 +1271,7 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             <img class="mobile-thumb" src="img/news/kokusai.jpg" alt="札幌国際滑雪場" loading="lazy">
             <div class="head">
               <div class="title">札幌国際｜プライベート（終日）</div>
-              <div class="desc">
-                <span class="desktop-desc">札幌近郊屈指の雪質。広大なコースで見晴らしも良好、ファミリーにも最適です。</span>
-                <span class="mobile-desc">札幌近郊屈指の雪質。</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="札幌近郊屈指の雪質。">札幌近郊屈指の雪質。広大なコースで見晴らしも良好、ファミリーにも最適です。</span></div>
             </div>
             <div class="fromrow">
                <div class="price-tag-group left">
@@ -1314,8 +1285,8 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             </div>
 
             <div class="summary-btns">
-                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_kokusai.html'">ゲレンデ紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html?lang=ja', '_blank')">レッスン予約</button>
+                <a class="btn-sm" href="ja_kokusai.html" onclick="event.stopPropagation()">ゲレンデ紹介</a>
+                <a class="btn-sm" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">レッスン予約</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1376,14 +1347,6 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
                 <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
-                <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="ja_kokusai.html">ゲレンデ紹介</a>
-        <a class="btn" href="booking.html?lang=ja" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
@@ -1394,10 +1357,7 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             <img class="mobile-thumb" src="img/asari/asari.jpg" alt="朝里川温泉スキー場" loading="lazy">
             <div class="head">
               <div class="title">朝里川温泉｜プライベート（終日）</div>
-              <div class="desc">
-                <span class="desktop-desc">2026年12月18日より終日レッスンをご案内します。春スキー期間は2027年3月6日～3月29日です。</span>
-                <span class="mobile-desc">終日レッスン｜2026年12月18日から</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="終日レッスン｜2026年12月18日から">2026年12月18日より終日レッスンをご案内します。春スキー期間は2027年3月6日～3月29日です。</span></div>
             </div>
             <div class="fromrow">
                <div class="price-tag-group left">
@@ -1411,8 +1371,8 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
             </div>
 
             <div class="summary-btns">
-                <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='ja_asari.html'">スキー場紹介</button>
-                <button class="btn-sm" onclick="event.stopPropagation(); window.open('ja_asari.html#lesson', '_blank')">レッスン予約</button>
+                <a class="btn-sm" href="ja_asari.html" onclick="event.stopPropagation()">スキー場紹介</a>
+                <a class="btn-sm" href="ja_asari.html#lesson" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">レッスン予約</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1472,14 +1432,6 @@ html[lang="ja"] .sitemap h4{font-weight:700!important}html[lang="ja"] .sitemap a
                 <p>＊表示は税込価格です。</p>
                 <p>＊対人賠償責任保険込み。リフト券・用具・交通・昼食は含みません。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="ja_asari.html">スキー場紹介</a>
-                <a class="btn" href="ja_asari.html#lesson" target="_blank" rel="noopener noreferrer">レッスン予約</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="ja_asari.html">スキー場紹介</a>
-        <a class="btn" href="ja_asari.html#lesson" target="_blank" rel="noopener noreferrer">レッスン予約</a>
             </div>
           </div>
         </details>
@@ -1909,6 +1861,27 @@ document.getElementById('backTop')?.addEventListener('click', ()=>
     if(tgt.tagName.toLowerCase()!=='details' || !tgt.open) return;
     list.querySelectorAll('details[open]').forEach(d=>{ if(d!==tgt) d.open=false; });
   });
+})();
+
+// 各カードの説明文を1つのノードに保ち、モバイル表示文も維持する。
+(() => {
+  const mobile = window.matchMedia('(max-width: 760px)');
+  const descriptions = document.querySelectorAll('.responsive-desc');
+
+  descriptions.forEach((description) => {
+    description.dataset.desktopCopy = description.textContent.trim();
+  });
+
+  const updateDescriptions = () => {
+    descriptions.forEach((description) => {
+      description.textContent = mobile.matches
+        ? description.dataset.mobileCopy
+        : description.dataset.desktopCopy;
+    });
+  };
+
+  updateDescriptions();
+  mobile.addEventListener?.('change', updateDescriptions);
 })();
 
 // Pricing Tabs (Local Logic)

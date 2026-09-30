@@ -122,7 +122,6 @@
     .pricecard .head { display: flex; flex-direction: column; gap: 6px; z-index: 2; position: relative }
     .pricecard .title { font-size: 20px; font-weight: 800; color: var(--ink); letter-spacing: 0.02em }
     .pricecard .desc { color: #516170; font-size: 14px; line-height: 1.6 }
-    .mobile-desc { display: none }
     .mobile-thumb { display: none; width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-bottom: 16px; order: -1 }
     .fromrow { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f2f2f2 }
     .price-tag-group { display: flex; flex-direction: column; justify-content: center; line-height: 1 }
@@ -137,7 +136,6 @@
     .summary-btns { display: flex; gap: 10px; margin-top: 8px; z-index: 5; position: relative; width: 100% }
     .summary-btns .btn-sm { padding: 12px 20px; font-size: 15px; border-radius: 99px; background: #fff; border: 1px solid var(--gold); color: var(--midnight); font-weight: 700; flex: 1; text-align: center; transition: all 0.2s; cursor: pointer }
     .summary-btns .btn-sm:hover { background: var(--gold); color: #fff; border-color: var(--gold) }
-    .pricecard[open] .summary-btns,
     .pricecard[open] .mobile-thumb { display: none }
     .expand-hint .hint-close { display: none }
     .pricecard[open] .expand-hint {
@@ -209,8 +207,6 @@
     @media (max-width: 760px) {
       .hero__wrap { grid-template-columns: 1fr }
       .mobile-thumb { display: block }
-      .desktop-desc { display: none }
-      .mobile-desc { display: inline }
       .pricetable { padding: 8px 10px 12px 10px; display: flex; flex-direction: column }
       .table thead { display: none }
       .table tbody { display: grid; gap: 8px }
@@ -1082,10 +1078,7 @@ summary:focus-visible {
             <img class="mobile-thumb" src="img/news/teine.jpg" alt="手稻滑雪場" loading="lazy">
             <div class="head">
               <div class="title">手稻｜私人課（全日/半日）</div>
-              <div class="desc">
-                <span class="desktop-desc">雪質穩定，交通便利。適合初學者與家庭滑雪的最佳選擇。</span>
-                <span class="mobile-desc">雪質穩定，交通便利。</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="雪質穩定，交通便利。">雪質穩定，交通便利。適合初學者與家庭滑雪的最佳選擇。</span></div>
             </div>
             <div class="fromrow">
               <div class="price-tag-group left">
@@ -1100,8 +1093,8 @@ summary:focus-visible {
             </div>
             <div class="expand-hint"><span class="hint-open">查看詳細價格與日期 <span aria-hidden="true">⌄</span></span><span class="hint-close" aria-label="收合"><span aria-hidden="true">⌃</span></span></div>
             <div class="summary-btns">
-              <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='teine.html'">雪場介紹</button>
-              <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">預約課程</button>
+              <a class="btn-sm" href="teine.html" onclick="event.stopPropagation()">雪場介紹</a>
+              <a class="btn-sm" href="booking.html" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">預約課程</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1190,14 +1183,6 @@ summary:focus-visible {
                 <p>＊小班制為維護品質最多上課人數為5人</p>
                 <p>＊金額為含稅價格。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="teine.html">雪場介紹</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">預約課程</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="teine.html">雪場介紹</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">預約課程</a>
             </div>
           </div>
         </details>
@@ -1208,10 +1193,7 @@ summary:focus-visible {
             <img class="mobile-thumb" src="img/news/onze.png" alt="小樽ONZE滑雪場" loading="lazy">
             <div class="head">
               <div class="title">ONZE｜私人課 (全日/半日/夜滑)</div>
-              <div class="desc">
-                <span class="desktop-desc">坐擁石狩灣海景，交通最便利。營業時間長，是體驗浪漫夜滑與欣賞絕美夜景的唯一選擇。</span>
-                <span class="mobile-desc">石狩灣海景，交通最便利。</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="石狩灣海景，交通最便利。">坐擁石狩灣海景，交通最便利。營業時間長，是體驗浪漫夜滑與欣賞絕美夜景的唯一選擇。</span></div>
             </div>
             <div class="fromrow">
               <div class="price-tag-group left">
@@ -1226,8 +1208,8 @@ summary:focus-visible {
             </div>
             <div class="expand-hint"><span class="hint-open">查看詳細價格與日期 <span aria-hidden="true">⌄</span></span><span class="hint-close" aria-label="收合"><span aria-hidden="true">⌃</span></span></div>
             <div class="summary-btns">
-              <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='onze.html'">雪場介紹</button>
-              <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">預約課程</button>
+              <a class="btn-sm" href="onze.html" onclick="event.stopPropagation()">雪場介紹</a>
+              <a class="btn-sm" href="booking.html" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">預約課程</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1356,14 +1338,6 @@ summary:focus-visible {
                 <p>＊小班制為維護品質最多上課人數為5人</p>
                 <p>＊金額為含稅價格。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="onze.html">雪場介紹</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">預約課程</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="onze.html">雪場介紹</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">預約課程</a>
             </div>
           </div>
         </details>
@@ -1374,10 +1348,7 @@ summary:focus-visible {
             <img class="mobile-thumb" src="img/news/kokusai.jpg" alt="札幌國際滑雪場" loading="lazy">
             <div class="head">
               <div class="title">札幌國際｜私人課（全日）</div>
-              <div class="desc">
-                <span class="desktop-desc">札幌近郊雪質最佳的首選。雪道寬敞、視野開闊，設施完善且對兒童友善，是家庭滑雪的完美去處。</span>
-                <span class="mobile-desc">札幌近郊雪質最佳的首選。</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="札幌近郊雪質最佳的首選。">札幌近郊雪質最佳的首選。雪道寬敞、視野開闊，設施完善且對兒童友善，是家庭滑雪的完美去處。</span></div>
             </div>
             <div class="fromrow">
               <div class="price-tag-group left">
@@ -1387,8 +1358,8 @@ summary:focus-visible {
             </div>
             <div class="expand-hint"><span class="hint-open">查看詳細價格與日期 <span aria-hidden="true">⌄</span></span><span class="hint-close" aria-label="收合"><span aria-hidden="true">⌃</span></span></div>
             <div class="summary-btns">
-              <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='kokusai.html'">雪場介紹</button>
-              <button class="btn-sm" onclick="event.stopPropagation(); window.open('booking.html', '_blank')">預約課程</button>
+              <a class="btn-sm" href="kokusai.html" onclick="event.stopPropagation()">雪場介紹</a>
+              <a class="btn-sm" href="booking.html" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">預約課程</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1444,14 +1415,6 @@ summary:focus-visible {
                 <p>＊小班制為維護品質最多上課人數為5人</p>
                 <p>＊金額為含稅價格。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="kokusai.html">雪場介紹</a>
-                <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">預約課程</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="kokusai.html">雪場介紹</a>
-              <a class="btn" href="booking.html" target="_blank" rel="noopener noreferrer">預約課程</a>
             </div>
           </div>
         </details>
@@ -1462,10 +1425,7 @@ summary:focus-visible {
             <img class="mobile-thumb" src="img/asari/asari.jpg" alt="朝里川溫泉滑雪場" loading="lazy">
             <div class="head">
               <div class="title">朝里川溫泉｜私人課（全日）</div>
-              <div class="desc">
-                <span class="desktop-desc">2026/12/18 起提供全天課程。春季期間：2027/3/6～3/29。</span>
-                <span class="mobile-desc">全日課程｜2026/12/18 起</span>
-              </div>
+              <div class="desc"><span class="responsive-desc" data-mobile-copy="全日課程｜2026/12/18 起">2026/12/18 起提供全天課程。春季期間：2027/3/6～3/29。</span></div>
             </div>
             <div class="fromrow">
               <div class="price-tag-group left">
@@ -1475,8 +1435,8 @@ summary:focus-visible {
             </div>
             <div class="expand-hint"><span class="hint-open">查看詳細價格與日期 <span aria-hidden="true">⌄</span></span><span class="hint-close" aria-label="收合"><span aria-hidden="true">⌃</span></span></div>
             <div class="summary-btns">
-              <button class="btn-sm" onclick="event.stopPropagation(); window.location.href='asari.html'">雪場介紹</button>
-              <button class="btn-sm" onclick="event.stopPropagation(); window.open('asari.html#lesson', '_blank')">預約課程</button>
+              <a class="btn-sm" href="asari.html" onclick="event.stopPropagation()">雪場介紹</a>
+              <a class="btn-sm" href="asari.html#lesson" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">預約課程</a>
             </div>
           </summary>
           <div class="pricetable">
@@ -1533,14 +1493,6 @@ summary:focus-visible {
                 <p>＊小班制為維護品質最多上課人數為5人</p>
                 <p>＊金額為含稅價格。已含第三人責任保險。纜車票・器材・交通・午餐未包含。</p>
               </div>
-              <div class="btns">
-                <a class="btn" href="asari.html">雪場介紹</a>
-                <a class="btn" href="asari.html#lesson" target="_blank" rel="noopener noreferrer">預約課程</a>
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn" href="asari.html">雪場介紹</a>
-              <a class="btn" href="asari.html#lesson" target="_blank" rel="noopener noreferrer">預約課程</a>
             </div>
           </div>
         </details>
@@ -1831,6 +1783,27 @@ document.getElementById('courseList')?.addEventListener('toggle', (e) => {
   if (tgt.tagName.toLowerCase() !== 'details' || !tgt.open) return;
   document.querySelectorAll('details[open]').forEach(d => { if (d !== tgt) d.open = false; });
 }, true);
+
+// 每張雪場卡僅保留一個說明節點，同時維持原本的手機版文字。
+(() => {
+  const mobile = window.matchMedia('(max-width: 760px)');
+  const descriptions = document.querySelectorAll('.responsive-desc');
+
+  descriptions.forEach((description) => {
+    description.dataset.desktopCopy = description.textContent.trim();
+  });
+
+  const updateDescriptions = () => {
+    descriptions.forEach((description) => {
+      description.textContent = mobile.matches
+        ? description.dataset.mobileCopy
+        : description.dataset.desktopCopy;
+    });
+  };
+
+  updateDescriptions();
+  mobile.addEventListener?.('change', updateDescriptions);
+})();
 
 // 價格卡片內 Tab 季節切換
 document.querySelectorAll('.tab-btn').forEach(btn => {
