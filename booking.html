@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://script.google.com https://script.googleusercontent.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com data:; connect-src 'self' https://api.moposki.com; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests;">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://script.google.com https://script.googleusercontent.com https://www.googletagmanager.com https://www.googleadservices.com https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com data: https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.com.tw https://www.google.co.jp; connect-src 'self' https://api.moposki.com https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.com.tw https://www.google.co.jp https://ad.doubleclick.net; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests; frame-src 'self' https://www.googletagmanager.com;">
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17610938726"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17610938726');
+</script>
 <title>MOPO 訂課預約申請</title>
 <style>
 /* ============================================================
@@ -687,6 +694,9 @@ $('#submitBtn').addEventListener('click', async () => {
     let data;
     try { data = JSON.parse(raw); } catch { data = { status: 'error', message: raw }; }
     if (data.status !== 'success') throw new Error(data.message || 'Server error');
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17610938726/WSuNCNCmgY4dEOayxs1B'
+    });
     alert(I18N[current.lang].success); location.reload();
   } catch(e) {
     alert('Error: ' + e);
